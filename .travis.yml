@@ -1,0 +1,14 @@
+language: java
+env:
+  - PLAY_VERSION=2.2.2
+jdk: oraclejdk8
+install:
+  - git clone https://github.com/lobid/lodmill.git
+  - cd lodmill/lodmill-ld
+  - mvn clean install -e -q -DskipTests=true --settings ../settings.xml
+  - cd ../..
+  - wget http://downloads.typesafe.com/play/${PLAY_VERSION}/play-${PLAY_VERSION}.zip
+  - unzip -q play-${PLAY_VERSION}.zip
+script:
+  - rm -rf ~/.m2/repository/junit/ ; rm -rf ~/.m2/repository/org/hamcrest/ ; rm -rf ~/.m2/repository/org/elasticsearch/ ; rm -rf ~/.m2/repository/org/codehaus/ ; rm -rf ~/.m2/repository/stax/ ; rm -rf ~/.m2/repository/commons-logging/ ; rm -rf ~/.m2/repository/org/slf4j/ ; rm -rf ~/.m2/repository/log4j/ ; rm -rf ~/.m2/repository/org/apache/httpcomponents/ ; rm -rf ~/.m2/repository/asm/
+  - ./play-${PLAY_VERSION}/play test
