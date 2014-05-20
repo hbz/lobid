@@ -42,6 +42,7 @@ public class ApiTests {
 				/*---------------*/
 				{ "resource/HT002189125",/* -> */"a peep at Polynesian life" }, // NOPMD
 				{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
+				{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
 				{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
 				{ "resource?name=Typee&t=Book", "a peep at Polynesian life" },
 				{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
@@ -59,25 +60,25 @@ public class ApiTests {
 				{ "resource?q=Typee&format=ids",/* -> */"Typee" },
 				{ "resource?set=NWBib",/* -> */
 				"Wann en Kölle de Chress-Stäne blöhe" },
-				{ "resource?id=TT002234003",/*->*/
+				{ "resource?id=TT002234003",/* -> */
 				"Aufgabenbereich und Aufbau der Verwaltung" },
-				{ "resource?id=TT002234003&format=ids&callback=response",/*->*/
+				{ "resource?id=TT002234003&format=ids&callback=response",/* -> */
 				"response(" },
-				{ "resource?id=TT002234003&format=short&callback=response",/*->*/
+				{ "resource?id=TT002234003&format=short&callback=response",/* -> */
 				"response(" },
-				{ "resource?id=TT002234003&format=full&callback=response",/*->*/
+				{ "resource?id=TT002234003&format=full&callback=response",/* -> */
 				"response(" },
-				{ "resource?author=Hu&owner=DE-Sol1",/*->*/
+				{ "resource?author=Hu&owner=DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Hu&owner=http://lobid.org/organisation/DE-Sol1",/*->*/
+				{ "resource?author=Hu&owner=http://lobid.org/organisation/DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?id=BT000001260&owner=DE-Sol1",/*->*/
+				{ "resource?id=BT000001260&owner=DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?set=NWBib&owner=DE-Sol1",/*->*/
+				{ "resource?set=NWBib&owner=DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Hu&owner=DE-Sol1,DE-Sol2",/*->*/
+				{ "resource?author=Hu&owner=DE-Sol1,DE-Sol2",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Go&owner=DE-Sol1,DE-Sol2",/*->*/
+				{ "resource?author=Go&owner=DE-Sol1,DE-Sol2",/* -> */
 				"Kirchengeschichte des Rheinlandes" },
 				/*-------------------*/
 				/* GET /organisation */
@@ -85,6 +86,7 @@ public class ApiTests {
 				{ "organisation/US-IdBoTIMB",/* -> */"Timberline High School" },
 				{ "organisation/SzBaU",/* -> */"Universität Basel" }, // NOPMD
 				{ "organisation?id=SzBaU",/* -> */"Universität Basel" },
+				{ "organisation?name=SzBaU",/* -> */"Universität Basel" },
 				{ "organisation?name=Basel",/* -> */"Universität Basel" },
 				{ "organisation?name=Basel&format=short",/* -> */
 				"Universität Basel" },
@@ -113,6 +115,7 @@ public class ApiTests {
 				/*-------------*/
 				{ "person/136963781",/* -> */"Bach, Johann Sebastian" }, // NOPMD
 				{ "person?id=136963781",/* -> */"Bach, Johann Sebastian" },
+				{ "person?name=11850553X",/* -> */"http://d-nb.info/gnd/11850553X" },
 				{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
 				{ "person?name=Bach&format=short",/* -> */
 				"Bach, Johann Sebastian (1685-1750)" },
@@ -146,6 +149,7 @@ public class ApiTests {
 				{ "subject?id=http://d-nb.info/gnd/1706733-9",
 						"Herbstadt-Ottelmannshausen" },
 				{ "subject?id=1706733-9", "Herbstadt-Ottelmannshausen" },
+				{ "subject?name=1706733-9", "Herbstadt-Ottelmannshausen" },
 				{ "subject?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" },
 				{ "subject?name=Kirchhundem", "Kirchhundem-Heinsberg" },
 				{ "search?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" }

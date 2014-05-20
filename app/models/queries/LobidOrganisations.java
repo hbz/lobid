@@ -63,8 +63,12 @@ public class LobidOrganisations {
 
 		@Override
 		public List<String> fields() {
-			return Arrays.asList("@graph.http://xmlns.com/foaf/0.1/name.@value",
-					"@graph.http://www.w3.org/2004/02/skos/core#prefLabel.@value");
+			List<String> fields = new ArrayList<>();
+			fields.addAll(Arrays.asList(
+					"@graph.http://xmlns.com/foaf/0.1/name.@value",
+					"@graph.http://www.w3.org/2004/02/skos/core#prefLabel.@value"));
+			fields.addAll(new IdQuery().fields());
+			return fields;
 		}
 
 		@Override

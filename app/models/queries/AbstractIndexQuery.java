@@ -34,13 +34,15 @@ public abstract class AbstractIndexQuery {
 
 	/* Some common author query stuff used both for gnd and lobid-resources: */
 
-	QueryBuilder searchAuthor(final String search) {
+	QueryBuilder searchAuthor(final String search, Class<?> caller) {
 		QueryBuilder query;
 		final String lifeDates = "\\((\\d+)-(\\d*)\\)";
 		final Matcher lifeDatesMatcher =
 				Pattern.compile("[^(]+" + lifeDates).matcher(search);
 		if (lifeDatesMatcher.find()) {
 			query = createAuthorQuery(lifeDates, search, lifeDatesMatcher);
+		} else if (search.matches("\\d+(.+)") && caller == Gnd.class) {
+			query = multiMatchQuery(search, fields().toArray(new String[] {}));
 		} else if (search.matches("(http://d-nb\\.info/gnd/)?\\d+")) {
 			final String term =
 					search.startsWith("http") ? search : "http://d-nb.info/gnd/" + search;
