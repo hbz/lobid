@@ -66,13 +66,17 @@ public class LobidResources {
 
 		@Override
 		public List<String> fields() {
-			return Arrays.asList("@graph.http://purl.org/dc/terms/title.@value",
-					"http://purl.org/dc/terms/alternative");
+			List<String> fields = new ArrayList<>();
+			fields.addAll(Arrays.asList(
+					"@graph.http://purl.org/dc/terms/title.@value",
+					"@graph.http://purl.org/dc/terms/alternative.@value"));
+			fields.addAll(new IdQuery().fields());
+			return fields;
 		}
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return matchQuery(fields().get(0), queryString);
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
 		}
 
 	}
@@ -93,7 +97,7 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return searchAuthor(queryString);
+			return searchAuthor(queryString, LobidResources.class);
 		}
 	}
 
@@ -126,7 +130,8 @@ public class LobidResources {
 		@Override
 		public List<String> fields() {
 			return Arrays.asList(/* @formatter:off*/
-					"@graph.@id", // hbz ID
+					"@graph.@id",
+					"@graph.http://purl.org/lobid/lv#hbzID.@value",
 					"@graph.http://purl.org/ontology/bibo/isbn13.@value",
 					"@graph.http://purl.org/ontology/bibo/isbn.@value",
 					"@graph.http://purl.org/ontology/bibo/issn.@value",
