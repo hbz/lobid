@@ -44,7 +44,8 @@ public class ApiTests {
 				{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
 				{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
 				{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
-				{ "resource?name=Typee&t=Book", "a peep at Polynesian life" },
+				{ "resource?name=Typee&t="
+						+ "http://purl.org/ontology/bibo/Book", "a peep at Polynesian life" },
 				{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
 				{ "resource?author=Melville&format=short",/* -> */
 				"Melville, Herman" },
@@ -119,7 +120,8 @@ public class ApiTests {
 				{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
 				{ "person?name=Bach&format=short",/* -> */
 				"Bach, Johann Sebastian (1685-1750)" },
-				{ "person?q=Bach&format=short&t=DifferentiatedPerson",
+				{ "person?q=Bach&format=short&t="
+						+ "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
 						"Bach, Johann Sebastian (1685-1750)" },
 				{ "person?q=Bruder+von&format=full",
 						"Marie Salome Bach, spätere Wiegand" },
