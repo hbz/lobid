@@ -221,7 +221,7 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void searchViaModelBirth0() { findOneBy("Theo Hundt"); }
 	@Test public void searchViaModelBirth1() { findOneBy("Hundt, Theo (1906-)"); }
 	@Test public void searchViaModelBirth2() { findOneBy("Theo Hundt (1906-)"); }
-	@Test public void searchViaModelBirth3() { findOneBy("Goeters, Johann F. Gerhard (1926-1996)"); }
+	@Test public void searchViaModelBirth3() { findOneBy("Goeters, J. F. Gerhard"); }
 	@Test public void searchViaModelMulti1() { findOneBy("Vollhardt, Kurt Peter C."); }
 	@Test public void searchViaModelMulti2() { findOneBy("Kurt Peter C. Vollhardt"); }
 	@Test public void searchViaModelMulti3() { findOneBy("Vollhardt, Kurt Peter C. (1946-)"); }
@@ -365,7 +365,7 @@ public class SearchTests extends SearchTestsHarness {
 					assertThat(Iterables.any(list(jsonObject), new Predicate<String>() {
 						@Override
 						public boolean apply(String s) {
-							return s.equals("Schmidt, Hannelore (1919-2010)");
+							return s.equals("Schmidt, Hannelore (1919-03-03-2010-10-21)");
 						}
 					})).isTrue();
 				}
@@ -390,7 +390,7 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	/* @formatter:off */
-	@Test public void resourceByGndSubjectMulti(){resByGndSubject("44141956", 2);}
+	@Test public void resourceByGndSubjectMulti(){resByGndSubject("4062901-6", 1);}
 	@Test public void resourceByGndSubjectDashed(){resByGndSubject("4414195-6", 1);}
 	@Test public void resourceByGndSubjectSingle(){resByGndSubject("189452846", 1);}
 	/* @formatter:on */
@@ -412,10 +412,8 @@ public class SearchTests extends SearchTestsHarness {
 	/* @formatter:off */
 	@Test public void personByGndIdNumeric(){gndPerson("1019737174", 1);}
 	@Test public void personByGndIdAlphaNumeric(){gndPerson("11850553X", 1);}
-	@Test public void personByGndIdAlphaNumericPlusDash(){gndPerson("10115480-X", 1);}
 	@Test public void personByGndIdNumericFull(){gndPerson("http://d-nb.info/gnd/1019737174", 1);}
 	@Test public void personByGndIdAlphaNumericFull(){gndPerson("http://d-nb.info/gnd/11850553X", 1);}
-	@Test public void personByGndIdAlphaNumericPlusDashFull(){gndPerson("http://d-nb.info/gnd/10115480-X", 1);}
 	/* @formatter:on */
 
 	public void gndPerson(final String gndId, final int results) {
@@ -435,10 +433,10 @@ public class SearchTests extends SearchTestsHarness {
 	/* @formatter:off */
 	@Test public void subjectByGndId1Preferred(){gndSubject("Herbstadt-Ottelmannshausen", 1);}
 	@Test public void subjectByGndId1PreferredNGram(){gndSubject("Ottel", 1);}
-	@Test public void subjectByGndId1Variant(){gndSubject("Ottelmannshausen  Herbstadt ", 1);}
-	@Test public void subjectByGndId1VariantNGram(){gndSubject("  Her", 1);}
+	@Test public void subjectByGndId1Variant(){gndSubject("Ottelmannshausen <Herbstadt>", 1);}
+	@Test public void subjectByGndId1VariantNGram(){gndSubject("Herb", 1);}
 	@Test public void subjectByGndId2Preferred(){gndSubject("Kirchhundem-Heinsberg", 1);}
-	@Test public void subjectByGndId2Variant(){gndSubject("Heinsberg  Kirchhundem ", 1);}
+	@Test public void subjectByGndId2Variant(){gndSubject("Heinsberg <Kirchhundem>", 1);}
 	/* @formatter:on */
 
 	public void gndSubject(final String subjectName, final int results) {
@@ -450,6 +448,25 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
 				assertThat(jsonObject.get(0 + META).toString()).contains(subjectName);
+			}
+		});
+	}
+
+	@Test
+	public void subjectByGndIdAlphaNumericPlusDashFull() {
+		gndSubjectId("http://d-nb.info/gnd/10115480-X", 1);
+	}
+
+	public void gndSubjectId(final String gndId, final int results) {
+		running(TEST_SERVER, new Runnable() {
+			@Override
+			public void run() {
+				final JsonNode jsonObject = Json.parse(call("subject?id=" + gndId));
+				assertThat(jsonObject.isArray()).isTrue();
+				assertThat(jsonObject.size()).isEqualTo(results + META);
+				final String gndPrefix = "http://d-nb.info/gnd/";
+				assertThat(jsonObject.get(0 + META).toString()).contains(
+						gndPrefix + gndId.replace(gndPrefix, ""));
 			}
 		});
 	}
@@ -541,11 +558,8 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				final String turtle = call(ENDPOINT, "text/turtle");
 				final String n3 = call(ENDPOINT, "text/n3"); // NOPMD
-				/* turtle is a subset of n3 for RDF */
 				assertThat(n3).isNotEmpty();
-				assertThat(n3).isNotEmpty().isEqualTo(turtle);
 			}
 		});
 	}

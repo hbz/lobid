@@ -59,25 +59,25 @@ public class ApiTests {
 				{ "resource?q=Typee&format=ids",/* -> */"Typee" },
 				{ "resource?set=NWBib",/* -> */
 				"Wann en Kölle de Chress-Stäne blöhe" },
-				{ "resource?id=TT002234003",/*->*/
+				{ "resource?id=TT002234003",/* -> */
 				"Aufgabenbereich und Aufbau der Verwaltung" },
-				{ "resource?id=TT002234003&format=ids&callback=response",/*->*/
+				{ "resource?id=TT002234003&format=ids&callback=response",/* -> */
 				"response(" },
-				{ "resource?id=TT002234003&format=short&callback=response",/*->*/
+				{ "resource?id=TT002234003&format=short&callback=response",/* -> */
 				"response(" },
-				{ "resource?id=TT002234003&format=full&callback=response",/*->*/
+				{ "resource?id=TT002234003&format=full&callback=response",/* -> */
 				"response(" },
-				{ "resource?author=Hu&owner=DE-Sol1",/*->*/
+				{ "resource?author=Hu&owner=DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Hu&owner=http://lobid.org/organisation/DE-Sol1",/*->*/
+				{ "resource?author=Hu&owner=http://lobid.org/organisation/DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?id=BT000001260&owner=DE-Sol1",/*->*/
+				{ "resource?id=BT000001260&owner=DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?set=NWBib&owner=DE-Sol1",/*->*/
+				{ "resource?set=NWBib&owner=DE-Sol1",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Hu&owner=DE-Sol1,DE-Sol2",/*->*/
+				{ "resource?author=Hu&owner=DE-Sol1,DE-Sol2",/* -> */
 				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Go&owner=DE-Sol1,DE-Sol2",/*->*/
+				{ "resource?author=Go&owner=DE-Sol1,DE-Sol2",/* -> */
 				"Kirchengeschichte des Rheinlandes" },
 				/*-------------------*/
 				/* GET /organisation */
@@ -115,11 +115,11 @@ public class ApiTests {
 				{ "person?id=136963781",/* -> */"Bach, Johann Sebastian" },
 				{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
 				{ "person?name=Bach&format=short",/* -> */
-				"Bach, Johann Sebastian (1685-1750)" },
+				"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
 				{ "person?q=Bach&format=short&t=DifferentiatedPerson",
-						"Bach, Johann Sebastian (1685-1750)" },
+						"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
 				{ "person?q=Bruder+von&format=full",
-						"Marie Salome Bach, spätere Wiegand" },
+						"Jüngster Sohn von Friedrich Wilhelm Ebner" },
 				{ "person?name=Bach&format=ids", /* -> */
 				"http://d-nb.info/gnd/11850553X" },
 				/*-------------*/

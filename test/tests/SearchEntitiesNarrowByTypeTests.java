@@ -22,7 +22,7 @@ public class SearchEntitiesNarrowByTypeTests extends SearchTestsHarness {
 	//@formatter:off
 	@Test public void resources() { search("resource?q=*", 25); }
 	@Test public void bibliographicResources() { search("resource?q=*&t=BibliographicResource", 25); }
-	@Test public void books() { search("resource?q=*&t=Book", 20); }
+	@Test public void books() { search("resource?q=*&t=Book", 19); }
 	@Test public void journals() { search("resource?q=*&t=Journal", 1); }
 	@Test public void newspapers() { search("resource?q=*&t=Newspaper", 1); }
 	@Test public void differentiatedPersons() { search("person?q=*&t=DifferentiatedPerson", 9); }
