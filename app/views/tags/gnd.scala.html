@@ -5,8 +5,6 @@
 @import views.tags.TagHelper
 @import tags._
 <table class="table table-striped">
-  @rdfa("ID", "http://d-nb.info/standards/elementset/gnd#gndIdentifier",  doc, TableRow.VALUES, valueLabel = Option(Seq(
-    "http://d-nb.info/standards/elementset/gnd#preferredName")))
   @rdfa("Typ", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", doc, TableRow.VALUES, TagHelper.getPrimaryTopicType(doc))
   @rdfa("Name", "http://d-nb.info/standards/elementset/gnd#preferredName", doc, TableRow.VALUES)
   @rdfa("Kurzinfo", "http://d-nb.info/standards/elementset/gnd#biographicalOrHistoricalInformation", doc, TableRow.VALUES)
