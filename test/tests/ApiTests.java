@@ -119,12 +119,12 @@ public class ApiTests {
 				{ "person?name=11850553X",/* -> */"http://d-nb.info/gnd/11850553X" },
 				{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
 				{ "person?name=Bach&format=short",/* -> */
-				"Bach, Johann Sebastian (1685-1750)" },
+				"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
 				{ "person?q=Bach&format=short&t="
-						+ "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
-						"Bach, Johann Sebastian (1685-1750)" },
+            + "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
+						"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
 				{ "person?q=Bruder+von&format=full",
-						"Marie Salome Bach, spätere Wiegand" },
+						"Jüngster Sohn von Friedrich Wilhelm Ebner" },
 				{ "person?name=Bach&format=ids", /* -> */
 				"http://d-nb.info/gnd/11850553X" },
 				/*-------------*/

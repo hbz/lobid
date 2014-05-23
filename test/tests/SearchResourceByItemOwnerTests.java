@@ -22,7 +22,7 @@ import org.junit.Test;
 public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 
 	private static final String AUTHOR1 = "Hundt, Theo";
-	private static final String AUTHOR2 = "Goeters, Johann";
+	private static final String AUTHOR2 = "Goeters, J. F. Gerhard";
 
 	@Test
 	public void searchResByAuthor1_withOwnerId() {
@@ -72,9 +72,8 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 
 	@Test
 	public void searchResByAuthor2_withMultipleOwnerUris() {
-		searchResByAuthorWithOwnerId(
-				AUTHOR2,
-				"http://lobid.org/organisation/DE-Sol1,http://lobid.org/organisation/DE-Sol2",
+		searchResByAuthorWithOwnerId(AUTHOR2,
+				"http://lobid.org/organisation/DE-Sol2",
 				"http://lobid.org/resource/BT000013654");
 	}
 

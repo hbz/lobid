@@ -35,7 +35,7 @@ public class AutocompleteTests extends SearchTestsHarness {
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(1);
 				assertThat(jsonObject.get(0).asText()).isEqualTo(
-						"Mann, Thomas (1875-1955)");
+						"Mann, Thomas (1875-06-06-1955-08-12)");
 			}
 		});
 	}

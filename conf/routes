@@ -37,7 +37,7 @@ GET     /team/pc/about         controllers.LobidTeam.pcAbout(id = "http://lobid.
 GET     /resource                   controllers.Api.resource(id ?= "", q ?= "", name ?= "", author ?= "", subject ?= "", set ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, owner ?= "", t ?= "", meta:Boolean?=true)
 GET     /item                       controllers.Api.item(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "", meta:Boolean?=true)
 GET     /organisation               controllers.Api.organisation(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "", meta:Boolean?=true)
-GET     /person                     controllers.Api.person(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "", meta:Boolean?=true)
+GET     /person                     controllers.Api.person(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "http://d-nb.info/standards/elementset/gnd#Person", meta:Boolean?=true)
 GET     /subject                    controllers.Api.subject(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "")
 
 # Path-style routes and `about` redirects
@@ -47,8 +47,8 @@ GET     /item/:id                   controllers.Path.item(id, format ?= "negotia
 GET     /item/:id/about             controllers.Path.itemAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
 GET     /organisation/:id           controllers.Path.organisation(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
 GET     /organisation/:id/about     controllers.Path.organisationAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /person/:id                 controllers.Path.person(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /person/:id/about           controllers.Path.personAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
+GET     /person/:id                 controllers.Path.person(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?="http://d-nb.info/standards/elementset/gnd#Person")
+GET     /person/:id/about           controllers.Path.personAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?="http://d-nb.info/standards/elementset/gnd#Person")
 
 # General search endpoint for searching over all resource types
 GET     /search                     controllers.Api.search(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)

@@ -71,14 +71,14 @@ public final class Path extends Controller {
 	/** Redirect to {@link #personAbout(String, String, String, int, int)} */
 	@SuppressWarnings("javadoc")
 	public static Result person(final String id, final String format,
-			final int from, final int size) {
-		return redirect(routes.Path.personAbout(id, format, from, size));
+			final int from, final int size, final String type) {
+		return redirect(routes.Path.personAbout(id, format, from, size, type));
 	}
 
 	/** Return {@link Api#person(String, String, String, int, int)} */
 	@SuppressWarnings("javadoc")
 	public static Promise<Result> personAbout(final String id,
-			final String format, final int from, final int size) {
-		return Api.person(id, "", "", format, from, size, "", false);
+			final String format, final int from, final int size, final String type) {
+		return Api.person(id, "", "", format, from, size, type, false);
 	}
 }

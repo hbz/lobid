@@ -90,7 +90,7 @@ public class BrowserTests {
 				.contains("http://gutenberg.org/ebooks/23969")
 				.contains("http://openlibrary.org/works/OL14953734W")
 				.contains("http://dbpedia.org/resource/Typee")
-				.contains("http://lobid.org/item/HT002189125%3AU+MEL-11")
+				.contains("http://lobid.org/item/HT002189125%3ADE-5-4%3AU+MEL-11")
 				.contains("exemplar");
 	}
 
@@ -121,8 +121,7 @@ public class BrowserTests {
 						.contains("Heimatstimmen aus dem Kreis Olpe")
 						.contains(
 								"Ein Papierkrieg um die Instandsetzung des Wittgensteiner "
-										+ "Kohlenwegs in der Gemarkung Heinsberg 1837 bis 1839 : die "
-										+ "Heinsberger machten Schwierigkeiten")
+										+ "Kohlenwegs in der Gemarkung Heinsberg 1837 bis 1839")
 						.contains("Hundt, Theo");
 			}
 		});
@@ -172,7 +171,7 @@ public class BrowserTests {
 				browser.click("a", withText(link));
 				assertThat(browser.pageSource()).contains("Bach, Johann Sebastian")
 						.contains("Lithograph, tätig in Leipzig um 1835-1837")
-						.contains("Bruder von Marie Salome Bach, spätere Wiegand")
+						.contains("Johann Sebastian <der Jüngere")
 						.contains("Bach, Johann Samuel").contains("Bach, Jean-Sébastien")
 						.contains("Bach, Joh. Sebst.").contains("Dt. Maler");
 			}
