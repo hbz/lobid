@@ -42,8 +42,10 @@ public class ApiTests {
 				/*---------------*/
 				{ "resource/HT002189125",/* -> */"a peep at Polynesian life" }, // NOPMD
 				{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
+				{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
 				{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
-				{ "resource?name=Typee&t=Book", "a peep at Polynesian life" },
+				{ "resource?name=Typee&t="
+						+ "http://purl.org/ontology/bibo/Book", "a peep at Polynesian life" },
 				{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
 				{ "resource?author=Melville&format=short",/* -> */
 				"Melville, Herman" },
@@ -85,6 +87,7 @@ public class ApiTests {
 				{ "organisation/US-IdBoTIMB",/* -> */"Timberline High School" },
 				{ "organisation/SzBaU",/* -> */"Universität Basel" }, // NOPMD
 				{ "organisation?id=SzBaU",/* -> */"Universität Basel" },
+				{ "organisation?name=SzBaU",/* -> */"Universität Basel" },
 				{ "organisation?name=Basel",/* -> */"Universität Basel" },
 				{ "organisation?name=Basel&format=short",/* -> */
 				"Universität Basel" },
@@ -113,10 +116,12 @@ public class ApiTests {
 				/*-------------*/
 				{ "person/136963781",/* -> */"Bach, Johann Sebastian" }, // NOPMD
 				{ "person?id=136963781",/* -> */"Bach, Johann Sebastian" },
+				{ "person?name=11850553X",/* -> */"http://d-nb.info/gnd/11850553X" },
 				{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
 				{ "person?name=Bach&format=short",/* -> */
 				"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
-				{ "person?q=Bach&format=short&t=DifferentiatedPerson",
+				{ "person?q=Bach&format=short&t="
+            + "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
 						"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
 				{ "person?q=Bruder+von&format=full",
 						"Jüngster Sohn von Friedrich Wilhelm Ebner" },
@@ -146,6 +151,7 @@ public class ApiTests {
 				{ "subject?id=http://d-nb.info/gnd/1706733-9",
 						"Herbstadt-Ottelmannshausen" },
 				{ "subject?id=1706733-9", "Herbstadt-Ottelmannshausen" },
+				{ "subject?name=1706733-9", "Herbstadt-Ottelmannshausen" },
 				{ "subject?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" },
 				{ "subject?name=Kirchhundem", "Kirchhundem-Heinsberg" },
 				{ "search?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
@@ -64,17 +63,21 @@ public class Gnd {
 
 		@Override
 		public List<String> fields() {
-			return Arrays
-					.asList(
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfBirth.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfDeath.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForThePerson.@value");
+			List<String> fields = new ArrayList<>();
+			fields
+					.addAll(Arrays
+							.asList(
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#dateOfBirth.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#dateOfDeath.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForThePerson.@value"));
+			fields.addAll(new IdQuery().fields());
+			return fields;
 		}
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return searchAuthor(queryString);
+			return searchAuthor(queryString, Gnd.class);
 		}
 	}
 
@@ -85,28 +88,33 @@ public class Gnd {
 
 		@Override
 		public List<String> fields() {
-			return Arrays
-					.asList(
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForThePerson.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheConferenceOrEvent.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheConferenceOrEvent.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheCorporateBody.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheCorporateBody.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheFamily.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForThePlaceOrGeographicName.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheSubjectHeading.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheWork.@value");
+			List<String> fields = new ArrayList<>();
+			fields
+					.addAll(Arrays
+							.asList(
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForThePerson.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheConferenceOrEvent.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheConferenceOrEvent.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheCorporateBody.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheCorporateBody.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheFamily.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForThePlaceOrGeographicName.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheSubjectHeading.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheWork.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredName.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantName.@value"));
+			fields.addAll(new IdQuery().fields());
+			return fields;
 		}
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
-					.operator(Operator.AND);
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
 		}
 
 	}
