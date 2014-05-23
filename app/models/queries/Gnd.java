@@ -105,7 +105,9 @@ public class Gnd {
 									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading.@value",
 									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheSubjectHeading.@value",
 									"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork.@value",
-									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheWork.@value"));
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantNameForTheWork.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#preferredName.@value",
+									"@graph.http://d-nb.info/standards/elementset/gnd#variantName.@value"));
 			fields.addAll(new IdQuery().fields());
 			return fields;
 		}
