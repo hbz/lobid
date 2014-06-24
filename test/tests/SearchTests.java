@@ -83,6 +83,11 @@ public class SearchTests extends SearchTestsHarness {
 		assertThat(searchOrgByName("hbz Schmeckermeck")).isEqualTo(0);
 	}
 
+	@Test
+	public void searchViaModelOrgNameAltLabel() {
+		assertThat(searchOrgByName("UB")).isEqualTo(1);
+	}
+
 	private static int searchOrgByName(final String term) {
 		return new Search(term, Index.LOBID_ORGANISATIONS, Parameter.NAME)
 				.documents().size();
