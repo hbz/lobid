@@ -58,7 +58,7 @@ public final class Api extends Controller {
 								"GET /resource; id: '%s', q: '%s', name: '%s', author: '%s', subject: '%s', set: '%s', format: '%s', owner: '%s'",
 								id, q, name, author, subject, set, format, owner));
 		final Index index = Index.LOBID_RESOURCES;
-		final Map.Entry<Parameter, String> parameter =
+		final Map<Parameter, String> parameters =
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
@@ -66,8 +66,8 @@ public final class Api extends Controller {
 						.put(Parameter.AUTHOR, author)
 						.put(Parameter.SUBJECT, subject)
 						.put(Parameter.SET, set).build());/*@formatter:on*/
-		return Application.search(index, parameter.getKey(), parameter.getValue(),
-				format, from, size, owner, set, type, addQueryInfo);
+		return Application.search(index, parameters, format, from, size, owner,
+				set, type, addQueryInfo);
 	}
 
 	/**
@@ -151,25 +151,25 @@ public final class Api extends Controller {
 			final String format, final int from, final int size, final String type) {
 		Logger.debug(String.format("GET /subject; id: '%s', q: '%s', name: '%s'",
 				id, q, name));
-		final Map.Entry<Parameter, String> parameter =/*@formatter:off*/
+		final Map<Parameter, String> parameters =/*@formatter:off*/
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>()
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
 						.put(Parameter.SUBJECT, name).build());/*@formatter:on*/
-		return Application.search(Index.GND, parameter.getKey(),
-				parameter.getValue(), format, from, size, "", "", type, true);
+		return Application.search(Index.GND, parameters, format, from, size, "",
+				"", type, true);
 	}
 
 	private static Promise<Result> search(final String id, final String q,
 			final String name, final String format, final int from, final int size,
 			final Index index, final String type, final boolean addQueryInfo) {
-		final Map.Entry<Parameter, String> parameter =/*@formatter:off*/
+		final Map<Parameter, String> parameters =/*@formatter:off*/
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>()
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
 						.put(Parameter.NAME, name).build());/*@formatter:on*/
-		return Application.search(index, parameter.getKey(), parameter.getValue(),
-				format, from, size, "", "", type, addQueryInfo);
+		return Application.search(index, parameters, format, from, size, "", "",
+				type, addQueryInfo);
 	}
 
 	/**

@@ -17,6 +17,7 @@ import org.junit.Test;
 import play.libs.Json;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.common.collect.ImmutableMap;
 
 /**
  * Tests for searching resources by author names, narrowed to set membership.
@@ -55,8 +56,8 @@ public class SearchResourceNarrowBySetTests extends SearchTestsHarness {
 			@Override
 			public void run() {
 				final List<Document> docs =
-						new Search("Hu", Index.LOBID_RESOURCES, Parameter.AUTHOR).set(set)
-								.documents();
+						new Search(ImmutableMap.of(Parameter.AUTHOR, "Hu"),
+								Index.LOBID_RESOURCES).set(set).documents();
 				assertThat(docs.size()).isEqualTo(1);
 				assertThat(docs.get(0).getSourceWithFullProperties())
 						.contains(SET_FULL);

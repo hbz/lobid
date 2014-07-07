@@ -100,12 +100,14 @@ public class BrowserTests {
 			@Override
 			public void invoke(final TestBrowser browser) {
 				browser.goTo(API_PAGE);
-				browser.click("a", withText("/resource?author=Abramson"));
+				browser.click("a", withText("/resource?author=Abramson&name=ethnic"));
 				assertThat(browser.pageSource()).contains("Abramson")
-						.contains("Error-correcting codes from linear sequential circuits")
 						.contains("The ethnic factor in American catholicism")
 						.contains("an analysis of interethnic marriage")
-						.contains("Abramson, Harold J.").contains("Abramson, N. M.");
+						.contains("Abramson, Harold J.");
+				assertThat(browser.pageSource()).doesNotContain(
+						"Error-correcting codes from linear sequential circuits")
+						.doesNotContain("Abramson, N. M.");
 			}
 		});
 	}
