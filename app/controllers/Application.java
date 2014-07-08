@@ -92,14 +92,15 @@ public final class Application extends Controller {
 	 * @param type The type of the requestes resources
 	 * @return The results, in the format specified
 	 */
-	static Promise<Result> search(final Index index, final Parameter parameter,
-			final String queryParameter, final String formatParameter,
-			final int from, final int size, final String owner, final String set,
-			final String type, final boolean addQueryInfo) {
+	static Promise<Result> search(final Index index,
+			final java.util.Map<Parameter, String> parameters,
+			final String formatParameter, final int from, final int size,
+			final String owner, final String set, final String type,
+			final boolean addQueryInfo) {
 		Search search;
 		try {
 			search =
-					new Search(queryParameter, index, parameter).page(from, size)
+					new Search(parameters, index).page(from, size)
 							.field(getFieldAndFormat(formatParameter).getLeft()).owner(owner)
 							.set(set).type(type);
 		} catch (IllegalArgumentException e) {
@@ -110,9 +111,8 @@ public final class Application extends Controller {
 			List<Document> docs = search.documents();
 			long allHits = search.totalHits();
 			final Promise<ImmutableMap<ResultFormat, Result>> resultPromise =
-					resultsPromise(queryParameter, docs, index,
-							getFieldAndFormat(formatParameter).getLeft(), allHits,
-							addQueryInfo);
+					resultsPromise(docs, index, getFieldAndFormat(formatParameter)
+							.getLeft(), allHits, addQueryInfo);
 			return resultPromise.map(results -> {
 				return results.get(ResultFormat.valueOf(getFieldAndFormat(
 						formatParameter).getRight().toUpperCase()));
@@ -125,14 +125,11 @@ public final class Application extends Controller {
 	}
 
 	private static Promise<ImmutableMap<ResultFormat, Result>> resultsPromise(
-			final String queryParameter, final List<Document> docs,
-			final Index index, final String field, final long allHits,
-			final boolean addQueryInfo) {
-		return Promise
-				.promise(() -> {
-					return results(queryParameter, docs, index, field, allHits,
-							addQueryInfo);
-				});
+			final List<Document> docs, final Index index, final String field,
+			final long allHits, final boolean addQueryInfo) {
+		return Promise.promise(() -> {
+			return results(docs, index, field, allHits, addQueryInfo);
+		});
 	}
 
 	static Promise<Result> badRequestPromise(final String message) {
@@ -166,7 +163,7 @@ public final class Application extends Controller {
 		return object;
 	};
 
-	private static ImmutableMap<ResultFormat, Result> results(final String query,
+	private static ImmutableMap<ResultFormat, Result> results(
 			final List<Document> documents, final Index selectedIndex,
 			final String field, long allHits, boolean addQueryInfo) {
 		/* JSONP callback support for remote server calls with JavaScript: */
@@ -177,8 +174,8 @@ public final class Application extends Controller {
 				new ImmutableMap.Builder<ResultFormat, Result>()
 						.put(
 								ResultFormat.NEGOTIATE,
-								negotiateContent(documents, selectedIndex, query, field,
-										allHits, addQueryInfo))
+								negotiateContent(documents, selectedIndex, field, allHits,
+										addQueryInfo))
 						.put(
 								ResultFormat.FULL,
 								withCallback(callback,
@@ -233,7 +230,7 @@ public final class Application extends Controller {
 	}
 
 	static Result negotiateContent(List<Document> documents, Index selectedIndex,
-			String query, String field, long allHits, boolean addQueryInfo) {
+			String field, long allHits, boolean addQueryInfo) {
 		final Status notAcceptable =
 				status(406, "Not acceptable: unsupported content type requested\n");
 		if (invalidAcceptHeader())
@@ -242,19 +239,19 @@ public final class Application extends Controller {
 			for (Serialization serialization : Serialization.values())
 				for (String mimeType : serialization.getTypes())
 					if (mediaRange.accepts(mimeType))
-						return serialization(documents, selectedIndex, query,
-								serialization, field, allHits, addQueryInfo);
+						return serialization(documents, selectedIndex, serialization,
+								field, allHits, addQueryInfo);
 		return notAcceptable;
 	}
 
 	private static Result serialization(List<Document> documents,
-			Index selectedIndex, String query, Serialization serialization,
-			String field, long allHits, boolean addQueryInfo) {
+			Index selectedIndex, Serialization serialization, String field,
+			long allHits, boolean addQueryInfo) {
 		switch (serialization) {
 		case JSON_LD:
 			return ok(fullJsonResponse(documents, field, allHits, addQueryInfo));
 		case RDF_A:
-			return ok(views.html.docs.render(documents, selectedIndex, query));
+			return ok(views.html.docs.render(documents, selectedIndex));
 		default:
 			return ok(Joiner.on("\n").join(
 					transform(documents, serialization, allHits, addQueryInfo)));

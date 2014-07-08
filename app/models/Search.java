@@ -7,8 +7,10 @@ import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-import models.queries.AbstractIndexQuery;
 import models.queries.LobidItems;
 import models.queries.LobidResources;
 
@@ -21,6 +23,7 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -59,9 +62,8 @@ public class Search {
 	/* TODO find a better way to inject the client for testing */
 
 	/** Required: */
-	private String term;
 	private Index index;
-	private Parameter parameter;
+	private Map<Parameter, String> parameters;
 
 	/** Optional: */
 	private String field = "";
@@ -75,14 +77,15 @@ public class Search {
 	private Long hitCount = null;
 
 	/**
-	 * @param term The search term
+	 * @param parameters The search parameters (see {@link Index#queries()} )
 	 * @param index The index to search (see {@link Index})
-	 * @param parameter The search parameter (see {@link Index#queries()} )
 	 */
-	public Search(final String term, final Index index, final Parameter parameter) {
-		this.term = term;
+	public Search(final Map<Parameter, String> parameters, final Index index) {
+		if (parameters == null) {
+			throw new IllegalArgumentException("Can't work with null parameters");
+		}
 		this.index = index;
-		this.parameter = parameter;
+		this.parameters = parameters;
 	}
 
 	/** @param newClient The new elasticsearch client to use. */
@@ -123,8 +126,8 @@ public class Search {
 
 	private Pair<List<Document>, Long> doSearch() {
 		validateSearchParameters();
-		String cacheId = String.format("%s.%s.%s.%s.%s.%s.%s.%s.%s", //
-				term, index, parameter, field, owner, set, size, from, type);
+		String cacheId = String.format("%s.%s.%s.%s.%s.%s.%s.%s", //
+				parameters, index, field, owner, set, size, from, type);
 		if (play.api.Play.maybeApplication().isDefined() && !Play.isTest()) {
 			@SuppressWarnings("unchecked")
 			Pair<List<Document>, Long> cachedResult =
@@ -134,13 +137,13 @@ public class Search {
 		}
 		Logger.debug(String.format("Not cached: %s, will cache for one hour",
 				cacheId));
-		final AbstractIndexQuery indexQuery = index.queries().get(parameter);
-		final QueryBuilder queryBuilder = createQuery(indexQuery);
+		final List<QueryBuilder> indexQueries = getQueries();
+		final QueryBuilder queryBuilder = createQuery(indexQueries);
 		Logger.debug("Using query: " + queryBuilder);
 		final SearchResponse response = search(queryBuilder);
 		Logger.debug("Got response: " + response);
 		final SearchHits hits = response.getHits();
-		final List<Document> docs = asDocuments(hits, indexQuery.fields());
+		final List<Document> docs = asDocuments(hits, fields(parameters));
 		final Pair<List<Document>, Long> result =
 				new ImmutablePair<>(docs, hits.getTotalHits());
 		Logger.debug(String.format("Got %s hits overall, created %s matching docs",
@@ -149,6 +152,20 @@ public class Search {
 			Cache.set(cacheId, result, 60 * 60);
 		}
 		return result;
+	}
+
+	private List<QueryBuilder> getQueries() {
+		List<QueryBuilder> res = new ArrayList<>();
+		for (Entry<Parameter, String> entry : parameters.entrySet()) {
+			res.add(index.queries().get(entry.getKey()).build(entry.getValue()));
+		}
+		return res;
+	}
+
+	private List<String> fields(Map<Parameter, String> queries) {
+		return queries.keySet().stream()
+				.flatMap(p -> index.queries().get(p).fields().stream())
+				.collect(Collectors.toList());
 	}
 
 	/**
@@ -208,8 +225,8 @@ public class Search {
 		return this;
 	}
 
-	private QueryBuilder createQuery(final AbstractIndexQuery indexQuery) {
-		QueryBuilder queryBuilder = indexQuery.build(term);
+	private QueryBuilder createQuery(final List<QueryBuilder> indexQueries) {
+		QueryBuilder queryBuilder = buildQuery(indexQueries);
 		if (!owner.isEmpty() && !owner.equals("*")) {
 			final QueryBuilder itemQuery = new LobidItems.OwnerQuery().build(owner);
 			queryBuilder = boolQuery().must(queryBuilder).must(itemQuery);
@@ -226,8 +243,17 @@ public class Search {
 		}
 		if (queryBuilder == null)
 			throw new IllegalStateException(String.format(
-					"Could not construct query for term '%s', owner '%s'", term, owner));
+					"Could not construct query for queries '%s', owner '%s'",
+					indexQueries, owner));
 		return queryBuilder;
+	}
+
+	private static QueryBuilder buildQuery(final List<QueryBuilder> indexQueries) {
+		BoolQueryBuilder builder = boolQuery();
+		for (QueryBuilder q : indexQueries) {
+			builder = builder.must(q);
+		}
+		return builder;
 	}
 
 	private void validateSearchParameters() {
@@ -235,10 +261,13 @@ public class Search {
 			throw new IllegalArgumentException(String.format(
 					"Invalid index ('%s') - valid indexes: %s", index, Index.values()));
 		}
-		if (!index.queries().containsKey(parameter)) {
-			throw new IllegalArgumentException(String.format(
-					"Invalid parameter ('%s') for specified index ('%s') - valid: %s",
-					parameter, index, index.queries().keySet()));
+		for (Entry<Parameter, String> entry : parameters.entrySet()) {
+			Parameter parameter = entry.getKey();
+			if (!index.queries().containsKey(parameter)) {
+				throw new IllegalArgumentException(String.format(
+						"Invalid parameter ('%s') for specified index ('%s') - valid: %s",
+						parameter, index, index.queries().keySet()));
+			}
 		}
 		if (from < 0) {
 			throw new IllegalArgumentException("Parameter 'from' must be positive");
@@ -272,13 +301,14 @@ public class Search {
 				Hit hitEnum = Hit.of(hit, searchFields);
 				final Document document =
 						new Document(hit.getId(), new String(hit.source()), index, field);
-				res.add(hitEnum.process(term, document));
+				res.add(hitEnum
+						.process(parameters.values().iterator().next(), document));
 			} catch (IllegalArgumentException e) {
 				Logger.error(e.getMessage(), e);
 			}
 		}
 		final Predicate<Document> predicate = doc -> {
-				return doc.matchedField != null;
+			return doc.matchedField != null;
 		};
 		return ImmutableList.copyOf(Iterables.filter(res, predicate));
 	}

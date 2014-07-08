@@ -13,6 +13,8 @@ import models.Search;
 
 import org.junit.Test;
 
+import com.google.common.collect.ImmutableMap;
+
 /**
  * Tests for searching resources by author names, narrowed to item owners.
  * 
@@ -80,8 +82,8 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 	private static void searchResByAuthorWithOwnerId(String author,
 			String holder, String resultId) {
 		final List<Document> docs =
-				new Search(author, Index.LOBID_RESOURCES, Parameter.AUTHOR).owner(
-						holder).documents();
+				new Search(ImmutableMap.of(Parameter.AUTHOR, author),
+						Index.LOBID_RESOURCES).owner(holder).documents();
 		assertThat(docs.size()).isEqualTo(1);
 		assertThat(docs.get(0).getId()).isEqualTo(resultId);
 	}

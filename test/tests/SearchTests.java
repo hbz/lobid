@@ -28,6 +28,7 @@ import play.mvc.Result;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
 
 /**
@@ -70,7 +71,8 @@ public class SearchTests extends SearchTestsHarness {
 	@Test
 	public void searchViaModel() {
 		final List<Document> docs =
-				new Search("theo", Index.LOBID_RESOURCES, Parameter.AUTHOR).documents();
+				new Search(ImmutableMap.of(Parameter.AUTHOR, "theo"),
+						Index.LOBID_RESOURCES).documents();
 		assertThat(docs.size()).isPositive();
 		for (Document document : docs) {
 			assertThat(document.getMatchedField().toLowerCase()).contains("theo");
@@ -89,8 +91,8 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	private static int searchOrgByName(final String term) {
-		return new Search(term, Index.LOBID_ORGANISATIONS, Parameter.NAME)
-				.documents().size();
+		return new Search(ImmutableMap.of(Parameter.NAME, term),
+				Index.LOBID_ORGANISATIONS).documents().size();
 	}
 
 	@Test
@@ -100,8 +102,8 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	private static int searchOrgQuery(final String term) {
-		return new Search(term, Index.LOBID_ORGANISATIONS, Parameter.Q).documents()
-				.size();
+		return new Search(ImmutableMap.of(Parameter.Q, term),
+				Index.LOBID_ORGANISATIONS).documents().size();
 	}
 
 	/*@formatter:off*/
@@ -111,7 +113,8 @@ public class SearchTests extends SearchTestsHarness {
 
 	private static void searchOrgById(final String term) {
 		final List<Document> docs =
-				new Search(term, Index.LOBID_ORGANISATIONS, Parameter.ID).documents();
+				new Search(ImmutableMap.of(Parameter.ID, term),
+						Index.LOBID_ORGANISATIONS).documents();
 		assertThat(docs.size()).isEqualTo(1);
 	}
 
@@ -130,7 +133,8 @@ public class SearchTests extends SearchTestsHarness {
 
 	private static void searchResById(final String term) {
 		final List<Document> docs =
-				new Search(term, Index.LOBID_RESOURCES, Parameter.ID).documents();
+				new Search(ImmutableMap.of(Parameter.ID, term), Index.LOBID_RESOURCES)
+						.documents();
 		assertThat(docs.size()).isEqualTo(1);
 	}
 
@@ -140,8 +144,8 @@ public class SearchTests extends SearchTestsHarness {
 			@Override
 			public void run() {
 				final List<Document> docs =
-						new Search("TT050326640", Index.LOBID_RESOURCES, Parameter.ID)
-								.field("fulltextOnline").documents();
+						new Search(ImmutableMap.of(Parameter.ID, "TT050326640"),
+								Index.LOBID_RESOURCES).field("fulltextOnline").documents();
 				assertThat(docs.size()).isEqualTo(1);
 				assertThat(docs.get(0).getSource()).isEqualTo(
 						"[\"http://dx.doi.org/10.1007/978-1-4020-8389-1\"]");
@@ -237,15 +241,16 @@ public class SearchTests extends SearchTestsHarness {
 
 	private static void findOneBy(String name) {
 		assertThat(
-				new Search(name, Index.LOBID_RESOURCES, Parameter.AUTHOR).documents()
-						.size()).isEqualTo(1);
+				new Search(ImmutableMap.of(Parameter.AUTHOR, name),
+						Index.LOBID_RESOURCES).documents().size()).isEqualTo(1);
 	}
 
 	@Test
 	public void searchViaModelMultiResult() {
 		List<Document> documents =
-				new Search("Neil Eric Schore (1948-)", Index.LOBID_RESOURCES,
-						Parameter.AUTHOR).documents();
+				new Search(
+						ImmutableMap.of(Parameter.AUTHOR, "Neil Eric Schore (1948-)"),
+						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(1);
 		assertThat(documents.get(0).getMatchedField()).isEqualTo(
 				"Vollhardt, Kurt Peter C. (1946-)");
@@ -254,7 +259,8 @@ public class SearchTests extends SearchTestsHarness {
 	@Test
 	public void searchViaModelSetNwBib() {
 		List<Document> documents =
-				new Search("NwBib", Index.LOBID_RESOURCES, Parameter.SET).documents();
+				new Search(ImmutableMap.of(Parameter.SET, "NwBib"),
+						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(3);
 		assertThat(documents.get(0).getMatchedField()).isEqualTo(
 				"http://lobid.org/resource/NWBib");
@@ -622,23 +628,23 @@ public class SearchTests extends SearchTestsHarness {
 		final Index index = Index.LOBID_RESOURCES;
 		final Parameter parameter = Parameter.AUTHOR;
 		assertThat(
-				new Search("Abr", index, parameter).page(0, 3).documents().size())
-				.isEqualTo(3);
+				new Search(ImmutableMap.of(parameter, "Abr"), index).page(0, 3)
+						.documents().size()).isEqualTo(3);
 		assertThat(
-				new Search("Abr", index, parameter).page(3, 6).documents().size())
-				.isEqualTo(6);
+				new Search(ImmutableMap.of(parameter, "Abr"), index).page(3, 6)
+						.documents().size()).isEqualTo(6);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void searchWithLimitInvalidFrom() {
-		new Search("ha", Index.LOBID_RESOURCES, Parameter.AUTHOR).page(-1, 3)
-				.documents();
+		new Search(ImmutableMap.of(Parameter.AUTHOR, "ha"), Index.LOBID_RESOURCES)
+				.page(-1, 3).documents();
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void searchWithLimitInvalidSize() {
-		new Search("ha", Index.LOBID_RESOURCES, Parameter.AUTHOR).page(0, 101)
-				.documents();
+		new Search(ImmutableMap.of(Parameter.AUTHOR, "ha"), Index.LOBID_RESOURCES)
+				.page(0, 101).documents();
 	}
 
 	@Test

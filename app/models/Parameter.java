@@ -2,6 +2,7 @@
 
 package models;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
@@ -21,12 +22,13 @@ public enum Parameter {
 		return name().toLowerCase();
 	}
 
-	public static Map.Entry<Parameter, String> select(
+	public static Map<Parameter, String> select(
 			ImmutableMap<Parameter, String> params) {
+		Map<Parameter, String> selected = new HashMap<>();
 		for (Map.Entry<Parameter, String> p : params.entrySet())
 			if (isDefined(p.getValue()))
-				return p;
-		return null;
+				selected.put(p.getKey(), p.getValue());
+		return selected;
 	}
 
 	private static boolean isDefined(final String param) {
