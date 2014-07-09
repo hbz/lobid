@@ -197,7 +197,7 @@ public final class Application extends Controller {
 	private static Status withCallback(final String[] callback,
 			final JsonNode shortJson) {
 		return callback != null ? ok(String
-				.format("%s(%s)", callback[0], shortJson)) : ok(shortJson);
+				.format("/**/%s(%s)", callback[0], shortJson)) : ok(shortJson);
 	}
 
 	private static JsonNode fullJsonResponse(final List<Document> documents,
