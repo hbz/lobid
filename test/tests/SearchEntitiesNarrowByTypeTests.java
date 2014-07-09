@@ -28,6 +28,9 @@ public class SearchEntitiesNarrowByTypeTests extends SearchTestsHarness {
 	@Test public void differentiatedPersons() { search("person?q=*&t=http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson", 9); }
 	@Test public void undifferentiatedPersons() { search("person?q=*&t=http://d-nb.info/standards/elementset/gnd#UndifferentiatedPerson", 4); }
 	@Test public void subjects() { search("subject?q=*", 17); }
+	@Test public void booksOrJournals() { search("resource?q=*&t=http://purl.org/ontology/bibo/Book,http://purl.org/ontology/bibo/Journal", 20); }
+	@Test public void differentiatedOrUndifferentiatedPersons() { search(
+			"person?q=*&t=http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson,http://d-nb.info/standards/elementset/gnd#UndifferentiatedPerson", 13); }
 	//@formatter:on
 
 	private static void search(final String q, final int hits) {

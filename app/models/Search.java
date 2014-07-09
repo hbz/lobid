@@ -25,7 +25,6 @@ import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
-import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
@@ -236,9 +235,9 @@ public class Search {
 			queryBuilder = boolQuery().must(queryBuilder).must(setQuery);
 		}
 		if (!type.isEmpty()) {
-			final QueryBuilder typeQuery =
-					matchQuery("@graph.@type", type).operator(
-							MatchQueryBuilder.Operator.AND);
+			BoolQueryBuilder typeQuery = boolQuery();
+			for (String t : type.split(","))
+				typeQuery = typeQuery.should(matchQuery("@graph.@type", t));
 			queryBuilder = boolQuery().must(queryBuilder).must(typeQuery);
 		}
 		if (queryBuilder == null)
