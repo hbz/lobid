@@ -404,6 +404,9 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void resourceByGndSubjectMulti(){resByGndSubject("4062901-6", 1);}
 	@Test public void resourceByGndSubjectDashed(){resByGndSubject("4414195-6", 1);}
 	@Test public void resourceByGndSubjectSingle(){resByGndSubject("189452846", 1);}
+	@Test public void resourceByGndSubjectMultiUri(){resByGndSubject("http://d-nb.info/gnd/4062901-6", 1);}
+	@Test public void resourceByGndSubjectDashedUri(){resByGndSubject("http://d-nb.info/gnd/4414195-6", 1);}
+	@Test public void resourceByGndSubjectSingleUri(){resByGndSubject("http://d-nb.info/gnd/189452846", 1);}
 	/* @formatter:on */
 
 	public void resByGndSubject(final String gndId, final int results) {
@@ -414,8 +417,22 @@ public class SearchTests extends SearchTestsHarness {
 						Json.parse(call("resource?subject=" + gndId));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
+				String prefix = "http://d-nb.info/gnd/";
 				assertThat(jsonObject.get(0 + META).toString()).contains(
-						"http://d-nb.info/gnd/" + gndId);
+						prefix + gndId.replace(prefix, ""));
+			}
+		});
+	}
+
+	@Test
+	public void resByNwBibSubjectUri() {
+		running(TEST_SERVER, new Runnable() {
+			@Override
+			public void run() {
+				final JsonNode jsonObject =
+						Json.parse(call("resource?subject=http://purl.org/lobid/nwbib-spatial#n99"));
+				assertThat(jsonObject.isArray()).isTrue();
+				assertThat(jsonObject.size()).isEqualTo(3 + META);
 			}
 		});
 	}
