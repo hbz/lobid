@@ -2,21 +2,23 @@
 
 package controllers;
 
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import models.Index;
+import models.Parameter;
 import models.Search;
 
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
-import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.HasChildFilterBuilder;
-import org.elasticsearch.index.query.MatchQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.TermsFilterBuilder;
 import org.elasticsearch.search.facet.Facet;
@@ -48,27 +50,32 @@ public final class Facets extends Controller {
 	}
 
 	/**
+	 * @param id The resource ID
 	 * @param q A general query string
 	 * @param name The resource name
 	 * @param author The resource author
 	 * @param subject The resource subject
 	 * @param set The resource set
 	 * @param owner The ID of an owner holding items of the requested resources
+	 * @param size The number of results to receive
+	 * @param t The type of the requested resources
 	 * @param field The index field to get facets for
 	 * @return Returns the facets for the field and the given restrictions
 	 */
-	public static Promise<Result> resource(String q, String author, String name,
-			String subject, String owner, String set, String field) {
+	public static Promise<Result> resource(String id, String q, String author,
+			String name, String subject, String owner, String set, int size,
+			String t, String field) {
 		String key =
-				String.format("facets.%s.%s.%s.%s.%s.%s.%s", q, author, name, subject,
-						owner, set, field);
+				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q, author, name,
+						subject, owner, set, size, field);
 		Logger.info(key);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
 			return Promise.promise(() -> cachedResult);
 		}
 		Promise<Result> result =
-				createJsonResponse(getElasticsearchFacets(q, owner, set, field));
+				createJsonResponse(getElasticsearchFacets(id, q, author, name, subject,
+						owner, set, field, size, t));
 		result.onRedeem(r -> Cache.set(key, r, ONE_DAY));
 		return result;
 	}
@@ -95,12 +102,15 @@ public final class Facets extends Controller {
 	}
 
 	private static Promise<org.elasticsearch.search.facet.Facets> getElasticsearchFacets(
-			String q, String owner, String set, String field) {
+			String id, String q, String author, String name, String subject,
+			String owner, String set, String field, int size, String t) {
 		Promise<org.elasticsearch.search.facet.Facets> promise =
 				Promise.promise(
 						() -> {
-							BoolQueryBuilder query = createQuery(q, set);
-							SearchRequestBuilder req = createRequest(owner, field, query);
+							QueryBuilder query =
+									createQuery(id, q, author, name, subject, set, owner, t);
+							SearchRequestBuilder req =
+									createRequest(owner, field, query, size);
 							long start = System.currentTimeMillis();
 							SearchResponse res = req.execute().actionGet();
 							Logger.debug(
@@ -114,28 +124,31 @@ public final class Facets extends Controller {
 		return promise;
 	}
 
-	private static BoolQueryBuilder createQuery(String q, String set) {
-		BoolQueryBuilder query =
-				QueryBuilders.boolQuery().must(
-						q.isEmpty() ? QueryBuilders.matchAllQuery() : QueryBuilders
-								.queryString(q).field("_all"));
-		if (!set.isEmpty()) {
-			query =
-					query.must(QueryBuilders.matchQuery(
-							"@graph.http://purl.org/dc/terms/isPartOf.@id", set).operator(
-							MatchQueryBuilder.Operator.AND));
-		}
+	private static QueryBuilder createQuery(String id, String q, String author,
+			String name, String subject, String set, String owner, String t) {
+		final Map<Parameter, String> parameters =
+				Parameter.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
+						.put(Parameter.ID, id)
+						.put(Parameter.Q, q)
+						.put(Parameter.AUTHOR, author)
+						.put(Parameter.NAME, name)
+						.put(Parameter.SUBJECT, subject)
+						.put(Parameter.SET, set).build());/*@formatter:on*/
+		QueryBuilder query =
+				parameters.isEmpty() ? QueryBuilders.matchAllQuery() : new Search(
+						parameters, Index.LOBID_RESOURCES).owner(owner).type(t)
+						.createQuery();
 		return query;
 	}
 
 	private static SearchRequestBuilder createRequest(String owner, String field,
-			BoolQueryBuilder query) {
+			QueryBuilder query, int size) {
 		SearchRequestBuilder req =
 				Search.client.prepareSearch("lobid-resources")
 						.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(query)
 						.setTypes("json-ld-lobid").setFrom(0).setSize(0);
 		TermsFacetBuilder facet =
-				FacetBuilders.termsFacet(field).field(field).size(Integer.MAX_VALUE);
+				FacetBuilders.termsFacet(field).field(field).size(size);
 		if (!owner.isEmpty()) {
 			String fieldName = "@graph.http://purl.org/vocab/frbr/core#exemplar.@id";
 			FilterBuilder filter =

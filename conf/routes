@@ -39,7 +39,7 @@ GET     /person                     controllers.Api.person(id ?= "", q ?= "", na
 GET     /subject                    controllers.Api.subject(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "")
 
 # Facets
-GET     /resource/facets            controllers.Facets.resource(q?="", author?="", name?="", subject?="", owner?="", set?="", field)
+GET     /resource/facets            controllers.Facets.resource(id ?= "", q?="", author?="", name?="", subject?="", owner?="", set?="", size: Int ?= 50, t ?= "", field)
 
 # Path-style routes and `about` redirects
 GET     /resource/:id               controllers.Path.resource(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
