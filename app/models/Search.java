@@ -136,8 +136,7 @@ public class Search {
 		}
 		Logger.debug(String.format("Not cached: %s, will cache for one hour",
 				cacheId));
-		final List<QueryBuilder> indexQueries = getQueries();
-		final QueryBuilder queryBuilder = createQuery(indexQueries);
+		final QueryBuilder queryBuilder = createQuery();
 		Logger.debug("Using query: " + queryBuilder);
 		final SearchResponse response = search(queryBuilder);
 		Logger.debug("Got response: " + response);
@@ -151,14 +150,6 @@ public class Search {
 			Cache.set(cacheId, result, 60 * 60);
 		}
 		return result;
-	}
-
-	private List<QueryBuilder> getQueries() {
-		List<QueryBuilder> res = new ArrayList<>();
-		for (Entry<Parameter, String> entry : parameters.entrySet()) {
-			res.add(index.queries().get(entry.getKey()).build(entry.getValue()));
-		}
-		return res;
 	}
 
 	private List<String> fields(Map<Parameter, String> queries) {
@@ -224,8 +215,11 @@ public class Search {
 		return this;
 	}
 
-	private QueryBuilder createQuery(final List<QueryBuilder> indexQueries) {
-		QueryBuilder queryBuilder = buildQuery(indexQueries);
+	/**
+	 * @return The query object for this search
+	 */
+	public QueryBuilder createQuery() {
+		QueryBuilder queryBuilder = boolQueryFromParams();
 		if (!owner.isEmpty() && !owner.equals("*")) {
 			final QueryBuilder itemQuery = new LobidItems.OwnerQuery().build(owner);
 			queryBuilder = boolQuery().must(queryBuilder).must(itemQuery);
@@ -243,16 +237,24 @@ public class Search {
 		if (queryBuilder == null)
 			throw new IllegalStateException(String.format(
 					"Could not construct query for queries '%s', owner '%s'",
-					indexQueries, owner));
+					queryBuilder, owner));
 		return queryBuilder;
 	}
 
-	private static QueryBuilder buildQuery(final List<QueryBuilder> indexQueries) {
+	private QueryBuilder boolQueryFromParams() {
 		BoolQueryBuilder builder = boolQuery();
-		for (QueryBuilder q : indexQueries) {
+		for (QueryBuilder q : getQueries()) {
 			builder = builder.must(q);
 		}
 		return builder;
+	}
+
+	private List<QueryBuilder> getQueries() {
+		List<QueryBuilder> res = new ArrayList<>();
+		for (Entry<Parameter, String> entry : parameters.entrySet()) {
+			res.add(index.queries().get(entry.getKey()).build(entry.getValue()));
+		}
+		return res;
 	}
 
 	private void validateSearchParameters() {
@@ -286,7 +288,7 @@ public class Search {
 			requestBuilder =
 					requestBuilder.setPostFilter(FilterBuilders.existsFilter(//
 							"@graph.http://purl.org/vocab/frbr/core#exemplar.@id"));
-		final SearchResponse response =
+		final SearchResponse response = 
 				requestBuilder.setFrom(from).setSize(size).setExplain(false).execute()
 						.actionGet();
 		return response;
