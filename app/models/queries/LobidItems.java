@@ -2,11 +2,9 @@
 
 package models.queries;
 
-import static java.net.URLEncoder.encode;
 import static org.elasticsearch.index.query.QueryBuilders.hasChildQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +13,8 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+
+import com.google.gdata.util.common.base.PercentEscaper;
 
 /**
  * Queries on the lobid-items index.
@@ -51,24 +51,17 @@ public class LobidItems {
 			return Arrays.asList("@graph.@id");
 		}
 
+		PercentEscaper percentEscaper = new PercentEscaper(
+				PercentEscaper.SAFEPATHCHARS_URLENCODER, false);
+
 		@Override
 		public QueryBuilder build(final String queryString) {
 			final String itemPrefix = "http://lobid.org/item/";
 			final String shortId = queryString.replace(itemPrefix, "");
-			try {
-				/*
-				 * The Lobid item IDs contain escaped entities, so we need to URL encode
-				 * the ID. In particular, spaces are encoded with '+', not '%2B', so we
-				 * take care of that, too:
-				 */
-				final String encodedShortId =
-						encode(shortId, "utf-8").replace("%2B", "+");
-				return QueryBuilders.idsQuery("json-ld-lobid-item").ids(
-						itemPrefix + encodedShortId);
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			return null;
+			// The Lobid item IDs contain escaped url fragments
+			return QueryBuilders.idsQuery("json-ld-lobid-item").ids(
+					itemPrefix + percentEscaper.escape(shortId));
+
 		}
 
 	}

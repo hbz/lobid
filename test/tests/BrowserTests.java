@@ -90,7 +90,7 @@ public class BrowserTests {
 				.contains("http://gutenberg.org/ebooks/23969")
 				.contains("http://openlibrary.org/works/OL14953734W")
 				.contains("http://dbpedia.org/resource/Typee")
-				.contains("http://lobid.org/item/HT002189125%3AU+MEL-11")
+				.contains("http://lobid.org/item/HT002189125:U+MEL-11")
 				.contains("exemplar");
 	}
 

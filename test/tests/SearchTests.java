@@ -455,10 +455,10 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	/* @formatter:off */
-	@Test public void itemByIdParam1(){findItem("item?id=BT000000079%3AGA+644");}
-	@Test public void itemByIdParam2(){findItem("item?id=BT000001260%3AMA+742");}
-	@Test public void itemByIdUri1(){findItem("item?id=http://lobid.org/item/BT000000079%3AGA+644");}
-	@Test public void itemByIdUri2(){findItem("item?id=http://lobid.org/item/BT000001260%3AMA+742");}
+	@Test public void itemByIdParam1(){findItem("item?id=BT000000079:GA%20644");}
+	@Test public void itemByIdParam2(){findItem("item?id=BT000001260:MA%2B742");}
+	@Test public void itemByIdUri1(){findItem("item?id=http://lobid.org/item/BT000000079:GA%20644");}
+	@Test public void itemByIdUri2(){findItem("item?id=http://lobid.org/item/BT000001260:MA%2B742");}
 	@Test public void itemByName(){findItem("item?name=GA+644");}
 	/* @formatter:on */
 
@@ -479,7 +479,7 @@ public class SearchTests extends SearchTestsHarness {
 			@Override
 			public void run() {
 				final JsonNode jsonObject =
-						Json.parse(call("item/BT000000079%3AGA+644"));
+						Json.parse(call("item/BT000000079:GA%20644"));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(1);
 			}

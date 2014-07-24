@@ -36,131 +36,133 @@ public class ApiTests {
 	 */
 	@Parameters
 	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][] {
-				/*---------------*/
-				/* GET /resource */
-				/*---------------*/
-				{ "resource/HT002189125",/* -> */"a peep at Polynesian life" }, // NOPMD
-				{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
-				{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
-				{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
-				{ "resource?name=Typee&t="
-						+ "http://purl.org/ontology/bibo/Book", "a peep at Polynesian life" },
-				{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
-				{ "resource?author=Melville&format=short",/* -> */
-				"Melville, Herman" },
-				{ "resource?author=118580604",/* -> */"a peep at Polynesian life" },
-				{ "resource?subject=4414195-6",/* -> */"aus dem Kreis Olpe" },
-				{ "resource?subject=4414195-6&set=NWBib",/* -> */
-				"http://lobid.org/resource/NWBib" },
-				{ "resource?subject=Chemistry",/* -> */"Synthese, Eigenschaften" },
-				{ "resource?subject=Chemistry&format=short",/* -> */
-				"Chemistry & allied sciences" },
-				{ "resource?name=Typee&format=ids",/* -> */
-				"http://lobid.org/resource/HT002189125" },
-				{ "resource?q=Typee&format=ids",/* -> */"Typee" },
-				{ "resource?set=NWBib",/* -> */
-				"Wann en Kölle de Chress-Stäne blöhe" },
-				{ "resource?id=TT002234003",/* -> */
-				"Aufgabenbereich und Aufbau der Verwaltung" },
-				{ "resource?id=TT002234003&format=ids&callback=response",/* -> */
-				"response(" },
-				{ "resource?id=TT002234003&format=short&callback=response",/* -> */
-				"response(" },
-				{ "resource?id=TT002234003&format=full&callback=response",/* -> */
-				"response(" },
-				{ "resource?author=Hu&owner=DE-Sol1",/* -> */
-				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Hu&owner=http://lobid.org/organisation/DE-Sol1",/* -> */
-				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?id=BT000001260&owner=DE-Sol1",/* -> */
-				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?set=NWBib&owner=DE-Sol1",/* -> */
-				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Hu&owner=DE-Sol1,DE-Sol2",/* -> */
-				"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Go&owner=DE-Sol1,DE-Sol2",/* -> */
-				"Kirchengeschichte des Rheinlandes" },
-				/*-------------------*/
-				/* GET /organisation */
-				/*-------------------*/
-				{ "organisation/US-IdBoTIMB",/* -> */"Timberline High School" },
-				{ "organisation/SzBaU",/* -> */"Universität Basel" }, // NOPMD
-				{ "organisation?id=SzBaU",/* -> */"Universität Basel" },
-				{ "organisation?name=SzBaU",/* -> */"Universität Basel" },
-				{ "organisation?name=Basel",/* -> */"Universität Basel" },
-				{ "organisation?name=Basel&format=short",/* -> */
-				"Universität Basel" },
-				{ "organisation?name=Basel&format=ids",/* -> */
-				"http://lobid.org/organisation/SzBaU" },
-				{ "organisation?name=hbz",/* -> */"Hochschulbibliothekszentrum" },
-				{ "organisation?name=hbz&format=short",/* -> */
-				"Hochschulbibliothekszentrum" },
-				{ "organisation?name=Hochschulbibliotheksz",/* -> */
-				"Hochschulbibliothekszentrum" },
-				{ "organisation?id=DE-605",/* -> */"Hochschulbibliothekszentrum" },
-				{ "organisation?id=DE-605",/* -> */"Einrichtung ohne Bestand" },
-				{ "organisation?id=DE-605",/* -> */"Land" },
-				{ "organisation?name=hbz&format=ids",/* -> */
-				"http://lobid.org/organisation/DE-605" },
-				{ "organisation?q=Einrichtung+ohne+Bestand&format=full",/* -> */
-				"Hochschulbibliothekszentrum" },
-				{ "organisation?q=Einrichtung+ohne+Bestand&format=ids",/* -> */
-				"Hochschulbibliothekszentrum" },
-				{ "organisation?q=Einrichtung+ohne+Bestand&format=short",/* -> */
-				"Hochschulbibliothekszentrum" },
-				{ "organisation?q=Einrichtung+ohne+Bestand&format=negotiate",/* -> */
-				"Hochschulbibliothekszentrum" },
-				/*-------------*/
-				/* GET /person */
-				/*-------------*/
-				{ "person/136963781",/* -> */"Bach, Johann Sebastian" }, // NOPMD
-				{ "person?id=136963781",/* -> */"Bach, Johann Sebastian" },
-				{ "person?name=11850553X",/* -> */"http://d-nb.info/gnd/11850553X" },
-				{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
-				{ "person?name=Bach&format=short",/* -> */
-				"Bach, Johann Sebastian (1685-1750)" },
-				{ "person?q=Bach&format=short&t="
-						+ "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
+		return Arrays
+				.asList(new Object[][] {
+						/*---------------*/
+						/* GET /resource */
+						/*---------------*/
+						{ "resource/HT002189125",/* -> */"a peep at Polynesian life" }, // NOPMD
+						{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
+						{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
+						{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
+						{ "resource?name=Typee&t=" + "http://purl.org/ontology/bibo/Book",
+								"a peep at Polynesian life" },
+						{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
+						{ "resource?author=Melville&format=short",/* -> */
+						"Melville, Herman" },
+						{ "resource?author=118580604",/* -> */"a peep at Polynesian life" },
+						{ "resource?subject=4414195-6",/* -> */"aus dem Kreis Olpe" },
+						{ "resource?subject=4414195-6&set=NWBib",/* -> */
+						"http://lobid.org/resource/NWBib" },
+						{ "resource?subject=Chemistry",/* -> */"Synthese, Eigenschaften" },
+						{ "resource?subject=Chemistry&format=short",/* -> */
+						"Chemistry & allied sciences" },
+						{ "resource?name=Typee&format=ids",/* -> */
+						"http://lobid.org/resource/HT002189125" },
+						{ "resource?q=Typee&format=ids",/* -> */"Typee" },
+						{ "resource?set=NWBib",/* -> */
+						"Wann en Kölle de Chress-Stäne blöhe" },
+						{ "resource?id=TT002234003",/* -> */
+						"Aufgabenbereich und Aufbau der Verwaltung" },
+						{ "resource?id=TT002234003&format=ids&callback=response",/* -> */
+						"response(" },
+						{ "resource?id=TT002234003&format=short&callback=response",/* -> */
+						"response(" },
+						{ "resource?id=TT002234003&format=full&callback=response",/* -> */
+						"response(" },
+						{ "resource?author=Hu&owner=DE-Sol1",/* -> */
+						"Heimatstimmen aus dem Kreis Olpe" },
+						{ "resource?author=Hu&owner=http://lobid.org/organisation/DE-Sol1",/* -> */
+						"Heimatstimmen aus dem Kreis Olpe" },
+						{ "resource?id=BT000001260&owner=DE-Sol1",/* -> */
+						"Heimatstimmen aus dem Kreis Olpe" },
+						{ "resource?set=NWBib&owner=DE-Sol1",/* -> */
+						"Heimatstimmen aus dem Kreis Olpe" },
+						{ "resource?author=Hu&owner=DE-Sol1,DE-Sol2",/* -> */
+						"Heimatstimmen aus dem Kreis Olpe" },
+						{ "resource?author=Go&owner=DE-Sol1,DE-Sol2",/* -> */
+						"Kirchengeschichte des Rheinlandes" },
+						/*-------------------*/
+						/* GET /organisation */
+						/*-------------------*/
+						{ "organisation/US-IdBoTIMB",/* -> */"Timberline High School" },
+						{ "organisation/SzBaU",/* -> */"Universität Basel" }, // NOPMD
+						{ "organisation?id=SzBaU",/* -> */"Universität Basel" },
+						{ "organisation?name=SzBaU",/* -> */"Universität Basel" },
+						{ "organisation?name=Basel",/* -> */"Universität Basel" },
+						{ "organisation?name=Basel&format=short",/* -> */
+						"Universität Basel" },
+						{ "organisation?name=Basel&format=ids",/* -> */
+						"http://lobid.org/organisation/SzBaU" },
+						{ "organisation?name=hbz",/* -> */"Hochschulbibliothekszentrum" },
+						{ "organisation?name=hbz&format=short",/* -> */
+						"Hochschulbibliothekszentrum" },
+						{ "organisation?name=Hochschulbibliotheksz",/* -> */
+						"Hochschulbibliothekszentrum" },
+						{ "organisation?id=DE-605",/* -> */"Hochschulbibliothekszentrum" },
+						{ "organisation?id=DE-605",/* -> */"Einrichtung ohne Bestand" },
+						{ "organisation?id=DE-605",/* -> */"Land" },
+						{ "organisation?name=hbz&format=ids",/* -> */
+						"http://lobid.org/organisation/DE-605" },
+						{ "organisation?q=Einrichtung+ohne+Bestand&format=full",/* -> */
+						"Hochschulbibliothekszentrum" },
+						{ "organisation?q=Einrichtung+ohne+Bestand&format=ids",/* -> */
+						"Hochschulbibliothekszentrum" },
+						{ "organisation?q=Einrichtung+ohne+Bestand&format=short",/* -> */
+						"Hochschulbibliothekszentrum" },
+						{ "organisation?q=Einrichtung+ohne+Bestand&format=negotiate",/* -> */
+						"Hochschulbibliothekszentrum" },
+						/*-------------*/
+						/* GET /person */
+						/*-------------*/
+						{ "person/136963781",/* -> */"Bach, Johann Sebastian" }, // NOPMD
+						{ "person?id=136963781",/* -> */"Bach, Johann Sebastian" },
+						{ "person?name=11850553X",/* -> */"http://d-nb.info/gnd/11850553X" },
+						{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
+						{ "person?name=Bach&format=short",/* -> */
 						"Bach, Johann Sebastian (1685-1750)" },
-				{ "person?q=Bruder+von&format=full",
-						"Marie Salome Bach, spätere Wiegand" },
-				{ "person?name=Bach&format=ids", /* -> */
-				"http://d-nb.info/gnd/11850553X" },
-				/*-------------*/
-				/* GET /item */
-				/*-------------*/
-				{ "item?id=BT000000079%3AGA+644",/* -> */"GA 644" },
-				{ "item/BT000000079%3AGA+644",/* -> */"GA 644" },
-				{ "item?name=GA+644&format=ids",/* -> */
-				"http://lobid.org/item/BT000000079%3AGA+644" },
-				{ "item?q=GA+644&format=ids",/* -> */
-				"http://lobid.org/item/BT000000079%3AGA+644" },
-				/*-------------*/
-				/* GET /search */
-				/*-------------*/
-				{ "search?name=Ba",/* -> */"Bach, Johann Sebastian" },
-				{ "search?name=Ba",/* -> */"Universität Basel" },
-				{ "search?name=Ba&format=ids",/* -> */
-				"http://lobid.org/organisation/SzBaU" },
-				/*-------------*/
-				/* GET /subject */
-				/*-------------*/
-				{ "subject?id=http://d-nb.info/gnd/7765116-9", "Kirchhundem" },
-				{ "subject?id=7765116-9", "Kirchhundem" },
-				{ "subject?id=http://d-nb.info/gnd/1706733-9",
-						"Herbstadt-Ottelmannshausen" },
-				{ "subject?id=1706733-9", "Herbstadt-Ottelmannshausen" },
-				{ "subject?name=1706733-9", "Herbstadt-Ottelmannshausen" },
-				{ "subject?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" },
-				{ "subject?name=Kirchhundem", "Kirchhundem-Heinsberg" },
-				{ "search?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" }
-		/**/
-		});
+						{
+								"person?q=Bach&format=short&t="
+										+ "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
+								"Bach, Johann Sebastian (1685-1750)" },
+						{ "person?q=Bruder+von&format=full",
+								"Marie Salome Bach, spätere Wiegand" },
+						{ "person?name=Bach&format=ids", /* -> */
+						"http://d-nb.info/gnd/11850553X" },
+						/*-------------*/
+						/* GET /item */
+						/*-------------*/
+						{ "item?id=BT000000079:GA%20644",/* -> */"GA%20644" },
+						{ "item/BT000000079:GA%20644",/* -> */"GA%20644" },
+						{ "item?name=GA%20644&format=ids",/* -> */
+						"http://lobid.org/item/BT000000079:GA%20644" },
+						{ "item?q=GA%20644&format=ids",/* -> */
+						"http://lobid.org/item/BT000000079:GA%20644" },
+						/*-------------*/
+						/* GET /search */
+						/*-------------*/
+						{ "search?name=Ba",/* -> */"Bach, Johann Sebastian" },
+						{ "search?name=Ba",/* -> */"Universität Basel" },
+						{ "search?name=Ba&format=ids",/* -> */
+						"http://lobid.org/organisation/SzBaU" },
+						/*-------------*/
+						/* GET /subject */
+						/*-------------*/
+						{ "subject?id=http://d-nb.info/gnd/7765116-9", "Kirchhundem" },
+						{ "subject?id=7765116-9", "Kirchhundem" },
+						{ "subject?id=http://d-nb.info/gnd/1706733-9",
+								"Herbstadt-Ottelmannshausen" },
+						{ "subject?id=1706733-9", "Herbstadt-Ottelmannshausen" },
+						{ "subject?name=1706733-9", "Herbstadt-Ottelmannshausen" },
+						{ "subject?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" },
+						{ "subject?name=Kirchhundem", "Kirchhundem-Heinsberg" },
+						{ "search?name=Ottelmannshausen", "Herbstadt-Ottelmannshausen" }
+				/**/
+				});
 	}
 
 	/**
-	 * @param endpoint The endpoin to call
+	 * @param endpoint The endpoint to call
 	 * @param content The content that the response should contain
 	 */
 	public ApiTests(final String endpoint, final String content) {
