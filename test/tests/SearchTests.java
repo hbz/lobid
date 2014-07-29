@@ -28,6 +28,7 @@ import play.mvc.Result;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
 
 /**
@@ -70,7 +71,8 @@ public class SearchTests extends SearchTestsHarness {
 	@Test
 	public void searchViaModel() {
 		final List<Document> docs =
-				new Search("theo", Index.LOBID_RESOURCES, Parameter.AUTHOR).documents();
+				new Search(ImmutableMap.of(Parameter.AUTHOR, "theo"),
+						Index.LOBID_RESOURCES).documents();
 		assertThat(docs.size()).isPositive();
 		for (Document document : docs) {
 			assertThat(document.getMatchedField().toLowerCase()).contains("theo");
@@ -83,9 +85,14 @@ public class SearchTests extends SearchTestsHarness {
 		assertThat(searchOrgByName("hbz Schmeckermeck")).isEqualTo(0);
 	}
 
+	@Test
+	public void searchViaModelOrgNameAltLabel() {
+		assertThat(searchOrgByName("UB")).isEqualTo(1);
+	}
+
 	private static int searchOrgByName(final String term) {
-		return new Search(term, Index.LOBID_ORGANISATIONS, Parameter.NAME)
-				.documents().size();
+		return new Search(ImmutableMap.of(Parameter.NAME, term),
+				Index.LOBID_ORGANISATIONS).documents().size();
 	}
 
 	@Test
@@ -95,8 +102,8 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	private static int searchOrgQuery(final String term) {
-		return new Search(term, Index.LOBID_ORGANISATIONS, Parameter.Q).documents()
-				.size();
+		return new Search(ImmutableMap.of(Parameter.Q, term),
+				Index.LOBID_ORGANISATIONS).documents().size();
 	}
 
 	/*@formatter:off*/
@@ -106,7 +113,8 @@ public class SearchTests extends SearchTestsHarness {
 
 	private static void searchOrgById(final String term) {
 		final List<Document> docs =
-				new Search(term, Index.LOBID_ORGANISATIONS, Parameter.ID).documents();
+				new Search(ImmutableMap.of(Parameter.ID, term),
+						Index.LOBID_ORGANISATIONS).documents();
 		assertThat(docs.size()).isEqualTo(1);
 	}
 
@@ -125,7 +133,8 @@ public class SearchTests extends SearchTestsHarness {
 
 	private static void searchResById(final String term) {
 		final List<Document> docs =
-				new Search(term, Index.LOBID_RESOURCES, Parameter.ID).documents();
+				new Search(ImmutableMap.of(Parameter.ID, term), Index.LOBID_RESOURCES)
+						.documents();
 		assertThat(docs.size()).isEqualTo(1);
 	}
 
@@ -135,8 +144,8 @@ public class SearchTests extends SearchTestsHarness {
 			@Override
 			public void run() {
 				final List<Document> docs =
-						new Search("TT050326640", Index.LOBID_RESOURCES, Parameter.ID)
-								.field("fulltextOnline").documents();
+						new Search(ImmutableMap.of(Parameter.ID, "TT050326640"),
+								Index.LOBID_RESOURCES).field("fulltextOnline").documents();
 				assertThat(docs.size()).isEqualTo(1);
 				assertThat(docs.get(0).getSource()).isEqualTo(
 						"[\"http://dx.doi.org/10.1007/978-1-4020-8389-1\"]");
@@ -221,7 +230,7 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void searchViaModelBirth0() { findOneBy("Theo Hundt"); }
 	@Test public void searchViaModelBirth1() { findOneBy("Hundt, Theo (1906-)"); }
 	@Test public void searchViaModelBirth2() { findOneBy("Theo Hundt (1906-)"); }
-	@Test public void searchViaModelBirth3() { findOneBy("Goeters, Johann F. Gerhard (1926-1996)"); }
+	@Test public void searchViaModelBirth3() { findOneBy("Goeters, J. F. Gerhard"); }
 	@Test public void searchViaModelMulti1() { findOneBy("Vollhardt, Kurt Peter C."); }
 	@Test public void searchViaModelMulti2() { findOneBy("Kurt Peter C. Vollhardt"); }
 	@Test public void searchViaModelMulti3() { findOneBy("Vollhardt, Kurt Peter C. (1946-)"); }
@@ -232,15 +241,16 @@ public class SearchTests extends SearchTestsHarness {
 
 	private static void findOneBy(String name) {
 		assertThat(
-				new Search(name, Index.LOBID_RESOURCES, Parameter.AUTHOR).documents()
-						.size()).isEqualTo(1);
+				new Search(ImmutableMap.of(Parameter.AUTHOR, name),
+						Index.LOBID_RESOURCES).documents().size()).isEqualTo(1);
 	}
 
 	@Test
 	public void searchViaModelMultiResult() {
 		List<Document> documents =
-				new Search("Neil Eric Schore (1948-)", Index.LOBID_RESOURCES,
-						Parameter.AUTHOR).documents();
+				new Search(
+						ImmutableMap.of(Parameter.AUTHOR, "Neil Eric Schore (1948-)"),
+						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(1);
 		assertThat(documents.get(0).getMatchedField()).isEqualTo(
 				"Vollhardt, Kurt Peter C. (1946-)");
@@ -249,7 +259,8 @@ public class SearchTests extends SearchTestsHarness {
 	@Test
 	public void searchViaModelSetNwBib() {
 		List<Document> documents =
-				new Search("NwBib", Index.LOBID_RESOURCES, Parameter.SET).documents();
+				new Search(ImmutableMap.of(Parameter.SET, "NwBib"),
+						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(3);
 		assertThat(documents.get(0).getMatchedField()).isEqualTo(
 				"http://lobid.org/resource/NWBib");
@@ -365,7 +376,7 @@ public class SearchTests extends SearchTestsHarness {
 					assertThat(Iterables.any(list(jsonObject), new Predicate<String>() {
 						@Override
 						public boolean apply(String s) {
-							return s.equals("Schmidt, Hannelore (1919-2010)");
+							return s.equals("Schmidt, Hannelore (1919-03-03-2010-10-21)");
 						}
 					})).isTrue();
 				}
@@ -390,9 +401,12 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	/* @formatter:off */
-	@Test public void resourceByGndSubjectMulti(){resByGndSubject("44141956", 2);}
+	@Test public void resourceByGndSubjectMulti(){resByGndSubject("4062901-6", 1);}
 	@Test public void resourceByGndSubjectDashed(){resByGndSubject("4414195-6", 1);}
 	@Test public void resourceByGndSubjectSingle(){resByGndSubject("189452846", 1);}
+	@Test public void resourceByGndSubjectMultiUri(){resByGndSubject("http://d-nb.info/gnd/4062901-6", 1);}
+	@Test public void resourceByGndSubjectDashedUri(){resByGndSubject("http://d-nb.info/gnd/4414195-6", 1);}
+	@Test public void resourceByGndSubjectSingleUri(){resByGndSubject("http://d-nb.info/gnd/189452846", 1);}
 	/* @formatter:on */
 
 	public void resByGndSubject(final String gndId, final int results) {
@@ -403,8 +417,22 @@ public class SearchTests extends SearchTestsHarness {
 						Json.parse(call("resource?subject=" + gndId));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
+				String prefix = "http://d-nb.info/gnd/";
 				assertThat(jsonObject.get(0 + META).toString()).contains(
-						"http://d-nb.info/gnd/" + gndId);
+						prefix + gndId.replace(prefix, ""));
+			}
+		});
+	}
+
+	@Test
+	public void resByNwBibSubjectUri() {
+		running(TEST_SERVER, new Runnable() {
+			@Override
+			public void run() {
+				final JsonNode jsonObject =
+						Json.parse(call("resource?subject=http://purl.org/lobid/nwbib-spatial#n99"));
+				assertThat(jsonObject.isArray()).isTrue();
+				assertThat(jsonObject.size()).isEqualTo(3 + META);
 			}
 		});
 	}
@@ -412,10 +440,8 @@ public class SearchTests extends SearchTestsHarness {
 	/* @formatter:off */
 	@Test public void personByGndIdNumeric(){gndPerson("1019737174", 1);}
 	@Test public void personByGndIdAlphaNumeric(){gndPerson("11850553X", 1);}
-	@Test public void personByGndIdAlphaNumericPlusDash(){gndPerson("10115480-X", 1);}
 	@Test public void personByGndIdNumericFull(){gndPerson("http://d-nb.info/gnd/1019737174", 1);}
 	@Test public void personByGndIdAlphaNumericFull(){gndPerson("http://d-nb.info/gnd/11850553X", 1);}
-	@Test public void personByGndIdAlphaNumericPlusDashFull(){gndPerson("http://d-nb.info/gnd/10115480-X", 1);}
 	/* @formatter:on */
 
 	public void gndPerson(final String gndId, final int results) {
@@ -435,10 +461,10 @@ public class SearchTests extends SearchTestsHarness {
 	/* @formatter:off */
 	@Test public void subjectByGndId1Preferred(){gndSubject("Herbstadt-Ottelmannshausen", 1);}
 	@Test public void subjectByGndId1PreferredNGram(){gndSubject("Ottel", 1);}
-	@Test public void subjectByGndId1Variant(){gndSubject("Ottelmannshausen  Herbstadt ", 1);}
-	@Test public void subjectByGndId1VariantNGram(){gndSubject("  Her", 1);}
+	@Test public void subjectByGndId1Variant(){gndSubject("Ottelmannshausen <Herbstadt>", 1);}
+	@Test public void subjectByGndId1VariantNGram(){gndSubject("Herb", 1);}
 	@Test public void subjectByGndId2Preferred(){gndSubject("Kirchhundem-Heinsberg", 1);}
-	@Test public void subjectByGndId2Variant(){gndSubject("Heinsberg  Kirchhundem ", 1);}
+	@Test public void subjectByGndId2Variant(){gndSubject("Heinsberg <Kirchhundem>", 1);}
 	/* @formatter:on */
 
 	public void gndSubject(final String subjectName, final int results) {
@@ -450,6 +476,25 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
 				assertThat(jsonObject.get(0 + META).toString()).contains(subjectName);
+			}
+		});
+	}
+
+	@Test
+	public void subjectByGndIdAlphaNumericPlusDashFull() {
+		gndSubjectId("http://d-nb.info/gnd/10115480-X", 1);
+	}
+
+	public void gndSubjectId(final String gndId, final int results) {
+		running(TEST_SERVER, new Runnable() {
+			@Override
+			public void run() {
+				final JsonNode jsonObject = Json.parse(call("subject?id=" + gndId));
+				assertThat(jsonObject.isArray()).isTrue();
+				assertThat(jsonObject.size()).isEqualTo(results + META);
+				final String gndPrefix = "http://d-nb.info/gnd/";
+				assertThat(jsonObject.get(0 + META).toString()).contains(
+						gndPrefix + gndId.replace(gndPrefix, ""));
 			}
 		});
 	}
@@ -541,11 +586,8 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				final String turtle = call(ENDPOINT, "text/turtle");
 				final String n3 = call(ENDPOINT, "text/n3"); // NOPMD
-				/* turtle is a subset of n3 for RDF */
 				assertThat(n3).isNotEmpty();
-				assertThat(n3).isNotEmpty().isEqualTo(turtle);
 			}
 		});
 	}
@@ -603,23 +645,23 @@ public class SearchTests extends SearchTestsHarness {
 		final Index index = Index.LOBID_RESOURCES;
 		final Parameter parameter = Parameter.AUTHOR;
 		assertThat(
-				new Search("Abr", index, parameter).page(0, 3).documents().size())
-				.isEqualTo(3);
+				new Search(ImmutableMap.of(parameter, "Abr"), index).page(0, 3)
+						.documents().size()).isEqualTo(3);
 		assertThat(
-				new Search("Abr", index, parameter).page(3, 6).documents().size())
-				.isEqualTo(6);
+				new Search(ImmutableMap.of(parameter, "Abr"), index).page(3, 6)
+						.documents().size()).isEqualTo(6);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void searchWithLimitInvalidFrom() {
-		new Search("ha", Index.LOBID_RESOURCES, Parameter.AUTHOR).page(-1, 3)
-				.documents();
+		new Search(ImmutableMap.of(Parameter.AUTHOR, "ha"), Index.LOBID_RESOURCES)
+				.page(-1, 3).documents();
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void searchWithLimitInvalidSize() {
-		new Search("ha", Index.LOBID_RESOURCES, Parameter.AUTHOR).page(0, 101)
-				.documents();
+		new Search(ImmutableMap.of(Parameter.AUTHOR, "ha"), Index.LOBID_RESOURCES)
+				.page(0, 101).documents();
 	}
 
 	@Test

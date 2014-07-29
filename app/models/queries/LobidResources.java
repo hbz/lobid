@@ -116,9 +116,11 @@ public class LobidResources {
 		public QueryBuilder build(final String queryString) {
 			final MatchQueryBuilder subjectLabelQuery =
 					matchQuery(fields().get(0), queryString);
+			final String query =
+					queryString.startsWith("http://") ? queryString
+							: "http://d-nb.info/gnd/" + queryString;
 			final MatchQueryBuilder subjectIdQuery =
-					matchQuery(fields().get(1) + ".@id",
-							"http://d-nb.info/gnd/" + queryString).operator(Operator.AND);
+					matchQuery(fields().get(1) + ".@id", query).operator(Operator.AND);
 			return boolQuery().should(subjectLabelQuery).should(subjectIdQuery);
 		}
 	}

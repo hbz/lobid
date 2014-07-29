@@ -233,6 +233,7 @@
       "edition": "http://purl.org/ontology/bibo/edition",
       "bibliographicCitation": "http://purl.org/dc/terms/bibliographicCitation",
       "abstract": "http://purl.org/dc/terms/abstract",
+      "titleKeyword": "http://purl.org/lobid/lv#titleKeyword",
       "subject":
       {
          "@id": "http://purl.org/dc/terms/subject",

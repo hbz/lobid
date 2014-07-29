@@ -13,6 +13,8 @@ import models.Search;
 
 import org.junit.Test;
 
+import com.google.common.collect.ImmutableMap;
+
 /**
  * Tests for searching resources by author names, narrowed to item owners.
  * 
@@ -22,7 +24,7 @@ import org.junit.Test;
 public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 
 	private static final String AUTHOR1 = "Hundt, Theo";
-	private static final String AUTHOR2 = "Goeters, Johann";
+	private static final String AUTHOR2 = "Goeters, J. F. Gerhard";
 
 	@Test
 	public void searchResByAuthor1_withOwnerId() {
@@ -72,17 +74,16 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 
 	@Test
 	public void searchResByAuthor2_withMultipleOwnerUris() {
-		searchResByAuthorWithOwnerId(
-				AUTHOR2,
-				"http://lobid.org/organisation/DE-Sol1,http://lobid.org/organisation/DE-Sol2",
+		searchResByAuthorWithOwnerId(AUTHOR2,
+				"http://lobid.org/organisation/DE-Sol2",
 				"http://lobid.org/resource/BT000013654");
 	}
 
 	private static void searchResByAuthorWithOwnerId(String author,
 			String holder, String resultId) {
 		final List<Document> docs =
-				new Search(author, Index.LOBID_RESOURCES, Parameter.AUTHOR).owner(
-						holder).documents();
+				new Search(ImmutableMap.of(Parameter.AUTHOR, author),
+						Index.LOBID_RESOURCES).owner(holder).documents();
 		assertThat(docs.size()).isEqualTo(1);
 		assertThat(docs.get(0).getId()).isEqualTo(resultId);
 	}
