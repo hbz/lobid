@@ -12,8 +12,7 @@ object ApplicationBuild extends Build {
       "com.typesafe.play" % "play-test_2.10" % "2.2.2",
       "org.elasticsearch" % "elasticsearch" % "1.1.0" withSources(),
       "org.lobid" % "lodmill-ld" % "1.8.1",
-      "org.scalatest" %% "scalatest" % "1.9.1" % "test",
-      "com.google.guava" % "guava" % "15.0" withSources()
+      "org.scalatest" %% "scalatest" % "1.9.1" % "test"
     )
 
     val main = play.Project(appName, appVersion, appDependencies).settings(
