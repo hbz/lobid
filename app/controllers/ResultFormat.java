@@ -15,5 +15,7 @@ public enum ResultFormat {
 	/** Short results strings for auto-completion suggestions. */
 	SHORT,
 	/** JSON maps with 'label' and 'value' fields, where 'value' contains the ID. */
-	IDS
+	IDS,
+	/** The original source format of the data. */
+	SOURCE
 }

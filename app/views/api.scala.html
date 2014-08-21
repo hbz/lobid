@@ -3,12 +3,12 @@
 @import controllers.Serialization
 @import models.Index
 
-@formats(ref:String) = {<td>
+@formats(ref:String) = {
 				<code><a href="@ref=short">short</a></code>,
 				<code><a href="@ref=ids">ids</a></code>,
 				<code><a href="@ref=full">full</a></code>,
 				<code><a href="@ref=negotiate">negotiate</a></code> (default)
-		</td>}
+		}
 
 @sampleUsageCode(resourceType: String, resultType: String) = {
     $('input.search-@resourceType').each(function() {
@@ -80,7 +80,10 @@
 				</td>}
 			@defining("/resource?name=Faust"){ref => <td><a href="@ref">@ref</a></td>}
 			@defining("/resource?q=Suhrkamp"){ref => <td><a href="@ref">@ref</a></td>}
-			@formats("/resource?name=Typee&format")
+			<td>
+				<code><a href="/resource/HT002189125?format=source">source</a></code>, 
+				@formats("/resource?name=Typee&format")
+			</td>
 			<td>Title data <br/> (lobid-resources)</td>
 		</tr>
 		<tr>
@@ -88,7 +91,7 @@
 			@defining("item?id=BT000000079:DE-Sol1:GA+644"){ref => <td><a href="@ref">@ref</a></td>}
 			@defining("/item?name=GA+644"){ref => <td><a href="@ref">@ref</a></td>}
 			@defining("/item?q=\"DE-5-4\""){ref => <td><a href="@ref">@ref</a></td>}
-			@formats("/item?name=GA+644&format")
+			<td>@formats("/item?name=GA+644&format")</td>
 			<td>Inventory data <br/> (lobid-resources)</td>
 		</tr>
 		<tr>
@@ -96,7 +99,7 @@
 			@defining("/organisation?id=DE-605"){ref => <td><a href="@ref">@ref</a></td> }
 			@defining("/organisation?name=Universität"){ref => <td><a href="@ref">@ref</a></td>}
 			@defining("/organisation?q=Einrichtung+ohne+Bestand"){ref => <td><a href="@ref">@ref</a></td>}
-			@formats("/organisation?name=Universität&format")
+			<td>@formats("/organisation?name=Universität&format")</td>
 			<td>Authority data <br/> (lobid-organisations)</td>
 		</tr>
 		<tr>
@@ -104,7 +107,7 @@
 			@defining("/person?id=118580604"){ref => <td><a href="@ref">@ref</a></td>}
 			@defining("/person?name=Johann+Sebastian+Bach"){ref => <td><a href="@ref">@ref</a></td>}
 			@defining("/person?q=\"Bruder+von\""){ref => <td><a href="@ref">@ref</a></td>}
-			@formats("/person?name=Johann+Sebastian+Bach&format")
+			<td>@formats("/person?name=Johann+Sebastian+Bach&format")</td>
 			<td>Authority data <br/> (GND)</td>
 		</tr>
 		<tr>
@@ -112,7 +115,7 @@
 				@defining("/subject?id=1706733-9"){ref => <td><a href="@ref">@ref</a></td>}
 				@defining("/subject?name=Heinsberg"){ref => <td><a href="@ref">@ref</a></td>}
 				@defining("/subject?q=de"){ref => <td><a href="@ref">@ref</a></td>}
-				@formats("/subject?name=Heinsberg&format")
+				<td>@formats("/subject?name=Heinsberg&format")</td>
 				<td>Authority data <br/> (GND)</td>
 		</tr>
 		<tr>
