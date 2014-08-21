@@ -13,6 +13,8 @@ import models.Search;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import org.elasticsearch.action.get.GetResponse;
+import org.elasticsearch.indices.IndexMissingException;
 import org.lobid.lodmill.JsonLdConverter;
 import org.lobid.lodmill.JsonLdConverter.Format;
 
@@ -190,14 +192,40 @@ public final class Application extends Controller {
 								ResultFormat.IDS,
 								withCallback(callback,
 										Json.toJson(Lists.transform(documents, jsonLabelValue))))
-						.build();
+						.put(ResultFormat.SOURCE, mabXml(documents)).build();
 		return results;
+	}
+
+	private static Result mabXml(final List<Document> documents) {
+		try {
+			final StringBuilder builder = new StringBuilder();
+			final String errorMessage = "No source data found for ";
+			for (Document document : documents)
+				appendMabXml(builder, errorMessage, document);
+			final String result = builder.toString().trim();
+			return result.isEmpty() ? notFound(errorMessage + "request") : //
+					ok(documents.size() > 1 ? ("<hits>" + result + "</hits>") : result);
+		} catch (IndexMissingException e) {
+			return notFound(e.getMessage());
+		}
+	}
+
+	private static void appendMabXml(final StringBuilder builder,
+			final String errorMessage, Document document) {
+		final String id =
+				document.getId().replace("http://lobid.org/resource/", "");
+		final GetResponse response =
+				Search.client.prepareGet("hbz01", "mabxml", id).execute().actionGet();
+		if (!response.isExists())
+			Logger.warn(errorMessage + id);
+		else
+			builder.append(response.getSource().get("mabXml")).append("\n");
 	}
 
 	private static Status withCallback(final String[] callback,
 			final JsonNode shortJson) {
-		return callback != null ? ok(String
-				.format("/**/%s(%s)", callback[0], shortJson)) : ok(shortJson);
+		return callback != null ? ok(String.format("/**/%s(%s)", callback[0],
+				shortJson)) : ok(shortJson);
 	}
 
 	private static JsonNode fullJsonResponse(final List<Document> documents,
