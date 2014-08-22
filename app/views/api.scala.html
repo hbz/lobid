@@ -138,16 +138,18 @@
 			<th style="width: 10%">Parameters &rarr; <br/>&darr; Endpoint</th>
 			<th><code>author</code></th>
 			<th><code>subject</code></th>
-			<th><code>set</code></th>
+			<th style="width: 10%"><code>set</code></th>
 			<th><code>owner</code></th>
+			<th style="width: 10%"><code>sort</code></th>
 			<th style="width: 10%">Info</th>
 		</tr>
 		<tr>
 			<td><code>/resource</td>
-			<td>@defining(("/resource?author=118580604&name=Typee","/resource?author=Abramson&name=ethnic")){ refs => <a href="@refs._1">@refs._1</a><br/><a href="@refs._2">@refs._2</a>}</td>
-			<td>@defining(("/resource?subject=4414195-6","/resource?subject=Chemistry")){ref => <a href="@ref._1">@ref._1</a> (GND ID) <br/><a href="@ref._2">@ref._2</a> (Dewey label)}</td>
-			<td>@defining("/resource?author=108554600&set=NWBib"){ref => <a href="@ref">@ref</a>}</td>
-			<td>@defining("/resource?author=118580604&owner=DE-5,DE-6"){ref => <a href="@ref">@ref</a> (comma separated values for OR boolean search)}</td>
+			<td><code><a href="/resource?author=118580604&name=Typee">118580604</a></code> (GND ID)<br/><code><a href="/resource?author=Abramson&name=ethnic">Abramson</a></code> (GND label)</td>
+			<td><code><a href="/resource?subject=4414195-6">4414195-6</a></code> (GND ID) <br/><code><a href="/resource?subject=Chemistry">Chemistry</a></code> (Dewey label)</td>
+			<td><code><a href="/resource?author=108554600&set=NWBib">NWBib</a></code></td>
+			<td><code><a href="/resource?author=118580604&owner=DE-5,DE-6">DE-5,DE-6</a></code><br/> (comma separated values for OR boolean search)</td>
+			<td><code><a href="/resource?name=Typee&sort=newest">newest</a></code>, <code><a href="/resource?name=Typee&sort=oldest">oldest</a></code></td>
 			<td>Title data <br/> (lobid-resources)</td>
 		</tr>
 	</table>

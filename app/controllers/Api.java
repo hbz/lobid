@@ -42,6 +42,7 @@ public final class Api extends Controller {
 	 * @param size The size of the result set
 	 * @param owner The ID of an owner holding items of the requested resources
 	 * @param type The type of the requested resources
+	 * @param sort The sort order
 	 * @param addQueryInfo If true, add a query info object to the response
 	 * @return Matching resources
 	 */
@@ -51,7 +52,7 @@ public final class Api extends Controller {
 			final String name, // NOPMD
 			final String author, final String subject, final String set,
 			final String format, final int from, final int size, final String owner,
-			final String type, final boolean addQueryInfo) {
+			final String type, final String sort, final boolean addQueryInfo) {
 		Logger
 				.debug(String
 						.format(
@@ -67,7 +68,7 @@ public final class Api extends Controller {
 						.put(Parameter.SUBJECT, subject)
 						.put(Parameter.SET, set).build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, owner,
-				set, type, addQueryInfo);
+				set, type, sort, addQueryInfo);
 	}
 
 	/**
@@ -88,7 +89,7 @@ public final class Api extends Controller {
 			final boolean addQueryInfo) {
 		Logger.debug(String.format("GET /item; id: '%s', q: '%s', name: '%s'", id,
 				q, name));
-		return search(id, q, name, format, from, size, Index.LOBID_ITEMS, type,
+		return search(id, q, name, format, from, size, Index.LOBID_ITEMS, type, "",
 				addQueryInfo);
 	}
 
@@ -111,7 +112,7 @@ public final class Api extends Controller {
 		Logger.debug(String.format(
 				"GET /organisation; id: '%s', name: '%s', q: '%s'", id, name, q));
 		return search(id, q, name, format, from, size, Index.LOBID_ORGANISATIONS,
-				type, addQueryInfo);
+				type, "", addQueryInfo);
 	}
 
 	/**
@@ -132,7 +133,7 @@ public final class Api extends Controller {
 			final boolean addQueryInfo) {
 		Logger.debug(String.format("GET /person; id: '%s', q: '%s', name: '%s'",
 				id, q, name));
-		return search(id, q, name, format, from, size, Index.GND, type,
+		return search(id, q, name, format, from, size, Index.GND, type, "",
 				addQueryInfo);
 	}
 
@@ -147,8 +148,8 @@ public final class Api extends Controller {
 	 * @return Matching subjects
 	 */
 	public static Promise<Result> subject(final String id, final String q,
-			final String name, // NOPMD
-			final String format, final int from, final int size, final String type) {
+			final String name, final String format, final int from, final int size,
+			final String type) {
 		Logger.debug(String.format("GET /subject; id: '%s', q: '%s', name: '%s'",
 				id, q, name));
 		final Map<Parameter, String> parameters =/*@formatter:off*/
@@ -157,19 +158,20 @@ public final class Api extends Controller {
 						.put(Parameter.Q, q)
 						.put(Parameter.SUBJECT, name).build());/*@formatter:on*/
 		return Application.search(Index.GND, parameters, format, from, size, "",
-				"", type, true);
+				"", type, "", true);
 	}
 
 	private static Promise<Result> search(final String id, final String q,
 			final String name, final String format, final int from, final int size,
-			final Index index, final String type, final boolean addQueryInfo) {
+			final Index index, final String type, final String sort,
+			final boolean addQueryInfo) {
 		final Map<Parameter, String> parameters =/*@formatter:off*/
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>()
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
 						.put(Parameter.NAME, name).build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, "", "",
-				type, addQueryInfo);
+				type, sort, addQueryInfo);
 	}
 
 	/**
@@ -193,13 +195,11 @@ public final class Api extends Controller {
 			return Application.badRequestPromise(message);
 		}
 		Promise<List<Result>> results =
-				Promise
-						.sequence(
-								resource(id, q, name, "", "", "", format, from, size, "", "",
-										true),
-								organisation(id, q, name, format, from, size, "", true),
-								person(id, q, name, format, from, size, "", true),
-								subject(id, q, name, format, from, size, ""));
+				Promise.sequence(
+						resource(id, q, name, "", "", "", format, from, size, "", "", "",
+								true), organisation(id, q, name, format, from, size, "", true),
+						person(id, q, name, format, from, size, "", true),
+						subject(id, q, name, format, from, size, ""));
 		return results.map(okJson());
 	}
 

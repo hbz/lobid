@@ -6,6 +6,7 @@ import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -28,11 +29,14 @@ import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 
 import play.Logger;
 import play.Play;
 import play.cache.Cache;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
@@ -71,6 +75,7 @@ public class Search {
 	private int size = 50;
 	private int from = 0;
 	private String type = "";
+	private String sort = "";
 
 	private List<Document> documents = null;
 	private Long hitCount = null;
@@ -125,8 +130,8 @@ public class Search {
 
 	private Pair<List<Document>, Long> doSearch() {
 		validateSearchParameters();
-		String cacheId = String.format("%s.%s.%s.%s.%s.%s.%s.%s", //
-				parameters, index, field, owner, set, size, from, type);
+		String cacheId = String.format("%s.%s.%s.%s.%s.%s.%s.%s.%s", //
+				parameters, index, field, owner, set, size, from, type, sort);
 		if (play.api.Play.maybeApplication().isDefined() && !Play.isTest()) {
 			@SuppressWarnings("unchecked")
 			Pair<List<Document>, Long> cachedResult =
@@ -216,6 +221,17 @@ public class Search {
 	}
 
 	/**
+	 * Optional: specify a sort order
+	 * 
+	 * @param sortOrder The sort order: newest, oldest
+	 * @return this search object (for chaining)
+	 */
+	public Search sort(final String sortOrder) {
+		this.sort = sortOrder;
+		return this;
+	}
+
+	/**
 	 * @return The query object for this search
 	 */
 	public QueryBuilder createQuery() {
@@ -276,6 +292,11 @@ public class Search {
 		if (size > 100) {
 			throw new IllegalArgumentException("Parameter 'size' must be <= 100");
 		}
+		final List<String> sortSupported = Arrays.asList("newest", "oldest");
+		if (!sort.isEmpty() && !sortSupported.contains(sort)) {
+			throw new IllegalArgumentException("Parameter 'sort' must be one of: "
+					+ Joiner.on(", ").join(sortSupported));
+		}
 	}
 
 	private SearchResponse search(final QueryBuilder queryBuilder) {
@@ -288,7 +309,13 @@ public class Search {
 			requestBuilder =
 					requestBuilder.setPostFilter(FilterBuilders.existsFilter(//
 							"@graph.http://purl.org/vocab/frbr/core#exemplar.@id"));
-		final SearchResponse response = 
+		if (!sort.isEmpty()) {
+			requestBuilder.addSort(SortBuilders
+					.fieldSort("@graph.http://purl.org/dc/terms/issued.@value")
+					.order(sort.equals("newest") ? SortOrder.DESC : SortOrder.ASC)
+					.ignoreUnmapped(true));
+		}
+		final SearchResponse response =
 				requestBuilder.setFrom(from).setSize(size).setExplain(false).execute()
 						.actionGet();
 		return response;

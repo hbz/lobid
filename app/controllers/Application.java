@@ -92,19 +92,29 @@ public final class Application extends Controller {
 	 * @param owner The ID of an owner holding items of the requested resources
 	 * @param set The ID of a set the requested resources should be part of
 	 * @param type The type of the requestes resources
+	 * @param sort The sort order
 	 * @return The results, in the format specified
 	 */
 	static Promise<Result> search(final Index index,
 			final java.util.Map<Parameter, String> parameters,
 			final String formatParameter, final int from, final int size,
 			final String owner, final String set, final String type,
-			final boolean addQueryInfo) {
+			final String sort, final boolean addQueryInfo) {
+		final ResultFormat resultFormat;
+		try {
+			resultFormat =
+					ResultFormat.valueOf(getFieldAndFormat(formatParameter).getRight()
+							.toUpperCase());
+		} catch (IllegalArgumentException e) {
+			return badRequestPromise("Invalid 'format' parameter, use one of: "
+					+ Joiner.on(", ").join(ResultFormat.values()).toLowerCase());
+		}
 		Search search;
 		try {
 			search =
 					new Search(parameters, index).page(from, size)
 							.field(getFieldAndFormat(formatParameter).getLeft()).owner(owner)
-							.set(set).type(type);
+							.set(set).type(type).sort(sort);
 		} catch (IllegalArgumentException e) {
 			Logger.error(e.getMessage(), e);
 			return badRequestPromise(e.getMessage());
@@ -116,13 +126,11 @@ public final class Application extends Controller {
 					resultsPromise(docs, index, getFieldAndFormat(formatParameter)
 							.getLeft(), allHits, addQueryInfo);
 			return resultPromise.map(results -> {
-				return results.get(ResultFormat.valueOf(getFieldAndFormat(
-						formatParameter).getRight().toUpperCase()));
+				return results.get(resultFormat);
 			});
 		} catch (IllegalArgumentException e) {
 			Logger.error(e.getMessage(), e);
-			return badRequestPromise("Invalid 'format' parameter, use one of: "
-					+ Joiner.on(", ").join(ResultFormat.values()).toLowerCase());
+			return badRequestPromise(e.getMessage());
 		}
 	}
 
