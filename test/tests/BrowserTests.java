@@ -100,7 +100,7 @@ public class BrowserTests {
 			@Override
 			public void invoke(final TestBrowser browser) {
 				browser.goTo(API_PAGE);
-				browser.click("a", withText("/resource?author=Abramson&name=ethnic"));
+				browser.click("a", withText("Abramson"));
 				assertThat(browser.pageSource()).contains("Abramson")
 						.contains("The ethnic factor in American catholicism")
 						.contains("an analysis of interethnic marriage")
@@ -118,7 +118,7 @@ public class BrowserTests {
 			@Override
 			public void invoke(final TestBrowser browser) {
 				browser.goTo(API_PAGE);
-				browser.click("a", withText("/resource?subject=4414195-6"));
+				browser.click("a", withText("4414195-6"));
 				assertThat(browser.pageSource())
 						.contains("Heimatstimmen aus dem Kreis Olpe")
 						.contains(
@@ -135,7 +135,7 @@ public class BrowserTests {
 			@Override
 			public void invoke(final TestBrowser browser) {
 				browser.goTo(API_PAGE);
-				browser.click("a", withText("/resource?subject=Chemistry"));
+				browser.click("a", withText("Chemistry"));
 				assertThat(browser.pageSource()).contains("Gerlach, Rainer").contains(
 						"Synthese, Eigenschaften und Reaktivität von Mangan- und "
 								+ "Chrom-Komplexen mit Stickstoff-Liganden");
