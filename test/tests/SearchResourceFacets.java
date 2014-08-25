@@ -25,6 +25,8 @@ public class SearchResourceFacets extends SearchTestsHarness {
 	@Test public void facetsSize2() { facetsSize("size=5", 5); }
 	@Test public void facetsSize3() { facetsSize("size=50", 12); }
 	@Test public void facetsSize4() { facetsSize("size=50&set=http://lobid.org/resource/NWBib", 5); }
+	@Test public void facetsSizeAndIssued() { facetsSize("size=50&issued=1982", 4); }
+	@Test public void facetsSizeAndPublisher() { facetsSize("size=50&publisher=Literary+Classics+of+the+United+States", 4); }
 	@Test public void facetsAuthor1() { facetsSize("author=hu", 5); }
 	@Test public void facetsAuthor2() { facetsSize("author=hu&id=UNDEFINED", 0); }
 	@Test public void facetsAuthor3() { facetsSize("author=hu&id=TT050326640", 2); }
