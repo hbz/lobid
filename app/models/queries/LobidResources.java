@@ -152,4 +152,38 @@ public class LobidResources {
 		return queryString.matches(hbzId) ? "http://lobid.org/resource/"
 				+ queryString : queryString;
 	}
+
+	/**
+	 * Query the lobid-resources index for a given publisher.
+	 */
+	public static class PublisherQuery extends AbstractIndexQuery {
+
+		@Override
+		public List<String> fields() {
+			return Arrays
+					.asList("@graph.http://purl.org/dc/elements/1.1/publisher.@value");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
+		}
+	}
+
+	/**
+	 * Query the lobid-resources index for a given issued date.
+	 */
+	public static class IssuedQuery extends AbstractIndexQuery {
+
+		@Override
+		public List<String> fields() {
+			return Arrays.asList("@graph.http://purl.org/dc/terms/issued.@value");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
+		}
+	}
+
 }

@@ -26,6 +26,8 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchAuthor(){search("resource?author=hu", 2);}
 	@Test public void searchAuthorAndId(){search("resource?author=hu&id=9781402083891", 1);}
 	@Test public void searchAuthorAndSubject(){search("resource?author=hu&subject=4026453-1", 1);}
+	@Test public void searchNameAndIssued(){search("resource?name=der&issued=2008", 1);}
+	@Test public void searchNameAndPublisher(){search("resource?name=der&publisher=Springer", 1);}
 	/*@formatter:on@*/
 
 	private static void search(final String request, final int count) {
