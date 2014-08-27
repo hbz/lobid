@@ -182,7 +182,10 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
+			final String[] elems = queryString.split("-");
+			return elems.length == 2 ? //
+			QueryBuilders.rangeQuery(fields().get(0)).gte(elems[0]).lte(elems[1])
+					: multiMatchQuery(queryString, fields().toArray(new String[] {}));
 		}
 	}
 
