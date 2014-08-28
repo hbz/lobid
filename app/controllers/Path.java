@@ -34,8 +34,8 @@ public final class Path extends Controller {
 	@SuppressWarnings("javadoc")
 	public static Promise<Result> resourceAbout(final String id,
 			final String format, final int from, final int size) {
-		return Api.resource(id, "", "", "", "", "", "", "", format, from, size, "",
-				"", "", false);
+		return Api.resource(id, "", "", "", "", "", "", "", "", format, from, size,
+				"", "", "", false);
 	}
 
 	/** Redirect to {@link #itemAbout(String, String, String, int, int)} */

@@ -21,6 +21,7 @@ public class SearchEntitiesNarrowByTypeTests extends SearchTestsHarness {
 
 	//@formatter:off
 	@Test public void resources() { search("resource?q=*", 25); }
+	@Test public void resourcesMedium() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1020", 1); }
 	@Test public void bibliographicResources() { search("resource?q=*&t=http://purl.org/dc/terms/BibliographicResource", 25); }
 	@Test public void books() { search("resource?q=*&t=http://purl.org/ontology/bibo/Book", 19); }
 	@Test public void journals() { search("resource?q=*&t=http://purl.org/ontology/bibo/Journal", 1); }

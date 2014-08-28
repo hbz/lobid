@@ -37,6 +37,7 @@ public enum Index {
 					.put(Parameter.SUBJECT, new LobidResources.SubjectQuery())
 					.put(Parameter.PUBLISHER, new LobidResources.PublisherQuery())
 					.put(Parameter.ISSUED, new LobidResources.IssuedQuery())
+					.put(Parameter.MEDIUM, new LobidResources.MediumQuery())
 					.put(Parameter.NAME, new LobidResources.NameQuery())
 					.put(Parameter.SET, new LobidResources.SetQuery()).build()),
 	/***/
