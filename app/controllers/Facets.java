@@ -57,6 +57,7 @@ public final class Facets extends Controller {
 	 * @param subject The resource subject
 	 * @param publisher The resource publisher
 	 * @param issued The resources's issued date
+	 * @param medium The publication medium
 	 * @param set The resource set
 	 * @param owner The ID of an owner holding items of the requested resources
 	 * @param size The number of results to receive
@@ -66,10 +67,11 @@ public final class Facets extends Controller {
 	 */
 	public static Promise<Result> resource(String id, String q, String author,
 			String name, String subject, String publisher, String issued,
-			String owner, String set, int size, String t, String field) {
+			String medium, String owner, String set, int size, String t, String field) {
 		String key =
-				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q, author,
-						name, subject, publisher, issued, owner, set, size, field);
+				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q,
+						author, name, subject, publisher, issued, medium, owner, set, size,
+						field);
 		Logger.info(key);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
@@ -77,7 +79,7 @@ public final class Facets extends Controller {
 		}
 		Promise<Result> result =
 				createJsonResponse(getElasticsearchFacets(id, q, author, name, subject,
-						publisher, issued, owner, set, field, size, t));
+						publisher, issued, medium, owner, set, field, size, t));
 		result.onRedeem(r -> Cache.set(key, r, ONE_DAY));
 		return result;
 	}
@@ -105,14 +107,14 @@ public final class Facets extends Controller {
 
 	private static Promise<org.elasticsearch.search.facet.Facets> getElasticsearchFacets(
 			String id, String q, String author, String name, String subject,
-			String publisher, String issued, String owner, String set, String field,
-			int size, String t) {
+			String publisher, String issued, String medium, String owner, String set,
+			String field, int size, String t) {
 		Promise<org.elasticsearch.search.facet.Facets> promise =
 				Promise.promise(
 						() -> {
 							QueryBuilder query =
 									createQuery(id, q, author, name, subject, publisher, issued,
-											set, owner, t);
+											medium, set, owner, t);
 							SearchRequestBuilder req =
 									createRequest(owner, field, query, size);
 							long start = System.currentTimeMillis();
@@ -129,8 +131,8 @@ public final class Facets extends Controller {
 	}
 
 	private static QueryBuilder createQuery(String id, String q, String author,
-			String name, String subject, String publisher, String issued, String set,
-			String owner, String t) {
+			String name, String subject, String publisher, String issued,
+			String medium, String set, String owner, String t) {
 		final Map<Parameter, String> parameters =
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
 						.put(Parameter.ID, id)
@@ -140,6 +142,7 @@ public final class Facets extends Controller {
 						.put(Parameter.SUBJECT, subject)
 						.put(Parameter.PUBLISHER, publisher)
 						.put(Parameter.ISSUED, issued)
+						.put(Parameter.MEDIUM, medium)
 						.put(Parameter.SET, set).build());/*@formatter:on*/
 		QueryBuilder query =
 				parameters.isEmpty() ? QueryBuilders.matchAllQuery() : new Search(

@@ -189,4 +189,21 @@ public class LobidResources {
 		}
 	}
 
+	/**
+	 * Query the lobid-resources index for a given medium.
+	 */
+	public static class MediumQuery extends AbstractIndexQuery {
+
+		@Override
+		public List<String> fields() {
+			return Arrays.asList("@graph.http://purl.org/dc/terms/medium.@id");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return matchQuery(fields().get(0), queryString);
+		}
+
+	}
+
 }

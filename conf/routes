@@ -32,14 +32,14 @@ GET     /team/pc               controllers.LobidTeam.pc(format ?= "negotiate")
 GET     /team/pc/about         controllers.LobidTeam.pcAbout(id = "http://lobid.org/team/pc", format ?= "negotiate")
 
 # Individual, specialized API routes for different resource types
-GET     /resource                   controllers.Api.resource(id ?= "", q ?= "", name ?= "", author ?= "", subject ?= "", publisher ?= "", issued ?= "", set ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, owner ?= "", t ?= "", sort ?= "", meta:Boolean?=true)
+GET     /resource                   controllers.Api.resource(id ?= "", q ?= "", name ?= "", author ?= "", subject ?= "", publisher ?= "", issued ?= "", medium ?= "", set ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, owner ?= "", t ?= "", sort ?= "", meta:Boolean?=true)
 GET     /item                       controllers.Api.item(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "", meta:Boolean?=true)
 GET     /organisation               controllers.Api.organisation(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "", meta:Boolean?=true)
 GET     /person                     controllers.Api.person(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "http://d-nb.info/standards/elementset/gnd#Person", meta:Boolean?=true)
 GET     /subject                    controllers.Api.subject(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "")
 
 # Facets
-GET     /resource/facets            controllers.Facets.resource(id ?= "", q?="", author?="", name?="", subject?="", publisher ?= "", issued ?= "", owner?="", set?="", size: Int ?= 50, t ?= "", field)
+GET     /resource/facets            controllers.Facets.resource(id ?= "", q?="", author?="", name?="", subject?="", publisher ?= "", issued ?= "", medium ?= "", owner?="", set?="", size: Int ?= 50, t ?= "", field)
 
 # Path-style routes and `about` redirects
 GET     /resource/:id               controllers.Path.resource(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
