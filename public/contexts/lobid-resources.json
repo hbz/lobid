@@ -261,7 +261,7 @@
          "@type": "@id"
       },
       "translator":
-     {
+      {
          "@id": "http://purl.org/ontology/bibo/translator",
          "@type": "@id"
       },
