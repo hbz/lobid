@@ -239,6 +239,21 @@
          "@id": "http://purl.org/dc/terms/subject",
          "@type": "@id"
       },
+      "nwbibsubject":
+      {
+         "@id": "http://purl.org/lobid/lv#nwbibsubject",
+         "@type": "@id"
+      },
+      "spatial":
+      {
+         "@id": "http://purl.org/dc/terms/spatial",
+         "@type": "@id"
+      },
+      "nwbibspatial":
+      {
+         "@id": "http://purl.org/lobid/lv#nwbibspatial",
+         "@type": "@id"
+      },
       "subjectLabel": "http://purl.org/dc/elements/1.1/subject",
       "editor":
       {
