@@ -151,7 +151,7 @@ public final class Facets extends Controller {
 	private static SearchRequestBuilder createRequest(String owner, String field,
 			QueryBuilder query, int size) {
 		SearchRequestBuilder req =
-				Search.client.prepareSearch("lobid-resources")
+				Search.client.prepareSearch(Index.LOBID_RESOURCES.id())
 						.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(query)
 						.setTypes("json-ld-lobid").setFrom(0).setSize(0);
 		TermsFacetBuilder facet =
