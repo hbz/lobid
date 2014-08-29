@@ -212,7 +212,7 @@ public final class Application extends Controller {
 				appendMabXml(builder, errorMessage, document);
 			final String result = builder.toString().trim();
 			return result.isEmpty() ? notFound(errorMessage + "request") : //
-					ok(documents.size() > 1 ? ("<hits>" + result + "</hits>") : result);
+					documents.size() > 1 ? ok(result) : ok(result).as("text/xml");
 		} catch (IndexMissingException e) {
 			return notFound(e.getMessage());
 		}
