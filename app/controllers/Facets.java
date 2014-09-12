@@ -69,9 +69,9 @@ public final class Facets extends Controller {
 			String name, String subject, String publisher, String issued,
 			String medium, String owner, String set, int size, String t, String field) {
 		String key =
-				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q,
+				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q,
 						author, name, subject, publisher, issued, medium, owner, set, size,
-						field);
+						field, t);
 		Logger.info(key);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
