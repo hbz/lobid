@@ -11,7 +11,7 @@ object ApplicationBuild extends Build {
       cache,
       "com.typesafe.play" % "play-test_2.10" % "2.2.2",
       "org.elasticsearch" % "elasticsearch" % "1.1.0" withSources(),
-      "org.lobid" % "lodmill-ld" % "1.8.1",
+      "org.lobid" % "lodmill-ld" % "2.0.1",
       "org.scalatest" %% "scalatest" % "1.9.1" % "test"
     )
 
