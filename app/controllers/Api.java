@@ -40,6 +40,8 @@ public final class Api extends Controller {
 	 * @param issued The year the resource was issued
 	 * @param medium The publication medium
 	 * @param set The resource set
+	 * @param nwbibspatial The spatial NWBib classification
+	 * @param nwbibsubject The subject NWBib classification
 	 * @param format The result format
 	 * @param from The start index of the result set
 	 * @param size The size of the result set
@@ -55,6 +57,7 @@ public final class Api extends Controller {
 			final String name, // NOPMD
 			final String author, final String subject, final String publisher,
 			final String issued, final String medium, final String set,
+			final String nwbibspatial, final String nwbibsubject,
 			final String format, final int from, final int size, final String owner,
 			final String type, final String sort, final boolean addQueryInfo) {
 		Logger
@@ -73,7 +76,9 @@ public final class Api extends Controller {
 						.put(Parameter.PUBLISHER, publisher)
 						.put(Parameter.ISSUED, issued)
 						.put(Parameter.MEDIUM, medium)
-						.put(Parameter.SET, set).build());/*@formatter:on*/
+						.put(Parameter.SET, set)
+						.put(Parameter.NWBIBSPATIAL, nwbibspatial)
+						.put(Parameter.NWBIBSUBJECT, nwbibsubject).build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, owner,
 				set, type, sort, addQueryInfo);
 	}
@@ -203,8 +208,8 @@ public final class Api extends Controller {
 		}
 		Promise<List<Result>> results =
 				Promise.sequence(
-						resource(id, q, name, "", "", "", "", "", "", format, from, size,
-								"", "", "", true),
+						resource(id, q, name, "", "", "", "", "", "", "", "", format, from,
+								size, "", "", "", true),
 						organisation(id, q, name, format, from, size, "", true),
 						person(id, q, name, format, from, size, "", true),
 						subject(id, q, name, format, from, size, ""));

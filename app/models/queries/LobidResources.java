@@ -206,4 +206,38 @@ public class LobidResources {
 
 	}
 
+	/**
+	 * Query the lobid-resources index for a given NWBib subject classification.
+	 */
+	public static class NwBibSubjectQuery extends AbstractIndexQuery {
+
+		@Override
+		public List<String> fields() {
+			return Arrays.asList("@graph.http://purl.org/lobid/lv#nwbibsubject.@id");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return matchQuery(fields().get(0), queryString);
+		}
+
+	}
+
+	/**
+	 * Query the lobid-resources index for a given NWBib spatial classification.
+	 */
+	public static class NwBibSpatialQuery extends AbstractIndexQuery {
+
+		@Override
+		public List<String> fields() {
+			return Arrays.asList("@graph.http://purl.org/lobid/lv#nwbibspatial.@id");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return matchQuery(fields().get(0), queryString);
+		}
+
+	}
+
 }

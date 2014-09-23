@@ -29,6 +29,9 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchNameAndIssued(){search("resource?name=der&issued=2008", 1);}
 	@Test public void searchNameAndIssuedRange(){search("resource?name=der&issued=1993-2008", 3);}
 	@Test public void searchNameAndPublisher(){search("resource?name=der&publisher=Springer", 1);}
+	@Test public void searchSet(){search("resource?set=NWBib", 3);}
+	@Test public void searchSetAndNwbibspatial(){search("resource?set=NWBib&nwbibspatial=http://purl.org/lobid/nwbib-spatial#n99", 1);}
+	@Test public void searchSetAndNwbibsubject(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
 	/*@formatter:on@*/
 
 	private static void search(final String request, final int count) {

@@ -41,6 +41,10 @@ public class SearchResourceFacets extends SearchTestsHarness {
 			"subject=http://purl.org/lobid/nwbib-spatial#n99&name=Papierkrieg", 4); }
 	@Test public void facetsSubject4() { facetsSize(
 			"subject=http://purl.org/lobid/nwbib-spatial#n99&set=http://lobid.org/resource/NWBib", 5); }
+	@Test public void facetsSubject5() { facetsSize(
+			"nwbibspatial=http://purl.org/lobid/nwbib-spatial#n99&set=http://lobid.org/resource/NWBib", 4); }
+	@Test public void facetsSubject6() { facetsSize(
+			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&set=http://lobid.org/resource/NWBib", 4); }
 	/*@formatter:on*/
 
 	private static void facetsSize(final String path, final int size) {
