@@ -39,7 +39,10 @@ public enum Index {
 					.put(Parameter.ISSUED, new LobidResources.IssuedQuery())
 					.put(Parameter.MEDIUM, new LobidResources.MediumQuery())
 					.put(Parameter.NAME, new LobidResources.NameQuery())
-					.put(Parameter.SET, new LobidResources.SetQuery()).build()),
+					.put(Parameter.SET, new LobidResources.SetQuery())
+					.put(Parameter.NWBIBSPATIAL, new LobidResources.NwBibSpatialQuery())
+					.put(Parameter.NWBIBSUBJECT, new LobidResources.NwBibSubjectQuery())
+					.build()),
 	/***/
 	LOBID_ORGANISATIONS("lobid-organisations", "json-ld-lobid-orgs",
 			new ImmutableMap.Builder<Parameter, AbstractIndexQuery>()/* @formatter:off */
