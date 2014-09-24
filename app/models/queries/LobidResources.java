@@ -76,7 +76,8 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
+					.operator(Operator.AND);
 		}
 
 	}
@@ -115,7 +116,7 @@ public class LobidResources {
 		@Override
 		public QueryBuilder build(final String queryString) {
 			final MatchQueryBuilder subjectLabelQuery =
-					matchQuery(fields().get(0), queryString);
+					matchQuery(fields().get(0), queryString).operator(Operator.AND);
 			final String query =
 					queryString.startsWith("http://") ? queryString
 							: "http://d-nb.info/gnd/" + queryString;
@@ -166,7 +167,8 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
+					.operator(Operator.AND);
 		}
 	}
 
