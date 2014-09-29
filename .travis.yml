@@ -11,4 +11,4 @@ install:
   - unzip typesafe-activator-${ACTIVATOR_VERSION}-minimal.zip
 script:
   - rm -rf ~/.m2/repository/junit/ ; rm -rf ~/.m2/repository/org/hamcrest/ ; rm -rf ~/.m2/repository/org/elasticsearch/ ; rm -rf ~/.m2/repository/org/codehaus/ ; rm -rf ~/.m2/repository/stax/ ; rm -rf ~/.m2/repository/commons-logging/ ; rm -rf ~/.m2/repository/org/slf4j/ ; rm -rf ~/.m2/repository/log4j/ ; rm -rf ~/.m2/repository/org/apache/httpcomponents/ ; rm -rf ~/.m2/repository/asm/
-  - ./activator-${ACTIVATOR_VERSION}-minimal/activator test
+  - ./activator-${ACTIVATOR_VERSION}-minimal/activator ";clean; clean-files; reload; update; test"
