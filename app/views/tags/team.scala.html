@@ -2,8 +2,8 @@
 @(doc: play.api.libs.json.JsValue)
 @import play.api.libs.json.JsValue
 @import views.TableRow
-@import views.tags.TagHelper
 @import tags._
+
 <table class="table table-striped">
   @rdfa("Name", "http://xmlns.com/foaf/0.1/name", doc, TableRow.VALUES)
   @map("Lage", "http://www.w3.org/2003/01/geo/wgs84_pos#location",
@@ -18,7 +18,7 @@
   @rdfa("Kennt", "http://xmlns.com/foaf/0.1/knows", doc, TableRow.LINKS)
   @rdfa("Avatar", "http://rdfs.org/sioc/ns#avatar", doc, TableRow.IMAGE)
   @rdfa("Wohnhaft in", "http://www.geonames.org/ontology#locatedIn", doc, TableRow.LINKS)
-  @rdfa("Typ", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", doc, TableRow.LINKS, TagHelper.getPrimaryTopicType(doc))
+  @rdfa_type(doc)
   @rdfa("Skype ID", "http://xmlns.com/foaf/0.1/skypeID", doc, TableRow.IMAGE)
   @rdfa("Publikationen", "http://xmlns.com/foaf/0.1/publications", doc, TableRow.LINKS)
   @rdfa("Nickname", "http://xmlns.com/foaf/0.1/nick", doc, TableRow.VALUES)

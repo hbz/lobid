@@ -2,10 +2,10 @@
 @(doc: play.api.libs.json.JsValue)
 @import play.api.libs.json.JsValue
 @import views.TableRow
-@import views.tags.TagHelper
 @import tags._
+
 <table class="table table-striped">
-  @rdfa("Typ", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", doc, TableRow.VALUES, TagHelper.getPrimaryTopicType(doc))
+  @rdfa_type(doc)
   @rdfa("Name", "http://d-nb.info/standards/elementset/gnd#preferredName", doc, TableRow.VALUES)
   @rdfa("Kurzinfo", "http://d-nb.info/standards/elementset/gnd#biographicalOrHistoricalInformation", doc, TableRow.VALUES)
   @rdfa("Geschlecht", "http://d-nb.info/standards/elementset/gnd#gender",  doc, TableRow.VALUES, valueLabel = Option(Seq(

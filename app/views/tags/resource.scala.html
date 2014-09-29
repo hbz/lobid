@@ -2,8 +2,8 @@
 @(doc: play.api.libs.json.JsValue)
 @import play.api.libs.json.JsValue
 @import views.TableRow
-@import views.tags.TagHelper
 @import tags._
+
 <table class="table table-striped">
   @rdfa("ID", "http://lobid.org/resource", doc, TableRow.LINKS, node = Option(doc))
   @rdfa("Titel", "http://purl.org/dc/terms/title", doc, TableRow.VALUES)
@@ -13,7 +13,7 @@
   @rdfa("Mitwirkender", "http://purl.org/dc/terms/contributor", doc, TableRow.VALUES, valueLabel = Option(Seq(
     "http://d-nb.info/standards/elementset/gnd#preferredName")))
   @rdfa("Erscheinungsjahr", "http://purl.org/dc/terms/issued", doc, TableRow.VALUES)
-  @rdfa("Typ", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", doc, TableRow.VALUES, TagHelper.getPrimaryTopicType(doc))
+  @rdfa_type(doc)
   @rdfa("Sprache", "http://purl.org/dc/terms/language", doc, TableRow.LINKS)
   @rdfa("Volltext", "http://purl.org/lobid/lv#fulltextOnline", doc, TableRow.LINKS)
   @rdfa("Ausgabe", "http://purl.org/ontology/bibo/edition", doc, TableRow.VALUES)

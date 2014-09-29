@@ -1,0 +1,14 @@
+@(doc: play.api.libs.json.JsValue)
+
+@import play.api.libs.json.JsValue
+@import scala.collection.immutable.List
+@import views.TableRow
+
+@primaryTopic(node: JsValue) = @{
+    ((node \ "http://xmlns.com/foaf/0.1/primaryTopic").asOpt[JsValue] match {
+      case None => Some(node)
+      case Some(id) => (node \ "@graph").as[List[JsValue]].find((v: JsValue) => (v \ "@id") == id \ "@id")
+    }).map(_ \ "@type")
+}
+
+@rdfa("Typ", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", doc, TableRow.VALUES, primaryTopic(doc))

@@ -2,8 +2,8 @@
 @(doc: play.api.libs.json.JsValue)
 @import play.api.libs.json.JsValue
 @import views.TableRow
-@import views.tags.TagHelper
 @import tags._
+
 <table class="table table-striped">
   @rdfa("ID", "http://purl.org/dc/terms/identifier", doc, TableRow.VALUES)
   @rdfa("Name", "http://xmlns.com/foaf/0.1/name", doc, TableRow.VALUES)
@@ -20,7 +20,7 @@
   @rdfa("Homepage", "http://www.w3.org/2006/vcard/ns#url", doc, TableRow.LINKS)
   @rdfa("Unterhaltsträger", "http://purl.org/lobid/lv#fundertype", doc, TableRow.LABEL)
   @rdfa("Bestandsgröße", "http://purl.org/lobid/lv#stocksize", doc, TableRow.LABEL)
-  @rdfa("Typ", "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", doc, TableRow.VALUES, TagHelper.getPrimaryTopicType(doc))
+  @rdfa_type(doc)
   @rdfa("ZDB-Link", "http://www.w3.org/2002/07/owl#sameAs", doc, TableRow.LINKS)
   @rdfa("Kontakt-QR", "http://purl.org/lobid/lv#contactqr", doc, TableRow.IMAGE)
 </table>
