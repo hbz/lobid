@@ -20,12 +20,12 @@ import org.lobid.lodmill.JsonLdConverter.Format;
 
 import play.Logger;
 import play.api.http.MediaRange;
-import play.api.templates.Html;
 import play.libs.F.Promise;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import scala.concurrent.ExecutionContext;
+import play.twirl.api.Html; 
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;

@@ -14,7 +14,7 @@ import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
-import com.google.gdata.util.common.base.PercentEscaper;
+import com.google.api.client.util.escape.PercentEscaper;
 
 /**
  * Queries on the lobid-items index.
