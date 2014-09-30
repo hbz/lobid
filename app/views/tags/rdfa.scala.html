@@ -2,7 +2,41 @@
 @(label: String, property: String, doc: play.api.libs.json.JsValue, row: views.TableRow, node: Option[play.api.libs.json.JsValue] = None, valueLabel: Option[Seq[String]] = None)
 
 @import play.api.libs.json._
-@import views.tags.TagHelper
+@import scala.collection.immutable.List
+@import scala.collection.immutable.Map
+
+@getLanguageLabelValue(objectId: String, language: String, node: JsValue) = @{
+    val res = for (
+      graphObject <- (node \ "@graph").as[List[JsValue]];
+      objects = (graphObject \ objectId);
+      obj <- objects.asOpt[List[JsValue]].getOrElse(List(objects));
+      if ((obj \ "@language").asOpt[String].getOrElse("") == language)
+    ) yield (obj \ "@value").asOpt[String].getOrElse("")
+    Some(res.mkString(","))
+}
+
+@getLabelValue(objectId: String, language: String, node: JsValue) = @{
+	val label = "http://www.w3.org/2004/02/skos/core#prefLabel"
+	if ((node \\ objectId).isEmpty) None
+	val id = ((node \\ objectId).head \ "@id").as[String]
+	val res = for (
+		graphObject <- (node \ "@graph").as[List[JsValue]];
+		if ((graphObject \ "@id").asOpt[String].getOrElse("") == id);
+		labelObject <- (graphObject \ label).asOpt[List[JsValue]].getOrElse(Nil);
+		if ((labelObject \ "@language").asOpt[String].getOrElse("") == language)
+	) yield (labelObject \ "@value").asOpt[String].getOrElse("")
+	Some(res.mkString(","))
+}
+
+@valueFor(doc: JsValue, id: String, keys: Seq[String]) = @{
+    val res = for (elem <- ((doc \\ "@graph").head).as[Seq[JsValue]]; key <- keys;
+        if ((elem \ "@id").as[String] == id && elem.as[Map[String, JsValue]].contains(key))
+    ) yield {
+        val result = (elem \ key)
+        result.asOpt[String].getOrElse(result.toString)
+    }
+    if(res.isEmpty) id else res.get(0)
+}
 
 @string(value: JsValue) = { @value.asOpt[String].getOrElse("--") }
 @jsonVal(p: String) = @{ node match {
@@ -25,7 +59,7 @@
         <td property="@property">
             @valueLabel match {
                           case None => {@string(elem)}
-                          case Some(seq) => {<a href="@string(elem)">@TagHelper.valueFor(doc, elem.as[String], seq)</a>}
+                          case Some(seq) => {<a href="@string(elem)">@valueFor(doc, elem.as[String], seq)</a>}
                        }
         </td>
       </tr>
@@ -36,7 +70,7 @@
     @tr(valueLabel)
  }
   case views.TableRow.VALUES_LANGUAGE_DE => {
-    @defining(views.tags.TagHelper.getLanguageLabelValue(property, "de", doc)) { value =>
+    @defining(getLanguageLabelValue(property, "de", doc)) { value =>
              <tr>
                 <td><a href="@property">@label</a></td>
                 <td property="@property">@value</td>
@@ -69,7 +103,7 @@
     }
  }
  case views.TableRow.LABEL => {
-    @defining(views.tags.TagHelper.getLabelValue(property, "de", doc)) { value =>
+    @defining(getLabelValue(property, "de", doc)) { value =>
         @if(value.isDefined){
             <tr>
                 <td><a href="@property">@label</a></td>
