@@ -17,15 +17,17 @@
 
 @getLabelValue(objectId: String, language: String, node: JsValue) = @{
 	val label = "http://www.w3.org/2004/02/skos/core#prefLabel"
-	if ((node \\ objectId).isEmpty) None
-	val id = ((node \\ objectId).head \ "@id").as[String]
-	val res = for (
-		graphObject <- (node \ "@graph").as[List[JsValue]];
-		if ((graphObject \ "@id").asOpt[String].getOrElse("") == id);
-		labelObject <- (graphObject \ label).asOpt[List[JsValue]].getOrElse(Nil);
-		if ((labelObject \ "@language").asOpt[String].getOrElse("") == language)
-	) yield (labelObject \ "@value").asOpt[String].getOrElse("")
-	Some(res.mkString(","))
+	if ((node \\ objectId).isEmpty) {None}
+	else {
+		val id = ((node \\ objectId).head \ "@id").as[String]
+		val res = for (
+			graphObject <- (node \ "@graph").as[List[JsValue]];
+			if ((graphObject \ "@id").asOpt[String].getOrElse("") == id);
+			labelObject <- (graphObject \ label).asOpt[List[JsValue]].getOrElse(Nil);
+			if ((labelObject \ "@language").asOpt[String].getOrElse("") == language)
+		) yield (labelObject \ "@value").asOpt[String].getOrElse("")
+		Some(res.mkString(","))
+	}
 }
 
 @valueFor(doc: JsValue, id: String, keys: Seq[String]) = @{
