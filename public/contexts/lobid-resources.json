@@ -255,6 +255,7 @@
          "@type": "@id"
       },
       "subjectLabel": "http://purl.org/dc/elements/1.1/subject",
+      "coverage": "http://purl.org/dc/elements/1.1/coverage",
       "editor":
       {
          "@id": "http://purl.org/ontology/bibo/editor",
