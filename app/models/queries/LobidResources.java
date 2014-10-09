@@ -135,6 +135,7 @@ public class LobidResources {
 			return Arrays.asList(/* @formatter:off*/
 					"@graph.@id",
 					"@graph.http://purl.org/lobid/lv#hbzID.@value",
+					"@graph.http://purl.org/lobid/lv#zdbID.@value",
 					"@graph.http://purl.org/ontology/bibo/isbn13.@value",
 					"@graph.http://purl.org/ontology/bibo/isbn.@value",
 					"@graph.http://purl.org/ontology/bibo/issn.@value",

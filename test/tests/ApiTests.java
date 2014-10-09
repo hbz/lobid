@@ -43,10 +43,14 @@ public class ApiTests {
 						/*---------------*/
 						{ "resource/HT002189125",/* -> */"a peep at Polynesian life" }, // NOPMD
 						{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
+						{ "resource?id=ZDB2615620-9",/* -> */"Verbandsgemeinde Ulmen" },
+						{ "resource?id=urn:nbn:de:hbz:929:02-1035",/* -> */
+						"urn:nbn:de:hbz:929:02-1035" },
 						{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
 						{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
 						{ "resource?name=Typee&t=" + "http://purl.org/ontology/bibo/Book",
 								"a peep at Polynesian life" },
+						{ "resource?name=ZDB2615620-9",/* -> */"Verbandsgemeinde Ulmen" },
 						{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
 						{ "resource?author=Melville&format=short",/* -> */
 						"Melville, Herman" },
@@ -120,13 +124,13 @@ public class ApiTests {
 						{ "person?name=11850553X",/* -> */"http://d-nb.info/gnd/11850553X" },
 						{ "person?name=Bach",/* -> */"Bach, Johann Sebastian" },
 						{ "person?name=Bach&format=short",/* -> */
-				"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
+						"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
 						{
 								"person?q=Bach&format=short&t="
-            + "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
-						"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
+										+ "http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson",
+								"Bach, Johann Sebastian (1685-03-21-1750-07-28)" },
 						{ "person?q=Bruder+von&format=full",
-						"Jüngster Sohn von Friedrich Wilhelm Ebner" },
+								"Jüngster Sohn von Friedrich Wilhelm Ebner" },
 						{ "person?name=Bach&format=ids", /* -> */
 						"http://d-nb.info/gnd/11850553X" },
 						/*-------------*/

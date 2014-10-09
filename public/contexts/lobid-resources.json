@@ -224,6 +224,7 @@
          "@type": "@id"
       },
       "hbzId": "http://purl.org/lobid/lv#hbzID",
+      "zdbId": "http://purl.org/lobid/lv#zdbID",
       "language":
       { 
          "@id": "http://purl.org/dc/terms/language",
