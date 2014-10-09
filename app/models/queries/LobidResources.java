@@ -232,12 +232,13 @@ public class LobidResources {
 
 		@Override
 		public List<String> fields() {
-			return Arrays.asList("@graph.http://purl.org/lobid/lv#nwbibspatial.@id");
+			return Arrays.asList("@graph.http://purl.org/lobid/lv#nwbibspatial.@id",
+					"@graph.http://purl.org/dc/elements/1.1/coverage.@value");
 		}
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return matchQuery(fields().get(0), queryString);
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
 		}
 
 	}
