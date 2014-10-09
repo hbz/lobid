@@ -31,6 +31,8 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchNameAndPublisher(){search("resource?name=der&publisher=Springer", 1);}
 	@Test public void searchSet(){search("resource?set=NWBib", 3);}
 	@Test public void searchSetAndNwbibspatial(){search("resource?set=NWBib&nwbibspatial=http://purl.org/lobid/nwbib-spatial#n99", 1);}
+	@Test public void searchSetAndNwbibspatialValue1(){search("resource?set=NWBib&nwbibspatial=Dortmund", 1);}
+	@Test public void searchSetAndNwbibspatialValue2(){search("resource?set=NWBib&nwbibspatial=Kleve", 1);}
 	@Test public void searchSetAndNwbibsubject(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
 	/*@formatter:on@*/
 
