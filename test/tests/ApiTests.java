@@ -43,13 +43,14 @@ public class ApiTests {
 						/*---------------*/
 						{ "resource/HT002189125",/* -> */"a peep at Polynesian life" }, // NOPMD
 						{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
-						{ "resource?id=ZDB2615620-9",/* -> */"ZDB2615620-9" },
+						{ "resource?id=ZDB2615620-9",/* -> */"Verbandsgemeinde Ulmen" },
 						{ "resource?id=urn:nbn:de:hbz:929:02-1035",/* -> */
 						"urn:nbn:de:hbz:929:02-1035" },
 						{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
 						{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
 						{ "resource?name=Typee&t=" + "http://purl.org/ontology/bibo/Book",
 								"a peep at Polynesian life" },
+						{ "resource?name=ZDB2615620-9",/* -> */"Verbandsgemeinde Ulmen" },
 						{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
 						{ "resource?author=Melville&format=short",/* -> */
 						"Melville, Herman" },
