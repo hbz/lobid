@@ -315,6 +315,7 @@
       "preferredNameEntityForThePerson": "http://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson",
       "preferredNameForTheFamily": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily",
       "preferredNameForTheWork": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork",
-      "preferredName": "http://d-nb.info/standards/elementset/gnd#preferredName"
+      "preferredName": "http://d-nb.info/standards/elementset/gnd#preferredName",
+      "subjectChain": "http://purl.org/lobid/lv#subjectChain"
    }
 }
