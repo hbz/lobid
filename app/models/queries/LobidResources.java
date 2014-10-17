@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
+import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
@@ -110,18 +111,20 @@ public class LobidResources {
 		public List<String> fields() {
 			return Arrays.asList(/* @formatter:off*/
 					"@graph.http://www.w3.org/2004/02/skos/core#prefLabel.@value",
+					"@graph.http://purl.org/lobid/lv#subjectChain.@value",
 					"@graph.http://purl.org/dc/terms/subject");/* @formatter:on */
 		}
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			final MatchQueryBuilder subjectLabelQuery =
-					matchQuery(fields().get(0), queryString).operator(Operator.AND);
+			final MultiMatchQueryBuilder subjectLabelQuery =
+					multiMatchQuery(queryString, fields().get(0), fields().get(1))
+							.operator(Operator.AND);
 			final String query =
 					queryString.startsWith("http://") ? queryString
 							: "http://d-nb.info/gnd/" + queryString;
 			final MatchQueryBuilder subjectIdQuery =
-					matchQuery(fields().get(1) + ".@id", query).operator(Operator.AND);
+					matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
 			return boolQuery().should(subjectLabelQuery).should(subjectIdQuery);
 		}
 	}
