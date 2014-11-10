@@ -70,7 +70,8 @@ public class LobidResources {
 			List<String> fields = new ArrayList<>();
 			fields.addAll(Arrays.asList(
 					"@graph.http://purl.org/dc/terms/title.@value",
-					"@graph.http://purl.org/dc/terms/alternative.@value"));
+					"@graph.http://purl.org/dc/terms/alternative.@value",
+					"@graph.http://rdvocab.info/Elements/otherTitleInformation.@value"));
 			fields.addAll(new IdQuery().fields());
 			return fields;
 		}
