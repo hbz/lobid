@@ -91,7 +91,7 @@ public final class Collection extends Controller {
 			Document doc = new Document(id, response.getSourceAsString(), index, "");
 			List<Document> docs = new ArrayList<>();
 			docs.add(doc);
-			Logger.debug("Response:\n" + response.getSourceAsString());
+			Logger.trace("Response:\n" + response.getSourceAsString());
 			return !response.isExists() ? notFound() : Application.negotiateContent(
 					docs, index, "", 1, false);
 		} catch (Exception x) {
