@@ -257,6 +257,7 @@
       },
       "subjectLabel": "http://purl.org/dc/elements/1.1/subject",
       "coverage": "http://purl.org/dc/elements/1.1/coverage",
+      "subjectLocation": "http://purl.org/lobid/lv#subjectLocation",
       "editor":
       {
          "@id": "http://purl.org/ontology/bibo/editor",
