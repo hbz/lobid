@@ -75,7 +75,6 @@ public final class Facets extends Controller {
 				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s",
 						id, q, author, name, subject, publisher, issued, medium, owner,
 						set, nwbibspatial, nwbibsubject, size, field, t);
-		Logger.info(key);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
 			return Promise.promise(() -> cachedResult);

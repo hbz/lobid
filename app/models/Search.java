@@ -142,9 +142,9 @@ public class Search {
 		Logger.debug(String.format("Not cached: %s, will cache for one hour",
 				cacheId));
 		final QueryBuilder queryBuilder = createQuery();
-		Logger.debug("Using query: " + queryBuilder);
+		Logger.trace("Using query: " + queryBuilder);
 		final SearchResponse response = search(queryBuilder);
-		Logger.debug("Got response: " + response);
+		Logger.trace("Got response: " + response);
 		final SearchHits hits = response.getHits();
 		final List<Document> docs = asDocuments(hits, fields(parameters));
 		final Pair<List<Document>, Long> result =
