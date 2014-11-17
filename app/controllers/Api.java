@@ -49,6 +49,7 @@ public final class Api extends Controller {
 	 * @param type The type of the requested resources
 	 * @param sort The sort order
 	 * @param addQueryInfo If true, add a query info object to the response
+	 * @param location A polygon describing the subject area of the resources
 	 * @return Matching resources
 	 */
 	public static Promise<Result> resource(
@@ -59,7 +60,8 @@ public final class Api extends Controller {
 			final String issued, final String medium, final String set,
 			final String nwbibspatial, final String nwbibsubject,
 			final String format, final int from, final int size, final String owner,
-			final String type, final String sort, final boolean addQueryInfo) {
+			final String type, final String sort, final boolean addQueryInfo,
+			final String location) {
 		Logger
 				.debug(String
 						.format(
@@ -78,7 +80,8 @@ public final class Api extends Controller {
 						.put(Parameter.MEDIUM, medium)
 						.put(Parameter.SET, set)
 						.put(Parameter.NWBIBSPATIAL, nwbibspatial)
-						.put(Parameter.NWBIBSUBJECT, nwbibsubject).build());/*@formatter:on*/
+						.put(Parameter.NWBIBSUBJECT, nwbibsubject)
+						.put(Parameter.LOCATION, location).build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, owner,
 				set, type, sort, addQueryInfo);
 	}
@@ -209,7 +212,7 @@ public final class Api extends Controller {
 		Promise<List<Result>> results =
 				Promise.sequence(
 						resource(id, q, name, "", "", "", "", "", "", "", "", format, from,
-								size, "", "", "", true),
+								size, "", "", "", true, ""),
 						organisation(id, q, name, format, from, size, "", true),
 						person(id, q, name, format, from, size, "", true),
 						subject(id, q, name, format, from, size, ""));
