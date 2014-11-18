@@ -12,8 +12,8 @@ GET     /about                      controllers.Application.about()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /images/*file               controllers.Assets.at(path="/public/images", file)
 
-# Map JSON-LD context documents from the /public/contexts folder to the /contect URL path
-GET     /context/:file              controllers.Assets.at(path="/public/contexts", file)
+# Map JSON-LD context documents to the /context URL path (use separate controller for headers and content type)
+GET     /context/:file              controllers.Api.context(file)
 
 # Collections
 GET     /resource/RPB               controllers.Collection.resourceRPB(format ?= "negotiate")

@@ -8,6 +8,7 @@ import java.util.Map;
 import models.Index;
 import models.Parameter;
 import play.Logger;
+import play.Play;
 import play.libs.F.Function;
 import play.libs.F.Promise;
 import play.libs.Json;
@@ -217,6 +218,16 @@ public final class Api extends Controller {
 						person(id, q, name, format, from, size, "", true),
 						subject(id, q, name, format, from, size, ""));
 		return results.map(okJson());
+	}
+
+	/**
+	 * @param file The context file name
+	 * @return The context in the given file
+	 */
+	public static Result context(String file) {
+		response().setContentType("application/ld+json");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		return ok(Play.application().resourceAsStream("contexts/" + file));
 	}
 
 	private static Function<List<Result>, Result> okJson() {
