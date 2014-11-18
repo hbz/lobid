@@ -42,7 +42,7 @@ public enum Index {
 					.put(Parameter.SET, new LobidResources.SetQuery())
 					.put(Parameter.NWBIBSPATIAL, new LobidResources.NwBibSpatialQuery())
 					.put(Parameter.NWBIBSUBJECT, new LobidResources.NwBibSubjectQuery())
-					.build()),
+					.put(Parameter.LOCATION, new LobidResources.LocationQuery()).build()),
 	/***/
 	LOBID_ORGANISATIONS("lobid-organisations", "json-ld-lobid-orgs",
 			new ImmutableMap.Builder<Parameter, AbstractIndexQuery>()/* @formatter:off */
@@ -97,7 +97,7 @@ public enum Index {
 	 * @throws MalformedURLException If the constructed URL is malformed.
 	 */
 	public Pair<URL, String> context() throws MalformedURLException {
-		final String path = "public/contexts";
+		final String path = "conf/contexts";
 		final String file = id + ".json";
 		URL localContextResourceUrl =
 				Play.application().resource("/" + path + "/" + file);
@@ -105,7 +105,7 @@ public enum Index {
 			localContextResourceUrl = new File(path, file).toURI().toURL();
 		final String publicContextUrl =
 				CONFIG.getString("application.url")
-						+ controllers.routes.Assets.at("/" + path, file).url();
+						+ controllers.routes.Api.context(file).url();
 		return new ImmutablePair<>(localContextResourceUrl, publicContextUrl);
 	}
 

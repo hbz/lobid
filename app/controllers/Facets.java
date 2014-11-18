@@ -65,17 +65,21 @@ public final class Facets extends Controller {
 	 * @param size The number of results to receive
 	 * @param t The type of the requested resources
 	 * @param field The index field to get facets for
+	 * @param location A polygon describing the subject area of the resources
 	 * @return Returns the facets for the field and the given restrictions
 	 */
 	public static Promise<Result> resource(String id, String q, String author,
 			String name, String subject, String publisher, String issued,
 			String medium, String owner, String set, String nwbibspatial,
-			String nwbibsubject, int size, String t, String field) {
+			String nwbibsubject, int size, String t, String field, String location) {
+		if (size > 1500) {
+			return Promise
+					.promise(() -> badRequest("Parameter 'size' must be <= 1500"));
+		}
 		String key =
-				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s",
+				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s",
 						id, q, author, name, subject, publisher, issued, medium, owner,
-						set, nwbibspatial, nwbibsubject, size, field, t);
-		Logger.info(key);
+						set, nwbibspatial, nwbibsubject, size, field, t, location);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
 			return Promise.promise(() -> cachedResult);
@@ -83,7 +87,7 @@ public final class Facets extends Controller {
 		Promise<Result> result =
 				createJsonResponse(getElasticsearchFacets(id, q, author, name, subject,
 						publisher, issued, medium, owner, set, nwbibspatial, nwbibsubject,
-						field, size, t));
+						field, size, t, location));
 		result.onRedeem(r -> Cache.set(key, r, ONE_DAY));
 		return result;
 	}
@@ -112,13 +116,15 @@ public final class Facets extends Controller {
 	private static Promise<org.elasticsearch.search.facet.Facets> getElasticsearchFacets(
 			String id, String q, String author, String name, String subject,
 			String publisher, String issued, String medium, String owner, String set,
-			String nwbibspatial, String nwbibsubject, String field, int size, String t) {
+			String nwbibspatial, String nwbibsubject, String field, int size,
+			String t, String location) {
 		Promise<org.elasticsearch.search.facet.Facets> promise =
 				Promise.promise(
 						() -> {
 							QueryBuilder query =
 									createQuery(id, q, author, name, subject, publisher, issued,
-											medium, set, nwbibspatial, nwbibsubject, owner, t);
+											medium, set, nwbibspatial, nwbibsubject, owner, t,
+											location);
 							SearchRequestBuilder req =
 									createRequest(owner, field, query, size);
 							long start = System.currentTimeMillis();
@@ -137,7 +143,7 @@ public final class Facets extends Controller {
 	private static QueryBuilder createQuery(String id, String q, String author,
 			String name, String subject, String publisher, String issued,
 			String medium, String set, String nwbibspatial, String nwbibsubject,
-			String owner, String t) {
+			String owner, String t, String location) {
 		final Map<Parameter, String> parameters =
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
 						.put(Parameter.ID, id)
@@ -150,7 +156,8 @@ public final class Facets extends Controller {
 						.put(Parameter.MEDIUM, medium)
 						.put(Parameter.SET, set)
 						.put(Parameter.NWBIBSPATIAL, nwbibspatial)
-						.put(Parameter.NWBIBSUBJECT, nwbibsubject).build());/*@formatter:on*/
+						.put(Parameter.NWBIBSUBJECT, nwbibsubject)
+						.put(Parameter.LOCATION, location).build());/*@formatter:on*/
 		QueryBuilder query =
 				parameters.isEmpty() ? QueryBuilders.matchAllQuery() : new Search(
 						parameters, Index.LOBID_RESOURCES).owner(owner).type(t)

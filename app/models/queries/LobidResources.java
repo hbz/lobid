@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.elasticsearch.index.query.FilterBuilder;
+import org.elasticsearch.index.query.FilterBuilders;
+import org.elasticsearch.index.query.GeoPolygonFilterBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
@@ -70,7 +73,8 @@ public class LobidResources {
 			List<String> fields = new ArrayList<>();
 			fields.addAll(Arrays.asList(
 					"@graph.http://purl.org/dc/terms/title.@value",
-					"@graph.http://purl.org/dc/terms/alternative.@value"));
+					"@graph.http://purl.org/dc/terms/alternative.@value",
+					"@graph.http://rdvocab.info/Elements/otherTitleInformation.@value"));
 			fields.addAll(new IdQuery().fields());
 			return fields;
 		}
@@ -243,6 +247,38 @@ public class LobidResources {
 		@Override
 		public QueryBuilder build(String queryString) {
 			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
+		}
+
+	}
+
+	/**
+	 * Query the lobid-resources set for results in a given polygon.
+	 */
+	public static class LocationQuery extends AbstractIndexQuery {
+
+		@Override
+		public List<String> fields() {
+			return Arrays
+					.asList("@graph.http://purl.org/lobid/lv#subjectLocation.@value");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return QueryBuilders.filteredQuery(QueryBuilders.matchAllQuery(),
+					polygonFilter(queryString));
+		}
+
+		private FilterBuilder polygonFilter(String location) {
+			GeoPolygonFilterBuilder filter =
+					FilterBuilders.geoPolygonFilter("json-ld-lobid." + fields().get(0));
+			String[] points = location.split(" ");
+			for (String point : points) {
+				String[] latLon = point.split(",");
+				filter =
+						filter.addPoint(Double.parseDouble(latLon[0].trim()),
+								Double.parseDouble(latLon[1].trim()));
+			}
+			return filter;
 		}
 
 	}
