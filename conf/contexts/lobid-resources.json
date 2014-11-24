@@ -139,6 +139,7 @@
       "placeOfPublication": "http://rdvocab.info/Elements/placeOfPublication",
       "publisher": "http://purl.org/dc/elements/1.1/publisher",
       "issued": "http://purl.org/dc/terms/issued",
+      "frequency": "http://rdvocab.info/Elements/frequency",
       "sameAs":
       {
          "@id": "http://www.w3.org/2002/07/owl#sameAs",
