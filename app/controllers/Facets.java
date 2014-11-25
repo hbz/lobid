@@ -72,9 +72,9 @@ public final class Facets extends Controller {
 			String name, String subject, String publisher, String issued,
 			String medium, String owner, String set, String nwbibspatial,
 			String nwbibsubject, int size, String t, String field, String location) {
-		if (size > 1500) {
+		if (size > 9999) {
 			return Promise
-					.promise(() -> badRequest("Parameter 'size' must be <= 1500"));
+					.promise(() -> badRequest("Parameter 'size' must be <= 9999"));
 		}
 		String key =
 				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s",
