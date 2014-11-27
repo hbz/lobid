@@ -193,6 +193,11 @@
          "@id": "http://purl.org/dc/terms/isPartOf",
          "@type": "@id"
       },
+      "collectedBy":
+      {
+         "@id": "http://purl.org/ontology/holding#collectedBy",
+         "@type": "@id"
+      },
       "inDataset":
       {
          "@id": "http://www.w3.org/2000/01/rdf-schema#inDataset",
