@@ -58,8 +58,8 @@ public class LobidResources {
 		@Override
 		public QueryBuilder build(final String queryString) {
 			final String prefix = "http://lobid.org/resource/";
-			return matchQuery(fields().get(0),
-					prefix + queryString.replace(prefix, "")).operator(Operator.AND);
+			return multiMatchQuery(prefix + queryString.replace(prefix, ""),
+					fields().toArray(new String[] {})).operator(Operator.AND);
 		}
 
 	}
