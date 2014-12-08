@@ -51,7 +51,8 @@ public class LobidResources {
 
 		@Override
 		public List<String> fields() {
-			return Arrays.asList("@graph.http://purl.org/dc/terms/isPartOf.@id");
+			return Arrays.asList("@graph.http://purl.org/dc/terms/isPartOf.@id",
+					"@graph.http://purl.org/ontology/holding#collectedBy.@id");
 		}
 
 		@Override
