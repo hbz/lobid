@@ -51,14 +51,15 @@ public class LobidResources {
 
 		@Override
 		public List<String> fields() {
-			return Arrays.asList("@graph.http://purl.org/dc/terms/isPartOf.@id");
+			return Arrays.asList("@graph.http://purl.org/dc/terms/isPartOf.@id",
+					"@graph.http://purl.org/ontology/holding#collectedBy.@id");
 		}
 
 		@Override
 		public QueryBuilder build(final String queryString) {
 			final String prefix = "http://lobid.org/resource/";
-			return matchQuery(fields().get(0),
-					prefix + queryString.replace(prefix, "")).operator(Operator.AND);
+			return multiMatchQuery(prefix + queryString.replace(prefix, ""),
+					fields().toArray(new String[] {})).operator(Operator.AND);
 		}
 
 	}
