@@ -19,6 +19,8 @@
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/HT016115915","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/HT013454961","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/TT002234003","_index":"lobid-resources"}}
+{"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/HT014818868","_index":"lobid-resources"}}
+{"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/HT005393128","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/ZDB2615620-9","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/ZDB2530091-X","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid-item","_id":"http:\/\/lobid.org\/item\/BT000000079:GA%20644","_parent":"http:\/\/lobid.org\/resource\/BT000013654","_index":"lobid-resources"}}
