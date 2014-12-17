@@ -46,4 +46,5 @@
 {"index":{"_type":"json-ld-gnd","_id":"http:\/\/d-nb.info\/gnd\/118577166","_index":"gnd"}}
 {"index":{"_type":"json-ld-gnd","_id":"http:\/\/d-nb.info\/gnd\/129612774","_index":"gnd"}}
 {"index":{"_type":"json-ld-gnd","_id":"http:\/\/d-nb.info\/gnd\/1012584410","_index":"gnd"}}
+{"index":{"_type":"json-ld-gnd","_id":"http:\/\/d-nb.info\/gnd\/14106000X","_index":"gnd"}}
 {"index":{"_type":"json-ld-lobid-collection","_id":"http:\/\/lobid.org\/resource\/NWBib","_index":"lobid-collections"}}

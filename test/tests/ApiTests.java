@@ -43,14 +43,13 @@ public class ApiTests {
 						/*---------------*/
 						{ "resource/HT002189125",/* -> */"a peep at Polynesian life" }, // NOPMD
 						{ "resource?id=HT002189125",/* -> */"a peep at Polynesian life" },
-						{ "resource?id=ZDB2615620-9",/* -> */"Verbandsgemeinde Ulmen" },
+						{ "resource?id=ZDB2615620-9",/* -> */"HT016884620" },
 						{ "resource?id=urn:nbn:de:hbz:929:02-1035",/* -> */
 						"urn:nbn:de:hbz:929:02-1035" },
 						{ "resource?name=HT002189125",/* -> */"a peep at Polynesian life" },
 						{ "resource?name=Typee",/* -> */"a peep at Polynesian life" },
 						{ "resource?name=Typee&t=" + "http://purl.org/ontology/bibo/Book",
 								"a peep at Polynesian life" },
-						{ "resource?name=ZDB2615620-9",/* -> */"Verbandsgemeinde Ulmen" },
 						{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
 						{ "resource?author=Melville&format=short",/* -> */
 						"Melville, Herman" },
@@ -89,7 +88,7 @@ public class ApiTests {
 						/*-------------------*/
 						/* GET /organisation */
 						/*-------------------*/
-						{ "organisation/US-IdBoTIMB",/* -> */"Timberline High School" },
+						{ "organisation/DE-352",/* -> */"Medienzentrum (KIM)" },
 						{ "organisation/SzBaU",/* -> */"Universität Basel" }, // NOPMD
 						{ "organisation?id=SzBaU",/* -> */"Universität Basel" },
 						{ "organisation?name=SzBaU",/* -> */"Universität Basel" },

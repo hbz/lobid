@@ -43,7 +43,7 @@ public class SearchTests extends SearchTestsHarness {
 	public void accessIndex() {
 		assertThat(
 				client.prepareSearch().execute().actionGet().getHits().totalHits())
-				.isEqualTo(51);
+				.isEqualTo(49);
 		JsonNode json =
 				Json.parse(client
 						.prepareGet(Index.LOBID_RESOURCES.id(), "json-ld-lobid",
@@ -81,13 +81,13 @@ public class SearchTests extends SearchTestsHarness {
 
 	@Test
 	public void searchViaModelOrgName() {
-		assertThat(searchOrgByName("hbz Land")).isEqualTo(1);
-		assertThat(searchOrgByName("hbz Schmeckermeck")).isEqualTo(0);
+		assertThat(searchOrgByName("Konstanz Universität")).isEqualTo(1);
+		assertThat(searchOrgByName("Konstanz Schmeckermeck")).isEqualTo(0);
 	}
 
 	@Test
 	public void searchViaModelOrgNameAltLabel() {
-		assertThat(searchOrgByName("UB")).isEqualTo(1);
+		assertThat(searchOrgByName("Universität Konstanz KIM")).isEqualTo(1);
 	}
 
 	private static int searchOrgByName(final String term) {
@@ -97,8 +97,8 @@ public class SearchTests extends SearchTestsHarness {
 
 	@Test
 	public void searchViaModelOrgQuery() {
-		assertThat(searchOrgQuery("Einrichtung ohne Bestand")).isEqualTo(1);
-		assertThat(searchOrgQuery("hbz Schmeckermeck")).isEqualTo(1);
+		assertThat(searchOrgQuery("1,000,001 and more")).isEqualTo(2);
+		assertThat(searchOrgQuery("Konstanz Schmeckermeck")).isEqualTo(1);
 	}
 
 	private static int searchOrgQuery(final String term) {
@@ -128,7 +128,7 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void searchResByIdZdbUrl1() { searchResById("http://lobid.org/resource/ZDB2615620-9"); }
 	@Test public void searchResByIdZdbUrl2() { searchResById("http://lobid.org/resource/ZDB2530091-X"); }
 	@Test public void searchResByIdISBN() { searchResById("0940450003"); }
-	@Test public void searchResByIdUrn() { searchResById("urn:nbn:de:101:1-201210094953"); }
+	@Test public void searchResByIdUrn() { searchResById("urn:nbn:de:hbz:929:02-1035"); }
 	/*@formatter:on*/
 
 	private static void searchResById(final String term) {
@@ -262,7 +262,7 @@ public class SearchTests extends SearchTestsHarness {
 				new Search(ImmutableMap.of(Parameter.SET, "NwBib"),
 						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(3);
-		assertThat(documents.get(0).getMatchedField()).isEqualTo(
+		assertThat(documents.get(1).getMatchedField()).isEqualTo(
 				"http://lobid.org/resource/NWBib");
 	}
 
@@ -346,7 +346,7 @@ public class SearchTests extends SearchTestsHarness {
 								+ "http://d-nb.info/standards/elementset/gnd%23DifferentiatedPerson"));
 				assertThat(jsonObject.isArray()).isTrue();
 				/* differentiated & *starting* with 'bach' only & no dupes */
-				assertThat(jsonObject.size()).isEqualTo(2);
+				assertThat(jsonObject.size()).isEqualTo(3);
 			}
 		});
 	}
@@ -430,9 +430,9 @@ public class SearchTests extends SearchTestsHarness {
 			@Override
 			public void run() {
 				final JsonNode jsonObject =
-						Json.parse(call("resource?subject=http://purl.org/lobid/nwbib-spatial#n99"));
+						Json.parse(call("resource?nwbibsubject=http://purl.org/lobid/nwbib#s552000"));
 				assertThat(jsonObject.isArray()).isTrue();
-				assertThat(jsonObject.size()).isEqualTo(3 + META);
+				assertThat(jsonObject.size()).isEqualTo(1 + META);
 			}
 		});
 	}
@@ -501,9 +501,9 @@ public class SearchTests extends SearchTestsHarness {
 
 	/* @formatter:off */
 	@Test public void itemByIdParam1(){findItem("item?id=BT000000079:GA%20644");}
-	@Test public void itemByIdParam2(){findItem("item?id=BT000001260:MA%2B742");}
+	@Test public void itemByIdParam2(){findItem("item?id=BT000001260:DE-Sol1:MA%20742");}
 	@Test public void itemByIdUri1(){findItem("item?id=http://lobid.org/item/BT000000079:GA%20644");}
-	@Test public void itemByIdUri2(){findItem("item?id=http://lobid.org/item/BT000001260:MA%2B742");}
+	@Test public void itemByIdUri2(){findItem("item?id=http://lobid.org/item/BT000001260:DE-Sol1:MA%20742");}
 	@Test public void itemByName(){findItem("item?name=GA+644");}
 	/* @formatter:on */
 
@@ -731,7 +731,7 @@ public class SearchTests extends SearchTestsHarness {
 				String response = call(request);
 				assertThat(response).contains(request);
 				assertThat(response).contains(
-						"\"http://sindice.com/vocab/search#totalResults\":25}");
+						"\"http://sindice.com/vocab/search#totalResults\":23}");
 			}
 		});
 	}
@@ -746,7 +746,7 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(response).contains(request);
 				assertThat(response).contains(
 						"<http://sindice.com/vocab/search#totalResults> "
-								+ "\"25\"^^<http://www.w3.org/2001/XMLSchema#integer>");
+								+ "\"23\"^^<http://www.w3.org/2001/XMLSchema#integer>");
 			}
 		});
 	}
