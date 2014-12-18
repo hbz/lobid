@@ -23,9 +23,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class SearchResourceSortOrder extends SearchTestsHarness {
 
 	/*@formatter:off@*/
-	@Test public void sortDefault(){search("resource?name=der", Arrays.asList("2008", "1973", "2011 - ", "1993", "1999"));}
-	@Test public void sortNewest(){search("resource?name=der&sort=newest", Arrays.asList("2011 - ", "2008", "1999", "1993", "1973"));}
-	@Test public void sortOldest(){search("resource?name=der&sort=oldest", Arrays.asList("1973", "1993", "1999", "2008", "2011 - "));}
+	@Test public void sortDefault(){search("resource?name=der", Arrays.asList("2008", "1973","1993", "1999"));}
+	@Test public void sortNewest(){search("resource?name=der&sort=newest", Arrays.asList( "2008", "1999", "1993", "1973"));}
+	@Test public void sortOldest(){search("resource?name=der&sort=oldest", Arrays.asList("1973", "1993", "1999", "2008"));}
 	/*@formatter:on@*/
 
 	private static void search(final String request, final List<String> years) {

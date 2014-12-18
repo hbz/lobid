@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 
 	/*@formatter:off@*/
-	@Test public void searchName(){search("resource?name=der", 5);}
+	@Test public void searchName(){search("resource?name=der", 4);}
 	@Test public void searchAltName(){search("resource?name=Grenzdimensionen", 1);}
 	@Test public void searchNameAndAuthor(){search("resource?name=der&author=edmund", 1);}
 	@Test public void searchNameAndSubject(){search("resource?name=der&subject=4414195-6", 1);}
@@ -31,12 +31,11 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchNameAndIssuedRange(){search("resource?name=der&issued=1993-2008", 3);}
 	@Test public void searchNameAndPublisher(){search("resource?name=der&publisher=Springer", 1);}
 	@Test public void searchSet(){search("resource?set=NWBib", 3);}
-	@Test public void searchSetAndNwbibspatial(){search("resource?set=NWBib&nwbibspatial=http://purl.org/lobid/nwbib-spatial#n99", 1);}
-	@Test public void searchSetAndNwbibspatialValue1(){search("resource?set=NWBib&nwbibspatial=Dortmund", 1);}
-	@Test public void searchSetAndNwbibspatialValue2(){search("resource?set=NWBib&nwbibspatial=Kleve", 1);}
-	@Test public void searchSetAndNwbibsubject(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
+	@Test public void searchSetAndNwbibspatialValue1(){search("resource?set=NWBib&nwbibspatial=Kirchhundem-Heinsberg", 1);}
+	@Test public void searchSetAndNwbibspatialValue2(){search("resource?set=NWBib&nwbibspatial=Gummersbach", 1);}
+	@Test public void searchSetAndNwbibsubject(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 3);}
 	@Test public void searchSetAndSubjectChain1(){search("resource?set=NWBib&subject=Geschichte", 1);}
-	@Test public void searchSetAndSubjectChain2(){search("resource?set=NWBib&subject=Wadersloh", 1);}
+	@Test public void searchSetAndSubjectChain2(){search("resource?set=NWBib&subject=Heinsberg", 1);}
 	/*@formatter:on@*/
 
 	private static void search(final String request, final int count) {
