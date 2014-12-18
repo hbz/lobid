@@ -84,7 +84,6 @@ public class BrowserTests {
 	}
 
 	private static void assertTypee(final TestBrowser browser) {
-		System.out.println("pchbz:" + browser.pageSource().toString());
 		assertThat(browser.pageSource()).contains("Typee")
 				.contains("a peep at Polynesian life")
 				.contains("http://gutenberg.org/ebooks/9269")

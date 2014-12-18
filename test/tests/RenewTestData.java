@@ -35,6 +35,7 @@ public abstract class RenewTestData {
 	private static final String TEST_DATA =
 			"test/tests/json-ld-index-data-to-build.json";
 	private static StringBuilder lookupedJson = new StringBuilder();
+	static boolean finished = false;
 
 	public static void main() throws IOException {
 		System.out.println("Start getting test data ...");
@@ -46,6 +47,8 @@ public abstract class RenewTestData {
 				if (lookupedJson.length() > 1) {
 					fos.write(lookupedJson.toString().getBytes());
 					fos.close();
+					finished = true;
+					System.out.println("Finished getting test data.");
 				}
 			}
 		}
@@ -65,7 +68,6 @@ public abstract class RenewTestData {
 		if (hit == null) {
 			System.err.println("No results. Make sure resource exits.");
 		} else {
-			System.out.println(hit);
 			lookupedJson.append(meta + "\n" + hit + "\n");
 		}
 

@@ -66,9 +66,16 @@ public class SearchTestsHarness {
 	public static void setup() throws IOException {
 		if (!testDataUpToDate) {
 			try {
-				RenewTestData.main();
 				testDataUpToDate = true;
+				RenewTestData.main();
 			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		while (!RenewTestData.finished) {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
