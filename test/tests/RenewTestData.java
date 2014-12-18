@@ -36,7 +36,7 @@ public abstract class RenewTestData {
 			"test/tests/json-ld-index-data-to-build.json";
 	private static StringBuilder lookupedJson = new StringBuilder();
 
-	public static void start() throws IOException {
+	public static void main() throws IOException {
 		System.out.println("Start getting test data ...");
 		File sampleData = new File(TEST_DATA);
 		try (Scanner scanner = new Scanner(sampleData)) {
