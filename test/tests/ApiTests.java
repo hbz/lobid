@@ -58,7 +58,7 @@ public class ApiTests {
 						{ "resource?subject=4414195-6&set=NWBib",/* -> */
 						"http://lobid.org/resource/NWBib" },
 						{ "resource?subject=Chemistry",/* -> */"Synthese, Eigenschaften" },
-						{ "resource?subject=Chemistry&format=short",/* -> */
+						{ "resource?subject=Chemistry&format=full",/* -> */
 						"Chemistry & allied sciences" },
 						{ "resource?name=Typee&format=ids",/* -> */
 						"http://lobid.org/resource/HT002189125" },
