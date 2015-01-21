@@ -17,5 +17,7 @@ public enum ResultFormat {
 	/** JSON maps with 'label' and 'value' fields, where 'value' contains the ID. */
 	IDS,
 	/** The original source format of the data. */
-	SOURCE
+	SOURCE,
+	/** The internal source format of the data. */
+	INTERNAL
 }

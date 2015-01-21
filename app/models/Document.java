@@ -88,6 +88,14 @@ public class Document {
 		}
 	}
 
+	/**
+	 * @return The JSON source for this document as it original resides in
+	 *         elasticsearch "_source" field.
+	 */
+	public String getEsSource() {
+		return source;
+	}
+
 	private Map<String, Object> sourceAsCompactJsonLd(
 			final Map<String, Object> contextObject) throws IOException, JsonLdError {
 		final Map<String, Object> jsonLd =
