@@ -71,12 +71,12 @@ public class SearchTestsHarness {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-		while (!RenewTestData.finished) {
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			while (!RenewTestData.finished) {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		node = nodeBuilder().local(true).node();
