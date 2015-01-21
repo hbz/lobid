@@ -135,12 +135,12 @@ public class ApiTests {
 						/*-------------*/
 						/* GET /item */
 						/*-------------*/
-						{ "item?id=BT000000079:GA%20644",/* -> */"GA%20644" },
-						{ "item/BT000000079:GA%20644",/* -> */"GA%20644" },
+						{ "item?id=BT000000079:DE-Sol1:GA%20644",/* -> */"GA%20644" },
+						{ "item/BT000000079:DE-Sol1:GA%20644",/* -> */"GA%20644" },
 						{ "item?name=GA%20644&format=ids",/* -> */
-						"http://lobid.org/item/BT000000079:GA%20644" },
+						"http://lobid.org/item/BT000000079:DE-Sol1:GA%20644" },
 						{ "item?q=GA%20644&format=ids",/* -> */
-						"http://lobid.org/item/BT000000079:GA%20644" },
+						"http://lobid.org/item/BT000000079:DE-Sol1:GA%20644" },
 						/*-------------*/
 						/* GET /search */
 						/*-------------*/

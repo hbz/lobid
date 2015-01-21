@@ -23,8 +23,9 @@
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/HT005393128","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/ZDB2615620-9","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid","_id":"http:\/\/lobid.org\/resource\/ZDB2530091-X","_index":"lobid-resources"}}
-{"index":{"_type":"json-ld-lobid-item","_id":"http:\/\/lobid.org\/item\/BT000000079:GA%20644","_parent":"http:\/\/lobid.org\/resource\/BT000013654","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid-item","_id":"http:\/\/lobid.org\/item\/BT000001260:DE-Sol1:MA%20742","_parent":"http:\/\/lobid.org\/resource\/BT000001260","_index":"lobid-resources"}}
+{"index":{"_type":"json-ld-lobid-item","_id":"http:\/\/lobid.org\/item\/BT000000079:DE-Sol1:GA%20644","_parent":"http:\/\/lobid.org\/resource\/BT000000079","_index":"lobid-resources"}}
+{"index":{"_type":"json-ld-lobid-item","_id":"http:\/\/lobid.org\/item\/BT000001260:DE-Sol1:MA%20742","_parent":"http:\/\/lobid.org\/resource\/BT000013654","_index":"lobid-resources"}}
 {"index":{"_type":"json-ld-lobid-orgs","_id":"http:\/\/lobid.org\/organisation\/SzBaU","_index":"lobid-organisations"}}
 {"index":{"_type":"json-ld-lobid-orgs","_id":"http:\/\/lobid.org\/organisation\/AsGTU","_index":"lobid-organisations"}}
 {"index":{"_type":"json-ld-lobid-orgs","_id":"http:\/\/lobid.org\/organisation\/DE-352","_index":"lobid-organisations"}}
@@ -49,4 +50,3 @@
 {"index":{"_type":"json-ld-gnd","_id":"http:\/\/d-nb.info\/gnd\/129612774","_index":"gnd"}}
 {"index":{"_type":"json-ld-gnd","_id":"http:\/\/d-nb.info\/gnd\/1012584410","_index":"gnd"}}
 {"index":{"_type":"json-ld-gnd","_id":"http:\/\/d-nb.info\/gnd\/14106000X","_index":"gnd"}}
-{"index":{"_type":"json-ld-lobid-collection","_id":"http:\/\/lobid.org\/resource\/NWBib","_index":"lobid-collections"}}
