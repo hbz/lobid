@@ -7,13 +7,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-
-import com.github.jsonldjava.core.JsonLdOptions;
 
 /**
  * Rebuilds the test data by making a lookup at the lobid api to get the
@@ -29,8 +29,9 @@ public abstract class RenewTestData {
 			"test/tests/json-ld-index-data-to-build.json";
 	private static StringBuilder lookupedJson = new StringBuilder();
 	static boolean finished = false;
-	static JsonLdOptions options = new JsonLdOptions(
-			"http://api.lobid.org/context/gnd.json");
+
+	// static JsonLdOptions options = new JsonLdOptions(
+	// "http://api.lobid.org/context/gnd.json");
 
 	public static void main() throws IOException {
 		System.out.println("Start getting test data ...");
@@ -72,13 +73,16 @@ public abstract class RenewTestData {
 		JSONObject object =
 				(JSONObject) ((JSONObject) JSONValue.parse(meta)).get("index");
 		String id = ((String) object.get("_id"));
-		id =
-				id.replaceAll("http:\\/\\/d-nb.info/gnd\\/",
-						"http:\\/\\/lobid.org\\/subject/");
-		int i = id.lastIndexOf("/");
-		id =
-				id.substring(0, i).concat("?id=").concat(id.substring(i + 1))
-						.concat("&format=internal");
+		String type = ((String) object.get("_type"));
+		if (!type.equals("json-ld-lobid-collection")) {
+			id =
+					id.replaceAll("http:\\/\\/d-nb.info/gnd\\/",
+							"http:\\/\\/lobid.org\\/subject/");
+			int i = id.lastIndexOf("/");
+			id =
+					id.substring(0, i).concat("?id=").concat(id.substring(i + 1))
+							.concat("&format=internal");
+		}
 		URL url;
 		try {
 			url = new URL(id);
@@ -87,6 +91,15 @@ public abstract class RenewTestData {
 			urlConnection.setRequestProperty("Accept", "application/ld+json");
 			urlConnection.connect();
 			ret = IOUtils.toString(urlConnection.getInputStream(), "UTF-8");
+			if (type.equals("json-ld-lobid-collection")) {
+				Iterator<JSONObject> it = ((JSONArray) JSONValue.parse(ret)).iterator();
+				while (it.hasNext()) {
+					object = it.next();
+					if (object.containsKey("@graph")) {
+						ret = "{\"@graph\":" + object.get("@graph").toString().concat("}");
+					}
+				}
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
