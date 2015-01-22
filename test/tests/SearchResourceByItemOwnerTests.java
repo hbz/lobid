@@ -55,14 +55,14 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 
 	@Test
 	public void searchResByAuthor2_withOwnerId() {
-		searchResByAuthorWithOwnerId(AUTHOR2, "DE-Sol2",
+		searchResByAuthorWithOwnerId(AUTHOR2, "DE-Sol1",
 				"http://lobid.org/resource/BT000013654");
 	}
 
 	@Test
 	public void searchResByAuthor2_withOwnerUri() {
 		searchResByAuthorWithOwnerId(AUTHOR2,
-				"http://lobid.org/organisation/DE-Sol2",
+				"http://lobid.org/organisation/DE-Sol1",
 				"http://lobid.org/resource/BT000013654");
 	}
 
@@ -75,7 +75,7 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 	@Test
 	public void searchResByAuthor2_withMultipleOwnerUris() {
 		searchResByAuthorWithOwnerId(AUTHOR2,
-				"http://lobid.org/organisation/DE-Sol2",
+				"http://lobid.org/organisation/DE-Sol1",
 				"http://lobid.org/resource/BT000013654");
 	}
 

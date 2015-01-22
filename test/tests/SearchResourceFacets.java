@@ -24,26 +24,19 @@ public class SearchResourceFacets extends SearchTestsHarness {
 	@Test public void facetsSize1() { facetsSize("size=1", 1); }
 	@Test public void facetsSize2() { facetsSize("size=5", 5); }
 	@Test public void facetsSize3() { facetsSize("size=50", 12); }
-	@Test public void facetsSize4() { facetsSize("size=50&set=http://lobid.org/resource/NWBib", 5); }
-	@Test public void facetsSizeAndIssued() { facetsSize("size=50&issued=1982", 4); }
-	@Test public void facetsSizeAndPublisher() { facetsSize("size=50&publisher=Literary+Classics+of+the+United+States", 4); }
-	@Test public void facetsAuthor1() { facetsSize("author=hu", 5); }
+	@Test public void facetsSize4() { facetsSize("size=50&set=http://lobid.org/resource/NWBib", 4); }
+	@Test public void facetsSizeAndIssued() { facetsSize("size=50&issued=1982", 3); }
+	@Test public void facetsSizeAndPublisher() { facetsSize("size=50&publisher=Literary+Classics+of+the+United+States", 3); }
+	@Test public void facetsAuthor1() { facetsSize("author=hu", 4); }
 	@Test public void facetsAuthor2() { facetsSize("author=hu&id=UNDEFINED", 0); }
-	@Test public void facetsAuthor3() { facetsSize("author=hu&id=TT050326640", 2); }
-	@Test public void facetsName1() { facetsSize("name=Typee", 4); }
+	@Test public void facetsAuthor3() { facetsSize("author=hu&id=TT050326640", 3); }
+	@Test public void facetsName1() { facetsSize("name=Typee", 3); }
 	@Test public void facetsName2() { facetsSize("name=Typee&subject=UNDEFINED", 0); }
-	@Test public void facetsName3() { facetsSize("name=Typee&id=0521262194", 4); }
+	@Test public void facetsName3() { facetsSize("name=Typee&id=0521262194", 3); }
 	@Test public void facetsName4() { facetsSize("name=Typee&set=http://lobid.org/resource/NWBib", 0); }
-	@Test public void facetsSubject1() { facetsSize("subject=http://purl.org/lobid/nwbib-spatial#n99", 5); }
 	@Test public void facetsSubject2() { facetsSize(
-			"subject=http://purl.org/lobid/nwbib-spatial#n99&author=http://d-nb.info/gnd/118554808", 4); }
-	@Test public void facetsSubject3() { facetsSize(
-			"subject=http://purl.org/lobid/nwbib-spatial#n99&name=Papierkrieg", 4); }
-	@Test public void facetsSubject4() { facetsSize(
-			"subject=http://purl.org/lobid/nwbib-spatial#n99&set=http://lobid.org/resource/NWBib", 5); }
-	@Test public void facetsSubject5() { facetsSize(
-			"nwbibspatial=http://purl.org/lobid/nwbib-spatial#n99&set=http://lobid.org/resource/NWBib", 4); }
-	@Test public void facetsSubject6() { facetsSize(
+			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&author=http://d-nb.info/gnd/118554808", 3); }
+		@Test public void facetsSubject6() { facetsSize(
 			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&set=http://lobid.org/resource/NWBib", 4); }
 	/*@formatter:on*/
 

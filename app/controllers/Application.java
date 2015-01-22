@@ -24,8 +24,8 @@ import play.libs.F.Promise;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.twirl.api.Html;
 import scala.concurrent.ExecutionContext;
-import play.twirl.api.Html; 
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -196,6 +196,7 @@ public final class Application extends Controller {
 										.transform(documents, doc -> {
 											return doc.getMatchedField();
 										})))))
+						.put(ResultFormat.INTERNAL, internalJsonResponse(documents))
 						.put(
 								ResultFormat.IDS,
 								withCallback(callback,
@@ -257,6 +258,18 @@ public final class Application extends Controller {
 			data.add(queryInfo(allHits));
 		data.addAll(ImmutableSet.copyOf(nonEmptyNodes));
 		return Json.toJson(data);
+	}
+
+	private static Result internalJsonResponse(final List<Document> documents) {
+		try {
+			final StringBuilder builder = new StringBuilder();
+			for (Document document : documents)
+				builder.append(document.getEsSource()).append("\n");
+			final String result = builder.toString().trim();
+			return documents.size() > 1 ? ok(result) : ok(result).as("text/xml");
+		} catch (IndexMissingException e) {
+			return notFound(e.getMessage());
+		}
 	}
 
 	private static JsonNode queryInfo(long allHits) {

@@ -42,7 +42,8 @@ import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 
 /**
- * Tests harness for the search tests. Creates an in-memory ES index.
+ * Tests harness for the search tests. Creates an in-memory ES index with
+ * renewed test data.
  * 
  * @author Fabian Steeg (fsteeg)
  */
@@ -59,9 +60,25 @@ public class SearchTestsHarness {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(SearchTestsHarness.class);
 	static final int META = 1;
+	static boolean testDataUpToDate = false;
 
 	@BeforeClass
 	public static void setup() throws IOException {
+		if (!testDataUpToDate) {
+			try {
+				testDataUpToDate = true;
+				RenewTestData.main();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			while (!RenewTestData.finished) {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		node = nodeBuilder().local(true).node();
 		client = node.client();
 		client.admin().indices().prepareDelete("_all").execute().actionGet();
