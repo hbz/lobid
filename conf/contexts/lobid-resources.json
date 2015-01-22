@@ -168,6 +168,11 @@
          "@id": "http://purl.org/lobid/lv#fulltextOnline",
          "@type": "@id"
       },
+	  "webPageArchived":
+	  {
+		 "@id": "http://purl.org/lobid/lv#webPageArchived",
+		 "@type": "@id"
+	  },
       "wikipedia":
       {
          "@id": "http://purl.org/ontology/mo/wikipedia",
