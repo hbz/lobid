@@ -99,6 +99,7 @@ public class LobidResources {
 							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson.@value",
 							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfBirth.@value",
 							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfDeath.@value",
+							"@graph.http://purl.org/dc/elements/1.1/contributor.@value",
 							"@graph.http://purl.org/dc/terms/creator");
 		}
 
