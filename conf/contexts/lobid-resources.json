@@ -19,6 +19,8 @@
          "@id": "http://purl.org/dc/terms/contributor",
          "@type": "@id"
       },
+      "contributorLabel": "http://purl.org/dc/elements/1.1/contributor",
+      "contributingCorporateBodyLabel": "http://purl.org/lobid/lv#nameOfContributingCorporateBody",
       "actor":
       {
          "@id": "http://id.loc.gov/vocabulary/relators/act",
