@@ -96,11 +96,36 @@ public class LobidResources {
 		public List<String> fields() {
 			return Arrays
 					.asList(
-							"@graph.http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson.@value",
+							"@graph.http://rdvocab.info/Elements/statementOfResponsibility.@value",
 							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfBirth.@value",
 							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfDeath.@value",
 							"@graph.http://purl.org/dc/elements/1.1/contributor.@value",
-							"@graph.http://purl.org/dc/terms/creator");
+							"@graph.http://purl.org/dc/terms/creator.@id",
+							"@graph.http://purl.org/dc/terms/contributor.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/act.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/aft.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/aui.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/aus.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/clb.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/cmp.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/cnd.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/cng.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/col.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/ctg.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/drt.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/dte.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/egr.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/ill.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/ive.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/ivr.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/mus.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/pht.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/prf.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/pro.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/sng.@id",
+							"@graph.http://id.loc.gov/vocabulary/relators/hnr.@id",
+							"@graph.http://purl.org/ontology/bibo/translator.@id",
+							"@graph.http://purl.org/ontology/bibo/editor.@id");
 		}
 
 		@Override
