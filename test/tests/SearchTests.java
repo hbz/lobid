@@ -43,7 +43,7 @@ public class SearchTests extends SearchTestsHarness {
 	public void accessIndex() {
 		assertThat(
 				client.prepareSearch().execute().actionGet().getHits().totalHits())
-				.isEqualTo(54);
+				.isEqualTo(53);
 		JsonNode json =
 				Json.parse(client
 						.prepareGet(Index.LOBID_RESOURCES.id(), "json-ld-lobid",
@@ -730,7 +730,7 @@ public class SearchTests extends SearchTestsHarness {
 				String response = call(request);
 				assertThat(response).contains(request);
 				assertThat(response).contains(
-						"\"http://sindice.com/vocab/search#totalResults\":26}");
+						"\"http://sindice.com/vocab/search#totalResults\":25}");
 			}
 		});
 	}
@@ -745,7 +745,7 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(response).contains(request);
 				assertThat(response).contains(
 						"<http://sindice.com/vocab/search#totalResults> "
-								+ "\"26\"^^<http://www.w3.org/2001/XMLSchema#integer>");
+								+ "\"25\"^^<http://www.w3.org/2001/XMLSchema#integer>");
 			}
 		});
 	}
