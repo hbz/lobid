@@ -46,7 +46,9 @@ public abstract class AbstractIndexQuery {
 		} else if (search.matches("(http://d-nb\\.info/gnd/)?\\d+")) {
 			final String term =
 					search.startsWith("http") ? search : "http://d-nb.info/gnd/" + search;
-			query = matchQuery(fields().get(3) + ".@id", term);
+			query =
+					multiMatchQuery(term, fields().subList(4, fields().toArray().length)
+							.toArray(new String[] {}));
 		} else {
 			query = nameMatchQuery(search);
 		}

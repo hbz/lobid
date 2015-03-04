@@ -52,7 +52,7 @@ public class ApiTests {
 								"a peep at Polynesian life" },
 						{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
 						{ "resource?author=Melville&format=short",/* -> */
-						"Melville, Herman" },
+						"[\"1819-08-01\"]" },
 						{ "resource?author=118580604",/* -> */"a peep at Polynesian life" },
 						{ "resource?subject=4414195-6",/* -> */"aus dem Kreis Olpe" },
 						{ "resource?subject=4414195-6&set=NWBib",/* -> */
@@ -73,17 +73,18 @@ public class ApiTests {
 						"response(" },
 						{ "resource?id=TT002234003&format=full&callback=response",/* -> */
 						"response(" },
-						{ "resource?author=Hu&owner=DE-Sol1",/* -> */
+						{ "resource?author=Hundt&owner=DE-Sol1",/* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
-						{ "resource?author=Hu&owner=http://lobid.org/organisation/DE-Sol1",/* -> */
-						"Heimatstimmen aus dem Kreis Olpe" },
+						{
+								"resource?author=Hundt&owner=http://lobid.org/organisation/DE-Sol1",/* -> */
+								"Heimatstimmen aus dem Kreis Olpe" },
 						{ "resource?id=BT000001260&owner=DE-Sol1",/* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
 						{ "resource?set=NWBib&owner=DE-Sol1",/* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
-						{ "resource?author=Hu&owner=DE-Sol1,DE-Sol2",/* -> */
+						{ "resource?author=Hundt&owner=DE-Sol1,DE-Sol2",/* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
-						{ "resource?author=Go&owner=DE-Sol1,DE-Sol2",/* -> */
+						{ "resource?author=Goeters&owner=DE-Sol1,DE-Sol2",/* -> */
 						"Kirchengeschichte des Rheinlandes" },
 						/*-------------------*/
 						/* GET /organisation */

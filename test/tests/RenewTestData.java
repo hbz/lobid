@@ -30,9 +30,6 @@ public abstract class RenewTestData {
 	private static StringBuilder lookupedJson = new StringBuilder();
 	static boolean finished = false;
 
-	// static JsonLdOptions options = new JsonLdOptions(
-	// "http://api.lobid.org/context/gnd.json");
-
 	public static void main() throws IOException {
 		System.out.println("Start getting test data ...");
 		File sampleData = new File(TEST_DATA);
