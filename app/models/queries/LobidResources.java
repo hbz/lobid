@@ -142,7 +142,6 @@ public class LobidResources {
 		@Override
 		public List<String> fields() {
 			return Arrays.asList(/* @formatter:off*/
-					"@graph.http://www.w3.org/2004/02/skos/core#prefLabel.@value",
 					"@graph.http://purl.org/lobid/lv#subjectChain.@value",
 					"@graph.http://purl.org/dc/elements/1.1/subject.@value",
 					"@graph.http://purl.org/dc/terms/subject");/* @formatter:on */
@@ -151,13 +150,13 @@ public class LobidResources {
 		@Override
 		public QueryBuilder build(final String queryString) {
 			final MultiMatchQueryBuilder subjectLabelQuery =
-					multiMatchQuery(queryString, fields().get(0), fields().get(1),
-							fields().get(2)).operator(Operator.AND);
+					multiMatchQuery(queryString, fields().get(0), fields().get(1))
+							.operator(Operator.AND);
 			final String query =
 					queryString.startsWith("http://") ? queryString
 							: "http://d-nb.info/gnd/" + queryString;
 			final MatchQueryBuilder subjectIdQuery =
-					matchQuery(fields().get(3) + ".@id", query).operator(Operator.AND);
+					matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
 			return boolQuery().should(subjectLabelQuery).should(subjectIdQuery);
 		}
 	}
