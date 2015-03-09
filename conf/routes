@@ -11,6 +11,9 @@ GET     /about                      controllers.Application.about()
 # Map static resources from the /public folder to the /assets and /images URL paths
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /images/*file               controllers.Assets.at(path="/public/images", file)
+GET			/robots.txt									controllers.Assets.at(path="/public", file="robots.txt")
+GET			/robots-dev.txt							controllers.Assets.at(path="/public", file="robots-dev.txt")
+
 
 # Map JSON-LD context documents to the /context URL path (use separate controller for headers and content type)
 GET     /context/:file              controllers.Api.context(file)
