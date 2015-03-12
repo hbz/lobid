@@ -1,55 +1,58 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
+#Routes
+#Thisfiledefinesallapplicationroutes(Higherpriorityroutesfirst)
+#~~~~
 
-# Home page
-GET     /                           controllers.Application.index()
-GET     /api                        controllers.Application.api()
-GET     /contact                    controllers.Application.contact()
-GET     /about                      controllers.Application.about()
+#Homepage
+GET	/												controllers.Application.index()
+GET	/api										controllers.Application.api()
+GET	/contact								controllers.Application.contact()
+GET	/about									controllers.Application.about()
 
-# Map static resources from the /public folder to the /assets and /images URL paths
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
-GET     /images/*file               controllers.Assets.at(path="/public/images", file)
+#Mapstaticresourcesfromthe/publicfoldertothe/assetsand/imagesURLpaths
+GET	/assets/*file						controllers.Assets.at(path="/public",file)
+GET	/images/*file						controllers.Assets.at(path="/public/images",file)
+GET	/robots.txt							controllers.Assets.at(path="/public",file="robots.txt")
+GET	/robots-dev.txt					controllers.Assets.at(path="/public",file="robots-dev.txt")
 
-# Map JSON-LD context documents to the /context URL path (use separate controller for headers and content type)
-GET     /context/:file              controllers.Api.context(file)
 
-# Collections
-GET     /resource/RPB               controllers.Collection.resourceRPB(format ?= "negotiate")
-GET     /resource/RPB/about         controllers.Collection.resourceAboutRPB(id = "http://lobid.org/resource/RPB", format ?= "negotiate")
-GET     /resource/NWBib             controllers.Collection.resourceNWBib(format ?= "negotiate")
-GET     /resource/NWBib/about       controllers.Collection.resourceAboutNWBib(id = "http://lobid.org/resource/NWBib", format ?= "negotiate")
-GET     /resource/Edoweb            controllers.Collection.resourceEdoweb(format ?= "negotiate")
-GET     /resource/Edoweb/about      controllers.Collection.resourceAboutEdoweb(id ="http://lobid.org/resource/Edoweb", format ?= "negotiate")
+#MapJSON-LDcontextdocumentstothe/contextURLpath(useseparatecontrollerforheadersandcontenttype)
+GET	/context/:file					controllers.Api.context(file)
 
-# Lobid persons
-GET     /team/ap               controllers.LobidTeam.ap(format ?= "negotiate")
-GET     /team/ap/about         controllers.LobidTeam.apAbout(id = "http://lobid.org/team/ap", format ?= "negotiate")
-GET     /team/fs               controllers.LobidTeam.fs(format ?= "negotiate")
-GET     /team/fs/about         controllers.LobidTeam.fsAbout(id = "http://lobid.org/team/fs", format ?= "negotiate")
-GET     /team/pc               controllers.LobidTeam.pc(format ?= "negotiate")
-GET     /team/pc/about         controllers.LobidTeam.pcAbout(id = "http://lobid.org/team/pc", format ?= "negotiate")
+#Collections
+GET	/resource/RPB						controllers.Collection.resourceRPB(format?="negotiate")
+GET	/resource/RPB/about			controllers.Collection.resourceAboutRPB(id="http://lobid.org/resource/RPB",format?="negotiate")
+GET	/resource/NWBib					controllers.Collection.resourceNWBib(format?="negotiate")
+GET	/resource/NWBib/about		controllers.Collection.resourceAboutNWBib(id="http://lobid.org/resource/NWBib",format?="negotiate")
+GET	/resource/Edoweb				controllers.Collection.resourceEdoweb(format?="negotiate")
+GET	/resource/Edoweb/about	controllers.Collection.resourceAboutEdoweb(id="http://lobid.org/resource/Edoweb",format?="negotiate")
 
-# Individual, specialized API routes for different resource types
-GET     /resource                   controllers.Api.resource(id ?= "", q ?= "", name ?= "", author ?= "", subject ?= "", publisher ?= "", issued ?= "", medium ?= "", set ?= "", nwbibspatial?="", nwbibsubject?="", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, owner ?= "", t ?= "", sort ?= "", meta:Boolean?=true, location ?= "")
-GET     /item                       controllers.Api.item(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "", meta:Boolean?=true)
-GET     /organisation               controllers.Api.organisation(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "", meta:Boolean?=true)
-GET     /person                     controllers.Api.person(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "http://d-nb.info/standards/elementset/gnd#Person", meta:Boolean?=true)
-GET     /subject                    controllers.Api.subject(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?= "")
+#Lobidpersons
+GET	/team/ap								controllers.LobidTeam.ap(format?="negotiate")
+GET	/team/ap/about					controllers.LobidTeam.apAbout(id="http://lobid.org/team/ap",format?="negotiate")
+GET	/team/fs								controllers.LobidTeam.fs(format?="negotiate")
+GET	/team/fs/about					controllers.LobidTeam.fsAbout(id="http://lobid.org/team/fs",format?="negotiate")
+GET	/team/pc								controllers.LobidTeam.pc(format?="negotiate")
+GET	/team/pc/about					controllers.LobidTeam.pcAbout(id="http://lobid.org/team/pc",format?="negotiate")
 
-# Facets
-GET     /resource/facets            controllers.Facets.resource(id ?= "", q?="", author?="", name?="", subject?="", publisher ?= "", issued ?= "", medium ?= "", owner?="", set?="", nwbibspatial?="", nwbibsubject?="", size: Int ?= 50, t ?= "", field, location ?= "")
+#Individual,specializedAPIroutesfordifferentresourcetypes
+GET	/resource								controllers.Api.resource(id?="",q?="",name?="",author?="",subject?="",publisher?="",issued?="",medium?="",set?="",nwbibspatial?="",nwbibsubject?="",format?="negotiate",from:Int?=0,size:Int?=50,owner?="",t?="",sort?="",meta:Boolean?=true,location?="")
+GET	/item										controllers.Api.item(id?="",q?="",name?="",format?="negotiate",from:Int?=0,size:Int?=50,t?="",meta:Boolean?=true)
+GET	/organisation						controllers.Api.organisation(id?="",q?="",name?="",format?="negotiate",from:Int?=0,size:Int?=50,t?="",meta:Boolean?=true)
+GET	/person									controllers.Api.person(id?="",q?="",name?="",format?="negotiate",from:Int?=0,size:Int?=50,t?="http://d-nb.info/standards/elementset/gnd#Person",meta:Boolean?=true)
+GET	/subject								controllers.Api.subject(id?="",q?="",name?="",format?="negotiate",from:Int?=0,size:Int?=50,t?="")
 
-# Path-style routes and `about` redirects
-GET     /resource/:id               controllers.Path.resource(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /resource/:id/about         controllers.Path.resourceAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /item/:id                   controllers.Path.item(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /item/:id/about             controllers.Path.itemAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /organisation/:id           controllers.Path.organisation(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /organisation/:id/about     controllers.Path.organisationAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
-GET     /person/:id                 controllers.Path.person(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?="http://d-nb.info/standards/elementset/gnd#Person")
-GET     /person/:id/about           controllers.Path.personAbout(id, format ?= "negotiate", from: Int ?= 0, size: Int ?= 50, t ?="http://d-nb.info/standards/elementset/gnd#Person")
+#Facets
+GET	/resource/facets				controllers.Facets.resource(id?="",q?="",author?="",name?="",subject?="",publisher?="",issued?="",medium?="",owner?="",set?="",nwbibspatial?="",nwbibsubject?="",size:Int?=50,t?="",field,location?="")
 
-# General search endpoint for searching over all resource types
-GET     /search                     controllers.Api.search(id ?= "", q ?= "", name ?= "", format ?= "negotiate", from: Int ?= 0, size: Int ?= 50)
+#Path-styleroutesand`about`redirects
+GET	/resource/:id						controllers.Path.resource(id,format?="negotiate",from:Int?=0,size:Int?=50)
+GET	/resource/:id/about			controllers.Path.resourceAbout(id,format?="negotiate",from:Int?=0,size:Int?=50)
+GET	/item/:id								controllers.Path.item(id,format?="negotiate",from:Int?=0,size:Int?=50)
+GET	/item/:id/about					controllers.Path.itemAbout(id,format?="negotiate",from:Int?=0,size:Int?=50)
+GET	/organisation/:id				controllers.Path.organisation(id,format?="negotiate",from:Int?=0,size:Int?=50)
+GET	/organisation/:id/about	controllers.Path.organisationAbout(id,format?="negotiate",from:Int?=0,size:Int?=50)
+GET	/person/:id							controllers.Path.person(id,format?="negotiate",from:Int?=0,size:Int?=50,t?="http://d-nb.info/standards/elementset/gnd#Person")
+GET	/person/:id/about				controllers.Path.personAbout(id,format?="negotiate",from:Int?=0,size:Int?=50,t?="http://d-nb.info/standards/elementset/gnd#Person")
+
+#Generalsearchendpointforsearchingoverallresourcetypes
+GET	/search								controllers.Api.search(id?="",q?="",name?="",format?="negotiate",from:Int?=0,size:Int?=50)
