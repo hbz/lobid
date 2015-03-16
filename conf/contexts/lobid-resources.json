@@ -198,12 +198,12 @@
          "@id": "http://purl.org/dc/terms/isPartOf",
          "@type": "@id"
       },
-      "isSupplementOf":
+      "hasSupplement":
       {
          "@id": "http://rdaregistry.info/Elements/u/P60281",
          "@type": "@id"
       },
-      "hasSupplement":
+      "isSupplementTo":
       {
          "@id": "http://rdaregistry.info/Elements/u/P60259",
          "@type": "@id"
