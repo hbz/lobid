@@ -21,19 +21,19 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 
 	/*@formatter:off@*/
 	@Test public void searchName(){search("resource?name=der", 4);}
-	@Test public void searchAltName(){search("resource?name=Grenzdimensionen Erfahrung", 1);}
-	@Test public void searchNameAndAuthor(){search("resource?name=der&author=edmund", 1);}
+	@Test public void searchAltName(){search("resource?name=Grenzdimensionen", 1);}
+	@Test public void searchNameAndAuthor(){search("resource?name=der&author=micali", 1);}
 	@Test public void searchNameAndSubject(){search("resource?name=der&subject=4414195-6", 1);}
-	@Test public void searchAuthor(){search("resource?author=hu", 2);}
-	@Test public void searchAuthorAndId(){search("resource?author=hu&id=9781402083891", 1);}
-	@Test public void searchAuthorAndSubject(){search("resource?author=hu&subject=4026453-1", 1);}
+	@Test public void searchAuthor(){search("resource?author=hundt", 1);}
+	@Test public void searchAuthorAndId(){search("resource?author=micali&id=9781402083891", 1);}
+	@Test public void searchAuthorAndSubject(){search("resource?author=micali&subject=4026453-1", 1);}
 	@Test public void searchNameAndIssued(){search("resource?name=der&issued=2008", 1);}
 	@Test public void searchNameAndIssuedRange(){search("resource?name=der&issued=1993-2008", 3);}
 	@Test public void searchNameAndPublisher(){search("resource?name=der&publisher=Springer", 1);}
 	@Test public void searchSet(){search("resource?set=NWBib", 3);}
 	@Test public void searchSetAndNwbibspatialValue1(){search("resource?set=NWBib&nwbibspatial=Kirchhundem-Heinsberg", 1);}
 	@Test public void searchSetAndNwbibspatialValue2(){search("resource?set=NWBib&nwbibspatial=Gummersbach", 1);}
-	@Test public void searchSetAndNwbibsubject(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 3);}
+	@Test public void searchSetAndNwbibsubject(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
 	@Test public void searchSetAndSubjectChain1(){search("resource?set=NWBib&subject=Geschichte", 1);}
 	@Test public void searchSetAndSubjectChain2(){search("resource?set=NWBib&subject=Heinsberg", 1);}
 	/*@formatter:on@*/

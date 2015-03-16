@@ -41,7 +41,7 @@ public class SearchResourceNarrowBySetTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				String response = call("resource?author=Hu&set=" + set);
+				String response = call("resource?author=Hundt&set=" + set);
 				assertThat(response).isNotNull();
 				final JsonNode jsonObjectIds = Json.parse(response);
 				assertThat(jsonObjectIds.isArray()).isTrue();
@@ -56,7 +56,7 @@ public class SearchResourceNarrowBySetTests extends SearchTestsHarness {
 			@Override
 			public void run() {
 				final List<Document> docs =
-						new Search(ImmutableMap.of(Parameter.AUTHOR, "Hu"),
+						new Search(ImmutableMap.of(Parameter.AUTHOR, "Hundt"),
 								Index.LOBID_RESOURCES).set(set).documents();
 				assertThat(docs.size()).isEqualTo(1);
 				assertThat(docs.get(0).getSourceWithFullProperties())

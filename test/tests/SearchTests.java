@@ -75,7 +75,7 @@ public class SearchTests extends SearchTestsHarness {
 						Index.LOBID_RESOURCES).documents();
 		assertThat(docs.size()).isPositive();
 		for (Document document : docs) {
-			assertThat(document.getMatchedField().toLowerCase()).contains("theo");
+			assertThat(document.getMatchedField().toLowerCase()).contains("1906");
 		}
 	}
 
@@ -203,12 +203,11 @@ public class SearchTests extends SearchTestsHarness {
 				final JsonNode jsonObject = Json.parse(response);
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.get(0 + META).asText()).isEqualTo("1719");
-				assertThat(jsonObject.get(1 + META).asText()).isEqualTo("1906");
-				assertThat(jsonObject.get(2 + META).asText()).isEqualTo("1973");
-				assertThat(jsonObject.get(3 + META).asText()).isEqualTo("1976");
-				assertThat(jsonObject.get(4 + META).asText()).isEqualTo("1977");
-				assertThat(jsonObject.get(5 + META).asText()).isEqualTo("1979");
-				assertThat(jsonObject.get(6 + META).asText()).isEqualTo("1981");
+				assertThat(jsonObject.get(1 + META).asText()).isEqualTo("1973");
+				assertThat(jsonObject.get(2 + META).asText()).isEqualTo("1976");
+				assertThat(jsonObject.get(3 + META).asText()).isEqualTo("1977");
+				assertThat(jsonObject.get(4 + META).asText()).isEqualTo("1979");
+				assertThat(jsonObject.get(5 + META).asText()).isEqualTo("1981");
 			}
 		});
 	}
@@ -253,7 +252,7 @@ public class SearchTests extends SearchTestsHarness {
 						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(1);
 		assertThat(documents.get(0).getMatchedField()).isEqualTo(
-				"Vollhardt, Kurt Peter C. (1946-)");
+				"K. Peter C. Vollhardt and Neil E. Schore");
 	}
 
 	@Test
@@ -432,7 +431,7 @@ public class SearchTests extends SearchTestsHarness {
 				final JsonNode jsonObject =
 						Json.parse(call("resource?nwbibsubject=http://purl.org/lobid/nwbib#s552000"));
 				assertThat(jsonObject.isArray()).isTrue();
-				assertThat(jsonObject.size()).isEqualTo(3 + META);
+				assertThat(jsonObject.size()).isEqualTo(1 + META);
 			}
 		});
 	}
@@ -645,11 +644,11 @@ public class SearchTests extends SearchTestsHarness {
 		final Index index = Index.LOBID_RESOURCES;
 		final Parameter parameter = Parameter.AUTHOR;
 		assertThat(
-				new Search(ImmutableMap.of(parameter, "Abr"), index).page(0, 3)
+				new Search(ImmutableMap.of(parameter, "Abraham"), index).page(0, 3)
 						.documents().size()).isEqualTo(3);
 		assertThat(
-				new Search(ImmutableMap.of(parameter, "Abr"), index).page(3, 6)
-						.documents().size()).isEqualTo(6);
+				new Search(ImmutableMap.of(parameter, "Abraham"), index).page(3, 6)
+						.documents().size()).isEqualTo(5);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
