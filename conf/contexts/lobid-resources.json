@@ -198,6 +198,16 @@
          "@id": "http://purl.org/dc/terms/isPartOf",
          "@type": "@id"
       },
+      "hasSupplement":
+      {
+         "@id": "http://rdaregistry.info/Elements/u/P60281",
+         "@type": "@id"
+      },
+      "isSupplementTo":
+      {
+         "@id": "http://rdaregistry.info/Elements/u/P60259",
+         "@type": "@id"
+      },
       "collectedBy":
       {
          "@id": "http://purl.org/ontology/holding#collectedBy",
