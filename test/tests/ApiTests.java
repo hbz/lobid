@@ -56,12 +56,12 @@ public class ApiTests {
 						{ "resource?author=118580604",/* -> */"a peep at Polynesian life" },
 						{ "resource?subject=4414195-6",/* -> */"aus dem Kreis Olpe" },
 						{ "resource?subject=4414195-6&set=NWBib",/* -> */
-						"http://lobid.org/resource/NWBib" },
-						{ "resource?subject=Chemistry",/* -> */"Synthese, Eigenschaften" },
-						{ "resource?subject=Chemistry&format=full",/* -> */
-						"Chemistry & allied sciences" },
+						"lobid.org/resource/NWBib" },
+						{ "resource?subject=Chemie",/* -> */"structure and function" },
+						{ "resource?subject=Chemie&format=full",/* -> */
+						"Lehrbuch" },
 						{ "resource?name=Typee&format=ids",/* -> */
-						"http://lobid.org/resource/HT002189125" },
+						"lobid.org/resource/HT002189125" },
 						{ "resource?q=Typee&format=ids",/* -> */"Typee" },
 						{ "resource?set=NWBib",/* -> */
 						"Wann en Kölle de Chress-Stäne blöhe" },
@@ -76,7 +76,9 @@ public class ApiTests {
 						{ "resource?author=Hundt&owner=DE-Sol1",/* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
 						{
-								"resource?author=Hundt&owner=http://lobid.org/organisation/DE-Sol1",/* -> */
+								"resource?author=Hundt&owner=http://lobid.org/organisation/DE-Sol1",/*
+																																										 * ->
+																																										 */
 								"Heimatstimmen aus dem Kreis Olpe" },
 						{ "resource?id=BT000001260&owner=DE-Sol1",/* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
@@ -84,7 +86,7 @@ public class ApiTests {
 						"Heimatstimmen aus dem Kreis Olpe" },
 						{ "resource?author=Hundt&owner=DE-Sol1,DE-Sol2",/* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
-						{ "resource?author=Goeters&owner=DE-Sol1,DE-Sol2",/* -> */
+						{ "resource?author=Goeters&Melwille=DE-5-4,DE-468",/* -> */
 						"Kirchengeschichte des Rheinlandes" },
 						/*-------------------*/
 						/* GET /organisation */
@@ -97,7 +99,7 @@ public class ApiTests {
 						{ "organisation?name=Basel&format=short",/* -> */
 						"Universität Basel" },
 						{ "organisation?name=Basel&format=ids",/* -> */
-						"http://lobid.org/organisation/SzBaU" },
+						"lobid.org/organisation/SzBaU" },
 						{ "organisation?name=hbz",/* -> */"Hochschulbibliothekszentrum" },
 						{ "organisation?name=hbz&format=short",/* -> */
 						"Hochschulbibliothekszentrum" },
@@ -107,7 +109,7 @@ public class ApiTests {
 						{ "organisation?id=DE-605",/* -> */"Einrichtung ohne Bestand" },
 						{ "organisation?id=DE-605",/* -> */"Land" },
 						{ "organisation?name=hbz&format=ids",/* -> */
-						"http://lobid.org/organisation/DE-605" },
+						"lobid.org/organisation/DE-605" },
 						{ "organisation?q=Einrichtung+ohne+Bestand&format=full",/* -> */
 						"Hochschulbibliothekszentrum" },
 						{ "organisation?q=Einrichtung+ohne+Bestand&format=ids",/* -> */
@@ -139,16 +141,16 @@ public class ApiTests {
 						{ "item?id=BT000000079:DE-Sol1:GA%20644",/* -> */"GA%20644" },
 						{ "item/BT000000079:DE-Sol1:GA%20644",/* -> */"GA%20644" },
 						{ "item?name=GA%20644&format=ids",/* -> */
-						"http://lobid.org/item/BT000000079:DE-Sol1:GA%20644" },
+						"lobid.org/item/BT000000079:DE-Sol1:GA%20644" },
 						{ "item?q=GA%20644&format=ids",/* -> */
-						"http://lobid.org/item/BT000000079:DE-Sol1:GA%20644" },
+						"lobid.org/item/BT000000079:DE-Sol1:GA%20644" },
 						/*-------------*/
 						/* GET /search */
 						/*-------------*/
 						{ "search?name=Ba",/* -> */"Bach, Johann Sebastian" },
 						{ "search?name=Ba",/* -> */"Universität Basel" },
 						{ "search?name=Ba&format=ids",/* -> */
-						"http://lobid.org/organisation/SzBaU" },
+						"lobid.org/organisation/SzBaU" },
 						/*-------------*/
 						/* GET /subject */
 						/*-------------*/
@@ -189,7 +191,7 @@ public class ApiTests {
 
 	@Test
 	public void callEndpointAndCheckResponse() {
-		running(testServer(5000), new Runnable() {
+		running(testServer(SearchTestsHarness.TEST_SERVER_PORT), new Runnable() {
 			@Override
 			public void run() {
 				final String response = SearchTestsHarness.call(endpoint);

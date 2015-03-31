@@ -59,11 +59,9 @@ public class LobidItems {
 			final String itemPrefix = "http://lobid.org/item/";
 			final String shortId = queryString.replace(itemPrefix, "");
 			// The Lobid item IDs contain escaped url fragments
-			return QueryBuilders.idsQuery("json-ld-lobid-item").ids(
+			return matchQuery(fields().get(0),
 					itemPrefix + percentEscaper.escape(shortId));
-
 		}
-
 	}
 
 	/**

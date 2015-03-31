@@ -142,8 +142,8 @@ public class LobidResources {
 		@Override
 		public List<String> fields() {
 			return Arrays.asList(/* @formatter:off*/
-					"@graph.http://www.w3.org/2004/02/skos/core#prefLabel.@value",
 					"@graph.http://purl.org/lobid/lv#subjectChain.@value",
+					"@graph.http://purl.org/dc/elements/1.1/subject.@value",
 					"@graph.http://purl.org/dc/terms/subject");/* @formatter:on */
 		}
 

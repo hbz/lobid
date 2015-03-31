@@ -135,10 +135,9 @@ public class BrowserTests {
 			@Override
 			public void invoke(final TestBrowser browser) {
 				browser.goTo(API_PAGE);
-				browser.click("a", withText("Chemistry"));
-				assertThat(browser.pageSource()).contains("Gerlach, Rainer").contains(
-						"Synthese, Eigenschaften und Reaktivität von Mangan- und "
-								+ "Chrom-Komplexen mit Stickstoff-Liganden");
+				browser.click("a", withText("Chemie"));
+				assertThat(browser.pageSource()).contains("Schore, Neil Eric")
+						.contains("structure and function");
 			}
 		});
 	}

@@ -27,6 +27,7 @@ import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequestBuilder;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.IndicesAdminClient;
+import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.node.Node;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -60,7 +61,7 @@ public class SearchTestsHarness {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(SearchTestsHarness.class);
 	static final int META = 1;
-	static boolean testDataUpToDate = false;
+	static boolean testDataUpToDate = true;
 
 	@BeforeClass
 	public static void setup() throws IOException {
@@ -79,7 +80,14 @@ public class SearchTestsHarness {
 				}
 			}
 		}
-		node = nodeBuilder().local(true).node();
+
+		node =
+				nodeBuilder()
+						.local(true)
+						.settings(
+								ImmutableSettings.settingsBuilder()
+										.put("index.number_of_replicas", "0")
+										.put("index.number_of_shards", "1").build()).node();
 		client = node.client();
 		client.admin().indices().prepareDelete("_all").execute().actionGet();
 		client.admin().cluster().prepareHealth().setWaitForYellowStatus().execute()

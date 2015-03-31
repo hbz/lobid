@@ -47,8 +47,8 @@ public class SearchTests extends SearchTestsHarness {
 		JsonNode json =
 				Json.parse(client
 						.prepareGet(Index.LOBID_RESOURCES.id(), "json-ld-lobid",
-								"http://lobid.org/resource/BT000001260").execute().actionGet()
-						.getSourceAsString());
+								"http://test.lobid.org/resource/BT000001260").execute()
+						.actionGet().getSourceAsString());
 		assertThat(json.isObject()).isTrue();
 		assertThat(
 				json.findValue("http://d-nb.info/standards/elementset/gnd#dateOfBirth")
@@ -261,7 +261,7 @@ public class SearchTests extends SearchTestsHarness {
 				new Search(ImmutableMap.of(Parameter.SET, "NwBib"),
 						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(3);
-		assertThat(documents.get(1).getMatchedField()).isEqualTo(
+		assertThat(documents.get(2).getMatchedField()).isEqualTo(
 				"http://lobid.org/resource/NWBib");
 	}
 
@@ -699,9 +699,9 @@ public class SearchTests extends SearchTestsHarness {
 				final JsonNode jsonObject = Json.parse(call("resource?id=BT000001260"));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.get(0 + META).get("@id").asText()).isEqualTo(
-						"http://lobid.org/resource/BT000001260/about");
+						"http://test.lobid.org/resource/BT000001260/about");
 				assertThat(jsonObject.get(0 + META).get("primaryTopic").asText())
-						.isEqualTo("http://lobid.org/resource/BT000001260");
+						.isEqualTo("http://test.lobid.org/resource/BT000001260");
 			}
 		});
 	}

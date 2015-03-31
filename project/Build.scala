@@ -14,6 +14,7 @@ object ApplicationBuild extends Build {
       "org.elasticsearch" % "elasticsearch" % "1.3.2" withSources(),
       "org.lobid" % "lodmill-ld" % "2.0.1",
       "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test",
+			"net.sourceforge.htmlunit" % "htmlunit" % "2.14" % "test",
       "com.google.gdata" % "core" % "1.47.1" exclude("com.fasterxml.jackson.core", "jackson-core")
     )
     
