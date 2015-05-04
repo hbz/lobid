@@ -48,7 +48,7 @@ public class LobidItems {
 
 		@Override
 		public List<String> fields() {
-			return Arrays.asList("@graph.@id");
+			return Arrays.asList("internal_id");
 		}
 
 		PercentEscaper percentEscaper = new PercentEscaper(
@@ -59,8 +59,8 @@ public class LobidItems {
 			final String itemPrefix = "http://lobid.org/item/";
 			final String shortId = queryString.replace(itemPrefix, "");
 			// The Lobid item IDs contain escaped url fragments
-			return matchQuery(fields().get(0),
-					itemPrefix + percentEscaper.escape(shortId));
+			return QueryBuilders.matchPhraseQuery(fields().get(0), itemPrefix
+					+ percentEscaper.escape(shortId));
 		}
 	}
 
