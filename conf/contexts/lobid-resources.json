@@ -5,7 +5,6 @@
       "title": "http://purl.org/dc/terms/title",
       "alternativeTitle": "http://purl.org/dc/terms/alternative",
       "otherTitleInformation":  "http://rdvocab.info/Elements/otherTitleInformation",
-      "fullTitle": "http://purl.org/dc/terms/title",
       "shortTitle": "http://purl.org/ontology/bibo/shortTitle",
       "creator":
       {
@@ -327,10 +326,6 @@
       "dateOfDeath": "http://d-nb.info/standards/elementset/gnd#dateOfDeath",
       "preferredNameForThePerson": "http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson",
       "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
-      "primaryTopic": {
-         "@id": "http://xmlns.com/foaf/0.1/primaryTopic",
-         "@type": "@id"
-      },
       "longitudeAndLatitude": "http://rdvocab.info/Elements/longitudeAndLatitude",
       "preferredNameForThePlaceOrGeographicName": "http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName",
       "preferredNameForTheSubjectHeading": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading",
