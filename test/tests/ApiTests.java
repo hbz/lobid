@@ -52,7 +52,7 @@ public class ApiTests {
 								"a peep at Polynesian life" },
 						{ "resource?author=Melville",/* -> */"a peep at Polynesian life" },
 						{ "resource?author=Melville&format=short",/* -> */
-						"[\"1819-08-01\"]" },
+						"[\"Melwille, Hermann\"]" },
 						{ "resource?author=118580604",/* -> */"a peep at Polynesian life" },
 						{ "resource?subject=4414195-6",/* -> */"aus dem Kreis Olpe" },
 						{ "resource?subject=4414195-6&set=NWBib",/* -> */
