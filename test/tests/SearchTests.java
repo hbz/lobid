@@ -75,7 +75,7 @@ public class SearchTests extends SearchTestsHarness {
 						Index.LOBID_RESOURCES).documents();
 		assertThat(docs.size()).isPositive();
 		for (Document document : docs) {
-			assertThat(document.getMatchedField().toLowerCase()).contains("1906");
+			assertThat(document.getMatchedField()).contains("Hundt, Theodor");
 		}
 	}
 
@@ -251,8 +251,8 @@ public class SearchTests extends SearchTestsHarness {
 						ImmutableMap.of(Parameter.AUTHOR, "Neil Eric Schore (1948-)"),
 						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(1);
-		assertThat(documents.get(0).getMatchedField()).isEqualTo(
-				"K. Peter C. Vollhardt and Neil E. Schore");
+		assertThat(documents.get(0).getMatchedField())
+				.isEqualTo("Vollhardt, Peter");
 	}
 
 	@Test
