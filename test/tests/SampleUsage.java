@@ -20,7 +20,7 @@ import java.util.Scanner;
  */
 public class SampleUsage {
 
-	private static final int SIZE = 100;
+	private static final int SIZE = 300;
 	private static int to;
 
 	/**

@@ -660,7 +660,7 @@ public class SearchTests extends SearchTestsHarness {
 	@Test(expected = IllegalArgumentException.class)
 	public void searchWithLimitInvalidSize() {
 		new Search(ImmutableMap.of(Parameter.AUTHOR, "ha"), Index.LOBID_RESOURCES)
-				.page(0, 101).documents();
+				.page(0, 1001).documents();
 	}
 
 	@Test

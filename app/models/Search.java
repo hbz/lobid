@@ -274,8 +274,8 @@ public class Search {
 		if (from < 0) {
 			throw new IllegalArgumentException("Parameter 'from' must be positive");
 		}
-		if (size > 100) {
-			throw new IllegalArgumentException("Parameter 'size' must be <= 100");
+		if (size > 1000) {
+			throw new IllegalArgumentException("Parameter 'size' must be <= 1000");
 		}
 		final List<String> sortSupported = Arrays.asList("newest", "oldest");
 		if (!sort.isEmpty() && !sortSupported.contains(sort)) {
