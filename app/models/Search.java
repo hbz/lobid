@@ -33,8 +33,6 @@ import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
 import play.Logger;
-import play.Play;
-import play.cache.Cache;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
@@ -130,17 +128,7 @@ public class Search {
 
 	private Pair<List<Document>, Long> doSearch() {
 		validateSearchParameters();
-		String cacheId = String.format("%s.%s.%s.%s.%s.%s.%s.%s.%s", //
-				parameters, index, field, owner, set, size, from, type, sort);
-		if (play.api.Play.maybeApplication().isDefined() && !Play.isTest()) {
-			@SuppressWarnings("unchecked")
-			Pair<List<Document>, Long> cachedResult =
-					(Pair<List<Document>, Long>) Cache.get(cacheId);
-			if (cachedResult != null)
-				return cachedResult;
-		}
-		Logger.debug(String.format("Not cached: %s, will cache for one hour",
-				cacheId));
+
 		final QueryBuilder queryBuilder = createQuery();
 		Logger.trace("Using query: " + queryBuilder);
 		final SearchResponse response = search(queryBuilder);
@@ -151,9 +139,6 @@ public class Search {
 				new ImmutablePair<>(docs, hits.getTotalHits());
 		Logger.debug(String.format("Got %s hits overall, created %s matching docs",
 				hits.getTotalHits(), docs.size()));
-		if (play.api.Play.maybeApplication().isDefined() && !Play.isTest()) {
-			Cache.set(cacheId, result, 60 * 60);
-		}
 		return result;
 	}
 
