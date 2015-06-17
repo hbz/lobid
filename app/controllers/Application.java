@@ -209,8 +209,10 @@ public final class Application extends Controller {
 		try {
 			final StringBuilder builder = new StringBuilder();
 			final String errorMessage = "No source data found for ";
+			final String mabxmlResourcePrefix = "http://lobid.org/resource/";
 			for (Document document : documents)
-				appendMabXml(builder, errorMessage, document);
+				if (document.getId().startsWith(mabxmlResourcePrefix))
+					appendMabXml(builder, errorMessage, document, mabxmlResourcePrefix);
 			final String result = builder.toString().trim();
 			return result.isEmpty() ? notFound(errorMessage + "request") : //
 					documents.size() > 1 ? ok(result) : ok(result).as("text/xml");
@@ -220,9 +222,8 @@ public final class Application extends Controller {
 	}
 
 	private static void appendMabXml(final StringBuilder builder,
-			final String errorMessage, Document document) {
-		final String id =
-				document.getId().replace("http://lobid.org/resource/", "");
+			final String errorMessage, Document document, String mabxmlResourcePrefix) {
+		final String id = document.getId().replace(mabxmlResourcePrefix, "");
 		final GetResponse response =
 				Search.client.prepareGet("hbz01", "mabxml", id).execute().actionGet();
 		if (!response.isExists())
