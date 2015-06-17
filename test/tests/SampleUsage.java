@@ -44,7 +44,6 @@ public class SampleUsage {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 			for (int from = 1; from <= to; from += SIZE) {
 				load(base, from, content, writer);
-				Thread.sleep(500); // give the server a little break
 			}
 		}
 	}
