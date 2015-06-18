@@ -47,7 +47,7 @@ public abstract class AbstractIndexQuery {
 			final String term =
 					search.startsWith("http") ? search : "http://d-nb.info/gnd/" + search;
 			query =
-					multiMatchQuery(term, fields().subList(3, fields().toArray().length)
+					multiMatchQuery(term, fields().subList(4, fields().toArray().length)
 							.toArray(new String[] {}));
 		} else {
 			query = nameMatchQuery(search);
