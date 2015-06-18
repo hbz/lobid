@@ -43,7 +43,7 @@ public abstract class AbstractIndexQuery {
 			query = createAuthorQuery(lifeDates, search, lifeDatesMatcher);
 		} else if (search.matches("\\d+(.+)") && caller == Gnd.class) {
 			query = multiMatchQuery(search, fields().toArray(new String[] {}));
-		} else if (search.matches("(http://d-nb\\.info/gnd/)?\\d+")) {
+		} else if (search.matches("(http://d-nb\\.info/gnd/)?\\d+.*")) {
 			final String term =
 					search.startsWith("http") ? search : "http://d-nb.info/gnd/" + search;
 			query =
