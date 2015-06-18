@@ -32,7 +32,7 @@ public class SampleUsage {
 	 */
 	public static void main(String[] args) throws MalformedURLException,
 			IOException, InterruptedException {
-		String defaultBase = "http://api.test.lobid.org/resource?set=NWBib";
+		String defaultBase = "http://api.lobid.org/resource?set=NWBib";
 		String defaultContent = "text/plain"; // N-Triples, see api.lobid.org
 		String defaultFile = "NWBib.nt";
 		int defaultTo = 1;
