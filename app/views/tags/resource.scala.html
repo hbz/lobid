@@ -20,7 +20,8 @@
   @rdfa("Exemplar", "http://purl.org/vocab/frbr/core#exemplar", doc, TableRow.LINK_VALUES)
   @rdfa("Erscheinungsort", "http://rdvocab.info/Elements/placeOfPublication", doc, TableRow.VALUES)
   @rdfa("Verlag", "http://purl.org/dc/elements/1.1/publisher", doc, TableRow.VALUES)
-  @rdfa("Schlagwort", "http://purl.org/dc/terms/subject", doc, TableRow.LINK_VALUES)
+  @rdfa("Schlagwort", "http://purl.org/dc/terms/subject", doc, TableRow.VALUES, valueLabel = Option(Seq(
+    "http://d-nb.info/standards/elementset/gnd#preferredName")))
   @rdfa("ISBN", "http://purl.org/ontology/bibo/isbn", doc, TableRow.VALUES)
   @rdfa("ISBN-13", "http://purl.org/ontology/bibo/isbn13", doc, TableRow.VALUES)
   @rdfa("URN", "http://purl.org/lobid/lv#urn", doc, TableRow.VALUES)
