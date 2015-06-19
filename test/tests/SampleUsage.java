@@ -13,7 +13,9 @@ import java.util.Scanner;
 
 /**
  * Java sample usage for the Lobid API: get all results for a specified base
- * URL, paging through the result sets using the `from` and `to` parameter.
+ * URL, paging through the result sets using the `from` parameter. Automatically
+ * ends when the total result hits are harvested (or when given this limit as
+ * parameter)
  * 
  * @author Fabian Steeg (fsteeg)
  * @author Pascal Christoph (dr0i)
@@ -41,9 +43,24 @@ public class SampleUsage {
 		String content = args.length >= 2 ? args[1] : defaultContent;
 		String file = args.length >= 3 ? args[2] : defaultFile;
 		to = args.length >= 4 ? Integer.valueOf(args[3]) : defaultTo;
+		int tries = 0;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 			for (int from = 1; from <= to; from += SIZE) {
-				load(base, from, content, writer);
+				try {
+					load(base, from, content, writer);
+				} catch (Exception e) {
+					e.printStackTrace();
+					tries++;
+					if (tries <= 3) {
+						System.out.println("Problem with this query. Will try again ...");
+						from -= SIZE;
+					} else
+						System.out
+								.println("Too many problems with this query. Will dispose it and go on ...");
+				}
+				if (tries > 3) {
+					tries = 0;
+				}
 			}
 		}
 	}
