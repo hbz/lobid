@@ -51,6 +51,7 @@ public final class Api extends Controller {
 	 * @param sort The sort order
 	 * @param addQueryInfo If true, add a query info object to the response
 	 * @param location A polygon describing the subject area of the resources
+	 * @param scroll Boolean wether this is a scroll scan query or not
 	 * @return Matching resources
 	 */
 	public static Promise<Result> resource(
@@ -62,12 +63,12 @@ public final class Api extends Controller {
 			final String nwbibspatial, final String nwbibsubject,
 			final String format, final int from, final int size, final String owner,
 			final String type, final String sort, final boolean addQueryInfo,
-			final String location) {
+			final String location, final boolean scroll) {
 		Logger
 				.debug(String
 						.format(
-								"GET /resource; id: '%s', q: '%s', name: '%s', author: '%s', subject: '%s', set: '%s', format: '%s', owner: '%s'",
-								id, q, name, author, subject, set, format, owner));
+								"GET /resource; id: '%s', q: '%s', name: '%s', author: '%s', subject: '%s', set: '%s', format: '%s', owner: '%s', scroll: '%s'",
+								id, q, name, author, subject, set, format, owner, scroll));
 		final Index index = Index.LOBID_RESOURCES;
 		final Map<Parameter, String> parameters =
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
@@ -82,9 +83,10 @@ public final class Api extends Controller {
 						.put(Parameter.SET, set)
 						.put(Parameter.NWBIBSPATIAL, nwbibspatial)
 						.put(Parameter.NWBIBSUBJECT, nwbibsubject)
-						.put(Parameter.LOCATION, location).build());/*@formatter:on*/
+						.put(Parameter.LOCATION, location)
+						.build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, owner,
-				set, type, sort, addQueryInfo);
+				set, type, sort, addQueryInfo, scroll);
 	}
 
 	/**
@@ -174,7 +176,7 @@ public final class Api extends Controller {
 						.put(Parameter.Q, q)
 						.put(Parameter.SUBJECT, name).build());/*@formatter:on*/
 		return Application.search(Index.GND, parameters, format, from, size, "",
-				"", type, "", true);
+				"", type, "", true, false);
 	}
 
 	private static Promise<Result> search(final String id, final String q,
@@ -187,7 +189,7 @@ public final class Api extends Controller {
 						.put(Parameter.Q, q)
 						.put(Parameter.NAME, name).build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, "", "",
-				type, sort, addQueryInfo);
+				type, sort, addQueryInfo, false);
 	}
 
 	/**
@@ -213,7 +215,7 @@ public final class Api extends Controller {
 		Promise<List<Result>> results =
 				Promise.sequence(
 						resource(id, q, name, "", "", "", "", "", "", "", "", format, from,
-								size, "", "", "", true, ""),
+								size, "", "", "", true, "", false),
 						organisation(id, q, name, format, from, size, "", true),
 						person(id, q, name, format, from, size, "", true),
 						subject(id, q, name, format, from, size, ""));

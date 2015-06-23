@@ -23,6 +23,8 @@ import play.api.http.MediaRange;
 import play.libs.F.Promise;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.twirl.api.Html;
 import scala.concurrent.ExecutionContext;
@@ -44,6 +46,11 @@ import com.google.common.collect.Lists;
  * @author Fabian Steeg (fsteeg)
  */
 public final class Application extends Controller {
+	/**
+	 * Error message when http status codes 406 aka "not acceptable"
+	 */
+	public final static String HTTP_CODE_406_MESSAGE =
+			"Not acceptable: unsupported content type requested\n";
 
 	private Application() { // NOPMD
 		/* No instantiation */
@@ -94,12 +101,13 @@ public final class Application extends Controller {
 	 * @param type The type of the requestes resources
 	 * @param sort The sort order
 	 * @return The results, in the format specified
+	 * @throws InterruptedException
 	 */
 	static Promise<Result> search(final Index index,
 			final java.util.Map<Parameter, String> parameters,
 			final String formatParameter, final int from, final int size,
 			final String owner, final String set, final String type,
-			final String sort, final boolean addQueryInfo) {
+			final String sort, final boolean addQueryInfo, final boolean scroll) {
 		final ResultFormat resultFormat;
 		try {
 			resultFormat =
@@ -118,6 +126,15 @@ public final class Application extends Controller {
 		} catch (IllegalArgumentException e) {
 			Logger.error(e.getMessage(), e);
 			return badRequestPromise(e.getMessage());
+		}
+		if (scroll) {
+			Serialization serialization = getSerialization(request());
+			if (serialization == null)
+				return Promise.pure(status(Http.Status.NOT_ACCEPTABLE,
+						HTTP_CODE_406_MESSAGE));
+			response().setHeader("Transfer-Encoding", "Chunked");
+			return Promise
+					.pure(ok(search.executeScrollScan(request(), serialization)));
 		}
 		try {
 			List<Document> docs = search.documents();
@@ -180,16 +197,24 @@ public final class Application extends Controller {
 		final String[] callback =
 				request() == null || request().queryString() == null ? null : request()
 						.queryString().get("callback");
+		Serialization ser = getSerialization(request());
+		Result negotiateRes;
+		if (ser == null) {
+			negotiateRes = status(Http.Status.NOT_ACCEPTABLE, HTTP_CODE_406_MESSAGE);
+		} else
+			negotiateRes =
+					ok(
+							getSerializedResult(documents, selectedIndex, field, allHits,
+									addQueryInfo, request(), ser)).as("text/html");
 		final ImmutableMap<ResultFormat, Result> results =
 				new ImmutableMap.Builder<ResultFormat, Result>()
-						.put(
-								ResultFormat.NEGOTIATE,
-								negotiateContent(documents, selectedIndex, field, allHits,
-										addQueryInfo))
+						.put(ResultFormat.NEGOTIATE, negotiateRes)
 						.put(
 								ResultFormat.FULL,
-								withCallback(callback,
-										fullJsonResponse(documents, field, allHits, addQueryInfo)))
+								withCallback(
+										callback,
+										fullJsonResponse(documents, field, allHits, addQueryInfo,
+												request())))
 						.put(
 								ResultFormat.SHORT,
 								withCallback(callback, Json.toJson(new LinkedHashSet<>(Lists
@@ -239,7 +264,7 @@ public final class Application extends Controller {
 	}
 
 	private static JsonNode fullJsonResponse(final List<Document> documents,
-			final String field, long allHits, boolean addQueryInfo) {
+			final String field, long allHits, boolean addQueryInfo, Request request) {
 		Iterable<JsonNode> nonEmptyNodes =
 				Iterables.filter(Lists.transform(documents, doc -> {
 					return Json.parse(doc.getSource());
@@ -256,7 +281,7 @@ public final class Application extends Controller {
 		}
 		List<JsonNode> data = new ArrayList<>();
 		if (addQueryInfo)
-			data.add(queryInfo(allHits));
+			data.add(queryInfo(allHits, request));
 		data.addAll(ImmutableSet.copyOf(nonEmptyNodes));
 		return Json.toJson(data);
 	}
@@ -273,53 +298,73 @@ public final class Application extends Controller {
 		}
 	}
 
-	private static JsonNode queryInfo(long allHits) {
+	private static JsonNode queryInfo(long allHits, Request request) {
 		return Json.toJson(ImmutableMap.of(//
-				"@id", "http://lobid.org" + request().uri(),//
+				"@id", "http://lobid.org" + request.uri(),//
 				"http://sindice.com/vocab/search#totalResults", allHits));
 	}
 
-	static Result negotiateContent(List<Document> documents, Index selectedIndex,
-			String field, long allHits, boolean addQueryInfo) {
-		final Status notAcceptable =
-				status(406, "Not acceptable: unsupported content type requested\n");
-		if (invalidAcceptHeader())
-			return notAcceptable;
-		for (MediaRange mediaRange : request().acceptedTypes())
+	/**
+	 * @param request The http request.
+	 * @return the serialization
+	 */
+	public static Serialization getSerialization(Request request) {
+		if (invalidAcceptHeader(request))
+			return null;
+		for (MediaRange mediaRange : request.acceptedTypes())
 			for (Serialization serialization : Serialization.values())
 				for (String mimeType : serialization.getTypes())
 					if (mediaRange.accepts(mimeType))
-						return serialization(documents, selectedIndex, serialization,
-								field, allHits, addQueryInfo);
-		return notAcceptable;
+						return serialization;
+		return null;
 	}
 
-	private static Result serialization(List<Document> documents,
+	/**
+	 * @param documents A list of documents. These will be serialized according to
+	 *          the requested content type.
+	 * @param selectedIndex The elasticsearch index
+	 * @param field A field to be sorted. Only used in conjunction of "format".
+	 * @param allHits Number of hits.
+	 * @param addQueryInfo Boolean if query info should be added.
+	 * @param request The request of the client, with headers etc.
+	 * @param serialization The wanted serialization of the result.
+	 * @return the result of the serialization of the hits as String.
+	 */
+	public static String getSerializedResult(List<Document> documents,
+			Index selectedIndex, String field, long allHits, boolean addQueryInfo,
+			Request request, Serialization serialization) {
+		return serialization(documents, selectedIndex, serialization, field,
+				allHits, addQueryInfo, request);
+	}
+
+	private static String serialization(List<Document> documents,
 			Index selectedIndex, Serialization serialization, String field,
-			long allHits, boolean addQueryInfo) {
+			long allHits, boolean addQueryInfo, Request request) {
 		switch (serialization) {
 		case JSON_LD:
-			return ok(fullJsonResponse(documents, field, allHits, addQueryInfo));
+			return fullJsonResponse(documents, field, allHits, addQueryInfo, request)
+					.toString();
 		case RDF_A:
-			return ok(views.html.docs.render(documents, selectedIndex));
+			return views.html.docs.render(documents, selectedIndex).toString();
 		default:
-			return ok(Joiner.on("\n").join(
-					transform(documents, serialization, allHits, addQueryInfo)));
+			return Joiner.on("\n").join(
+					transform(documents, serialization, allHits, addQueryInfo, request));
 		}
 	}
 
-	private static boolean invalidAcceptHeader() {
-		if (request() == null)
+	private static boolean invalidAcceptHeader(Request request) {
+		if (request == null)
 			return true;
-		final String acceptHeader = request().getHeader("Accept");
+		final String acceptHeader = request.getHeader("Accept");
 		return (acceptHeader == null || acceptHeader.trim().isEmpty());
 	}
 
 	private static List<String> transform(List<Document> documents,
-			final Serialization serialization, long allHits, boolean addQueryInfo) {
+			final Serialization serialization, long allHits, boolean addQueryInfo,
+			Request request) {
 		List<String> transformed = new ArrayList<>();
 		if (addQueryInfo)
-			transformed.add(transformed(queryInfo(allHits).toString(),
+			transformed.add(transformed(queryInfo(allHits, request).toString(),
 					serialization.format));
 		transformed.addAll(Lists.transform(documents, doc -> {
 			return doc.as(serialization.format);
@@ -331,4 +376,5 @@ public final class Application extends Controller {
 		final JsonLdConverter converter = new JsonLdConverter(format);
 		return converter.toRdf(jsonLdInfo).trim();
 	}
+
 }

@@ -7,9 +7,12 @@ import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import models.queries.LobidItems;
@@ -24,6 +27,7 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -33,16 +37,22 @@ import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
 import play.Logger;
+import play.mvc.Http.Request;
+import play.mvc.Results.Chunks;
+import play.mvc.Results.StringChunks;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
+import controllers.Serialization;
+
 /**
  * Search documents in an ElasticSearch index.
  * 
  * @author Fabian Steeg (fsteeg)
+ * @author Pascal Christoph (dr0i)
  */
 public class Search {
 
@@ -77,6 +87,8 @@ public class Search {
 
 	private List<Document> documents = null;
 	private Long hitCount = null;
+	private static boolean doingScrollScanNow = false;
+	private Chunks.Out<String> messageOut;
 
 	/**
 	 * @param parameters The search parameters (see {@link Index#queries()} )
@@ -131,7 +143,10 @@ public class Search {
 
 		final QueryBuilder queryBuilder = createQuery();
 		Logger.trace("Using query: " + queryBuilder);
-		final SearchResponse response = search(queryBuilder);
+		final SearchResponse response =
+				search(queryBuilder, Boolean.getBoolean(parameters
+						.get(Parameter.SCROLL)) ? SearchType.SCAN
+						: SearchType.DFS_QUERY_THEN_FETCH);
 		Logger.trace("Got response: " + response);
 		final SearchHits hits = response.getHits();
 		final List<Document> docs = asDocuments(hits, fields(parameters));
@@ -217,6 +232,122 @@ public class Search {
 	}
 
 	/**
+	 * @param request The clients request
+	 * @param serialization The wanted serialization of the returned data.
+	 * @return the chunks of the elasticsearch scroll scan query
+	 */
+	public Chunks<String> executeScrollScan(final Request request,
+			final Serialization serialization) {
+		return new StringChunks() {
+			@Override
+			public void onReady(Chunks.Out<String> out) {
+				setMessageOut(out);
+				ExecutorService executorService = Executors.newSingleThreadExecutor();
+				executorService.execute(new Runnable() {
+					@Override
+					public void run() {
+						if (doingScrollScanNow) {
+							getMessageOut()
+									.write(
+											"Already doing a scroll scan. Only one permitted. Please try again later.");
+						} else {
+							doingScrollScanNow = true;
+							bulk(request, serialization);
+						}
+					}
+				});
+				executorService.shutdown();
+			}
+		};
+	}
+
+	private void bulk(final Request request, final Serialization serialization) {
+		boolean JSON_LD = serialization.equals(Serialization.JSON_LD);
+		try {
+			long lastTime = Calendar.getInstance().getTimeInMillis();
+			SearchResponse searchResponse = startInitialResponse();
+			final SearchHits hits = getTotalHits(searchResponse);
+			if (JSON_LD)
+				getMessageOut().write("[");
+			long cnt = 0;
+			long to = hits.getTotalHits();
+			String str;
+			while ((str =
+					getHitsAsString(request, searchResponse, JSON_LD, cnt, to,
+							serialization)) != null) {
+				if (JSON_LD)
+					getMessageOut().write(str.substring(1, str.length() - 1));
+				else
+					getMessageOut().write(str);
+				cnt = cnt + searchResponse.getHits().getHits().length;
+				Logger.info("Doc " + cnt + " ,sec:"
+						+ ((Calendar.getInstance().getTimeInMillis() - lastTime) / 1000));
+				searchResponse =
+						client.prepareSearchScroll(searchResponse.getScrollId())
+								.setScroll("1m").execute().actionGet();
+				// Getting is much faster than serving over http => memory fills up.
+				// So try to break down dynamically (lesser mem, more pausing).
+				// Eventually cancel if pauses took too long (10 secs).
+				long freeMem = Runtime.getRuntime().freeMemory();
+				// slow down if only 600 MB left
+				if (freeMem < 600 * 1024 * 1024) {
+					long sleep =
+							(long) Math.pow((1D / (freeMem / 1024D / 1024D / 1024D / 7D)), 2);
+					Logger.info("Free memory low: " + freeMem / 1024 / 1024
+							+ " MB, sleeping for " + sleep + " ms.");
+					if (sleep > 10000) {
+						getMessageOut()
+								.write(
+										"\nMemory too low. Canceling your request! Please contact 'semweb at hbz-nrw.de' or try again (probably some days) later.");
+						return;
+					}
+					Thread.sleep(sleep);
+				}
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} finally {
+			if (JSON_LD)
+				getMessageOut().write("\n]");
+			getMessageOut().close();
+			doingScrollScanNow = false;
+			Logger.info("Finished scroll scan dump");
+		}
+	}
+
+	private SearchHits getTotalHits(final SearchResponse response) {
+		final SearchHits hits = response.getHits();
+		final List<Document> docs = asDocuments(hits, fields(parameters));
+		Logger.info(String.format("Got %s hits overall, created %s matching docs",
+				hits.getTotalHits(), docs.size()));
+		return hits;
+	}
+
+	private SearchResponse startInitialResponse() {
+		final QueryBuilder queryBuilder = createQuery();
+		Logger.trace("Using query: " + queryBuilder);
+		SearchResponse response = search(queryBuilder, SearchType.SCAN);
+		Logger.trace("Got response: " + response);
+		response =
+				client.prepareSearchScroll(response.getScrollId()).setScroll("1m")
+						.execute().actionGet();
+		return response;
+	}
+
+	private String getHitsAsString(final Request request,
+			final SearchResponse response, final boolean JSON_LD, long cnt, long to,
+			Serialization serialization) {
+		if (response.getHits().getHits().length > 0 && cnt <= to) {
+			if (JSON_LD && cnt > 0)
+				getMessageOut().write(",\n");
+			return controllers.Application.getSerializedResult(
+					asDocuments(response.getHits(), fields(parameters)), index, field,
+					to, false, request, serialization);
+		}
+		return null;
+	}
+
+	/**
 	 * @return The query object for this search
 	 */
 	public QueryBuilder createQuery() {
@@ -274,8 +405,8 @@ public class Search {
 		if (from < 0) {
 			throw new IllegalArgumentException("Parameter 'from' must be positive");
 		}
-		if (size > 1000) {
-			throw new IllegalArgumentException("Parameter 'size' must be <= 1000");
+		if (size > 100) {
+			throw new IllegalArgumentException("Parameter 'size' must be <= 100");
 		}
 		final List<String> sortSupported = Arrays.asList("newest", "oldest");
 		if (!sort.isEmpty() && !sortSupported.contains(sort)) {
@@ -284,12 +415,14 @@ public class Search {
 		}
 	}
 
-	private SearchResponse search(final QueryBuilder queryBuilder) {
+	private SearchResponse search(final QueryBuilder queryBuilder,
+			SearchType searchType) {
 		SearchRequestBuilder requestBuilder =
-				client.prepareSearch(index.id())
-						.setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+				client.prepareSearch(index.id()).setSearchType(searchType)
 						.setQuery(queryBuilder)
 						.setPostFilter(FilterBuilders.typeFilter(index.type()));
+		if (searchType.equals(SearchType.SCAN))
+			requestBuilder.setScroll(TimeValue.timeValueMinutes(1));
 		if (owner.equals("*"))
 			requestBuilder =
 					requestBuilder.setPostFilter(FilterBuilders.existsFilter(//
@@ -324,5 +457,13 @@ public class Search {
 			return doc.matchedField != null;
 		};
 		return ImmutableList.copyOf(Iterables.filter(res, predicate));
+	}
+
+	private Chunks.Out<String> getMessageOut() {
+		return messageOut;
+	}
+
+	private void setMessageOut(final Chunks.Out<String> messageOut) {
+		this.messageOut = messageOut;
 	}
 }
