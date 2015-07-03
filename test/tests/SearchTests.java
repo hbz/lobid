@@ -128,6 +128,7 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void searchResByIdZdbUrl1() { searchResById("http://lobid.org/resource/ZDB2615620-9"); }
 	@Test public void searchResByIdZdbUrl2() { searchResById("http://lobid.org/resource/ZDB2530091-X"); }
 	@Test public void searchResByIdISBN() { searchResById("0940450003"); }
+	@Test public void searchResByIdIsbnConsistingOfHyphenAndSpaceISBN() { searchResById("0 080 238-70x"); }
 	@Test public void searchResByIdUrn() { searchResById("urn:nbn:de:hbz:929:02-1035"); }
 	/*@formatter:on*/
 
