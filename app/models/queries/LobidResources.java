@@ -179,15 +179,20 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return multiMatchQuery(lobidResourceQueryString(queryString),
+			return multiMatchQuery(normalizedLobidResourceIdQueryString(queryString),
 					fields().toArray(new String[] {})).operator(Operator.AND);
 		}
 	}
 
-	private static String lobidResourceQueryString(final String queryString) {
+	private static String normalizedLobidResourceIdQueryString(
+			final String queryString) {
+		String normalizedQueryString = queryString.replaceAll(" ", "");
+		if (normalizedQueryString.matches("\"?\\d.*\"?")) {
+			normalizedQueryString = normalizedQueryString.replaceAll("-", "");
+		}
 		final String hbzId = "\\p{L}+\\d+(-.+)?";
-		return queryString.matches(hbzId) ? "http://lobid.org/resource/"
-				+ queryString : queryString;
+		return normalizedQueryString.matches(hbzId) ? "http://lobid.org/resource/"
+				+ normalizedQueryString : normalizedQueryString;
 	}
 
 	/**
