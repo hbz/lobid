@@ -420,6 +420,20 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	@Test
+	public void resByGndSubjectLabel() {
+		running(TEST_SERVER, new Runnable() {
+			@Override
+			public void run() {
+				final JsonNode jsonObject = Json.parse(call("resource?subject=UdSSR"));
+				assertThat(jsonObject.isArray()).isTrue();
+				assertThat(jsonObject.size()).isEqualTo(1 + META);
+				assertThat(jsonObject.get(0 + META).toString()).contains(
+						"PERGAMON POLICY STUDIES");
+			}
+		});
+	}
+
+	@Test
 	public void resByNwBibSubjectUri() {
 		running(TEST_SERVER, new Runnable() {
 			@Override

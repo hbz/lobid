@@ -143,7 +143,7 @@ public class LobidResources {
 		public List<String> fields() {
 			return Arrays.asList(/* @formatter:off*/
 					"@graph.http://purl.org/lobid/lv#subjectChain.@value",
-					"@graph.http://purl.org/dc/elements/1.1/subject.@value",
+					"@graph.http://purl.org/lobid/lv#subjectLabel.@value",
 					"@graph.http://purl.org/dc/terms/subject");/* @formatter:on */
 		}
 
