@@ -128,6 +128,11 @@ public final class Application extends Controller {
 			return badRequestPromise(e.getMessage());
 		}
 		if (scroll) {
+			if (search.doingScrollScanNow()) {
+				return Promise
+						.pure(status(Http.Status.CONFLICT,
+								"Already doing a scroll scan. Only one permitted. Please try again later."));
+			}
 			Serialization serialization = getSerialization(request());
 			if (serialization == null)
 				return Promise.pure(status(Http.Status.NOT_ACCEPTABLE,

@@ -246,19 +246,21 @@ public class Search {
 				executorService.execute(new Runnable() {
 					@Override
 					public void run() {
-						if (doingScrollScanNow) {
-							getMessageOut()
-									.write(
-											"Already doing a scroll scan. Only one permitted. Please try again later.");
-						} else {
-							doingScrollScanNow = true;
-							bulk(request, serialization);
-						}
+						doingScrollScanNow = true;
+						bulk(request, serialization);
 					}
 				});
 				executorService.shutdown();
 			}
 		};
+	}
+
+	/**
+	 * 
+	 * @return if a scroll scan is done right now
+	 */
+	public boolean doingScrollScanNow() {
+		return doingScrollScanNow;
 	}
 
 	private void bulk(final Request request, final Serialization serialization) {
