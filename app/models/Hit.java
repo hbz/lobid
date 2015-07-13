@@ -51,8 +51,15 @@ public enum Hit {
 									death == null ? "" : death.asText());
 					document.matchedField = format;
 				}
-			} else
-				document.matchedField = field.toString();
+			} else {
+				try {
+					document.matchedField = field.toString();
+				} catch (NullPointerException npe) {
+					document.matchedField = "null";
+					Logger.warn(npe.toString()
+							+ "\nsetting document.matchedField to null");
+				}
+			}
 			return document;
 		}
 

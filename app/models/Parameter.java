@@ -14,7 +14,7 @@ import com.google.common.collect.ImmutableMap;
  */
 @SuppressWarnings("javadoc")
 public enum Parameter {
-	ID, NAME, AUTHOR, SUBJECT, SET, Q, PUBLISHER, ISSUED, MEDIUM, NWBIBSPATIAL, NWBIBSUBJECT, LOCATION;
+	ID, NAME, AUTHOR, SUBJECT, SET, Q, PUBLISHER, ISSUED, MEDIUM, NWBIBSPATIAL, NWBIBSUBJECT, LOCATION, SCROLL;
 	/**
 	 * @return The parameter id (the string passed to the API)
 	 */
