@@ -23,13 +23,13 @@ public class SearchEntitiesNarrowByTypeTests extends SearchTestsHarness {
 	@Test public void resources() { search("resource?q=*", 25); }
 	@Test public void resourcesMedium() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1020", 1); }
 	@Test public void bibliographicResources() { search("resource?q=*&t=http://purl.org/dc/terms/BibliographicResource", 23); }
-	@Test public void books() { search("resource?q=*&t=http://purl.org/ontology/bibo/Book", 16); }
+	@Test public void books() { search("resource?q=*&t=http://purl.org/ontology/bibo/Book", 17); }
 	@Test public void journals() { search("resource?q=*&t=http://purl.org/ontology/bibo/Journal", 1); }
 	@Test public void newspapers() { search("resource?q=*&t=http://purl.org/ontology/bibo/Newspaper", 1); }
 	@Test public void differentiatedPersons() { search("person?q=*&t=http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson", 10); }
 	@Test public void undifferentiatedPersons() { search("person?q=*&t=http://d-nb.info/standards/elementset/gnd#UndifferentiatedPerson", 4); }
 	@Test public void subjects() { search("subject?q=*", 18); }
-	@Test public void booksOrJournals() { search("resource?q=*&t=http://purl.org/ontology/bibo/Book,http://purl.org/ontology/bibo/Journal", 17); }
+	@Test public void booksOrJournals() { search("resource?q=*&t=http://purl.org/ontology/bibo/Book,http://purl.org/ontology/bibo/Journal", 18); }
 	@Test public void differentiatedOrUndifferentiatedPersons() { search(
 			"person?q=*&t=http://d-nb.info/standards/elementset/gnd#DifferentiatedPerson,http://d-nb.info/standards/elementset/gnd#UndifferentiatedPerson", 14); }
 	//@formatter:on

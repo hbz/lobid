@@ -18,7 +18,7 @@
          "@id": "http://purl.org/dc/terms/contributor",
          "@type": "@id"
       },
-      "contributorLabel": "http://purl.org/dc/elements/1.1/contributor",
+      "contributorLabel": "http://purl.org/lobid/lv#contributorLabel",
       "contributingCorporateBodyLabel": "http://purl.org/lobid/lv#nameOfContributingCorporateBody",
       "actor":
       {
@@ -277,7 +277,7 @@
          "@id": "http://purl.org/lobid/lv#nwbibspatial",
          "@type": "@id"
       },
-      "subjectLabel": "http://purl.org/dc/elements/1.1/subject",
+      "subjectLabel": "http://purl.org/lobid/lv#subjectLabel",
       "coverage": "http://purl.org/dc/elements/1.1/coverage",
       "subjectLocation": "http://purl.org/lobid/lv#subjectLocation",
       "editor":

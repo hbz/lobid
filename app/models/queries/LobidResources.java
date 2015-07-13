@@ -97,10 +97,10 @@ public class LobidResources {
 		public List<String> fields() {
 			return Arrays
 					.asList(
-							"@graph.http://purl.org/dc/elements/1.1/contributor.@value",
+							"@graph.http://purl.org/lobid/lv#contributorLabel.@value",
 							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfBirth.@value",
 							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfDeath.@value",
-							"@graph.http://purl.org/dc/elements/1.1/contributor.@value",
+							"@graph.http://purl.org/lobid/lv#contributorLabel.@value",
 							"@graph.http://purl.org/dc/terms/creator.@id",
 							"@graph.http://purl.org/dc/terms/contributor.@id",
 							"@graph.http://id.loc.gov/vocabulary/relators/act.@id",
@@ -143,7 +143,7 @@ public class LobidResources {
 		public List<String> fields() {
 			return Arrays.asList(/* @formatter:off*/
 					"@graph.http://purl.org/lobid/lv#subjectChain.@value",
-					"@graph.http://purl.org/dc/elements/1.1/subject.@value",
+					"@graph.http://purl.org/lobid/lv#subjectLabel.@value",
 					"@graph.http://purl.org/dc/terms/subject");/* @formatter:on */
 		}
 
@@ -179,15 +179,21 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return multiMatchQuery(lobidResourceQueryString(queryString),
+			return multiMatchQuery(normalizedLobidResourceIdQueryString(queryString),
 					fields().toArray(new String[] {})).operator(Operator.AND);
 		}
 	}
 
-	private static String lobidResourceQueryString(final String queryString) {
+	private static String normalizedLobidResourceIdQueryString(
+			final String queryString) {
+		String normalizedQueryString = queryString.replaceAll(" ", "");
+		if (normalizedQueryString.matches("\"?\\d.*\"?")) {
+			normalizedQueryString =
+					normalizedQueryString.replaceAll("-", "").toUpperCase();
+		}
 		final String hbzId = "\\p{L}+\\d+(-.+)?";
-		return queryString.matches(hbzId) ? "http://lobid.org/resource/"
-				+ queryString : queryString;
+		return normalizedQueryString.matches(hbzId) ? "http://lobid.org/resource/"
+				+ normalizedQueryString : normalizedQueryString;
 	}
 
 	/**

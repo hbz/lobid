@@ -47,12 +47,9 @@ public class SearchTests extends SearchTestsHarness {
 		JsonNode json =
 				Json.parse(client
 						.prepareGet(Index.LOBID_RESOURCES.id(), "json-ld-lobid",
-								"http://test.lobid.org/resource/BT000001260").execute()
-						.actionGet().getSourceAsString());
+								"http://lobid.org/resource/BT000001260").execute().actionGet()
+						.getSourceAsString());
 		assertThat(json.isObject()).isTrue();
-		assertThat(
-				json.findValue("http://d-nb.info/standards/elementset/gnd#dateOfBirth")
-						.findValue("@value").toString()).isEqualTo("\"1906\"");
 	}
 
 	@Test
@@ -75,7 +72,7 @@ public class SearchTests extends SearchTestsHarness {
 						Index.LOBID_RESOURCES).documents();
 		assertThat(docs.size()).isPositive();
 		for (Document document : docs) {
-			assertThat(document.getMatchedField()).contains("Hundt, Theodor");
+			assertThat(document.getMatchedField()).contains("Hundt, Theo");
 		}
 	}
 
@@ -128,6 +125,7 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void searchResByIdZdbUrl1() { searchResById("http://lobid.org/resource/ZDB2615620-9"); }
 	@Test public void searchResByIdZdbUrl2() { searchResById("http://lobid.org/resource/ZDB2530091-X"); }
 	@Test public void searchResByIdISBN() { searchResById("0940450003"); }
+	@Test public void searchResByIdIsbnConsistingOfHyphenAndSpaceISBN() { searchResById("0 080 238-70x"); }
 	@Test public void searchResByIdUrn() { searchResById("urn:nbn:de:hbz:929:02-1035"); }
 	/*@formatter:on*/
 
@@ -227,13 +225,13 @@ public class SearchTests extends SearchTestsHarness {
 
 	/*@formatter:off*/
 	@Test public void searchViaModelBirth0() { findOneBy("Theo Hundt"); }
-	@Test public void searchViaModelBirth1() { findOneBy("Hundt, Theo (1906-)"); }
-	@Test public void searchViaModelBirth2() { findOneBy("Theo Hundt (1906-)"); }
+	@Test public void searchViaModelBirth1() { findOneBy("Hundt, Theo"); }
+	@Test public void searchViaModelBirth2() { findOneBy("Theo Hundt"); }
 	@Test public void searchViaModelBirth3() { findOneBy("Goeters, J. F. Gerhard"); }
 	@Test public void searchViaModelMulti1() { findOneBy("Vollhardt, Kurt Peter C."); }
 	@Test public void searchViaModelMulti2() { findOneBy("Kurt Peter C. Vollhardt"); }
-	@Test public void searchViaModelMulti3() { findOneBy("Vollhardt, Kurt Peter C. (1946-)"); }
-	@Test public void searchViaModelMulti4() { findOneBy("Neil Eric Schore (1948-)"); }
+	@Test public void searchViaModelMulti3() { findOneBy("Vollhardt, Kurt Peter C."); }
+	@Test public void searchViaModelMulti4() { findOneBy("Neil Eric Schore"); }
 	@Test public void searchViaModelMulti5() { findOneBy("131392786"); }
 	@Test public void searchViaModelMulti6() { findOneBy("http://d-nb.info/gnd/131392786"); }
 	/*@formatter:on*/
@@ -247,12 +245,10 @@ public class SearchTests extends SearchTestsHarness {
 	@Test
 	public void searchViaModelMultiResult() {
 		List<Document> documents =
-				new Search(
-						ImmutableMap.of(Parameter.AUTHOR, "Neil Eric Schore (1948-)"),
+				new Search(ImmutableMap.of(Parameter.AUTHOR, "Neil Eric Schore"),
 						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(1);
-		assertThat(documents.get(0).getMatchedField())
-				.isEqualTo("Vollhardt, Peter");
+		assertThat(documents.get(0).getMatchedField()).isEqualTo("Schore, Neil");
 	}
 
 	@Test
@@ -375,7 +371,7 @@ public class SearchTests extends SearchTestsHarness {
 					assertThat(Iterables.any(list(jsonObject), new Predicate<String>() {
 						@Override
 						public boolean apply(String s) {
-							return s.equals("Schmidt, Hannelore (1919-03-03-2010-10-21)");
+							return s.equals("Schmidt, Loki (1919-03-03-2010-10-21)");
 						}
 					})).isTrue();
 				}
@@ -419,6 +415,20 @@ public class SearchTests extends SearchTestsHarness {
 				String prefix = "http://d-nb.info/gnd/";
 				assertThat(jsonObject.get(0 + META).toString()).contains(
 						prefix + gndId.replace(prefix, ""));
+			}
+		});
+	}
+
+	@Test
+	public void resByGndSubjectLabel() {
+		running(TEST_SERVER, new Runnable() {
+			@Override
+			public void run() {
+				final JsonNode jsonObject = Json.parse(call("resource?subject=UdSSR"));
+				assertThat(jsonObject.isArray()).isTrue();
+				assertThat(jsonObject.size()).isEqualTo(1 + META);
+				assertThat(jsonObject.get(0 + META).toString()).contains(
+						"PERGAMON POLICY STUDIES");
 			}
 		});
 	}
@@ -699,9 +709,9 @@ public class SearchTests extends SearchTestsHarness {
 				final JsonNode jsonObject = Json.parse(call("resource?id=BT000001260"));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.get(0 + META).get("@id").asText()).isEqualTo(
-						"http://test.lobid.org/resource/BT000001260/about");
+						"http://lobid.org/resource/BT000001260/about");
 				assertThat(jsonObject.get(0 + META).get("primaryTopic").asText())
-						.isEqualTo("http://test.lobid.org/resource/BT000001260");
+						.isEqualTo("http://lobid.org/resource/BT000001260");
 			}
 		});
 	}
