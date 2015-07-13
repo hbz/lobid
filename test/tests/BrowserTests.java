@@ -86,10 +86,6 @@ public class BrowserTests {
 	private static void assertTypee(final TestBrowser browser) {
 		assertThat(browser.pageSource()).contains("Typee")
 				.contains("a peep at Polynesian life")
-				.contains("http://gutenberg.org/ebooks/9269")
-				.contains("http://gutenberg.org/ebooks/23969")
-				.contains("http://openlibrary.org/works/OL14953734W")
-				.contains("http://dbpedia.org/resource/Typee")
 				.contains("http://lobid.org/item/HT002189125:DE-5-4:U%20MEL-11")
 				.contains("exemplar");
 	}

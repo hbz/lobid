@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 
 	/*@formatter:off@*/
-	@Test public void searchName(){search("resource?name=der", 4);}
+	@Test public void searchName(){search("resource?name=der", 5);}
 	@Test public void searchAltName(){search("resource?name=Grenzdimensionen", 1);}
 	@Test public void searchNameAndAuthor(){search("resource?name=der&author=micali", 1);}
 	@Test public void searchNameAndSubject(){search("resource?name=der&subject=4414195-6", 1);}
