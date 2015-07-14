@@ -154,8 +154,9 @@
 		</tr>
 	</table>
 
-	<h2>Pagination and Limits</h2>
-	<p>All endpoints support pagination via <code>from</code> and <code>size</code> parameters specifying the index to start the result set from (default is 0, must be >= 0), and the size of the result set (default is 50, must be <= 100). Sample request: <a href="/organisation?name=Universität&from=10&size=5&format=ids">/organisation?name=Universität&from=10&size=5&format=ids</a>.</p>
+	<h2>Pagination and Limits and Bulk Downloads</h2>
+	<p>All endpoints support pagination via <code>from</code> and <code>size</code> parameters specifying the index to start the result set from (default is 0, must be >= 0), and the size of the result set (default is 50, must be <= 100). Sample request: <a href="/organisation?name=Universität&from=10&size=5&format=ids">/organisation?name=Universität&from=10&size=5&format=ids</a>.<br/>
+However, f you want to receive all hits or get loads of data it is way faster and more coherent to use the boolean <code>scroll</code> parameter. Sample request: <a href="resource?set=edoweb&scroll=true">/resource?set=edoweb&scroll=true</a>. Note that the <code>format</code> parameter doesn't work when scrolling. Note also that only one scrolling at the same time is allowed for now.</p>
 
 	<h2>Content Negotiation</h2>
 	<p>To return different RDF serializations as the result format (default is JSON-LD), you can specify an accept header, e.g. for N-Triples:</p>
