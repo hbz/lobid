@@ -175,7 +175,8 @@ public class BrowserTests {
 				System.out.println(browser.pageSource());
 				assertThat(browser.pageSource()).contains("Bach, Johann Sebastian")
 						.contains("Lithograph, tätig in Leipzig um 1835-1837")
-						.contains("Bach, Johann Sebastian").contains("<der Jüngere")
+						.contains("Bach, Johann Sebastian")
+						.containsIgnoringCase("<der Jüngere")
 						.contains("Bach, Johann Samuel")
 						.contains("Bāḵ, Jōhān Sebaṣtī'ān")
 						.contains("Bach, Joh. Sebst.").contains("Dt. Maler");
