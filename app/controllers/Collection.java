@@ -92,9 +92,10 @@ public final class Collection extends Controller {
 			List<Document> docs = new ArrayList<>();
 			docs.add(doc);
 			Logger.trace("Response:\n" + response.getSourceAsString());
-			return !response.isExists() ? notFound() : ok(Application
-					.getSerializedResult(docs, index, "", 1, false, request(),
-							Application.getSerialization(request())));
+			return !response.isExists() ? notFound() : ok(
+					Application.getSerializedResult(docs, index, "", 1, false, request(),
+							Application.getSerialization(request()))).as(
+					Application.getSerialization(request()).types.get(0));
 		} catch (Exception x) {
 			x.printStackTrace();
 			return internalServerError(x.getMessage());

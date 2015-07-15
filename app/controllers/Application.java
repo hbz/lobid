@@ -347,11 +347,9 @@ public final class Application extends Controller {
 			long allHits, boolean addQueryInfo, Request request) {
 		switch (serialization) {
 		case JSON_LD:
-			response().setContentType("application/json");
 			return fullJsonResponse(documents, field, allHits, addQueryInfo, request)
 					.toString();
 		case RDF_A:
-			response().setContentType("text/html");
 			return views.html.docs.render(documents, selectedIndex).toString();
 		default:
 			return Joiner.on("\n").join(
