@@ -210,7 +210,7 @@ public final class Application extends Controller {
 			negotiateRes =
 					ok(
 							getSerializedResult(documents, selectedIndex, field, allHits,
-									addQueryInfo, request(), ser)).as("text/html");
+									addQueryInfo, request(), ser)).as(ser.getTypes().get(0));
 		final ImmutableMap<ResultFormat, Result> results =
 				new ImmutableMap.Builder<ResultFormat, Result>()
 						.put(ResultFormat.NEGOTIATE, negotiateRes)
