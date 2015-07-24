@@ -73,8 +73,8 @@ public class Search {
 	/* TODO find a better way to inject the client for testing */
 
 	/** Required: */
-	private Index index;
-	private Map<Parameter, String> parameters;
+	private final Index index;
+	private final Map<Parameter, String> parameters;
 
 	/** Optional: */
 	private String field = "";
@@ -297,7 +297,7 @@ public class Search {
 							(long) Math.pow((1D / (freeMem / 1024D / 1024D / 1024D / 7D)), 2);
 					Logger.info("Free memory low: " + freeMem / 1024 / 1024
 							+ " MB, sleeping for " + sleep + " ms.");
-					if (sleep > 10000) {
+					if (sleep > 20000) {
 						getMessageOut()
 								.write(
 										"\nMemory too low. Canceling your request! Please contact 'semweb at hbz-nrw.de' or try again (probably some days) later.");
