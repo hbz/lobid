@@ -16,20 +16,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import models.Document;
-import models.Index;
-import models.Parameter;
-import models.Search;
-
 import org.junit.Test;
-
-import play.libs.Json;
-import play.mvc.Result;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
+
+import models.Document;
+import models.Index;
+import models.Parameter;
+import models.Search;
+import play.libs.Json;
+import play.mvc.Result;
 
 /**
  * Tests for the search functionality.
@@ -43,12 +42,11 @@ public class SearchTests extends SearchTestsHarness {
 	public void accessIndex() {
 		assertThat(
 				client.prepareSearch().execute().actionGet().getHits().totalHits())
-				.isEqualTo(53);
-		JsonNode json =
-				Json.parse(client
-						.prepareGet(Index.LOBID_RESOURCES.id(), "json-ld-lobid",
-								"http://lobid.org/resource/BT000001260").execute().actionGet()
-						.getSourceAsString());
+						.isEqualTo(53);
+		JsonNode json = Json.parse(client
+				.prepareGet(Index.LOBID_RESOURCES.id(), "json-ld-lobid",
+						"http://lobid.org/resource/BT000001260")
+				.execute().actionGet().getSourceAsString());
 		assertThat(json.isObject()).isTrue();
 	}
 
@@ -109,9 +107,8 @@ public class SearchTests extends SearchTestsHarness {
 	/*@formatter:on*/
 
 	private static void searchOrgById(final String term) {
-		final List<Document> docs =
-				new Search(ImmutableMap.of(Parameter.ID, term),
-						Index.LOBID_ORGANISATIONS).documents();
+		final List<Document> docs = new Search(ImmutableMap.of(Parameter.ID, term),
+				Index.LOBID_ORGANISATIONS).documents();
 		assertThat(docs.size()).isEqualTo(1);
 	}
 
@@ -145,8 +142,8 @@ public class SearchTests extends SearchTestsHarness {
 						new Search(ImmutableMap.of(Parameter.ID, "TT050326640"),
 								Index.LOBID_RESOURCES).field("fulltextOnline").documents();
 				assertThat(docs.size()).isEqualTo(1);
-				assertThat(docs.get(0).getSource()).isEqualTo(
-						"[\"http://dx.doi.org/10.1007/978-1-4020-8389-1\"]");
+				assertThat(docs.get(0).getSource())
+						.isEqualTo("[\"http://dx.doi.org/10.1007/978-1-4020-8389-1\"]");
 			}
 		});
 	}
@@ -166,8 +163,8 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(hits);
 				if (hits > 0)
-					assertThat(jsonObject.get(0).asText()).isEqualTo(
-							"http://dx.doi.org/10.1007/978-1-4020-8389-1");
+					assertThat(jsonObject.get(0).asText())
+							.isEqualTo("http://dx.doi.org/10.1007/978-1-4020-8389-1");
 			}
 		});
 	}
@@ -215,10 +212,9 @@ public class SearchTests extends SearchTestsHarness {
 		running(fakeApplication(), new Runnable() {
 			@Override
 			public void run() {
-				assertThat(
-						status(route(fakeRequest(GET,
-								"/resource?author=Böll&format=ids.issued")))).isEqualTo(
-						BAD_REQUEST);
+				assertThat(status(
+						route(fakeRequest(GET, "/resource?author=Böll&format=ids.issued"))))
+								.isEqualTo(BAD_REQUEST);
 			}
 		});
 	}
@@ -229,9 +225,9 @@ public class SearchTests extends SearchTestsHarness {
 			@Override
 			public void run() {
 				assertThat(status(
-					route(fakeRequest(GET, "/resource?q=*&size=10000&scroll=true")
-						.withHeader("Accept", "application/rdf+xml"))))
-							.isEqualTo(BAD_REQUEST);
+						route(fakeRequest(GET, "/resource?q=*&size=10000&scroll=true")
+								.withHeader("Accept", "application/rdf+xml"))))
+										.isEqualTo(BAD_REQUEST);
 			}
 		});
 	}
@@ -250,9 +246,8 @@ public class SearchTests extends SearchTestsHarness {
 	/*@formatter:on*/
 
 	private static void findOneBy(String name) {
-		assertThat(
-				new Search(ImmutableMap.of(Parameter.AUTHOR, name),
-						Index.LOBID_RESOURCES).documents().size()).isEqualTo(1);
+		assertThat(new Search(ImmutableMap.of(Parameter.AUTHOR, name),
+				Index.LOBID_RESOURCES).documents().size()).isEqualTo(1);
 	}
 
 	@Test
@@ -270,8 +265,8 @@ public class SearchTests extends SearchTestsHarness {
 				new Search(ImmutableMap.of(Parameter.SET, "NwBib"),
 						Index.LOBID_RESOURCES).documents();
 		assertThat(documents.size()).isEqualTo(3);
-		assertThat(documents.get(2).getMatchedField()).isEqualTo(
-				"http://lobid.org/resource/NWBib");
+		assertThat(documents.get(2).getMatchedField())
+				.isEqualTo("http://lobid.org/resource/NWBib");
 	}
 
 	@Test
@@ -300,8 +295,8 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				assertThat(call("resource?author=abraham", "text/html")).contains(
-						"<html");
+				assertThat(call("resource?author=abraham", "text/html"))
+						.contains("<html");
 			}
 		});
 	}
@@ -375,9 +370,8 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				final JsonNode jsonObject =
-						Json.parse(call("person?name=" + name.replace(" ", "%20")
-								+ "&format=short"));
+				final JsonNode jsonObject = Json.parse(
+						call("person?name=" + name.replace(" ", "%20") + "&format=short"));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results);
 				if (results > 0) {
@@ -402,8 +396,8 @@ public class SearchTests extends SearchTestsHarness {
 						Json.parse(call("resource?author=" + gndId));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(1 + META);
-				assertThat(jsonObject.get(0 + META).toString()).contains(
-						"http://d-nb.info/gnd/" + gndId);
+				assertThat(jsonObject.get(0 + META).toString())
+						.contains("http://d-nb.info/gnd/" + gndId);
 			}
 		});
 	}
@@ -426,8 +420,8 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
 				String prefix = "http://d-nb.info/gnd/";
-				assertThat(jsonObject.get(0 + META).toString()).contains(
-						prefix + gndId.replace(prefix, ""));
+				assertThat(jsonObject.get(0 + META).toString())
+						.contains(prefix + gndId.replace(prefix, ""));
 			}
 		});
 	}
@@ -440,8 +434,8 @@ public class SearchTests extends SearchTestsHarness {
 				final JsonNode jsonObject = Json.parse(call("resource?subject=UdSSR"));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(1 + META);
-				assertThat(jsonObject.get(0 + META).toString()).contains(
-						"PERGAMON POLICY STUDIES");
+				assertThat(jsonObject.get(0 + META).toString())
+						.contains("PERGAMON POLICY STUDIES");
 			}
 		});
 	}
@@ -451,8 +445,8 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				final JsonNode jsonObject =
-						Json.parse(call("resource?nwbibsubject=http://purl.org/lobid/nwbib#s552000"));
+				final JsonNode jsonObject = Json.parse(
+						call("resource?nwbibsubject=http://purl.org/lobid/nwbib#s552000"));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(1 + META);
 			}
@@ -474,8 +468,8 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
 				final String gndPrefix = "http://d-nb.info/gnd/";
-				assertThat(jsonObject.get(0 + META).toString()).contains(
-						gndPrefix + gndId.replace(gndPrefix, ""));
+				assertThat(jsonObject.get(0 + META).toString())
+						.contains(gndPrefix + gndId.replace(gndPrefix, ""));
 			}
 		});
 	}
@@ -515,8 +509,8 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
 				final String gndPrefix = "http://d-nb.info/gnd/";
-				assertThat(jsonObject.get(0 + META).toString()).contains(
-						gndPrefix + gndId.replace(gndPrefix, ""));
+				assertThat(jsonObject.get(0 + META).toString())
+						.contains(gndPrefix + gndId.replace(gndPrefix, ""));
 			}
 		});
 	}
@@ -562,8 +556,8 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				final String response = call(ENDPOINT, "text/plain");
 				assertThat(response).isNotEmpty().startsWith("<http");
-				assertThat(response).contains(
-						"<http://xmlns.com/foaf/0.1/primaryTopic>");
+				assertThat(response)
+						.contains("<http://xmlns.com/foaf/0.1/primaryTopic>");
 			}
 		});
 	}
@@ -575,8 +569,8 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				final String response = call(ENDPOINT, "text/turtle");
 				assertThat(response).isNotEmpty().contains("      a       ");
-				assertThat(response).contains(
-						"<http://xmlns.com/foaf/0.1/primaryTopic>");
+				assertThat(response)
+						.contains("<http://xmlns.com/foaf/0.1/primaryTopic>");
 			}
 		});
 	}
@@ -586,8 +580,8 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				assertThat(call(ENDPOINT, "text/html")).isNotEmpty().contains(
-						"<!DOCTYPE html>");
+				assertThat(call(ENDPOINT, "text/html")).isNotEmpty()
+						.contains("<!DOCTYPE html>");
 			}
 		});
 	}
@@ -654,10 +648,9 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				assertThat(
-						call(ENDPOINT,
-								"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"))
-						.isNotEmpty().contains("<html");
+				assertThat(call(ENDPOINT,
+						"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"))
+								.isNotEmpty().contains("<html");
 			}
 		});
 	}
@@ -666,12 +659,10 @@ public class SearchTests extends SearchTestsHarness {
 	public void searchWithLimit() {
 		final Index index = Index.LOBID_RESOURCES;
 		final Parameter parameter = Parameter.AUTHOR;
-		assertThat(
-				new Search(ImmutableMap.of(parameter, "Abraham"), index).page(0, 3)
-						.documents().size()).isEqualTo(3);
-		assertThat(
-				new Search(ImmutableMap.of(parameter, "Abraham"), index).page(3, 6)
-						.documents().size()).isEqualTo(5);
+		assertThat(new Search(ImmutableMap.of(parameter, "Abraham"), index)
+				.page(0, 3).documents().size()).isEqualTo(3);
+		assertThat(new Search(ImmutableMap.of(parameter, "Abraham"), index)
+				.page(3, 6).documents().size()).isEqualTo(5);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -721,8 +712,8 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				final JsonNode jsonObject = Json.parse(call("resource?id=BT000001260"));
 				assertThat(jsonObject.isArray()).isTrue();
-				assertThat(jsonObject.get(0 + META).get("@id").asText()).isEqualTo(
-						"http://lobid.org/resource/BT000001260/about");
+				assertThat(jsonObject.get(0 + META).get("@id").asText())
+						.isEqualTo("http://lobid.org/resource/BT000001260/about");
 				assertThat(jsonObject.get(0 + META).get("primaryTopic").asText())
 						.isEqualTo("http://lobid.org/resource/BT000001260");
 			}
@@ -736,8 +727,8 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				final JsonNode jsonObject = Json.parse(call("person?id=1019737174"));
 				assertThat(jsonObject.isArray()).isTrue();
-				assertThat(jsonObject.get(0 + META).get("@id").asText()).isEqualTo(
-						"http://d-nb.info/gnd/1019737174/about");
+				assertThat(jsonObject.get(0 + META).get("@id").asText())
+						.isEqualTo("http://d-nb.info/gnd/1019737174/about");
 				assertThat(jsonObject.get(0 + META).get("primaryTopic").asText())
 						.isEqualTo("http://d-nb.info/gnd/1019737174");
 			}
@@ -752,8 +743,8 @@ public class SearchTests extends SearchTestsHarness {
 				String request = "resource?q=*&from=0&size=3";
 				String response = call(request);
 				assertThat(response).contains(request);
-				assertThat(response).contains(
-						"\"http://sindice.com/vocab/search#totalResults\":25}");
+				assertThat(response)
+						.contains("\"http://sindice.com/vocab/search#totalResults\":25}");
 			}
 		});
 	}
@@ -766,8 +757,8 @@ public class SearchTests extends SearchTestsHarness {
 				String request = "resource?q=*&from=0&size=3";
 				String response = call(request, "text/plain");
 				assertThat(response).contains(request);
-				assertThat(response).contains(
-						"<http://sindice.com/vocab/search#totalResults> "
+				assertThat(response)
+						.contains("<http://sindice.com/vocab/search#totalResults> "
 								+ "\"25\"^^<http://www.w3.org/2001/XMLSchema#integer>");
 			}
 		});
@@ -780,8 +771,8 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				String request = "resource/BT000001260";
 				String response = call(request);
-				assertThat(response).doesNotContain(
-						"http://sindice.com/vocab/search#totalResults");
+				assertThat(response)
+						.doesNotContain("http://sindice.com/vocab/search#totalResults");
 			}
 		});
 	}
@@ -793,8 +784,8 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				String request = "resource/BT000001260";
 				String response = call(request, "text/plain");
-				assertThat(response).doesNotContain(
-						"<http://sindice.com/vocab/search#totalResults>");
+				assertThat(response)
+						.doesNotContain("<http://sindice.com/vocab/search#totalResults>");
 			}
 		});
 	}

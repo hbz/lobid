@@ -15,9 +15,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-import models.queries.LobidItems;
-import models.queries.LobidResources;
-
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.elasticsearch.action.search.SearchRequestBuilder;
@@ -36,17 +33,18 @@ import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 
-import play.Logger;
-import play.mvc.Http.Request;
-import play.mvc.Results.Chunks;
-import play.mvc.Results.StringChunks;
-
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
 import controllers.Serialization;
+import models.queries.LobidItems;
+import models.queries.LobidResources;
+import play.Logger;
+import play.mvc.Http.Request;
+import play.mvc.Results.Chunks;
+import play.mvc.Results.StringChunks;
 
 /**
  * Search documents in an ElasticSearch index.
@@ -62,12 +60,12 @@ public class Search {
 					Index.CONFIG.getString("application.es.server"),
 					Index.CONFIG.getInt("application.es.port"));
 	/** The ElasticSearch cluster to use. */
-	public static final String ES_CLUSTER_NAME = Index.CONFIG
-			.getString("application.es.cluster");
+	public static final String ES_CLUSTER_NAME =
+			Index.CONFIG.getString("application.es.cluster");
 
-	private static Client productionClient = new TransportClient(
-			ImmutableSettings.settingsBuilder().put("cluster.name", ES_CLUSTER_NAME)
-					.build()).addTransportAddress(ES_SERVER);
+	private static Client productionClient = new TransportClient(ImmutableSettings
+			.settingsBuilder().put("cluster.name", ES_CLUSTER_NAME).build())
+					.addTransportAddress(ES_SERVER);
 	/** The ElasticSearch client to use. */
 	public static Client client = productionClient;
 	/* TODO find a better way to inject the client for testing */
@@ -102,7 +100,9 @@ public class Search {
 		this.parameters = parameters;
 	}
 
-	/** @param newClient The new elasticsearch client to use. */
+	/**
+	 * @param newClient The new elasticsearch client to use.
+	 */
 	public static void clientSet(Client newClient) {
 		client = newClient;
 	}
@@ -143,9 +143,8 @@ public class Search {
 
 		final QueryBuilder queryBuilder = createQuery();
 		Logger.trace("Using query: " + queryBuilder);
-		final SearchResponse response =
-				search(queryBuilder, Boolean.getBoolean(parameters
-						.get(Parameter.SCROLL)) ? SearchType.SCAN
+		final SearchResponse response = search(queryBuilder,
+				Boolean.getBoolean(parameters.get(Parameter.SCROLL)) ? SearchType.SCAN
 						: SearchType.DFS_QUERY_THEN_FETCH);
 		Logger.trace("Got response: " + response);
 		final SearchHits hits = response.getHits();
@@ -275,9 +274,8 @@ public class Search {
 			long cnt = 0;
 			long to = hits.getTotalHits();
 			String str;
-			while ((str =
-					getHitsAsString(request, searchResponse, JSON_LD, cnt, to,
-							serialization)) != null) {
+			while ((str = getHitsAsString(request, searchResponse, JSON_LD, cnt, to,
+					serialization)) != null) {
 				if (JSON_LD)
 					getMessageOut().write(str.substring(1, str.length() - 1));
 				else
@@ -299,9 +297,8 @@ public class Search {
 					Logger.info("Free memory low: " + freeMem / 1024 / 1024
 							+ " MB, sleeping for " + sleep + " ms.");
 					if (sleep > 20000) {
-						getMessageOut()
-								.write(
-										"\nMemory too low. Canceling your request! Please contact 'semweb at hbz-nrw.de' or try again (probably some days) later.");
+						getMessageOut().write(
+								"\nMemory too low. Canceling your request! Please contact 'semweb at hbz-nrw.de' or try again (probably some days) later.");
 						return;
 					}
 					Thread.sleep(sleep);
@@ -331,9 +328,8 @@ public class Search {
 		Logger.trace("Using query: " + queryBuilder);
 		SearchResponse response = search(queryBuilder, SearchType.SCAN);
 		Logger.trace("Got response: " + response);
-		response =
-				client.prepareSearchScroll(response.getScrollId()).setScroll("1m")
-						.execute().actionGet();
+		response = client.prepareSearchScroll(response.getScrollId())
+				.setScroll("1m").execute().actionGet();
 		return response;
 	}
 
@@ -344,8 +340,8 @@ public class Search {
 			if (JSON_LD && cnt > 0)
 				getMessageOut().write(",\n");
 			return controllers.Application.getSerializedResult(
-					asDocuments(response.getHits(), fields(parameters)), index, field,
-					to, false, request, serialization);
+					asDocuments(response.getHits(), fields(parameters)), index, field, to,
+					false, request, serialization);
 		}
 		return null;
 	}
@@ -420,25 +416,22 @@ public class Search {
 
 	private SearchResponse search(final QueryBuilder queryBuilder,
 			SearchType searchType) {
-		SearchRequestBuilder requestBuilder =
-				client.prepareSearch(index.id()).setSearchType(searchType)
-						.setQuery(queryBuilder)
-						.setPostFilter(FilterBuilders.typeFilter(index.type()));
+		SearchRequestBuilder requestBuilder = client.prepareSearch(index.id())
+				.setSearchType(searchType).setQuery(queryBuilder)
+				.setPostFilter(FilterBuilders.typeFilter(index.type()));
 		if (searchType.equals(SearchType.SCAN))
 			requestBuilder.setScroll(TimeValue.timeValueMinutes(1));
 		if (owner.equals("*"))
-			requestBuilder =
-					requestBuilder.setPostFilter(FilterBuilders.existsFilter(//
-							"@graph.http://purl.org/vocab/frbr/core#exemplar.@id"));
+			requestBuilder = requestBuilder.setPostFilter(FilterBuilders.existsFilter(//
+					"@graph.http://purl.org/vocab/frbr/core#exemplar.@id"));
 		if (!sort.isEmpty()) {
 			requestBuilder.addSort(SortBuilders
 					.fieldSort("@graph.http://purl.org/dc/terms/issued.@value")
 					.order(sort.equals("newest") ? SortOrder.DESC : SortOrder.ASC)
 					.ignoreUnmapped(true));
 		}
-		final SearchResponse response =
-				requestBuilder.setFrom(from).setSize(size).setExplain(false).execute()
-						.actionGet();
+		final SearchResponse response = requestBuilder.setFrom(from).setSize(size)
+				.setExplain(false).execute().actionGet();
 		return response;
 	}
 
@@ -450,8 +443,8 @@ public class Search {
 				Hit hitEnum = Hit.of(hit, searchFields);
 				final Document document =
 						new Document(hit.getId(), new String(hit.source()), index, field);
-				res.add(hitEnum
-						.process(parameters.values().iterator().next(), document));
+				res.add(
+						hitEnum.process(parameters.values().iterator().next(), document));
 			} catch (IllegalArgumentException e) {
 				Logger.error(e.getMessage(), e);
 			}

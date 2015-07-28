@@ -5,6 +5,10 @@ package controllers;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.common.collect.ImmutableMap;
+
 import models.Index;
 import models.Parameter;
 import play.Logger;
@@ -15,10 +19,6 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.test.Helpers;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.google.common.collect.ImmutableMap;
 
 /**
  * API controller.
@@ -54,24 +54,19 @@ public final class Api extends Controller {
 	 * @param scroll Boolean wether this is a scroll scan query or not
 	 * @return Matching resources
 	 */
-	public static Promise<Result> resource(
-			final String id,
-			final String q,
-			final String name, // NOPMD
-			final String author, final String subject, final String publisher,
-			final String issued, final String medium, final String set,
-			final String nwbibspatial, final String nwbibsubject,
+	public static Promise<Result> resource(final String id, final String q,
+			final String name, final String author, final String subject,
+			final String publisher, final String issued, final String medium,
+			final String set, final String nwbibspatial, final String nwbibsubject,
 			final String format, final int from, final int size, final String owner,
 			final String type, final String sort, final boolean addQueryInfo,
 			final String location, final boolean scroll) {
-		Logger
-				.debug(String
-						.format(
-								"GET /resource; id: '%s', q: '%s', name: '%s', author: '%s', subject: '%s', set: '%s', format: '%s', owner: '%s', scroll: '%s'",
-								id, q, name, author, subject, set, format, owner, scroll));
+		Logger.debug(String.format(
+				"GET /resource; id: '%s', q: '%s', name: '%s', author: '%s', subject: '%s', set: '%s', format: '%s', owner: '%s', scroll: '%s'",
+				id, q, name, author, subject, set, format, owner, scroll));
 		final Index index = Index.LOBID_RESOURCES;
-		final Map<Parameter, String> parameters =
-				Parameter.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
+		final Map<Parameter, String> parameters = Parameter
+				.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
 						.put(Parameter.NAME, name)
@@ -85,8 +80,8 @@ public final class Api extends Controller {
 						.put(Parameter.NWBIBSUBJECT, nwbibsubject)
 						.put(Parameter.LOCATION, location)
 						.build());/*@formatter:on*/
-		return Application.search(index, parameters, format, from, size, owner,
-				set, type, sort, addQueryInfo, scroll);
+		return Application.search(index, parameters, format, from, size, owner, set,
+				type, sort, addQueryInfo, scroll);
 	}
 
 	/**
@@ -100,13 +95,12 @@ public final class Api extends Controller {
 	 * @param addQueryInfo If true, add a query info object to the response
 	 * @return Matching items
 	 */
-	public static Promise<Result> item(final String id,
-			final String q,
+	public static Promise<Result> item(final String id, final String q,
 			final String name, // NOPMD
 			final String format, final int from, final int size, final String type,
 			final boolean addQueryInfo) {
-		Logger.debug(String.format("GET /item; id: '%s', q: '%s', name: '%s'", id,
-				q, name));
+		Logger.debug(
+				String.format("GET /item; id: '%s', q: '%s', name: '%s'", id, q, name));
 		return search(id, q, name, format, from, size, Index.LOBID_ITEMS, type, "",
 				addQueryInfo);
 	}
@@ -122,8 +116,7 @@ public final class Api extends Controller {
 	 * @param addQueryInfo If true, add a query info object to the response
 	 * @return Matching organisations
 	 */
-	public static Promise<Result> organisation(final String id,
-			final String q,
+	public static Promise<Result> organisation(final String id, final String q,
 			final String name, // NOPMD
 			final String format, final int from, final int size, final String type,
 			final boolean addQueryInfo) {
@@ -144,13 +137,12 @@ public final class Api extends Controller {
 	 * @param addQueryInfo If true, add a query info object to the response
 	 * @return Matching persons
 	 */
-	public static Promise<Result> person(final String id,
-			final String q,
+	public static Promise<Result> person(final String id, final String q,
 			final String name, // NOPMD
 			final String format, final int from, final int size, final String type,
 			final boolean addQueryInfo) {
-		Logger.debug(String.format("GET /person; id: '%s', q: '%s', name: '%s'",
-				id, q, name));
+		Logger.debug(String.format("GET /person; id: '%s', q: '%s', name: '%s'", id,
+				q, name));
 		return search(id, q, name, format, from, size, Index.GND, type, "",
 				addQueryInfo);
 	}
@@ -170,20 +162,20 @@ public final class Api extends Controller {
 			final String type) {
 		Logger.debug(String.format("GET /subject; id: '%s', q: '%s', name: '%s'",
 				id, q, name));
-		final Map<Parameter, String> parameters =/*@formatter:off*/
+		final Map<Parameter, String> parameters = /*@formatter:off*/
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>()
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
 						.put(Parameter.SUBJECT, name).build());/*@formatter:on*/
-		return Application.search(Index.GND, parameters, format, from, size, "",
-				"", type, "", true, false);
+		return Application.search(Index.GND, parameters, format, from, size, "", "",
+				type, "", true, false);
 	}
 
 	private static Promise<Result> search(final String id, final String q,
 			final String name, final String format, final int from, final int size,
 			final Index index, final String type, final String sort,
 			final boolean addQueryInfo) {
-		final Map<Parameter, String> parameters =/*@formatter:off*/
+		final Map<Parameter, String> parameters = /*@formatter:off*/
 				Parameter.select(new ImmutableMap.Builder<Parameter, String>()
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
@@ -205,20 +197,19 @@ public final class Api extends Controller {
 	public static Promise<Result> search(final String id, final String q,
 			final String name, // NOPMD
 			final String format, final int from, final int size) {
-		Logger.debug(String.format("GET /search; id: '%s', q: '%s', name: '%s'",
-				id, q, name));
+		Logger.debug(String.format("GET /search; id: '%s', q: '%s', name: '%s'", id,
+				q, name));
 		if (format.equals("page")) { // NOPMD
 			final String message = "Result format 'page' not supported for /entity";
 			Logger.error(message);
 			return Application.badRequestPromise(message);
 		}
-		Promise<List<Result>> results =
-				Promise.sequence(
-						resource(id, q, name, "", "", "", "", "", "", "", "", format, from,
-								size, "", "", "", true, "", false),
-						organisation(id, q, name, format, from, size, "", true),
-						person(id, q, name, format, from, size, "", true),
-						subject(id, q, name, format, from, size, ""));
+		Promise<List<Result>> results = Promise.sequence(
+				resource(id, q, name, "", "", "", "", "", "", "", "", format, from,
+						size, "", "", "", true, "", false),
+				organisation(id, q, name, format, from, size, "", true),
+				person(id, q, name, format, from, size, "", true),
+				subject(id, q, name, format, from, size, ""));
 		return results.map(okJson());
 	}
 

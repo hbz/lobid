@@ -29,8 +29,8 @@ import play.test.TestServer;
 @SuppressWarnings("javadoc")
 public class BrowserTests {
 
-	private static final String API_PAGE = "http://localhost:"
-			+ SearchTestsHarness.TEST_SERVER_PORT + "/api";
+	private static final String API_PAGE =
+			"http://localhost:" + SearchTestsHarness.TEST_SERVER_PORT + "/api";
 	private static final TestServer TEST_SERVER = SearchTestsHarness.TEST_SERVER;
 
 	@BeforeClass
@@ -57,11 +57,12 @@ public class BrowserTests {
 	public void queryForm() {
 		running(TEST_SERVER, HTMLUNIT, new Callback<TestBrowser>() {
 			@Override
-			public void invoke(final TestBrowser browser) throws InterruptedException {
+			public void invoke(final TestBrowser browser)
+					throws InterruptedException {
 				browser.goTo(API_PAGE);
 				assertThat(browser.title()).isEqualTo("lobid - api");
-				browser.find("input", withId("id")).text(
-						"http://d-nb.info/gnd/118836617");
+				browser.find("input", withId("id"))
+						.text("http://d-nb.info/gnd/118836617");
 				browser.find("button", withText("Search")).first().click();
 				assertThat(browser.url()).isNotEqualTo(API_PAGE);
 				assertThat(browser.pageSource()).contains("118836617")
@@ -84,8 +85,7 @@ public class BrowserTests {
 	}
 
 	private static void assertTypee(final TestBrowser browser) {
-		assertThat(browser.pageSource())
-				.contains("Typee")
+		assertThat(browser.pageSource()).contains("Typee")
 				.contains("a peep at Polynesian life")
 				// TODO: these enrichments are missing
 				// .contains("http://gutenberg.org/ebooks/9269")
@@ -107,8 +107,9 @@ public class BrowserTests {
 						.contains("The ethnic factor in American catholicism")
 						.contains("an analysis of interethnic marriage")
 						.contains("Abramson, Harold J.");
-				assertThat(browser.pageSource()).doesNotContain(
-						"Error-correcting codes from linear sequential circuits")
+				assertThat(browser.pageSource())
+						.doesNotContain(
+								"Error-correcting codes from linear sequential circuits")
 						.doesNotContain("Abramson, N. M.");
 			}
 		});
@@ -151,14 +152,12 @@ public class BrowserTests {
 			public void invoke(final TestBrowser browser) {
 				browser.goTo(API_PAGE);
 				browser.click("a", withText("/organisation?name=Universität"));
-				assertThat(browser.pageSource())
-						.contains("Universität")
+				assertThat(browser.pageSource()).contains("Universität")
 						.contains("Universität Basel")
 						.contains("Ruhr-Universität Bochum, Universitätsbibliothek")
 						.contains("Universitätsstr. 150")
 						.contains("http://www.ub.ruhr-uni-bochum.de")
-						.contains("mailto:benutzung.ub@ruhr-uni-bochum.de")
-						.contains(
+						.contains("mailto:benutzung.ub@ruhr-uni-bochum.de").contains(
 								"http://de.wikipedia.org/wiki/Universitätsbibliothek_Bochum");
 			}
 		});

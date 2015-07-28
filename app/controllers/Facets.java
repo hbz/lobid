@@ -8,10 +8,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import models.Index;
-import models.Parameter;
-import models.Search;
-
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
@@ -26,15 +22,18 @@ import org.elasticsearch.search.facet.FacetBuilders;
 import org.elasticsearch.search.facet.terms.TermsFacet;
 import org.elasticsearch.search.facet.terms.TermsFacetBuilder;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.common.collect.ImmutableMap;
+
+import models.Index;
+import models.Parameter;
+import models.Search;
 import play.Logger;
 import play.cache.Cache;
 import play.libs.F.Promise;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.google.common.collect.ImmutableMap;
 
 /**
  * Facets controller.
@@ -78,26 +77,24 @@ public final class Facets extends Controller {
 		}
 		String key =
 				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s",
-						id, q, author, name, subject, publisher, issued, medium, owner,
-						set, nwbibspatial, nwbibsubject, size, field, t, location);
+						id, q, author, name, subject, publisher, issued, medium, owner, set,
+						nwbibspatial, nwbibsubject, size, field, t, location);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
 			return Promise.promise(() -> cachedResult);
 		}
-		Promise<Result> result =
-				createJsonResponse(getElasticsearchFacets(id, q, author, name, subject,
-						publisher, issued, medium, owner, set, nwbibspatial, nwbibsubject,
-						field, size, t, location));
+		Promise<Result> result = createJsonResponse(getElasticsearchFacets(id, q,
+				author, name, subject, publisher, issued, medium, owner, set,
+				nwbibspatial, nwbibsubject, field, size, t, location));
 		result.onRedeem(r -> Cache.set(key, r, ONE_DAY));
 		return result;
 	}
 
 	private static Promise<Result> createJsonResponse(
 			Promise<org.elasticsearch.search.facet.Facets> facetsPromise) {
-		Function<Entry<String, Facet>, JsonNode> toJson =
-				mapEntry -> {
-					TermsFacet facet = (TermsFacet) mapEntry.getValue();
-					return Json.toJson(ImmutableMap.of(/*@formatter:off*/
+		Function<Entry<String, Facet>, JsonNode> toJson = mapEntry -> {
+			TermsFacet facet = (TermsFacet) mapEntry.getValue();
+			return Json.toJson(ImmutableMap.of(/*@formatter:off*/
 							"field", facet.getName(), 
 							"count", facet.getTotalCount(),
 							"entries", facet.getEntries().stream().map(
@@ -105,7 +102,7 @@ public final class Facets extends Controller {
 										"term", facetEntry.getTerm().toString(), 
 										"count", facetEntry.getCount()))
 									.collect(Collectors.toList())));/*@formatter:on*/
-				};
+		};
 		return facetsPromise.map(facets -> {
 			Stream<JsonNode> maps =
 					facets.facetsAsMap().entrySet().stream().map(toJson);
@@ -119,21 +116,17 @@ public final class Facets extends Controller {
 			String nwbibspatial, String nwbibsubject, String field, int size,
 			String t, String location) {
 		Promise<org.elasticsearch.search.facet.Facets> promise =
-				Promise.promise(
-						() -> {
-							QueryBuilder query =
-									createQuery(id, q, author, name, subject, publisher, issued,
-											medium, set, nwbibspatial, nwbibsubject, owner, t,
-											location);
-							SearchRequestBuilder req =
-									createRequest(owner, field, query, size);
-							long start = System.currentTimeMillis();
-							SearchResponse res = req.execute().actionGet();
-							Logger.debug(
-									"Got facets for q={}, owner={}, field={}; took {} ms.", q,
-									owner, field, (System.currentTimeMillis() - start));
-							return res.getFacets();
-						}).recover((Throwable x) -> {
+				Promise.promise(() -> {
+					QueryBuilder query =
+							createQuery(id, q, author, name, subject, publisher, issued,
+									medium, set, nwbibspatial, nwbibsubject, owner, t, location);
+					SearchRequestBuilder req = createRequest(owner, field, query, size);
+					long start = System.currentTimeMillis();
+					SearchResponse res = req.execute().actionGet();
+					Logger.debug("Got facets for q={}, owner={}, field={}; took {} ms.",
+							q, owner, field, (System.currentTimeMillis() - start));
+					return res.getFacets();
+				}).recover((Throwable x) -> {
 					x.printStackTrace();
 					return null;
 				});
@@ -144,8 +137,8 @@ public final class Facets extends Controller {
 			String name, String subject, String publisher, String issued,
 			String medium, String set, String nwbibspatial, String nwbibsubject,
 			String owner, String t, String location) {
-		final Map<Parameter, String> parameters =
-				Parameter.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
+		final Map<Parameter, String> parameters = Parameter
+				.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
 						.put(Parameter.ID, id)
 						.put(Parameter.Q, q)
 						.put(Parameter.AUTHOR, author)
@@ -158,9 +151,8 @@ public final class Facets extends Controller {
 						.put(Parameter.NWBIBSPATIAL, nwbibspatial)
 						.put(Parameter.NWBIBSUBJECT, nwbibsubject)
 						.put(Parameter.LOCATION, location).build());/*@formatter:on*/
-		QueryBuilder query =
-				parameters.isEmpty() ? QueryBuilders.matchAllQuery() : new Search(
-						parameters, Index.LOBID_RESOURCES).owner(owner).type(t)
+		QueryBuilder query = parameters.isEmpty() ? QueryBuilders.matchAllQuery()
+				: new Search(parameters, Index.LOBID_RESOURCES).owner(owner).type(t)
 						.createQuery();
 		return query;
 	}
@@ -175,9 +167,8 @@ public final class Facets extends Controller {
 				FacetBuilders.termsFacet(field).field(field).size(size);
 		if (!owner.isEmpty()) {
 			String fieldName = "@graph.http://purl.org/vocab/frbr/core#exemplar.@id";
-			FilterBuilder filter =
-					owner.equals("*") ? FilterBuilders.existsFilter(fieldName)
-							: ownersFilter(owner);
+			FilterBuilder filter = owner.equals("*")
+					? FilterBuilders.existsFilter(fieldName) : ownersFilter(owner);
 			facet = facet.facetFilter(filter);
 		}
 		req = req.addFacet(facet);
@@ -185,10 +176,9 @@ public final class Facets extends Controller {
 	}
 
 	private static FilterBuilder ownersFilter(final String ownerParam) {
-		TermsFilterBuilder filter =
-				FilterBuilders.termsFilter(
-						"@graph.http://purl.org/vocab/frbr/core#owner.@id",
-						ownerParam.split(","));
+		TermsFilterBuilder filter = FilterBuilders.termsFilter(
+				"@graph.http://purl.org/vocab/frbr/core#owner.@id",
+				ownerParam.split(","));
 		HasChildFilterBuilder result =
 				FilterBuilders.hasChildFilter("json-ld-lobid-item", filter);
 		return result;

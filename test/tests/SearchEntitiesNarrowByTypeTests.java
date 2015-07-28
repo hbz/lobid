@@ -7,9 +7,9 @@ import static play.test.Helpers.running;
 
 import org.junit.Test;
 
-import play.libs.Json;
-
 import com.fasterxml.jackson.databind.JsonNode;
+
+import play.libs.Json;
 
 /**
  * Tests for searching entities, narrowed to their types.

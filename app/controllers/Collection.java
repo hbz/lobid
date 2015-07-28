@@ -5,12 +5,11 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.elasticsearch.action.get.GetResponse;
+
 import models.Document;
 import models.Index;
 import models.Search;
-
-import org.elasticsearch.action.get.GetResponse;
-
 import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -54,7 +53,8 @@ public final class Collection extends Controller {
 	 * Returns {@link #resourceAbout(String, String)}
 	 */
 	@SuppressWarnings("javadoc")
-	public static Result resourceAboutNWBib(final String id, final String format) {
+	public static Result resourceAboutNWBib(final String id,
+			final String format) {
 		return getId(id, format, Index.LOBID_COLLECTIONS);
 	}
 
@@ -70,7 +70,8 @@ public final class Collection extends Controller {
 	 * Returns {@link #resourceAbout(String, String)}
 	 */
 	@SuppressWarnings("javadoc")
-	public static Result resourceAboutEdoweb(final String id, final String format) {
+	public static Result resourceAboutEdoweb(final String id,
+			final String format) {
 		return getId(id, format, Index.LOBID_COLLECTIONS);
 	}
 
@@ -85,17 +86,16 @@ public final class Collection extends Controller {
 			final Index index) {
 		try {
 			Logger.debug("Request:\n" + id);
-			GetResponse response =
-					Search.client.prepareGet(index.id(), index.type(), id).execute()
-							.actionGet();
+			GetResponse response = Search.client
+					.prepareGet(index.id(), index.type(), id).execute().actionGet();
 			Document doc = new Document(id, response.getSourceAsString(), index, "");
 			List<Document> docs = new ArrayList<>();
 			docs.add(doc);
 			Logger.trace("Response:\n" + response.getSourceAsString());
-			return !response.isExists() ? notFound() : ok(
-					Application.getSerializedResult(docs, index, "", 1, false, request(),
-							Application.getSerialization(request()))).as(
-					Application.getSerialization(request()).types.get(0));
+			return !response.isExists() ? notFound()
+					: ok(Application.getSerializedResult(docs, index, "", 1, false,
+							request(), Application.getSerialization(request())))
+									.as(Application.getSerialization(request()).types.get(0));
 		} catch (Exception x) {
 			x.printStackTrace();
 			return internalServerError(x.getMessage());

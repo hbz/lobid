@@ -72,13 +72,11 @@ public abstract class RenewTestData {
 		String id = ((String) object.get("_id"));
 		String type = ((String) object.get("_type"));
 		if (!type.equals("json-ld-lobid-collection")) {
-			id =
-					id.replaceAll("http:\\/\\/d-nb.info/gnd\\/",
-							"http:\\/\\/lobid.org\\/subject/");
+			id = id.replaceAll("http:\\/\\/d-nb.info/gnd\\/",
+					"http:\\/\\/lobid.org\\/subject/");
 			int i = id.lastIndexOf("/");
-			id =
-					id.substring(0, i).concat("?id=").concat(id.substring(i + 1))
-							.concat("&format=internal");
+			id = id.substring(0, i).concat("?id=").concat(id.substring(i + 1))
+					.concat("&format=internal");
 		}
 		URL url;
 		try {

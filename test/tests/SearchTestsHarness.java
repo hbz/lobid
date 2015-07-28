@@ -17,9 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import models.Index;
-import models.Search;
-
 import org.elasticsearch.action.admin.indices.refresh.RefreshRequest;
 import org.elasticsearch.action.bulk.BulkItemResponse;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
@@ -37,10 +34,12 @@ import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import play.test.TestServer;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
+
+import models.Index;
+import models.Search;
+import play.test.TestServer;
 
 /**
  * Tests harness for the search tests. Creates an in-memory ES index with
@@ -58,8 +57,8 @@ public class SearchTestsHarness {
 	static final TestServer TEST_SERVER = testServer(TEST_SERVER_PORT);
 	private static Node node;
 	protected static Client client;
-	private static final Logger LOG = LoggerFactory
-			.getLogger(SearchTestsHarness.class);
+	private static final Logger LOG =
+			LoggerFactory.getLogger(SearchTestsHarness.class);
 	static final int META = 1;
 	static boolean testDataUpToDate = true;
 
@@ -81,13 +80,11 @@ public class SearchTestsHarness {
 			}
 		}
 
-		node =
-				nodeBuilder()
-						.local(true)
-						.settings(
-								ImmutableSettings.settingsBuilder()
-										.put("index.number_of_replicas", "0")
-										.put("index.number_of_shards", "1").build()).node();
+		node = nodeBuilder().local(true)
+				.settings(ImmutableSettings.settingsBuilder()
+						.put("index.number_of_replicas", "0")
+						.put("index.number_of_shards", "1").build())
+				.node();
 		client = node.client();
 		client.admin().indices().prepareDelete("_all").execute().actionGet();
 		client.admin().cluster().prepareHealth().setWaitForYellowStatus().execute()
@@ -122,8 +119,8 @@ public class SearchTestsHarness {
 					new URL("http://localhost:" + TEST_SERVER_PORT + "/" + request)
 							.openConnection();
 			url.setRequestProperty("Accept", contentType);
-			return CharStreams.toString(new InputStreamReader(url.getInputStream(),
-					Charsets.UTF_8));
+			return CharStreams.toString(
+					new InputStreamReader(url.getInputStream(), Charsets.UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
@@ -159,9 +156,10 @@ public class SearchTestsHarness {
 					createRequestBuilder(meta, map, c);
 			bulkRequest.add(requestBuilder);
 		} catch (ParseException e) {
-			LOG.error(String.format(
-					"ParseException with meta '%s' and line '%s': '%s'", meta, line,
-					e.getMessage()), e);
+			LOG.error(
+					String.format("ParseException with meta '%s' and line '%s': '%s'",
+							meta, line, e.getMessage()),
+					e);
 		}
 	}
 
@@ -181,7 +179,8 @@ public class SearchTestsHarness {
 			if (response.isFailed()) {
 				LOG.error(String.format(
 						"Bulk item response failed for index '%s', ID '%s', message: %s",
-						response.getIndex(), response.getId(), response.getFailureMessage()));
+						response.getIndex(), response.getId(),
+						response.getFailureMessage()));
 				result.add(response);
 			}
 		}

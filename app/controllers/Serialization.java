@@ -20,13 +20,15 @@ public enum Serialization {/* @formatter:off */
 		RDF_XML(JsonLdConverter.Format.RDF_XML, Arrays.asList("application/rdf+xml")),
 		N_TRIPLE(JsonLdConverter.Format.N_TRIPLE, Arrays.asList("text/plain")),
 		N3(JsonLdConverter.Format.N3, Arrays.asList("text/rdf+n3", "text/n3")),
-		TURTLE(JsonLdConverter.Format.TURTLE, /* @formatter:on */
-			Arrays.asList("application/x-turtle", "text/turtle"));
+		TURTLE(JsonLdConverter.Format.TURTLE,Arrays.asList("application/x-turtle", "text/turtle"));
+		/* @formatter:on */
 
 	JsonLdConverter.Format format;
 	List<String> types;
 
-	/** @return The content types associated with this serialization. */
+	/**
+	 * @return The content types associated with this serialization.
+	 */
 	public List<String> getTypes() {
 		return types;
 	}

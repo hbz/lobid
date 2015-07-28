@@ -95,38 +95,37 @@ public class LobidResources {
 	public static class AuthorQuery extends AbstractIndexQuery {
 		@Override
 		public List<String> fields() {
-			return Arrays
-					.asList(
-							"@graph.http://purl.org/lobid/lv#contributorLabel.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfBirth.@value",
-							"@graph.http://d-nb.info/standards/elementset/gnd#dateOfDeath.@value",
-							"@graph.http://purl.org/lobid/lv#contributorLabel.@value",
-							"@graph.http://purl.org/dc/terms/creator.@id",
-							"@graph.http://purl.org/dc/terms/contributor.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/act.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/aft.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/aui.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/aus.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/clb.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/cmp.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/cnd.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/cng.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/col.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/ctg.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/drt.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/dte.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/egr.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/ill.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/ive.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/ivr.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/mus.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/pht.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/prf.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/pro.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/sng.@id",
-							"@graph.http://id.loc.gov/vocabulary/relators/hnr.@id",
-							"@graph.http://purl.org/ontology/bibo/translator.@id",
-							"@graph.http://purl.org/ontology/bibo/editor.@id");
+			return Arrays.asList(
+					"@graph.http://purl.org/lobid/lv#contributorLabel.@value",
+					"@graph.http://d-nb.info/standards/elementset/gnd#dateOfBirth.@value",
+					"@graph.http://d-nb.info/standards/elementset/gnd#dateOfDeath.@value",
+					"@graph.http://purl.org/lobid/lv#contributorLabel.@value",
+					"@graph.http://purl.org/dc/terms/creator.@id",
+					"@graph.http://purl.org/dc/terms/contributor.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/act.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/aft.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/aui.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/aus.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/clb.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/cmp.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/cnd.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/cng.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/col.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/ctg.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/drt.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/dte.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/egr.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/ill.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/ive.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/ivr.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/mus.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/pht.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/prf.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/pro.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/sng.@id",
+					"@graph.http://id.loc.gov/vocabulary/relators/hnr.@id",
+					"@graph.http://purl.org/ontology/bibo/translator.@id",
+					"@graph.http://purl.org/ontology/bibo/editor.@id");
 		}
 
 		@Override
@@ -152,9 +151,8 @@ public class LobidResources {
 			final MultiMatchQueryBuilder subjectLabelQuery =
 					multiMatchQuery(queryString, fields().get(0), fields().get(1))
 							.operator(Operator.AND);
-			final String query =
-					queryString.startsWith("http://") ? queryString
-							: "http://d-nb.info/gnd/" + queryString;
+			final String query = queryString.startsWith("http://") ? queryString
+					: "http://d-nb.info/gnd/" + queryString;
 			final MatchQueryBuilder subjectIdQuery =
 					matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
 			return boolQuery().should(subjectLabelQuery).should(subjectIdQuery);
@@ -192,8 +190,9 @@ public class LobidResources {
 					normalizedQueryString.replaceAll("-", "").toUpperCase();
 		}
 		final String hbzId = "\\p{L}+\\d+(-.+)?";
-		return normalizedQueryString.matches(hbzId) ? "http://lobid.org/resource/"
-				+ normalizedQueryString : normalizedQueryString;
+		return normalizedQueryString.matches(hbzId)
+				? "http://lobid.org/resource/" + normalizedQueryString
+				: normalizedQueryString;
 	}
 
 	/**
@@ -228,7 +227,7 @@ public class LobidResources {
 		public QueryBuilder build(String queryString) {
 			final String[] elems = queryString.split("-");
 			return elems.length == 2 ? //
-			QueryBuilders.rangeQuery(fields().get(0)).gte(elems[0]).lte(elems[1])
+					QueryBuilders.rangeQuery(fields().get(0)).gte(elems[0]).lte(elems[1])
 					: multiMatchQuery(queryString, fields().toArray(new String[] {}));
 		}
 	}
@@ -308,9 +307,8 @@ public class LobidResources {
 			String[] points = location.split(" ");
 			for (String point : points) {
 				String[] latLon = point.split(",");
-				filter =
-						filter.addPoint(Double.parseDouble(latLon[0].trim()),
-								Double.parseDouble(latLon[1].trim()));
+				filter = filter.addPoint(Double.parseDouble(latLon[0].trim()),
+						Double.parseDouble(latLon[1].trim()));
 			}
 			return filter;
 		}

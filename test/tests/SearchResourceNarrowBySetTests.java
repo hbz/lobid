@@ -7,17 +7,16 @@ import static play.test.Helpers.running;
 
 import java.util.List;
 
+import org.junit.Test;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.common.collect.ImmutableMap;
+
 import models.Document;
 import models.Index;
 import models.Parameter;
 import models.Search;
-
-import org.junit.Test;
-
 import play.libs.Json;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.google.common.collect.ImmutableMap;
 
 /**
  * Tests for searching resources by author names, narrowed to set membership.

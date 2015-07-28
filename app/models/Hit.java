@@ -8,10 +8,10 @@ import java.util.Map;
 
 import org.elasticsearch.search.SearchHit;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import play.Logger;
 import play.libs.Json;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * Process different kinds of result hits.
@@ -46,9 +46,8 @@ public enum Hit {
 				if (birth == null)
 					document.matchedField = field.toString();
 				else {
-					final String format =
-							String.format("%s (%s-%s)", field.toString(), birth.asText(),
-									death == null ? "" : death.asText());
+					final String format = String.format("%s (%s-%s)", field.toString(),
+							birth.asText(), death == null ? "" : death.asText());
 					document.matchedField = format;
 				}
 			} else {
@@ -56,14 +55,15 @@ public enum Hit {
 					document.matchedField = field.toString();
 				} catch (NullPointerException npe) {
 					document.matchedField = "null";
-					Logger.warn(npe.toString()
-							+ "\nsetting document.matchedField to null");
+					Logger
+							.warn(npe.toString() + "\nsetting document.matchedField to null");
 				}
 			}
 			return document;
 		}
 
-		private JsonNode findNestedValue(final JsonNode json, final String fieldName) {
+		private JsonNode findNestedValue(final JsonNode json,
+				final String fieldName) {
 			final String stripped =
 					fieldName.replace(GRAPH_KEY + ".", "").replace("." + VALUE_KEY, "");
 			final JsonNode element = json.findValue(stripped);

@@ -32,8 +32,8 @@ public class SampleUsage {
 	 * @throws MalformedURLException on connection problems
 	 * @throws InterruptedException on sleep problems
 	 */
-	public static void main(String[] args) throws MalformedURLException,
-			IOException, InterruptedException {
+	public static void main(String[] args)
+			throws MalformedURLException, IOException, InterruptedException {
 		String defaultBase =
 				"http://api.test.lobid.org/resource?set=NWBib&scroll=true";
 		String defaultContent = "text/plain"; // N-Triples, see api.lobid.org

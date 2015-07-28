@@ -7,9 +7,9 @@ import static play.test.Helpers.running;
 
 import org.junit.Test;
 
-import play.libs.Json;
-
 import com.fasterxml.jackson.databind.JsonNode;
+
+import play.libs.Json;
 
 /**
  * Tests for autocomplete suggestions.
@@ -34,8 +34,8 @@ public class AutocompleteTests extends SearchTestsHarness {
 						Json.parse(call("person?name=" + query + "&format=short"));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(1);
-				assertThat(jsonObject.get(0).asText()).isEqualTo(
-						"Mann, Thomas (1875-06-06-1955-08-12)");
+				assertThat(jsonObject.get(0).asText())
+						.isEqualTo("Mann, Thomas (1875-06-06-1955-08-12)");
 			}
 		});
 	}

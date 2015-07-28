@@ -13,9 +13,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.lobid.lodmill.JsonLdConverter;
 import org.lobid.lodmill.JsonLdConverter.Format;
 
-import play.Logger;
-import play.libs.Json;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.jsonldjava.core.JsonLdError;
 import com.github.jsonldjava.core.JsonLdOptions;
@@ -23,6 +20,9 @@ import com.github.jsonldjava.core.JsonLdProcessor;
 import com.github.jsonldjava.utils.JSONUtils;
 import com.google.common.collect.ImmutableMap;
 import com.hp.hpl.jena.shared.BadURIException;
+
+import play.Logger;
+import play.libs.Json;
 
 /**
  * Documents returned from the ElasticSearch index.
@@ -37,7 +37,9 @@ public class Document {
 	private Index index;
 	private String field;
 
-	/** @return The document ID. */
+	/**
+	 * @return The document ID.
+	 */
 	public String getId() {
 		return id;
 	}
@@ -67,7 +69,7 @@ public class Document {
 		final List<JsonNode> fieldValues = Json.parse(result).findValues(field);
 		final JsonNode node =
 				fieldValues.size() == 1 && fieldValues.get(0).isArray() ? /**/
-				Json.toJson(fieldValues.get(0)) : Json.toJson(fieldValues);
+						Json.toJson(fieldValues.get(0)) : Json.toJson(fieldValues);
 		return Json.stringify(node);
 	}
 
@@ -121,7 +123,9 @@ public class Document {
 		return jsonLd;
 	}
 
-	/** @return The field that matched the query. */
+	/**
+	 * @return The field that matched the query.
+	 */
 	public String getMatchedField() {
 		return matchedField;
 	}

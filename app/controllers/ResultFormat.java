@@ -8,6 +8,7 @@ package controllers;
  * @author Fabian Steeg (fsteeg)
  */
 public enum ResultFormat {
+	//@formatter:off
 	/** Use content negotiation to determine the actual result format. */
 	NEGOTIATE,
 	/** The full JSON representation from the index. */
@@ -20,4 +21,5 @@ public enum ResultFormat {
 	SOURCE,
 	/** The internal source format of the data. */
 	INTERNAL
+	//@formatter:on
 }

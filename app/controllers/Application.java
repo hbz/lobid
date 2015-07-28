@@ -6,28 +6,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import models.Document;
-import models.Index;
-import models.Parameter;
-import models.Search;
-
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.indices.IndexMissingException;
 import org.lobid.lodmill.JsonLdConverter;
 import org.lobid.lodmill.JsonLdConverter.Format;
-
-import play.Logger;
-import play.api.http.MediaRange;
-import play.libs.F.Promise;
-import play.libs.Json;
-import play.mvc.Controller;
-import play.mvc.Http;
-import play.mvc.Http.Request;
-import play.mvc.Result;
-import play.twirl.api.Html;
-import scala.concurrent.ExecutionContext;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -39,6 +23,21 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import models.Document;
+import models.Index;
+import models.Parameter;
+import models.Search;
+import play.Logger;
+import play.api.http.MediaRange;
+import play.libs.F.Promise;
+import play.libs.Json;
+import play.mvc.Controller;
+import play.mvc.Http;
+import play.mvc.Http.Request;
+import play.mvc.Result;
+import play.twirl.api.Html;
+import scala.concurrent.ExecutionContext;
 
 /**
  * Main application controller.
@@ -110,37 +109,34 @@ public final class Application extends Controller {
 			final String sort, final boolean addQueryInfo, final boolean scroll) {
 		final ResultFormat resultFormat;
 		try {
-			resultFormat =
-					ResultFormat.valueOf(getFieldAndFormat(formatParameter).getRight()
-							.toUpperCase());
+			resultFormat = ResultFormat
+					.valueOf(getFieldAndFormat(formatParameter).getRight().toUpperCase());
 		} catch (IllegalArgumentException e) {
 			return badRequestPromise("Invalid 'format' parameter, use one of: "
 					+ Joiner.on(", ").join(ResultFormat.values()).toLowerCase());
 		}
 		Search search;
 		try {
-			search =
-					new Search(parameters, index).page(from, size)
-							.field(getFieldAndFormat(formatParameter).getLeft()).owner(owner)
-							.set(set).type(type).sort(sort);
+			search = new Search(parameters, index).page(from, size)
+					.field(getFieldAndFormat(formatParameter).getLeft()).owner(owner)
+					.set(set).type(type).sort(sort);
 		} catch (IllegalArgumentException e) {
 			Logger.error(e.getMessage(), e);
 			return badRequestPromise(e.getMessage());
 		}
 		if (scroll) {
 			if (search.doingScrollScanNow()) {
-				return Promise
-						.pure(status(Http.Status.CONFLICT,
-								"Already doing a scroll scan. Only one permitted. Please try again later."));
+				return Promise.pure(status(Http.Status.CONFLICT,
+						"Already doing a scroll scan. Only one permitted. Please try again later."));
 			}
 			Serialization serialization = getSerialization(request());
 			if (serialization == null)
-				return Promise.pure(status(Http.Status.NOT_ACCEPTABLE,
-						HTTP_CODE_406_MESSAGE));
+				return Promise
+						.pure(status(Http.Status.NOT_ACCEPTABLE, HTTP_CODE_406_MESSAGE));
 			response().setHeader("Transfer-Encoding", "Chunked");
 			try {
-				return Promise.pure(ok(
-						search.executeScrollScan(request(), serialization)));
+				return Promise
+						.pure(ok(search.executeScrollScan(request(), serialization)));
 			} catch (IllegalArgumentException e) {
 				Logger.error(e.getMessage(), e);
 				return badRequestPromise(e.getMessage());
@@ -150,8 +146,9 @@ public final class Application extends Controller {
 			List<Document> docs = search.documents();
 			long allHits = search.totalHits();
 			final Promise<ImmutableMap<ResultFormat, Result>> resultPromise =
-					resultsPromise(docs, index, getFieldAndFormat(formatParameter)
-							.getLeft(), allHits, addQueryInfo);
+					resultsPromise(docs, index,
+							getFieldAndFormat(formatParameter).getLeft(), allHits,
+							addQueryInfo);
 			return resultPromise.map(results -> {
 				return results.get(resultFormat);
 			});
@@ -205,35 +202,28 @@ public final class Application extends Controller {
 			final String field, long allHits, boolean addQueryInfo) {
 		/* JSONP callback support for remote server calls with JavaScript: */
 		final String[] callback =
-				request() == null || request().queryString() == null ? null : request()
-						.queryString().get("callback");
+				request() == null || request().queryString() == null ? null
+						: request().queryString().get("callback");
 		Serialization ser = getSerialization(request());
 		Result negotiateRes;
 		if (ser == null) {
 			negotiateRes = status(Http.Status.NOT_ACCEPTABLE, HTTP_CODE_406_MESSAGE);
 		} else
-			negotiateRes =
-					ok(
-							getSerializedResult(documents, selectedIndex, field, allHits,
-									addQueryInfo, request(), ser)).as(ser.getTypes().get(0));
+			negotiateRes = ok(getSerializedResult(documents, selectedIndex, field,
+					allHits, addQueryInfo, request(), ser)).as(ser.getTypes().get(0));
 		final ImmutableMap<ResultFormat, Result> results =
 				new ImmutableMap.Builder<ResultFormat, Result>()
 						.put(ResultFormat.NEGOTIATE, negotiateRes)
-						.put(
-								ResultFormat.FULL,
-								withCallback(
-										callback,
+						.put(ResultFormat.FULL,
+								withCallback(callback,
 										fullJsonResponse(documents, field, allHits, addQueryInfo,
 												request())))
-						.put(
-								ResultFormat.SHORT,
-								withCallback(callback, Json.toJson(new LinkedHashSet<>(Lists
-										.transform(documents, doc -> {
-											return doc.getMatchedField();
-										})))))
+						.put(ResultFormat.SHORT, withCallback(callback, Json
+								.toJson(new LinkedHashSet<>(Lists.transform(documents, doc -> {
+									return doc.getMatchedField();
+								})))))
 						.put(ResultFormat.INTERNAL, internalJsonResponse(documents))
-						.put(
-								ResultFormat.IDS,
+						.put(ResultFormat.IDS,
 								withCallback(callback,
 										Json.toJson(Lists.transform(documents, jsonLabelValue))))
 						.put(ResultFormat.SOURCE, mabXml(documents)).build();
@@ -249,7 +239,8 @@ public final class Application extends Controller {
 				if (document.getId().startsWith(mabxmlResourcePrefix))
 					appendMabXml(builder, errorMessage, document, mabxmlResourcePrefix);
 			final String result = builder.toString().trim();
-			return result.isEmpty() ? notFound(errorMessage + "request") : //
+			return result.isEmpty() ? notFound(errorMessage + "request")
+					: //
 					documents.size() > 1 ? ok(result) : ok(result).as("text/xml");
 		} catch (IndexMissingException e) {
 			return notFound(e.getMessage());
@@ -257,7 +248,8 @@ public final class Application extends Controller {
 	}
 
 	private static void appendMabXml(final StringBuilder builder,
-			final String errorMessage, Document document, String mabxmlResourcePrefix) {
+			final String errorMessage, Document document,
+			String mabxmlResourcePrefix) {
 		final String id = document.getId().replace(mabxmlResourcePrefix, "");
 		final GetResponse response =
 				Search.client.prepareGet("hbz01", "mabxml", id).execute().actionGet();
@@ -269,8 +261,9 @@ public final class Application extends Controller {
 
 	private static Status withCallback(final String[] callback,
 			final JsonNode shortJson) {
-		return callback != null ? ok(String.format("/**/%s(%s)", callback[0],
-				shortJson)) : ok(shortJson);
+		return callback != null
+				? ok(String.format("/**/%s(%s)", callback[0], shortJson))
+				: ok(shortJson);
 	}
 
 	private static JsonNode fullJsonResponse(final List<Document> documents,
@@ -284,9 +277,9 @@ public final class Application extends Controller {
 		if (!field.isEmpty()) {
 			nonEmptyNodes = ImmutableSortedSet.copyOf((o1, o2) -> {
 				return o1.asText().compareTo(o2.asText());
-			}, FluentIterable.from(nonEmptyNodes).transformAndConcat(input -> {
+			} , FluentIterable.from(nonEmptyNodes).transformAndConcat(input -> {
 				return input.isArray() ? /**/
-				Lists.newArrayList(input.elements()) : Lists.newArrayList(input);
+						Lists.newArrayList(input.elements()) : Lists.newArrayList(input);
 			}));
 		}
 		List<JsonNode> data = new ArrayList<>();
@@ -310,7 +303,7 @@ public final class Application extends Controller {
 
 	private static JsonNode queryInfo(long allHits, Request request) {
 		return Json.toJson(ImmutableMap.of(//
-				"@id", "http://lobid.org" + request.uri(),//
+				"@id", "http://lobid.org" + request.uri(), //
 				"http://sindice.com/vocab/search#totalResults", allHits));
 	}
 

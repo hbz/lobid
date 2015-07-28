@@ -7,20 +7,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+
+import com.google.common.collect.ImmutableMap;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
+
 import models.queries.AbstractIndexQuery;
 import models.queries.Gnd;
 import models.queries.LobidItems;
 import models.queries.LobidOrganisations;
 import models.queries.LobidResources;
-
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
-
 import play.Play;
-
-import com.google.common.collect.ImmutableMap;
-import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
 
 /**
  * The different indices to use.
@@ -42,8 +41,8 @@ public enum Index {
 					.put(Parameter.SET, new LobidResources.SetQuery())
 					.put(Parameter.NWBIBSPATIAL, new LobidResources.NwBibSpatialQuery())
 					.put(Parameter.NWBIBSUBJECT, new LobidResources.NwBibSubjectQuery())
-					.put(Parameter.LOCATION, new LobidResources.LocationQuery()).build()),
-	/***/
+					.put(Parameter.LOCATION, new LobidResources.LocationQuery())
+					.build()), /***/
 	LOBID_ORGANISATIONS("lobid-organisations", "json-ld-lobid-orgs",
 			new ImmutableMap.Builder<Parameter, AbstractIndexQuery>()/* @formatter:off */
 					.put(Parameter.Q, new LobidOrganisations.AllFieldsQuery())
@@ -69,8 +68,8 @@ public enum Index {
 	LOBID_COLLECTIONS("lobid-collections", "json-ld-lobid-collection",
 			new ImmutableMap.Builder<Parameter, AbstractIndexQuery>().build()); /*@formatter:on*/
 
-	static final Config CONFIG = ConfigFactory.parseFile(
-			new File("conf/application.conf")).resolve();
+	static final Config CONFIG =
+			ConfigFactory.parseFile(new File("conf/application.conf")).resolve();
 	private String id; // NOPMD
 	private String type;
 	private Map<Parameter, AbstractIndexQuery> queries;
@@ -82,12 +81,16 @@ public enum Index {
 		this.queries = params;
 	}
 
-	/** @return The Elasticsearch index name. */
+	/**
+	 * @return The Elasticsearch index name.
+	 */
 	public String id() { // NOPMD
 		return id + CONFIG.getString("application.index.suffix");
 	}
 
-	/** @return The Elasticsearch type name. */
+	/**
+	 * @return The Elasticsearch type name.
+	 */
 	public String type() {
 		return type;
 	}
@@ -103,9 +106,8 @@ public enum Index {
 				Play.application().resource("/" + path + "/" + file);
 		if (localContextResourceUrl == null) // no app running, use plain local file
 			localContextResourceUrl = new File(path, file).toURI().toURL();
-		final String publicContextUrl =
-				CONFIG.getString("application.url")
-						+ controllers.routes.Api.context(file).url();
+		final String publicContextUrl = CONFIG.getString("application.url")
+				+ controllers.routes.Api.context(file).url();
 		return new ImmutablePair<>(localContextResourceUrl, publicContextUrl);
 	}
 

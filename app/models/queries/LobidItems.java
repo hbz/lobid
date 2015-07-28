@@ -51,16 +51,16 @@ public class LobidItems {
 			return Arrays.asList("internal_id");
 		}
 
-		PercentEscaper percentEscaper = new PercentEscaper(
-				PercentEscaper.SAFEPATHCHARS_URLENCODER, false);
+		PercentEscaper percentEscaper =
+				new PercentEscaper(PercentEscaper.SAFEPATHCHARS_URLENCODER, false);
 
 		@Override
 		public QueryBuilder build(final String queryString) {
 			final String itemPrefix = "http://lobid.org/item/";
 			final String shortId = queryString.replace(itemPrefix, "");
 			// The Lobid item IDs contain escaped url fragments
-			return QueryBuilders.matchPhraseQuery(fields().get(0), itemPrefix
-					+ percentEscaper.escape(shortId));
+			return QueryBuilders.matchPhraseQuery(fields().get(0),
+					itemPrefix + percentEscaper.escape(shortId));
 		}
 	}
 

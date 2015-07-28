@@ -50,8 +50,8 @@ public class LobidOrganisations {
 		@Override
 		public QueryBuilder build(final String queryString) {
 			final String itemPrefix = "http://lobid.org/organisation/";
-			return QueryBuilders.idsQuery("json-ld-lobid-orgs").ids(
-					itemPrefix + queryString.replace(itemPrefix, ""));
+			return QueryBuilders.idsQuery("json-ld-lobid-orgs")
+					.ids(itemPrefix + queryString.replace(itemPrefix, ""));
 		}
 
 	}
@@ -64,10 +64,10 @@ public class LobidOrganisations {
 		@Override
 		public List<String> fields() {
 			List<String> fields = new ArrayList<>();
-			fields.addAll(Arrays.asList(
-					"@graph.http://xmlns.com/foaf/0.1/name.@value",
-					"@graph.http://www.w3.org/2004/02/skos/core#prefLabel.@value",
-					"@graph.http://www.w3.org/2004/02/skos/core#altLabel.@value"));
+			fields
+					.addAll(Arrays.asList("@graph.http://xmlns.com/foaf/0.1/name.@value",
+							"@graph.http://www.w3.org/2004/02/skos/core#prefLabel.@value",
+							"@graph.http://www.w3.org/2004/02/skos/core#altLabel.@value"));
 			fields.addAll(new IdQuery().fields());
 			return fields;
 		}

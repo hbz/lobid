@@ -6,14 +6,14 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.util.List;
 
+import org.junit.Test;
+
+import com.google.common.collect.ImmutableMap;
+
 import models.Document;
 import models.Index;
 import models.Parameter;
 import models.Search;
-
-import org.junit.Test;
-
-import com.google.common.collect.ImmutableMap;
 
 /**
  * Tests for searching resources by author names, narrowed to item owners.
@@ -47,8 +47,7 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 
 	@Test
 	public void searchResByAuthor1_withMultipleOwnerUris() {
-		searchResByAuthorWithOwnerId(
-				AUTHOR1,
+		searchResByAuthorWithOwnerId(AUTHOR1,
 				"http://lobid.org/organisation/DE-Sol1,http://lobid.org/organisation/DE-Sol2",
 				"http://lobid.org/resource/BT000001260");
 	}
@@ -79,8 +78,8 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 				"http://lobid.org/resource/BT000013654");
 	}
 
-	private static void searchResByAuthorWithOwnerId(String author,
-			String holder, String resultId) {
+	private static void searchResByAuthorWithOwnerId(String author, String holder,
+			String resultId) {
 		final List<Document> docs =
 				new Search(ImmutableMap.of(Parameter.AUTHOR, author),
 						Index.LOBID_RESOURCES).owner(holder).documents();

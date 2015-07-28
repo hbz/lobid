@@ -46,9 +46,8 @@ public abstract class AbstractIndexQuery {
 		} else if (search.matches("(http://d-nb\\.info/gnd/)?\\d+.*")) {
 			final String term =
 					search.startsWith("http") ? search : "http://d-nb.info/gnd/" + search;
-			query =
-					multiMatchQuery(term, fields().subList(4, fields().toArray().length)
-							.toArray(new String[] {}));
+			query = multiMatchQuery(term, fields()
+					.subList(4, fields().toArray().length).toArray(new String[] {}));
 		} else {
 			query = nameMatchQuery(search);
 		}
@@ -58,13 +57,13 @@ public abstract class AbstractIndexQuery {
 	private QueryBuilder createAuthorQuery(final String lifeDates,
 			final String search, final Matcher matcher) {
 		/* Search name in name field and birth in birth field: */
-		final BoolQueryBuilder birthQuery =
-				boolQuery().must(
-						nameMatchQuery(search.replaceAll(lifeDates, "").trim())).must(
-						matchQuery(fields().get(1), matcher.group(1)));
-		return matcher.group(2).equals("") ? birthQuery :
-		/* If we have one, search death in death field: */
-		birthQuery.must(matchQuery(fields().get(2), matcher.group(2)));
+		final BoolQueryBuilder birthQuery = boolQuery()
+				.must(nameMatchQuery(search.replaceAll(lifeDates, "").trim()))
+				.must(matchQuery(fields().get(1), matcher.group(1)));
+		return matcher.group(2).equals("") ? birthQuery
+				:
+				/* If we have one, search death in death field: */
+				birthQuery.must(matchQuery(fields().get(2), matcher.group(2)));
 	}
 
 	private QueryBuilder nameMatchQuery(final String search) {
