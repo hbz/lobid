@@ -1,3 +1,4 @@
+sudo: false
 language: java
 env:
   - ACTIVATOR_VERSION=1.2.10
