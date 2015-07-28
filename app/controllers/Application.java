@@ -138,8 +138,13 @@ public final class Application extends Controller {
 				return Promise.pure(status(Http.Status.NOT_ACCEPTABLE,
 						HTTP_CODE_406_MESSAGE));
 			response().setHeader("Transfer-Encoding", "Chunked");
-			return Promise
-					.pure(ok(search.executeScrollScan(request(), serialization)));
+			try {
+				return Promise.pure(ok(
+						search.executeScrollScan(request(), serialization)));
+			} catch (IllegalArgumentException e) {
+				Logger.error(e.getMessage(), e);
+				return badRequestPromise(e.getMessage());
+			}
 		}
 		try {
 			List<Document> docs = search.documents();

@@ -238,6 +238,7 @@ public class Search {
 	 */
 	public Chunks<String> executeScrollScan(final Request request,
 			final Serialization serialization) {
+		validateSearchParameters();
 		return new StringChunks() {
 			@Override
 			public void onReady(Chunks.Out<String> out) {

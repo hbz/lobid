@@ -223,6 +223,19 @@ public class SearchTests extends SearchTestsHarness {
 		});
 	}
 
+	@Test
+	public void returnScrollSizeBadRequest() {
+		running(fakeApplication(), new Runnable() {
+			@Override
+			public void run() {
+				assertThat(status(
+					route(fakeRequest(GET, "/resource?q=*&size=10000&scroll=true")
+						.withHeader("Accept", "application/rdf+xml"))))
+							.isEqualTo(BAD_REQUEST);
+			}
+		});
+	}
+
 	/*@formatter:off*/
 	@Test public void searchViaModelBirth0() { findOneBy("Theo Hundt"); }
 	@Test public void searchViaModelBirth1() { findOneBy("Hundt, Theo"); }
