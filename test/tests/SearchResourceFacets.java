@@ -33,6 +33,8 @@ public class SearchResourceFacets extends SearchTestsHarness {
 	@Test public void facetsName1() { facetsSize("name=Typee", 2); }
 	@Test public void facetsName2() { facetsSize("name=Typee&subject=UNDEFINED", 0); }
 	@Test public void facetsName3() { facetsSize("name=Typee&id=0521262194", 2); }
+	@Test public void facetsWord() { facetsSize("word=aus", 3); }
+	@Test public void facetsQ() { facetsSize("q=aus", 4); }
 	@Test public void facetsName4() { facetsSize("name=Typee&set=http://lobid.org/resource/NWBib", 0); }
 	@Test public void facetsSubject2() { facetsSize(
 			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&author=http://d-nb.info/gnd/118554808", 2); }

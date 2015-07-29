@@ -77,10 +77,10 @@ public final class Facets extends Controller {
 			return Promise
 					.promise(() -> badRequest("Parameter 'size' must be <= 9999"));
 		}
-		String key =
-				String.format("facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s",
-						id, q, author, name, subject, publisher, issued, medium, owner, set,
-						nwbibspatial, nwbibsubject, size, field, t, location);
+		String key = String.format(
+				"facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q,
+				author, name, subject, publisher, issued, medium, owner, set,
+				nwbibspatial, nwbibsubject, size, field, t, location, word);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
 			return Promise.promise(() -> cachedResult);
