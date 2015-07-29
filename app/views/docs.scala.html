@@ -6,6 +6,11 @@
 @import org.lobid.lodmill.JsonLdConverter.Format
 @import play.api.libs.json.Json
 @import models.Index
+@import play.api.libs.ws.WS
+@import scala.concurrent._
+@import ExecutionContext.Implicits.global
+@import scala.concurrent.duration._
+@import play.api.Play.current
 
 @main(index.id().toLowerCase(), "/docs") {
     @if(docs.size > 1) {<h2>Showing @docs.size documents</h2>}
@@ -17,6 +22,7 @@
 		  <li><a href="#@id-jld" data-toggle="tab">JLD</a></li>
 		  <li><a href="#@id-nt" data-toggle="tab">NT</a></li>
 		  <li><a href="#@id-ttl" data-toggle="tab">TTL</a></li>
+		  <li><a href="#@id-src" data-toggle="tab">Source</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -33,6 +39,9 @@
 		  <div class="tab-pane" id="@id-jld"><pre>@Json.prettyPrint(Json.parse(doc.getSource))</pre></div>
 		  <div class="tab-pane" id="@id-nt"><pre>@doc.as(Format.N_TRIPLE)</pre></div>
 		  <div class="tab-pane" id="@id-ttl"><pre>@doc.as(Format.TURTLE)</pre></div>
+		  @defining(Await.result(WS.url(doc.getId+"?format=source").get().map(x=>x.xml), 5.second)){xml=>
+		  <div class="tab-pane" id="@id-src"><pre>@(new scala.xml.PrettyPrinter(80,2).format(xml))</pre></div>
+		  }
 		</div>
 
 		<script>
