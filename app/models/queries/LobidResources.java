@@ -315,4 +315,29 @@ public class LobidResources {
 
 	}
 
+	/**
+	 * Query the lobid-resources index using resource 'words'. This models a
+	 * concept from the hbz union catalog, see
+	 * https://github.com/hbz/nwbib/issues/110 for details.
+	 */
+	public static class WordQuery extends AbstractIndexQuery {
+		@Override
+		public List<String> fields() {
+			List<String> fields = new ArrayList<>();
+			fields.addAll(new SubjectQuery().fields());
+			fields.addAll(new NwBibSubjectQuery().fields());
+			fields.addAll(new NwBibSpatialQuery().fields());
+			fields.addAll(new AuthorQuery().fields());
+			fields.addAll(new NameQuery().fields());
+			fields.addAll(new PublisherQuery().fields());
+			return fields;
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
+					.operator(Operator.AND);
+		}
+	}
+
 }
