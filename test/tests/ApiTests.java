@@ -74,9 +74,7 @@ public class ApiTests {
 						"response(" },
 				{ "resource?author=Hundt&owner=DE-Sol1", /* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
-				{ "resource?author=Hundt&owner=http://lobid.org/organisation/DE-Sol1", /*
-																																								 * ->
-																																								 */
+				{ "resource?author=Hundt&owner=http://lobid.org/organisation/DE-Sol1", /* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
 				{ "resource?id=BT000001260&owner=DE-Sol1", /* -> */
 						"Heimatstimmen aus dem Kreis Olpe" },
@@ -86,6 +84,11 @@ public class ApiTests {
 						"Heimatstimmen aus dem Kreis Olpe" },
 				{ "resource?author=Goeters&Melwille=DE-5-4,DE-468", /* -> */
 						"Kirchengeschichte des Rheinlandes" },
+				{ "resource?word=Typee", /* -> */"a peep at Polynesian life" },
+				{ "resource?word=Melville", /* -> */"a peep at Polynesian life" },
+				{ "resource?word=Kohlenstoff", /* -> */"PROTON" },
+				{ "resource?word=Weihnachtslied&set=NWBib",
+						/* -> */"Wann en Kölle de Chress-Stäne blöhe" },
 				/*-------------------*/
 				/* GET /organisation */
 				/*-------------------*/
