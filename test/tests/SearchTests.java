@@ -42,7 +42,7 @@ public class SearchTests extends SearchTestsHarness {
 	public void accessIndex() {
 		assertThat(
 				client.prepareSearch().execute().actionGet().getHits().totalHits())
-						.isEqualTo(53);
+						.isEqualTo(55);
 		JsonNode json = Json.parse(client
 				.prepareGet(Index.LOBID_RESOURCES.id(), "json-ld-lobid",
 						"http://lobid.org/resource/BT000001260")
@@ -264,7 +264,7 @@ public class SearchTests extends SearchTestsHarness {
 		List<Document> documents =
 				new Search(ImmutableMap.of(Parameter.SET, "NwBib"),
 						Index.LOBID_RESOURCES).documents();
-		assertThat(documents.size()).isEqualTo(3);
+		assertThat(documents.size()).isEqualTo(4);
 		assertThat(documents.get(2).getMatchedField())
 				.isEqualTo("http://lobid.org/resource/NWBib");
 	}
@@ -744,7 +744,7 @@ public class SearchTests extends SearchTestsHarness {
 				String response = call(request);
 				assertThat(response).contains(request);
 				assertThat(response)
-						.contains("\"http://sindice.com/vocab/search#totalResults\":25}");
+						.contains("\"http://sindice.com/vocab/search#totalResults\":27}");
 			}
 		});
 	}
@@ -759,7 +759,7 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(response).contains(request);
 				assertThat(response)
 						.contains("<http://sindice.com/vocab/search#totalResults> "
-								+ "\"25\"^^<http://www.w3.org/2001/XMLSchema#integer>");
+								+ "\"27\"^^<http://www.w3.org/2001/XMLSchema#integer>");
 			}
 		});
 	}
