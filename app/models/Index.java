@@ -1,4 +1,4 @@
-/* Copyright 2013 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2013-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package models;
 
@@ -42,7 +42,9 @@ public enum Index {
 					.put(Parameter.NWBIBSPATIAL, new LobidResources.NwBibSpatialQuery())
 					.put(Parameter.NWBIBSUBJECT, new LobidResources.NwBibSubjectQuery())
 					.put(Parameter.LOCATION, new LobidResources.LocationQuery())
-					.put(Parameter.WORD, new LobidResources.WordQuery()).build()), /***/
+					.put(Parameter.WORD, new LobidResources.WordQuery())
+					.put(Parameter.CORPORATION, new LobidResources.CorporationQuery())
+					.build()), /***/
 	LOBID_ORGANISATIONS("lobid-organisations", "json-ld-lobid-orgs",
 			new ImmutableMap.Builder<Parameter, AbstractIndexQuery>()/* @formatter:off */
 					.put(Parameter.Q, new LobidOrganisations.AllFieldsQuery())

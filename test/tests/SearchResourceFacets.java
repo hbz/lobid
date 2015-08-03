@@ -1,4 +1,4 @@
-/* Copyright 2014 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2014-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package tests;
 
@@ -40,6 +40,7 @@ public class SearchResourceFacets extends SearchTestsHarness {
 			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&author=http://d-nb.info/gnd/118554808", 2); }
 	@Test public void facetsSubject6() { facetsSize(
 			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&set=http://lobid.org/resource/NWBib", 2); }
+	@Test public void facetsCorporation() { facetsSize("corporation=Werkbund", 2); }
 	/*@formatter:on*/
 
 	private static void facetsSize(final String path, final int size) {

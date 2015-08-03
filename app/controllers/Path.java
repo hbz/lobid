@@ -1,7 +1,11 @@
-/* Copyright 2013 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2013-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package controllers;
 
+import com.google.common.collect.ImmutableMap;
+
+import models.Index;
+import models.Parameter;
 import play.libs.F.Promise;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -34,8 +38,9 @@ public final class Path extends Controller {
 	@SuppressWarnings("javadoc")
 	public static Promise<Result> resourceAbout(final String id,
 			final String format, final int from, final int size) {
-		return Api.resource(id, "", "", "", "", "", "", "", "", "", "", format,
-				from, size, "", "", "", false, "", "", false);
+		return Application.search(Index.LOBID_RESOURCES,
+				ImmutableMap.of(Parameter.ID, id), format, from, size, "", "", "", "",
+				false, false);
 	}
 
 	/** Redirect to {@link #itemAbout(String, String, String, int, int)} */

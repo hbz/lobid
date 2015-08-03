@@ -1,4 +1,4 @@
-/* Copyright 2013 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2013-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package controllers;
 
@@ -49,9 +49,9 @@ public final class Api extends Controller {
 	 * @param owner The ID of an owner holding items of the requested resources
 	 * @param type The type of the requested resources
 	 * @param sort The sort order
-	 * @param addQueryInfo If true, add a query info object to the response
 	 * @param location A polygon describing the subject area of the resources
 	 * @param word A word, see {@code LobidResources.WordQuery}
+	 * @param corporation A corporation associated with the resource
 	 * @param scroll Boolean whether this is a scroll scan query or not
 	 * @return Matching resources
 	 */
@@ -60,8 +60,8 @@ public final class Api extends Controller {
 			final String publisher, final String issued, final String medium,
 			final String set, final String nwbibspatial, final String nwbibsubject,
 			final String format, final int from, final int size, final String owner,
-			final String type, final String sort, final boolean addQueryInfo,
-			final String location, final String word, final boolean scroll) {
+			final String type, final String sort, final String location,
+			final String word, final String corporation, final boolean scroll) {
 		Logger.debug(String.format(
 				"GET /resource; id: '%s', q: '%s', name: '%s', author: '%s', subject: '%s', set: '%s', format: '%s', owner: '%s', scroll: '%s'",
 				id, q, name, author, subject, set, format, owner, scroll));
@@ -81,9 +81,10 @@ public final class Api extends Controller {
 						.put(Parameter.NWBIBSUBJECT, nwbibsubject)
 						.put(Parameter.LOCATION, location)
 						.put(Parameter.WORD, word)
+						.put(Parameter.CORPORATION, corporation)
 						.build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, owner, set,
-				type, sort, addQueryInfo, scroll);
+				type, sort, true, scroll);
 	}
 
 	/**
@@ -208,7 +209,7 @@ public final class Api extends Controller {
 		}
 		Promise<List<Result>> results = Promise.sequence(
 				resource(id, q, name, "", "", "", "", "", "", "", "", format, from,
-						size, "", "", "", true, "", "", false),
+						size, "", "", "", "", "", "", false),
 				organisation(id, q, name, format, from, size, "", true),
 				person(id, q, name, format, from, size, "", true),
 				subject(id, q, name, format, from, size, ""));

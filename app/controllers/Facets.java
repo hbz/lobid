@@ -1,4 +1,4 @@
-/* Copyright 2014 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2014-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package controllers;
 
@@ -66,28 +66,31 @@ public final class Facets extends Controller {
 	 * @param field The index field to get facets for
 	 * @param location A polygon describing the subject area of the resources
 	 * @param word A word, see {@code LobidResources.WordQuery}
+	 * @param corporation A corporation associated with the resource
 	 * @return Returns the facets for the field and the given restrictions
 	 */
 	public static Promise<Result> resource(String id, String q, String author,
 			String name, String subject, String publisher, String issued,
 			String medium, String owner, String set, String nwbibspatial,
 			String nwbibsubject, int size, String t, String field, String location,
-			String word) {
+			String word, String corporation) {
 		if (size > 9999) {
 			return Promise
 					.promise(() -> badRequest("Parameter 'size' must be <= 9999"));
 		}
 		String key = String.format(
-				"facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q,
+				"facets.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s.%s", id, q,
 				author, name, subject, publisher, issued, medium, owner, set,
-				nwbibspatial, nwbibsubject, size, field, t, location, word);
+				nwbibspatial, nwbibsubject, size, field, t, location, word,
+				corporation);
 		Result cachedResult = (Result) Cache.get(key);
 		if (cachedResult != null) {
 			return Promise.promise(() -> cachedResult);
 		}
-		Promise<Result> result = createJsonResponse(getElasticsearchFacets(id, q,
-				author, name, subject, publisher, issued, medium, owner, set,
-				nwbibspatial, nwbibsubject, field, size, t, location, word));
+		Promise<Result> result =
+				createJsonResponse(getElasticsearchFacets(id, q, author, name, subject,
+						publisher, issued, medium, owner, set, nwbibspatial, nwbibsubject,
+						field, size, t, location, word, corporation));
 		result.onRedeem(r -> Cache.set(key, r, ONE_DAY));
 		return result;
 	}
@@ -116,12 +119,12 @@ public final class Facets extends Controller {
 			String id, String q, String author, String name, String subject,
 			String publisher, String issued, String medium, String owner, String set,
 			String nwbibspatial, String nwbibsubject, String field, int size,
-			String t, String location, String word) {
+			String t, String location, String word, String corporation) {
 		Promise<org.elasticsearch.search.facet.Facets> promise =
 				Promise.promise(() -> {
 					QueryBuilder query = createQuery(id, q, author, name, subject,
 							publisher, issued, medium, set, nwbibspatial, nwbibsubject, owner,
-							t, location, word);
+							t, location, word, corporation);
 					SearchRequestBuilder req = createRequest(owner, field, query, size);
 					long start = System.currentTimeMillis();
 					SearchResponse res = req.execute().actionGet();
@@ -138,7 +141,8 @@ public final class Facets extends Controller {
 	private static QueryBuilder createQuery(String id, String q, String author,
 			String name, String subject, String publisher, String issued,
 			String medium, String set, String nwbibspatial, String nwbibsubject,
-			String owner, String t, String location, String word) {
+			String owner, String t, String location, String word,
+			String corporation) {
 		final Map<Parameter, String> parameters = Parameter
 				.select(new ImmutableMap.Builder<Parameter, String>() /*@formatter:off*/
 						.put(Parameter.ID, id)
@@ -153,7 +157,8 @@ public final class Facets extends Controller {
 						.put(Parameter.NWBIBSPATIAL, nwbibspatial)
 						.put(Parameter.NWBIBSUBJECT, nwbibsubject)
 						.put(Parameter.LOCATION, location)
-						.put(Parameter.WORD, word).build());/*@formatter:on*/
+						.put(Parameter.WORD, word)
+						.put(Parameter.CORPORATION, corporation).build());/*@formatter:on*/
 		QueryBuilder query = parameters.isEmpty() ? QueryBuilders.matchAllQuery()
 				: new Search(parameters, Index.LOBID_RESOURCES).owner(owner).type(t)
 						.createQuery();

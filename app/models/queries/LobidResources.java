@@ -1,4 +1,4 @@
-/* Copyright 2013 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2013-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package models.queries;
 
@@ -338,6 +338,27 @@ public class LobidResources {
 			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
 					.type(MultiMatchQueryBuilder.Type.CROSS_FIELDS)
 					.operator(Operator.AND);
+		}
+	}
+
+	/**
+	 * Query the lobid-resources index for corporations.
+	 */
+	public static class CorporationQuery extends AbstractIndexQuery {
+		@Override
+		public List<String> fields() {
+			return Arrays.asList(
+					"@graph.http://purl.org/lobid/lv#nameOfContributingCorporateBody.@value",
+					"@graph.http://purl.org/dc/terms/creator.@id",
+					"@graph.http://purl.org/dc/terms/contributor.@id");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return multiMatchQuery(
+					queryString.matches("\\d+(.+)")
+							? "http://d-nb.info/gnd/" + queryString : queryString,
+					fields().toArray(new String[] {})).operator(Operator.AND);
 		}
 	}
 
