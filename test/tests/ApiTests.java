@@ -89,6 +89,8 @@ public class ApiTests {
 				{ "resource?word=Kohlenstoff", /* -> */"PROTON" },
 				{ "resource?word=Weihnachtslied&set=NWBib",
 						/* -> */"Wann en Kölle de Chress-Stäne blöhe" },
+				{ "resource?word=Weihnachtslied+Paula+Hiertz&set=NWBib",
+						/* -> */"Wann en Kölle de Chress-Stäne blöhe" },
 				/*-------------------*/
 				/* GET /organisation */
 				/*-------------------*/
