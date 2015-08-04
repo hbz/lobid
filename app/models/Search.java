@@ -236,7 +236,7 @@ public class Search {
 	 * @return the chunks of the elasticsearch scroll scan query
 	 */
 	public Chunks<String> executeScrollScan(final Request request,
-			final Serialization serialization) {
+			final Serialization serialization, final String scroll) {
 		validateSearchParameters();
 		return new StringChunks() {
 			@Override
@@ -247,7 +247,7 @@ public class Search {
 					@Override
 					public void run() {
 						doingScrollScanNow = true;
-						bulk(request, serialization);
+						bulk(request, serialization, scroll);
 					}
 				});
 				executorService.shutdown();
@@ -263,11 +263,12 @@ public class Search {
 		return doingScrollScanNow;
 	}
 
-	private void bulk(final Request request, final Serialization serialization) {
+	private void bulk(final Request request, final Serialization serialization,
+			final String scroll) {
 		boolean JSON_LD = serialization.equals(Serialization.JSON_LD);
 		try {
 			long lastTime = Calendar.getInstance().getTimeInMillis();
-			SearchResponse searchResponse = startInitialResponse();
+			SearchResponse searchResponse = startInitialResponse(scroll);
 			final SearchHits hits = getTotalHits(searchResponse);
 			if (JSON_LD)
 				getMessageOut().write("[");
@@ -323,8 +324,13 @@ public class Search {
 		return hits;
 	}
 
-	private SearchResponse startInitialResponse() {
-		final QueryBuilder queryBuilder = createQuery();
+	private SearchResponse startInitialResponse(final String scroll) {
+		QueryBuilder queryBuilder = createQuery();
+		if (scroll.matches("\\d{8}")) {
+			final QueryBuilder changedSinceQuery =
+					new LobidResources.ChangedSinceQuery().build(scroll);
+			queryBuilder = boolQuery().must(queryBuilder).must(changedSinceQuery);
+		}
 		Logger.trace("Using query: " + queryBuilder);
 		SearchResponse response = search(queryBuilder, SearchType.SCAN);
 		Logger.trace("Got response: " + response);
