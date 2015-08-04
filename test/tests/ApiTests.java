@@ -1,4 +1,4 @@
-/* Copyright 2013 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2013-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package tests;
 
@@ -91,6 +91,15 @@ public class ApiTests {
 						/* -> */"Wann en Kölle de Chress-Stäne blöhe" },
 				{ "resource?word=Weihnachtslied+Paula+Hiertz&set=NWBib",
 						/* -> */"Wann en Kölle de Chress-Stäne blöhe" },
+				{ "resource?corporation=Städtischer Abwasserbetrieb",
+						/* -> */"Jahresabschluss" },
+				{ "resource?corporation=Städtischer Abwasserbetrieb",
+						/* -> */"Jahresabschluss" },
+				{ "resource?corporation=1067333533", /* -> */"Jahresabschluss" },
+				{ "resource?corporation=http://d-nb.info/gnd/1067333533",
+						/* -> */"Jahresabschluss" },
+				{ "resource?corporation=Deutscher+Werkbund",
+						/* -> */"Einmischen und mitgestalten" },
 				/*-------------------*/
 				/* GET /organisation */
 				/*-------------------*/

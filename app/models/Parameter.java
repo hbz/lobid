@@ -1,4 +1,4 @@
-/* Copyright 2013 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2013-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package models;
 
@@ -14,7 +14,7 @@ import com.google.common.collect.ImmutableMap;
  */
 @SuppressWarnings("javadoc")
 public enum Parameter {
-	ID, NAME, AUTHOR, SUBJECT, SET, Q, PUBLISHER, ISSUED, MEDIUM, NWBIBSPATIAL, NWBIBSUBJECT, LOCATION, SCROLL, WORD;
+	ID, NAME, AUTHOR, SUBJECT, SET, Q, PUBLISHER, ISSUED, MEDIUM, NWBIBSPATIAL, NWBIBSUBJECT, LOCATION, SCROLL, WORD, CORPORATION;
 	/**
 	 * @return The parameter id (the string passed to the API)
 	 */

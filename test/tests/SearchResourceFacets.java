@@ -1,4 +1,4 @@
-/* Copyright 2014 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
+/* Copyright 2014-2015 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 */
 
 package tests;
 
@@ -23,8 +23,8 @@ public class SearchResourceFacets extends SearchTestsHarness {
 	/*@formatter:off*/
 	@Test public void facetsSize1() { facetsSize("size=1", 1); }
 	@Test public void facetsSize2() { facetsSize("size=5", 5); }
-	@Test public void facetsSize3() { facetsSize("size=50", 8); }
-	@Test public void facetsSize4() { facetsSize("size=50&set=http://lobid.org/resource/NWBib", 3); }
+	@Test public void facetsSize3() { facetsSize("size=50", 9); }
+	@Test public void facetsSize4() { facetsSize("size=50&set=http://lobid.org/resource/NWBib", 4); }
 	@Test public void facetsSizeAndIssued() { facetsSize("size=50&issued=1982", 2); }
 	@Test public void facetsSizeAndPublisher() { facetsSize("size=50&publisher=Literary+Classics+of+the+United+States", 2); }
 	@Test public void facetsAuthor1() { facetsSize("author=hundt", 2); }
@@ -40,6 +40,7 @@ public class SearchResourceFacets extends SearchTestsHarness {
 			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&author=http://d-nb.info/gnd/118554808", 2); }
 	@Test public void facetsSubject6() { facetsSize(
 			"nwbibsubject=http://purl.org/lobid/nwbib#s552000&set=http://lobid.org/resource/NWBib", 2); }
+	@Test public void facetsCorporation() { facetsSize("corporation=Werkbund", 2); }
 	/*@formatter:on*/
 
 	private static void facetsSize(final String path, final int size) {
