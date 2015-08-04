@@ -266,12 +266,15 @@ public class Search {
 	private void bulk(final Request request, final Serialization serialization,
 			final String scroll) {
 		boolean JSON_LD = serialization.equals(Serialization.JSON_LD);
+		boolean RDF_XML = serialization.equals(Serialization.RDF_XML);
 		try {
 			long lastTime = Calendar.getInstance().getTimeInMillis();
 			SearchResponse searchResponse = startInitialResponse(scroll);
 			final SearchHits hits = getTotalHits(searchResponse);
 			if (JSON_LD)
 				getMessageOut().write("[");
+			if (RDF_XML)
+				getMessageOut().write("<root>");
 			long cnt = 0;
 			long to = hits.getTotalHits();
 			String str;
@@ -310,6 +313,8 @@ public class Search {
 		} finally {
 			if (JSON_LD)
 				getMessageOut().write("\n]");
+			if (RDF_XML)
+				getMessageOut().write("</root>");
 			getMessageOut().close();
 			doingScrollScanNow = false;
 			Logger.info("Finished scroll scan dump");
