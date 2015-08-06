@@ -12,11 +12,19 @@ import static play.test.Helpers.route;
 import static play.test.Helpers.running;
 import static play.test.Helpers.status;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.junit.Assert;
 import org.junit.Test;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Predicate;
@@ -591,8 +599,15 @@ public class SearchTests extends SearchTestsHarness {
 		running(TEST_SERVER, new Runnable() {
 			@Override
 			public void run() {
-				assertThat(call(ENDPOINT, "application/rdf+xml")).isNotEmpty()
-						.contains("<rdf:RDF");
+				String response = call(ENDPOINT, "application/rdf+xml");
+				assertThat(response).isNotEmpty().contains("<rdf:RDF");
+				try {
+					assertThat(DocumentBuilderFactory.newInstance().newDocumentBuilder()
+							.parse(new InputSource(new StringReader(response)))).isNotNull();
+				} catch (SAXException | IOException | ParserConfigurationException e) {
+					e.printStackTrace();
+					Assert.fail(e.getMessage());
+				}
 			}
 		});
 	}
