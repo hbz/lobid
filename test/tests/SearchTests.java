@@ -804,4 +804,20 @@ public class SearchTests extends SearchTestsHarness {
 			}
 		});
 	}
+
+	@Test
+	public void testScrollScanWithDate() {
+		running(TEST_SERVER, new Runnable() {
+			@Override
+			public void run() {
+				String request = "resource?q=*&scroll=20020201";
+				String response = call(request, "text/plain");
+				assertThat(response).hasSize(157811);
+				request = "resource?q=*&scroll=20090201";
+				response = call(request, "text/plain");
+				assertThat(response).hasSize(0);
+			}
+		});
+	}
+
 }
