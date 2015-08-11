@@ -11,7 +11,7 @@ object ApplicationBuild extends Build {
       javaCore,
       cache,
       javaWs,
-      "com.typesafe.play" % "play-test_2.11" % "2.3.4",
+      "com.typesafe.play" % "play-test_2.11" % "2.3.10",
       "org.elasticsearch" % "elasticsearch" % "1.3.2" withSources(),
       "org.lobid" % "lodmill-ld" % "2.0.1",
       "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test",

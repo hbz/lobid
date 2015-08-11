@@ -1,7 +1,7 @@
 sudo: false
 language: java
 env:
-  - ACTIVATOR_VERSION=1.2.10
+  - ACTIVATOR_VERSION=1.3.5
 jdk: oraclejdk8
 install:
   - git clone https://github.com/lobid/lodmill.git

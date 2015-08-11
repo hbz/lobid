@@ -18,6 +18,7 @@ import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.QueryStringQueryBuilder;
 
 /**
  * Queries on the lobid-resources index.
@@ -335,9 +336,9 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
-					.type(MultiMatchQueryBuilder.Type.CROSS_FIELDS)
-					.operator(Operator.AND);
+			QueryStringQueryBuilder builder = QueryBuilders.queryString(queryString);
+			fields().stream().forEach(f -> builder.field(f));
+			return builder;
 		}
 	}
 
