@@ -7,17 +7,11 @@ import static org.fluentlenium.core.filter.FilterConstructor.withId;
 import static org.fluentlenium.core.filter.FilterConstructor.withText;
 import static play.test.Helpers.HTMLUNIT;
 import static play.test.Helpers.running;
-import static tests.SearchTestsHarness.call;
 
-import java.io.IOException;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import play.libs.F.Callback;
 import play.test.TestBrowser;
-import play.test.TestServer;
 
 /**
  * Browser-based tests using Selenium WebDriver and FluentLenium.
@@ -27,21 +21,10 @@ import play.test.TestServer;
  * @author Fabian Steeg (fsteeg)
  */
 @SuppressWarnings("javadoc")
-public class BrowserTests {
+public class BrowserTests extends SearchTestsHarness {
 
 	private static final String API_PAGE =
 			"http://localhost:" + SearchTestsHarness.TEST_SERVER_PORT + "/api";
-	private static final TestServer TEST_SERVER = SearchTestsHarness.TEST_SERVER;
-
-	@BeforeClass
-	public static void setup() throws IOException { // NOPMD
-		SearchTestsHarness.setup();
-	}
-
-	@AfterClass
-	public static void down() {
-		SearchTestsHarness.down();
-	}
 
 	@Test
 	public void accessAssets() { /* works with play test, but not in eclipse */

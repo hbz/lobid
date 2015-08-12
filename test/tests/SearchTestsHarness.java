@@ -79,7 +79,6 @@ public class SearchTestsHarness {
 				}
 			}
 		}
-
 		node = nodeBuilder().local(true)
 				.settings(ImmutableSettings.settingsBuilder()
 						.put("index.number_of_replicas", "0")
