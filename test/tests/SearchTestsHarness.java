@@ -89,7 +89,7 @@ public class SearchTestsHarness {
 		client.admin().cluster().prepareHealth().setWaitForYellowStatus().execute()
 				.actionGet();
 		File sampleData = new File(TEST_DATA);
-		try (Scanner scanner = new Scanner(sampleData)) {
+		try (Scanner scanner = new Scanner(new FileInputStream(sampleData))) {
 			List<BulkItemResponse> runBulkRequests = runBulkRequests(scanner, client);
 			for (BulkItemResponse bulkItemResponse : runBulkRequests) {
 				System.out.println(bulkItemResponse.toString());
