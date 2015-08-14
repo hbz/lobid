@@ -815,7 +815,7 @@ public class SearchTests extends SearchTestsHarness {
 				assertThat(response).hasSize(157811);
 				request = "resource?q=*&scroll=20090201";
 				response = call(request, "text/plain");
-				assertThat(response).hasSize(0);
+				assertThat(response).isNullOrEmpty();
 			}
 		});
 	}

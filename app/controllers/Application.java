@@ -119,7 +119,7 @@ public final class Application extends Controller {
 		try {
 			search = new Search(parameters, index).page(from, size)
 					.field(getFieldAndFormat(formatParameter).getLeft()).owner(owner)
-					.set(set).type(type).sort(sort);
+					.set(set).type(type).sort(sort).scroll(scroll);
 		} catch (IllegalArgumentException e) {
 			Logger.error(e.getMessage(), e);
 			return badRequestPromise(e.getMessage());
@@ -135,8 +135,8 @@ public final class Application extends Controller {
 						.pure(status(Http.Status.NOT_ACCEPTABLE, HTTP_CODE_406_MESSAGE));
 			response().setHeader("Transfer-Encoding", "Chunked");
 			try {
-				return Promise.pure(
-						ok(search.executeScrollScan(request(), serialization, scroll)));
+				return Promise
+						.pure(ok(search.executeScrollScan(request(), serialization)));
 			} catch (IllegalArgumentException e) {
 				Logger.error(e.getMessage(), e);
 				return badRequestPromise(e.getMessage());

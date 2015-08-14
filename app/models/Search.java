@@ -82,12 +82,12 @@ public class Search {
 	private int from = 0;
 	private String type = "";
 	private String sort = "";
+	private String scroll = "";
 
 	private List<Document> documents = null;
 	private Long hitCount = null;
 	private static boolean doingScrollScanNow = false;
 	private Chunks.Out<String> messageOut;
-	private static String scrollValue;
 
 	/**
 	 * @param parameters The search parameters (see {@link Index#queries()} )
@@ -232,15 +232,24 @@ public class Search {
 	}
 
 	/**
+	 * Optional: specify doing a scroll scan query
+	 * 
+	 * @param scrollValue The value of the scroll parameter
+	 * @return this search object (for chaining)
+	 */
+	public Search scroll(final String scrollValue) {
+		this.scroll = scrollValue;
+		return this;
+	}
+
+	/**
 	 * @param request The clients request
 	 * @param serialization The wanted serialization of the returned data.
-	 * @param scroll The value of the scroll parameter
 	 * @return the chunks of the elasticsearch scroll scan query
 	 */
 	public Chunks<String> executeScrollScan(final Request request,
-			final Serialization serialization, final String scroll) {
+			final Serialization serialization) {
 		validateSearchParameters();
-		Search.scrollValue = scroll;
 		return new StringChunks() {
 			@Override
 			public void onReady(Chunks.Out<String> out) {
@@ -333,11 +342,11 @@ public class Search {
 
 	private SearchResponse startInitialResponse() {
 		QueryBuilder queryBuilder = createQuery();
-		Logger.trace("Using query: " + queryBuilder);
+		Logger.trace("Using scroll query: " + queryBuilder);
 		SearchResponse response = search(queryBuilder, SearchType.SCAN);
-		Logger.trace("Got response: " + response);
-		response = client.prepareSearchScroll(response.getScrollId())
-				.setScroll("1m").execute().actionGet();
+		Logger.trace("Got scroll response: " + response);
+		response = client.prepareSearchScroll(response.getScrollId()).execute()
+				.actionGet();
 		return response;
 	}
 
@@ -373,10 +382,12 @@ public class Search {
 				typeQuery = typeQuery.should(matchQuery("@graph.@type", t));
 			queryBuilder = boolQuery().must(queryBuilder).must(typeQuery);
 		}
-		if (Search.scrollValue.matches("\\d{8}")) {
-			final QueryBuilder changedSinceQuery =
-					new LobidResources.ChangedSinceQuery().build(Search.scrollValue);
-			queryBuilder = boolQuery().must(queryBuilder).must(changedSinceQuery);
+		if (!scroll.isEmpty()) {
+			if (this.scroll.matches("\\d{8}")) {
+				final QueryBuilder changedSinceQuery =
+						new LobidResources.ChangedSinceQuery().build(this.scroll);
+				queryBuilder = boolQuery().must(queryBuilder).must(changedSinceQuery);
+			}
 		}
 		if (queryBuilder == null)
 			throw new IllegalStateException(String.format(
