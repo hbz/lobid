@@ -87,6 +87,7 @@ public class Search {
 	private Long hitCount = null;
 	private static boolean doingScrollScanNow = false;
 	private Chunks.Out<String> messageOut;
+	private static String scrollValue;
 
 	/**
 	 * @param parameters The search parameters (see {@link Index#queries()} )
@@ -233,11 +234,13 @@ public class Search {
 	/**
 	 * @param request The clients request
 	 * @param serialization The wanted serialization of the returned data.
+	 * @param scroll The value of the scroll parameter
 	 * @return the chunks of the elasticsearch scroll scan query
 	 */
 	public Chunks<String> executeScrollScan(final Request request,
 			final Serialization serialization, final String scroll) {
 		validateSearchParameters();
+		Search.scrollValue = scroll;
 		return new StringChunks() {
 			@Override
 			public void onReady(Chunks.Out<String> out) {
@@ -247,7 +250,7 @@ public class Search {
 					@Override
 					public void run() {
 						doingScrollScanNow = true;
-						bulk(request, serialization, scroll);
+						bulk(request, serialization);
 					}
 				});
 				executorService.shutdown();
@@ -263,13 +266,12 @@ public class Search {
 		return doingScrollScanNow;
 	}
 
-	private void bulk(final Request request, final Serialization serialization,
-			final String scroll) {
+	private void bulk(final Request request, final Serialization serialization) {
 		boolean JSON_LD = serialization.equals(Serialization.JSON_LD);
 		boolean RDF_XML = serialization.equals(Serialization.RDF_XML);
 		try {
 			long lastTime = Calendar.getInstance().getTimeInMillis();
-			SearchResponse searchResponse = startInitialResponse(scroll);
+			SearchResponse searchResponse = startInitialResponse();
 			final SearchHits hits = getTotalHits(searchResponse);
 			if (JSON_LD)
 				getMessageOut().write("[");
@@ -329,13 +331,8 @@ public class Search {
 		return hits;
 	}
 
-	private SearchResponse startInitialResponse(final String scroll) {
+	private SearchResponse startInitialResponse() {
 		QueryBuilder queryBuilder = createQuery();
-		if (scroll.matches("\\d{8}")) {
-			final QueryBuilder changedSinceQuery =
-					new LobidResources.ChangedSinceQuery().build(scroll);
-			queryBuilder = boolQuery().must(queryBuilder).must(changedSinceQuery);
-		}
 		Logger.trace("Using query: " + queryBuilder);
 		SearchResponse response = search(queryBuilder, SearchType.SCAN);
 		Logger.trace("Got response: " + response);
@@ -375,6 +372,11 @@ public class Search {
 			for (String t : type.split(","))
 				typeQuery = typeQuery.should(matchQuery("@graph.@type", t));
 			queryBuilder = boolQuery().must(queryBuilder).must(typeQuery);
+		}
+		if (Search.scrollValue.matches("\\d{8}")) {
+			final QueryBuilder changedSinceQuery =
+					new LobidResources.ChangedSinceQuery().build(Search.scrollValue);
+			queryBuilder = boolQuery().must(queryBuilder).must(changedSinceQuery);
 		}
 		if (queryBuilder == null)
 			throw new IllegalStateException(String.format(
