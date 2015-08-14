@@ -82,6 +82,7 @@ public class Search {
 	private int from = 0;
 	private String type = "";
 	private String sort = "";
+	private String scroll = "";
 
 	private List<Document> documents = null;
 	private Long hitCount = null;
@@ -231,6 +232,17 @@ public class Search {
 	}
 
 	/**
+	 * Optional: specify doing a scroll scan query
+	 * 
+	 * @param scrollValue The value of the scroll parameter
+	 * @return this search object (for chaining)
+	 */
+	public Search scroll(final String scrollValue) {
+		this.scroll = scrollValue;
+		return this;
+	}
+
+	/**
 	 * @param request The clients request
 	 * @param serialization The wanted serialization of the returned data.
 	 * @return the chunks of the elasticsearch scroll scan query
@@ -265,12 +277,15 @@ public class Search {
 
 	private void bulk(final Request request, final Serialization serialization) {
 		boolean JSON_LD = serialization.equals(Serialization.JSON_LD);
+		boolean RDF_XML = serialization.equals(Serialization.RDF_XML);
 		try {
 			long lastTime = Calendar.getInstance().getTimeInMillis();
 			SearchResponse searchResponse = startInitialResponse();
 			final SearchHits hits = getTotalHits(searchResponse);
 			if (JSON_LD)
 				getMessageOut().write("[");
+			if (RDF_XML)
+				getMessageOut().write("<root>");
 			long cnt = 0;
 			long to = hits.getTotalHits();
 			String str;
@@ -309,6 +324,8 @@ public class Search {
 		} finally {
 			if (JSON_LD)
 				getMessageOut().write("\n]");
+			if (RDF_XML)
+				getMessageOut().write("</root>");
 			getMessageOut().close();
 			doingScrollScanNow = false;
 			Logger.info("Finished scroll scan dump");
@@ -324,12 +341,12 @@ public class Search {
 	}
 
 	private SearchResponse startInitialResponse() {
-		final QueryBuilder queryBuilder = createQuery();
-		Logger.trace("Using query: " + queryBuilder);
+		QueryBuilder queryBuilder = createQuery();
+		Logger.trace("Using scroll query: " + queryBuilder);
 		SearchResponse response = search(queryBuilder, SearchType.SCAN);
-		Logger.trace("Got response: " + response);
-		response = client.prepareSearchScroll(response.getScrollId())
-				.setScroll("1m").execute().actionGet();
+		Logger.trace("Got scroll response: " + response);
+		response = client.prepareSearchScroll(response.getScrollId()).execute()
+				.actionGet();
 		return response;
 	}
 
@@ -364,6 +381,13 @@ public class Search {
 			for (String t : type.split(","))
 				typeQuery = typeQuery.should(matchQuery("@graph.@type", t));
 			queryBuilder = boolQuery().must(queryBuilder).must(typeQuery);
+		}
+		if (!scroll.isEmpty()) {
+			if (this.scroll.matches("\\d{8}")) {
+				final QueryBuilder changedSinceQuery =
+						new LobidResources.ChangedSinceQuery().build(this.scroll);
+				queryBuilder = boolQuery().must(queryBuilder).must(changedSinceQuery);
+			}
 		}
 		if (queryBuilder == null)
 			throw new IllegalStateException(String.format(

@@ -7,12 +7,9 @@ import static org.junit.Assert.assertTrue;
 import static play.test.Helpers.running;
 import static play.test.Helpers.testServer;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -25,7 +22,7 @@ import org.junit.runners.Parameterized.Parameters;
  */
 @SuppressWarnings("javadoc")
 @RunWith(value = Parameterized.class)
-public class ApiTests {
+public class ApiTests extends SearchTestsHarness {
 
 	private final String endpoint;
 	private final String content;
@@ -194,16 +191,6 @@ public class ApiTests {
 		System.out.println(String.format(
 				"Testing if calling endpoint '%s' returns something with content '%s'",
 				endpoint, content));
-	}
-
-	@Before
-	public void setup() throws IOException {// NOPMD
-		SearchTestsHarness.setup();
-	}
-
-	@After
-	public void down() {
-		SearchTestsHarness.down();
 	}
 
 	@Test

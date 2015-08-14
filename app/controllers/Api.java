@@ -52,7 +52,7 @@ public final class Api extends Controller {
 	 * @param location A polygon describing the subject area of the resources
 	 * @param word A word, see {@code LobidResources.WordQuery}
 	 * @param corporation A corporation associated with the resource
-	 * @param scroll Boolean whether this is a scroll scan query or not
+	 * @param scroll Scroll scan query. Optional: modification start date.
 	 * @return Matching resources
 	 */
 	public static Promise<Result> resource(final String id, final String q,
@@ -61,7 +61,7 @@ public final class Api extends Controller {
 			final String set, final String nwbibspatial, final String nwbibsubject,
 			final String format, final int from, final int size, final String owner,
 			final String type, final String sort, final String location,
-			final String word, final String corporation, final boolean scroll) {
+			final String word, final String corporation, final String scroll) {
 		Logger.debug(String.format(
 				"GET /resource; id: '%s', q: '%s', name: '%s', author: '%s', subject: '%s', set: '%s', format: '%s', owner: '%s', scroll: '%s'",
 				id, q, name, author, subject, set, format, owner, scroll));
@@ -171,7 +171,7 @@ public final class Api extends Controller {
 						.put(Parameter.Q, q)
 						.put(Parameter.SUBJECT, name).build());/*@formatter:on*/
 		return Application.search(Index.GND, parameters, format, from, size, "", "",
-				type, "", true, false);
+				type, "", true, "");
 	}
 
 	private static Promise<Result> search(final String id, final String q,
@@ -184,7 +184,7 @@ public final class Api extends Controller {
 						.put(Parameter.Q, q)
 						.put(Parameter.NAME, name).build());/*@formatter:on*/
 		return Application.search(index, parameters, format, from, size, "", "",
-				type, sort, addQueryInfo, false);
+				type, sort, addQueryInfo, "");
 	}
 
 	/**
@@ -209,7 +209,7 @@ public final class Api extends Controller {
 		}
 		Promise<List<Result>> results = Promise.sequence(
 				resource(id, q, name, "", "", "", "", "", "", "", "", format, from,
-						size, "", "", "", "", "", "", false),
+						size, "", "", "", "", "", "", ""),
 				organisation(id, q, name, format, from, size, "", true),
 				person(id, q, name, format, from, size, "", true),
 				subject(id, q, name, format, from, size, ""));

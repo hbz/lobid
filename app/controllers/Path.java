@@ -2,13 +2,13 @@
 
 package controllers;
 
-import com.google.common.collect.ImmutableMap;
-
 import models.Index;
 import models.Parameter;
 import play.libs.F.Promise;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import com.google.common.collect.ImmutableMap;
 
 /**
  * Path controller. Implements path-style routes and `about` redirects.
@@ -40,7 +40,7 @@ public final class Path extends Controller {
 			final String format, final int from, final int size) {
 		return Application.search(Index.LOBID_RESOURCES,
 				ImmutableMap.of(Parameter.ID, id), format, from, size, "", "", "", "",
-				false, false);
+				false, "");
 	}
 
 	/** Redirect to {@link #itemAbout(String, String, String, int, int)} */

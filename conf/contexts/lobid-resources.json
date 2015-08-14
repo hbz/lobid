@@ -335,6 +335,8 @@
       "preferredNameForTheFamily": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily",
       "preferredNameForTheWork": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork",
       "preferredName": "http://d-nb.info/standards/elementset/gnd#preferredName",
-      "subjectChain": "http://purl.org/lobid/lv#subjectChain"
+      "subjectChain": "http://purl.org/lobid/lv#subjectChain",
+      "dateCreated" : "http://purl.org/dc/terms/created",
+      "dateModified" : "http://purl.org/dc/terms/modified"
    }
 }

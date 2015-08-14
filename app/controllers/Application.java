@@ -106,7 +106,7 @@ public final class Application extends Controller {
 			final java.util.Map<Parameter, String> parameters,
 			final String formatParameter, final int from, final int size,
 			final String owner, final String set, final String type,
-			final String sort, final boolean addQueryInfo, final boolean scroll) {
+			final String sort, final boolean addQueryInfo, final String scroll) {
 		final ResultFormat resultFormat;
 		try {
 			resultFormat = ResultFormat
@@ -119,12 +119,12 @@ public final class Application extends Controller {
 		try {
 			search = new Search(parameters, index).page(from, size)
 					.field(getFieldAndFormat(formatParameter).getLeft()).owner(owner)
-					.set(set).type(type).sort(sort);
+					.set(set).type(type).sort(sort).scroll(scroll);
 		} catch (IllegalArgumentException e) {
 			Logger.error(e.getMessage(), e);
 			return badRequestPromise(e.getMessage());
 		}
-		if (scroll) {
+		if (!scroll.isEmpty()) {
 			if (search.doingScrollScanNow()) {
 				return Promise.pure(status(Http.Status.CONFLICT,
 						"Already doing a scroll scan. Only one permitted. Please try again later."));

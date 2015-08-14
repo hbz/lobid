@@ -363,4 +363,26 @@ public class LobidResources {
 		}
 	}
 
+	/**
+	 * Query the lobid-resources index for corporations.
+	 */
+	public static class ChangedSinceQuery extends AbstractIndexQuery {
+		@Override
+		public List<String> fields() {
+			return Arrays.asList("http://purl.org/dc/terms/created.@value",
+					"http://purl.org/dc/terms/modified.@value");
+		}
+
+		@Override
+		public QueryBuilder build(String queryString) {
+			return QueryBuilders
+					.filteredQuery(QueryBuilders.matchAllQuery(),
+							FilterBuilders.boolFilter()
+									.should(FilterBuilders.queryFilter(QueryBuilders
+											.rangeQuery(fields().get(0)).gte(queryString)))
+							.should(FilterBuilders.queryFilter(
+									QueryBuilders.rangeQuery(fields().get(1)).gte(queryString))));
+		}
+	}
+
 }
