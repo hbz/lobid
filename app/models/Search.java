@@ -345,8 +345,8 @@ public class Search {
 		Logger.trace("Using scroll query: " + queryBuilder);
 		SearchResponse response = search(queryBuilder, SearchType.SCAN);
 		Logger.trace("Got scroll response: " + response);
-		response = client.prepareSearchScroll(response.getScrollId()).execute()
-				.actionGet();
+		response = client.prepareSearchScroll(response.getScrollId())
+				.setScroll(TimeValue.timeValueMinutes(1)).execute().actionGet();
 		return response;
 	}
 
