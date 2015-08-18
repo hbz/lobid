@@ -215,10 +215,7 @@
         "@id": "http://purl.org/lobid/lv#multiVolumeWork",
         "@type": "@id"
       },
-      "numbering": {
-        "@id": "http://purl.org/lobid/lv#numbering",
-        "@type": "@id"
-      },
+      "numbering": "http://purl.org/lobid/lv#numbering",
      "hasSupplement":
       {
          "@id": "http://rdaregistry.info/Elements/u/P60281",
