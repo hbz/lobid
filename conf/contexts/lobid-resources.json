@@ -199,7 +199,27 @@
          "@id": "http://purl.org/dc/terms/isPartOf",
          "@type": "@id"
       },
-      "hasSupplement":
+      "inSeries": {
+        "@id": "http://purl.org/lobid/lv#inSeries",
+        "@type": "@id"
+      },
+      "volumeIn": {
+        "@id": "http://purl.org/lobid/lv#volumeIn",
+        "@type": "@id"
+      },
+      "series": {
+        "@id": "http://purl.org/lobid/lv#series",
+        "@type": "@id"
+      }, 
+      "multiVolumeWork": {
+        "@id": "http://purl.org/lobid/lv#multiVolumeWork",
+        "@type": "@id"
+      },
+      "numbering": {
+        "@id": "http://purl.org/lobid/lv#numbering",
+        "@type": "@id"
+      },
+     "hasSupplement":
       {
          "@id": "http://rdaregistry.info/Elements/u/P60281",
          "@type": "@id"
