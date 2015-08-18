@@ -199,6 +199,11 @@
          "@id": "http://purl.org/dc/terms/isPartOf",
          "@type": "@id"
       },
+      "containedIn":
+      {
+         "@id": "http://purl.org/lobid/lv#containedIn",
+         "@type": "@id"
+      },
       "inSeries": {
         "@id": "http://purl.org/lobid/lv#inSeries",
         "@type": "@id"
