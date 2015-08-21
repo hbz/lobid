@@ -280,7 +280,8 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}));
+			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
+					.operator(Operator.AND);
 		}
 
 	}
