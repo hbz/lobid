@@ -312,9 +312,10 @@ public class Search {
 					Logger.info("Free memory low: " + freeMem / 1024 / 1024
 							+ " MB, sleeping for " + sleep + " ms.");
 					if (sleep > 20000) {
+						Logger.warn("nMemory too low. Canceling request!");
 						getMessageOut().write(
 								"\nMemory too low. Canceling your request! Please contact 'semweb at hbz-nrw.de' or try again (probably some days) later.");
-						return;
+						break;
 					}
 					Thread.sleep(sleep);
 				}
