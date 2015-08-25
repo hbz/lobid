@@ -350,10 +350,9 @@ public final class Application extends Controller {
 		case RDF_A:
 			return views.html.docs.render(documents, selectedIndex).toString();
 		case RDF_XML:
-			return transformed(
-					fullJsonResponse(documents, field, allHits, addQueryInfo, request)
-							.toString(),
-					Serialization.RDF_XML.format);
+			return "<docs>" + Joiner.on("\n").join(
+					transform(documents, serialization, allHits, addQueryInfo, request))
+					+ "</docs>"; // serve well-formed XML, retain document structure
 		default:
 			return Joiner.on("\n").join(
 					transform(documents, serialization, allHits, addQueryInfo, request));
