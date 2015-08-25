@@ -32,6 +32,7 @@
          "@type" : "@id"
       },
       "bibliographicCitation" : "http://purl.org/dc/terms/bibliographicCitation",
+      "thesisInformation" : "http://rdaregistry.info/Elements/u/P60489",
       "conductor" : {
          "@type" : "@id",
          "@id" : "http://id.loc.gov/vocabulary/relators/cnd"
