@@ -1,364 +1,305 @@
 {
-  "@context":
-   {
-      "xsd": "http://www.w3.org/2001/XMLSchema#",
-      "title": "http://purl.org/dc/terms/title",
-      "alternativeTitle": "http://purl.org/dc/terms/alternative",
-      "otherTitleInformation":  "http://rdvocab.info/Elements/otherTitleInformation",
-      "shortTitle": "http://purl.org/ontology/bibo/shortTitle",
-      "creator":
-      {
-         "@id": "http://purl.org/dc/terms/creator",
-         "@type": "@id"
+   "@context" : {
+      "edition" : "http://purl.org/ontology/bibo/edition",
+      "primaryTopic" : {
+         "@id" : "http://xmlns.com/foaf/0.1/primaryTopic",
+         "@type" : "@id"
       },
-      "creatorName": "http://purl.org/dc/elements/1.1/creator",
-      "statementOfResponsibility": "http://rdvocab.info/Elements/statementOfResponsibility",
-      "contributor":
-      {
-         "@id": "http://purl.org/dc/terms/contributor",
-         "@type": "@id"
+      "abstract" : "http://purl.org/dc/terms/abstract",
+      "webPageArchived" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/lobid/lv#webPageArchived"
       },
-      "contributorLabel": "http://purl.org/lobid/lv#contributorLabel",
-      "contributingCorporateBodyLabel": "http://purl.org/lobid/lv#nameOfContributingCorporateBody",
-      "actor":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/act",
-         "@type": "@id"
+      "inDataset" : {
+         "@type" : "@id",
+         "@id" : "http://www.w3.org/2000/01/rdf-schema#inDataset"
       },
-      "afterwordBy":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/aft",
-         "@type": "@id"
+      "similar" : {
+         "@type" : "@id",
+         "@id" : "http://umbel.org/umbel#isLike"
       },
-      "introductionBy":
-      {
-         "@id":  "http://id.loc.gov/vocabulary/relators/aui",
-         "@type": "@id"
+      "inSeries" : {
+         "@id" : "http://purl.org/lobid/lv#inSeries",
+         "@type" : "@id"
       },
-      "screenwriter":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/aus",
-         "@type": "@id"
+      "contributor" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/dc/terms/contributor"
       },
-      "collaborator":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/clb",
-         "@type": "@id"
+      "lccn" : "http://purl.org/ontology/bibo/lccn",
+      "volumeIn" : {
+         "@id" : "http://purl.org/lobid/lv#volumeIn",
+         "@type" : "@id"
       },
-      "composer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/cmp",
-         "@type": "@id"
+      "bibliographicCitation" : "http://purl.org/dc/terms/bibliographicCitation",
+      "conductor" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/cnd"
       },
-      "conductor":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/cnd",
-         "@type": "@id"
+      "producer" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/pro",
+         "@type" : "@id"
       },
-      "cinematographer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/cng",
-         "@type": "@id"
+      "hbzId" : "http://purl.org/lobid/lv#hbzID",
+      "collector" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/col"
       },
-      "collector":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/col",
-         "@type": "@id"
+      "callNumber" : "http://purl.org/ontology/daia/label",
+      "frequency" : "http://rdvocab.info/Elements/frequency",
+      "statementOfResponsibility" : "http://rdvocab.info/Elements/statementOfResponsibility",
+      "subject" : {
+         "@id" : "http://purl.org/dc/terms/subject",
+         "@type" : "@id"
       },
-      "contributor_":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/ctb",
-         "@type": "@id"
+      "creatorName" : "http://purl.org/dc/elements/1.1/creator",
+      "tableOfContents" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/dc/terms/tableOfContents"
       },
-      "cartographer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/ctg",
-         "@type": "@id"
+      "volume" : "http://purl.org/ontology/bibo/volume",
+      "wikipedia" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/ontology/mo/wikipedia"
       },
-      "director":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/drt",
-         "@type": "@id"
+      "sameAs" : {
+         "@type" : "@id",
+         "@id" : "http://www.w3.org/2002/07/owl#sameAs"
       },
-      "dedicatee":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/dte",
-         "@type": "@id"
+      "hasPart" : {
+         "@id" : "http://purl.org/dc/terms/hasPart",
+         "@type" : "@id"
       },
-      "engraver":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/egr",
-         "@type": "@id"
+      "exemplarOf" : {
+         "@id" : "http://purl.org/vocab/frbr/core#exemplarOf",
+         "@type" : "@id"
       },
-      "illustrator":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/ill",
-         "@type": "@id"
+      "preferredNameForTheFamily" : "http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily",
+      "interviewer" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/ivr",
+         "@type" : "@id"
       },
-      "interviewee":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/ive",
-         "@type": "@id"
+      "collaborator" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/clb",
+         "@type" : "@id"
       },
-      "interviewer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/ivr",
-         "@type": "@id"
+      "coverage" : "http://purl.org/dc/elements/1.1/coverage",
+      "isFormatOf" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/dc/terms/isFormatOf"
       },
-      "musician":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/mus",
-         "@type": "@id"
+      "xsd" : "http://www.w3.org/2001/XMLSchema#",
+      "preferredNameForTheCorporateBody" : "http://d-nb.info/standards/elementset/gnd#preferredNameForTheCorporateBody",
+      "introductionBy" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/aui"
       },
-      "photographer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/pht",
-         "@type": "@id"
+      "exemplar" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/vocab/frbr/core#exemplar"
       },
-      "performer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/prf",
-         "@type": "@id"
+      "afterwordBy" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/aft"
       },
-      "producer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/pro",
-         "@type": "@id"
+      "cartographer" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/ctg",
+         "@type" : "@id"
       },
-      "singer":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/sng",
-         "@type": "@id"
+      "eissn" : "http://purl.org/ontology/bibo/eissn",
+      "isSupplementTo" : {
+         "@id" : "http://rdaregistry.info/Elements/u/P60259",
+         "@type" : "@id"
       },
-      "honoree":
-      {
-         "@id": "http://id.loc.gov/vocabulary/relators/hnr",
-         "@type": "@id"
+      "nwbibspatial" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/lobid/lv#nwbibspatial"
       },
-      "publicationStatement": "http://rdvocab.info/Elements/publicationStatement",
-      "source": "http://purl.org/dc/terms/source",
-      "placeOfPublication": "http://rdvocab.info/Elements/placeOfPublication",
-      "publisher": "http://purl.org/dc/elements/1.1/publisher",
-      "issued": "http://purl.org/dc/terms/issued",
-      "frequency": "http://rdvocab.info/Elements/frequency",
-      "sameAs":
-      {
-         "@id": "http://www.w3.org/2002/07/owl#sameAs",
-         "@type": "@id"
+      "preferredNameForThePerson" : "http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson",
+      "preferredNameEntityForThePerson" : "http://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson",
+      "prefLabel" : "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "titleKeyword" : "http://purl.org/lobid/lv#titleKeyword",
+      "hasSupplement" : {
+         "@type" : "@id",
+         "@id" : "http://rdaregistry.info/Elements/u/P60281"
       },
-      "similar":
-      {
-         "@id": "http://umbel.org/umbel#isLike",
-         "@type": "@id"
+      "extent" : "http://iflastandards.info/ns/isbd/elements/P1053",
+      "musician" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/mus"
       },
-      "issn": "http://purl.org/ontology/bibo/issn",
-      "eissn": "http://purl.org/ontology/bibo/eissn",
-      "lccn": "http://purl.org/ontology/bibo/lccn",
-      "oclcnum": "http://purl.org/ontology/bibo/oclcnum",
-      "isbn10": "http://purl.org/ontology/bibo/isbn",
-      "isbn13": "http://purl.org/ontology/bibo/isbn13",
-      "ism": "http://purl.org/ontology/mo/ismn",
-      "urn": "http://purl.org/lobid/lv#urn",
-      "doi":
-      {
-         "@id": "http://purl.org/ontology/bibo/doi",
-         "@type": "@id"
-      }, 
-      "fulltextOnline":
-      {
-         "@id": "http://purl.org/lobid/lv#fulltextOnline",
-         "@type": "@id"
+      "subjectChain" : "http://purl.org/lobid/lv#subjectChain",
+      "publisher" : "http://purl.org/dc/elements/1.1/publisher",
+      "dateOfBirth" : "http://d-nb.info/standards/elementset/gnd#dateOfBirth",
+      "hasFormat" : {
+         "@id" : "http://purl.org/dc/terms/hasFormat",
+         "@type" : "@id"
       },
-	  "webPageArchived":
-	  {
-		 "@id": "http://purl.org/lobid/lv#webPageArchived",
-		 "@type": "@id"
-	  },
-      "wikipedia":
-      {
-         "@id": "http://purl.org/ontology/mo/wikipedia",
-         "@type": "@id"
+      "language" : {
+         "@id" : "http://purl.org/dc/terms/language",
+         "@type" : "@id"
       },
-      "workManifested":
-      {
-         "@id": "http://rdvocab.info/RDARelationshipsWEMI/workManifested",
-         "@type": "@id"
+      "containedIn" : {
+         "@id" : "http://purl.org/lobid/lv#containedIn",
+         "@type" : "@id"
       },
-      "medium":
-      {
-         "@id": "http://purl.org/dc/terms/medium",
-         "@type": "@id"
+      "preferredNameForTheConferenceOrEvent" : "http://d-nb.info/standards/elementset/gnd#preferredNameForTheConferenceOrEvent",
+      "performer" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/prf"
       },
-      "hasPart":
-      {
-         "@id": "http://purl.org/dc/terms/hasPart",
-         "@type": "@id"
+      "doi" : {
+         "@id" : "http://purl.org/ontology/bibo/doi",
+         "@type" : "@id"
       },
-      "isPartOf":
-      {
-         "@id": "http://purl.org/dc/terms/isPartOf",
-         "@type": "@id"
+      "hasVersion" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/dc/terms/hasVersion"
       },
-      "containedIn":
-      {
-         "@id": "http://purl.org/lobid/lv#containedIn",
-         "@type": "@id"
+      "seeAlso" : {
+         "@id" : "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+         "@type" : "@id"
       },
-      "inSeries": {
-        "@id": "http://purl.org/lobid/lv#inSeries",
-        "@type": "@id"
+      "spatial" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/dc/terms/spatial"
       },
-      "volumeIn": {
-        "@id": "http://purl.org/lobid/lv#volumeIn",
-        "@type": "@id"
+      "interviewee" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/ive"
       },
-      "series": {
-        "@id": "http://purl.org/lobid/lv#series",
-        "@type": "@id"
-      }, 
-      "multiVolumeWork": {
-        "@id": "http://purl.org/lobid/lv#multiVolumeWork",
-        "@type": "@id"
+      "director" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/drt",
+         "@type" : "@id"
       },
-      "numbering": "http://purl.org/lobid/lv#numbering",
-     "hasSupplement":
-      {
-         "@id": "http://rdaregistry.info/Elements/u/P60281",
-         "@type": "@id"
-      },
-      "isSupplementTo":
-      {
-         "@id": "http://rdaregistry.info/Elements/u/P60259",
-         "@type": "@id"
-      },
-      "collectedBy":
-      {
-         "@id": "http://purl.org/ontology/holding#collectedBy",
-         "@type": "@id"
-      },
-      "inDataset":
-      {
-         "@id": "http://www.w3.org/2000/01/rdf-schema#inDataset",
-         "@type": "@id"
-      },
-      "isPartOfName": "http://purl.org/dc/elements/1.1/isPartOf",
-      "hasVersion":
-      {
-         "@id": "http://purl.org/dc/terms/hasVersion",
-         "@type": "@id"
-      },
-      "isFormatOf":
-      {
-         "@id": "http://purl.org/dc/terms/isFormatOf",
-         "@type": "@id"
-      },
-      "hasFormat":
-      {
-         "@id": "http://purl.org/dc/terms/hasFormat",
-         "@type": "@id"
-      },
-      "seeAlso":
-      {
-         "@id": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
-         "@type": "@id"
-      },
-      "tableOfContents":
-      {
-         "@id": "http://purl.org/dc/terms/tableOfContents",
-         "@type": "@id"
-      },
-      "hbzId": "http://purl.org/lobid/lv#hbzID",
-      "zdbId": "http://purl.org/lobid/lv#zdbID",
-      "language":
-      { 
-         "@id": "http://purl.org/dc/terms/language",
-         "@type": "@id"
-      },
-      "extent": "http://iflastandards.info/ns/isbd/elements/P1053",
-      "edition": "http://purl.org/ontology/bibo/edition",
-      "bibliographicCitation": "http://purl.org/dc/terms/bibliographicCitation",
-      "abstract": "http://purl.org/dc/terms/abstract",
-      "titleKeyword": "http://purl.org/lobid/lv#titleKeyword",
-      "subject":
-      {
-         "@id": "http://purl.org/dc/terms/subject",
-         "@type": "@id"
-      },
-      "nwbibsubject":
-      {
-         "@id": "http://purl.org/lobid/lv#nwbibsubject",
-         "@type": "@id"
-      },
-      "spatial":
-      {
-         "@id": "http://purl.org/dc/terms/spatial",
-         "@type": "@id"
-      },
-      "nwbibspatial":
-      {
-         "@id": "http://purl.org/lobid/lv#nwbibspatial",
-         "@type": "@id"
-      },
-      "subjectLabel": "http://purl.org/lobid/lv#subjectLabel",
-      "coverage": "http://purl.org/dc/elements/1.1/coverage",
-      "subjectLocation": "http://purl.org/lobid/lv#subjectLocation",
-      "editor":
-      {
-         "@id": "http://purl.org/ontology/bibo/editor",
-         "@type": "@id"
-      },
-      "translator":
-      {
-         "@id": "http://purl.org/ontology/bibo/translator",
-         "@type": "@id"
-      },
-      "volume": "http://purl.org/ontology/bibo/volume",
-      "callNumber": "http://purl.org/ontology/daia/label",
-      "exemplar":
-      {
-         "@id": "http://purl.org/vocab/frbr/core#exemplar",
-         "@type": "@id"
-      },
-      "exemplarOf":
-      {
-         "@id": "http://purl.org/vocab/frbr/core#exemplarOf",
-         "@type": "@id"
-      },
-      "owner":
-      {
-         "@id": "http://purl.org/vocab/frbr/core#owner",
-         "@type": "@id"
-      },
-      "isPrimaryTopicOf":
-      {
-         "@id": "http://xmlns.com/foaf/0.1/isPrimaryTopicOf",
-         "@type": "@id"
-      },
-      "primaryTopic":
-      {
-         "@id": "http://xmlns.com/foaf/0.1/primaryTopic",
-         "@type": "@id"
-      },
-      "describedBy":
-      {
-         "@id": "http://www.w3.org/2007/05/powder-s#describedby",
-         "@type": "@id"
-      },
-      "dateOfBirth": "http://d-nb.info/standards/elementset/gnd#dateOfBirth",
-      "dateOfDeath": "http://d-nb.info/standards/elementset/gnd#dateOfDeath",
-      "preferredNameForThePerson": "http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson",
-      "prefLabel": "http://www.w3.org/2004/02/skos/core#prefLabel",
-      "longitudeAndLatitude": "http://rdvocab.info/Elements/longitudeAndLatitude",
-      "preferredNameForThePlaceOrGeographicName": "http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName",
-      "preferredNameForTheSubjectHeading": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading",
-      "preferredNameForTheConferenceOrEvent": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheConferenceOrEvent",
-      "preferredNameForTheCorporateBody": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheCorporateBody",
-      "preferredNameEntityForThePerson": "http://d-nb.info/standards/elementset/gnd#preferredNameEntityForThePerson",
-      "preferredNameForTheFamily": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheFamily",
-      "preferredNameForTheWork": "http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork",
-      "preferredName": "http://d-nb.info/standards/elementset/gnd#preferredName",
-      "subjectChain": "http://purl.org/lobid/lv#subjectChain",
       "dateCreated" : "http://purl.org/dc/terms/created",
-      "dateModified" : "http://purl.org/dc/terms/modified"
+      "title" : "http://purl.org/dc/terms/title",
+      "longitudeAndLatitude" : "http://rdvocab.info/Elements/longitudeAndLatitude",
+      "isbn10" : "http://purl.org/ontology/bibo/isbn",
+      "medium" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/dc/terms/medium"
+      },
+      "cinematographer" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/cng",
+         "@type" : "@id"
+      },
+      "preferredName" : "http://d-nb.info/standards/elementset/gnd#preferredName",
+      "preferredNameForThePlaceOrGeographicName" : "http://d-nb.info/standards/elementset/gnd#preferredNameForThePlaceOrGeographicName",
+      "oclcnum" : "http://purl.org/ontology/bibo/oclcnum",
+      "isPartOfName" : "http://purl.org/dc/elements/1.1/isPartOf",
+      "preferredNameForTheWork" : "http://d-nb.info/standards/elementset/gnd#preferredNameForTheWork",
+      "isPartOf" : {
+         "@id" : "http://purl.org/dc/terms/isPartOf",
+         "@type" : "@id"
+      },
+      "ism" : "http://purl.org/ontology/mo/ismn",
+      "dateModified" : "http://purl.org/dc/terms/modified",
+      "composer" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/cmp"
+      },
+      "collectedBy" : {
+         "@id" : "http://purl.org/ontology/holding#collectedBy",
+         "@type" : "@id"
+      },
+      "alternativeTitle" : "http://purl.org/dc/terms/alternative",
+      "zdbId" : "http://purl.org/lobid/lv#zdbID",
+      "series" : {
+         "@id" : "http://purl.org/lobid/lv#series",
+         "@type" : "@id"
+      },
+      "photographer" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/pht",
+         "@type" : "@id"
+      },
+      "editor" : {
+         "@id" : "http://purl.org/ontology/bibo/editor",
+         "@type" : "@id"
+      },
+      "illustrator" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/ill"
+      },
+      "urn" : "http://purl.org/lobid/lv#urn",
+      "multiVolumeWork" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/lobid/lv#multiVolumeWork"
+      },
+      "contributingCorporateBodyLabel" : "http://purl.org/lobid/lv#nameOfContributingCorporateBody",
+      "engraver" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/egr",
+         "@type" : "@id"
+      },
+      "shortTitle" : "http://purl.org/ontology/bibo/shortTitle",
+      "fulltextOnline" : {
+         "@id" : "http://purl.org/lobid/lv#fulltextOnline",
+         "@type" : "@id"
+      },
+      "issued" : "http://purl.org/dc/terms/issued",
+      "screenwriter" : {
+         "@type" : "@id",
+         "@id" : "http://id.loc.gov/vocabulary/relators/aus"
+      },
+      "placeOfPublication" : "http://rdvocab.info/Elements/placeOfPublication",
+      "owner" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/vocab/frbr/core#owner"
+      },
+      "contributor_" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/ctb",
+         "@type" : "@id"
+      },
+      "dateOfDeath" : "http://d-nb.info/standards/elementset/gnd#dateOfDeath",
+      "isbn13" : "http://purl.org/ontology/bibo/isbn13",
+      "dedicatee" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/dte",
+         "@type" : "@id"
+      },
+      "publicationStatement" : "http://rdvocab.info/Elements/publicationStatement",
+      "honoree" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/hnr",
+         "@type" : "@id"
+      },
+      "describedBy" : {
+         "@type" : "@id",
+         "@id" : "http://www.w3.org/2007/05/powder-s#describedby"
+      },
+      "nwbibsubject" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/lobid/lv#nwbibsubject"
+      },
+      "source" : "http://purl.org/dc/terms/source",
+      "contributorLabel" : "http://purl.org/lobid/lv#contributorLabel",
+      "creator" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/dc/terms/creator"
+      },
+      "workManifested" : {
+         "@type" : "@id",
+         "@id" : "http://rdvocab.info/RDARelationshipsWEMI/workManifested"
+      },
+      "issn" : "http://purl.org/ontology/bibo/issn",
+      "translator" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/ontology/bibo/translator"
+      },
+      "otherTitleInformation" : "http://rdvocab.info/Elements/otherTitleInformation",
+      "subjectLocation" : "http://purl.org/lobid/lv#subjectLocation",
+      "isPrimaryTopicOf" : {
+         "@id" : "http://xmlns.com/foaf/0.1/isPrimaryTopicOf",
+         "@type" : "@id"
+      },
+      "subjectLabel" : "http://purl.org/lobid/lv#subjectLabel",
+      "singer" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/sng",
+         "@type" : "@id"
+      },
+      "numbering" : "http://purl.org/lobid/lv#numbering",
+      "preferredNameForTheSubjectHeading" : "http://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading",
+      "actor" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/act",
+         "@type" : "@id"
+      }
    }
 }
