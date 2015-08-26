@@ -70,7 +70,8 @@ public enum Index {
 	LOBID_COLLECTIONS("lobid-collections", "json-ld-lobid-collection",
 			new ImmutableMap.Builder<Parameter, AbstractIndexQuery>().build()); /*@formatter:on*/
 
-	static final Config CONFIG =
+	/** Access application config data. */
+	public static final Config CONFIG =
 			ConfigFactory.parseFile(new File("conf/application.conf")).resolve();
 	private String id; // NOPMD
 	private String type;
