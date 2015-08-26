@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.indices.IndexMissingException;
 import org.lobid.lodmill.JsonLdConverter;
 import org.lobid.lodmill.JsonLdConverter.Format;
@@ -32,6 +31,8 @@ import play.Logger;
 import play.api.http.MediaRange;
 import play.libs.F.Promise;
 import play.libs.Json;
+import play.libs.ws.WS;
+import play.libs.ws.WSResponse;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Http.Request;
@@ -234,10 +235,9 @@ public final class Application extends Controller {
 		try {
 			final StringBuilder builder = new StringBuilder();
 			final String errorMessage = "No source data found for ";
-			final String mabxmlResourcePrefix = "http://lobid.org/resource/";
 			for (Document document : documents)
-				if (document.getId().startsWith(mabxmlResourcePrefix))
-					appendMabXml(builder, errorMessage, document, mabxmlResourcePrefix);
+				if (document.getId().contains("lobid.org/resource"))
+					appendMabXml(builder, errorMessage, document);
 			final String result = builder.toString().trim();
 			return result.isEmpty() ? notFound(errorMessage + "request")
 					: //
@@ -248,15 +248,23 @@ public final class Application extends Controller {
 	}
 
 	private static void appendMabXml(final StringBuilder builder,
-			final String errorMessage, Document document,
-			String mabxmlResourcePrefix) {
-		final String id = document.getId().replace(mabxmlResourcePrefix, "");
-		final GetResponse response =
-				Search.client.prepareGet("hbz01", "mabxml", id).execute().actionGet();
-		if (!response.isExists())
-			Logger.warn(errorMessage + id);
+			final String errorMessage, Document document) {
+		JsonNode value = Json.parse(document.getSource()).findValue("hbzId");
+		String mabXml = null;
+		if (value != null) {
+			final String id = value.textValue();
+			String url = Index.CONFIG.getString("hbz01.api") + "/" + id;
+			mabXml = WS.url(url).get().map((WSResponse response) -> {
+				if (response.getStatus() == Http.Status.OK) {
+					return response.getBody();
+				}
+				return null;
+			}).get(10000);
+		}
+		if (mabXml == null)
+			Logger.warn(errorMessage + document.getId());
 		else
-			builder.append(response.getSource().get("mabXml")).append("\n");
+			builder.append(mabXml).append("\n");
 	}
 
 	private static Status withCallback(final String[] callback,
