@@ -812,7 +812,7 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				String request = "resource?q=*&scroll=20020201";
 				String response = call(request, "text/plain");
-				assertThat(response).hasSize(157825);
+				assertThat(response).hasSize(157960);
 				request = "resource?q=*&scroll=20090201";
 				response = call(request, "text/plain");
 				assertThat(response).isNullOrEmpty();

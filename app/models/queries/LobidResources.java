@@ -285,8 +285,13 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
-					.operator(Operator.AND);
+			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+			for (String q : queryString.split(",")) {
+				boolQuery =
+						boolQuery.must(multiMatchQuery(q, fields().toArray(new String[] {}))
+								.operator(Operator.AND));
+			}
+			return boolQuery;
 		}
 
 	}
