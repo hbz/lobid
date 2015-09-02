@@ -14,6 +14,7 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 
 /**
  * Superclass for queries on different indexes.
@@ -54,6 +55,14 @@ public abstract class AbstractIndexQuery {
 		return query;
 	}
 
+	QueryBuilder multiValueMatchQuery(String queryString) {
+		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+		for (String q : queryString.split(",")) {
+			boolQuery = boolQuery.must(matchQuery(fields().get(0), q));
+		}
+		return boolQuery;
+	}
+
 	private QueryBuilder createAuthorQuery(final String lifeDates,
 			final String search, final Matcher matcher) {
 		/* Search name in name field and birth in birth field: */
@@ -71,4 +80,5 @@ public abstract class AbstractIndexQuery {
 				multiMatchQuery(search, fields().get(0)).operator(Operator.AND);
 		return fields().size() > 3 ? query.field(fields().get(3)) : query;
 	}
+
 }

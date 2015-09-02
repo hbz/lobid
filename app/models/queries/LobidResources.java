@@ -246,7 +246,7 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return matchQuery(fields().get(0), queryString);
+			return multiValueMatchQuery(queryString);
 		}
 
 	}
@@ -263,11 +263,7 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-			for (String q : queryString.split(",")) {
-				boolQuery = boolQuery.must(matchQuery(fields().get(0), q));
-			}
-			return boolQuery;
+			return multiValueMatchQuery(queryString);
 		}
 
 	}
