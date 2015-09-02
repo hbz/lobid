@@ -150,14 +150,19 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			final MultiMatchQueryBuilder subjectLabelQuery =
-					multiMatchQuery(queryString, fields().get(0), fields().get(1))
-							.operator(Operator.AND);
-			final String query = queryString.startsWith("http://") ? queryString
-					: "http://d-nb.info/gnd/" + queryString;
-			final MatchQueryBuilder subjectIdQuery =
-					matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
-			return boolQuery().should(subjectLabelQuery).should(subjectIdQuery);
+			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+			for (String q : queryString.split(",")) {
+				final MultiMatchQueryBuilder subjectLabelQuery =
+						multiMatchQuery(q, fields().get(0), fields().get(1))
+								.operator(Operator.AND);
+				final String query =
+						q.startsWith("http://") ? q : "http://d-nb.info/gnd/" + q;
+				final MatchQueryBuilder subjectIdQuery =
+						matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
+				boolQuery = boolQuery
+						.must(boolQuery().should(subjectLabelQuery).should(subjectIdQuery));
+			}
+			return boolQuery;
 		}
 	}
 
