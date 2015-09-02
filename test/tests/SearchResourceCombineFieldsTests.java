@@ -34,7 +34,9 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchSetAndNwbibspatialValue1(){search("resource?set=NWBib&nwbibspatial=Kirchhundem-Heinsberg", 1);}
 	@Test public void searchSetAndNwbibspatialValue2(){search("resource?set=NWBib&nwbibspatial=Gummersbach", 1);}
 	@Test public void searchSetAndNwbibspatialValue3(){search("resource?set=NWBib&nwbibspatial=Gummersbach bei Köln", 1);}
-	@Test public void searchSetAndNwbibsubject(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
+	@Test public void searchSetAndNwbibsubject1(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
+	@Test public void searchSetAndNwbibsubject2(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000,http://purl.org/lobid/nwbib#s706230", 0);}
+	@Test public void searchSetAndNwbibsubject3(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s706230,http://purl.org/lobid/nwbib#s704042", 1);}
 	@Test public void searchSetAndSubjectChain1(){search("resource?set=NWBib&subject=Geschichte", 1);}
 	@Test public void searchSetAndSubjectChain2(){search("resource?set=NWBib&subject=Heinsberg", 1);}
 	/*@formatter:on@*/
