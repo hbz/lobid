@@ -159,8 +159,8 @@ public class LobidResources {
 						q.startsWith("http://") ? q : "http://d-nb.info/gnd/" + q;
 				final MatchQueryBuilder subjectIdQuery =
 						matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
-				boolQuery = boolQuery
-						.must(boolQuery().should(subjectLabelQuery).should(subjectIdQuery));
+				boolQuery = boolQuery.should(
+						boolQuery().should(subjectLabelQuery).should(subjectIdQuery));
 			}
 			return boolQuery;
 		}
@@ -288,8 +288,8 @@ public class LobidResources {
 		public QueryBuilder build(String queryString) {
 			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 			for (String q : queryString.split(",")) {
-				boolQuery =
-						boolQuery.must(multiMatchQuery(q, fields().toArray(new String[] {}))
+				boolQuery = boolQuery
+						.should(multiMatchQuery(q, fields().toArray(new String[] {}))
 								.operator(Operator.AND));
 			}
 			return boolQuery;
