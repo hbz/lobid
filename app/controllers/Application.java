@@ -29,6 +29,7 @@ import models.Parameter;
 import models.Search;
 import play.Logger;
 import play.api.http.MediaRange;
+import play.libs.F;
 import play.libs.F.Promise;
 import play.libs.Json;
 import play.libs.ws.WS;
@@ -254,12 +255,22 @@ public final class Application extends Controller {
 		if (value != null) {
 			final String id = value.textValue();
 			String url = Index.CONFIG.getString("hbz01.api") + "/" + id;
-			mabXml = WS.url(url).get().map((WSResponse response) -> {
+			Promise<String> promise = WS.url(url).get().map((WSResponse response) -> {
 				if (response.getStatus() == Http.Status.OK) {
 					return response.getBody();
 				}
+				Logger.warn("Response for {} not OK: {}", url,
+						response.getStatusText());
 				return null;
-			}).get(10000);
+			});
+			promise = promise.recover(new F.Function<Throwable, String>() {
+				@Override
+				public String apply(Throwable t) throws Throwable {
+					Logger.error("Could not get response for {}: {}", url, t);
+					return null;
+				}
+			});
+			mabXml = promise.get(10000);
 		}
 		if (mabXml == null)
 			Logger.warn(errorMessage + document.getId());
