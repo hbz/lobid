@@ -411,7 +411,10 @@ public class SearchTests extends SearchTestsHarness {
 	}
 
 	/* @formatter:off */
-	@Test public void resourceByGndSubjectMulti(){resByGndSubject("4062901-6", 1);}
+	@Test public void resourceByGndSubjectMulti1(){resByGndSubject("4062901-6", 1);}
+	@Test public void resourceByGndSubjectMulti2(){resByGndSubject("4066438-7", 1);}
+	@Test public void resourceByGndSubjectMulti3(){resByGndSubject("4062901-6,4077548-3", 2);}
+	@Test public void resourceByGndSubjectMulti4(){resByGndSubject("4066438-7,4077548-3", 1);}
 	@Test public void resourceByGndSubjectDashed(){resByGndSubject("4414195-6", 1);}
 	@Test public void resourceByGndSubjectSingle(){resByGndSubject("189452846", 1);}
 	@Test public void resourceByGndSubjectMultiUri(){resByGndSubject("http://d-nb.info/gnd/4062901-6", 1);}
@@ -427,9 +430,13 @@ public class SearchTests extends SearchTestsHarness {
 						Json.parse(call("resource?subject=" + gndId));
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.size()).isEqualTo(results + META);
-				String prefix = "http://d-nb.info/gnd/";
-				assertThat(jsonObject.get(0 + META).toString())
-						.contains(prefix + gndId.replace(prefix, ""));
+				if (results > 0) {
+					String prefix = "http://d-nb.info/gnd/";
+					for (String id : gndId.split(",")) {
+						assertThat(jsonObject.toString())
+								.contains(prefix + id.replace(prefix, ""));
+					}
+				}
 			}
 		});
 	}
@@ -812,7 +819,7 @@ public class SearchTests extends SearchTestsHarness {
 			public void run() {
 				String request = "resource?q=*&scroll=20020201";
 				String response = call(request, "text/plain");
-				assertThat(response).hasSize(157825);
+				assertThat(response).hasSize(157960);
 				request = "resource?q=*&scroll=20090201";
 				response = call(request, "text/plain");
 				assertThat(response).isNullOrEmpty();

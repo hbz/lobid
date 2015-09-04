@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.GeoPolygonFilterBuilder;
@@ -149,14 +150,19 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			final MultiMatchQueryBuilder subjectLabelQuery =
-					multiMatchQuery(queryString, fields().get(0), fields().get(1))
-							.operator(Operator.AND);
-			final String query = queryString.startsWith("http://") ? queryString
-					: "http://d-nb.info/gnd/" + queryString;
-			final MatchQueryBuilder subjectIdQuery =
-					matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
-			return boolQuery().should(subjectLabelQuery).should(subjectIdQuery);
+			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+			for (String q : queryString.split(",")) {
+				final MultiMatchQueryBuilder subjectLabelQuery =
+						multiMatchQuery(q, fields().get(0), fields().get(1))
+								.operator(Operator.AND);
+				final String query =
+						q.startsWith("http://") ? q : "http://d-nb.info/gnd/" + q;
+				final MatchQueryBuilder subjectIdQuery =
+						matchQuery(fields().get(2) + ".@id", query).operator(Operator.AND);
+				boolQuery = boolQuery.should(
+						boolQuery().should(subjectLabelQuery).should(subjectIdQuery));
+			}
+			return boolQuery;
 		}
 	}
 
@@ -245,7 +251,7 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return matchQuery(fields().get(0), queryString);
+			return multiValueMatchQuery(queryString);
 		}
 
 	}
@@ -262,7 +268,7 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return matchQuery(fields().get(0), queryString);
+			return multiValueMatchQuery(queryString);
 		}
 
 	}
@@ -280,8 +286,13 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
-					.operator(Operator.AND);
+			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+			for (String q : queryString.split(",")) {
+				boolQuery = boolQuery
+						.should(multiMatchQuery(q, fields().toArray(new String[] {}))
+								.operator(Operator.AND));
+			}
+			return boolQuery;
 		}
 
 	}
