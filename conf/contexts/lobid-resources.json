@@ -272,6 +272,7 @@
       },
       "source" : "http://purl.org/dc/terms/source",
       "contributorLabel" : "http://purl.org/lobid/lv#contributorLabel",
+      "contributorName" : "http://purl.org/dc/elements/1.1/contributor",
       "creator" : {
          "@type" : "@id",
          "@id" : "http://purl.org/dc/terms/creator"
