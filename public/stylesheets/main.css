@@ -8,7 +8,7 @@ body {
 
 .masthead #lobid {
 	width: 100%;
-	background-image: url('http://lobid.org/images/clouds.jpg');
+	background-image: url('../images/clouds.jpg');
 	background-repeat: repeat-x;
 }
 
