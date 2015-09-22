@@ -83,7 +83,12 @@ public class Search {
 	private String type = "";
 	private String sort = "";
 	private String scroll = "";
-	private static final long maxScrollHits = 3000000;
+
+	/**
+	 * As there is a memory issue within Promise we musn't allow data > RAM. As
+	 * experience shows, this is around 4 M docs (dependig on the serialisation).
+	 */
+	public static final int MAX_SCROLL_HITS = 3000000;
 
 	private List<Document> documents = null;
 	private Long hitCount = null;
@@ -496,14 +501,4 @@ public class Search {
 		this.messageOut = messageOut;
 	}
 
-	/**
-	 * As there is a memory issue within Promise we musn't allow data > RAM. As
-	 * experience shows, this is around 4 M docs (dependig on the serialisation).
-	 * 
-	 * @return maximum of allowed hits for a scroll search
-	 */
-
-	public static long getAllowedMaxScrollHits() {
-		return maxScrollHits;
-	}
 }
