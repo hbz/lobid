@@ -131,6 +131,11 @@ public final class Application extends Controller {
 				return Promise.pure(status(Http.Status.CONFLICT,
 						"Already doing a scroll scan. Only one permitted. Please try again later."));
 			}
+			if (search.getTotalHits() > Search.MAX_SCROLL_HITS) {
+				return Promise.pure(status(Http.Status.REQUEST_ENTITY_TOO_LARGE,
+						"The requested entity is too large. Not more than "
+								+ Search.MAX_SCROLL_HITS + " hits are allowed."));
+			}
 			Serialization serialization = getSerialization(request());
 			if (serialization == null)
 				return Promise

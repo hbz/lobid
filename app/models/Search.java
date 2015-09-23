@@ -84,6 +84,12 @@ public class Search {
 	private String sort = "";
 	private String scroll = "";
 
+	/**
+	 * As there is a memory issue within Promise we musn't allow data > RAM. As
+	 * experience shows, this is around 4 M docs (dependig on the serialisation).
+	 */
+	public static final int MAX_SCROLL_HITS = 3000000;
+
 	private List<Document> documents = null;
 	private Long hitCount = null;
 	private static boolean doingScrollScanNow = false;
@@ -240,6 +246,13 @@ public class Search {
 	public Search scroll(final String scrollValue) {
 		this.scroll = scrollValue;
 		return this;
+	}
+
+	/**
+	 * @return number of hits of the query
+	 */
+	public long getTotalHits() {
+		return (startInitialResponse().getHits().getTotalHits());
 	}
 
 	/**
@@ -487,4 +500,5 @@ public class Search {
 	private void setMessageOut(final Chunks.Out<String> messageOut) {
 		this.messageOut = messageOut;
 	}
+
 }
