@@ -298,7 +298,7 @@ public class LobidResources {
 	}
 
 	/**
-	 * Query the lobid-resources set for results in a given polygon.
+	 * Query the lobid-resources set for results in a given point or polygon.
 	 */
 	public static class LocationQuery extends AbstractIndexQuery {
 
@@ -315,15 +315,25 @@ public class LobidResources {
 		}
 
 		private FilterBuilder polygonFilter(String location) {
-			GeoPolygonFilterBuilder filter =
-					FilterBuilders.geoPolygonFilter("json-ld-lobid." + fields().get(0));
 			String[] points = location.split(" ");
-			for (String point : points) {
-				String[] latLon = point.split(",");
-				filter = filter.addPoint(Double.parseDouble(latLon[0].trim()),
-						Double.parseDouble(latLon[1].trim()));
+			String field = "json-ld-lobid." + fields().get(0);
+			FilterBuilder result = null;
+			if (points.length == 1) {
+				String[] latLon = points[0].split(",");
+				result = FilterBuilders.geoDistanceFilter(field)
+						.point(Double.parseDouble(latLon[0].trim()),
+								Double.parseDouble(latLon[1].trim()))
+						.distance("100m");
+			} else {
+				GeoPolygonFilterBuilder filter = FilterBuilders.geoPolygonFilter(field);
+				for (String point : points) {
+					String[] latLon = point.split(",");
+					filter = filter.addPoint(Double.parseDouble(latLon[0].trim()),
+							Double.parseDouble(latLon[1].trim()));
+				}
+				result = filter;
 			}
-			return filter;
+			return result;
 		}
 
 	}

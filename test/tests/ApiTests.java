@@ -103,6 +103,7 @@ public class ApiTests extends SearchTestsHarness {
 						/* -> */"Jahresabschluss" },
 				{ "resource?corporation=Deutscher+Werkbund",
 						/* -> */"Einmischen und mitgestalten" },
+				{ "resource?location=50.9894,7.50167", /* -> */"Monatshefte" },
 				/*-------------------*/
 				/* GET /organisation */
 				/*-------------------*/
