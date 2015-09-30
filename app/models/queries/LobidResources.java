@@ -13,6 +13,7 @@ import java.util.List;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
+import org.elasticsearch.index.query.GeoDistanceFilterBuilder;
 import org.elasticsearch.index.query.GeoPolygonFilterBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
@@ -319,11 +320,11 @@ public class LobidResources {
 			String field = "json-ld-lobid." + fields().get(0);
 			FilterBuilder result = null;
 			if (points.length == 1) {
-				String[] latLon = points[0].split(",");
-				result = FilterBuilders.geoDistanceFilter(field)
-						.point(Double.parseDouble(latLon[0].trim()),
-								Double.parseDouble(latLon[1].trim()))
-						.distance("100m");
+				result = geoDistanceFilter(field, points[0].split(","));
+			} else if (points.length == 2) {
+				result = FilterBuilders.boolFilter()
+						.should(geoDistanceFilter(field, points[0].split(",")))
+						.should(geoDistanceFilter(field, points[1].split(",")));
 			} else {
 				GeoPolygonFilterBuilder filter = FilterBuilders.geoPolygonFilter(field);
 				for (String point : points) {
@@ -334,6 +335,14 @@ public class LobidResources {
 				result = filter;
 			}
 			return result;
+		}
+
+		private static GeoDistanceFilterBuilder geoDistanceFilter(String field,
+				String[] latLon) {
+			return FilterBuilders.geoDistanceFilter(field)
+					.point(Double.parseDouble(latLon[0].trim()),
+							Double.parseDouble(latLon[1].trim()))
+					.distance("100m");
 		}
 
 	}
