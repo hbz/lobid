@@ -161,6 +161,10 @@
          "@id" : "http://www.w3.org/2000/01/rdf-schema#seeAlso",
          "@type" : "@id"
       },
+      "description" : {
+         "@id" : "http://purl.org/dc/terms/description",
+         "@type" : "@id"
+      },
       "spatial" : {
          "@type" : "@id",
          "@id" : "http://purl.org/dc/terms/spatial"
