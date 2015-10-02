@@ -152,7 +152,13 @@ public class LobidResources {
 		@Override
 		public QueryBuilder build(final String queryString) {
 			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-			for (String q : queryString.split(",")) {
+			String queryParam = queryString;
+			if (!queryString.startsWith("http")
+					&& !queryString.matches("[\\d\\-,]+")) {
+				// multi-val queries only for URIs or GND IDs:
+				queryParam = queryString.replace(',', ' ');
+			}
+			for (String q : queryParam.split(",")) {
 				final MultiMatchQueryBuilder subjectLabelQuery =
 						multiMatchQuery(q, fields().get(0), fields().get(1))
 								.operator(Operator.AND);
