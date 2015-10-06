@@ -5,7 +5,6 @@
 @import tags._
 
 <table class="table table-striped">
-  @rdfa("ID", "http://lobid.org/resource", doc, TableRow.LINKS, node = Option(doc))
   @rdfa("Titel", "http://purl.org/dc/terms/title", doc, TableRow.VALUES)
   @rdfa("Titelzusatz", "http://iflastandards.info/ns/isbd/elements/P1006", doc, TableRow.VALUES)
   @rdfa("Autor", "http://purl.org/dc/terms/creator", doc, TableRow.VALUES, valueLabel = Option(Seq(
