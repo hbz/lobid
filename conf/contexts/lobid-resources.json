@@ -306,6 +306,10 @@
       "actor" : {
          "@id" : "http://id.loc.gov/vocabulary/relators/act",
          "@type" : "@id"
+      },
+      "redaktor" : {
+         "@id" : "http://id.loc.gov/vocabulary/relators/red",
+         "@type" : "@id"
       }
    }
 }
