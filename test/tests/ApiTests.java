@@ -108,6 +108,8 @@ public class ApiTests extends SearchTestsHarness {
 						/* -> */"Monatshefte" },
 				{ "resource?location=50.9894,7.50167+50.942222222222,6.9577777777778",
 						/* -> */"Weihnachtslied" },
+				{ "resource?q=*&format=short.fulltextOnline",
+						/* -> */"edoweb:1637998" },
 				/*-------------------*/
 				/* GET /organisation */
 				/*-------------------*/
