@@ -165,4 +165,16 @@ public class BrowserTests extends SearchTestsHarness {
 			}
 		});
 	}
+
+	@Test
+	public void shortModifierSampleRequest() {
+		running(TEST_SERVER, HTMLUNIT, new Callback<TestBrowser>() {
+			@Override
+			public void invoke(final TestBrowser browser) {
+				browser.goTo(API_PAGE);
+				browser.click("a", withId("short.field.sample"));
+				assertThat(browser.pageSource()).contains("edoweb:1637998");
+			}
+		});
+	}
 }

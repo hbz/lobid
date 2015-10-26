@@ -40,7 +40,7 @@
 		  <div class="tab-pane" id="@id-jld"><pre>@Json.prettyPrint(Json.parse(doc.getSource))</pre></div>
 		  <div class="tab-pane" id="@id-nt"><pre>@doc.as(Format.N_TRIPLE)</pre></div>
 		  <div class="tab-pane" id="@id-ttl"><pre>@doc.as(Format.TURTLE)</pre></div>
-		  @if(index==models.Index.LOBID_RESOURCES) {
+		  @if(index==models.Index.LOBID_RESOURCES && doc.getSource.contains("hbzId")) {
 		    @defining(Index.CONFIG.getString("hbz01.api") + "/" + (Json.parse(doc.getSource)\\"hbzId")(0).as[String]) { hbz01Url =>
 		    @defining(Await.result(WS.url(hbz01Url).get().map(x=>(x.status,x.body)), 5.second)){case (status,body)=>
 		    <div class="tab-pane" id="@id-src"><pre>@status match {
