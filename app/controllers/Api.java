@@ -226,6 +226,14 @@ public final class Api extends Controller {
 		return ok(Play.application().resourceAsStream("contexts/" + file));
 	}
 
+	/**
+	 * @param path The path to redirect to
+	 * @return A 301 MOVED_PERMANENTLY redirect to the path
+	 */
+	public static Result redirect(String path) {
+		return movedPermanently("/" + path);
+	}
+
 	private static Function<List<Result>, Result> okJson() {
 		return new Function<List<Result>, Result>() {
 			@Override
