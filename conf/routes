@@ -2,7 +2,10 @@
 # This file defines all application routes (Higher priority routes first)
 #~~~~
 
-#H omepage
+# Handle trailing slashes
+GET	/*path/									controllers.Api.redirect(path: String)
+
+# Homepage
 GET	/												controllers.Application.index()
 GET	/api										controllers.Application.api()
 GET	/contact								controllers.Application.contact()
