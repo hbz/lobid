@@ -150,7 +150,7 @@
          "@id" : "http://id.loc.gov/vocabulary/relators/prf"
       },
       "doi" : {
-         "@id" : "http://purl.org/ontology/bibo/doi",
+         "@id" : "http://purl.org/ontology/bibo/doi/",
          "@type" : "@id"
       },
       "hasVersion" : {
