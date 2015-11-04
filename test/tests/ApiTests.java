@@ -42,6 +42,8 @@ public class ApiTests extends SearchTestsHarness {
 				{ "resource?id=ZDB2615620-9", /* -> */"HT016884620" },
 				{ "resource?id=urn:nbn:de:hbz:929:02-1035", /* -> */
 						"urn:nbn:de:hbz:929:02-1035" },
+				{ "resource?id=10.1007/978-1-4020-8389-1", /* -> */
+						"10.1007/978-1-4020-8389-1" },
 				{ "resource?name=HT002189125", /* -> */"a peep at Polynesian life" },
 				{ "resource?name=Typee", /* -> */"a peep at Polynesian life" },
 				{ "resource?name=Typee&t=" + "http://purl.org/ontology/bibo/Book",

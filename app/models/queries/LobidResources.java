@@ -186,6 +186,7 @@ public class LobidResources {
 					"@graph.http://purl.org/ontology/bibo/isbn13.@value",
 					"@graph.http://purl.org/ontology/bibo/isbn.@value",
 					"@graph.http://purl.org/ontology/bibo/issn.@value",
+					"@graph.http://purl.org/ontology/bibo/doi.@value",
 					"@graph.http://purl.org/lobid/lv#urn.@value"); /* @formatter:on */
 		}
 
@@ -199,10 +200,10 @@ public class LobidResources {
 	private static String normalizedLobidResourceIdQueryString(
 			final String queryString) {
 		String normalizedQueryString = queryString.replaceAll(" ", "");
-		if (normalizedQueryString.matches("\"?\\d.*\"?")) {
-			normalizedQueryString =
-					normalizedQueryString.replaceAll("-", "").toUpperCase();
-		}
+		if (!normalizedQueryString.contains("/")) // thus: doi or isbn
+			if (normalizedQueryString.matches("\"?\\d.*\"?")) { // thus: isbn
+				normalizedQueryString = normalizedQueryString.replaceAll("-", "");
+			}
 		final String hbzId = "\\p{L}+\\d+(-.+)?";
 		return normalizedQueryString.matches(hbzId)
 				? "http://lobid.org/resource/" + normalizedQueryString
