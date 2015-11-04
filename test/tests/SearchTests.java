@@ -132,6 +132,8 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void searchResByIdISBN() { searchResById("0940450003"); }
 	@Test public void searchResByIdIsbnConsistingOfHyphenAndSpaceISBN() { searchResById("0 080 238-70x"); }
 	@Test public void searchResByIdUrn() { searchResById("urn:nbn:de:hbz:929:02-1035"); }
+	@Test public void searchResByDoi() { searchResById("10.1007/978-1-4020-8389-1"); }
+
 	/*@formatter:on*/
 
 	private static void searchResById(final String term) {
