@@ -304,6 +304,7 @@
       "redaktor" : {
          "@id" : "http://id.loc.gov/vocabulary/relators/red",
          "@type" : "@id"
-      }
+      },
+      "note": "http://www.w3.org/2004/02/skos/core#note"
    }
 }
