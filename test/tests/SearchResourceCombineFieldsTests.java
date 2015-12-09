@@ -41,6 +41,12 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchSetAndNwbibsubject3(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s706230,http://purl.org/lobid/nwbib#s704042", 1);}
 	@Test public void searchSetAndSubjectChain1(){search("resource?set=NWBib&subject=Geschichte", 1);}
 	@Test public void searchSetAndSubjectChain2(){search("resource?set=NWBib&subject=Heinsberg", 1);}
+	@Test public void searchSubject1(){search("resource?subject=Abracham, Karl", 1);}
+	@Test public void searchSubject2(){search("resource?subject=Karl Abracham", 1);}
+	@Test public void searchSubject3(){search("resource?subject=Karl Abracham, http://d-nb.info/gnd/118500228", 1);}
+	@Test public void searchSubject4(){search("resource?subject=Karl Abracham, 118500228", 1);}
+	@Test public void searchSubject5(){search("resource?subject=Karl Abracham, http://d-nb.info/gnd/4011882-4", 0);}
+	@Test public void searchSubject6(){search("resource?subject=Karl Abracham, 4011882-4", 0);}
 	/*@formatter:on@*/
 
 	private static void search(final String request, final int count) {
