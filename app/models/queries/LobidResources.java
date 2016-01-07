@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.elasticsearch.common.geo.GeoHashUtils;
+import org.elasticsearch.common.geo.GeoPoint;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
@@ -342,21 +344,33 @@ public class LobidResources {
 			String field = "json-ld-lobid." + fields().get(0);
 			FilterBuilder result = null;
 			if (points.length == 1) {
-				result = geoDistanceFilter(field, points[0].split(","));
+				result = geoDistanceFilter(field, locationArray(points[0]));
 			} else if (points.length == 2) {
 				result = FilterBuilders.boolFilter()
-						.should(geoDistanceFilter(field, points[0].split(",")))
-						.should(geoDistanceFilter(field, points[1].split(",")));
+						.should(geoDistanceFilter(field, locationArray(points[0])))
+						.should(geoDistanceFilter(field, locationArray(points[1])));
 			} else {
 				GeoPolygonFilterBuilder filter = FilterBuilders.geoPolygonFilter(field);
 				for (String point : points) {
-					String[] latLon = point.split(",");
+					String[] latLon = locationArray(point);
 					filter = filter.addPoint(Double.parseDouble(latLon[0].trim()),
 							Double.parseDouble(latLon[1].trim()));
 				}
 				result = filter;
 			}
 			return result;
+		}
+
+		private static String[] locationArray(String loc) {
+			String[] pointLocation = null;
+			if (loc.contains(",")) {
+				pointLocation = loc.split(",");
+			} else {
+				GeoPoint point = GeoHashUtils.decode(loc);
+				pointLocation = new String[] { //
+						String.valueOf(point.getLat()), String.valueOf(point.getLon()) };
+			}
+			return pointLocation;
 		}
 
 		private static GeoDistanceFilterBuilder geoDistanceFilter(String field,

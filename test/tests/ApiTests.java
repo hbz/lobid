@@ -110,6 +110,12 @@ public class ApiTests extends SearchTestsHarness {
 						/* -> */"Monatshefte" },
 				{ "resource?location=50.9894,7.50167+50.942222222222,6.9577777777778",
 						/* -> */"Weihnachtslied" },
+				{ "resource?location=u1j64dqdc94", /* -> */"Monatshefte" },
+				{ "resource?location=u1j64dqdc94+u1hcy3drzyrq", /* -> */"Monatshefte" },
+				{ "resource?location=u1j64dqdc94+u1hcy3drzyrq",
+						/* -> */"Weihnachtslied" },
+				{ "resource?location=u1h8gxc52w77+u1hcy3drzyrq+u1jwqvwy8p3b",
+						/* -> */"Weihnachtslied" },
 				{ "resource?q=*&format=short.fulltextOnline",
 						/* -> */"edoweb:1637998" },
 				/*-------------------*/
