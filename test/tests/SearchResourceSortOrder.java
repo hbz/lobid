@@ -23,7 +23,7 @@ import play.libs.Json;
 public class SearchResourceSortOrder extends SearchTestsHarness {
 
 	/*@formatter:off@*/
-	@Test public void sortDefault(){search("resource?name=der", Arrays.asList("2008", "1973","1977","1993", "1999"));}
+	@Test public void sortDefaultRelevance(){search("resource?name=der", Arrays.asList("2008", "1973","1993","1999", "1977"));}
 	@Test public void sortNewest(){search("resource?name=der&sort=newest", Arrays.asList( "2008", "1999", "1993", "1977","1973"));}
 	@Test public void sortOldest(){search("resource?name=der&sort=oldest", Arrays.asList("1973", "1977","1993", "1999", "2008"));}
 	/*@formatter:on@*/

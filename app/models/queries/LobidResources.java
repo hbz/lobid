@@ -84,7 +84,9 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			return multiMatchQuery(queryString, fields().toArray(new String[] {}))
+			String[] fields = fields().toArray(new String[] {});
+			fields[0] = fields[0] + "^3"; // boost the first field
+			return multiMatchQuery(queryString, fields)
 					.type(MultiMatchQueryBuilder.Type.CROSS_FIELDS)
 					.operator(Operator.AND);
 		}
