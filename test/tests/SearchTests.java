@@ -91,6 +91,8 @@ public class SearchTests extends SearchTestsHarness {
 	@Test
 	public void searchViaModelOrgNameAltLabel() {
 		assertThat(searchOrgByName("Universität Konstanz KIM")).isEqualTo(1);
+		assertThat(searchOrgByName("Universitaet Konstanz KIM")).isEqualTo(1);
+		assertThat(searchOrgByName("Universitat Konstanz KIM")).isEqualTo(1);
 	}
 
 	private static int searchOrgByName(final String term) {
@@ -208,11 +210,12 @@ public class SearchTests extends SearchTestsHarness {
 				final JsonNode jsonObject = Json.parse(response);
 				assertThat(jsonObject.isArray()).isTrue();
 				assertThat(jsonObject.get(0 + META).asText()).isEqualTo("1719");
-				assertThat(jsonObject.get(1 + META).asText()).isEqualTo("1973");
-				assertThat(jsonObject.get(2 + META).asText()).isEqualTo("1976");
-				assertThat(jsonObject.get(3 + META).asText()).isEqualTo("1977");
-				assertThat(jsonObject.get(4 + META).asText()).isEqualTo("1979");
-				assertThat(jsonObject.get(5 + META).asText()).isEqualTo("1981");
+				assertThat(jsonObject.get(1 + META).asText()).isEqualTo("1906");
+				assertThat(jsonObject.get(2 + META).asText()).isEqualTo("1973");
+				assertThat(jsonObject.get(3 + META).asText()).isEqualTo("1976");
+				assertThat(jsonObject.get(4 + META).asText()).isEqualTo("1977");
+				assertThat(jsonObject.get(5 + META).asText()).isEqualTo("1979");
+				assertThat(jsonObject.get(6 + META).asText()).isEqualTo("1981");
 			}
 		});
 	}
@@ -247,6 +250,7 @@ public class SearchTests extends SearchTestsHarness {
 	@Test public void searchViaModelBirth1() { findOneBy("Hundt, Theo"); }
 	@Test public void searchViaModelBirth2() { findOneBy("Theo Hundt"); }
 	@Test public void searchViaModelBirth3() { findOneBy("Goeters, J. F. Gerhard"); }
+	@Test public void searchViaModelBirth4() { findOneBy("Göters, J. F. Gerhard"); }
 	@Test public void searchViaModelMulti1() { findOneBy("Vollhardt, Kurt Peter C."); }
 	@Test public void searchViaModelMulti2() { findOneBy("Kurt Peter C. Vollhardt"); }
 	@Test public void searchViaModelMulti3() { findOneBy("Vollhardt, Kurt Peter C."); }
@@ -686,7 +690,7 @@ public class SearchTests extends SearchTestsHarness {
 		assertThat(new Search(ImmutableMap.of(parameter, "Abraham"), index)
 				.page(0, 3).documents().size()).isEqualTo(3);
 		assertThat(new Search(ImmutableMap.of(parameter, "Abraham"), index)
-				.page(3, 6).documents().size()).isEqualTo(5);
+				.page(3, 7).documents().size()).isEqualTo(6);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

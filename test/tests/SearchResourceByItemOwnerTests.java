@@ -25,6 +25,7 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 
 	private static final String AUTHOR1 = "Hundt, Theo";
 	private static final String AUTHOR2 = "Goeters, J. F. Gerhard";
+	private static final String AUTHOR3 = "Göters, J. F. Gerhard";
 
 	@Test
 	public void searchResByAuthor1_withOwnerId() {
@@ -74,6 +75,26 @@ public class SearchResourceByItemOwnerTests extends SearchTestsHarness {
 	@Test
 	public void searchResByAuthor2_withMultipleOwnerUris() {
 		searchResByAuthorWithOwnerId(AUTHOR2,
+				"http://lobid.org/organisation/DE-Sol1",
+				"http://lobid.org/resource/BT000013654");
+	}
+
+	@Test
+	public void searchResByAuthor3_withOwnerUri() {
+		searchResByAuthorWithOwnerId(AUTHOR3,
+				"http://lobid.org/organisation/DE-Sol1",
+				"http://lobid.org/resource/BT000013654");
+	}
+
+	@Test
+	public void searchResByAuthor3_withMultipleOwnerIds() {
+		searchResByAuthorWithOwnerId(AUTHOR3, "DE-Sol1,DE-Sol2",
+				"http://lobid.org/resource/BT000013654");
+	}
+
+	@Test
+	public void searchResByAuthor3_withMultipleOwnerUris() {
+		searchResByAuthorWithOwnerId(AUTHOR3,
 				"http://lobid.org/organisation/DE-Sol1",
 				"http://lobid.org/resource/BT000013654");
 	}

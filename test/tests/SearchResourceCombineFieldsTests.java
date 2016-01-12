@@ -34,6 +34,7 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchSetAndNwbibspatialValue1(){search("resource?set=NWBib&nwbibspatial=Kirchhundem-Heinsberg", 1);}
 	@Test public void searchSetAndNwbibspatialValue2(){search("resource?set=NWBib&nwbibspatial=Gummersbach", 1);}
 	@Test public void searchSetAndNwbibspatialValue3(){search("resource?set=NWBib&nwbibspatial=Gummersbach bei Köln", 1);}
+	@Test public void searchSetAndNwbibspatialValue4(){search("resource?set=NWBib&nwbibspatial=Gummersbach bei Koeln", 1);}
 	@Test public void searchSetAndNwbibspatialMultiValue1(){search("resource?set=NWBib&nwbibspatial=Gummersbach,Bonn", 2);}
 	@Test public void searchSetAndNwbibspatialMultiValue2(){search("resource?set=NWBib&nwbibspatial=K%C3%B6ln,Bonn", 2);}
 	@Test public void searchSetAndNwbibsubject1(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
