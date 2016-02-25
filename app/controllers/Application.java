@@ -2,6 +2,7 @@
 
 package controllers;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -247,7 +248,8 @@ public final class Application extends Controller {
 			final String result = builder.toString().trim();
 			return result.isEmpty() ? notFound(errorMessage + "request")
 					: //
-					documents.size() > 1 ? ok(result) : ok(result).as("text/xml");
+					documents.size() > 1 ? ok(result)
+							: ok(result).as("text/xml; charset: utf-8");
 		} catch (IndexMissingException e) {
 			return notFound(e.getMessage());
 		}
@@ -262,7 +264,7 @@ public final class Application extends Controller {
 			String url = Index.CONFIG.getString("hbz01.api") + "/" + id;
 			Promise<String> promise = WS.url(url).get().map((WSResponse response) -> {
 				if (response.getStatus() == Http.Status.OK) {
-					return response.getBody();
+					return new String(response.asByteArray(), StandardCharsets.UTF_8);
 				}
 				Logger.warn("Response for {} not OK: {}", url,
 						response.getStatusText());
