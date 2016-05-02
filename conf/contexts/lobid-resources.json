@@ -285,6 +285,7 @@
          "@id" : "http://purl.org/ontology/bibo/translator"
       },
       "otherTitleInformation" : "http://rdvocab.info/Elements/otherTitleInformation",
+      "corporateBodyForTitle" : "http://rdaregistry.info/Elements/u/P60327",
       "subjectLocation" : "http://purl.org/lobid/lv#subjectLocation",
       "isPrimaryTopicOf" : {
          "@id" : "http://xmlns.com/foaf/0.1/isPrimaryTopicOf",
