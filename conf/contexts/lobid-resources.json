@@ -268,6 +268,10 @@
          "@type" : "@id",
          "@id" : "http://purl.org/lobid/lv#nwbibsubject"
       },
+      "rpbSubject" : {
+         "@type" : "@id",
+         "@id" : "http://purl.org/lobid/lv#rpbSubject"
+      },
       "source" : "http://purl.org/dc/terms/source",
       "contributorLabel" : "http://purl.org/lobid/lv#contributorLabel",
       "contributorName" : "http://purl.org/dc/elements/1.1/contributor",
