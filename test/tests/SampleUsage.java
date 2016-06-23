@@ -17,7 +17,7 @@ import java.util.Scanner;
  * You can also use the API in a RESTful way:
  * 
  * curl --header "Accept: text/plain"
- * "http://api.lobid.org/resource?set=NWBib&scroll=true"
+ * "http://lobid.org/resource?set=NWBib&scroll=true"
  * 
  * 
  * @author Fabian Steeg (fsteeg)
@@ -27,16 +27,15 @@ public class SampleUsage {
 
 	/**
 	 * @param args The base URL, content type, and output file name, or nothing
-	 *          (for default values). See api.lobid.org for URLs & content types.
+	 *          (for default values). See lobid.org/api for URLs & content types.
 	 * @throws IOException on connection problems
 	 * @throws MalformedURLException on connection problems
 	 * @throws InterruptedException on sleep problems
 	 */
 	public static void main(String[] args)
 			throws MalformedURLException, IOException, InterruptedException {
-		String defaultBase =
-				"http://api.test.lobid.org/resource?set=NWBib&scroll=true";
-		String defaultContent = "text/plain"; // N-Triples, see api.lobid.org
+		String defaultBase = "http://test.lobid.org/resource?set=NWBib&scroll=true";
+		String defaultContent = "text/plain"; // N-Triples, see lobid.org/api
 		String defaultFile = "NWBib.nt";
 		checkArgs(args, defaultBase, defaultContent, defaultFile);
 		String base = args.length >= 1 ? args[0] : defaultBase;
