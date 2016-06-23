@@ -36,12 +36,12 @@
     <div class="row-fluid">
         <div class="span6">
             <p>Type any @resourceType data to get suggestions (uses the <code>name</code> query parameter). Upon selecting a suggestion, the corresponding value will be inserted (here: @if(resultType=="short") {the name} else {the ID}). Search will return details on the selected @resourceType.</p>
-            <form method="GET" class="form-inline" action="/@resourceType"> <!-- use full URL in your code, i.e. http://api.lobid.org/@resourceType -->
+            <form method="GET" class="form-inline" action="/@resourceType"> <!-- use full URL in your code, i.e. http://lobid.org/@resourceType -->
                 <input type="text" class="search-@resourceType" name="@queryType" id="id" style="width:300px"/>
                 <button type="submit" class="btn">Search</button>
             </form>
             <p>This calls the <code>/@resourceType</code> endpoint with the <code>format=@resultType</code> parameter to get the suggestions. The actual search uses the <code>@queryType</code> parameter with the inserted value. See the implementation using JavaScript and jQuery UI on the right and the source of this page.</p>
-            <p>The sample on the right gets the autocomplete data from a remote URL (i.e. a different server from the one that serves the HTML) by using JSONP (use full URL in your code, i.e. <code>http://api.lobid.org/@resourceType</code> for the <code>url</code> attribute).</p>
+            <p>The sample on the right gets the autocomplete data from a remote URL (i.e. a different server from the one that serves the HTML) by using JSONP (use full URL in your code, i.e. <code>http://lobid.org/@resourceType</code> for the <code>url</code> attribute).</p>
             <script>
                 @sampleUsageCode(resourceType, resultType)
             </script>
@@ -161,7 +161,7 @@ However, if you want to receive all hits or get loads of data it is way faster a
 
 	<h2 id="content-negotiation" style="padding-top: 50px; margin-top: -50px;">Content Negotiation</h2></a>
 	<p>To return different RDF serializations as the result format (default is JSON-LD), you can specify an accept header, e.g. for N-Triples:</p>
-	<pre>curl -L --header "Accept: text/plain" http://api.lobid.org/resource?id=HT002189125</pre>
+	<pre>curl -L --header "Accept: text/plain" http://lobid.org/resource?id=HT002189125</pre>
 	<p>Currently supported: @Serialization.values().map((s:Serialization) => s.name + " " + s.getTypes).mkString(", ")</p>
 
 	<h2 id="auto-suggest-examples" style="padding-top: 50px; margin-top: -50px;">Sample usage: auto suggest</h2>
