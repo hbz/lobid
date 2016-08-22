@@ -419,7 +419,7 @@ public class SearchTests extends SearchTestsHarness {
 	/* @formatter:off */
 	@Test public void resourceByGndSubjectMulti1(){resByGndSubject("4062901-6", 1);}
 	@Test public void resourceByGndSubjectMulti2(){resByGndSubject("4066438-7", 1);}
-	@Test public void resourceByGndSubjectMulti3(){resByGndSubject("4062901-6,4077548-3", 2);}
+	@Test public void resourceByGndSubjectMulti3(){resByGndSubject("4062901-6,4077548-3", 0);}
 	@Test public void resourceByGndSubjectMulti4(){resByGndSubject("4066438-7,4077548-3", 1);}
 	@Test public void resourceByGndSubjectDashed(){resByGndSubject("4414195-6", 1);}
 	@Test public void resourceByGndSubjectSingle(){resByGndSubject("189452846", 1);}

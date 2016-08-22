@@ -156,7 +156,6 @@ public class LobidResources {
 		public QueryBuilder build(final String queryString) {
 			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 			String queryParam = queryString;
-			boolean hasLabel = hasLabel(queryString);
 			if (!queryString.contains("http") && Arrays.asList(queryString.split(","))
 					.stream().filter(x -> x.trim().matches("[\\d\\-X]+")).count() == 0) {
 				// no URI or GND-ID in queryString, ignore commas, e.g. "Ney, Elisabet":
@@ -170,23 +169,15 @@ public class LobidResources {
 					final MatchQueryBuilder subjectIdQuery =
 							matchQuery(fields().get(2) + ".@id", query.trim())
 									.operator(Operator.AND);
-					boolQuery = hasLabel ? boolQuery.must(subjectIdQuery)
-							: boolQuery.should(subjectIdQuery);
+					boolQuery = boolQuery.must(subjectIdQuery);
 				} else {
 					final MultiMatchQueryBuilder subjectLabelQuery =
 							multiMatchQuery(qTrimmed, fields().get(0), fields().get(1))
 									.operator(Operator.AND);
-					boolQuery = hasLabel ? boolQuery.must(subjectLabelQuery)
-							: boolQuery.should(subjectLabelQuery);
+					boolQuery = boolQuery.must(subjectLabelQuery);
 				}
 			}
 			return boolQuery;
-		}
-
-		private static boolean hasLabel(String queryString) {
-			return Arrays.asList(queryString.split(",")).stream().filter(
-					x -> !x.trim().startsWith("http") && !x.trim().matches("[\\d\\-X]+"))
-					.count() > 0;
 		}
 	}
 
@@ -313,8 +304,8 @@ public class LobidResources {
 		public QueryBuilder build(String queryString) {
 			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 			for (String q : queryString.split(",")) {
-				boolQuery = boolQuery
-						.should(multiMatchQuery(q, fields().toArray(new String[] {}))
+				boolQuery =
+						boolQuery.must(multiMatchQuery(q, fields().toArray(new String[] {}))
 								.operator(Operator.AND));
 			}
 			return boolQuery;

@@ -58,7 +58,7 @@ public abstract class AbstractIndexQuery {
 	QueryBuilder multiValueMatchQuery(String queryString) {
 		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 		for (String q : queryString.split(",")) {
-			boolQuery = boolQuery.should(matchQuery(fields().get(0), q));
+			boolQuery = boolQuery.must(matchQuery(fields().get(0), q));
 		}
 		return boolQuery;
 	}
