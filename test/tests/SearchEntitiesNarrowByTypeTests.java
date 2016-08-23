@@ -22,7 +22,9 @@ public class SearchEntitiesNarrowByTypeTests extends SearchTestsHarness {
 	//@formatter:off
 	@Test public void resources() { search("resource?q=*", 27); }
 	@Test public void resourcesMedium1() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1020", 1); }
-	@Test public void resourcesMedium2() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1020,http://rdvocab.info/termList/RDACarrierType/1018", 0); }
+	@Test public void resourcesMedium2Default() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1020,http://rdvocab.info/termList/RDACarrierType/1018", 4); }
+	@Test public void resourcesMedium2Or() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1020,http://rdvocab.info/termList/RDACarrierType/1018,OR", 4); }
+	@Test public void resourcesMedium2And() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1020,http://rdvocab.info/termList/RDACarrierType/1018,AND", 0); }
 	@Test public void resourcesMedium3() { search("resource?q=*&medium=http://rdvocab.info/termList/RDACarrierType/1018,http://rdvocab.info/termList/RDACarrierType/1010", 3); }
 	@Test public void bibliographicResources() { search("resource?q=*&t=http://purl.org/dc/terms/BibliographicResource", 25); }
 	@Test public void books() { search("resource?q=*&t=http://purl.org/ontology/bibo/Book", 17); }

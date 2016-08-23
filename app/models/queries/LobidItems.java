@@ -93,14 +93,22 @@ public class LobidItems {
 
 		@Override
 		public QueryBuilder build(final String queryString) {
-			final String[] owners = queryString.split(",");
+			final String queryValues = withoutBooleanOperator(queryString);
+			boolean isAndQuery = isAndQuery(queryString);
+			final String[] owners = queryValues.split(",");
 			final String prefix = "http://lobid.org/organisation/";
 			BoolQueryBuilder itemQuery = QueryBuilders.boolQuery();
 			for (String owner : owners) {
 				final String ownerId = prefix + owner.replace(prefix, "");
-				itemQuery = itemQuery.should(matchQuery(fields().get(0), ownerId));
+				if (isAndQuery) {
+					itemQuery = itemQuery.must(hasChildQuery("json-ld-lobid-item",
+							matchQuery(fields().get(0), ownerId)));
+				} else {
+					itemQuery = itemQuery.should(matchQuery(fields().get(0), ownerId));
+				}
 			}
-			return hasChildQuery("json-ld-lobid-item", itemQuery);
+			return isAndQuery ? itemQuery
+					: hasChildQuery("json-ld-lobid-item", itemQuery);
 		}
 	}
 

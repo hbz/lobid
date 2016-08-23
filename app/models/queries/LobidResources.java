@@ -155,13 +155,15 @@ public class LobidResources {
 		@Override
 		public QueryBuilder build(final String queryString) {
 			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-			String queryParam = queryString;
+			String queryValues = withoutBooleanOperator(queryString);
+			boolean isAndQuery = isAndQuery(queryString);
+			boolean hasLabel = hasLabel(queryValues);
 			if (!queryString.contains("http") && Arrays.asList(queryString.split(","))
 					.stream().filter(x -> x.trim().matches("[\\d\\-X]+")).count() == 0) {
 				// no URI or GND-ID in queryString, ignore commas, e.g. "Ney, Elisabet":
-				queryParam = queryString.replace(',', ' ');
+				queryValues = queryString.replace(',', ' ');
 			}
-			for (String q : queryParam.split(",")) {
+			for (String q : queryValues.split(",")) {
 				String qTrimmed = q.trim();
 				if (qTrimmed.startsWith("http") || qTrimmed.matches("[\\d\\-X]+")) {
 					final String query = qTrimmed.startsWith("http://") ? qTrimmed
@@ -169,15 +171,23 @@ public class LobidResources {
 					final MatchQueryBuilder subjectIdQuery =
 							matchQuery(fields().get(2) + ".@id", query.trim())
 									.operator(Operator.AND);
-					boolQuery = boolQuery.must(subjectIdQuery);
+					boolQuery = hasLabel || isAndQuery ? boolQuery.must(subjectIdQuery)
+							: boolQuery.should(subjectIdQuery);
 				} else {
 					final MultiMatchQueryBuilder subjectLabelQuery =
 							multiMatchQuery(qTrimmed, fields().get(0), fields().get(1))
 									.operator(Operator.AND);
-					boolQuery = boolQuery.must(subjectLabelQuery);
+					boolQuery = hasLabel || isAndQuery ? boolQuery.must(subjectLabelQuery)
+							: boolQuery.should(subjectLabelQuery);
 				}
 			}
 			return boolQuery;
+		}
+
+		private static boolean hasLabel(String queryString) {
+			return Arrays.asList(queryString.split(",")).stream().filter(
+					x -> !x.trim().startsWith("http") && !x.trim().matches("[\\d\\-X]+"))
+					.count() > 0;
 		}
 	}
 
@@ -302,11 +312,14 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
+			String queryValues = withoutBooleanOperator(queryString);
 			BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-			for (String q : queryString.split(",")) {
-				boolQuery =
-						boolQuery.must(multiMatchQuery(q, fields().toArray(new String[] {}))
-								.operator(Operator.AND));
+			for (String q : queryValues.split(",")) {
+				MultiMatchQueryBuilder query =
+						multiMatchQuery(q, fields().toArray(new String[] {}))
+								.operator(Operator.AND);
+				boolQuery = isAndQuery(queryString) ? boolQuery.must(query)
+						: boolQuery.should(query);
 			}
 			return boolQuery;
 		}
@@ -433,11 +446,10 @@ public class LobidResources {
 
 		@Override
 		public QueryBuilder build(String queryString) {
-			return QueryBuilders
-					.filteredQuery(QueryBuilders.matchAllQuery(),
-							FilterBuilders.boolFilter()
-									.should(FilterBuilders.queryFilter(QueryBuilders
-											.rangeQuery(fields().get(0)).gte(queryString)))
+			return QueryBuilders.filteredQuery(QueryBuilders.matchAllQuery(),
+					FilterBuilders.boolFilter()
+							.should(FilterBuilders.queryFilter(
+									QueryBuilders.rangeQuery(fields().get(0)).gte(queryString)))
 							.should(FilterBuilders.queryFilter(
 									QueryBuilders.rangeQuery(fields().get(1)).gte(queryString))));
 		}
