@@ -27,6 +27,7 @@ import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
+import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
@@ -39,6 +40,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 
 import controllers.Serialization;
+import models.queries.AbstractIndexQuery;
 import models.queries.LobidItems;
 import models.queries.LobidResources;
 import play.Logger;
@@ -390,10 +392,15 @@ public class Search {
 			final QueryBuilder setQuery = new LobidResources.SetQuery().build(set);
 			queryBuilder = boolQuery().must(queryBuilder).must(setQuery);
 		}
-		if (!type.isEmpty()) {
+		String typeValues = AbstractIndexQuery.withoutBooleanOperator(type);
+		boolean isAndQuery = AbstractIndexQuery.isAndQuery(type);
+		if (!typeValues.isEmpty()) {
 			BoolQueryBuilder typeQuery = boolQuery();
-			for (String t : type.split(","))
-				typeQuery = typeQuery.should(matchQuery("@graph.@type", t));
+			for (String t : typeValues.split(",")) {
+				MatchQueryBuilder query = matchQuery("@graph.@type", t);
+				typeQuery =
+						isAndQuery ? typeQuery.must(query) : typeQuery.should(query);
+			}
 			queryBuilder = boolQuery().must(queryBuilder).must(typeQuery);
 		}
 		if (!scroll.isEmpty()) {

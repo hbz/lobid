@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.MatchQueryBuilder.Operator;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -56,11 +57,30 @@ public abstract class AbstractIndexQuery {
 	}
 
 	QueryBuilder multiValueMatchQuery(String queryString) {
+		String queryValues = withoutBooleanOperator(queryString);
+		boolean isAndQuery = isAndQuery(queryString);
 		BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-		for (String q : queryString.split(",")) {
-			boolQuery = boolQuery.should(matchQuery(fields().get(0), q));
+		for (String q : queryValues.split(",")) {
+			MatchQueryBuilder query = matchQuery(fields().get(0), q);
+			boolQuery = isAndQuery ? boolQuery.must(query) : boolQuery.should(query);
 		}
 		return boolQuery;
+	}
+
+	/**
+	 * @param queryString The query string
+	 * @return The given query, without any boolean operator
+	 */
+	public static String withoutBooleanOperator(final String queryString) {
+		return queryString.replaceAll(",AND|,OR", "");
+	}
+
+	/**
+	 * @param queryString The query string
+	 * @return True, if the given query is a boolean AND query
+	 */
+	public static boolean isAndQuery(String queryString) {
+		return queryString.endsWith(",AND");
 	}
 
 	private QueryBuilder createAuthorQuery(final String lifeDates,
@@ -69,9 +89,8 @@ public abstract class AbstractIndexQuery {
 		final BoolQueryBuilder birthQuery = boolQuery()
 				.must(nameMatchQuery(search.replaceAll(lifeDates, "").trim()))
 				.must(matchQuery(fields().get(1), matcher.group(1)));
-		return matcher.group(2).equals("") ? birthQuery
-				:
-				/* If we have one, search death in death field: */
+		return matcher.group(2).equals("") ? birthQuery :
+		/* If we have one, search death in death field: */
 				birthQuery.must(matchQuery(fields().get(2), matcher.group(2)));
 	}
 

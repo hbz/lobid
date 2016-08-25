@@ -35,8 +35,12 @@ public class SearchResourceCombineFieldsTests extends SearchTestsHarness {
 	@Test public void searchSetAndNwbibspatialValue2(){search("resource?set=NWBib&nwbibspatial=Gummersbach", 1);}
 	@Test public void searchSetAndNwbibspatialValue3(){search("resource?set=NWBib&nwbibspatial=Gummersbach bei Köln", 1);}
 	@Test public void searchSetAndNwbibspatialValue4(){search("resource?set=NWBib&nwbibspatial=Gummersbach bei Koeln", 1);}
-	@Test public void searchSetAndNwbibspatialMultiValue1(){search("resource?set=NWBib&nwbibspatial=Gummersbach,Bonn", 2);}
-	@Test public void searchSetAndNwbibspatialMultiValue2(){search("resource?set=NWBib&nwbibspatial=K%C3%B6ln,Bonn", 2);}
+	@Test public void searchSetAndNwbibspatialMultiValue1Default(){search("resource?set=NWBib&nwbibspatial=Gummersbach,Bonn", 2);}
+	@Test public void searchSetAndNwbibspatialMultiValue2Default(){search("resource?set=NWBib&nwbibspatial=K%C3%B6ln,Bonn", 2);}
+	@Test public void searchSetAndNwbibspatialMultiValue1Or(){search("resource?set=NWBib&nwbibspatial=Gummersbach,Bonn,OR", 2);}
+	@Test public void searchSetAndNwbibspatialMultiValue2Or(){search("resource?set=NWBib&nwbibspatial=K%C3%B6ln,Bonn,OR", 2);}
+	@Test public void searchSetAndNwbibspatialMultiValue1And(){search("resource?set=NWBib&nwbibspatial=Gummersbach,Bonn,AND", 0);}
+	@Test public void searchSetAndNwbibspatialMultiValue2And(){search("resource?set=NWBib&nwbibspatial=K%C3%B6ln,Bonn,AND", 1);}
 	@Test public void searchSetAndNwbibsubject1(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000", 1);}
 	@Test public void searchSetAndNwbibsubject2(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s552000,http://purl.org/lobid/nwbib#s706230", 2);}
 	@Test public void searchSetAndNwbibsubject3(){search("resource?set=NWBib&nwbibsubject=http://purl.org/lobid/nwbib#s706230,http://purl.org/lobid/nwbib#s704042", 1);}
