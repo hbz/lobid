@@ -68,6 +68,13 @@ public final class Application extends Controller {
 	}
 
 	/**
+	 * @return The main page.
+	 */
+	public static Promise<Result> v1() {
+		return okPromise(views.html.v1.render());
+	}
+
+	/**
 	 * @return The API page.
 	 */
 	public static Promise<Result> api() {
@@ -246,8 +253,7 @@ public final class Application extends Controller {
 				if (document.getId().contains("lobid.org/resource"))
 					appendMabXml(builder, errorMessage, document);
 			final String result = builder.toString().trim();
-			return result.isEmpty() ? notFound(errorMessage + "request")
-					: //
+			return result.isEmpty() ? notFound(errorMessage + "request") : //
 					documents.size() > 1 ? ok(result)
 							: ok(result).as("text/xml; charset: utf-8");
 		} catch (IndexMissingException e) {
@@ -303,9 +309,9 @@ public final class Application extends Controller {
 		if (!field.isEmpty()) {
 			nonEmptyNodes = ImmutableSortedSet.copyOf((o1, o2) -> {
 				return o1.asText().compareTo(o2.asText());
-			} , FluentIterable.from(nonEmptyNodes).transformAndConcat(input -> {
+			}, FluentIterable.from(nonEmptyNodes).transformAndConcat(input -> {
 				return input.isArray() ? /**/
-						Lists.newArrayList(input.elements()) : Lists.newArrayList(input);
+				Lists.newArrayList(input.elements()) : Lists.newArrayList(input);
 			}));
 		}
 		List<JsonNode> data = new ArrayList<>();
