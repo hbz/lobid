@@ -1,0 +1,64 @@
+#header {
+	width: 100%;
+	background-image: url('http://lobid.org/images/clouds.jpg');
+	background-repeat: repeat-x;
+}
+
+#header #butterfly {
+	height: 25px;
+}
+
+.col {
+	padding: 2px !important;
+}
+
+.fill {
+	width: 100% !important;
+}
+
+.nrw-logo {
+	height: 50px;
+}
+
+.footer img {
+	height: 20px;
+}
+
+.intro {
+	padding-top: 10px;
+}
+
+.footer {
+	margin-top: 30px;
+}
+
+.nav li a {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+
+li .dropdown-header {
+	padding-left: 10px !important;
+}
+
+.navbar-brand {
+	padding-top: 13px !important;
+}
+
+@media print {
+	a[href]:after {
+		content: none;
+	}
+	.hide-in-print {
+		display: none;
+	}
+}
+
+h5 {
+	font-size: larger;
+}
+
+#index-image {
+	float: right;
+	height: 200px;
+}

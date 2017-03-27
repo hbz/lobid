@@ -7,6 +7,7 @@ GET	/*path/									controllers.Api.redirect(path: String)
 
 # Homepage
 GET	/												controllers.Application.index()
+GET	/v1												controllers.Application.v1()
 GET	/api										controllers.Application.api()
 GET	/contact								controllers.Application.contact()
 GET	/about									controllers.Application.about()

@@ -1,12 +1,86 @@
-@* Copyright 2014 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 *@
+@* Copyright 2017 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 *@
 
-@main("lobid - home", "/index"){
-  <div class="text">
-    <h2>lobid: linking open bibliographic data</h2>
-    <p>lobid is the North Rhine-Westphalian Library Service Center's (hbz) Linked Open Data service. <br/>
-    It provides API access to information about <a href="/resource/HT012822405">bibliographic resources</a>, 
-    <a href="/organisation/DE-101">libraries and related organizations</a>, 
-    and <a href="/person?id=118580604">authority data</a>.<br/>
-    For details see our <a href="/api">API documentation</a>.</p>
-  </div>
-}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>lobid.org</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("/public", "stylesheets/lobid.css")">
+        <link rel="stylesheet" media="all" href="@routes.Assets.at("/public","stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="all" href="@routes.Assets.at("/public","stylesheets/jquery-ui.min.css")">
+        <link rel="stylesheet" media="all" href='@routes.Assets.at("/public","stylesheets/font-awesome.min.css")'>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("/public","images/favicon.png")">
+        <script src="@routes.Assets.at("/public","javascripts/jquery-1.10.2.min.js")"></script>
+        <script src="@routes.Assets.at("/public","javascripts/jquery-ui.min.js")"></script>
+        <script src="@routes.Assets.at("/public","javascripts/bootstrap.min.js")"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10">
+    </head>
+    <body onload="var q = document.getElementById('resourcesQuery'); if(q!=null){ q.focus(); };">
+        <div class="container">
+            <p/>
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container-fluid" id="header">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#lobid-nav">
+                        <span class="sr-only">Navigation ein/ausblenden</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@routes.Application.index()">
+                     <span><img id="butterfly" src='@routes.Assets.at("/public","images/butterfly.png")' height="50px" /></span> lobid</a>
+                  </div>
+                  <div class="navbar-collapse collapse" id="lobid-nav">
+                    <ul class="nav navbar-nav">
+                      <li><a href="/resources">resources</a></li>
+                      <li><a href="/organisations">organisations</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Info"><span class="glyphicon glyphicon-info-sign"></span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="mailto:semweb@@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="/api">Deprecated API 1.x documentation</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h1>
+                        <img class="media-object nrw-logo pull-right" src="@routes.Assets.at("/public", "images/hbz.png")" alt="hbz">
+                        lobid <small>&mdash; data infrastructure for libraries</small>
+                    </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <p class="lead">lobid provides Linked Open Data (LOD) services for libraries, consisting of user interfaces (UIs) and application programming interfaces (APIs). lobid is run by the North Rhine-Westphalian Library Service Centre (hbz).</p>
+                        <p><a href="/resources">lobid-resources</a> provides access to the hbz union catalogue.</p>
+                        <p><a href="/organisations">lobid-organisations</a> provides information about memory institutions in German-speaking countries.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img id="index-image" src='@routes.Assets.at("/public","images/lobid.png")'/>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default footer">
+              <div class="panel-body">
+                <span class="pull-left">
+                    <img src='@routes.Assets.at("/public","images/wappen.png")' alt="NRW-Wappen"/> &nbsp;
+                    lobid | LOD services by <a href='https://www.hbz-nrw.de/produkte/linked-open-data'>hbz — Hochschulbibliothekszentrum des Landes NRW</a>
+                </span>
+                <span class="pull-right">
+                    <a href="http://www.hbz-nrw.de/impressum">Impressum</a> | 
+                    <a href="http://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp; 
+                    <a href="http://github.com/hbz/lobid"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>&nbsp; 
+                    <a href="http://blog.lobid.org"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</a>
+                </span>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>
