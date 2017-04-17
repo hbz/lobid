@@ -272,8 +272,8 @@ public final class Application extends Controller {
 				if (response.getStatus() == Http.Status.OK) {
 					return new String(response.asByteArray(), StandardCharsets.UTF_8);
 				}
-				Logger.warn("Response for {} not OK: {}", url,
-						response.getStatusText());
+				Logger.warn("Response for {} not OK: {}, status code: {}", url,
+						response.getStatusText(), response.getStatus());
 				return null;
 			});
 			promise = promise.recover(new F.Function<Throwable, String>() {
