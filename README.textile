@@ -2,9 +2,9 @@ h1. Lobid
 
 Linking Open Bibliographic Data.
 
-This software implements the API of "http://lobid.org":http://lobid.org, the LOD service offered by "hbz":http://www.hbz-nrw.de.
+This software implements "http://lobid.org":http://lobid.org.
 
-For details about the data processing in our backend see "https://github.com/lobid/lodmill/":https://github.com/lobid/lodmill/.
+For information about the Lobid architecture and development process, see "http://hbz.github.io/#lobid":http://hbz.github.io/#lobid.
 
 h1. Build
 
