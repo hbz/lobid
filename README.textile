@@ -6,6 +6,8 @@ This software implements "http://lobid.org":http://lobid.org.
 
 For information about the Lobid architecture and development process, see "http://hbz.github.io/#lobid":http://hbz.github.io/#lobid.
 
+See what we are working at right now: "!https://badge.waffle.io/hbz/lobid.png?label=ready&title=Working!":http://waffle.io/hbz/lobid
+
 h1. Build
 
 "!https://secure.travis-ci.org/hbz/lobid.png?branch=master!":https://travis-ci.org/hbz/lobid
