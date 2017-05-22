@@ -60,3 +60,5 @@ GET	/person/:id/about				controllers.Path.personAbout(id,format?="negotiate",fro
 
 # General search endpoint for searching over all resource types
 GET	/search								controllers.Api.search(id?="",q?="",name?="",format?="negotiate",from:Int?=0,size:Int?=50)
+
+GET	/organisations/toggleLanguage		controllers.Application.toggleLanguage()

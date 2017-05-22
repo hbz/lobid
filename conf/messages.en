@@ -1,0 +1,16 @@
+#main
+
+main.navbar.toggle = Toggle navigation
+main.navbar.toggle_language.link = Deutsch
+main.navbar.toggle_language.title = Sprache auf Deutsch umschalten
+main.navbar.info.v1 = Deprecated API 1.x documentation
+
+main.footer.text = LOD services by <a href="{0}">hbz — Hochschulbibliothekszentrum des Landes NRW</a>
+main.footer.imprint = Imprint
+
+# index
+
+index.header.small = data infrastructure for libraries
+index.lead = lobid provides Linked Open Data (LOD) services for libraries, consisting of user interfaces (UIs) and application programming interfaces (APIs). lobid is run by the North Rhine-Westphalian Library Service Centre (hbz).
+index.resources = <a href="{0}">lobid-resources</a> provides access to the hbz union catalogue.
+index.organisations = <a href="{0}">lobid-organisations</a> provides information about memory institutions in Germany, Austria, and Switzerland.

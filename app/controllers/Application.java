@@ -416,4 +416,13 @@ public final class Application extends Controller {
 		return converter.toRdf(jsonLdInfo).trim();
 	}
 
+	/**
+	 * @return 303 redirect to the referrer, after toggling the current language
+	 */
+	public static Result toggleLanguage() {
+		boolean isEnglish = lang().code().split("-")[0].equals("en");
+		changeLang(isEnglish ? "de" : "en");
+		return seeOther(request().getHeader(REFERER).replaceAll("en|de", ""));
+	}
+
 }
