@@ -1,0 +1,16 @@
+# main
+
+main.navbar.toggle = Navigation ein/ausblenden
+main.navbar.toggle_language.link = English
+main.navbar.toggle_language.title = Switch language to English
+main.navbar.info.v1 = Dokumentation zur überholten API 1.x
+
+main.footer.text = LOD-Dienste des <a href="{0}">hbz — Hochschulbibliothekszentrum des Landes NRW</a>
+main.footer.imprint = Impressum
+
+# index
+
+index.header.small = Dateninfrastruktur für Bibliotheken
+index.lead = lobid stellt Rechercheoberflächen und offene Programmierschnittstellen (APIs) zur Verfügung, die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW betrieben.
+index.resources = <a href="{0}">lobid-resources</a> bietet Zugriff auf den hbz-Verbundkatalog.
+index.organisations = <a href="{0}">lobid-organisations</a> bietet Informationen zu Gedächtnisinstitutionen im deutschsprachigen Raum.
