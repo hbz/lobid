@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "id": "@id",
+    "type": "@type",
+    "blog": "http://xmlns.com/foaf/0.1/weblog"
+  },
+  "id" : "http://lobid.org/team/ap#!",
+  "type" : "Person",
+  "email" : "mailto:pohl@hbz-nrw.de",
+  "alternateName" : "acka47",
+  "name" : "Adrian Pohl",
+  "worksFor" : "http://lobid.org/organisations/DE-605#!",
+  "telephone" : "+49-221-40075-235",
+  "blog" : "http://www.uebertext.org",
+  "sameAs" : [ "http://orcid.org/0000-0001-9083-7442", "http://viaf.org/viaf/164750950", "https://twitter.com/acka47", "https://oerworldmap.org/resource/urn:uuid:1fc889ad-28eb-496d-ad6a-3020b1380850" ],
+  "image" : "http://dl.dropbox.com/u/4103570/adrian_kl.jpg",
+  "colleague" : [ "http://lobid.org/person/pc#!", "http://lobid.org/person/fs#!", "http://lobid.org/person/ce#!" ],
+  "http://schema.org/alumniOf": [ "http://www.wikidata.org/entity/Q273263", "http://www.wikidata.org/entity/Q54166" ]
+}
