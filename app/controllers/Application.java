@@ -307,7 +307,7 @@ public final class Application extends Controller {
 					return node.size() > 0;
 				});
 		if (!field.isEmpty()) {
-			nonEmptyNodes = ImmutableSortedSet.copyOf((o1, o2) -> {
+			nonEmptyNodes = ImmutableSortedSet.<JsonNode> copyOf((o1, o2) -> {
 				return o1.asText().compareTo(o2.asText());
 			}, FluentIterable.from(nonEmptyNodes).transformAndConcat(input -> {
 				return input.isArray() ? /**/
