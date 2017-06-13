@@ -1,0 +1,23 @@
+{
+  "@context" : "http://lobid.org/context/lobid-team.json",
+  "@id" : "http://lobid.org/team/pc#!",
+  "@type" : "http://xmlns.com/foaf/0.1/Person",
+  "avatar" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
+  "mbox" : "mailto:christoph@hbz-nrw.de",
+  "nick" : "dr0ide",
+  "skypeID" : "pascalchristoph",
+  "locatedIn" : "http://sws.geonames.org/6553049/",
+  "givenname" : "Pascal",
+  "name" : "Pascal Christoph",
+  "workplaceHomepage" : "http://www.hbz-nrw.de",
+  "tel" : "+49-221-40075-139",
+  "@id" : "http://lobid.org/team/pc",
+  "isPrimaryTopicOf" : [ "http://www.dmoz.org/public/profile?editor=pascalc", "http://www.imdb.com/name/nm3270964/" ],
+  "family_name" : "Christoph",
+  "weblog" : "http://www.dr0i.de/",
+  "sameAs" : [ "http://orcid.org/0000-0001-9758-2577", "http://www.dr0i.de/lib/files/foaf.rdf#me" ],
+  "depiction" : "http://www.dr0i.de/lib/images/pc_swib12.png",
+  "homepage" : "http://www.dr0i.de/",
+  "knows" : [ "http://lobid.org/person/ap", "http://lobid.org/person/fs", "http://literarymachine.net/people/felix" ],
+  "publications" : "http://www.dr0i.de/lib/2013/10/15/publications.html"
+}

@@ -31,6 +31,8 @@ GET	/resource/Edoweb					controllers.Collection.resourceEdoweb(format?="negotiat
 GET	/resource/Edoweb/about				controllers.Collection.resourceAboutEdoweb(id="http://lobid.org/resource/Edoweb",format?="negotiate")
 
 # Lobid persons
+GET	/team/:id.:format					controllers.LobidTeam.getDotFormat(id, format)
+GET	/team/:id							controllers.LobidTeam.get(id)
 GET	/team/ap							controllers.LobidTeam.ap(format?="negotiate")
 GET	/team/ap/about						controllers.LobidTeam.apAbout(id="http://lobid.org/team/ap",format?="negotiate")
 GET	/team/fs							controllers.LobidTeam.fs(format?="negotiate")

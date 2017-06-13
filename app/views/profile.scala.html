@@ -1,0 +1,41 @@
+@* Copyright 2017 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 *@
+
+@(id: String, json: play.api.libs.json.JsValue)
+
+@import play.api.libs.json._
+
+@text(field: String) = @{
+	val text = (json \ field).asOpt[String].getOrElse("--")
+	if(text.startsWith("http") || text.startsWith("mailto")) {
+		Html(s"<a target='_blank' href='$text'>$text</a>")
+	} else {
+		text
+	}
+}
+
+@wrapper(text("name").toString){
+<div class="row">
+	<div class="col-md-9">
+		<p class="lead">@text("name")<small><a title="Beschreibung als JSON-LD anzeigen" href='@routes.LobidTeam.getDotFormat(id, "json")'><img class='json-ld-icon' src='@routes.Assets.at("/public","images/json-ld.png")'></a></small></p>
+		<table class="table table-striped">
+			<tr><th width="20%"/><th width="80%"/></tr>
+			<tr><td>Mail</td><td>@text("mbox")</td></tr>
+			<tr><td>Tel.</td><td>@text("tel")</td></tr>
+			<tr><td>Homepage</td><td>@text("homepage")</td></tr>
+			<tr><td>Weblog</td><td>@text("weblog")</td></tr>
+			<tr><td>Nick</td><td>@text("nick")</td></tr>
+			<tr><td>Skype</td><td>@text("skypeID")</td></tr>
+			<tr><td>Location</td><td>@text("locatedIn")</td></tr>
+			<tr><td>Work</td><td>@text("workplaceHomepage")</td></tr>
+			<tr><td>Publications</td><td>@text("publications")</td></tr>
+		</table>
+	</div>
+	<div class="col-md-3">
+		<img id="index-image" src='@((json \ "avatar").asOpt[String].getOrElse("--"))'/>
+		<img id="index-image" src='@((json \ "depiction").asOpt[String].getOrElse("--"))'/>
+	</div>
+</div>
+<script type="application/ld+json">
+@Html(json.toString)
+</script>
+}
