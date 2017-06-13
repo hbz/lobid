@@ -16,5 +16,5 @@
   "sameAs" : [ "http://orcid.org/0000-0001-9083-7442", "http://viaf.org/viaf/164750950", "https://twitter.com/acka47", "https://oerworldmap.org/resource/urn:uuid:1fc889ad-28eb-496d-ad6a-3020b1380850" ],
   "image" : "https://app.syncwerk.de/f/188da2e11b/?raw=1",
   "colleague" : [ "http://lobid.org/person/pc#!", "http://lobid.org/person/fs#!", "http://lobid.org/person/ce#!" ],
-  "http://schema.org/alumniOf": [ "http://www.wikidata.org/entity/Q273263", "http://www.wikidata.org/entity/Q54166" ]
+  "alumniOf": [ "http://www.wikidata.org/entity/Q273263", "http://www.wikidata.org/entity/Q54166" ]
 }
