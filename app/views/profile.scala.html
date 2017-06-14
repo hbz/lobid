@@ -1,0 +1,36 @@
+@* Copyright 2017 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 *@
+
+@(id: String, json: play.api.libs.json.JsValue)
+
+@import play.api.libs.json._
+
+@text(field: String) = @{
+	val text = (json \ field).asOpt[String].getOrElse("--")
+	if(text.startsWith("http") || text.startsWith("mailto")) {
+		Html(s"<a target='_blank' href='$text'>$text</a>")
+	} else {
+		text
+	}
+}
+
+@wrapper(text("name").toString){
+<div class="row">
+	<div class="col-md-9">
+		<p class="lead">@text("name")<small><a title="Beschreibung als JSON-LD anzeigen" href='@routes.LobidTeam.getDotFormat(id, "json")'><img class='json-ld-icon' src='@routes.Assets.at("/public","images/json-ld.png")'></a></small></p>
+		<table class="table table-striped table-condensed">
+			<tr><th width="20%"/><th width="80%"/></tr>
+			<tr><td>Alternate Name</td><td>@text("alternateName")</td></tr>
+			<tr><td>Blog</td><td>@text("blog")</td></tr>
+			<tr><td>Works for</td><td>@text("worksFor")</td></tr>
+			<tr><td>Mail</td><td>@text("email")</td></tr>
+			<tr><td>Telephone</td><td>@text("telephone")</td></tr>
+		</table>
+	</div>
+	<div class="col-md-3">
+		<img id="index-image" src='@((json \ "image").asOpt[String].getOrElse("--"))'/>
+	</div>
+</div>
+<script type="application/ld+json">
+@Html(json.toString)
+</script>
+}

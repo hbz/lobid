@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "id": "@id",
+    "type": "@type",
+    "blog": "http://xmlns.com/foaf/0.1/weblog"
+  },
+  "id" : "http://lobid.org/team/fs#!",
+  "type" : "Person",
+  "email" : "mailto:christoph@hbz-nrw.de",
+  "alternateName" : "dr0ide",
+  "name" : "Pascal Christoph",
+  "worksFor" : "http://lobid.org/organisations/DE-605#!",
+  "telephone" : "+49-221-40075-231",
+  "blog" : "http://www.dr0i.de/",
+  "sameAs" : [ "http://orcid.org/0000-0001-9758-2577", "http://www.dr0i.de/lib/files/foaf.rdf#me" ],
+  "image" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
+  "colleague" : [ "http://lobid.org/team/fs#!", "http://lobid.org/team/ap#!", "http://lobid.org/team/ce#!" ],
+  "alumniOf": "http://www.wikidata.org/entity/Q54096"
+}
