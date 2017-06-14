@@ -10,6 +10,7 @@ GET	/									controllers.Application.index()
 GET	/v1									controllers.Application.v1()
 GET	/api								controllers.Application.api()
 GET	/contact							controllers.Application.contact()
+GET	/team								controllers.Application.team()
 GET	/about								controllers.Application.about()
 
 # Map static resources from the /public folder to the /assets and /images URL paths

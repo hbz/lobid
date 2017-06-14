@@ -85,7 +85,14 @@ public final class Application extends Controller {
 	 * @return The main page.
 	 */
 	public static Promise<Result> contact() {
-		return okPromise(views.html.contact.render());
+		return Promise.pure(movedPermanently(routes.Application.team()));
+	}
+
+	/**
+	 * @return The team page.
+	 */
+	public static Promise<Result> team() {
+		return okPromise(views.html.team.render());
 	}
 
 	/**
