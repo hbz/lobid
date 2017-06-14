@@ -5,7 +5,7 @@
     "type": "@type",
     "blog": "http://xmlns.com/foaf/0.1/weblog"
   },
-  "id" : "http://lobid.org/team/fs#!",
+  "id" : "http://lobid.org/team/pc#!",
   "type" : "Person",
   "email" : "mailto:christoph@hbz-nrw.de",
   "alternateName" : "dr0ide",
