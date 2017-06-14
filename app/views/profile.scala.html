@@ -4,6 +4,12 @@
 
 @import play.api.libs.json._
 
+@row(label: String, field: String) = {
+	@if((json \ field).asOpt[String].isDefined) {
+		<tr><td>@label</td><td>@text(field)</td></tr>
+	}
+}
+
 @text(field: String) = @{
 	val text = (json \ field).asOpt[String].getOrElse("--")
 	if(text.startsWith("http") || text.startsWith("mailto")) {
@@ -19,11 +25,11 @@
 		<p class="lead">@text("name")<small><a title="Beschreibung als JSON-LD anzeigen" href='@routes.LobidTeam.getDotFormat(id, "json")'><img class='json-ld-icon' src='@routes.Assets.at("/public","images/json-ld.png")'></a></small></p>
 		<table class="table table-striped table-condensed">
 			<tr><th width="20%"/><th width="80%"/></tr>
-			<tr><td>Alternate Name</td><td>@text("alternateName")</td></tr>
-			<tr><td>Blog</td><td>@text("blog")</td></tr>
-			<tr><td>Works for</td><td>@text("worksFor")</td></tr>
-			<tr><td>Mail</td><td>@text("email")</td></tr>
-			<tr><td>Telephone</td><td>@text("telephone")</td></tr>
+			@row("Alternate Name", "alternateName")
+			@row("Blog", "blog")
+			@row("Works for", "worksFor")
+			@row("Mail", "email")
+			@row("Telephone", "telephone")
 		</table>
 	</div>
 	<div class="col-md-3">

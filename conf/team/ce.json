@@ -8,7 +8,7 @@
   "id" : "http://lobid.org/team/ce#!",
   "type" : "Person",
   "email" : "mailto:christoph.ewertowski@hbz-nrw.de",
-	"image" : "",
+  "image" : "http://lobid.org/download/ce.jpg",
   "name" : "Christoph Ewertowski",
   "worksFor" : "http://lobid.org/organisations/DE-605#!",
   "telephone" : "+49-221-40075-149",
