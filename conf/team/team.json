@@ -27,7 +27,7 @@
       "id": "mailto:semweb@hbz-nrw.de",
       "image": "http://lobid.org/assets/images/icon_15024.png",
       "contactType": {
-        "en": "email",
+        "en": "Email",
         "de": "E-Mail"
       }
     },
@@ -45,7 +45,7 @@
       "image": "http://upload.wikimedia.org/wikipedia/commons/1/10/Gnu_mailman_logo2010.png",
       "id": "http://listen.hbz-nrw.de/mailman/listinfo/lobid",
       "contactType": {
-        "en": "mailing list",
+        "en": "Mailing List",
         "de": "Mailingliste"
       }
     },
@@ -72,7 +72,7 @@
       "image": "http://lobid.org/assets/images/GitHub-Mark-32px.png",
       "id": "https://github.com/hbz/lobid/issues/new",
       "contactType": {
-        "en": "issue tracker on GitHub",
+        "en": "Issue Tracker on GitHub",
         "de": "Issue Tracker auf GitHub"
       }
     }
@@ -87,7 +87,7 @@
   },
   "description": {
     "de": "to do",
-    "en": "<p class=\"lead\">lobid is implemented and maintained by <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">hbz's Linked Open Data group</a>.</p><<p>In addition to the lobid services, we work on search applications based on the lobid APIs and technologies in <a href=\"http://nwbib.de\">NWBib</a> and <a href=\"http://digitalisiertedrucke.de\">digitalisiertedrucke</a>, and on tools for data processing in <a href=\"https://github.com/culturegraph/metafacture-core\">Metafacture</a> and the <a href=\"https://github.com/culturegraph/metafacture-ide\">Metafacture IDE</a>.</p><p>We participate in the organization of the annual <a href=\"http://swib.org\">SWIB conference</a> and are active members in open source and standards organizations like the <a href=\"https://eclipse.org/membership/showMember.php?member_id=1072\">Eclipse Foundation</a> and the <a href=\"https://www.w3.org/Consortium/membership\">World Wide Web Consortium</a>.</p>"
+    "en": "<p class=\"lead\">lobid is implemented and maintained by <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">hbz's Linked Open Data group</a>.</p><p>In addition to the lobid services, we work on search applications based on the lobid APIs and technologies in <a href=\"http://nwbib.de\">NWBib</a> and <a href=\"http://digitalisiertedrucke.de\">digitalisiertedrucke</a>, and on tools for data processing in <a href=\"https://github.com/culturegraph/metafacture-core\">Metafacture</a> and the <a href=\"https://github.com/culturegraph/metafacture-ide\">Metafacture IDE</a>.</p><p>We participate in the organization of the annual <a href=\"http://swib.org\">SWIB conference</a> and are active members in open source and standards organizations like the <a href=\"https://eclipse.org/membership/showMember.php?member_id=1072\">Eclipse Foundation</a> and the <a href=\"https://www.w3.org/Consortium/membership\">World Wide Web Consortium</a>.</p>"
     },
   "parentOrganization" : "http://lobid.org/organisations/DE-605#!",
   "blog" : "http://blog.lobid.org",
@@ -126,8 +126,8 @@
       "type": "Role",
       "startDate": "2010",
       "roleName": {
-        "de": "Softwareentwicklung und Administration",
-        "en": "software development and administration"
+        "de": "Softwareentwickler, Systemadministrator",
+        "en": "Software Developer, System Administrator"
       },
       "member": {
         "id": "http://lobid.org/team/pc#!"
@@ -137,8 +137,8 @@
       "type": "Role",
       "startDate": "2012",
       "roleName": {
-        "de": "Softwareentwicklung",
-        "en": "full stack developer"
+        "de": "Softwareentwickler",
+        "en": "Software developer"
       },
       "member": {
         "id": "http://lobid.org/team/fs#!"
@@ -148,8 +148,8 @@
       "type": "Role",
       "startDate": "2010",
       "roleName": {
-        "de": "Projektmanagement, Datenmodellierung",
-        "en": "project management & data modeling" 
+        "de": "Projektmanager, Bibliothekar",
+        "en": "Project Manager, Bibliothekar"
       },
       "member": {
         "id": "http://lobid.org/team/ap#!"
@@ -159,8 +159,8 @@
       "type": "Role",
       "startDate": "2017",
       "roleName": {
-        "de": "Datenmodellierung und -transformation",
-        "en": "data modeling and data transformation"
+        "de": "Bibliothekar",
+        "en": "Librarian"
       },
       "member": {
         "id": "http://lobid.org/team/ce#!"
@@ -171,8 +171,8 @@
       "startDate": "2010",
       "endDate": "2010",
       "roleName": {
-        "de": "Softwareentwicklung",
-        "en": "software development"
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
       },
       "member": {
         "name": "Felix Ostrowski",
@@ -184,8 +184,8 @@
       "startDate": "2014",
       "endDate": "2016",
       "roleName": {
-        "de": "Softwareentwicklung",
-        "en": "software development"
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
       },
       "member": {
         "name": "Simon Ritter",
