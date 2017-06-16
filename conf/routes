@@ -10,7 +10,6 @@ GET	/									controllers.Application.index()
 GET	/v1									controllers.Application.v1()
 GET	/api								controllers.Application.api()
 GET	/contact							controllers.Application.contact()
-GET	/team								controllers.Application.team()
 GET	/about								controllers.Application.about()
 
 # Map static resources from the /public folder to the /assets and /images URL paths
@@ -31,7 +30,8 @@ GET	/resource/NWBib/about				controllers.Collection.resourceAboutNWBib(id="http:
 GET	/resource/Edoweb					controllers.Collection.resourceEdoweb(format?="negotiate")
 GET	/resource/Edoweb/about				controllers.Collection.resourceAboutEdoweb(id="http://lobid.org/resource/Edoweb",format?="negotiate")
 
-# Lobid persons
+# Lobid team
+GET	/team								controllers.LobidTeam.team()
 GET	/team/:id.:format					controllers.LobidTeam.getDotFormat(id, format)
 GET	/team/:id							controllers.LobidTeam.get(id)
 GET	/team/ap							controllers.LobidTeam.ap(format?="negotiate")

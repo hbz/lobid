@@ -1,11 +1,11 @@
 @* Copyright 2017 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 *@
 
+@(json: play.api.libs.json.JsValue)
+
 @wrapper("lobid - team"){
 	<div class="row">
 		<div class="col-md-8">
-			<p class="lead">lobid is implemented and maintained by <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz's Linked Open Data group</a>.</p>
-			<p>In addition to the lobid services, we work on search applications based on the lobid APIs and technologies in <a href="http://nwbib.de" target="_blank">NWBib</a> and <a href="http://digitalisiertedrucke.de" target="_blank">digitalisiertedrucke</a>, and on tools for data processing in <a href="https://github.com/culturegraph/metafacture-core" target="_blank">Metafacture</a> and the <a href="https://github.com/culturegraph/metafacture-ide" target="_blank">Metafacture IDE</a>.</p>
-			<p>We participate in the organization of the annual <a href="http://swib.org" target="_blank">SWIB conference</a> and are active members in open source and standards organizations like the <a href="https://eclipse.org/membership/showMember.php?member_id=1072" target="_blank">Eclipse Foundation</a> and the <a href="https://www.w3.org/Consortium/membership" target="_blank">World Wide Web Consortium</a>.</p>
+			@Html((json\"description"\controllers.Application.currentLang).asOpt[String].getOrElse("--"))
 			<p>Current members of the LOD group are <a href='@routes.LobidTeam.get("ap")'>Adrian Pohl</a>, <a href='@routes.LobidTeam.get("pc")'>Pascal Christoph</a>, <a href='@routes.LobidTeam.get("fs")'>Fabian Steeg</a>, and <a href='@routes.LobidTeam.get("ce")'>Christoph Ewertowski</a>.</p>
 		</div>
 		<div class="col-md-4" style="text-align:right">

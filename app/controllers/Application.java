@@ -85,14 +85,7 @@ public final class Application extends Controller {
 	 * @return The main page.
 	 */
 	public static Promise<Result> contact() {
-		return Promise.pure(movedPermanently(routes.Application.team()));
-	}
-
-	/**
-	 * @return The team page.
-	 */
-	public static Promise<Result> team() {
-		return okPromise(views.html.team.render());
+		return Promise.pure(movedPermanently(routes.LobidTeam.team()));
 	}
 
 	/**
@@ -427,9 +420,16 @@ public final class Application extends Controller {
 	 * @return 303 redirect to the referrer, after toggling the current language
 	 */
 	public static Result toggleLanguage() {
-		boolean isEnglish = lang().code().split("-")[0].equals("en");
+		boolean isEnglish = currentLang().equals("en");
 		changeLang(isEnglish ? "de" : "en");
 		return seeOther(request().getHeader(REFERER).replaceAll("en|de", ""));
+	}
+
+	/**
+	 * @return The current language: "en" or "de"
+	 */
+	public static String currentLang() {
+		return lang().code().split("-")[0];
 	}
 
 }

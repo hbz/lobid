@@ -24,6 +24,13 @@ public final class LobidTeam extends Controller {
 	}
 
 	/**
+	 * @return The team page.
+	 */
+	public static Result team() {
+		return ok(views.html.team.render(Json.parse(readFile("team"))));
+	}
+
+	/**
 	 * Returns {@link #personAbout(String, String)}
 	 */
 	@SuppressWarnings("javadoc")
