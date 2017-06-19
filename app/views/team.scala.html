@@ -2,19 +2,46 @@
 
 @(json: play.api.libs.json.JsValue)
 
+@import play.api.libs.json._
+
+@text(key: String) = {
+	@Html((json\key\controllers.Application.currentLang).asOpt[String].getOrElse("--"))
+}
+
+@memberLabel(member: JsValue) = {
+	@((member \ "member" \ "name").as[String]) <small>&mdash; @((member \ "roleName" \ controllers.Application.currentLang).as[String])</small>
+}
+
 @wrapper("lobid - team"){
+	<h1>@text("name") <small><a title="Beschreibung als JSON-LD anzeigen" href='@routes.LobidTeam.teamDotFormat("json")'><img class='json-ld-icon' src='@routes.Assets.at("/public","images/json-ld.png")'></a></small></h1>
+	<p class="lead">@text("description")</p>
 	<div class="row">
-		<div class="col-md-8">
-			@Html((json\"description"\controllers.Application.currentLang).asOpt[String].getOrElse("--"))
-			<p>Current members of the LOD group are <a href='@routes.LobidTeam.get("ap")'>Adrian Pohl</a>, <a href='@routes.LobidTeam.get("pc")'>Pascal Christoph</a>, <a href='@routes.LobidTeam.get("fs")'>Fabian Steeg</a>, and <a href='@routes.LobidTeam.get("ce")'>Christoph Ewertowski</a>.</p>
+		<div class="col-md-6">
+			<p><b>@Messages("team.members")</b></p>
+			@for(member <- (json \ "member").as[Seq[JsValue]]; if (member \ "member" \ "id").asOpt[String].isDefined	) {
+				<p>
+					@if((member \ "member" \ "image").asOpt[String].isDefined){
+						<img src='@((member \ "member" \ "image").as[String])' width="45" />
+					}
+					<a target="_blank" rel="nofollow" href='@((member \ "member" \ "id").asOpt[String])'>@memberLabel(member)</a>
+				</p>
+			}
 		</div>
-		<div class="col-md-4" style="text-align:right">
-			<p><img src="@routes.Assets.at("/public", "images/icon_15024.png")" width="20" /> <a target="_blank" rel="nofollow" href="mailto:semweb@@hbz-nrw.de?subject=Lobid">Contact the lobid team via <b>mail</b></a></p>
-			<p><img src="http://upload.wikimedia.org/wikipedia/commons/1/10/Gnu_mailman_logo2010.png" width="40" /> <a href="http://listen.hbz-nrw.de/mailman/listinfo/lobid" target="_blank" rel="nofollow">Subscribe to the lobid <b>mailing list</b></a></p>
-			<p><img src="@routes.Assets.at("/public", "images/feed-icon-14x14.png")" /> <a href="http://blog.lobid.org/" target="_blank" rel="nofollow">Get updates about lobid on our <b>blog</b></a></p>
-			<p><img src="@routes.Assets.at("/public", "images/Twitter_logo_blue.png")" width="20" /> <a href="http://twitter.com/lobidorg" target="_blank" rel="nofollow">Follow lobid on <b>Twitter</b></a></p>
-			<p><img src="@routes.Assets.at("/public", "images/GitHub-Mark-32px.png")" width="20" /> <a href="https://github.com/hbz/lobid/issues/new" target="_blank" rel="nofollow">Report an issue on <b>GitHub</b></a></p>
-			<p><img src="http://upload.wikimedia.org/wikipedia/commons/c/c1/Freenode_logo.png" width="60" /> <a href="irc://irc.freenode.net/lobid" target="_blank" rel="nofollow">Meet us in the lobid channel on <b>IRC</b></a></p>
+		<div class="col-md-4">
+			<p><b>@Messages("team.products")</b></p>
+			@for(offer <- (json \ "makesOffer").as[Seq[JsValue]]) {
+				<p><a target="_blank" rel="nofollow" href='@((offer \ "id").as[String])'>@((offer \ "name").as[String])</a><br/>
+				@if(((offer \ "alternateName").asOpt[JsValue]).isDefined){@((offer \ "alternateName" \ controllers.Application.currentLang).as[String])}</p>
+			}
+		</div>
+		<div class="col-md-2">
+			<p><b>@Messages("team.contact")</b></p>
+			@for(contact <- (json \ "contactPoint").as[Seq[JsValue]]) {
+				<p>
+					<img src='@((contact \ "image").as[String])' height="20" />
+					<a target="_blank" rel="nofollow" href='@((contact \ "id").as[String])'>@((contact \ "contactType" \ controllers.Application.currentLang).as[String])</a>
+				</p>
+			}
 		</div>
 	</div>
 }
