@@ -70,10 +70,10 @@
     {
       "type": "ContactPoint",
       "image": "http://lobid.org/assets/images/GitHub-Mark-32px.png",
-      "id": "https://github.com/hbz/lobid/issues/new",
+      "id": "https://github.com/hbz/lobid/issues",
       "contactType": {
         "en": "Issue Tracker on GitHub",
-        "de": "Issue Tracker auf GitHub"
+        "de": "Issue-Tracker auf GitHub"
       }
     }
   ],
@@ -82,12 +82,12 @@
     "en": "hbz's Linked Open Data group"
   },
   "name" : {
-    "de": "lobid-Team",
-    "en": "lobid team"
+    "de": "Das lobid-Team",
+    "en": "The lobid team"
   },
   "description": {
-    "de": "to do",
-    "en": "<p class=\"lead\">lobid is implemented and maintained by <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">hbz's Linked Open Data group</a>.</p><p>In addition to the lobid services, we work on search applications based on the lobid APIs and technologies in <a href=\"http://nwbib.de\">NWBib</a> and <a href=\"http://digitalisiertedrucke.de\">digitalisiertedrucke</a>, and on tools for data processing in <a href=\"https://github.com/culturegraph/metafacture-core\">Metafacture</a> and the <a href=\"https://github.com/culturegraph/metafacture-ide\">Metafacture IDE</a>.</p><p>We participate in the organization of the annual <a href=\"http://swib.org\">SWIB conference</a> and are active members in open source and standards organizations like the <a href=\"https://eclipse.org/membership/showMember.php?member_id=1072\">Eclipse Foundation</a> and the <a href=\"https://www.w3.org/Consortium/membership\">World Wide Web Consortium</a>.</p>"
+    "de": "lobid wird implementiert und betrieben vom <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">Arbeitsbereich Linked Open Data des hbz</a>",
+    "en": "lobid is implemented and maintained by <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">hbz's Linked Open Data group</a>"
     },
   "parentOrganization" : "http://lobid.org/organisations/DE-605#!",
   "blog" : "http://blog.lobid.org",
@@ -96,32 +96,52 @@
   "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
   "makesOffer": [
     {
-      "id": "https://nwbib.de",
-      "name": "NWBib",
-      "alternateName": "Nordrhein-Westfälische Bibliographie"
-    },
-    {
-      "id": "https://lobid.org/resources",
-      "name": "lobid-resources",
+      "id": "https://lobid.org",
+      "name": "lobid",
       "alternateName": {
-        "de": "Gedächtnisinstitutionen im deutschsprachigen Raum",
-        "en": "Memory institutions in German-speaking countries"
+        "de": "Dateninfrastruktur für Bibliotheken",
+        "en": "Data infrastructure for libraries"
       }
     },
     {
-      "id": "https:lobid.org/organisations",
-      "name": "lobid-resources",
+      "id": "https://nwbib.de",
+      "name": "NWBib",
       "alternateName": {
-        "de": "Der hbz-Verbundkatalog als Linked Open Data",
-        "en": "The hbz union catalogue as Linked Open Data"
+        "de": "Nordrhein-Westfälische Bibliographie",
+        "en": "Bibliography of North Rhine-Westfalia"
       }
     },
     {
       "id": "http://digitalisiertedrucke.de/",
-      "name": "Digitalisierte Drucke"
+      "name": "Digitalisierte Drucke",
+      "alternateName": {
+        "de": "Verzeichnis digitalisierter Drucke",
+        "en": "Registry of digitised prints"
+      }
+    },
+    {
+      "id": "http://github.com/culturegraph/metafacture-ide",
+      "name": "Metafacture IDE",
+      "alternateName": {
+        "de": "Integrierte Datenverarbeitungsumgebung",
+        "en": "Integrated data processing environment"
+      }
     }
   ],
   "member": [
+    {
+      "type": "Role",
+      "startDate": "2010",
+      "roleName": {
+        "de": "Projektmanager, Bibliothekar",
+        "en": "Project Manager, Librarian"
+      },
+      "member": {
+        "name": "Adrian Pohl",
+        "image" : "https://app.syncwerk.de/f/188da2e11b/?raw=1",
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
     {
       "type": "Role",
       "startDate": "2010",
@@ -130,6 +150,8 @@
         "en": "Software Developer, System Administrator"
       },
       "member": {
+        "name": "Pascal Christoph",
+        "image" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
         "id": "http://lobid.org/team/pc#!"
       }
     },
@@ -138,21 +160,12 @@
       "startDate": "2012",
       "roleName": {
         "de": "Softwareentwickler",
-        "en": "Software developer"
+        "en": "Software Developer"
       },
       "member": {
+        "name": "Fabian Steeg",
+        "image" : "http://fsteeg.com/files/fsteeg.png",
         "id": "http://lobid.org/team/fs#!"
-      }
-    },
-    {
-      "type": "Role",
-      "startDate": "2010",
-      "roleName": {
-        "de": "Projektmanager, Bibliothekar",
-        "en": "Project Manager, Bibliothekar"
-      },
-      "member": {
-        "id": "http://lobid.org/team/ap#!"
       }
     },
     {
@@ -163,20 +176,9 @@
         "en": "Librarian"
       },
       "member": {
+        "name": "Christoph Ewertowski",
+        "image" : "http://lobid.org/download/ce.jpg",
         "id": "http://lobid.org/team/ce#!"
-      }
-    },
-    {
-      "type": "Role",
-      "startDate": "2010",
-      "endDate": "2010",
-      "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
-      },
-      "member": {
-        "name": "Felix Ostrowski",
-        "sameAs": [ "https://twitter.com/literarymachine", "https://github.com/literarymachine" ]
       }
     },
     {
@@ -190,6 +192,19 @@
       "member": {
         "name": "Simon Ritter",
         "sameAs": [ "https://github.com/SBRitter" ]
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2010",
+      "endDate": "2010",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
+      },
+      "member": {
+        "name": "Felix Ostrowski",
+        "sameAs": [ "https://twitter.com/literarymachine", "https://github.com/literarymachine" ]
       }
     }
   ],
