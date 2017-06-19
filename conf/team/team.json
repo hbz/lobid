@@ -33,15 +33,6 @@
     },
     {
       "type": "ContactPoint",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Freenode_logo.png",
-      "id": "irc://irc.freenode.net/lobid",
-      "contactType": {
-        "en": "IRC",
-        "de": "IRC"
-      }
-    },
-    {
-      "type": "ContactPoint",
       "image": "http://upload.wikimedia.org/wikipedia/commons/1/10/Gnu_mailman_logo2010.png",
       "id": "http://listen.hbz-nrw.de/mailman/listinfo/lobid",
       "contactType": {
@@ -74,6 +65,15 @@
       "contactType": {
         "en": "Issue Tracker on GitHub",
         "de": "Issue-Tracker auf GitHub"
+      }
+    },
+    {
+      "type": "ContactPoint",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Freenode_logo.png",
+      "id": "irc://irc.freenode.net/lobid",
+      "contactType": {
+        "en": "IRC",
+        "de": "IRC"
       }
     }
   ],
