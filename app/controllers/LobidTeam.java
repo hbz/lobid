@@ -31,6 +31,17 @@ public final class LobidTeam extends Controller {
 	}
 
 	/**
+	 * @return The team page.
+	 */
+	/**
+	 * @param format The format, "html" or "json"
+	 * @return The team description in the requested format
+	 */
+	public static Result teamDotFormat(String format) {
+		return format.equals("html") ? team() : staticJsonld("team");
+	}
+
+	/**
 	 * Returns {@link #personAbout(String, String)}
 	 */
 	@SuppressWarnings("javadoc")

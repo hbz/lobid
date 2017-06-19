@@ -32,6 +32,7 @@ GET	/resource/Edoweb/about				controllers.Collection.resourceAboutEdoweb(id="htt
 
 # Lobid team
 GET	/team								controllers.LobidTeam.team()
+GET	/team.:format						controllers.LobidTeam.teamDotFormat(format)
 GET	/team/:id.:format					controllers.LobidTeam.getDotFormat(id, format)
 GET	/team/:id							controllers.LobidTeam.get(id)
 GET	/team/ap							controllers.LobidTeam.ap(format?="negotiate")
