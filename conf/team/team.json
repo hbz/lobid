@@ -1,0 +1,226 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "id": "@id",
+    "type": "@type",
+    "description": {
+      "@container": "@language"
+    },
+    "name": {
+      "@container": "@language"
+    },
+    "alternateName": {
+      "@container": "@language"
+    },
+    "contactType": {
+      "@container": "@language"
+    },
+    "roleName": {
+      "@container": "@language"
+    }
+  },
+  "id" : "http://lobid.org/team#!",
+  "type" : "Organization",
+  "contactPoint": [
+    {
+      "type": "ContactPoint",
+      "id": "mailto:semweb@hbz-nrw.de",
+      "image": "/assets/images/mail.png",
+      "contactType": {
+        "en": "Email",
+        "de": "E-Mail"
+      }
+    },
+    {
+      "type": "ContactPoint",
+      "image": "/assets/images/mailman.jpg",
+      "id": "http://listen.hbz-nrw.de/mailman/listinfo/lobid",
+      "contactType": {
+        "en": "Mailing List",
+        "de": "Mailingliste"
+      }
+    },
+    {
+      "type": "ContactPoint",
+      "image": "/assets/images/Twitter_logo_blue.png",
+      "id": "http://twitter.com/lobidorg",
+      "contactType": {
+        "en": "Twitter",
+        "de": "Twitter"
+      }
+    },
+    {
+      "type": "ContactPoint",
+      "image": "/assets/images/feed.png",
+      "id": "http://blog.lobid.org",
+      "contactType": {
+        "en": "Blog",
+        "de": "Blog"
+      }
+    },
+    {
+      "type": "ContactPoint",
+      "image": "/assets/images/GitHub-Mark-32px.png",
+      "id": "https://github.com/hbz/lobid/issues",
+      "contactType": {
+        "en": "Issue Tracker on GitHub",
+        "de": "Issue-Tracker auf GitHub"
+      }
+    },
+    {
+      "type": "ContactPoint",
+      "image": "/assets/images/freenode.png",
+      "id": "irc://irc.freenode.net/lobid",
+      "contactType": {
+        "en": "IRC",
+        "de": "IRC"
+      }
+    }
+  ],
+  "alternateName" : {
+    "de": "Linked-Open-Data-Gruppe des hbz",
+    "en": "hbz's Linked Open Data group"
+  },
+  "name" : {
+    "de": "Das lobid-Team",
+    "en": "The lobid team"
+  },
+  "description": {
+    "de": "lobid wird implementiert und betrieben vom <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">Arbeitsbereich Linked Open Data des hbz</a>",
+    "en": "lobid is implemented and maintained by <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">hbz's Linked Open Data group</a>"
+    },
+  "parentOrganization" : "http://lobid.org/organisations/DE-605#!",
+  "blog" : "http://blog.lobid.org",
+  "sameAs" : [ "https://twitter.com/lobidorg" ],
+  "foundingDate": "2010",
+  "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
+  "makesOffer": [
+    {
+      "id": "https://lobid.org",
+      "name": "lobid",
+      "alternateName": {
+        "de": "Dateninfrastruktur für Bibliotheken",
+        "en": "Data infrastructure for libraries"
+      }
+    },
+    {
+      "id": "https://nwbib.de",
+      "name": "NWBib",
+      "alternateName": {
+        "de": "Nordrhein-Westfälische Bibliographie",
+        "en": "Bibliography of North Rhine-Westfalia"
+      }
+    },
+    {
+      "id": "http://digitalisiertedrucke.de/",
+      "name": "Digitalisierte Drucke",
+      "alternateName": {
+        "de": "Verzeichnis digitalisierter Drucke",
+        "en": "Registry of digitised prints"
+      }
+    },
+    {
+      "id": "http://github.com/culturegraph/metafacture-ide",
+      "name": "Metafacture IDE",
+      "alternateName": {
+        "de": "Integrierte Datenverarbeitungsumgebung",
+        "en": "Integrated data processing environment"
+      }
+    }
+  ],
+  "member": [
+    {
+      "type": "Role",
+      "startDate": "2010",
+      "roleName": {
+        "de": "Projektmanager, Bibliothekar",
+        "en": "Project Manager, Librarian"
+      },
+      "member": {
+        "name": "Adrian Pohl",
+        "image" : "https://app.syncwerk.de/f/188da2e11b/?raw=1",
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2010",
+      "roleName": {
+        "de": "Softwareentwickler, Systemadministrator",
+        "en": "Software Developer, System Administrator"
+      },
+      "member": {
+        "name": "Pascal Christoph",
+        "image" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
+        "id": "http://lobid.org/team/pc#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2012",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
+      },
+      "member": {
+        "name": "Fabian Steeg",
+        "image" : "http://fsteeg.com/files/fsteeg.png",
+        "id": "http://lobid.org/team/fs#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2017",
+      "roleName": {
+        "de": "Bibliothekar",
+        "en": "Librarian"
+      },
+      "member": {
+        "name": "Christoph Ewertowski",
+        "image" : "http://lobid.org/download/ce.jpg",
+        "id": "http://lobid.org/team/ce#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2014",
+      "endDate": "2016",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
+      },
+      "member": {
+        "name": "Simon Ritter",
+        "sameAs": [ "https://github.com/SBRitter" ]
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2010",
+      "endDate": "2010",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
+      },
+      "member": {
+        "name": "Felix Ostrowski",
+        "sameAs": [ "https://twitter.com/literarymachine", "https://github.com/literarymachine" ]
+      }
+    }
+  ],
+  "location":
+    {
+      "type": "Place",
+      "address": {
+        "postalCode": "50674",
+        "streetAddress": "Jülicher Str. 6",
+        "addressLocality": "Köln",
+        "addressCountry": "DE",
+        "type": "PostalAddress"
+      },
+      "geo": {
+        "lat": "50.93410",
+        "lon": "6.93549"
+      }
+    }
+}

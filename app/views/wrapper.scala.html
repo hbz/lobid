@@ -1,0 +1,81 @@
+@* Copyright 2017 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 *@
+
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("/public", "stylesheets/lobid.css")">
+        <link rel="stylesheet" media="all" href="@routes.Assets.at("/public","stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="all" href="@routes.Assets.at("/public","stylesheets/jquery-ui.min.css")">
+        <link rel="stylesheet" media="all" href='@routes.Assets.at("/public","stylesheets/font-awesome.min.css")'>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("/public","images/favicon.png")">
+        <script src="@routes.Assets.at("/public","javascripts/jquery-1.10.2.min.js")"></script>
+        <script src="@routes.Assets.at("/public","javascripts/jquery-ui.min.js")"></script>
+        <script src="@routes.Assets.at("/public","javascripts/bootstrap.min.js")"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10">
+    </head>
+    <body onload="var q = document.getElementById('resourcesQuery'); if(q!=null){ q.focus(); };">
+        <div class="container">
+            <p/>
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container-fluid" id="header">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#lobid-nav">
+                        <span class="sr-only">@Messages("main.navbar.toggle")</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@routes.Application.index()">
+                     <span><img id="butterfly" src='@routes.Assets.at("/public","images/butterfly.png")' height="50px" /></span> lobid</a>
+                  </div>
+                  <div class="navbar-collapse collapse" id="lobid-nav">
+                    <ul class="nav navbar-nav">
+                      <li><a href="/resources">resources</a></li>
+                      <li><a href="/organisations">organisations</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                    <li><a href="@routes.Application.toggleLanguage()" title='@Messages("main.navbar.toggle_language.title")'><span class='glyphicon glyphicon-globe'></span>&nbsp;@Messages("main.navbar.toggle_language.link")</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Info"><span class="glyphicon glyphicon-info-sign"></span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="@routes.LobidTeam.team()">Team</a></li>
+                          <li><a href="mailto:semweb@@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="/api">@Messages("main.navbar.info.v1")</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h1>
+                        <img class="media-object nrw-logo pull-right" src="@routes.Assets.at("/public", "images/hbz.png")" alt="hbz">
+                        lobid <small>&mdash; @Messages("index.header.small")</small>
+                    </h1>
+                </div>
+                @content
+            </div>
+            <div class="panel panel-default footer">
+              <div class="panel-body">
+                <span class="pull-left">
+                    <img src='@routes.Assets.at("/public","images/wappen.png")' alt="NRW-Wappen"/> &nbsp;
+                    lobid | @Html(Messages("main.footer.text", "https://www.hbz-nrw.de/produkte/linked-open-data"))
+                </span>
+                <span class="pull-right">
+                    <a href="http://www.hbz-nrw.de/impressum">@Messages("main.footer.imprint")</a> | 
+                    <a href="http://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp; 
+                    <a href="http://github.com/hbz/lobid"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>&nbsp; 
+                    <a href="http://blog.lobid.org"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</a>
+                </span>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+@* Copyright 2017 Fabian Steeg, hbz. Licensed under the Eclipse Public License 1.0 *@
+
+@(json: play.api.libs.json.JsValue)
+
+@import play.api.libs.json._
+
+@text(key: String) = {
+	@Html((json\key\controllers.Application.currentLang).asOpt[String].getOrElse("--"))
+}
+
+@memberLabel(member: JsValue) = {
+	@((member \ "member" \ "name").as[String]) &mdash; @((member \ "roleName" \ controllers.Application.currentLang).as[String])
+}
+
+@wrapper("lobid - team"){
+	<h1>@text("name") <small><a title="Beschreibung als JSON-LD anzeigen" href='@routes.LobidTeam.teamDotFormat("json")'><img class='json-ld-icon' src='@routes.Assets.at("/public","images/json-ld.png")'></a></small></h1>
+
+	<p class="lead">@text("description")</p>
+
+	<p>@for(contact <- (json \ "contactPoint").as[Seq[JsValue]]) {
+		<a target="_blank" rel="nofollow" href='@((contact \ "id").as[String])'><img src='@((contact \ "image").as[String])' height="20" title='@((contact \ "contactType" \ controllers.Application.currentLang).as[String])'/></a>
+		&nbsp;
+	}</p>
+
+	<h2>@Messages("team.members")</h2>
+	@for(member <- (json \ "member").as[Seq[JsValue]]; if (member \ "member" \ "id").asOpt[String].isDefined	) {
+		<p>
+			@if((member \ "member" \ "image").asOpt[String].isDefined){
+				<img src='@((member \ "member" \ "image").as[String])' width="50" />
+			}
+			<a target="_blank" rel="nofollow" href='@((member \ "member" \ "id").asOpt[String])'>@memberLabel(member)</a>
+		</p>
+	}
+	<h2>@Messages("team.products")</h2>
+	@for(offer <- (json \ "makesOffer").as[Seq[JsValue]]) {
+		<p><a target="_blank" rel="nofollow" href='@((offer \ "id").as[String])'>@((offer \ "name").as[String])</a><br/>
+		@if(((offer \ "alternateName").asOpt[JsValue]).isDefined){@((offer \ "alternateName" \ controllers.Application.currentLang).as[String])}</p>
+	}
+}
