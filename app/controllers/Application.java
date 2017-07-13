@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -160,12 +161,12 @@ public final class Application extends Controller {
 		try {
 			List<Document> docs = search.documents();
 			long allHits = search.totalHits();
-			final Promise<ImmutableMap<ResultFormat, Result>> resultPromise =
+			final Promise<ImmutableMap<ResultFormat, Supplier<Result>>> resultPromise =
 					resultsPromise(docs, index,
 							getFieldAndFormat(formatParameter).getLeft(), allHits,
 							addQueryInfo);
 			return resultPromise.map(results -> {
-				return results.get(resultFormat);
+				return results.get(resultFormat).get();
 			});
 		} catch (IllegalArgumentException e) {
 			Logger.error(e.getMessage(), e);
@@ -173,7 +174,7 @@ public final class Application extends Controller {
 		}
 	}
 
-	private static Promise<ImmutableMap<ResultFormat, Result>> resultsPromise(
+	private static Promise<ImmutableMap<ResultFormat, Supplier<Result>>> resultsPromise(
 			final List<Document> docs, final Index index, final String field,
 			final long allHits, final boolean addQueryInfo) {
 		return Promise.promise(() -> {
@@ -212,7 +213,7 @@ public final class Application extends Controller {
 		return object;
 	};
 
-	private static ImmutableMap<ResultFormat, Result> results(
+	private static ImmutableMap<ResultFormat, Supplier<Result>> results(
 			final List<Document> documents, final Index selectedIndex,
 			final String field, long allHits, boolean addQueryInfo) {
 		/* JSONP callback support for remote server calls with JavaScript: */
@@ -226,22 +227,22 @@ public final class Application extends Controller {
 		} else
 			negotiateRes = ok(getSerializedResult(documents, selectedIndex, field,
 					allHits, addQueryInfo, request(), ser)).as(ser.getTypes().get(0));
-		final ImmutableMap<ResultFormat, Result> results =
-				new ImmutableMap.Builder<ResultFormat, Result>()
-						.put(ResultFormat.NEGOTIATE, negotiateRes)
+		final ImmutableMap<ResultFormat, Supplier<Result>> results =
+				new ImmutableMap.Builder<ResultFormat, Supplier<Result>>()
+						.put(ResultFormat.NEGOTIATE, () -> negotiateRes)
 						.put(ResultFormat.FULL,
-								withCallback(callback,
+								() -> withCallback(callback,
 										fullJsonResponse(documents, field, allHits, addQueryInfo,
 												request())))
-						.put(ResultFormat.SHORT, withCallback(callback, Json
+						.put(ResultFormat.SHORT, () -> withCallback(callback, Json
 								.toJson(new LinkedHashSet<>(Lists.transform(documents, doc -> {
 									return doc.getMatchedField();
 								})))))
-						.put(ResultFormat.INTERNAL, internalJsonResponse(documents))
+						.put(ResultFormat.INTERNAL, () -> internalJsonResponse(documents))
 						.put(ResultFormat.IDS,
-								withCallback(callback,
+								() -> withCallback(callback,
 										Json.toJson(Lists.transform(documents, jsonLabelValue))))
-						.put(ResultFormat.SOURCE, mabXml(documents)).build();
+						.put(ResultFormat.SOURCE, () -> mabXml(documents)).build();
 		return results;
 	}
 
