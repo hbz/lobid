@@ -36,12 +36,12 @@
     <div class="row-fluid">
         <div class="span6">
             <p>Type any @resourceType data to get suggestions (uses the <code>name</code> query parameter). Upon selecting a suggestion, the corresponding value will be inserted (here: @if(resultType=="short") {the name} else {the ID}). Search will return details on the selected @resourceType.</p>
-            <form method="GET" class="form-inline" action="/@resourceType"> <!-- use full URL in your code, i.e. http://lobid.org/@resourceType -->
+            <form method="GET" class="form-inline" action="/@resourceType"> <!-- use full URL in your code, i.e. https://lobid.org/@resourceType -->
                 <input type="text" class="search-@resourceType" name="@queryType" id="id" style="width:300px"/>
                 <button type="submit" class="btn">Search</button>
             </form>
             <p>This calls the <code>/@resourceType</code> endpoint with the <code>format=@resultType</code> parameter to get the suggestions. The actual search uses the <code>@queryType</code> parameter with the inserted value. See the implementation using JavaScript and jQuery UI on the right and the source of this page.</p>
-            <p>The sample on the right gets the autocomplete data from a remote URL (i.e. a different server from the one that serves the HTML) by using JSONP (use full URL in your code, i.e. <code>http://lobid.org/@resourceType</code> for the <code>url</code> attribute).</p>
+            <p>The sample on the right gets the autocomplete data from a remote URL (i.e. a different server from the one that serves the HTML) by using JSONP (use full URL in your code, i.e. <code>https://lobid.org/@resourceType</code> for the <code>url</code> attribute).</p>
             <script>
                 @sampleUsageCode(resourceType, resultType)
             </script>
@@ -59,10 +59,10 @@
     <p><span class="label label-info">v@com.typesafe.config.ConfigFactory.parseFile(new java.io.File("conf/application.conf")).resolve().getString("application.version")</span> Check our
     <a href="https://github.com/hbz/lobid/issues?labels=bug&milestone=&page=1&state=open">open bugs</a> or report a 
     <a href="https://github.com/hbz/lobid/issues/new">new issue</a> (requires GitHub login). See all our <a href="https://github.com/hbz/lobid/issues?state=open">open issues</a> on GitHub.</p>
-		<p>All endpoints use GET and support queries using the <code>id</code>, <code>name</code>, <code>q</code> (query all fields, supports <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">elasticsearch query string syntax</a>), and <code>format</code> parameters.
+		<p>All endpoints use GET and support queries using the <code>id</code>, <code>name</code>, <code>q</code> (query all fields, supports <a href="https://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">elasticsearch query string syntax</a>), and <code>format</code> parameters.
     Result formats <code>short</code>, <code>ids</code>, and <code>full</code> return JSON; use <code>format=negotiate</code> (or none), and set an accept header for different RDF formats, see details below.
     The <code>short</code> result format supports an optional modifier to specify the field to use for collecting the values. The syntax is <code>short.field</code>, see this <a id="short.field.sample" href="/resource?q=*&format=short.fulltextOnline">sample request</a>. All queries can be filtered by type using the <code>type</code> parameter, see this 
-    <a href="/subject?name=Heinsberg&type=http://d-nb.info/standards/elementset/gnd%23BuildingOrMemorial">sample request</a> (pass multiple comma-separated types for OR query). Note that you have to encode the <code>#</code> as <code>%23</code> (the hash is interpreted as a local anchor by the browser, and not sent to the server).</p>
+    <a href="/subject?name=Heinsberg&type=https://d-nb.info/standards/elementset/gnd%23BuildingOrMemorial">sample request</a> (pass multiple comma-separated types for OR query). Note that you have to encode the <code>#</code> as <code>%23</code> (the hash is interpreted as a local anchor by the browser, and not sent to the server).</p>
 		<table class="table table-striped">
 		<tr>
 			<th style="width: 10%">Parameters &rarr; <br/>&darr; Endpoint</th>
@@ -156,12 +156,12 @@
 
 	<h2 id="pagination+limits+bulk-downloads" style="padding-top: 50px; margin-top: -50px;">Pagination and Limits and Bulk Downloads</h2>
 	<p>All endpoints support pagination via <code>from</code> and <code>size</code> parameters specifying the index to start the result set from (default is 0, must be >= 0), and the size of the result set (default is 50, must be <= 100). Sample request: <a href="/organisation?name=Universität&from=10&size=5&format=ids">/organisation?name=Universität&from=10&size=5&format=ids</a>.<br/>
-However, if you want to receive all hits or get loads of data it is way faster and more coherent to use the boolean <code>scroll</code> parameter. You may even give a 8 digit date to get only the metadata of resources that changed (created or modificated) since this time. Sample request: <pre>curl --header "Accept: application/ld+json" --header "Accept-Encoding: gzip" "http://lobid.org/resource?set=nwbib&scroll=20150301"</pre></p>
+However, if you want to receive all hits or get loads of data it is way faster and more coherent to use the boolean <code>scroll</code> parameter. You may even give a 8 digit date to get only the metadata of resources that changed (created or modificated) since this time. Sample request: <pre>curl --header "Accept: application/ld+json" --header "Accept-Encoding: gzip" "https://lobid.org/resource?set=nwbib&scroll=20150301"</pre></p>
 <p>Note that the <code>format</code> parameter doesn't work when scrolling. Note also to request gzip compression to speed up getting loads of data.</p>
 
 	<h2 id="content-negotiation" style="padding-top: 50px; margin-top: -50px;">Content Negotiation</h2></a>
 	<p>To return different RDF serializations as the result format (default is JSON-LD), you can specify an accept header, e.g. for N-Triples:</p>
-	<pre>curl -L --header "Accept: text/plain" http://lobid.org/resource?id=HT002189125</pre>
+	<pre>curl -L --header "Accept: text/plain" https://lobid.org/resource?id=HT002189125</pre>
 	<p>Currently supported: @Serialization.values().map((s:Serialization) => s.name + " " + s.getTypes).mkString(", ")</p>
 
 	<h2 id="auto-suggest-examples" style="padding-top: 50px; margin-top: -50px;">Sample usage: auto suggest</h2>
