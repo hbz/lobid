@@ -93,12 +93,16 @@ public enum Hit {
 		hit = searchHit;
 		fields = searchFields;
 		field = firstExisting();
+		if (field == null) {
+			return null;
+		}
 		for (Hit hitElement : values()) {
 			if (hitElement.fieldType.isInstance(field)) {
 				return hitElement;
 			}
 		}
-		throw new IllegalArgumentException("No hit type for field: " + field);
+		Logger.debug("No hit type for field: " + field);
+		return null;
 	}
 
 	private static String firstExisting() {
@@ -122,7 +126,7 @@ public enum Hit {
 		}
 		if (fields.contains("_all"))
 			return hit.getId();
-		Logger.warn(String.format("Hit '%s' contains none of the fields: '%s'",
+		Logger.debug(String.format("Hit '%s' contains none of the fields: '%s'",
 				hit.getSource(), fields));
 		return null;
 	}
