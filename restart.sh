@@ -20,7 +20,6 @@ if [ ! $# -eq 1 ]; then
 fi
 
 REPO=$1
-ACTION=$2
 HOME="/home/sol"
 
 # it is important to set the proper locale
