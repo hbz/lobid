@@ -14,6 +14,7 @@ index.header.small = Dateninfrastruktur für Bibliotheken
 index.lead = lobid stellt Rechercheoberflächen und offene Programmierschnittstellen (APIs) zur Verfügung, die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW betrieben.
 index.resources = <a href="{0}">lobid-resources</a> bietet Zugriff auf den hbz-Verbundkatalog.
 index.organisations = <a href="{0}">lobid-organisations</a> bietet Informationen zu Gedächtnisinstitutionen im deutschsprachigen Raum.
+index.gnd = <a href="{0}">lobid-gnd</a> bietet Zugriff auf die Gemeinsame Normdatei (GND).
 
 # team
 
