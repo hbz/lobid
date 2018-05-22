@@ -7,6 +7,7 @@ main.navbar.info.v1 = Dokumentation zur überholten API 1.x
 
 main.footer.text = LOD-Dienste des <a href="{0}">hbz — Hochschulbibliothekszentrum des Landes NRW</a>
 main.footer.imprint = Impressum
+main.footer.data_protection = Datenschutz
 
 # index
 
