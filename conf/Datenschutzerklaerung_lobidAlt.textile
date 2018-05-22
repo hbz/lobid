@@ -426,14 +426,16 @@ h3. 6.5 Widerspruchs- und Beseitigungsmöglichkeit
 Daten werden nach 7 Tagen gelöscht, anonymisierte Daten werden nicht gelöscht,
 da sie keiner Person mehr zuordbar sind.
 
-h2. 8. Daten der Gemeinsamen Normdatei
+h2. 8. Daten der Gemeinsamen Normdatei und aus dem Verbundkatalog
 
 h3. 8.1 Beschreibung und Umfang der Datenverarbeitung
 
 *51* In den Diensten lobid-gnd und lobid-resources werden Daten der Gemeinsamen
 Normdatei (GND) der Deutschen Nationalbibliothek (DNB) verwendet. In
 lobid-resources sind dies Namen und Geburts- bzw. Sterbedaten. Im Dienst
-lobid-gnd werden alle Daten der GND ausgegeben.
+lobid-gnd werden alle Daten der GND ausgegeben. Aus dem Verbundkatalog
+stammen zusätzlich die Rollen, die den am Werk beteiligten Personen zugeordnet
+werden (z.B. Autor oder Fotograf).
 
 h3. 8.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
