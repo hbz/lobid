@@ -7,6 +7,7 @@ main.navbar.info.v1 = Deprecated API 1.x documentation
 
 main.footer.text = LOD services by <a href="{0}">hbz — Hochschulbibliothekszentrum des Landes NRW</a>
 main.footer.imprint = Imprint
+main.footer.data_protection = Privacy
 
 # index
 
