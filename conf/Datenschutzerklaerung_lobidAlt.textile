@@ -337,6 +337,7 @@ Daten und Informationen vom Computersystem des aufrufenden Rechners.
 Folgende Daten werden hierbei erhoben:
 * Informationen über den Browsertyp und die verwendete Version
 * Das Betriebssystem des Nutzers
+* Den Gerätetyp des Nutzers (Desktop, Notebook, Smartphone etc.)
 * Die IP-Adresse des Nutzers
 * Datum und Uhrzeit des Zugriffs
 * Websites, von denen das System des Nutzers auf unsere Internetseite gelangt 
@@ -476,7 +477,9 @@ h2. 9. Standortdaten
 
 h3. 9.1 Beschreibung und Umfang der Datenverarbeitung
 
-*56* Im Nachfolgerdienst von lobid-organisation namens "lobid-organisations(lobid-organisations)":http://lobid.org/organisations wird aufgrund der IP-Adresse der Standort geschätzt. Genutzt wird dafür die 
+*56* Im Nachfolgerdienst von lobid-organisation namens "lobid-organisations(lobid-organisations)":http://lobid.org/organisations 
+gibt es die Möglichkeit, die Suchergebnisse nach Nähe zum Nutzer zu sortieren.
+Dafür wird aufgrund der IP-Adresse der Standort geschätzt. Genutzt wird dafür die 
 Browser-API von HTML5-fähigen Browsern.
 
 h3. 9.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
@@ -486,54 +489,51 @@ h3. 9.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
 h3. 9.3 Zweck der Datenverarbeitung
 
-*58* In "lobid-organisations(lobid-organisations)":http://lobid.org/organisations wird diese Datenverarbeitung genutzt, um Suchergebnisse nach Nähe
-zum Nutzer zu sortieren. Da diese unter der gleichen Domain liegt, wird die
-Einverständnis automatisch abgefragt. Sie hat aber keine Funktion in den Diensten,
-die auf diese Datenschutzerklärung verlinken. 
+*58* In "lobid-organisations(lobid-organisations)":http://lobid.org/organisations wird diese Datenverarbeitung genutzt, 
+um Suchergebnisse nach Nähe zum Nutzer zu sortieren. Da diese unter der gleichen
+Domain liegt, wird die Einverständnis automatisch abgefragt. Sie hat aber keine
+Funktion in den Diensten, die auf diese Datenschutzerklärung verlinken. 
 
-h3. 9.4 Dauer der Speicherung
+h3. 9.4 Dauer der Speicherung; Widerspruchs- und Beseitigungsmöglichkeit
 
-*59* Das Datum wird für eine Browser-Session gespeichert. Wird der Browser
-geschlossen, löscht der Browser diese Information.
-
-h3. 9.5 Widerspruchs- und Beseitigungsmöglichkeit
-
-*60* Der Nutzer wird vom Browser gefragt, ob er die Verarbeitung von Standortdaten 
+*59* Der Nutzer wird vom Browser gefragt, ob er die Verarbeitung von Standortdaten 
 erlauben möchte. Entscheidet er sich wieder um, kann diese Einwilligung auch 
-widerrufen werden. Wird der Browser geschlossen, endet die Browser-Session und
-die Standortdaten sind nicht mehr auf dem Rechner des Nutzers gespeichert.
+widerrufen werden. Wird der Browser bzw. das Fenster geschlossen, endet die
+Browser-Session und die Standortdaten sind nicht mehr auf dem Rechner des
+Nutzers gespeichert.
 
 h2. 10. Daten der Deutschen Bibliotheksstatistik und der Deutschen ISIL-Agentur und Sigelstelle
 
 h3. 10.1 Beschreibung und Umfang der Datenverarbeitung
 
-*61* Im Dienst lobid-organisation werden die Daten der Deutschen Bibliotheksstatistik 
-und der Deutschen ISIL-Agentur und Sigelstelle verarbeitet. Hierbei handelt es sich um
-Daten über Bibliotheken, Archive und Museen. An eventuell personenbezogenen Daten sind
-dort Telefonnummer und E-Mail-Adresse der Ansprechpartner der jeweiligen Einrichtungen
-enthalten.
+*60* Im Dienst lobid-organisation werden die Daten der Deutschen Bibliotheksstatistik 
+und der Deutschen ISIL-Agentur und Sigelstelle verarbeitet. Hierbei handelt es 
+sich um Daten über Bibliotheken, Archive und Museen. An eventuell personen-
+bezogenen Daten sind dort Telefonnummer und E-Mail-Adresse der Ansprechpartner
+der jeweiligen Einrichtungen enthalten.
 
 h3. 10.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
-*62* Rechtsgrundlage für die Verarbeitung personenbezogener Daten ist Art. 6 Abs.
+*61* Rechtsgrundlage für die Verarbeitung personenbezogener Daten ist Art. 6 Abs.
 1 lit. e DSGVO. 
 
 h3. 10.3 Zweck der Datenverarbeitung
 
-*63* Die Kontaktinformationen sind nötig, um die Einrichtungen über einen nicht-postalischen
-Weg erreichen zu können.
+*62* Die Kontaktinformationen sind nötig, um die Einrichtungen über einen nicht-
+postalischen Weg erreichen zu können.
 
 h3. 10.4 Dauer der Speicherung
 
-*64* Da die Daten auch in der Zukunft benötigt werden, um den Zweck der
+*63* Da die Daten auch in der Zukunft benötigt werden, um den Zweck der
 Anwendungen zu erfüllen, werden die Daten nicht gelöscht.
 
 h3. 10.5 Widerspruchs- und Beseitigungsmöglichkeit
 
-*65* Finden Nutzer Daten, die über sie Aussagen treffen und nicht notwendig sind, um 
-den Zweck der Anwendung zu erfüllen bzw. Fehler in diesen Daten, können sie Änderungen
-bei der Deutschen ISIL-Agentur und Sigelstelle über ein "Formular(Formular ISIL- und Sigelstelle)":http://sigel.staatsbibliothek-berlin.de/aenderungen-mitteilen/ mitteilen.
-Alternativ dazu sind Kontaktmöglichkeiten bei der "Kontaktseite der Stelle(Kontakt ISIL- und Sigelstelle)":http://sigel.staatsbibliothek-berlin.de/kontakt/ möglich. 
+*64* Finden Nutzer Daten, die über sie Aussagen treffen und nicht notwendig sind, 
+um den Zweck der Anwendung zu erfüllen bzw. Fehler in diesen Daten, können sie
+Änderungen bei der Deutschen ISIL-Agentur und Sigelstelle über ein "Formular(Formular ISIL- und Sigelstelle)":http://sigel.staatsbibliothek-berlin.de/aenderungen-mitteilen/
+mitteilen. Alternativ dazu sind Kontaktmöglichkeiten bei der "Kontaktseite der
+Stelle(Kontakt ISIL- und Sigelstelle)":http://sigel.staatsbibliothek-berlin.de/kontakt/ möglich.
 Für Änderungen an den Daten der Deutschen Bibliotheksstatistik kann Kontakt über 
 die E-Mail-Adresse "dbs@hbz-nrw.de(E-Mail Deutsche Bibliotheksstatistik)":mailto:dbs@hbz-nrw.de aufgenommen werden.
 Die alten lobid-Dienste sind teilweise auf einem veralteten Stand. Da diese in 
@@ -544,12 +544,12 @@ werden wir diese natürlich vorrangig bearbeiten.
 
 h2. 10. Links zu anderen Webseiten
 
-*66* Unser Online-Angebot enthält Links zu anderen Websites. Wir haben keinen
+*65* Unser Online-Angebot enthält Links zu anderen Websites. Wir haben keinen
 Einfluss darauf, dass deren Betreiber die Datenschutzbestimmungen einhalten.
 
 h2. 11. Datensicherheit
 
-*67* Die verarbeiteten Daten sind innerhalb des hbz-Rechenzentrums gespeichert, zu
+*66* Die verarbeiteten Daten sind innerhalb des hbz-Rechenzentrums gespeichert, zu
 welchem nur ein beschränkter Mitarbeiterkreis Zutritt hat. Während der Verarbeitung
 wird die Form der Daten geändert, der Inhalt bleibt jedoch identisch. Da es 
 öffentlich zugängliche Daten sind, werden diese weiterverbreitet.
@@ -559,3 +559,4 @@ h2. 12. Aktualität und Änderung dieser Datenschutzerklärung
 |Version|Datum|Beschreibung|
 |0.1|15.05.2018|Der erste Entwurf.|
 |1.0|22.05.2018|Ergänzung Abschnitt Standortdaten. Erste offizielle Fassung.|
+|1.1|24.05.2018|Konkretisierung Standortdaten.|

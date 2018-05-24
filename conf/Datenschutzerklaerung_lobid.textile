@@ -22,11 +22,11 @@ Einrichtung die Öffentlichkeit über Art, Umfang und Zweck der von uns erhobene
 genutzten und verarbeiteten personenbezogenen Daten.
 
 Das Hochschulbibliothekszentrum NRW hat als für die Verarbeitung Verantwortlicher
-zahlreiche technische und organisatorische Maßnahmen umgesetzt, um einen möglichst
-lückenlosen Schutz der über diese Internetseite verarbeiteten personenbezogenen
-Daten sicherzustellen. Dennoch können internetbasierte Datenübertragungen
-grundsätzlich Sicherheitslücken aufweisen, sodass ein absoluter Schutz nicht
-gewährleistet werden kann.
+zahlreiche technische und organisatorische Maßnahmen umgesetzt, um einen
+möglichst lückenlosen Schutz der über diese Internetseite verarbeiteten
+personenbezogenen Daten sicherzustellen. Dennoch können internetbasierte
+Datenübertragungen grundsätzlich Sicherheitslücken aufweisen, sodass ein
+absoluter Schutz nicht gewährleistet werden kann.
 
 h2. 1. Name und Anschrift des Verantwortlichen
 
@@ -85,26 +85,27 @@ erforderlich sind.
 rechtlichen Verpflichtung erforderlich ist, der unser Unternehmen unterliegt,
 dient Art. 6 Abs. 1 lit. c DSGVO als Rechtsgrundlage.
 
-*5* Für den Fall, dass lebenswichtige Interessen der betroffenen Person oder einer
-anderen natürlichen Person eine Verarbeitung personenbezogener Daten erforderlich
-machen, dient Art. 6 Abs. 1 lit. d DSGVO als Rechtsgrundlage.
+*5* Für den Fall, dass lebenswichtige Interessen der betroffenen Person oder
+einer anderen natürlichen Person eine Verarbeitung personenbezogener Daten
+erforderlich machen, dient Art. 6 Abs. 1 lit. d DSGVO als Rechtsgrundlage.
 
 *6* Ist die Verarbeitung zur Wahrung eines berechtigten Interesses unseres
 Unternehmens oder eines Dritten erforderlich und überwiegen die Interessen,
-Grundrechte und Grundfreiheiten des Betroffenen das erstgenannte Interesse nicht,
-so dient Art. 6 Abs. 1 lit. f DSGVO als Rechtsgrundlage für die Verarbeitung.
+Grundrechte und Grundfreiheiten des Betroffenen das erstgenannte Interesse 
+nicht, so dient Art. 6 Abs. 1 lit. f DSGVO als Rechtsgrundlage für die
+Verarbeitung.
 
 h3. 3.3 Grundsätze zur Datenlöschung und Speicherdauer
 
-*7* Die personenbezogenen Daten der betroffenen Person werden gelöscht oder gesperrt,
-sobald der Zweck der Speicherung entfällt. Eine Speicherung kann darüber hinaus
-erfolgen, wenn dies durch den europäischen oder nationalen Gesetzgeber in
-unionsrechtlichen Verordnungen, Gesetzen oder sonstigen Vorschriften, denen der
-Verantwortliche unterliegt, vorgesehen wurde. Eine Sperrung oder Löschung der
-Daten erfolgt auch dann, wenn eine durch die genannten Normen vorgeschriebene
-Speicherfrist abläuft, es sei denn, dass eine Erforderlichkeit zur weiteren
-Speicherung der Daten für einen Vertragsabschluss oder eine Vertragserfüllung
-besteht.
+*7* Die personenbezogenen Daten der betroffenen Person werden gelöscht oder
+gesperrt, sobald der Zweck der Speicherung entfällt. Eine Speicherung kann
+darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen
+Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen
+Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine
+Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten
+Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine 
+Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss
+oder eine Vertragserfüllung besteht.
 
 h2. 4. Rechte der betroffenen Personen
 
@@ -144,8 +145,8 @@ Organisation übermittelt werden. In diesem Zusammenhang können Sie verlangen,
 
 h3. 4.2 Recht auf Berichtigung 
 
-*11* Sie haben ein Recht auf Berichtigung und/oder Vervollständigung gegenüber dem
-Verantwortlichen, sofern die verarbeiteten personenbezogenen Daten, die Sie
+*11* Sie haben ein Recht auf Berichtigung und/oder Vervollständigung gegenüber
+dem Verantwortlichen, sofern die verarbeiteten personenbezogenen Daten, die Sie
 betreffen, unrichtig oder unvollständig sind. Der Verantwortliche hat die
 Berichtigung unverzüglich vorzunehmen.
 
@@ -157,8 +158,8 @@ Verarbeitung der Sie betreffenden personenbezogenen Daten verlangen:
 Dauer bestreiten, die es dem Verantwortlichen ermöglicht, die Richtigkeit der
 personenbezogenen Daten zu überprüfen;
 (2)	die Verarbeitung unrechtmäßig ist und Sie die Löschung der personenbezogenen
-Daten ablehnen und stattdessen die Einschränkung der Nutzung der personenbezogenen
-Daten verlangen;
+Daten ablehnen und stattdessen die Einschränkung der Nutzung der personenbezog-
+enen Daten verlangen;
 (3)	der Verantwortliche die personenbezogenen Daten für die Zwecke der
 Verarbeitung nicht länger benötigt, Sie diese jedoch zur Geltendmachung, Ausübung
 oder Verteidigung von Rechtsansprüchen benötigen, oder
@@ -198,14 +199,14 @@ Mitgliedstaaten erforderlich, dem der Verantwortliche unterliegt.
 (6)	Die Sie betreffenden personenbezogenen Daten wurden in Bezug auf angebotene
 Dienste der Informationsgesellschaft gemäß Art. 8 Abs. 1 DSGVO erhoben.
 
-*16* Hat der Verantwortliche die Sie betreffenden personenbezogenen Daten öffentlich
-gemacht und ist er gem. Art. 17 Abs. 1 DSGVO zu deren Löschung verpflichtet, so
-trifft er unter Berücksichtigung der verfügbaren Technologie und der
-Implementierungskosten angemessene Maßnahmen, auch technischer Art, um für die
-Datenverarbeitung Verantwortlichen, die die personenbezogenen Daten verarbeiten,
-darüber zu informieren, dass Sie als betroffene Person von ihnen die Löschung
-aller Links zu diesen personenbezogenen Daten oder von Kopien oder Replikationen
-dieser personenbezogenen Daten verlangt haben.
+*16* Hat der Verantwortliche die Sie betreffenden personenbezogenen Daten
+öffentlich gemacht und ist er gem. Art. 17 Abs. 1 DSGVO zu deren Löschung
+verpflichtet, so trifft er unter Berücksichtigung der verfügbaren Technologie
+und der Implementierungskosten angemessene Maßnahmen, auch technischer Art, um
+für die Datenverarbeitung Verantwortlichen, die die personenbezogenen Daten
+verarbeiten, darüber zu informieren, dass Sie als betroffene Person von ihnen
+die Löschung aller Links zu diesen personenbezogenen Daten oder von Kopien oder
+Replikationen dieser personenbezogenen Daten verlangt haben.
 
 *17* Das Recht auf Löschung besteht nicht, soweit die Verarbeitung erforderlich ist
 (1)	zur Ausübung des Rechts auf freie Meinungsäußerung und Information;
@@ -232,8 +233,8 @@ Daten offengelegt wurden, diese Berichtigung oder Löschung der Daten oder
 Einschränkung der Verarbeitung mitzuteilen, es sei denn, dies erweist sich als
 unmöglich oder ist mit einem unverhältnismäßigen Aufwand verbunden.
 
-*19* Ihnen steht gegenüber dem Verantwortlichen das Recht zu, über diese Empfänger
-unterrichtet zu werden.
+*19* Ihnen steht gegenüber dem Verantwortlichen das Recht zu, über diese
+Empfänger unterrichtet zu werden.
 
 h3. 4.6 Recht auf Datenübertragbarkeit
 
@@ -337,18 +338,19 @@ Daten und Informationen vom Computersystem des aufrufenden Rechners.
 Folgende Daten werden hierbei erhoben:
 * Informationen über den Browsertyp und die verwendete Version
 * Das Betriebssystem des Nutzers
+* Den Gerätetyp des Nutzers (Desktop, Notebook, Smartphone etc.)
 * Die IP-Adresse des Nutzers
 * Datum und Uhrzeit des Zugriffs
 * Websites, von denen das System des Nutzers auf unsere Internetseite gelangt 
 
-*33* Die Daten werden ebenfalls in den Logfiles unseres Systems gespeichert. Eine
-Speicherung dieser Daten zusammen mit anderen personenbezogenen Daten des
+*33* Die Daten werden ebenfalls in den Logfiles unseres Systems gespeichert.
+Eine Speicherung dieser Daten zusammen mit anderen personenbezogenen Daten des
 Nutzers findet nicht statt.
 
 h3. 5.2 Rechtsgrundlage für die Datenverarbeitung 
 
-*34* Rechtsgrundlage für die vorübergehende Speicherung der Daten und der Logfiles
-ist Art. 6 Abs. 1 lit. f DSGVO.
+*34* Rechtsgrundlage für die vorübergehende Speicherung der Daten und der
+Logfiles ist Art. 6 Abs. 1 lit. f DSGVO.
 
 h3. 5.3 Zweck der Datenverarbeitung
 
@@ -362,10 +364,10 @@ verarbeitung nach Art. 6 Abs. 1 lit. f DSGVO.
 
 h3. 5.4 Dauer der Speicherung
 
-*37* In Logfiles werden personenbezogene Daten maximal sieben Tage gespeichert und 
-danach gelöscht. Eine darüber hinausgehende Speicherung ist möglich. In diesem
-Fall werden die IP-Adressen der Nutzer gelöscht oder verfremdet, sodass eine
-Zuordnung des aufrufenden Clients nicht mehr möglich ist.
+*37* In Logfiles werden personenbezogene Daten maximal sieben Tage gespeichert
+und danach gelöscht. Eine darüber hinausgehende Speicherung ist möglich. In
+diesem Fall werden die IP-Adressen der Nutzer gelöscht oder verfremdet, sodass
+eine Zuordnung des aufrufenden Clients nicht mehr möglich ist.
 
 h3. 5.5 Widerspruchs- und Beseitigungsmöglichkeit
 
@@ -433,8 +435,8 @@ bei Aktivität des Nutzers mit folgenden Daten befüllt werden:
 Speicherung der personenbezogenen Daten der Nutzer findet nur dort statt. Eine
 Weitergabe der Daten an Dritte erfolgt nicht.
 * Die Software ist so eingestellt, dass die IP-Adressen nicht vollständig
-gespeichert werden, sondern die letzten zwei Zahlen der IP-Adresse maskiert werden
-(Bsp.: 192.168.xxx.xxx). Auf diese Weise ist eine Zuordnung der gekürzten
+gespeichert werden, sondern die letzten zwei Zahlen der IP-Adresse maskiert
+werden (Bsp.: 192.168.xxx.xxx). Auf diese Weise ist eine Zuordnung der gekürzten
 IP-Adresse zum aufrufenden Rechner nicht mehr möglich.
 
 h3. 7.2 Rechtsgrundlage für die Verarbeitung personenbezogener Daten
@@ -500,26 +502,30 @@ Anwendungen zu erfüllen, werden die Daten nicht gelöscht.
 
 h3. 8.5 Widerspruchs- und Beseitigungsmöglichkeit
 
-*55* Finden Nutzer Daten, die über sie Aussagen treffen und nicht notwendig sind, um 
-den Zweck der Anwendung zu erfüllen bzw. Fehler in diesen Daten, können sie sich über 
-die E-Mail-Adresse "semweb@hbz-nrw.de(E-Mail Linked Open Data)":mailto:semweb@hbz-nrw.de an die Linked Open Data-Gruppe wenden. Weitere
-Wege zur Kontaktaufnahme finden sich unter "http://lobid.org/team(lobid-Teamseite)":http://lobid.org/team. Die Daten
-werden an die Katalogisierungsabteilung weitergeleitet, welche die Daten
-vorrangig bearbeitet. Handelt es sich um Daten, die nur von der DNB bearbeitet
-werden können, werden diese an jene weitergeleitet. Einen Tag nach der Korrektur
-in der GND bzw. im Verbundkatalog sind die Daten in den lobid-Diensten aktualisiert.
+*55* Finden Nutzer Daten, die über sie Aussagen treffen und nicht notwendig sind,
+um den Zweck der Anwendung zu erfüllen bzw. Fehler in diesen Daten, können sie
+sich über die E-Mail-Adresse "semweb@hbz-nrw.de(E-Mail Linked Open Data)":mailto:semweb@hbz-nrw.de an die Linked Open Data-
+Gruppe wenden. Weitere Wege zur Kontaktaufnahme finden sich unter 
+"http://lobid.org/team(lobid-Teamseite)":http://lobid.org/team. Die Daten werden an die Katalogisierungsabteilung
+weitergeleitet, welche die Daten vorrangig bearbeitet. Handelt es sich um Daten,
+die nur von der DNB bearbeitet werden können, werden diese an jene weitergeleitet.
+Einen Tag nach der Korrektur in der GND bzw. im Verbundkatalog sind die Daten in
+den lobid-Diensten aktualisiert.
 
 h2. 9. Standortdaten
 
 h3. 9.1 Beschreibung und Umfang der Datenverarbeitung
 
-*56* Im Dienst lobid-organisations wird aufgrund der IP-Adresse der Standort 
-geschätzt. Genutzt wird dafür die Browser-API von HTML5-fähigen Browsern.
+*56* Im Dienst lobid-organisations gibt es die Möglichkeit, die Suchergebnisse
+nach Entfernung zu sortieren. Die am nächsten gelegenen Ergebnisse werden bei
+Klick auf den Button "In der Nähe" weiter oben in der Ergebnisliste angeordnet.
+Dafür wird aufgrund der IP-Adresse der Standort geschätzt. Genutzt wird dafür
+die Browser-API von HTML5-fähigen Browsern.
 
 h3. 9.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
 *57* Rechtsgrundlage für die Verarbeitung personenbezogener Daten ist Art. 6 Abs.
-1 lit. e DSGVO. 
+1 lit. a DSGVO. 
 
 h3. 9.3 Zweck der Datenverarbeitung
 
@@ -533,9 +539,13 @@ geschlossen, löscht der Browser diese Information.
 
 h3. 9.5 Widerspruchs- und Beseitigungsmöglichkeit
 
-*60* Der Nutzer wird vom Browser gefragt, ob er die Verarbeitung von Standortdaten
-erlauben möchte. Entscheidet er sich wieder um, kann diese Einwilligung auch 
-widerrufen werden.
+*60* Der Nutzer muss in der Oberfläche von lobid-organisations auswählen, dass
+Ergebnisse nach der Nähe zu seinem Standort sortiert werden sollen. Weiterhin
+wird er vom Browser gefragt, ob er die Verarbeitung von Standortdaten erlauben
+möchte. Die Sortierung kann durch einen weiteren Klick wieder aufgehoben werden.
+Entscheidet der Nutzer nach der Erlaubnis wieder, dass die Seite seine
+Standortdaten generell nicht verarbeiten soll, kann er diese Einwilligung auch
+widerrufen.
 
 h2. 10. Daten der Deutschen Bibliotheksstatistik und der Deutschen ISIL-Agentur und Sigelstelle
 
@@ -592,3 +602,4 @@ h2. 13. Aktualität und Änderung dieser Datenschutzerklärung
 |0.2|18.05.2018|Abschnitt "Daten der Deutschen Bibliotheksstatistik und der 
 Deutschen ISIL-Agentur und Sigelstelle" hinzugefügt.|
 |1.0|22.05.2018|Angaben zu Standortdaten ergänzt. Erste Fassung, die produktiv geschaltet wird.|
+|1.1|24.05.2018|Konkretisierung Standortdaten.|
