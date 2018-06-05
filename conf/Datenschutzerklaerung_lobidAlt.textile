@@ -1,4 +1,4 @@
-h1. Datenschutzerklärung lobid – Stand 22.05.2018
+h1. Datenschutzerklärung lobid – Stand 05.06.2018
 
 Wir freuen uns sehr über Ihr Interesse an unserer Einrichtung. Unsere Datenschutz-
 erklärung dient zu Ihrer Information, ob und zu welchem Zweck personenbezogene
@@ -441,7 +441,7 @@ werden (z.B. Autor oder Fotograf).
 h3. 8.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
 *52* Rechtsgrundlage für die Verarbeitung personenbezogener Daten ist Art. 6 Abs.
-1 lit. e DSGVO. Für die Verarbeitung besonderer personenbezogener Daten nach Art.
+1 lit. f DSGVO. Für die Verarbeitung besonderer personenbezogener Daten nach Art.
 9, Abs. 1 ist Art. 9, Abs. 2j EU-DSGVO die Rechtsgrundlage.
 
 h3. 8.3 Zweck der Datenverarbeitung
@@ -451,7 +451,7 @@ Dienstleistungen anzubieten bzw. Bibliotheken die Grundlage dafür zu bieten.
 Ohne diese Daten können Autoren und andere beteiligte Personen nicht einem Werk
 zugeordnet bzw. unterschieden werden. Gleiches gilt für das Setzen von
 Schlagwörtern. In diesen Zwecken liegt auch unser berechtigtes Interesse nach
-Art. 6 Abs. 1 lit. e DSGVO bzw. Art. 9, Abs. 2j EU-DSGVO.
+Art. 6 Abs. 1 lit. f DSGVO bzw. Art. 9, Abs. 2j EU-DSGVO.
 
 h3. 8.4 Dauer der Speicherung
 
@@ -484,23 +484,24 @@ Browser-API von HTML5-fähigen Browsern.
 
 h3. 9.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
-*57* Rechtsgrundlage für die Verarbeitung personenbezogener Daten ist Art. 6 Abs.
-1 lit. e DSGVO.
+*57* Rechtsgrundlage für die Verarbeitung von Standortdaten ist Art. 6 Abs.
+1 lit. f DSGVO.
 
 h3. 9.3 Zweck der Datenverarbeitung
 
-*58* In "lobid-organisations(lobid-organisations)":http://lobid.org/organisations wird diese Datenverarbeitung genutzt, 
-um Suchergebnisse nach Nähe zum Nutzer zu sortieren. Da diese unter der gleichen
-Domain liegt, wird die Einverständnis automatisch abgefragt. Sie hat aber keine
-Funktion in den Diensten, die auf diese Datenschutzerklärung verlinken. 
+*58* In der https-Fassung von "lobid-organisations(lobid-organisations)":https://lobid.org/organisations 
+wird diese Datenverarbeitung genutzt, um Suchergebnisse nach Nähe zum Nutzer zu
+sortieren. Da diese unter der gleichen Domain liegt, wird die Einverständnis
+automatisch abgefragt. Sie hat aber keine Funktion in den Diensten, die auf
+diese Datenschutzerklärung verlinken.
 
 h3. 9.4 Dauer der Speicherung; Widerspruchs- und Beseitigungsmöglichkeit
 
 *59* Der Nutzer wird vom Browser gefragt, ob er die Verarbeitung von Standortdaten 
-erlauben möchte. Entscheidet er sich wieder um, kann diese Einwilligung auch 
-widerrufen werden. Wird der Browser bzw. das Fenster geschlossen, endet die
-Browser-Session und die Standortdaten sind nicht mehr auf dem Rechner des
-Nutzers gespeichert.
+erlauben möchte. Stimmt er zu und entscheidet er sich wieder um, kann diese
+Einwilligung auch widerrufen werden. Wird der Browser bzw. das Fenster
+geschlossen, endet die Browser-Session und die Standortdaten sind nicht mehr auf
+dem Rechner des Nutzers gespeichert.
 
 h2. 10. Daten der Deutschen Bibliotheksstatistik und der Deutschen ISIL-Agentur und Sigelstelle
 
@@ -515,7 +516,7 @@ der jeweiligen Einrichtungen enthalten.
 h3. 10.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
 *61* Rechtsgrundlage für die Verarbeitung personenbezogener Daten ist Art. 6 Abs.
-1 lit. e DSGVO. 
+1 lit. f DSGVO.
 
 h3. 10.3 Zweck der Datenverarbeitung
 
@@ -560,3 +561,4 @@ h2. 12. Aktualität und Änderung dieser Datenschutzerklärung
 |0.1|15.05.2018|Der erste Entwurf.|
 |1.0|22.05.2018|Ergänzung Abschnitt Standortdaten. Erste offizielle Fassung.|
 |1.1|24.05.2018|Konkretisierung Standortdaten.|
+|1.2|05.06.2018|Aktualisierung Paragraphen.|
