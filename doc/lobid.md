@@ -1,39 +1,28 @@
-# Lobid
+# Lobid – Dateninfrastruktur für Bibliotheken
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Lobid API 2.0: Why and how](#lobid-api-20-why-and-how)
-    - [Introduction: The Lobid API](#introduction-the-lobid-api)
-    - [Architecture: from horizontal layers to vertical slices](#architecture-from-horizontal-layers-to-vertical-slices)
-    - [JSON-LD: an RDF serialization, or JSON with context](#json-ld-an-rdf-serialization-or-json-with-context)
-    - [User interfaces](#user-interfaces)
-- [Which vocabularies to use for bibliographic descriptions?](#which-vocabularies-to-use-for-bibliographic-descriptions)
-    - [A grown application profile](#a-grown-application-profile)
-    - [Finding & choosing RDF properties/classes](#finding-&-choosing-rdf-propertiesclasses)
-    - [Some examples](#some-examples)
-    - [The result](#the-result)
-- [Documenting the lobid API, part I: What to document?](#documenting-the-lobid-api-part-i-what-to-document)
-    - [The API](#the-api)
-    - [What to document?](#what-to-document)
-- [Documenting the lobid API, part I: How to document?](#documenting-the-lobid-api-part-i-how-to-document)
-    - [High-level documentation of the dataset](#high-level-documentation-of-the-dataset)
-    - [Documenting the API](#documenting-the-api)
-    - [Documentation by example](#documentation-by-example)
-- [lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine](#lobid-gnd-%E2%80%93-eine-schnittstelle-zur-gemeinsamen-normdatei-f%C3%BCr-mensch-und-maschine)
-    - [Die Benutzeroberfläche](#die-benutzeroberfl%C3%A4che)
-    - [Datengenerierung und Anreicherung](#datengenerierung-und-anreicherung)
-    - [Web-API](#web-api)
-    - [Rückmeldungen erwünscht](#r%C3%BCckmeldungen-erw%C3%BCnscht)
-- [lobid-gnd: Suche und Navigation](#lobid-gnd-suche-und-navigation)
-- [lobid-gnd: Formulierung komplexer Suchanfragen](#lobid-gnd-formulierung-komplexer-suchanfragen)
-    - [Query-Grundlagen](#query-grundlagen)
+- [Überblick](#%C3%BCberblick)
+    - [Einführung: Die Lobid-API](#einf%C3%BChrung-die-lobid-api)
+    - [Architektur: von horizontalen Schichten zu vertikalen Schnitten](#architektur-von-horizontalen-schichten-zu-vertikalen-schnitten)
+    - [JSON-LD: eine RDF-Serialisierung oder JSON mit Kontext](#json-ld-eine-rdf-serialisierung-oder-json-mit-kontext)
+    - [Benutzerschnittstellen](#benutzerschnittstellen)
+- [Vokabulare](#vokabulare)
+    - [Ein gewachsenens Applikationsprofil](#ein-gewachsenens-applikationsprofil)
+    - [RDF: Properties und Klassen suchen und auswählen](#rdf-properties-und-klassen-suchen-und-ausw%C3%A4hlen)
     - [Beispiele](#beispiele)
-- [lobid-gnd: Bulk Downloads, OpenRefine-API und mehr](#lobid-gnd-bulk-downloads-openrefine-api-und-mehr)
-    - [Zufälliges Bild auf der Startseite](#zuf%C3%A4lliges-bild-auf-der-startseite)
-    - [Bulk Downloads](#bulk-downloads)
-    - [OpenRefine Reconciliation API](#openrefine-reconciliation-api)
+    - [Ergebnis](#ergebnis)
+- [Dokumentation](#dokumentation)
+    - [Die API](#die-api)
+    - [Was dokumentieren?](#was-dokumentieren)
+    - [Wie dokumentieren?](#wie-dokumentieren)
+- [Fallstudie: lobid-gnd](#fallstudie-lobid-gnd)
+    - [Eine Schnittstelle zur GND für Mensch und Maschine](#eine-schnittstelle-zur-gnd-f%C3%BCr-mensch-und-maschine)
+    - [Suche und Navigation](#suche-und-navigation)
+    - [Formulierung komplexer Suchanfragen](#formulierung-komplexer-suchanfragen)
+    - [Bulk Downloads, OpenRefine-API und mehr](#bulk-downloads-openrefine-api-und-mehr)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -41,9 +30,9 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Lobid API 2.0: Why and how
+# Überblick
 
-## Introduction: The Lobid API
+## Einführung: Die Lobid-API
 
 [Lobid](http://lobid.org) provides uniform access to different library-related data via a web-based application programming interface (API) that serves JSON for linked data (JSON-LD):
 
@@ -53,7 +42,7 @@ The idea is to decouple applications that make use of the data from specific dat
 
 After the initial release of the API in 2013 we started [gathering improvements](https://github.com/hbz/lobid/issues/1) that would not be compatible with the released version, as a preparation for a future API 2.0 release. With the upcoming launch of our 2.0 APIs, we want to revisit these improvements, and describe how we implemented them.
 
-## Architecture: from horizontal layers to vertical slices
+## Architektur: von horizontalen Schichten zu vertikalen Schnitten
 
 The implementation of the 1.x system was a classical layered system: we had one repo that implemented the backend, which included data transformations and storage for all datasets, and one repo that implemented the API and frontend for all datasets. All datasets shared one Elasticsearch cluster, and all APIs and UIs ran in the same process.
 
@@ -65,7 +54,7 @@ So for the 2.0 system, we sliced the system boundaries to [vertical, self contai
 
 Combining these modules, we still get a large API area, and a large UI, but each part of the API and UI is encapsuled in its own module, which deals with one dataset, and can be understood, changed, and deployed independently.
 
-## JSON-LD: an RDF serialization, or JSON with context
+## JSON-LD: eine RDF-Serialisierung oder JSON mit Kontext
 
 JSON-LD is a W3C recommendation for a JSON-based linked data serialization. There are two ways to view JSON-LD: as an RDF serialization (like N-Triples, Turtle, or RDF-XML), or as a way to use JSON for linking data. This is reflected in the [JSON-LD spec](https://www.w3.org/TR/json-ld/), which both states that JSON-LD is "usable as RDF", and that it is "designed to be usable directly as JSON, with no knowledge of RDF". Regular JSON becomes serializable as RDF by [attaching a context](https://www.w3.org/TR/json-ld/#the-context).
 
@@ -194,15 +183,15 @@ Like for the creation of the JSON-LD in general, the implementation for adding t
 
 A key take away from our experience with JSON-LD is that JSON-LD can be used and produced very differently. How it's created has major effects on how it can be processed, and on how useful it appears to developers with different backgrounds. While a pure RDF serialization as in our 1.x API might be perfectly usable for developers working on the RDF model anyway, it can alienate web developers familiar with JSON. This variety in what JSON-LD actually looks like provides a challenge in talking about the usefulness of JSON-LD. At the same time this is JSON-LD's unique strength, being both a JSON-based RDF serialization, and a simple way to link JSON data.
 
-## User interfaces
+## Benutzerschnittstellen
 
 In addition to these API and data changes, [Lobid](http://lobid.org) 2.0 provides improved user interfaces. While the original service only had rudimentary table views for single records and search queries, the new services provide full featured search interfaces including map based visualizations and faceted search.
 
-# Which vocabularies to use for bibliographic descriptions?
+# Vokabulare
 
 Every Linked Data application builds upon vocabularies. But which ones contain the properties and classes needed for bibliographic descriptions? The topic of this blog post is how we choose specific vocabularies, properties and classes for [lobid-resources](http://lobid.org/resources), what patterns stand behind our choices and the reasons for them.
 
-## A grown application profile
+## Ein gewachsenens Applikationsprofil
 
 In the very beginning of lobid (i.e. 2010) one specific bibliographic RDFS vocabulary or OWL ontology that catered to all our needs did not exist. This is even more true today as our Linked Data publication carries much more information than some years ago. Thus, we either needed to create our own ontology or create an application profile based on a number of different vocabularies. We opted for vocabulary reuse as this approach promised to increase interoperability with other linked data sets. This benefit hasn't manifested itself yet, although we also have contributed to the [Gruppe Titeldaten der DINI-AG KIM](https://wiki.dnb.de/display/DINIAGKIM/Titeldaten+Gruppe)'s work on defining a common application profile for Linked Library Data in German-speaking countries.
 
@@ -210,7 +199,7 @@ Only when we could not find existing properties or classes that fit our purpose 
 
 For six years our used properties and classes developed rather organically and there was no well thought-out, documented strategy for chosing our properties and classes. This changed when we worked on the relaunch of the lobid API. We had to add and replace a lot of properties and finally assessed all properties and classes used in lobid in order to make our application profile as consistent as possible.
 
-## Finding & choosing RDF properties/classes
+## RDF: Properties und Klassen suchen und auswählen
 
 For adding labels and variant names of a resource, we chose the `rdfs:label` and `skos:altLabel` as RDFS and SKOS are two widely-used base vocabularies. Typing of linked entities from the Integrated Authority File (GND) is done using the [GND Ontology](http://d-nb.info/standards/elementset/gnd).
 
@@ -226,7 +215,7 @@ Regarding the other elements, the workflow for finding the right thing to reuse 
 
 The ranking takes into account different aspects of vocabularies, like: How mature is the vocabulary? Is it well known and does it have a considerable user group? How stable is a vocabulary? Criteria for exclusion are whether vocabulary URIs actually resolve and deliver RDF.
 
-## Some examples
+## Beispiele
 
 To get into more detail: DC is at the first place, simply because it’s a widely adopted standard for basic information about resources.
 
@@ -240,7 +229,7 @@ In specific cases we draw properties/classes from other sources, for example usi
 
 Finally, we create properties and classes in our own _lobid vocab_ if other relevant vocabularies don't resolve properly, aren't available in RDF or if there is no existing vocabulary providing the necessary means at all. This was the case for 11 classes and 18 properties, e.g. when associating isPartOf relations of a resource to a series or multi-volume work with the volume number (see  [this issue](https://github.com/hbz/lobid-vocabs/issues/39)) or when expressing dataset-specific information like the internal identifier. lobid-vocab can be found at http://purl.org/lobid/lv and is maintained on [GitHub](https://github.com/hbz/lobid-vocabs/blob/master/lobid-vocab.ttl). For convenience it is written in Turtle.
 
-## The result
+## Ergebnis
 
 Here is an overview over all vocabularies we currently use and how much classes/properties are taken from them:
 
@@ -267,14 +256,14 @@ If you want to know which concrete properties and classes we use, take a look at
 
 If you have comments or suggestions for improvement, we would be interested to hear them. 
 
-# Documenting the lobid API, part I: What to document?
+# Dokumentation
 
 The relaunch of lobid-resources and lobid-organisations is scheduled for the end of March. This is an ideal opportunity to improve our documentation. In a series of two blog posts we will examine the basic questions that came up in the process of creating and thinking about documentation for a search API:
 
 1. What should we write documentation about?
 2. How should we provide documentation? 
 
-## The API
+## Die API
 
 Approaching the first question, let's start with a closer look at the lobid API, what it offers and how.
 
@@ -293,7 +282,7 @@ So we have two services to document. These services currently are read-only, i.e
 
 As its underlying technology, lobid uses [Elasticsearch](https://www.elastic.co/products/elasticsearch), a Lucene-based search engine. The JSON-LD resulting from the transformation process is indexed in Elasticsearch and can be queried by anybody using the [Lucene query syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). We are offering some additional parameters in our web application – implemented with the [Play framework](https://www.playframework.com/) – to simplify specific kinds of searches.
 
-## What to document?
+## Was dokumentieren?
 
 Following from the description above, there are different aspects of the API and the data it provides that may be worthy of documentation. Let's take a look at them, from most to least prioritized in our documentation process.
 
@@ -321,11 +310,11 @@ Beyond the identification of the data sources, some people want to know from whi
 
 In the upcoming post we will take a look at how we plan to provide documentation for the different aspects of the lobid API.
 
-# Documenting the lobid API, part I: How to document?
+## Wie dokumentieren?
 
 As outlined in [part I](http://blog.lobid.org/2017/02/23/api-documentation-1.html), there are different aspects of an API you need to take into account when working on the documentation: the dataset as a whole, the API calls and response structure, RDF properties and classes, provenance information. In this post we want to share how we approached their documentation for the two services [lobid-resources](https://lobid.org/resources/) and [lobid-organisations](https://lobid.org/organisations/), using lobid-organisations as primary example.
 
-## High-level documentation of the dataset
+### High-level documentation of the dataset
 
 To give people (as well as machines) a quick overview over the dataset that is provided via the API, we mostly followed the W3C's [Data on the Web Best Practices recommendation](https://www.w3.org/TR/dwbp/#metadata). The result is a [JSON-LD file](http://lobid.org/organisations/dataset.jsonld) describing the dataset, as well as a human-readable [HTML version](http://lobid.org/organisations/dataset) of the same information. Note that unlike the W3C recommendation, which uses DC Terms for its examples, we decided to use schema.org properties and classes where possible.
 
@@ -333,7 +322,7 @@ To give people (as well as machines) a quick overview over the dataset that is p
 
 HTML-version of the lobid-organisations data set description
 
-## Documenting the API
+### Documenting the API
 
 The API documentation ([lobid-organisations](http://lobid.org/organisations/api), [lobid-resources](http://lobid.org/organisations/api)) introduces basic API request concepts by providing example queries, expands these with some advanced queries on nested fields, and provides details for tricky cases like querying for URLs (which require escaping of special characters). For a full reference on the supported query syntax, we link to the relevant Lucene documentation.
 
@@ -341,7 +330,7 @@ The documentation describes the supported response content types and provides sa
 
 For the lobid-organisations documentation, we finally describe its specific functionality, like location based queries, CSV export, and OpenRefine reconciliation support.
 
-## Documentation by example
+### Documentation by example
 
 When we try to get an understanding of a schema and how it is used, we quickly find ourselves looking out for examples. But examples are often secondary parts of documentation, if given at all. It is common practice to use what can be called a "descriptive approach" of documenting a vocabulary or an application profile by listing elements in tables – often contained within a PDF – and describing their different aspects in various columns.
 
@@ -349,7 +338,7 @@ schema.org is an exception in that it tries to provide examples. But even in sch
 
 We believe that examples should be an integral part of documentation, while we deem page-long tables listing elements of a metadata schema as not very helpful and rather annoying. So we thought about how to put the example in the center of documentation following the bold claim that "[All documentation should be built around examples](https://twitter.com/acka47/status/791271448245637120)".
 
-### Using web annotation tools for API documentation
+#### Using web annotation tools for API documentation
 
 A [blog post on API documentation from 2010](https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12) says about examples:
 
@@ -376,7 +365,7 @@ At [http://lobid.org/organisations/api]([http://lobid.org/organisations/api]) yo
 
 Example annotation on the "type" key
 
-### Benefits
+#### Benefits
 
 The examples taken for documentation should at best be live data from production. Thus, if something changes on the data side, the example – and with it the documentation – automatically updates. For example, if the value of a field changes, the documentation will automatically show the new data. If a specific field was removed in the data, and therefore in the example, the corresponding hypothes.is annotation becomes an "orphan".
 
@@ -384,11 +373,13 @@ We hope that this documentation approach based on annotation of examples is more
 
 We are curious what you think about this documentation approach. Let us know by adding an annotation to the whole post ("page note") or by annotating specific parts.
 
-# lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine
+# Fallstudie: lobid-gnd
+
+## Eine Schnittstelle zur GND für Mensch und Maschine
 
 Wie im [letzten Beitrag](http://blog.lobid.org/2018/03/20/gnd-class-hierarchy.html) geschrieben, entwickeln wir seit einiger Zeit die neue Version des lobid-Normdatendienstes *lobid-gnd*, erreichbar über <a href="https://lobid.org/gnd">https://lobid.org/gnd</a>. In der Version 1.x wurden GND-Entitäten noch über den `/subject`-Endpoint angeboten und es gab einen Endpoint nur für die GND-Personen (`/person`). Jetzt gibt es Zugriff auf alle GND-Entitäten über [https://lobid.org/gnd](https://lobid.org/gnd). Noch befindet sich der Dienst im beta-Status, allerdings sind wir kurz davor, mit lobid-gnd in Produktion zu gehen. Das nehmen wir zum Anlass, um hier einen Einblick in die Funktionsweise von lobid-gnd zu geben.
 
-## Die Benutzeroberfläche
+### Die Benutzeroberfläche
 
 ![Screenshot](images/20180601_lobid-gnd-autosuggest.png "lobid-gnd Suchvorschläge")
 
@@ -417,13 +408,13 @@ Im Tab "Beziehungen" gibt es eine anschauliche Repräsentation der GND-internen 
 
 Das Piktogramm <img src="http://lobid.org/gnd/assets/images/json-ld.png" alt="JSON-LD-Piktogramm" style="width:32px !important;height:32px !important;"> verweist auf die dem Eintrag zugrundeliegenden strukturierten Daten im Format JSON-LD. Im folgenden wird die Herkunft, Aktualität und Struktur dieser Daten erläutert.
 
-## Datengenerierung und Anreicherung
+### Datengenerierung und Anreicherung
 
 lobid-gnd ist – neben seiner Funktion als Endnutzerschnittstelle – auch eine Maschinenschnittstelle zur GND. Die Endnutzerschnittstelle basiert auf HTML für die Ansicht im Browser, aber ebenso liefern alle HTTP-GET-Anfragen auf Wunsch JSON(-LD) für die maschinelle Verarbeitung etwa durch Anwendungsentwickler. Bevor wir aber näher auf die Web-API (_Application Programming Interface_, deutsch: Anwendungsschnittstelle) eingehen, möchten wir zunächst beschreiben, wie und in welcher Form die GND-Daten indexiert werden.
 
 Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalbliothek (DNB) [bereitgestellt](http://www.dnb.de/DE/Service/DigitaleDienste/LinkedData/linkeddata_node.html) werden. Das hbz hat Zugriff auf eine OAI-PMH-Schnittstelle der DNB, über die täglich Updates der Daten geholt werden, um Aktualität zu gewährleisten. Diese Daten werden dann für lobid-gnd mit einigen Anpassungen nach JSON-LD konvertiert. Für Details siehe etwa die Tickets [#1](https://github.com/hbz/lobid-gnd/issues/1), [#2](https://github.com/hbz/lobid-gnd/issues/2), [#3](https://github.com/hbz/lobid-gnd/issues/3), [#24](https://github.com/hbz/lobid-gnd/issues/24), [#69](https://github.com/hbz/lobid-gnd/issues/69), [#101](https://github.com/hbz/lobid-gnd/issues/101). Zum Teil waren die Anpassungen durch Inkonsistenzen in den Ausgangsdaten nötig, was wir zum Anlass genommen haben, Verbesserungen vorzuschlagen (u.a. [auf der GND-Ontology-Mailingliste](https://lists.dnb.de/pipermail/gnd-ontology/2017-July/000093.html)).
 
-### Der JSON-LD-Kontext
+#### Der JSON-LD-Kontext
 
 Die meiste Arbeit zur Optimierung der Datenstruktur übernimmt der JSON-LD-Kontext unter [https://lobid.org/gnd/context.jsonld](https://lobid.org/gnd/context.jsonld). Er bewirkt unter anderem folgende Dinge:
 
@@ -431,7 +422,7 @@ Die meiste Arbeit zur Optimierung der Datenstruktur übernimmt der JSON-LD-Konte
 - Mit Einträgen wie `"AuthorityResource": "gnd:AuthorityResource"` werden Typen (`type`) im JSON nicht als umständliche URI, sondern als einfacher String angezeigt, so dass die Daten auch für Entwickler leicht verständlich sind, die bisher nicht viel mit Linked Data gearbeitet haben. 
 - Mittels `"@container": "@set"` wird festgelegt, dass bis auf wenige Ausnahmen alle Properties ein Array als Wert haben, auch wenn es nur ein Element als Wert gibt. Dadurch ist die Datenstruktur homogener und vorhersagbarer. Dies spielt etwa für die Indexierung in Elasticsearch eine Rolle, da hier ein bestimmtes Feld immer den gleichen Datentypen (z.B. Array) haben muss. Auch bei der Nutzung der API erleichtert dies die Verarbeitung, da für ein bestimmtes Feld immer von einem identischen Typ ausgegangen werden kann. Im Zusammenspiel mit der Option [compactArrays](https://json-ld.org/spec/latest/json-ld-api/#dom-jsonldoptions-compactarrays) in JSON-LD ermöglicht dies eine gezielte Konfiguration einzelner Felder.
 
-### Framing
+#### Framing
 
 Außerdem nutzen wir einen einfachen [JSON-LD Frame](https://json-ld.org/spec/latest/json-ld-framing/), um das JSON in eine hierarchische JSON-Struktur mit einem Wurzelelement zu bringen. Der Frame ist denkbar einfach:
 
@@ -443,7 +434,7 @@ Außerdem nutzen wir einen einfachen [JSON-LD Frame](https://json-ld.org/spec/la
 }
 ```
 
-### Homogenisierung von Typen und Label-Properties
+#### Homogenisierung von Typen und Label-Properties
 
 Damit das Framing bei jeder GND-Entität funktioniert, muss allen Entitäten der Typ `AuthorityResource` zugewiesen sein. Hier kommen wir zum Punkt, wo wir die Daten der DNB ergänzen, um bestimmte Funktionalitäten zu ermöglichen. Das von der DNB gelieferte [RDF zum Eintrag von Hannah Arendt](https://d-nb.info/gnd/11850391X/about/lds) enthält folgende Informationen (in Turtle-Notation):
 
@@ -476,7 +467,7 @@ Für eine einheitliche Abfrage der Ansetzungsformen aller GND-Entitäten in eine
 }
 ```
 
-### Labels für verlinkte Ressourcen
+#### Labels für verlinkte Ressourcen
 
 Im JSON-LD wird zu jeder in Beziehung gesetzten GND-Ressource sowie zu den GND-Sachgruppen und Ländercodes die entsprechende Ansetzungsform wie in den anderen lobid-Diensten als `label` mitgeliefert. Beim Eintrag zu Hannah Arendt gibt es unter anderen einen Link auf den Sterbeort, auf verschiedene Berufe/Beschäftigungen, auf drei GND-Sachgruppen und auf verwandte Personen. Wo im RDF der GND nur URIs zu finden sind, sieht es in lobid-gnd wie folgt aus:
 
@@ -517,7 +508,7 @@ Im JSON-LD wird zu jeder in Beziehung gesetzten GND-Ressource sowie zu den GND-S
 
 Dies ermöglicht es API-Nutzer/innen auf einfache Weise, menschenlesbare Labels in Anwendungsoberflächen anzuzeigen anstatt bloße URIs. Es macht zudem die Suche nach Einträgen mit diesen Labels (z.B. _Schriftsteller_) überhaupt erst möglich wie auch Performance-kritische Anwendungsfälle, bei denen zusätzliche Lookups zu Ermittlung der Labels nicht praktikabel wären. So verwendet etwa die oben beschriebene Vorschlagsfunktion die Labels zum schnellen Auffinden des gesuchten Eintrags.
 
-### Anreicherung mit Links und Bildern aus EntityFacts
+#### Anreicherung mit Links und Bildern aus EntityFacts
 
 Neben dem GND-RDF stellt die DNB mit [EntityFacts](http://www.dnb.de/DE/Service/DigitaleDienste/EntityFacts/entityfacts_node.html) einen Dienst bereit, der einfaches JSON-LD zu Personen, Körperschaften und Geographika aus der GND anbietet, angereichert um Links zu anderen Datenanbietern (Wikidata, ORCID, BnF etc.) sowie zu Abbildungen einer GND-Entität auf Wikimedia Commons. Die Bereitstellung eines [Dumps](https://twitter.com/junicatalo/status/976086235541397504) der EntityFacts-Daten seitens der DNB hat uns dazu ermutigt, diese zusätzlichen Informationen zu ergänzen. Für Details zur Umsetzung siehe [Ticket #69](https://github.com/hbz/lobid-gnd/issues/69). Im Beispiel Hannah Arendt sind dies unter anderem folgende Informationen:
 
@@ -558,7 +549,7 @@ Neben dem GND-RDF stellt die DNB mit [EntityFacts](http://www.dnb.de/DE/Service/
 
 Mit diesen Anreicherungen kann auf der Basis von Identifikatoren Dritter in lobid-gnd gesucht werden, etwa anhand einer [ORCID](http://lobid.org/gnd/search?q=%220000-0002-7613-4123%22) oder eines [ISNI](http://lobid.org/gnd/search?q=%220000000114476112%22). Mit den Bildern können Einträge wie z.B. Autorenseiten illustriert werden. Wobei zu beachten ist, dass die Attributions- und Lizenzinformationen zu den Bildern nicht mitgeliefert werden, sondern von der Wikimedia Commons API geladen werden müssen. Zur Umsetzung siehe z.B. [diesen Kommentar](https://github.com/hbz/lobid-organisations/issues/321#issuecomment-285366696) und unsere [aktuelle Implementierung](https://github.com/hbz/lobid-gnd/blob/580365da19ae5b3264376289480d836adc8894c4/app/controllers/HomeController.java#L355).
 
-## Web-API
+### Web-API
 
 Das im vorherigen Abschnitt beschriebene JSON-LD indexieren wir in einen [Elasticsearch](https://www.elastic.co/de/products/elasticsearch)-Suchmaschinenindex und bieten die Elasticsearch-Abfragesprache für Suchanfragen und zum Filtern an. Somit sind nützlichen Elasticsearch-Funktionen für interessierte Nutzer verfügbar wie z.B. Unterstützung der [Lucene Query Language](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) und exists-Abfragen. Eine Dokumentation der Elasticsearch `query_string` DSL findet sich [hier](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html). Darauf aufsetzend bieten wir auch einen [Parameter für Auto-Suggest](http://lobid.org/gnd/api#auto-complete), dessen Rückgabefelder bei Bedarf angepasst werden können.
 
@@ -570,11 +561,11 @@ Für eine detaillierte API-Beschreibung verweisen wir auf die in Entstehung befi
 - ["Kleinräumige Geografika" innerhalb von Berlin](http://lobid.org/gnd/search?q=geographicAreaCode.id%3A%22http%3A%2F%2Fd-nb.info%2Fstandards%2Fvocab%2Fgnd%2Fgeographic-area-code%23XA-DE-BE%22+AND+type%3ANameOfSmallGeographicUnitLyingWithinAnotherGeographicUnit)
 
 
-## Rückmeldungen erwünscht
+### Rückmeldungen erwünscht
 
 lobid-gnd möchte die GND als [Linked Open Usable Data](https://www.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud) anbieten. Die Daten sollen einfach zu nutzen sein, für Anwendungsentwickler/innen über die API und für Endnutzer/innen über eine intuitive Oberfläche. Wir freuen uns über jegliche Rückmeldungen, seien es Verbesserungsvorschläge, Bug-Meldungen, Lobhudeleien oder Verrisse. Bitte teilen Sie uns über Anmerkungen zu diesem Beitrag mit hypothes.is, per E-Mail oder Twitter mit, wie sie die Daten gerne nutzen würden, welche Funktionen Ihnen fehlen oder wo Sie einen Bug entdeckt haben.
 
-# lobid-gnd: Suche und Navigation
+## Suche und Navigation
 
 Dieser Artikel bietet einen Überblick zur Suche und Navigation in [lobid-gnd](http://lobid.org/gnd). Die Startseite von lobid-gnd führt auf die einfache Suchoberfläche:
 
@@ -624,15 +615,15 @@ Die visuelle Darstellung im Tab "Beziehungen" erlaubt ebenso eine Navigation zu 
 
 ![http://lobid.org/gnd/4393546-1](images/lobid-gnd-suche/7-2-details-kante.png)
 
-# lobid-gnd: Formulierung komplexer Suchanfragen
+## Formulierung komplexer Suchanfragen
 
 Im [vorherigen Beitrag](http://blog.lobid.org/2018/07/03/lobid-gnd-suche.html) haben wir bereits die Oberfläche von [lobid-gnd](https://lobid.org/gnd) und ihre Funktionen beschrieben. Die API ermöglicht aber auch komplexere Abfragen, für die man sich ein wenig mit den zugrundeliegenden Datenstrukturen vertraut machen muss. Dies soll in diesem Beitrag an einigen Beispielen ausgeführt werden.
 
-## Query-Grundlagen
+### Query-Grundlagen
 
 Bevor wir die Suchmöglichkeiten an einigen Beispielen illustrieren, werden zunächst einige generelle Informationen zur Suche geliefert.
 
-### Eingabe
+#### Eingabe
 
 Alle Abfragen können über das Suchfeld auf der lobid-gnd-Seite eingegeben werden:
 
@@ -646,14 +637,14 @@ Oder auf der Kommandozeile via curl:
 
 <small>`$ curl "http://lobid.org/gnd/search?q=Dom+K%C3%B6ln"`</small>
 
-### Default-Sucheinstellungen & boolesche Operatoren
+#### Default-Sucheinstellungen & boolesche Operatoren
 
 Standardmäßig geht eine im Suchfenster angestoßene Suche über alle Felder. Mehrere Suchterme werden dabei per default mit einem booleschen `AND` verknüpft. Boolesche Operatoren lassen sich aber auch passgenau für den jeweiligen Zweck angeben. Beispiele:
 
 - [Dom UND (Aachen ODER Köln)](http://lobid.org/gnd/search?q=Dom+AND+(Aachen OR Köln))
 - [Geographika in (Äthiopien ODER Eritrea)](http://lobid.org/gnd/search?q=type%3APlaceOrGeographicName+AND+geographicAreaCode.id%3A%28%22http%3A%2F%2Fd-nb.info%2Fstandards%2Fvocab%2Fgnd%2Fgeographic-area-code%23XC-ET%22+OR+%22http%3A%2F%2Fd-nb.info%2Fstandards%2Fvocab%2Fgnd%2Fgeographic-area-code%23XC-ER%22%29)
 
-### Anzeige der JSON-Daten
+#### Anzeige der JSON-Daten
 
 In den folgenden Beispielen wird immer wieder auf die strukturierten Daten im Format JSON-LD Bezug genommen, die es für jeden Eintrag in lobid-gnd gibt. Anzeigen lassen sich diese wie folgt:
 
@@ -664,7 +655,7 @@ In den folgenden Beispielen wird immer wieder auf die strukturierten Daten im Fo
 
 Die Bedeutung eines Feldes lässt sich im [JSON-LD-Kontext](https://json-ld.org/spec/latest/json-ld/#the-context) unter [http://lobid.org/gnd/context.jsonld](http://lobid.org/gnd/context.jsonld) nachschlagen. Will ich beispielsweise wissen, wie das Feld `broaderTermPartitive` verwendet wird, dann suche ich im JSON-LD-Kontext nach diesem Feld und folge dem angegebenen Link zur Beschreibung der zugrundeliegenden RDF-Property, hier ist dies die Beschreibung von ["Oberbegriff partitiv"](http://d-nb.info/standards/elementset/gnd#broaderTermPartitive) in der GND-Ontologie.
 
-### Feldsuchen
+#### Feldsuchen
 
 Über die `<Feld>:<Suchbegriff>`-Syntax kann in spezifischen Feldern gesucht werden, z.B. nach einer bestimmten Ansetzungsform:
 
@@ -687,15 +678,15 @@ Will ich ein Feld abfragen, das sich nicht auf der obersten Ebene der geschachte
 
 So kann ich etwa nach [`professionOrOccupation.label:Sänger*`](http://lobid.org/gnd/search?q=professionOrOccupation.label:Sänger*) suchen, wenn ich sowohl männliche wie auch weibliche Vokalist*innen finden möchte.
 
-## Beispiele
+### Beispiele
 
-### `_exists_`-Abfragen
+#### `_exists_`-Abfragen
 
 Häufig ist es hilfreich herauszufinden, wie viele und welche Einträge überhaupt eine bestimmte Information beinhalten bzw. in wie vielen Einträgen ein bestimmtes Feld fehlt. Dafür kann eine Anfrage in der Form `_exists_:<Feldname>` verwendet werden, optional mit dem booleschen `NOT`, um alle Einträge zu bekommen, die das jeweilige *nicht* haben, z.B. geschlechtslose Geister:
 
 [`http://lobid.org/gnd/search?q=type:Spirits+AND+NOT+_exists_:gender`](http://lobid.org/gnd/search?q=type%3ASpirits+AND+NOT+_exists_%3Agender)
 
-### Einträge mit Angabe eines Architekten
+#### Einträge mit Angabe eines Architekten
 
 Beim Betrachten etwa des Eintrags zum [Friedenspark Köln](http://lobid.org/gnd/1065252633) fällt auf, dass ein Architekt angegeben ist. Bei Interesse daran, welche Einträge noch Architekt*innen angeben, lässt sich das wie folgt herausfinden.
 
@@ -719,7 +710,7 @@ Dann schreibe ich die entsprechende `_exists`-[Anfrage](http://lobid.org/gnd/sea
 Unterfelder werden wie beschrieben über eine Punkt-Notation angegeben, z.B. Architekten mit dem label "Fritz":
 [`architect.label:Fritz`](http://lobid.org/gnd/search?q=architect.label:Fritz)
 
-### Gleichzeitige Suche in Ansetzungs- und Verweisungsformen
+#### Gleichzeitige Suche in Ansetzungs- und Verweisungsformen
 
 Aus einer E-Mail-Anfrage an das lobid-Team:
 
@@ -730,7 +721,7 @@ Das geht über eine Kombination von booleschem OR und Phrasensuche mit `"<Phrase
 [`preferredName:"Muka, Arnošt" OR variantName:"Muka, Arnošt"`](http://lobid.org/gnd/search?q=preferredName%3A%22Muka%2C+Arno%C5%A1t%22+OR+variantName%3A%22Muka%2C+Arno%C5%A1t%22)
 
 
-### Suche nach Einträgen mit Wikidata-Link aber ohne Bild
+#### Suche nach Einträgen mit Wikidata-Link aber ohne Bild
 
 Im Kontext der Anzeige eines zufälligen Bildes auf der [lobid-gnd-Startseite](https://lobid.org/gnd) kam die Frage auf, wie viele und welche Einträge einen Wikidata-Link aber kein Bild haben. Dafür schaue ich mir zunächst am besten die Daten eines Eintrags an der beides hat, z.B. [Hannah Arendt](http://lobid.org/gnd/11850391X.json). Hier die für uns wichtigen Ausschnitte:
 
@@ -769,7 +760,7 @@ Wir wollen aber nicht alle Einträge mit Wikidata-Link, sondern nur jene *ohne B
 
 [`sameAs.collection.id:"http://www.wikidata.org/entity/Q2013" AND NOT _exists_:depiction`](http://lobid.org/gnd/search?q=sameAs.collection.id:"http://www.wikidata.org/entity/Q2013"+AND+NOT+_exists_:depiction)
 
-### Personen, die während der NS-Zeit in Köln geboren wurden
+#### Personen, die während der NS-Zeit in Köln geboren wurden
 
 Wenn ich eine Frage beantworten möchte wie "Welche Personen in der GND wurden in der NS-Zeit in Köln geboren?", dann ist es sinnvoll, sich einen Eintrag zu suchen, der die nötigen Informationen zur Beantwortung einer solchen Frage besitzt. Hier z.B. die strukturierten Daten zum Eintrag von [Konrad Adenauer](http://lobid.org/gnd/11850066X.json), der folgende Informationen zu Geburtsort und -datum enthält:
 
@@ -802,22 +793,22 @@ Ebenfalls möglich ist eine jahresgenaue Abfrage (enthält hier auch Geburtsdate
 
 Je nach Zweck kann die eine oder andere Abfrage sinnvoller sein.
 
-### Vollständige Query-Syntax
+#### Vollständige Query-Syntax
 
 lobid-gnd ist auf Basis von [Elasticsearch](https://de.wikipedia.org/wiki/Elasticsearch) umgesetzt. Wir verweisen hier auf die vollständige Dokumentation der [Elasticsearch Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax) sowie der [Apache Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). (Elasticsearch basiert auf [Apache Lucene](https://de.wikipedia.org/wiki/Apache_Lucene).)
 
-# lobid-gnd: Bulk Downloads, OpenRefine-API und mehr
+## Bulk Downloads, OpenRefine-API und mehr
 
 Letzte Woche haben wir einige Funktionen zu lobid-gnd ergänzt, hier ein Überblick.
 
-## Zufälliges Bild auf der Startseite
+### Zufälliges Bild auf der Startseite
 
 Wie auch in [lobid-organisations](https://lobid.org/organisations) wird nun auf der [lobid-gnd-Startseite](https://lobid.org/gnd) mit jedem Laden ein zufälliges Bild zu einer GND-Ressource angezeigt. Momentan gibt es [knapp 200.000 Einträge mit Bild](http://lobid.org/gnd/search?q=_exists_%3Adepiction), davon sind die meisten Personen. Wer also Lust hat, die GND ein wenig näher kennenzulernen, kann ja mal die Startseite ein paar Mal neu laden.
 
 [![Screenshot](images/sendler.png "lobid-gnd homepage")](https://lobid.org/gnd)
  <small>Screenshot der lobid-gnd-Startseite mit dem Bild von [Irena Sendler](http://lobid.org/gnd/129335290)</small>
 
-## Bulk Downloads
+### Bulk Downloads
 
 Für jede lobid-gnd-Abfrage kann jetzt – wie auch in lobid-resources – die gesamte Ergebnismenge als JSON Lines heruntergeladen werden, indem einach der Parameter `format=jsonl` ergänzt wird. Im Antwortformat wird dann pro Zeile ein GND-Eintrag zurückgeliefert, zum Beispiel alle GND-Entitäten vom Typ "Sammlung" (Unterklasse von "Werk"):
 
@@ -827,7 +818,7 @@ Bei solchen kleineren Ergebnismengen reicht der JSON-Lines-Download aus, werden 
 
 `$ curl --header "Accept-Encoding: gzip" 'http://lobid.org/gnd/search?filter=type:Collection&format=jsonl'`
 
-## OpenRefine Reconciliation API
+### OpenRefine Reconciliation API
 
 Seit Ende letzter Woche ist die OpenRefine Reconciliation API für lobid-gnd produktiv. Damit ist es auf einfache Weise möglich, mit dem für Datenaufbereitung und -anreicherung beliebten Werkzeug [OpenRefine](http://openrefine.org/) eine Liste von Ansetzungsformen mit der GND abzugleichen, um die Textstrings auf GND-IDs zu matchen. Dafür müssen lediglich die abzugleichenden Daten in OpenRefine geladen werden, die entsprechende Spalte ausgewählt und der Reconciliation-Prozess z.B. wie folgt durchgeführt werden.
 
