@@ -1,0 +1,12 @@
+digraph scs {
+	compound=true
+	node[shape=box style=filled fillcolor=gray95 fontname=helvetica]
+	graph [fontname=helvetica]
+	edge[fontname=helvetica]
+	edge[arrowhead=empty arrowtail=empty]
+	rankdir=TD
+	splines=false
+	scs1[shape=record label="{UI|{Trans-\nformation|Index}|API}"]
+	scs2[shape=record label="{UI|{Trans-\nformation|Index}|API}"]
+	scs3[shape=record label="{UI|{Trans-\nformation|Index}|API}"]
+}

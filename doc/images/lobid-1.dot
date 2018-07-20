@@ -1,0 +1,18 @@
+digraph {
+	rankdir=LR
+	node[shape=box style=filled fillcolor=gray95 width=1 fontname=helvetica]
+	graph[fontname=helvetica]
+	edge[fontname=helvetica arrowhead=empty]
+	
+	db[label="Source\nData"]
+	rdf[label="N-Triples"]
+	json[label="JSON-LD\nAPI"]
+	apps[label="Our Apps"]
+	third[label="3rd Party"]
+	
+	db->rdf[label="craft"]
+	rdf->json[label="gene-\nrate" constraint=false]
+	json->apps
+	json->third[label="use"]
+	rdf->third 
+}

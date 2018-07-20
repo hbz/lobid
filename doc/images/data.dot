@@ -1,0 +1,59 @@
+digraph data {
+	compound=true
+	node[shape=box style=filled fontname=helvetica fillcolor=gray95]
+	graph [fillcolor=gray95 fontname=helvetica]
+	edge[fontname=helvetica]
+	edge[arrowhead=empty arrowtail=empty]
+	rankdir=TD
+	splines=false
+	
+	subgraph cluster_1{
+	style=invis
+	
+	/*
+	subgraph cluster_libs{
+		style=invis
+		libs [label="Libraries"]
+	}
+	*/
+	
+	subgraph cluster_title{
+		style=solid
+		label="Title Data"
+		union [label="hbz union catalog\n(Aleph)"]
+	}
+	
+	subgraph cluster_geo{
+		style=solid
+		label="Geo Data"
+		wikidata[label="Wikidata\n(JSON)"]
+	}
+	
+	subgraph cluster_auth{
+		style=solid
+		label="Authority Data"
+		gnd[label="GND\n(RDF)"]
+		sigel[label="Sigel\n(Pica)"]
+		dbs[label="DBS\n(CSV)"]
+	}
+	
+	
+	
+	api[label="Lobid-API\n(JSON-LD)" width=3]
+	
+	//libs->union[lhead=cluster_title]
+	//libs->sigel[lhead=cluster_auth]
+	
+	wikidata->api[ltail=cluster_geo]
+	sigel->api[ltail=cluster_auth]
+	union->api[ltail=cluster_title]
+	
+	app1[label="Application 1"]
+	app2[label="Application 2"]
+	app3[label="Application 3"]
+	
+	api->app1[dir=back]
+	api->app2[dir=back]
+	api->app3[dir=back]
+	}
+} 
