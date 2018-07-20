@@ -1,3 +1,46 @@
+# Lobid
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Lobid API 2.0: Why and how](#lobid-api-20-why-and-how)
+    - [Introduction: The Lobid API](#introduction-the-lobid-api)
+    - [Architecture: from horizontal layers to vertical slices](#architecture-from-horizontal-layers-to-vertical-slices)
+    - [JSON-LD: an RDF serialization, or JSON with context](#json-ld-an-rdf-serialization-or-json-with-context)
+    - [User interfaces](#user-interfaces)
+- [Which vocabularies to use for bibliographic descriptions?](#which-vocabularies-to-use-for-bibliographic-descriptions)
+    - [A grown application profile](#a-grown-application-profile)
+    - [Finding & choosing RDF properties/classes](#finding-&-choosing-rdf-propertiesclasses)
+    - [Some examples](#some-examples)
+    - [The result](#the-result)
+- [Documenting the lobid API, part I: What to document?](#documenting-the-lobid-api-part-i-what-to-document)
+    - [The API](#the-api)
+    - [What to document?](#what-to-document)
+- [Documenting the lobid API, part I: How to document?](#documenting-the-lobid-api-part-i-how-to-document)
+    - [High-level documentation of the dataset](#high-level-documentation-of-the-dataset)
+    - [Documenting the API](#documenting-the-api)
+    - [Documentation by example](#documentation-by-example)
+- [lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine](#lobid-gnd-%E2%80%93-eine-schnittstelle-zur-gemeinsamen-normdatei-f%C3%BCr-mensch-und-maschine)
+    - [Die Benutzeroberfläche](#die-benutzeroberfl%C3%A4che)
+    - [Datengenerierung und Anreicherung](#datengenerierung-und-anreicherung)
+    - [Web-API](#web-api)
+    - [Rückmeldungen erwünscht](#r%C3%BCckmeldungen-erw%C3%BCnscht)
+- [lobid-gnd: Suche und Navigation](#lobid-gnd-suche-und-navigation)
+- [lobid-gnd: Formulierung komplexer Suchanfragen](#lobid-gnd-formulierung-komplexer-suchanfragen)
+    - [Query-Grundlagen](#query-grundlagen)
+    - [Beispiele](#beispiele)
+- [lobid-gnd: Bulk Downloads, OpenRefine-API und mehr](#lobid-gnd-bulk-downloads-openrefine-api-und-mehr)
+    - [Zufälliges Bild auf der Startseite](#zuf%C3%A4lliges-bild-auf-der-startseite)
+    - [Bulk Downloads](#bulk-downloads)
+    - [OpenRefine Reconciliation API](#openrefine-reconciliation-api)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<!-- START doctoc-->
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Lobid API 2.0: Why and how
 
 ## Introduction: The Lobid API
