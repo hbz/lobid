@@ -6,7 +6,7 @@ digraph scs {
 	edge[arrowhead=empty arrowtail=empty]
 	rankdir=TD
 	splines=false
-	scs1[shape=record label="{UI|{Trans-\nformation|Index}|API}"]
-	scs2[shape=record label="{UI|{Trans-\nformation|Index}|API}"]
-	scs3[shape=record label="{UI|{Trans-\nformation|Index}|API}"]
+	scs1[shape=record label="{Oberfläche|{Trans-\nformation|Index}|API}"]
+	scs2[shape=record label="{Oberfläche|{Trans-\nformation|Index}|API}"]
+	scs3[shape=record label="{Oberfläche|{Trans-\nformation|Index}|API}"]
 }

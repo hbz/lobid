@@ -19,19 +19,19 @@ digraph data {
 	
 	subgraph cluster_title{
 		style=solid
-		label="Title Data"
-		union [label="hbz union catalog\n(Aleph)"]
+		label="Titeldaten"
+		union [label="hbz-Verbundkatalog\n(Aleph)"]
 	}
 	
 	subgraph cluster_geo{
 		style=solid
-		label="Geo Data"
+		label="Geodata"
 		wikidata[label="Wikidata\n(JSON)"]
 	}
 	
 	subgraph cluster_auth{
 		style=solid
-		label="Authority Data"
+		label="Normdaten"
 		gnd[label="GND\n(RDF)"]
 		sigel[label="Sigel\n(Pica)"]
 		dbs[label="DBS\n(CSV)"]
@@ -48,9 +48,9 @@ digraph data {
 	sigel->api[ltail=cluster_auth]
 	union->api[ltail=cluster_title]
 	
-	app1[label="Application 1"]
-	app2[label="Application 2"]
-	app3[label="Application 3"]
+	app1[label="Anwendung 1"]
+	app2[label="Anwendung 2"]
+	app3[label="Anwendung 3"]
 	
 	api->app1[dir=back]
 	api->app2[dir=back]

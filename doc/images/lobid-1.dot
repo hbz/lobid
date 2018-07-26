@@ -4,15 +4,15 @@ digraph {
 	graph[fontname=helvetica]
 	edge[fontname=helvetica arrowhead=empty]
 	
-	db[label="Source\nData"]
+	db[label="Quelldaten"]
 	rdf[label="N-Triples"]
 	json[label="JSON-LD\nAPI"]
-	apps[label="Our Apps"]
-	third[label="3rd Party"]
+	apps[label="Eigene\nAnwendungen"]
+	third[label="3rd-Party-\nAnwendungen"]
 	
-	db->rdf[label="craft"]
-	rdf->json[label="gene-\nrate" constraint=false]
+	db->rdf[label="anfertigen"]
+	rdf->json[label="gene-\nrieren" constraint=false]
 	json->apps
-	json->third[label="use"]
+	json->third[label="verwenden"]
 	rdf->third 
 }
