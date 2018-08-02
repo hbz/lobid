@@ -10,6 +10,10 @@
     - [Architektur: von horizontalen Schichten zu vertikalen Schnitten](#architektur-von-horizontalen-schichten-zu-vertikalen-schnitten)
     - [JSON-LD: eine RDF-Serialisierung oder JSON mit Kontext](#json-ld-eine-rdf-serialisierung-oder-json-mit-kontext)
     - [Benutzerschnittstellen](#benutzerschnittstellen)
+- [Entwicklungsprozess](#entwicklungsprozess)
+    - [Open Source](#open-source)
+    - [Visualisierung](#visualisierung)
+    - [Reviews](#reviews)
 - [Vokabulare](#vokabulare)
     - [Ein gewachsenens Applikationsprofil](#ein-gewachsenens-applikationsprofil)
     - [RDF: Properties und Klassen suchen und auswählen](#rdf-properties-und-klassen-suchen-und-ausw%C3%A4hlen)
@@ -192,6 +196,34 @@ Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD s
 ## Benutzerschnittstellen
 
 Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [Lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine Ausführliche Darstellung der Funktionalitäten am Beispiel von lobid-gnd findet sich weiter unten.
+
+# Entwicklungsprozess
+
+## Open Source
+
+Wir entwickeln die Lobid-Dienste als Open-Source-Software auf GitHub. Wir veröffentlichen nicht nur Ergebnisse auf GitHub, sondern der gesamte Prozess findet dort statt, d.h. die Planung, Issue-Tracking, Diskussion, Implementierung und Testen der Software. GitHub hat einen integrierten Issue-Tracker, dessen primäres Organisationsmittel beliebige Labels mit Farben sind. Diese lassen sich vielseitig anwenden (s.u.). Dieser Issue-Tracker ist in andere Aspekte von GitHub integriert, so lassen sich auf einfache Weise Links zu Code, Commits und Benutzern erstellen.
+
+## Visualisierung
+
+GitHub-Issues sind immer mit einem GitHub-Repo assoziiert. Für einen einheitlichen Blick auf alle vom Team bearbeiteten Issues in allen Repos verwenden wir zur Visualisierung des Workflows [Waffle](http://waffle.io), ein Kanban-Board mit GitHub-Integration, bei dem jedes GitHub-Issue einer Karte entspricht, und die Spalten des Boards Labels der GitHub-Issues entsprechen.
+
+![Waffle](images/waffle.png "Waffle")
+
+In unserem Prozess durchläuft eine Karte das Board von links nach rechts. Priorisierte Karten schieben wir nach oben in der Spalte, Karten die Fehler (Bugs) beschreiben werden generell priorisiert.
+
+| Backlog | Ready | Working | Review | Deploy | Done |
+|---------|-------|---------|--------|--------|------|
+| Neue Issues ohne Label | Bereit, d.h. Anforderungen und Abhängigkeiten sind klar | In Bearbeitung | In Überprüfung | Bereit für Produktion | In Produktion |
+
+## Reviews
+
+Ein Kernelement unseres Entwicklungsprozesses, durch das bibliothekarische Anforderungen und Entwicklung miteinander verzahnt werden, sind die Begutachtungen bzw. Reviews. Hier unterscheiden wir zwischen funktionalem Review und Code Review.
+
+Zur Einleitung des funktionalen Reviews stellt einer unserer Entwickler neue oder reparierte Funktionalität auf dem Staging-System bereit, beschreibt im korrespondierenden Issue, wie getestet werden kann (z.B. durch Angabe von Links auf die betreffenden Seiten im Staging-System) und weist das Issue einem Team-Mitglied zur Begutachtung zu. Dieses testet, gibt Feedback (bei Bedarf aktualisiert der Entwickler den Pull-Request und die Version auf Staging mehrfach), und schließt die Begutachtung mit einem "+1" Kommentar ab.
+
+Nach Abschluss des Functional Reviews weist der Begutachter den zum Issue gehörigen Pull-Request einem anderen Entwickler zur Begutachtung zu (Code Review). Dieser inspiziert je nach Fall nur den Diff im Pull-Request oder testet den Branch lokal. Die Ausführung des Builds und der Tests erfolgt automatisch im Pull-Request durch Travis CI, ein in GitHub integrierter Continuous-Integration-Dienst. Auch hier wird die Begutachtung mit einem "+1" Kommentar abgeschlossen, der Begutachter weist das Issue wieder dem Entwickler zu, und verschiebt es in 'Deploy'.
+
+Nach Abschluss beider Begutachtungsschritte wird die neue bzw. reparierte Funktionalität auf dem Produktivsystem installiert. Details zu unserem Entwicklungsprozess finden sich in unserer [Dokumentation](https://hbz.github.io/#dev-process) und in dieser [Präsentation](http://hbz.github.io/slides/lobid-entwicklungsprozess).
 
 # Vokabulare
 
