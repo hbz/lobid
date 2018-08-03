@@ -20,9 +20,9 @@
     - [Beispiele](#beispiele)
     - [Ergebnis](#ergebnis)
 - [Dokumentation](#dokumentation)
-    - [Die API](#die-api)
-    - [Was dokumentieren?](#was-dokumentieren)
-    - [Wie dokumentieren?](#wie-dokumentieren)
+    - [Dokumentation des Datensets](#dokumentation-des-datensets)
+    - [Dokumentation der API](#dokumentation-der-api)
+    - [Dokumentation mit Beispielen](#dokumentation-mit-beispielen)
 - [Fallstudie: lobid-gnd](#fallstudie-lobid-gnd)
     - [Eine Schnittstelle zur GND für Mensch und Maschine](#eine-schnittstelle-zur-gnd-f%C3%BCr-mensch-und-maschine)
     - [Suche und Navigation](#suche-und-navigation)
@@ -296,120 +296,58 @@ If you have comments or suggestions for improvement, we would be interested to h
 
 # Dokumentation
 
-The relaunch of lobid-resources and lobid-organisations is scheduled for the end of March. This is an ideal opportunity to improve our documentation. In a series of two blog posts we will examine the basic questions that came up in the process of creating and thinking about documentation for a search API:
+Bei der Dokumentation einer API gibt es unterschiedliche Aspekte: das Datenset als Ganzes, die Struktur von API-Anfragen und -Antworten, die verwendeten RDF-Properties und -Klassen, Provenienzinformationen. Im Folgenden beschreiben wir unsere Herangehensweise an die Dokumentation von [lobid-resources](https://lobid.org/resources/) und [lobid-organisations](https://lobid.org/organisations/), mit dem Schwerpunkt auf letzterem Dienst.
 
-1. What should we write documentation about?
-2. How should we provide documentation? 
+## Dokumentation des Datensets
 
-## Die API
+Um für die menschliche und maschinelle Nutzung der Daten einen Überblick zu geben, folgen wir im Wesentlichen der [W3C-Empfehlung für die Nutzung von Daten im Web](https://www.w3.org/TR/dwbp/#metadata). Das Ergebnis ist [eine JSON-LD-Datei](http://lobid.org/organisations/dataset.jsonld) und eine daraus generierte [HTML-Version](http://lobid.org/organisations/dataset). Im Gegensatz zu den Beispielen der W3C-Empfehlung verwenden wir soweit möglich  Vokabular von schema.org statt des DC-Terms-Vokabulars.
 
-Approaching the first question, let's start with a closer look at the lobid API, what it offers and how.
+![Beschreibung des lobid-organisations Datensets](images/lobid-organisations-description.png) 
 
-### The data
+HTML-Version des lobid-organisations Datensets
 
-lobid serves JSON-LD and HTML, depending on the client. You can choose the format by using content negotiation or by setting a `format` parameter. For now, we are relaunching these two services:
+## Dokumentation der API
 
-1. lobid-organisations: The [/organisations](https://lobid.org/organisations) service serves information about German-speaking organisations (mainly libraries, archives and museums). Data sources are the German ISIL registry and the core data of the German Library Statistics (Deutsche Bibliotheksstatistik, DBS). 
-2. lobid-resources: The [/resources](https://lobid.org/resources) service provides bibliographic data from the hbz union catalog (approximately 20 M records) as Linked Data.
+Die API-Dokumentation ([lobid-organisations](http://lobid.org/organisations/api), [lobid-resources](http://lobid.org/organisations/api), [lobid-gnd](http://lobid.org/gnd/api)) führt zunächste grundlegende Konzepte der API anhand von Beispielen ein und zeigt darauf aufbauend komplexere Anfragen und spezielle Fälle wie die Suche nach URLs (in denen bestimmt Zeichen maskiert werden müssen). Für eine vollständige Referenz zur den Suchmöglichkeiten verweisen wir auf die Lucene- bzw. Elasticsearch-Dokumentation.
 
-This means, lobid is serving data that is created and curated in other systems. For _transformation_ of the data from different sources we use [Metafacture](https://github.com/culturegraph/metafacture-core). While the concrete technology is not relevant for documentation, it is definitely relevant where the data comes from and that it is altered before being provided by lobid.
+Im weiteren Verlauf beschreibt die Dokumentation die unterstüzten Inhaltstypen mit Beispielanfragen. Wir beschreiben den Einsatz der API zur Umsetzung einer Autosuggest-Funktionalität mit einem in die Dokumentationseite eingebetteten, funktionstüchtigen Beispiel. Schließlich beschreiben wir spezifische Funktionen der einzelnen Dienste wie ortsbezogene Abfragen, CSV-Export, und die Integration der APIs in OpenRefine (siehe dazu auch unten).
 
-### Read-only JSON-LD API
+## Dokumentation mit Beispielen
 
-So we have two services to document. These services currently are read-only, i.e. client interaction in terms of HTTP verbs is limited to GET requests. This makes the documentation of the actual API quite manageable as only few URL paths and their parameters for GET requests have to be documented.
+Wenn wir ein Schema und seine Verwendung verstehen wollen suchen wir häufig nach Beispielen. Oft sind Beispiele jedoch nur sekundäre Elemente der Dokumentation, wenn es überhaupt welche gibt. Sehr verbreitet ist ein beschreibender Ansatz zur Dokumentation von Vokabularen oder Applikationsprofilen, bei dem Elemente in einer Tabelle (häufig in einem PDF) aufgelistet werden, mit Beschreibungen verschiedener Aspekte in mehreren Spalten.
 
-As its underlying technology, lobid uses [Elasticsearch](https://www.elastic.co/products/elasticsearch), a Lucene-based search engine. The JSON-LD resulting from the transformation process is indexed in Elasticsearch and can be queried by anybody using the [Lucene query syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). We are offering some additional parameters in our web application – implemented with the [Play framework](https://www.playframework.com/) – to simplify specific kinds of searches.
+Eine Ausnahme bildet hier schema.org, das viele Beispiele bietet. Aber selbst hier sind die Beispiele ein Anhang der Beschreibung und manchmal fehlen sie (z.B. ist es schwierig zu erfahren, wie das Property [publication](http://schema.org/publication) oder die Klasse [PublicationEvent](http://schema.org/PublicationEvent) verwendet werden). Wir sind der Ansicht, dass [Beispiele Kernelement der Dokumentation](https://twitter.com/acka47/status/791271448245637120) sein sollten, während seitenweise Tabellen mit Elementen eines Matadatenschemas nicht sehr hilfreich und praktisch sind. Daher haben wir uns Gedanken gemacht, wie wir Beispiele ins Zentrum der Dokumentation stellen können.
 
-## Was dokumentieren?
+### Web-Annotationen für API-Dokumentation
 
-Following from the description above, there are different aspects of the API and the data it provides that may be worthy of documentation. Let's take a look at them, from most to least prioritized in our documentation process.
+[Beispiele alleine sind nicht hinreichend](https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12), aber brauchen wir wirklich eine Tabelle, in der jedes Element unserer Daten beschrieben wird? Wenn wir das Beispiel in den Mittelpunkt stellen, können wir die strukturierten beschreibenden Daten (Name, Beschreibung, etc.) direkt dem Beispiel beifügen?
 
-### The data set
+Hier bringen wir Werkzeuge zur Web-Annotation zum Einsatz, indem wir produktive Beispiele unserer JSON-LD Daten mit [hypothes.is](https://hypothes.is/) annotieren. Unser erster Ansatz war, direkt die JSON-Darstellungen zu annotieren (z.B. [http://lobid.org/organisations/DE-38M.json](http://lobid.org/organisations/DE-38M.json)), doch hier würden die Annotationen nur bei Verwendung des [hypothes.is Chrome-Plugins](https://chrome.google.com/webstore/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek) sichtbar. Eine weitere Option wäre die Verwendung des hypothes.is [via service](https://via.hypothes.is/), doch dieser [unterstützt keine Annotation von Textdateien](https://github.com/hypothesis/via/issues/79). Daher haben wir uns entschlossen, die JSON-Beispiele in die HTML-Dokumentationsseite einzubetten, und hypothes.is über JavaScript einzubinden.
 
-People not familiar with an API first want to quickly assess whether the data provided is actually of interest to them. To get a quick overview over the data set itself, you need to answer questions like: What is the data about? How up-to-date is the data? How many resources are described? How many of each type? Which specific information is available for how many resources? (For example _How many bibliographic resources actually have information about the publication date?_ or _How many organisations have geo coordinates associated with them?_)
+In lobid-organisations reicht die Annotation eines einzigen Beispiels. Um die wesentlichen Felder in den  lobid-resources Daten abzudecken annotieren wir je ein Beispiel der verschiedenen Ressourcentypen (Buch, Periodikum, Artikel, Serienband). Für lobid-gnd haben wir den Annotationsansatz noch nicht umgesetzt.
 
-### The API itself
+Wir annotieren jeden JSON-Key mit den folgenden Informationen:
 
-For enabling interested people to make use of the lobid API, it is of greatest importance to document the API itself as the interface they interact with. Focussing on the API itself and the JSON it serves (without the "LD"), documentation is needed for:
+- Name: eine menschenlesbare Bezeichnung für das Feld
+- Beschreibung: eine kurze Beschreibung der Information in diesem Feld
+- Abdeckung: Die Anzahl der Ressourcen mit Informationen in diesem Feld. Hier ergänzen wir häufig Beispiel-URLs zur Abfrage dieses Feldes.
+- Anwendungsfälle: Beispiele zur Verwendung der Information in diesem Feld, häufig mit Beispielanfragen
+- URI: die RDF-Property, die diesem Feld entspricht (d.h. die auf den JSON-Key im JSON-LD-Kontext gemappte URI)
+- Provenienz: Informationen über die Felder in den Quelldaten, aus denen die Information in diesem Feld erzeugt wurde
 
-1. the different services, the types of resources they describe and their API parameters
-2. the Lucene query syntax
-3. the query results, i.e. their structure as well as the JSON keys used for a specific resource type and their type of content (URIs, uncontrolled text, controlled values etc.) and whether a key can hold multiple values or only holds one
+Die ersten beiden Punkte (Name und Beschreibung) sowie die URI werden bei allen Annotationen angegeben, die anderen Werte sind (noch) nicht vollständig angegeben. Wir versuchen durch Beispielanfragen in den Annotationen ein Gefühl für Möglichkeiten zur Nutzung der API zu vermitteln, insbesondere in den Abschnitten 'Abdeckung' und 'Anwendungsfälle'.
 
-The most work definitely has to be put into 1.) and 3.), while 2.) can be covered by referring to the Lucene documentation.
+Unter [http://lobid.org/organisations/api]([http://lobid.org/organisations/api]) kann man die annotationbasierte Dokumentation in Aktion sehen (für lobid-organisations gibt es auch eine [deutsche Version](http://lobid.org/organisations/api/de), die [lobid-resources Dokumentation](http://lobid.org/resources/api) ist nur auf deutsch verfügbar). Im [Abschnitt zu JSON-LD](http://lobid.org/resources/api#jsonld) öffnet sich durch einen Klick auf die hervorgehobenen JSON-Keys die hypothes.is-Seitenleiste mit Informationen über das entsprechende Element.
 
-### RDF vocabularies, properties & classes
+![Beispielannotation](images/annotation-example.png) 
 
-With regard to the data being Linked Data, some people will be interested in the RDF vocabularies and properties/classes we use. Here, a reference to the JSON-LD context document can help (see the contexts for [lobid-organisations](http://lobid.org/organisations/context.jsonld) and [lobid-resources](http://lobid.org/resources/context.jsonld)). The question is whether this suffices as documentation of the RDF properties and classes used.
+Beispielannotation für das "type" Feld
 
-### Provenance information
+### Vorteile
 
-Beyond the identification of the data sources, some people want to know from which concrete field in the source data a specific information is derived and what kind of post-processing is done. This is especially of interest for information professionals who are familiar with the source data sets and want to assess the lobid data. For this, some documentation of the mappings and the transformation process is needed.
+Die Beispiele, die zur Dokumentation annotiert werden, sollten im besten Fall Live-Daten aus dem Produktivsystem sein. So ist gewährleistet, dass bei Änderungen in den Daten das Beispiel, und damit die Dokumentation, automatisch aktuell bleibt. Dies verhindert manuellen Synchronisationsaufwand zwischen Daten und Dokumentation.
 
-In the upcoming post we will take a look at how we plan to provide documentation for the different aspects of the lobid API.
-
-## Wie dokumentieren?
-
-As outlined in [part I](http://blog.lobid.org/2017/02/23/api-documentation-1.html), there are different aspects of an API you need to take into account when working on the documentation: the dataset as a whole, the API calls and response structure, RDF properties and classes, provenance information. In this post we want to share how we approached their documentation for the two services [lobid-resources](https://lobid.org/resources/) and [lobid-organisations](https://lobid.org/organisations/), using lobid-organisations as primary example.
-
-### High-level documentation of the dataset
-
-To give people (as well as machines) a quick overview over the dataset that is provided via the API, we mostly followed the W3C's [Data on the Web Best Practices recommendation](https://www.w3.org/TR/dwbp/#metadata). The result is a [JSON-LD file](http://lobid.org/organisations/dataset.jsonld) describing the dataset, as well as a human-readable [HTML version](http://lobid.org/organisations/dataset) of the same information. Note that unlike the W3C recommendation, which uses DC Terms for its examples, we decided to use schema.org properties and classes where possible.
-
-![Description of the lobid-organisations data set](images/lobid-organisations-description.png) 
-
-HTML-version of the lobid-organisations data set description
-
-### Documenting the API
-
-The API documentation ([lobid-organisations](http://lobid.org/organisations/api), [lobid-resources](http://lobid.org/organisations/api)) introduces basic API request concepts by providing example queries, expands these with some advanced queries on nested fields, and provides details for tricky cases like querying for URLs (which require escaping of special characters). For a full reference on the supported query syntax, we link to the relevant Lucene documentation.
-
-The documentation describes the supported response content types and provides samples for requesting them. We provide complete documentation on using the API to build an autocomplete functionality, including an embedded example in the documentation page.
-
-For the lobid-organisations documentation, we finally describe its specific functionality, like location based queries, CSV export, and OpenRefine reconciliation support.
-
-### Documentation by example
-
-When we try to get an understanding of a schema and how it is used, we quickly find ourselves looking out for examples. But examples are often secondary parts of documentation, if given at all. It is common practice to use what can be called a "descriptive approach" of documenting a vocabulary or an application profile by listing elements in tables – often contained within a PDF – and describing their different aspects in various columns.
-
-schema.org is an exception in that it tries to provide examples. But even in schema.org the examples are an appendix to the description and sometimes even missing (e.g. it is hard to learn about how to use [the publication property](http://schema.org/publication) and the [publication event class](http://schema.org/PublicationEvent)).
-
-We believe that examples should be an integral part of documentation, while we deem page-long tables listing elements of a metadata schema as not very helpful and rather annoying. So we thought about how to put the example in the center of documentation following the bold claim that "[All documentation should be built around examples](https://twitter.com/acka47/status/791271448245637120)".
-
-#### Using web annotation tools for API documentation
-
-A [blog post on API documentation from 2010](https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12) says about examples:
-
-> In addition to sample code, having HTTP, XML, and JSON samples of your request and response is important. However, samples only are not sufficient. In addition, you need a description that explains the purpose of the call and you need a table that explains each element. We recommend a table with columns for Name, Type, Description, and Remarks.
-
-Agreed, that samples alone are not sufficient, but do we really need a table describing each element of our data? When putting the example first, why not attach the structured descriptive data (name, description, etc.) to the example? Today, this is quite easy to achieve with web annotation tools. So we took production examples of our JSON-LD data and annotated them with [hypothes.is](https://hypothes.is/). At first we planned to directly annotate the JSON files as provided via lobid (e.g. [this](http://lobid.org/organisations/DE-38M?format=json)) but people would only be able to see the annotations when using the [hypothes.is Chrome plugin](https://chrome.google.com/webstore/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek). Another option is hypothes.is' [via service](https://via.hypothes.is/) but it does [not support annotation of text files](https://github.com/hypothesis/via/issues/79). Thus, we decided to embed the JSON content on-the-fly in a HTML page, and add the hypothes.is script to the page.
-
-For lobid-organisations, it was enough to annotate one example file. In order to cover most of the fields used in the lobid-resources data, we had to annotate different kinds of examples (book, periodical, article, series volume).
-
-We chose to annotate each JSON key adding the following information:
-
-- Name: a human-readable name for the field
-- Description: a short description of the information in the field
-- Coverage: the number of resources that have information in this field (Here, you will often find example URLs on how to query the field.)
-- Use cases: example use cases on what the information from the field can be used for, along with example queries
-- URI: the RDF property the JSON key is mapped to
-- Provenance: information about the source data fields the information is derived from
-
-While the first two information points (name and description) and the URI can be found in every annotation, the others are not (yet) available for every field. We try to develop a better feeling on how to use the API by adding lots of example queries in the documentation, especially in the "Coverage" and "Use cases" section.
-
-At [http://lobid.org/organisations/api]([http://lobid.org/organisations/api]) you can see documentation by annotation in action (there is also a [German version](http://lobid.org/organisations/api/de), and the [lobid-resources documentation](http://lobid.org/resources/api) solely exists in German). Just go to the [JSON-LD section](http://lobid.org/resources/api#jsonld) and click on one of the highlighted JSON keys. The hypothes.is side bar will open with information about the data element.
-
-![Example annotation](images/annotation-example.png) 
-
-Example annotation on the "type" key
-
-#### Benefits
-
-The examples taken for documentation should at best be live data from production. Thus, if something changes on the data side, the example – and with it the documentation – automatically updates. For example, if the value of a field changes, the documentation will automatically show the new data. If a specific field was removed in the data, and therefore in the example, the corresponding hypothes.is annotation becomes an "orphan".
-
-We hope that this documentation approach based on annotation of examples is more useful and more fun than the traditional descriptive approach. It should give people an intuitive and interactive interface for exploring and understanding the data provided by the lobid API. If any questions remain, API users can easily ask questions regarding specific parts of the documentation by replying to a hypothes.is annotation and we will automatically be notified via email.
-
-We are curious what you think about this documentation approach. Let us know by adding an annotation to the whole post ("page note") or by annotating specific parts.
+Wir hoffen und glauben, dass dieser Ansatz zur Dokumentation nützlicher und angenehmer ist als der traditionelle beschreibende Ansatz. Er bietet Nutzenden eine intuitive und interaktive Schnittstelle um die Daten der lobid-APIs zu erkunden und zu verstehen. Bei Fragen oder Unklarheiten kann innerhalb der hypothes.is-Seitenleiste auf die Annotationen geantwortet werden. So können spezifische Teile der Dokumentation diskutiert werden.
 
 # Fallstudie: lobid-gnd
 
