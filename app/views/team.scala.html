@@ -9,7 +9,10 @@
 }
 
 @memberLabel(member: JsValue) = {
-	@((member \ "member" \ "name").as[String]) &mdash; @((member \ "roleName" \ controllers.Application.currentLang).as[String])
+	<div>
+		<a target="_blank" rel="nofollow" href='@((member \ "member" \ "id").asOpt[String])'>@((member \ "member" \ "name").as[String])</a><br/>
+		@((member \ "roleName" \ controllers.Application.currentLang).as[String]) <br/>
+	</div>
 }
 
 @wrapper("lobid - team"){
@@ -23,12 +26,14 @@
 	}</p>
 
 	<h2>@Messages("team.members")</h2>
-	@for(member <- (json \ "member").as[Seq[JsValue]]; if (member \ "member" \ "id").asOpt[String].isDefined	) {
+	@for(member <- (json \ "member").as[Seq[JsValue]]; if (member \ "member" \ "id").asOpt[String].isDefined && !(member \ "endDate").asOpt[String].isDefined) {
 		<p>
-			@if((member \ "member" \ "image").asOpt[String].isDefined){
-				<img src='@((member \ "member" \ "image").as[String])' width="50" />
-			}
-			<a target="_blank" rel="nofollow" href='@((member \ "member" \ "id").asOpt[String])'>@memberLabel(member)</a>
+			<div>
+				@if((member \ "member" \ "image").asOpt[String].isDefined){
+					<img src='@((member \ "member" \ "image").as[String])' width="50" style="float:left; padding:5px" />
+				}
+				@memberLabel(member)
+			</div>
 		</p>
 	}
 	<h2>@Messages("team.products")</h2>
