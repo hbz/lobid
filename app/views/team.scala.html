@@ -8,10 +8,24 @@
 	@Html((json\key\controllers.Application.currentLang).asOpt[String].getOrElse("--"))
 }
 
-@memberLabel(member: JsValue) = {
+@currentLabel(member: JsValue) = {
+	@if((member \ "member" \ "image").asOpt[String].isDefined){
+		<img src='@((member \ "member" \ "image").as[String])' width="50" style="float:left; padding:5px" />
+	}
 	<div>
-		<a target="_blank" rel="nofollow" href='@((member \ "member" \ "id").asOpt[String])'>@((member \ "member" \ "name").as[String])</a><br/>
-		@((member \ "roleName" \ controllers.Application.currentLang).as[String]) <br/>
+		<p>
+			<a target="_blank" rel="nofollow" href='@((member \ "member" \ "id").asOpt[String])'>@((member \ "member" \ "name").as[String])</a> <br/>
+			@((member \ "roleName" \ controllers.Application.currentLang).as[String]) <br/>
+		</p>
+	</div>
+}
+
+@formerLabel(member: JsValue) = {
+	<div>
+		<p>
+			@((member \ "member" \ "name").as[String]) <br/>
+			@((member \ "roleName" \ controllers.Application.currentLang).as[String]) <br/>
+		</p>
 	</div>
 }
 
@@ -26,16 +40,18 @@
 	}</p>
 
 	<h2>@Messages("team.members")</h2>
-	@for(member <- (json \ "member").as[Seq[JsValue]]; if (member \ "member" \ "id").asOpt[String].isDefined && !(member \ "endDate").asOpt[String].isDefined) {
-		<p>
-			<div>
-				@if((member \ "member" \ "image").asOpt[String].isDefined){
-					<img src='@((member \ "member" \ "image").as[String])' width="50" style="float:left; padding:5px" />
-				}
-				@memberLabel(member)
-			</div>
-		</p>
+	@defining((json \ "member").as[Seq[JsValue]] partition ((j: JsValue) => !((j \ "endDate").asOpt[String].isDefined))) { case (current, former) =>
+		@for(member <- current) {
+			@currentLabel(member)
+		}
+		<h3>@Messages("team.members.former") <small><a id="showFormer" href="#" onclick="$('#former').show();$('#showFormer').hide();return false;"><span class="glyphicon glyphicon-plus-sign"></span></a></small></h3>
+		<div id="former" style="display:none">
+			@for(member <- former) {
+				@formerLabel(member)
+			}
+		</div>
 	}
+
 	<h2>@Messages("team.products")</h2>
 	@for(offer <- (json \ "makesOffer").as[Seq[JsValue]]) {
 		<p><a target="_blank" rel="nofollow" href='@((offer \ "id").as[String])'>@((offer \ "name").as[String])</a><br/>

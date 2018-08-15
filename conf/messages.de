@@ -20,4 +20,5 @@ index.gnd = <a href="{0}">lobid-gnd</a> bietet Zugriff auf die Gemeinsame Normda
 # team
 
 team.members = Mitglieder
+team.members.former = Ehemalige
 team.products = Produkte
