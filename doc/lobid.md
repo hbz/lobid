@@ -144,7 +144,7 @@ Das generierte JSON-LD des alten Systems war eine flache Struktur mit JSON-Objek
 
 Diese Struktur war nicht sehr praktisch und entsprach nicht dem [pragmatischen Geist von JSON-LD](http://fsteeg.com/notes/one-issue-with-json-ld-that-seems-not-so-pragmatic). Wenn man etwa die englische Bezeichnung des Unterhaltsträgers einer Einrichtung verwenden will, muss man hier über alle `@graph`-Objekte iterieren und jeweils prüfen, ob die `@id` die Unterhaltsträger-ID ist, dann über alle `prefLabel`-Objekte iterieren und jenes mit dem passenden `@language`-Feld suchen, das dann als `@value` den gesuchten Wert enthält.
 
-In den neuen Systemen bieten wir die Daten in einem strukturierteren, JSON-typischem Format an: 
+In den neuen Systemen bieten wir die Daten in einem strukturierteren, JSON-typischem Format an:
 
 	"fundertype": {
 	    "id": "http://purl.org/lobid/fundertype#n02",
@@ -201,15 +201,15 @@ Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabula
 
 ## Open Source
 
-Wir entwickeln die Lobid-Dienste als Open-Source-Software auf GitHub. Wir veröffentlichen nicht nur Ergebnisse auf GitHub, sondern der gesamte Prozess findet dort statt, d.h. die Planung, Issue-Tracking, Diskussion, Implementierung und Testen der Software. GitHub hat einen integrierten Issue-Tracker, dessen primäres Organisationsmittel beliebige Labels mit Farben sind. Diese lassen sich vielseitig anwenden (s.u.). Dieser Issue-Tracker ist in andere Aspekte von GitHub integriert, so lassen sich auf einfache Weise Links zu Code, Commits und Benutzern erstellen.
+Wir entwickeln die lobid-Dienste als Open Source Software auf GitHub. Wir veröffentlichen nicht nur Ergebnisse auf GitHub, sondern der gesamte Prozess findet dort statt, d.h. Planung, Issue Tracking, Diskussion, Implementierung sowie Testen der Software. GitHub hat einen integrierten Issue Tracker, dessen primäres Organisationsmittel beliebige Labels mit Farben sind. Diese lassen sich vielseitig anwenden (s.u.). Dieser Issue Tracker ermöglicht es auf einfache und funktionale Weise, andere Prozesse in GitHub zu referenzieren, so lassen sich etwa auf einfache Weise Links zu Code, Commits und Benutzern erstellen.
 
 ## Visualisierung
 
-GitHub-Issues sind immer mit einem GitHub-Repo assoziiert. Für einen einheitlichen Blick auf alle vom Team bearbeiteten Issues in allen Repos verwenden wir zur Visualisierung des Workflows [Waffle](http://waffle.io), ein Kanban-Board mit GitHub-Integration, bei dem jedes GitHub-Issue einer Karte entspricht, und die Spalten des Boards Labels der GitHub-Issues entsprechen.
+GitHub Issues sind immer mit einem GitHub Code Repository assoziiert. Für einen einheitlichen Blick auf alle vom Team bearbeiteten Issues in allen Repositories verwenden wir zur Visualisierung des Workflows [Waffle](http://waffle.io), ein Kanban Board mit GitHub-Integration, bei dem jedes GitHub Issue einer Karte entspricht, und die Spalten des Boards Labels der GitHub-Issues entsprechen.
 
 ![Waffle](images/waffle.png "Waffle")
 
-In unserem Prozess durchläuft eine Karte das Board von links nach rechts. Priorisierte Karten schieben wir nach oben in der Spalte, Karten die Fehler (Bugs) beschreiben werden generell priorisiert.
+In unserem Prozess durchläuft eine Karte das Board von links nach rechts. Priorisierte Karten schieben wir nach oben in der Spalte, Karten, die Fehler (Bugs) beschreiben, werden generell priorisiert.
 
 | Backlog | Ready | Working | Review | Deploy | Done |
 |---------|-------|---------|--------|--------|------|
@@ -219,9 +219,9 @@ In unserem Prozess durchläuft eine Karte das Board von links nach rechts. Prior
 
 Ein Kernelement unseres Entwicklungsprozesses, durch das bibliothekarische Anforderungen und Entwicklung miteinander verzahnt werden, sind die Begutachtungen bzw. Reviews. Hier unterscheiden wir zwischen funktionalem Review und Code Review.
 
-Zur Einleitung des funktionalen Reviews stellt einer unserer Entwickler neue oder reparierte Funktionalität auf dem Staging-System bereit, beschreibt im korrespondierenden Issue, wie getestet werden kann (z.B. durch Angabe von Links auf die betreffenden Seiten im Staging-System) und weist das Issue einem Team-Mitglied zur Begutachtung zu. Dieses testet, gibt Feedback (bei Bedarf aktualisiert der Entwickler den Pull-Request und die Version auf Staging mehrfach), und schließt die Begutachtung mit einem "+1" Kommentar ab.
+Zur Einleitung des funktionalen Reviews stellt einer unserer Entwickler neue oder reparierte Funktionalität auf dem Staging-System bereit, beschreibt im korrespondierenden Issue, wie getestet werden kann (z.B. durch Angabe von Links auf die betreffenden Seiten im Staging-System) und weist das Issue einem Team-Mitglied zur Begutachtung zu. Dieses testet, gibt Feedback (bei Bedarf aktualisiert der Entwickler den Code und die Version auf Staging mehrfach), und schließt die Begutachtung mit einem "+1" Kommentar ab.
 
-Nach Abschluss des Functional Reviews weist der Begutachter den zum Issue gehörigen Pull-Request einem anderen Entwickler zur Begutachtung zu (Code Review). Dieser inspiziert je nach Fall nur den Diff im Pull-Request oder testet den Branch lokal. Die Ausführung des Builds und der Tests erfolgt automatisch im Pull-Request durch Travis CI, ein in GitHub integrierter Continuous-Integration-Dienst. Auch hier wird die Begutachtung mit einem "+1" Kommentar abgeschlossen, der Begutachter weist das Issue wieder dem Entwickler zu, und verschiebt es in 'Deploy'.
+Nach Abschluss des Functional Reviews weist der Begutachter den zum Issue gehörigen Pull Request einem anderen Entwickler zur Begutachtung zu (Code Review). Dieser inspiziert je nach Fall nur den Diff im Pull Request oder testet den Branch lokal. Die Ausführung des Builds und der Tests erfolgt automatisch im Pull Request durch Travis CI, ein in GitHub integrierter Continuous-Integration-Dienst. Auch hier wird die Begutachtung mit einem "+1" Kommentar abgeschlossen, der Begutachter weist das Issue wieder dem Entwickler zu, und verschiebt es in 'Deploy'.
 
 Nach Abschluss beider Begutachtungsschritte wird die neue bzw. reparierte Funktionalität auf dem Produktivsystem installiert. Details zu unserem Entwicklungsprozess finden sich in unserer [Dokumentation](https://hbz.github.io/#dev-process) und in dieser [Präsentation](http://hbz.github.io/slides/lobid-entwicklungsprozess).
 
@@ -231,9 +231,9 @@ Bei der Dokumentation einer API gibt es unterschiedliche Aspekte: das Datenset a
 
 ## Dokumentation des Datensets
 
-Um für die menschliche und maschinelle Nutzung der Daten einen Überblick zu geben, folgen wir im Wesentlichen der [W3C-Empfehlung für die Nutzung von Daten im Web](https://www.w3.org/TR/dwbp/#metadata). Das Ergebnis ist [eine JSON-LD-Datei](http://lobid.org/organisations/dataset.jsonld) und eine daraus generierte [HTML-Version](http://lobid.org/organisations/dataset). Im Gegensatz zu den Beispielen der W3C-Empfehlung verwenden wir soweit möglich  Vokabular von schema.org statt des DC-Terms-Vokabulars.
+Um für die menschliche und maschinelle Nutzung der Daten einen Überblick zu geben, folgen wir im Wesentlichen der W3C-Empfehlung für Daten im Web (Lóscio 2017). Das Ergebnis ist [eine JSON-LD-Datei](http://lobid.org/organisations/dataset.jsonld) und eine daraus generierte [HTML-Version](http://lobid.org/organisations/dataset). Im Gegensatz zu den Beispielen der W3C-Empfehlung verwenden wir insofern es möglich ist Vokabular von schema.org anstatt DC Terms und des DCAT-Vokabulars.
 
-![Beschreibung des lobid-organisations Datensets](images/lobid-organisations-description.png) 
+![Beschreibung des lobid-organisations Datensets](images/lobid-organisations-description.png)
 
 HTML-Version des lobid-organisations Datensets
 
@@ -241,36 +241,36 @@ HTML-Version des lobid-organisations Datensets
 
 Die API-Dokumentation ([lobid-organisations](http://lobid.org/organisations/api), [lobid-resources](http://lobid.org/organisations/api), [lobid-gnd](http://lobid.org/gnd/api)) führt zunächste grundlegende Konzepte der API anhand von Beispielen ein und zeigt darauf aufbauend komplexere Anfragen und spezielle Fälle wie die Suche nach URLs (in denen bestimmt Zeichen maskiert werden müssen). Für eine vollständige Referenz zur den Suchmöglichkeiten verweisen wir auf die Lucene- bzw. Elasticsearch-Dokumentation.
 
-Im weiteren Verlauf beschreibt die Dokumentation die unterstüzten Inhaltstypen mit Beispielanfragen. Wir beschreiben den Einsatz der API zur Umsetzung einer Autosuggest-Funktionalität mit einem in die Dokumentationseite eingebetteten, funktionstüchtigen Beispiel. Schließlich beschreiben wir spezifische Funktionen der einzelnen Dienste wie ortsbezogene Abfragen, CSV-Export, und die Integration der APIs in OpenRefine (siehe dazu auch unten).
+Im weiteren Verlauf beschreibt die Dokumentation die unterstützten Inhaltstypen mit Beispielanfragen. Wir beschreiben den Einsatz der API zur Umsetzung einer Autosuggest-Funktionalität mit einem in die Dokumentationseite eingebetteten, funktionstüchtigen Beispiel. Schließlich beschreiben wir spezifische Funktionen der einzelnen Dienste wie ortsbezogene Abfragen, CSV-Export, und die Integration der APIs in OpenRefine (siehe dazu auch unten).
 
 ## Dokumentation mit Beispielen
 
-Wenn wir ein Schema und seine Verwendung verstehen wollen suchen wir häufig nach Beispielen. Oft sind Beispiele jedoch nur sekundäre Elemente der Dokumentation, wenn es überhaupt welche gibt. Sehr verbreitet ist ein beschreibender Ansatz zur Dokumentation von Vokabularen oder Applikationsprofilen, bei dem Elemente in einer Tabelle (häufig in einem PDF) aufgelistet werden, mit Beschreibungen verschiedener Aspekte in mehreren Spalten.
+Um einen leichten Zugang zu einem Schema und seiner Verwendung zu bekommen, wird häufig nach Beispielen gesucht. Leider sind Beispiele aber oft nur zweitrangige Elemente einer Dokumentation, wenn überhaupt welche gegeben werden. Sehr verbreitet ist ein beschreibender Ansatz zur Dokumentation von Vokabularen oder Applikationsprofilen, bei dem Elemente in einer Tabelle (häufig in einem PDF) aufgelistet werden, mit Beschreibungen verschiedener Aspekte in mehreren Spalten.
 
-Eine Ausnahme bildet hier schema.org, das viele Beispiele bietet. Aber selbst hier sind die Beispiele ein Anhang der Beschreibung und manchmal fehlen sie (z.B. ist es schwierig zu erfahren, wie das Property [publication](http://schema.org/publication) oder die Klasse [PublicationEvent](http://schema.org/PublicationEvent) verwendet werden). Wir sind der Ansicht, dass [Beispiele Kernelement der Dokumentation](https://twitter.com/acka47/status/791271448245637120) sein sollten, während seitenweise Tabellen mit Elementen eines Matadatenschemas nicht sehr hilfreich und praktisch sind. Daher haben wir uns Gedanken gemacht, wie wir Beispiele ins Zentrum der Dokumentation stellen können.
+Eine Ausnahme bildet hier schema.org, das viele Beispiele bietet. Aber selbst hier sind die Beispiele ein Anhängsel der Beschreibung und manchmal fehlen sie (z.B. ist es schwierig zu erfahren, wie die Property [publication](http://schema.org/publication) oder die Klasse [PublicationEvent](http://schema.org/PublicationEvent) verwendet werden). Wir sind der Ansicht, dass [Beispiele Kernelemente der Dokumentation](https://twitter.com/acka47/status/791271448245637120) sein sollten und halten seitenlange Tabellen, die Elemente eines Metadatenschemas auflisten, nicht für sehr hilfreich und praktisch. Daher haben wir uns Gedanken gemacht und damit experimentiert, wie Beispiele ins Zentrum der Dokumentation gerückt werden können.
 
 ### Web-Annotationen für API-Dokumentation
 
-[Beispiele alleine sind nicht hinreichend](https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12), aber brauchen wir wirklich eine Tabelle, in der jedes Element unserer Daten beschrieben wird? Wenn wir das Beispiel in den Mittelpunkt stellen, können wir die strukturierten beschreibenden Daten (Name, Beschreibung, etc.) direkt dem Beispiel beifügen?
+Beispiele alleine sind nicht hinreichend (Gruenbaum 2009), aber brauchen wir wirklich eine Tabelle, in der jedes Element unserer Daten beschrieben wird? Wenn wir das Beispiel in den Mittelpunkt stellen, können wir die strukturierten beschreibenden Daten (Name, Beschreibung, etc.) direkt dem Beispiel beifügen?
 
-Hier bringen wir Werkzeuge zur Web-Annotation zum Einsatz, indem wir produktive Beispiele unserer JSON-LD Daten mit [hypothes.is](https://hypothes.is/) annotieren. Unser erster Ansatz war, direkt die JSON-Darstellungen zu annotieren (z.B. [http://lobid.org/organisations/DE-38M.json](http://lobid.org/organisations/DE-38M.json)), doch hier würden die Annotationen nur bei Verwendung des [hypothes.is Chrome-Plugins](https://chrome.google.com/webstore/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek) sichtbar. Eine weitere Option wäre die Verwendung des hypothes.is [via service](https://via.hypothes.is/), doch dieser [unterstützt keine Annotation von Textdateien](https://github.com/hypothesis/via/issues/79). Daher haben wir uns entschlossen, die JSON-Beispiele in die HTML-Dokumentationsseite einzubetten, und hypothes.is über JavaScript einzubinden.
+Hier kommen Werkzeuge zur Web-Annotation zur Anwendung, indem Beispiele unserer JSON-LD Daten aus dem Produktivsystem mit [hypothes.is](https://hypothes.is/) annotiert werden. Unser erster Ansatz war, direkt die JSON-Darstellungen zu annotieren (z.B. [http://lobid.org/organisations/DE-38M.json](http://lobid.org/organisations/DE-38M.json)), doch hier würden die Annotationen nur bei Verwendung des [hypothes.is Chrome-Plugins](https://chrome.google.com/webstore/detail/hypothesis-web-pdf-annota/bjfhmglciegochdpefhhlphglcehbmek) sichtbar. Eine weitere Option wäre die Verwendung des hypothes.is [via service](https://via.hypothes.is/), doch dieser [unterstützt keine Annotation von Textdateien](https://github.com/hypothesis/via/issues/79). Daher haben wir uns entschlossen, die JSON-Beispiele in die HTML-Dokumentationsseite einzubetten, und hypothes.is über JavaScript einzubinden.
 
-In lobid-organisations reicht die Annotation eines einzigen Beispiels. Um die wesentlichen Felder in den  lobid-resources Daten abzudecken annotieren wir je ein Beispiel der verschiedenen Ressourcentypen (Buch, Periodikum, Artikel, Serienband). Für lobid-gnd haben wir den Annotationsansatz noch nicht umgesetzt.
+In lobid-organisations reicht die Annotation eines einzigen Beispiels. Um die wesentlichen Felder in den lobid-resources-Daten abzudecken, mussten wir je ein Beispiel verschiedener Ressourcentypen (Buch, Periodikum, Artikel, Serienband) annotieren. Für lobid-gnd haben wir den Annotationsansatz noch nicht umgesetzt.
 
-Wir annotieren jeden JSON-Key mit den folgenden Informationen:
+Jedes JSON-Schlüsselwort wird mit den folgenden Informationen annotiert:
 
 - Name: eine menschenlesbare Bezeichnung für das Feld
 - Beschreibung: eine kurze Beschreibung der Information in diesem Feld
-- Abdeckung: Die Anzahl der Ressourcen mit Informationen in diesem Feld. Hier ergänzen wir häufig Beispiel-URLs zur Abfrage dieses Feldes.
+- Abdeckung: die Anzahl der Ressourcen im Dataset mit Informationen in diesem Feld. Hier ergänzen wir häufig URLs mit `_exists_`-Abfragen (siehe unten) dieses Feldes.
 - Anwendungsfälle: Beispiele zur Verwendung der Information in diesem Feld, häufig mit Beispielanfragen
 - URI: die RDF-Property, die diesem Feld entspricht (d.h. die auf den JSON-Key im JSON-LD-Kontext gemappte URI)
 - Provenienz: Informationen über die Felder in den Quelldaten, aus denen die Information in diesem Feld erzeugt wurde
 
 Die ersten beiden Punkte (Name und Beschreibung) sowie die URI werden bei allen Annotationen angegeben, die anderen Werte sind (noch) nicht vollständig angegeben. Wir versuchen durch Beispielanfragen in den Annotationen ein Gefühl für Möglichkeiten zur Nutzung der API zu vermitteln, insbesondere in den Abschnitten 'Abdeckung' und 'Anwendungsfälle'.
 
-Unter [http://lobid.org/organisations/api]([http://lobid.org/organisations/api]) kann man die annotationbasierte Dokumentation in Aktion sehen (für lobid-organisations gibt es auch eine [deutsche Version](http://lobid.org/organisations/api/de), die [lobid-resources Dokumentation](http://lobid.org/resources/api) ist nur auf deutsch verfügbar). Im [Abschnitt zu JSON-LD](http://lobid.org/resources/api#jsonld) öffnet sich durch einen Klick auf die hervorgehobenen JSON-Keys die hypothes.is-Seitenleiste mit Informationen über das entsprechende Element.
+Unter [http://lobid.org/organisations/api]([http://lobid.org/organisations/api/de]) kann man die annotationbasierte Dokumentation in Aktion sehen (für lobid-resources siehe [http://lobid.org/resources/api](http://lobid.org/resources/api)). Im [Abschnitt zu JSON-LD](http://lobid.org/organisations/api#jsonld) öffnet sich durch einen Klick auf die hervorgehobenen JSON-Keys die hypothes.is-Seitenleiste mit Informationen über das entsprechende Element.
 
-![Beispielannotation](images/annotation-example.png) 
+![Beispielannotation](images/annotation-example.png)
 
 Beispielannotation für das "type" Feld
 
@@ -278,7 +278,7 @@ Beispielannotation für das "type" Feld
 
 Die Beispiele, die zur Dokumentation annotiert werden, sollten im besten Fall Live-Daten aus dem Produktivsystem sein. So ist gewährleistet, dass bei Änderungen in den Daten das Beispiel, und damit die Dokumentation, automatisch aktuell bleibt. Dies verhindert manuellen Synchronisationsaufwand zwischen Daten und Dokumentation.
 
-Wir hoffen und glauben, dass dieser Ansatz zur Dokumentation nützlicher und angenehmer ist als der traditionelle beschreibende Ansatz. Er bietet Nutzenden eine intuitive und interaktive Schnittstelle um die Daten der lobid-APIs zu erkunden und zu verstehen. Bei Fragen oder Unklarheiten kann innerhalb der hypothes.is-Seitenleiste auf die Annotationen geantwortet werden. So können spezifische Teile der Dokumentation diskutiert werden.
+Wir hoffen und glauben, dass dieser Ansatz zur Dokumentation nützlicher und angenehmer ist als der traditionelle beschreibende Ansatz. Er bietet Nutzenden eine intuitive und interaktive Schnittstelle um die Daten der lobid-APIs zu erkunden und zu verstehen. Bei Fragen oder Unklarheiten kann innerhalb der hypothes.is-Seitenleiste auf die Annotationen geantwortet werden. So können spezifische Teile der Dokumentation im direkten Kontext derselben diskutiert werden.
 
 # Fallstudie: lobid-gnd
 
@@ -326,7 +326,7 @@ Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalblioth
 Die meiste Arbeit zur Optimierung der Datenstruktur übernimmt der JSON-LD-Kontext unter [https://lobid.org/gnd/context.jsonld](https://lobid.org/gnd/context.jsonld). Er bewirkt unter anderem folgende Dinge:
 
 - Der Kontext bestimmt, welche JSON-Keys auf welche RDF-Properties gemappt werden, so dass im JSON nicht lange URIs als Keys angezeigt werden.
-- Mit Einträgen wie `"AuthorityResource": "gnd:AuthorityResource"` werden Typen (`type`) im JSON nicht als umständliche URI, sondern als einfacher String angezeigt, so dass die Daten auch für Entwickler leicht verständlich sind, die bisher nicht viel mit Linked Data gearbeitet haben. 
+- Mit Einträgen wie `"AuthorityResource": "gnd:AuthorityResource"` werden Typen (`type`) im JSON nicht als umständliche URI, sondern als einfacher String angezeigt, so dass die Daten auch für Entwickler leicht verständlich sind, die bisher nicht viel mit Linked Data gearbeitet haben.
 - Mittels `"@container": "@set"` wird festgelegt, dass bis auf wenige Ausnahmen alle Properties ein Array als Wert haben, auch wenn es nur ein Element als Wert gibt. Dadurch ist die Datenstruktur homogener und vorhersagbarer. Dies spielt etwa für die Indexierung in Elasticsearch eine Rolle, da hier ein bestimmtes Feld immer den gleichen Datentypen (z.B. Array) haben muss. Auch bei der Nutzung der API erleichtert dies die Verarbeitung, da für ein bestimmtes Feld immer von einem identischen Typ ausgegangen werden kann. Im Zusammenspiel mit der Option [compactArrays](https://json-ld.org/spec/latest/json-ld-api/#dom-jsonldoptions-compactarrays) in JSON-LD ermöglicht dies eine gezielte Konfiguration einzelner Felder.
 
 #### Framing
@@ -741,10 +741,12 @@ Seit Ende letzter Woche ist die OpenRefine Reconciliation API für lobid-gnd pro
 
 Ewertowski, Christoph / Pohl, Adrian (2017): Which vocabularies to use for bibliographic descriptions? Blogpost verfügbar unter [http://blog.lobid.org/2017/04/19/vocabulary-choices.html](http://blog.lobid.org/2017/04/19/vocabulary-choices.html)
 
-Sporny, Manu et al (2014): JSON-LD 1.0. A JSON-based Serialization for Linked Data. W3C-Standard verfügbar unter [https://www.w3.org/TR/2014/REC-json-ld-20140116/](https://www.w3.org/TR/2014/REC-json-ld-20140116/)
+Gruenbaum, Peter (2010): Web API Documentation Best Practices. Blogpost verfügbar unter [https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12](https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12)
+
+Lóscio, Bernadette Farias et al. (2017): Data on the Web Best Practices. W3C Recommendation verfügbar unter https://www.w3.org/TR/dwbp/. Hier insbesondere Abschnitt "8.2 Metadata": [https://www.w3.org/TR/dwbp/#metadata](https://www.w3.org/TR/dwbp/#metadata)
+
+Sporny, Manu et al. (2014): JSON-LD 1.0. A JSON-based Serialization for Linked Data. W3C Recommendation verfügbar unter [https://www.w3.org/TR/2014/REC-json-ld-20140116/](https://www.w3.org/TR/2014/REC-json-ld-20140116/)
 
 Steeg, Fabian (2015a): Why LOD needs applications, and libraries need APIs. Blogpost verfügbar unter [http://fsteeg.com/notes/why-lod-needs-applications-and-libraries-need-apis](http://fsteeg.com/notes/why-lod-needs-applications-and-libraries-need-apis)
 
 Steeg, Fabian (2015b): More self-containedness, less code sharing. Blogpost verfügbar unter [http://fsteeg.com/notes/more-self-containedness-less-code-sharing](http://fsteeg.com/notes/more-self-containedness-less-code-sharing).
-
-https://www.w3.org/TR/json-ld/
