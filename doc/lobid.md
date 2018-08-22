@@ -38,6 +38,8 @@
 		- [Labels für verlinkte Ressourcen](#labels-für-verlinkte-ressourcen)
 		- [Anreicherung mit Links und Bildern aus EntityFacts](#anreicherung-mit-links-und-bildern-aus-entityfacts)
 	- [Web-API](#web-api)
+		- [Bulk Downloads](#bulk-downloads)
+		- [OpenRefine Reconciliation API](#openrefine-reconciliation-api)
 	- [Formulierung komplexer Suchanfragen](#formulierung-komplexer-suchanfragen)
 		- [Query-Grundlagen](#query-grundlagen)
 			- [Eingabe](#eingabe)
@@ -51,9 +53,7 @@
 			- [Suche nach Einträgen mit Wikidata-Link aber ohne Bild](#suche-nach-einträgen-mit-wikidata-link-aber-ohne-bild)
 			- [Personen, die während der NS-Zeit in Köln geboren wurden](#personen-die-während-der-ns-zeit-in-köln-geboren-wurden)
 			- [Vollständige Query-Syntax](#vollständige-query-syntax)
-	- [Bulk Downloads, OpenRefine-API und mehr](#bulk-downloads-openrefine-api-und-mehr)
-		- [Bulk Downloads](#bulk-downloads)
-		- [OpenRefine Reconciliation API](#openrefine-reconciliation-api)
+- [Schluss](#schluss)
 - [Referenzen](#referenzen)
 
 <!-- /TOC -->
@@ -507,9 +507,29 @@ Mit diesen Anreicherungen kann auf der Basis von Identifikatoren Dritter in lobi
 
 ## Web-API
 
-Das im vorherigen Abschnitt beschriebene JSON-LD indexieren wir in einen [Elasticsearch](https://www.elastic.co/de/products/elasticsearch)-Suchmaschinenindex und bieten die Elasticsearch-Abfragesprache für Suchanfragen und zum Filtern an. Somit sind nützliche Elasticsearch-Funktionen für interessierte Nutzer verfügbar wie z.B. Unterstützung der [Lucene Query Language](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) und `_exists_`-Abfragen. Eine Dokumentation der Elasticsearch `query_string` DSL findet sich [hier](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html). Darauf aufsetzend bieten wir auch einen [Parameter für Auto-Suggest](http://lobid.org/gnd/api#auto-complete), dessen Rückgabefelder bei Bedarf angepasst werden können.
+Das im vorherigen Abschnitt beschriebene JSON-LD indexieren wir in einen [Elasticsearch](https://www.elastic.co/de/products/elasticsearch)-Suchmaschinenindex und bieten die Elasticsearch-Abfragesprache für Suchanfragen und zum Filtern an. Somit sind nützliche Elasticsearch-Funktionen für interessierte Nutzer verfügbar wie z.B. Unterstützung der [Lucene Query Language](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) und `_exists_`-Abfragen. Eine Dokumentation der Elasticsearch `query_string` DSL findet sich [hier](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html). Darauf aufsetzend bieten wir auch einen [Parameter für Auto-Suggest](http://lobid.org/gnd/api#auto-complete), dessen Rückgabefelder bei Bedarf angepasst werden können. Für eine detaillierte API-Beschreibung verweisen wir auf die Dokumentation unter [https://lobid.org/gnd/api](https://lobid.org/gnd/api).
 
-Für eine detaillierte API-Beschreibung verweisen wir auf die Dokumentation unter [https://lobid.org/gnd/api](https://lobid.org/gnd/api).
+### Bulk Downloads
+
+Für jede lobid-gnd-Abfrage kann jetzt – wie auch in lobid-resources – die gesamte Ergebnismenge als JSON Lines heruntergeladen werden, indem einach der Parameter `format=jsonl` ergänzt wird. Im Antwortformat wird dann pro Zeile ein GND-Eintrag zurückgeliefert, zum Beispiel alle GND-Entitäten vom Typ "Sammlung" (Unterklasse von "Werk"):
+
+[http://lobid.org/gnd/search?filter=type:Collection&format=jsonl](http://lobid.org/gnd/search?filter=type:Collection&format=jsonl)
+
+Bei solchen kleineren Ergebnismengen reicht der JSON-Lines-Download aus, werden größere Untermengen der GND abgefragt, empfiehlt es sich, das Ergebnis komprimiert als gzip herunterzuladen. Dafür muss der HTTP-Anfrage nur der entsprechende Accept-Header mitgegeben werden, z.B. mit curl:
+
+`$ curl --header "Accept-Encoding: gzip" 'http://lobid.org/gnd/search?filter=type:Collection&format=jsonl'`
+
+### OpenRefine Reconciliation API
+
+Mit der OpenRefine Reconciliation API ist es auf einfache Weise möglich, mit dem für Datenaufbereitung und -anreicherung beliebten Werkzeug [OpenRefine](http://openrefine.org/) eine Liste von Ansetzungsformen mit der GND abzugleichen, um etwa die Textstrings auf GND-IDs zu matchen. Dafür müssen lediglich die abzugleichenden Daten in OpenRefine geladen werden, die entsprechende Spalte ausgewählt und der Reconciliation-Prozess z.B. wie folgt durchgeführt werden.
+
+1.Start des Reconciliation-Prozesses für eine Spalte in OpenRefine
+![Screenshot](images/start-reconciling.png "start reconciling")
+2. Ergänzen des lobid-gnd Reconciliation Endpoints (`https://lobid.org/gnd/reconcile`) in OpenRefine
+![Screenshot](images/add-lobid-gnd-to-openrefine.png "ergänze lobid-gnd reconciliation API")
+3. (Optionale) Auswahl einer GND-Untermenge (hier "Person") für Reconciliation
+![Screenshot](images/choose-type-for-reconciliation.png "Typ-Auswahl")
+4. Start der API-Abfrage mit Klick auf "Start Reconciling"
 
 ## Formulierung komplexer Suchanfragen
 
@@ -694,27 +714,9 @@ Je nach Zweck kann die eine oder andere Abfrage sinnvoller sein.
 
 lobid-gnd ist auf Basis von [Elasticsearch](https://de.wikipedia.org/wiki/Elasticsearch) umgesetzt. Wir verweisen hier nochmals auf die vollständige Dokumentation der [Elasticsearch Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax) sowie der [Apache Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). (Elasticsearch basiert auf [Apache Lucene](https://de.wikipedia.org/wiki/Apache_Lucene).)
 
-### Bulk Downloads
+# Schluss
 
-Für jede lobid-gnd-Abfrage kann jetzt – wie auch in lobid-resources – die gesamte Ergebnismenge als JSON Lines heruntergeladen werden, indem einach der Parameter `format=jsonl` ergänzt wird. Im Antwortformat wird dann pro Zeile ein GND-Eintrag zurückgeliefert, zum Beispiel alle GND-Entitäten vom Typ "Sammlung" (Unterklasse von "Werk"):
-
-[http://lobid.org/gnd/search?filter=type:Collection&format=jsonl](http://lobid.org/gnd/search?filter=type:Collection&format=jsonl)
-
-Bei solchen kleineren Ergebnismengen reicht der JSON-Lines-Download aus, werden größere Untermengen der GND abgefragt, empfiehlt es sich, das Ergebnis komprimiert als gzip herunterzuladen. Dafür muss der HTTP-Anfrage nur der entsprechende Accept-Header mitgegeben werden, z.B. mit curl:
-
-`$ curl --header "Accept-Encoding: gzip" 'http://lobid.org/gnd/search?filter=type:Collection&format=jsonl'`
-
-### OpenRefine Reconciliation API
-
-Seit Ende letzter Woche ist die OpenRefine Reconciliation API für lobid-gnd produktiv. Damit ist es auf einfache Weise möglich, mit dem für Datenaufbereitung und -anreicherung beliebten Werkzeug [OpenRefine](http://openrefine.org/) eine Liste von Ansetzungsformen mit der GND abzugleichen, um die Textstrings auf GND-IDs zu matchen. Dafür müssen lediglich die abzugleichenden Daten in OpenRefine geladen werden, die entsprechende Spalte ausgewählt und der Reconciliation-Prozess z.B. wie folgt durchgeführt werden.
-
-1.Start des Reconciliation-Prozesses für eine Spalte in OpenRefine
-![Screenshot](images/start-reconciling.png "start reconciling")
-2. Ergänzen des lobid-gnd Reconciliation Endpoints (`https://lobid.org/gnd/reconcile`) in OpenRefine
-![Screenshot](images/add-lobid-gnd-to-openrefine.png "ergänze lobid-gnd reconciliation API")
-3. (Optionale) Auswahl einer GND-Untermenge (hier "Person") für Reconciliation
-![Screenshot](images/choose-type-for-reconciliation.png "Typ-Auswahl")
-4. Start der API-Abfrage mit Klick auf "Start Reconciling"
+tbd
 
 # Referenzen
 
