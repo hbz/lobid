@@ -30,8 +30,7 @@
 		- [Web-Annotationen für API-Dokumentation](#web-annotationen-für-api-dokumentation)
 		- [Vorteile](#vorteile)
 	- [Fallstudie: lobid-gnd](#fallstudie-lobid-gnd)
-	- [Die Benutzeroberfläche](#die-benutzeroberfläche)
-	- [Suche und Navigation](#suche-und-navigation)
+		- [Suche und Navigation in der Benutzeroberfläche](#suche-und-navigation-in-der-benutzeroberfläche)
 	- [Datengenerierung und Anreicherung](#datengenerierung-und-anreicherung)
 		- [Der JSON-LD-Kontext](#der-json-ld-kontext)
 	- [Framing](#framing)
@@ -46,14 +45,13 @@
 			- [Anzeige der JSON-Daten](#anzeige-der-json-daten)
 			- [Feldsuchen](#feldsuchen)
 		- [Beispiele](#beispiele)
-			- [`_exists_`-Abfragen](#exists-abfragen)
+			- [exists-Abfragen](#exists-abfragen)
 			- [Einträge mit Angabe eines Architekten](#einträge-mit-angabe-eines-architekten)
 			- [Gleichzeitige Suche in Ansetzungs- und Verweisungsformen](#gleichzeitige-suche-in-ansetzungs-und-verweisungsformen)
 			- [Suche nach Einträgen mit Wikidata-Link aber ohne Bild](#suche-nach-einträgen-mit-wikidata-link-aber-ohne-bild)
 			- [Personen, die während der NS-Zeit in Köln geboren wurden](#personen-die-während-der-ns-zeit-in-köln-geboren-wurden)
 			- [Vollständige Query-Syntax](#vollständige-query-syntax)
 	- [Bulk Downloads, OpenRefine-API und mehr](#bulk-downloads-openrefine-api-und-mehr)
-		- [Zufälliges Bild auf der Startseite](#zufälliges-bild-auf-der-startseite)
 		- [Bulk Downloads](#bulk-downloads)
 		- [OpenRefine Reconciliation API](#openrefine-reconciliation-api)
 - [Referenzen](#referenzen)
@@ -313,11 +311,11 @@ Wir hoffen und glauben, dass dieser Ansatz zur Dokumentation nützlicher und ang
 
 Mit lobid-gnd bietet das hbz eine Schnittstelle zur GND für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten. Da es sich bei lobid-gnd zum einen um den Dienst handelt, der am meisten Menschen interessieren dürfte und zum anden um den letzten lobid-Dienst, der in Version 2 gelauncht wurde, nutzen wir es als Beispiel für eine detaillierte Betrachtung der Möglichkeiten von lobid.
 
-## Die Benutzeroberfläche
+### Suche und Navigation in der Benutzeroberfläche
 
-## Suche und Navigation
+Auf der Startseite von lobid-gnd findet sich neben einer kurzen Beschreibung des Dienstes ein Suchschlitz. Außerdem wird – wie auch in [lobid-organisations](https://lobid.org/organisations) – mit jedem Laden der Seite ein zufälliges Bild zu einer GND-Ressource angezeigt. Momentan gibt es [knapp 200.000 Einträge mit Bild](http://lobid.org/gnd/search?q=_exists_%3Adepiction), davon sind die meisten Personen. Wer also Lust hat, die GND ein wenig näher kennenzulernen, kann ja mal die Startseite ein paar Mal neu laden.
 
-Die Startseite von lobid-gnd führt auf die einfache Suchoberfläche, die unter anderem Boolesche Operatoren, Phrasensuche und Trunkierung unterstützt:
+ führt auf die einfache Suchoberfläche, die unter anderem Boolesche Operatoren, Phrasensuche und Trunkierung unterstützt:
 
 ![http://lobid.org/gnd](images/lobid-gnd-suche/1-1-suchen.png)
 
@@ -537,7 +535,7 @@ Oder auf der Kommandozeile via curl:
 
 #### Default-Sucheinstellungen & boolesche Operatoren
 
-Standardmäßig geht eine im Suchfenster angestoßene Suche über alle Felder. Mehrere Suchterme werden dabei per Default mit einem booleschen `AND` verknüpft. Boolesche Operatoren lassen sich aber auch passgenau für den jeweiligen Zweck angeben. Beispiele:
+Standardmäßig geht eine im Suchfenster angestoßene Suche über alle Felder. Mehrere Suchterme werden dabei per Default mit einem booleschen `AND` verknüpft (bei den anderen lobid-Diensten ist derzeit eine OR-Verknüpfung Standard). Boolesche Operatoren lassen sich aber auch passgenau für den jeweiligen Zweck angeben. Beispiele:
 
 - <a href="http://lobid.org/gnd/search?q=Dom+AND+(Aachen OR Köln)">Dom UND (Aachen ODER Köln)</a>
 - [Geographika in (Äthiopien ODER Eritrea)](http://lobid.org/gnd/search?q=type%3APlaceOrGeographicName+AND+geographicAreaCode.id%3A%28%22http%3A%2F%2Fd-nb.info%2Fstandards%2Fvocab%2Fgnd%2Fgeographic-area-code%23XC-ET%22+OR+%22http%3A%2F%2Fd-nb.info%2Fstandards%2Fvocab%2Fgnd%2Fgeographic-area-code%23XC-ER%22%29)
@@ -578,15 +576,15 @@ So kann ich etwa nach [`professionOrOccupation.label:Sänger*`](http://lobid.org
 
 ### Beispiele
 
-#### `_exists_`-Abfragen
+#### exists-Abfragen
 
-Häufig ist es hilfreich herauszufinden, wie viele und welche Einträge überhaupt eine bestimmte Information beinhalten bzw. in wie vielen Einträgen ein bestimmtes Feld fehlt. Dafür kann eine Anfrage in der Form `_exists_:<Feldname>` verwendet werden, optional mit dem booleschen `NOT`, um alle Einträge zu bekommen, die das jeweilige *nicht* haben, z.B. geschlechtslose Geister:
+Häufig ist es hilfreich herauszufinden, wie viele und welche Einträge überhaupt ein bestimmtes Feld beinhalten bzw. in wie vielen Einträgen ein bestimmtes Feld fehlt. Dafür kann eine Anfrage in der Form `_exists_:<Feldname>` verwendet werden, optional mit dem booleschen `NOT`, um alle Einträge zu bekommen, die das jeweilige *nicht* haben, z.B. "geschlechtslose Geister":
 
 [`http://lobid.org/gnd/search?q=type:Spirits+AND+NOT+_exists_:gender`](http://lobid.org/gnd/search?q=type%3ASpirits+AND+NOT+_exists_%3Agender)
 
 #### Einträge mit Angabe eines Architekten
 
-Beim Betrachten etwa des Eintrags zum [Friedenspark Köln](http://lobid.org/gnd/1065252633) fällt auf, dass ein Architekt angegeben ist. Bei Interesse daran, welche Einträge noch Architekt*innen angeben, lässt sich das wie folgt herausfinden.
+Beim Betrachten etwa des Eintrags zum [Friedenspark Köln](http://lobid.org/gnd/1065252633) fällt auf, dass ein Architekt angegeben ist. Bei Interesse daran, welche weiteren Einträge Architekt*innen angeben, lässt sich das wie folgt herausfinden.
 
 Ich schaue zunächst im JSON nach, wie das entsprechende Feld heißt:
 
@@ -603,14 +601,15 @@ Ich schaue zunächst im JSON nach, wie das entsprechende Feld heißt:
 ```
 
 Dann schreibe ich die entsprechende `_exists`-[Anfrage](http://lobid.org/gnd/search?q=_exists_:architect):
+
 ![Screenshot](images/2018-07-06-lobid-gnd-queries/architect-query.png "architect-Sucheingabe")
 
-Unterfelder werden wie beschrieben über eine Punkt-Notation angegeben, z.B. Architekten mit dem label "Fritz":
+Unterfelder werden wie beschrieben über eine Punkt-Notation angegeben, z.B. Architekten mit "Fritz" im Namen:
 [`architect.label:Fritz`](http://lobid.org/gnd/search?q=architect.label:Fritz)
 
 #### Gleichzeitige Suche in Ansetzungs- und Verweisungsformen
 
-Aus einer E-Mail-Anfrage an das lobid-Team:
+Dieses Beispiel stammt aus einer E-Mail-Anfrage an das lobid-Team:
 
 > Noch eine Frage habe ich zur API. Kann ich die Suche nach Namen so einschränken, dass ich nach exakten Matches in den `variantName` oder `preferredName` suchen kann?
 
@@ -660,7 +659,7 @@ Wir wollen aber nicht alle Einträge mit Wikidata-Link, sondern nur jene *ohne B
 
 #### Personen, die während der NS-Zeit in Köln geboren wurden
 
-Wenn ich eine Frage beantworten möchte wie "Welche Personen in der GND wurden in der NS-Zeit in Köln geboren?", dann ist es sinnvoll, sich einen Eintrag zu suchen, der die nötigen Informationen zur Beantwortung einer solchen Frage besitzt. Hier z.B. die strukturierten Daten zum Eintrag von [Konrad Adenauer](http://lobid.org/gnd/11850066X.json), der folgende Informationen zu Geburtsort und -datum enthält:
+Wenn ich eine Frage beantworten möchte wie "Welche in der GND verzheichneten Personen wurden während der NS-Zeit in Köln geboren?", dann ist es sinnvoll, sich einen Eintrag zu suchen, der die nötigen Informationen zur Beantwortung einer solchen Frage besitzt. Hier z.B. die strukturierten Daten zum Eintrag von [Konrad Adenauer](http://lobid.org/gnd/11850066X.json), der folgende Informationen zu Geburtsort und -datum enthält:
 
 ```json
 {
@@ -693,18 +692,7 @@ Je nach Zweck kann die eine oder andere Abfrage sinnvoller sein.
 
 #### Vollständige Query-Syntax
 
-lobid-gnd ist auf Basis von [Elasticsearch](https://de.wikipedia.org/wiki/Elasticsearch) umgesetzt. Wir verweisen hier auf die vollständige Dokumentation der [Elasticsearch Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax) sowie der [Apache Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). (Elasticsearch basiert auf [Apache Lucene](https://de.wikipedia.org/wiki/Apache_Lucene).)
-
-## Bulk Downloads, OpenRefine-API und mehr
-
-Letzte Woche haben wir einige Funktionen zu lobid-gnd ergänzt, hier ein Überblick.
-
-### Zufälliges Bild auf der Startseite
-
-Wie auch in [lobid-organisations](https://lobid.org/organisations) wird nun auf der [lobid-gnd-Startseite](https://lobid.org/gnd) mit jedem Laden ein zufälliges Bild zu einer GND-Ressource angezeigt. Momentan gibt es [knapp 200.000 Einträge mit Bild](http://lobid.org/gnd/search?q=_exists_%3Adepiction), davon sind die meisten Personen. Wer also Lust hat, die GND ein wenig näher kennenzulernen, kann ja mal die Startseite ein paar Mal neu laden.
-
-[![Screenshot](images/sendler.png "lobid-gnd homepage")](https://lobid.org/gnd)
- <small>Screenshot der lobid-gnd-Startseite mit dem Bild von [Irena Sendler](http://lobid.org/gnd/129335290)</small>
+lobid-gnd ist auf Basis von [Elasticsearch](https://de.wikipedia.org/wiki/Elasticsearch) umgesetzt. Wir verweisen hier nochmals auf die vollständige Dokumentation der [Elasticsearch Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax) sowie der [Apache Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). (Elasticsearch basiert auf [Apache Lucene](https://de.wikipedia.org/wiki/Apache_Lucene).)
 
 ### Bulk Downloads
 
