@@ -4,7 +4,7 @@
 
 - [Lobid – Dateninfrastruktur für Bibliotheken](#lobid-dateninfrastruktur-für-bibliotheken)
 - [Überblick](#überblick)
-	- [lobid: Schnittstellen für Entwickler*innen und Endnutzer*innen](#lobid-schnittstellen-für-entwicklerinnen-und-endnutzerinnen)
+	- [lobid: Schnittstellen für Entwickler\*innen und Endnutzer\*innen](#lobid-schnittstellen-für-entwicklerinnen-und-endnutzerinnen)
 	- [Warum APIs?](#warum-apis)
 	- [Architektur: von horizontalen Schichten zu vertikalen Schnitten](#architektur-von-horizontalen-schichten-zu-vertikalen-schnitten)
 	- [Linked Open Usable Data (LOUD) mittels JSON-LD](#linked-open-usable-data-loud-mittels-json-ld)
@@ -60,11 +60,11 @@
 
 # Überblick
 
-## lobid: Schnittstellen für Entwickler*innen und Endnutzer*innen
+## lobid: Schnittstellen für Entwickler\*innen und Endnutzer\*innen
 
 [lobid](http://lobid.org) stellt offene Programmierschnittstellen (APIs) und Rechercheoberflächen zur Verfügung, die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW betrieben und umfasst derzeit drei Dienste: [lobid-resources](http://lobid.org/resources) bietet Zugriff auf den hbz-Verbundkatalog, [lobid-organisations](http://lobid.org/organisations) bietet Informationen zu Gedächtnisinstitutionen im deutschsprachigen Raum, [lobid-gnd](http://lobid.org/gnd) bietet Zugriff auf die Gemeinsame Normdatei (GND).
 
-lobid richtet sich primär an Bedienstete in bibliothekarischen Einrichtungen, nicht nur in Nordrhein-Westfalen, sondern im gesamten deutschsprachigen Raum. Zum einen sind dies Bibliothekar*innen, die etwa eine Recherche im hbz-Verbundkatalog, der GND oder dem Sigelverzeichnis vornehmen wollen. Mit der Bereitstellung zuverlässiger und leicht nutzbarer Web-APIs richtet sich lobid an Entwickler*innen, die am Aufbau oder der Verbesserung von bibliothekarischen Anwendungen in ihren Einrichtungen arbeiten.
+lobid richtet sich primär an Bedienstete in bibliothekarischen Einrichtungen, nicht nur in Nordrhein-Westfalen, sondern im gesamten deutschsprachigen Raum. Zum einen sind dies Bibliothekar\*innen, die etwa eine Recherche im hbz-Verbundkatalog, der GND oder dem Sigelverzeichnis vornehmen wollen. Mit der Bereitstellung zuverlässiger und leicht nutzbarer Web-APIs richtet sich lobid an Entwickler\*innen, die am Aufbau oder der Verbesserung von bibliothekarischen Anwendungen in ihren Einrichtungen arbeiten.
 
 ## Warum APIs?
 
@@ -92,7 +92,7 @@ Durch die Kombination dieser Module in der Horizontalen haben wir nach wie vor e
 
 ## Linked Open Usable Data (LOUD) mittels JSON-LD
 
-Robert Sanderson hat den Begriff "Linked Open Usable Data" (LOUD) geprägt, um eine Form der Linked-Open-Data-Publikation voranzutreiben, die Software-Entwickler*innen, deren Konventionen und Bedürfnisse in den Vordergrund stellt, vgl. Sanderson (2016) sowie Sanderson (2018). Die Anforderungen an LOUD fasst Sanderson (2018), Folie 22 wie folgt zusammen (Übersetzung/Paraphrase von uns):
+Robert Sanderson hat den Begriff "Linked Open Usable Data" (LOUD) geprägt, um eine Form der Linked-Open-Data-Publikation voranzutreiben, die Software-Entwickler\*innen, deren Konventionen und Bedürfnisse in den Vordergrund stellt, vgl. Sanderson (2016) sowie Sanderson (2018). Die Anforderungen an LOUD fasst Sanderson (2018), Folie 22 wie folgt zusammen (Übersetzung/Paraphrase von uns):
 
 - der Zielgruppe angemessene Abstraktion
 - wenig Einstiegshürden
@@ -232,7 +232,7 @@ Wie die Erstellung des JSON-LD allgemein, unterscheidet sich auch die Implementi
 
 #### Zwischenfazit: JSON-LD ist nicht gleich JSON-LD
 
-Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD sehr unterschiedlich erzeugt und verwendet werden kann. Wie es erzeugt wird hat dabei große Auswirkungen darauf, wie es verarbeitet werden kann und wie nützlich es Entwickler*innen mit unterschiedlichem fachlichen Hintergrund erscheint. Eine reine RDF-Serialisierung wie in unserem alten System kann etwa perfekt passen, wenn sowieso mit einem RDF-Modell gearbeitet wird, während sie Web-Entwicklern und Entwicklerinnen, die mit JSON vertraut sind, als absurd und schwer verwendbar erscheinen wird. Diese Unterschiede in dem, wie JSON-LD tatsächlich aussieht, können eine Herausforderung für die Kommunikation über die Nützlichkeit von JSON-LD sein. Zugleich ist dies aber auch eine Stärke von JSON-LD, das mit seiner Doppelnatur – als RDF-Serialisierung und als einfacher Weg, JSON-Daten zu vernetzen – unterschiedliche Nutzungsszenarien abdecken kann.
+Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD sehr unterschiedlich erzeugt und verwendet werden kann. Wie es erzeugt wird hat dabei große Auswirkungen darauf, wie es verarbeitet werden kann und wie nützlich es Entwickler\*innen mit unterschiedlichem fachlichen Hintergrund erscheint. Eine reine RDF-Serialisierung wie in unserem alten System kann etwa perfekt passen, wenn sowieso mit einem RDF-Modell gearbeitet wird, während sie Web-Entwicklern und Entwicklerinnen, die mit JSON vertraut sind, als absurd und schwer verwendbar erscheinen wird. Diese Unterschiede in dem, wie JSON-LD tatsächlich aussieht, können eine Herausforderung für die Kommunikation über die Nützlichkeit von JSON-LD sein. Zugleich ist dies aber auch eine Stärke von JSON-LD, das mit seiner Doppelnatur – als RDF-Serialisierung und als einfacher Weg, JSON-Daten zu vernetzen – unterschiedliche Nutzungsszenarien abdecken kann.
 
 ## Vokabulare
 
@@ -240,7 +240,7 @@ Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabula
 
 ## Benutzerschnittstellen
 
-Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [Lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Fallbeispiel lobid-gnd findet sich unten im Abschnitt "Suche und Navigation in der Benutzeroberfläche".
+Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [Lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer\*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Fallbeispiel lobid-gnd findet sich unten im Abschnitt "Suche und Navigation in der Benutzeroberfläche".
 
 # Entwicklungsprozess
 
@@ -610,7 +610,7 @@ Will ich ein Feld abfragen, das sich nicht auf der obersten Ebene der geschachte
 }
 ```
 
-So kann ich etwa nach [`professionOrOccupation.label:Sänger*`](http://lobid.org/gnd/search?q=professionOrOccupation.label:Sänger*) suchen, wenn ich sowohl männliche wie auch weibliche Vokalist*innen finden möchte.
+So kann ich etwa nach [`professionOrOccupation.label:Sänger*`](http://lobid.org/gnd/search?q=professionOrOccupation.label:Sänger*) suchen, wenn ich sowohl männliche wie auch weibliche Vokalist\*innen finden möchte.
 
 ### Beispiele
 
@@ -622,7 +622,7 @@ Häufig ist es hilfreich herauszufinden, wie viele und welche Einträge überhau
 
 #### Einträge mit Angabe eines Architekten
 
-Beim Betrachten etwa des Eintrags zum [Friedenspark Köln](http://lobid.org/gnd/1065252633) fällt auf, dass ein Architekt angegeben ist. Bei Interesse daran, welche weiteren Einträge Architekt*innen angeben, lässt sich das wie folgt herausfinden.
+Beim Betrachten etwa des Eintrags zum [Friedenspark Köln](http://lobid.org/gnd/1065252633) fällt auf, dass ein Architekt angegeben ist. Bei Interesse daran, welche weiteren Einträge Architekt\*innen angeben, lässt sich das wie folgt herausfinden.
 
 Ich schaue zunächst im JSON nach, wie das entsprechende Feld heißt:
 
