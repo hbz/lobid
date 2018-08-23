@@ -4,10 +4,10 @@
 
 - [Lobid – Dateninfrastruktur für Bibliotheken](#lobid-dateninfrastruktur-für-bibliotheken)
 - [Überblick](#überblick)
-	- [lobid: Oberflächen und APIs](#lobid-oberflächen-und-apis)
+	- [lobid: Schnittstellen für Entwickler*innen und Endnutzer*innen](#lobid-schnittstellen-für-entwicklerinnen-und-endnutzerinnen)
 	- [Warum APIs?](#warum-apis)
 	- [Architektur: von horizontalen Schichten zu vertikalen Schnitten](#architektur-von-horizontalen-schichten-zu-vertikalen-schnitten)
-	- [JSON-LD: eine RDF-Serialisierung oder JSON mit Kontext](#json-ld-eine-rdf-serialisierung-oder-json-mit-kontext)
+	- [Linked Open Usable Data (LOUD) mittels JSON-LD](#linked-open-usable-data-loud-mittels-json-ld)
 		- [Generisches JSON-LD im lobid 1.x-System](#generisches-json-ld-im-lobid-1x-system)
 		- [Maßgeschneidertes JSON-LD in den neuen Systemen](#mageschneidertes-json-ld-in-den-neuen-systemen)
 			- [Erstellung von JSON-LD als JSON mit Kontext: lobid-organisations](#erstellung-von-json-ld-als-json-mit-kontext-lobid-organisations)
@@ -17,8 +17,8 @@
 			- [Hierarchisch strukturierte Daten](#hierarchisch-strukturierte-daten)
 			- [Labels für IDs](#labels-für-ids)
 			- [Zwischenfazit: JSON-LD ist nicht gleich JSON-LD](#zwischenfazit-json-ld-ist-nicht-gleich-json-ld)
-	- [Benutzerschnittstellen](#benutzerschnittstellen)
 	- [Vokabulare](#vokabulare)
+	- [Benutzerschnittstellen](#benutzerschnittstellen)
 - [Entwicklungsprozess](#entwicklungsprozess)
 	- [Open Source](#open-source)
 	- [Visualisierung](#visualisierung)
@@ -60,11 +60,15 @@
 
 # Überblick
 
-## lobid: Oberflächen und APIs
+## lobid: Schnittstellen für Entwickler*innen und Endnutzer*innen
 
-[lobid](http://lobid.org) stellt Rechercheoberflächen und offene Programmierschnittstellen (APIs) zur Verfügung, die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW betrieben. Derzeit umfasst lobid drei Dienste: [lobid-resources](http://lobid.org/resources) bietet Zugriff auf den hbz-Verbundkatalog, [lobid-organisations](http://lobid.org/organisations) bietet Informationen zu Gedächtnisinstitutionen im deutschsprachigen Raum, [lobid-gnd](http://lobid.org/gnd) bietet Zugriff auf die Gemeinsame Normdatei (GND).
+[lobid](http://lobid.org) stellt offene Programmierschnittstellen (APIs) und Rechercheoberflächen zur Verfügung, die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW betrieben und umfasst derzeit drei Dienste: [lobid-resources](http://lobid.org/resources) bietet Zugriff auf den hbz-Verbundkatalog, [lobid-organisations](http://lobid.org/organisations) bietet Informationen zu Gedächtnisinstitutionen im deutschsprachigen Raum, [lobid-gnd](http://lobid.org/gnd) bietet Zugriff auf die Gemeinsame Normdatei (GND).
+
+lobid richtet sich primär an Bedienstete in bibliothekarischen Einrichtungen, nicht nur in Nordrhein-Westfalen, sondern im gesamten deutschsprachigen Raum. Zum einen sind dies Bibliothekar*innen, die etwa eine Recherche im hbz-Verbundkatalog, der GND oder dem Sigelverzeichnis vornehmen wollen. Mit der Bereitstellung zuverlässiger und leicht nutzbarer Web-APIs richtet sich lobid an Entwickler*innen, die am Aufbau oder der Verbesserung von bibliothekarischen Anwendungen in ihren Einrichtungen arbeiten.
 
 ## Warum APIs?
+
+lobid wurde von Anfang an um die bereitzustellenden Daten herum konzipiert, so lautet die Auflösung des Akronyms ursprünglich "linking open bibliographic data". Die Transformation der Quelldaten, die Modellierung der Zieldaten und die Auswahl der RDF-Properties und -Klassen hat dementsprechend über lange Zeit den Kern der Arbeit um lobid ausgemacht. Begonnen hat lobid mit der Bereitstellung der transformierten Daten über einen Triple Store. Der Triple Store war aber für performankritische Anwendungsfälle wie einen Entity Lookup via Label nicht optimiert und zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und Nachnutzbarkeit zu erleichtern wurde das lobid Backend 2013 auf Elasticsearch mit JSON-Daten umgestellt.
 
 Die lobid-API bietet einheitlichen Zugriff auf bibliothekarische Daten über eine Web-basierte Programmierschnittstelle (application programming interface, API). Sie liefert JSON für Linked Data (JSON-LD):
 
@@ -86,9 +90,19 @@ Daher haben wir lobid für die 2.0-Version in vertikale, in sich abgeschlossene 
 
 Durch die Kombination dieser Module in der Horizontalen haben wir nach wie vor eine gemeinsame API und eine gemeinsame Oberfläche für alle Dienste, doch Teile dieser API und Oberfläche sind in Module gekapselt, die je ein Datenset behandeln. Diese Module enthalt den für das jeweilige Datenset spezifischen Code und die spezifischen Abhängigkeiten und können unabhängig analysiert, verändert und installiert werden.
 
-## JSON-LD: eine RDF-Serialisierung oder JSON mit Kontext
+## Linked Open Usable Data (LOUD) mittels JSON-LD
 
-JSON-LD ist eine W3C-Empfehlung für eine JSON-basierte Linked-Data-Serialisierung. Man kann JSON-LD aus zwei Perspektiven betrachten: einerseits als RDF-Serialisierung (wie N-Triples, Turtle oder RDF/XML), andererseits als eine Möglichkeit, JSON zum Verlinken von Daten zu verwenden. Diese doppelte Perspektive spiegelt sich auch in der JSON-LD-Spezifikation wider, die beschreibt dass JSON-LD "als RDF verwendet werden kann", und dass es "direkt als JSON verwendet werden kann, ohne Kenntnis von RDF" (Sporny (2014), Übersetzung von uns). Reguläres JSON wird durch das [Beifügen eines JSON-LD-Kontexts](https://www.w3.org/TR/json-ld/#the-context) zu JSON-LD und damit als RDF serialisierbar.
+Robert Sanderson hat den Begriff "Linked Open Usable Data" (LOUD) geprägt, um eine Form der Linked-Open-Data-Publikation voranzutreiben, die Software-Entwickler*innen, deren Konventionen und Bedürfnisse in den Vordergrund stellt, vgl. Sanderson (2016) sowie Sanderson (2018). Die Anforderungen an LOUD fasst Sanderson (2018), Folie 22 wie folgt zusammen (Übersetzung/Paraphrase von uns):
+
+- der Zielgruppe angemessene Abstraktion
+- wenig Einstiegshürden
+- unmittelbar verständliche Daten
+- Dokumentation mit funktionierenden Beispielen
+- wenig Ausnahmen, möglichst einheitliche Struktur
+
+Bei der Erfüllung dieser Anforderungen spielt JSON-LD eine zentrale Rolle, sollen doch alle Daten konsistent mit Blick auf JSON-LD modelliert werden (Sanderson 2018, Folien 32 und 37ff). JSON-LD ist eine W3C-Empfehlung für eine JSON-basierte Linked-Data-Serialisierung. Man kann JSON-LD aus zwei Perspektiven betrachten: einerseits als RDF-Serialisierung (wie N-Triples, Turtle oder RDF/XML), andererseits als eine Möglichkeit, JSON zum Verlinken von Daten zu verwenden. Diese doppelte Perspektive spiegelt sich auch in der JSON-LD-Spezifikation wider, die beschreibt dass JSON-LD "als RDF verwendet werden kann", und dass es "direkt als JSON verwendet werden kann, ohne Kenntnis von RDF" (Sporny (2014), Übersetzung von uns). Reguläres JSON wird durch das [Beifügen eines JSON-LD-Kontexts](https://www.w3.org/TR/json-ld/#the-context) zu JSON-LD und damit als RDF serialisierbar.
+
+In Folgenden wird dargestellt, wie die lobid-Daten immer weiter verbessert wurden, um die Anforderungen an Linked Open Usable Data bestmöglich zu erfüllen.
 
 ### Generisches JSON-LD im lobid 1.x-System
 
@@ -220,13 +234,13 @@ Wie die Erstellung des JSON-LD allgemein, unterscheidet sich auch die Implementi
 
 Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD sehr unterschiedlich erzeugt und verwendet werden kann. Wie es erzeugt wird hat dabei große Auswirkungen darauf, wie es verarbeitet werden kann und wie nützlich es Entwickler*innen mit unterschiedlichem fachlichen Hintergrund erscheint. Eine reine RDF-Serialisierung wie in unserem alten System kann etwa perfekt passen, wenn sowieso mit einem RDF-Modell gearbeitet wird, während sie Web-Entwicklern und Entwicklerinnen, die mit JSON vertraut sind, als absurd und schwer verwendbar erscheinen wird. Diese Unterschiede in dem, wie JSON-LD tatsächlich aussieht, können eine Herausforderung für die Kommunikation über die Nützlichkeit von JSON-LD sein. Zugleich ist dies aber auch eine Stärke von JSON-LD, das mit seiner Doppelnatur – als RDF-Serialisierung und als einfacher Weg, JSON-Daten zu vernetzen – unterschiedliche Nutzungsszenarien abdecken kann.
 
-## Benutzerschnittstellen
-
-Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [Lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Beispiel von lobid-gnd findet sich weiter unten.
-
 ## Vokabulare
 
-Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabulare und Ontologien. In [lobid-organisations](http://lobid.org/organisations) verwenden wir schema.org als Basisvokabular. lobid-resources basiert auf DC Terms, Bibframe, der Bibliographic Ontology (Bibo) und anderen, siehe  Ewertowski/Pohl (2017). http://blog.lobid.org/2017/04/19/vocabulary-choices.html), wobei wir auch hier für die Modellierung der Publikationsdaten schema.org einsetzen, z.B. [hier](http://lobid.org/resources/HT002213253.json). Grundlage der Daten in lobid-gnd ist die [GND-Ontologie](http://d-nb.info/standards/elementset/gnd).
+Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabulare und Ontologien. In [lobid-organisations](http://lobid.org/organisations) verwenden wir schema.org als Basisvokabular. lobid-resources basiert auf DC Terms, Bibframe, der Bibliographic Ontology (Bibo), schema.org und anderen, siehe für Details Ewertowski/Pohl (2017). Grundlage der Daten in lobid-gnd ist die GND-Ontologie (Haffner, 2012ff).
+
+## Benutzerschnittstellen
+
+Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [Lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Fallbeispiel lobid-gnd findet sich unten im Abschnitt "Suche und Navigation in der Benutzeroberfläche".
 
 # Entwicklungsprozess
 
@@ -733,6 +747,10 @@ Haffner, Alexander (2012ff): GND Ontology. URL: [http://d-nb.info/standards/elem
 Longley, Dave et al. (2018): JSON-LD 1.1 Framing – An Application Programming Interface for the JSON-LD Syntax. URL: [https://json-ld.org/spec/latest/json-ld-framing/](https://json-ld.org/spec/latest/json-ld-framing/)
 
 Lóscio, Bernadette Farias et al. (2017): Data on the Web Best Practices. W3C Recommendation verfügbar unter https://www.w3.org/TR/dwbp/. Hier insbesondere Abschnitt "8.2 Metadata": [https://www.w3.org/TR/dwbp/#metadata](https://www.w3.org/TR/dwbp/#metadata)
+
+Sanderson, Rob (2016): Community Challenges For Practical Linked Open Data. Vortragsfolien zur Linked Pasts 2 Keynote vom 15.12.2016: [https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote](https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote)
+
+Sanderson, Rob (2018): Shout it Out: LOUD. Vortragfolien zur EuropeanaTech Keynote am 15.05.2018: [https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud](https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud)
 
 Sporny, Manu et al. (2014): JSON-LD 1.0. A JSON-based Serialization for Linked Data. W3C Recommendation verfügbar unter [https://www.w3.org/TR/2014/REC-json-ld-20140116/](https://www.w3.org/TR/2014/REC-json-ld-20140116/)
 
