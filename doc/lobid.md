@@ -66,21 +66,21 @@
 
 lobid richtet sich primär an Bedienstete in bibliothekarischen Einrichtungen, nicht nur in Nordrhein-Westfalen, sondern im gesamten deutschsprachigen Raum. Zum einen sind dies Bibliothekar\*innen, die etwa eine Recherche im hbz-Verbundkatalog, der GND oder dem Sigelverzeichnis vornehmen wollen. Mit der Bereitstellung zuverlässiger und leicht nutzbarer Web-APIs richtet sich lobid an Entwickler\*innen, die am Aufbau oder der Verbesserung von bibliothekarischen Anwendungen in ihren Einrichtungen arbeiten.
 
-## Warum APIs?
+## Ursprung
 
-lobid wurde von Anfang an um die bereitzustellenden Daten herum konzipiert, so lautet die Auflösung des Akronyms ursprünglich "linking open bibliographic data". Die Transformation der Quelldaten, die Modellierung der Zieldaten und die Auswahl der RDF-Properties und -Klassen hat dementsprechend über lange Zeit den Kern der Arbeit um lobid ausgemacht. Begonnen hat lobid mit der Bereitstellung der transformierten Daten über einen Triple Store. Der Triple Store war aber für performankritische Anwendungsfälle wie einen Entity Lookup via Label nicht optimiert und zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und Nachnutzbarkeit zu erleichtern wurde das lobid Backend 2013 auf Elasticsearch mit JSON-Daten umgestellt.
+lobid wurde von Anfang an um die bereitzustellenden Daten herum konzipiert, so lautet die Auflösung des Akronyms ursprünglich "linking open bibliographic data". Die Transformation der Quelldaten, die Modellierung der Zieldaten und die Auswahl der RDF-Properties und -Klassen hat dementsprechend über lange Zeit den Kern der Arbeit um lobid ausgemacht. Begonnen hat lobid 2010 mit der Bereitstellung der transformierten Daten über einen Triple Store. Der Triple Store war aber für performancekritische Anwendungsfälle (wie einen Entity-Lookup via Label) nicht optimiert und zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und Nutzbarkeit zu erleichtern wurde das lobid-Backend 2013 auf Elasticsearch mit JSON-Daten umgestellt. Auf Basis unserer Erfahrungen mit dieser Version der lobid-API haben wir 2017 (lobid-resources und lobid-organisations) bzw. 2018 (lobid-gnd) die aktuellen Versionen der Dienste veröffentlicht, die wir im Folgenden beschreiben. Details und Motivation für diese Entwicklung haben wir [auf GitHub dokumentiert](https://github.com/hbz/lobid/issues/1).
+
+## Warum APIs?
 
 Die lobid-API bietet einheitlichen Zugriff auf bibliothekarische Daten über eine Web-basierte Programmierschnittstelle (application programming interface, API). Sie liefert JSON für Linked Data (JSON-LD):
 
 ![Daten](images/data.png "Daten")
 
-Die Grundidee ist dabei eine Entkopplung von Anwendungen, die diese Daten verwenden, von spezifischen Datenquellen, Formaten und Systemen. So können sich diese Formate und Systeme ändern, ohne dass Änderungen in den Anwendungen nötig werden, die auf die Daten über die API zugreifen. Dies ermöglicht die Entwicklung von herstellerunabhängigen, nachhaltigen Anwendungen auf Basis bibliothekarischer Daten, siehe auch Steeg (2015a).
+Die Grundidee ist dabei eine Entkopplung von Anwendungen, die diese Daten verwenden, von spezifischen Datenquellen, Formaten und Systemen. So können sich diese Formate und Systeme ändern, ohne dass Änderungen in den Anwendungen nötig werden, die auf die Daten über die API zugreifen. Dies ermöglicht die Entwicklung von herstellerunabhängigen, nachhaltigen Anwendungen auf Basis bibliothekarischer Daten (siehe auch Steeg, 2015a).
 
 ## Architektur: von horizontalen Schichten zu vertikalen Schnitten
 
-Die hier beschriebenen lobid-Dienste bilden die zweite Version der im Jahr 2013 veröffentlichten lobid-APIs, die wir auf Basis der Erfahrungen mit der ersten Version entwickelt haben. Details und Motivation für diese Entwicklung haben wir [auf GitHub dokumentiert](https://github.com/hbz/lobid/issues/1).
-
-Das lobid 1.x-System basierte auf einer klassischen monolithischen Schichtenarchitektur: Wir hatten ein Git-Repository, das die Implementierung für das Backend enthielt, mit der Logik aller Datentransformationen und der Indexschicht für alle Daten. Ein weiteres Git-Repository implementierte die APIs und ein gemeinsames Frontend für alle Datensets, die so alle innerhalb eines Prozesses ausgeliefert wurden.
+Das lobid 1.x-System basierte auf einer klassischen monolithischen Schichtenarchitektur: Wir hatten ein Git-Repository, das die Implementierung für das Backend enthielt, mit der Logik aller Datentransformationen und der Indexschicht für alle Daten. Ein weiteres Git-Repository implementierte die API und ein gemeinsames Frontend für alle Datensets, die so alle innerhalb eines Prozesses ausgeliefert wurden.
 
 Dies führte insgesamt zu einer Verquickung der verschiedenen Datensets: um etwa auf eine neuere Version unserer Suchmaschine (Elasticsearch) umzustellen, die Features bereistellt, die wir für eines der Datensets brauchten, mussten alle Datensets umgestellt werden, da die Applikation, die ja in einem einzigen Prozess lief, nicht von verschiedenen Elasticsearch-Versionen abhängen kann. Ebenso kam es zu inhaltlich eigentlich unnötigen Anhängigkeitskonflikten zwischen Software-Bibliotheken, die jeweils nur von den APIs unterschiedlicher Datensets benötigt wurden.
 
@@ -88,11 +88,11 @@ Daher haben wir lobid für die 2.0-Version in vertikale, in sich abgeschlossene 
 
 ![Architektur](images/scs.png "Architektur")
 
-Durch die Kombination dieser Module in der Horizontalen haben wir nach wie vor eine gemeinsame API und eine gemeinsame Oberfläche für alle Dienste, doch Teile dieser API und Oberfläche sind in Module gekapselt, die je ein Datenset behandeln. Diese Module enthalt den für das jeweilige Datenset spezifischen Code und die spezifischen Abhängigkeiten und können unabhängig analysiert, verändert und installiert werden.
+Durch die Kombination dieser Module in der Horizontalen haben wir nach wie vor eine gemeinsame API und eine gemeinsame Oberfläche für alle Dienste, doch Teile dieser API und Oberfläche sind in Module gekapselt, die je ein Datenset behandeln. Diese Module enthalten den für das jeweilige Datenset spezifischen Code und die spezifischen Abhängigkeiten und können unabhängig analysiert, verändert und installiert werden.
 
 ## Linked Open Usable Data (LOUD) mittels JSON-LD
 
-Robert Sanderson hat den Begriff "Linked Open Usable Data" (LOUD) geprägt, um eine Form der Linked-Open-Data-Publikation voranzutreiben, die Software-Entwickler\*innen, deren Konventionen und Bedürfnisse in den Vordergrund stellt, vgl. Sanderson (2016) sowie Sanderson (2018). Die Anforderungen an LOUD fasst Sanderson (2018), Folie 22 wie folgt zusammen (Übersetzung/Paraphrase von uns):
+Robert Sanderson hat den Begriff "Linked Open Usable Data" (LOUD) geprägt, um eine Form der Linked-Open-Data-Publikation voranzutreiben, die Software-Entwickler\*innen und deren Konventionen und Bedürfnisse in den Vordergrund stellt (vgl. Sanderson 2016 sowie Sanderson 2018). Die Anforderungen an LOUD fasst Sanderson (2018), Folie 22 wie folgt zusammen (Übersetzung/Paraphrase von uns):
 
 - der Zielgruppe angemessene Abstraktion
 - wenig Einstiegshürden
@@ -100,11 +100,11 @@ Robert Sanderson hat den Begriff "Linked Open Usable Data" (LOUD) geprägt, um e
 - Dokumentation mit funktionierenden Beispielen
 - wenig Ausnahmen, möglichst einheitliche Struktur
 
-Das lobid-Team hat sich in dieser – zugegebenermaßen eher ungenauen – Begriffsbestimmung wiedergefunden und erkannt, dass die LOUD-Prinzipien eine große Überschneidung mit der Datenpublikationskonzeption von lobid haben. So spielt etwa bei der Erfüllung der LOUD-Anforderungen JSON-LD eine zentrale Rolle, sollen doch alle Daten konsistent mit Blick auf JSON-LD modelliert werden (Sanderson 2018, Folien 32 und 37ff) und lobid setzt seit 2013 auf JSON-LD.
+Das lobid-Team hat sich in dieser – zugegebenermaßen eher ungenauen – Begriffsbestimmung wiedergefunden und erkannt, dass die LOUD-Prinzipien eine große Überschneidung mit Konzepten der Datenpublikation von lobid haben. So spielt etwa bei der Erfüllung der LOUD-Anforderungen JSON-LD eine zentrale Rolle, sollen doch alle Daten konsistent mit Blick auf JSON-LD modelliert werden (Sanderson 2018, Folien 32 und 37ff) und lobid setzt seit 2013 auf JSON-LD.
 
-JSON-LD ist eine W3C-Empfehlung für eine JSON-basierte Linked-Data-Serialisierung. Man kann JSON-LD aus zwei Perspektiven betrachten: einerseits als RDF-Serialisierung (wie N-Triples, Turtle oder RDF/XML), andererseits als eine Möglichkeit, JSON zum Verlinken von Daten zu verwenden. Diese doppelte Perspektive spiegelt sich auch in der JSON-LD-Spezifikation wider, die beschreibt dass JSON-LD "als RDF verwendet werden kann", und dass es "direkt als JSON verwendet werden kann, ohne Kenntnis von RDF" (Sporny (2014), Übersetzung von uns). Reguläres JSON wird durch das [Beifügen eines JSON-LD-Kontexts](https://www.w3.org/TR/json-ld/#the-context) zu JSON-LD und damit als RDF serialisierbar.
+JSON-LD ist eine W3C-Empfehlung für eine JSON-basierte Linked-Data-Serialisierung. Man kann JSON-LD aus zwei Perspektiven betrachten: einerseits als RDF-Serialisierung (wie N-Triples, Turtle oder RDF/XML), andererseits als eine Möglichkeit, JSON zum Verlinken von Daten zu verwenden. Diese doppelte Perspektive spiegelt sich auch in der JSON-LD-Spezifikation wider, die beschreibt dass JSON-LD "als RDF verwendet werden kann", aber auch "direkt als JSON, ohne Kenntnis von RDF" (Sporny (2014), Übersetzung von uns). Reguläres JSON wird durch das [Beifügen eines JSON-LD-Kontexts](https://www.w3.org/TR/json-ld/#the-context) zu JSON-LD und damit als RDF serialisierbar.
 
-In Folgenden wird dargestellt, wie die lobid-Daten immer weiter verbessert wurden, um die Anforderungen an Linked Open Usable Data bestmöglich zu erfüllen.
+In Folgenden wird dargestellt, wie die aktuellen lobid-Daten gegenüber dem 1.x-System verbessert wurden, und so die Anforderungen an Linked Open Usable Data umfassender erfüllt werden.
 
 ### Generisches JSON-LD im lobid 1.x-System
 
@@ -112,15 +112,52 @@ In der ersten Version der lobid-APIs haben wir im Zuge unserer Datentransformati
 
 ![Lobid 1](images/lobid-1.png "Lobid 1")
 
-Im resultierenden JSON-LD hatten wir so die URIs aus den Triples als JSON-Schlüsselwörter. Diese Daten haben wir als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch indexiert:
+Im resultierenden JSON-LD hatten wir so die URIs aus den Triples als JSON-Schlüsselwörter. Diese Daten haben wir als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch indexiert (Beispiel gekürzt):
 
 ```json
-{"beispiel-json": "ergänzen"}
+{
+  "@graph" : [{
+    "@id" : "http://d-nb.info/gnd/11850553X",
+    "http://d-nb.info/standards/elementset/gnd#preferredNameForThePerson" : [{
+      "@value" : "Bach, Johann Sebastian"
+    }],
+    "http://d-nb.info/standards/elementset/gnd#biographicalOrHistoricalInformation" : [{
+      "@value" : "Sohn: Bach, Friedemann",
+      "@language" : "de"
+    },{
+      "@language" : "de",
+      "@value" : "Dt. Komponist u. Musiker"
+    }],
+    "http://d-nb.info/standards/elementset/gnd#placeOfBirth" : [{
+      "@id" : "http://d-nb.info/gnd/4014013-1"
+    }]
+  }]
+}
+
 ```
 
- Elasticsearch erfordert konsistente Daten für ein gegebenes Feld, z.B. muss etwa der Wert von `alternateName` immer ein String sein, oder immer ein Array. Wenn die Werte mal ein String, mal ein Array sind, führ dies bei der Indexierung in Elasticsearch zu einem Fehler. In der kompakten JSON-LD Serialisierung werden einzelne Werte jedoch direkt serialisiert (z.B. als String), wenn jedoch in einem anderen Dokumente für das gleiche Feld mehrere Werte angegeben sind, wird ein Array verwendet. Expandiertes JSON-LD verwendet hingegen immer Arrays. Eine JSON-LD-Form, bei der kompakte Keys (Schlüsselwörter) mit expandierten Werten kombiniert sind gibt es in der Form nicht (siehe [https://github.com/json-ld/json-ld.org/issues/338](https://github.com/json-ld/json-ld.org/issues/338)).
+ Elasticsearch erfordert konsistente Daten für ein gegebenes Feld, z.B. muss etwa der Wert des Feldes `alternateName` immer ein String sein, oder immer ein Array. Wenn die Werte mal ein String, mal ein Array sind, führt dies bei der Indexierung in Elasticsearch zu einem Fehler. In der kompakten JSON-LD Serialisierung werden einzelne Werte direkt serialisiert (z.B. als String), wenn jedoch in einem anderen Dokumente für das gleiche Feld mehrere Werte angegeben sind, wird ein Array verwendet. Expandiertes JSON-LD verwendet hingegen immer Arrays. Eine JSON-LD-Form, bei der kompakte Keys (Schlüsselwörter) mit expandierten Werten kombiniert sind gibt es in der Form nicht (siehe [https://github.com/json-ld/json-ld.org/issues/338](https://github.com/json-ld/json-ld.org/issues/338)).
 
-Beim Ausliefern der Daten über die API haben wir die Daten dann in [kompaktes JSON-LD](https://www.w3.org/TR/json-ld/#compacted-document-form) konvertiert, um anstelle der URIs kurze, benutzerfreundliche JSON-Keys zu bekommen, das heißt wir haben im Grunde zwei verschiedene Formate erzeugt und verwendet: das interne Indexformat und das extern sichtbare API-Format.
+Beim Ausliefern der Daten über die API haben wir die Daten dann in [kompaktes JSON-LD](https://www.w3.org/TR/json-ld/#compacted-document-form) konvertiert, um anstelle der URIs kurze, benutzerfreundliche JSON-Keys zu bekommen (Beispiel gekürzt):
+
+```json
+{
+  "@graph" : [ {
+    "@id" : "http://d-nb.info/gnd/11850553X",
+    "preferredNameForThePerson" : "Bach, Johann Sebastian",
+    "biographicalOrHistoricalInformation" : [ {
+      "@language" : "de",
+      "@value" : "Sohn: Bach, Friedemann"
+    }, {
+      "@language" : "de",
+      "@value" : "Dt. Komponist u. Musiker"
+    } ],
+    "placeOfBirth" : "http://d-nb.info/gnd/4014013-1"
+  }]
+}
+```
+
+Das heißt wir haben im Grunde zwei verschiedene Formate erzeugt und verwendet: das interne Indexformat und das extern sichtbare API-Format.
 
 ### Maßgeschneidertes JSON-LD in den neuen Systemen
 
