@@ -161,7 +161,7 @@ Das heißt wir haben im Grunde zwei verschiedene Formate erzeugt und verwendet: 
 
 ### Maßgeschneidertes JSON-LD in den neuen Systemen
 
-#### Erstellung von JSON-LD als JSON mit Kontext: lobid-organisations
+#### Maßgeschneidertes JSON mit Kontext für JSON-LD: lobid-organisations
 
 Bei lobid-organisations, dem ersten Datenset, das wir auf den neuen Ansatz umgezogen haben, haben wir das Vorgehen umgedreht – statt manuell N-Triples anzufertigen, und diese automatisch in JSON-LD zu konvertieren, erzeugen wir das JSON mit genau der Struktur, die wir brauchen. Auf dieser Grundlage generieren wir dann RDF-Serialisierungen wie N-Triples:
 
@@ -169,19 +169,23 @@ Bei lobid-organisations, dem ersten Datenset, das wir auf den neuen Ansatz umgez
 
 Der zentrale Vorteil dieses Ansatzes ist, dass wir unseren konkreten Anwendungsfall nach vorne stellen: Wir bauen explizit unsere API, so wie sie für unsere Anwendungen Sinn macht, anstatt zuerst eine Abstraktion zu erzeugen, aus der wir dann konkrete Darstellungen generieren, die von unseren Anwendungen verwendet werden.
 
-Im Vergleich zum Ansatz im ersten lobid-System befinden wir uns hier am anderen Ende des Spektrums der Perspektiven auf JSON-LD, die wir oben beschrieben haben: Wir behandeln hier JSON-LD als JSON, ohne bei der Produktion der Daten, oder bei ihrer Verwendung, Kenntisse von RDF zu erfordern.
+Im Vergleich zum Ansatz im ersten lobid-System befinden wir uns hier am anderen Ende des Spektrums der Perspektiven auf JSON-LD, die wir oben beschrieben haben: Wir behandeln hier JSON-LD als JSON, ohne bei der Produktion der Daten, oder bei ihrer Verwendung, Kenntnisse von RDF zu erfordern.
 
-#### Erstellung von JSON-LD als RDF-Serialisierung: lobid-resources
+#### Maßgeschneidertes JSON-LD nach RDF-Serialisierung: lobid-resources
 
 In der neuen Version von lobid-resources haben wir einen Mittelweg genommen. Wir haben uns entschlossen, auf die bestehende Transformation der Katalogdaten in N-Triples aufzubauen. Wir verwenden dann Code, der von Jan Schnasse im [Etikett-Projekt](https://github.com/hbz/etikett) entwickelt wurde, um maßgeschneidertes JSON-LD aus den N-Triples zu erzeugen. Wie in lobid-organisations (und im Gegensatz zur ersten Version von lobid-resources), ist das maßgeschneiderte JSON-LD zugleich das Index- wie auch das von der API gelieferte Format.
 
+#### Maßgeschneiderte RDF-Serialisierung für JSON-LD: lobid-gnd
+
+Auch in lobid-gnd erzeugen wir das indentische Index- und API-Format als RDF-Serialisierung. In diesem Fall liegen unsere Ausgangsdaten bereits als RDF vor, und werden mithilfe eines detaillierten JSON-LD-Kontexts und JSON-LD-Framing, sowie einigen Anpassungen am RDF-Modell, in das gewünschte Format umgewandelt. Details dazu finden sich weiter unten im Abschnitt zu lobid-gnd.
+
 ### Vorteile des maßgeschneiderten JSON-LD
 
-Beide Ansätze erzeugen also maßgeschneidertes JSON-LD, sei es auf spezifische Weise aus N-Triples generiert, oder manuell erzeugtes JSON. Dieses maßgeschneiderte JSON-LD hat mehrere Vorteile.
+Alle drei Ansätze erzeugen also maßgeschneidertes JSON-LD, sei es auf spezifische Weise aus RDF generiertes oder manuell erzeugtes JSON. Dieses maßgeschneiderte JSON-LD hat mehrere Vorteile.
 
-#### Was man sieht, ist was abgefragt wird
+#### Was man sieht, ist was man abgefragen kann
 
-Ein zentraler Aspekt der neuen Systeme ist, dass wir nun das gleiche Format liefern, das auch im Index gespeichert ist. Dies ermöglicht beliebige Abfragen der Daten über generische Mechanismen, ohne dass wir spezifische Anfragen implementieren müssen. Betrachten wir etwa einen bestimmten Datensatz, z.B. [http://lobid.org/organisations/DE-605?format=json](http://lobid.org/organisations/DE-605?format=json), so sehen wir folgendes:
+Ein zentraler Aspekt der neuen Systeme ist, dass wir nun das gleiche Format liefern, das auch im Index gespeichert ist. Dies ermöglicht beliebige Abfragen der Daten über generische Mechanismen, ohne dass wir spezifische Anfragen implementieren müssen. Betrachten wir etwa einen bestimmten Datensatz, z.B. [http://lobid.org/organisations/DE-605.json](http://lobid.org/organisations/DE-605.json), so sehen wir folgendes:
 
 	"classification" : {
 	  "id" : "http://purl.org/lobid/libtype#n96",
@@ -192,15 +196,7 @@ Ein zentraler Aspekt der neuen Systeme ist, dass wir nun das gleiche Format lief
 	  }
 	}
 
-Auf Basis der Daten, die wir hier sehen, können wir ein beliebiges Feld nehmen, z.B. `classification.label.en` (die Punkte bilden die Schachtelung der Felder ab) und eine Abfrage wie [http://lobid.org/organisations/search?q=classification.label.en:Union](http://lobid.org/organisations/search?q=classification.label.en:Union) formulieren. Im alten System, bei dem im Index expandiertes JSON-LD gespeichert war, die API aber kompaktes JSON-LD lieferte, brauchten wir spezifische Query-Parameter um Feldsuchen in praxistauglicher Art (ohne URIs als Feldnamen) umzusetzen, etwa für Titel, Autoren oder Schlagwörter, z.B.:
-
-`http://lobid.org/resource?name=Ehrenfeld`
-
-Diese können nun stattdessen über einen generischen `q`-Parameter und die tatsächlichen Feldnamen aus den Daten formuliert werden:
-
-`http://lobid.org/resources/search?q=title:Ehrenfeld`
-
-So vermeiden wir eine Beschränkung auf die von uns antizipierten Arten von Abfragen, und öffnen stattdessen den API-Zugriff auf die kompletten Daten.
+Auf Basis der Daten, die wir hier sehen, können wir ein beliebiges Feld nehmen, z.B. `classification.label.en` (die Punkte bilden die Schachtelung der Felder ab) und eine Abfrage wie `http://lobid.org/organisations/search?q=classification.label.en:Union` formulieren. Im alten System, bei dem im Index expandiertes JSON-LD gespeichert war, die API aber kompaktes JSON-LD lieferte (s. Beispiele oben), brauchten wir spezifische Parameter, um Feldsuchen, etwa für Titel, Autoren oder Schlagwörter, in praxistauglicher Art umzusetzen (ohne URIs als Feldnamen, die wiederum komplexes Maskieren von Sonderzeichen erfordern), z.B.: `http://lobid.org/resource?name=Ehrenfeld`. Diese können nun stattdessen über einen generischen `q`-Parameter und die tatsächlichen Feldnamen aus den Daten formuliert werden: `http://lobid.org/resources/search?q=title:Ehrenfeld`. So vermeiden wir eine Beschränkung auf die von uns antizipierten Arten von Abfragen, und öffnen stattdessen den API-Zugriff auf die kompletten Daten.
 
 #### Hierarchisch strukturierte Daten
 
@@ -228,7 +224,7 @@ Das generierte JSON-LD des alten Systems war eine flache Struktur mit JSON-Objek
 	    }
 	]
 
-Diese Struktur war nicht sehr praktisch und entsprach nicht dem pragmatischen Geist von JSON-LD (vgl. Steeg 2014). Wenn man etwa die englische Bezeichnung des Unterhaltsträgers einer Einrichtung verwenden will, muss man hier über alle `@graph`-Objekte iterieren und jeweils prüfen, ob die `@id` die Unterhaltsträger-ID ist, dann über alle `prefLabel`-Objekte iterieren und jenes mit dem passenden `@language`-Feld suchen, das dann als `@value` den gesuchten Wert enthält.
+Diese Struktur war nicht sehr praktisch und entsprach nicht dem pragmatischen Geist von JSON-LD (vgl. Steeg 2014). Wenn man etwa automatisch die englische Bezeichnung des Unterhaltsträgers einer Einrichtung verwenden will, muss man hier über alle `@graph`-Objekte iterieren und jeweils prüfen, ob die `@id` die Unterhaltsträger-ID ist, dann über alle `prefLabel`-Objekte iterieren und jenes mit dem passenden `@language`-Feld suchen, das dann als `@value` den gesuchten Wert enthält.
 
 In den neuen Systemen bieten wir die Daten in einem geschachtelten, JSON-typischem Format an:
 
@@ -252,26 +248,28 @@ In den neuen Systemen bieten wir die Daten in einem geschachtelten, JSON-typisch
 	    }
 	}
 
-Dies ermöglicht Entwicklern und Entwicklerinnen, die mit JSON vertraut sind, einen einfachen Zugriff auf die Daten. Das gesuchte Datum aus dem obigen Beispiel etwa ist per Direktzugriff auf das geschachtelte Feld `fundertype.label.en` verfügbar.
+Dies ermöglicht einen einfacheren, direkteren Zugriff auf die Daten. Das gesuchte Datum aus dem obigen Beispiel etwa ist statt über mehrere Schleifen und Zeichenkettenvergleiche hier per Direktzugriff auf das geschachtelte Feld `fundertype.label.en` verfügbar.
 
 #### Labels für IDs
 
-Ein typisches Nutzungsszenario bei der Verwendung der Lobid-APIs ist die Anzeige von Labels für die URIs, die zur Identifikation von Ressourcen, Autoren, Schlagwörtern etc. verwendet werden. Für Anwendungen, die auf dem alten System basierten haben wir das Nachschlagen dieser Labels in unterschiedlichen Formen implementiert. Um diesen Anwendungsfall zu vereinfachen, liefern die neuen APIs die Labels mit den IDs zusammen aus, soweit dies möglich und sinnvoll ist. In den alten Daten hatten wir etwa zu Identifikation des Mediums einer Publikation nur eine URI:
+Ein typisches Nutzungsszenario bei der Verwendung der Lobid-APIs ist die Anzeige von Labels für die URIs, die zur Identifikation von Ressourcen, Autoren, Schlagwörtern etc. verwendet werden. Für Anwendungen, die auf dem alten System basierten haben wir das Nachschlagen dieser Labels in unterschiedlichen Formen implementiert. Um diesen Anwendungsfall zu vereinfachen, liefern die neuen APIs die Labels mit den IDs zusammen aus, soweit dies möglich und sinnvoll ist.
+
+In den alten Daten hatten wir etwa zu Identifikation des Mediums einer Publikation nur eine URI:
 
 	"medium" : "http://rdvocab.info/termList/RDAproductionMethod/1010"
 
-Um nun ein Label für eine solche URI anzuzeigen, mussten wir in den Client-Anwendungen, die die Lobid-APIs nutzten, Zuordnungen etwa in Form von Mapping-Tabellen verwalten. In den neuen APIs liefern wir die Labels mit den IDs zusammen aus (aus Konsistenzgründen wird auch hier ein einzelner Wert als Array geliefert, s.o.):
+Um nun ein Label für eine solche URI anzuzeigen, mussten wir in den Client-Anwendungen, die die Lobid-APIs nutzten, Zuordnungen etwa in Form von Mapping-Tabellen verwalten. In den neuen APIs liefern wir die Labels mit den IDs zusammen aus (aus Konsistenzgründen wird auch hier auf oberster Ebene ein einzelner Wert als Array geliefert, s.o.):
 
 	"medium": [{
 	  "id": "http://rdaregistry.info/termList/RDAproductionMethod/1010",
 	  "label": "Print"
 	}]
 
-Wie die Erstellung des JSON-LD allgemein, unterscheidet sich auch die Implementierung dieser Labels zwischen der oben beschriebenen *JSON-first* und der *Triples-first* Umsetzung. In lobid-organisations ist die Ergänzung der Labels (wie alle Aspekte der JSON-Erzeugung) Teil der Datentransformation. In lobid-resources wird eine `labels.json` Datei während der Konvertierung von N-Triples in JSON-LD verwendet. lobid-gnd schließlich verwendet ein Bootstrapping-Ansatz, bei dem die vorige Version des Dienstes als Quelle für die Labels verwendet wird. Details zur Datentrasformation in lobid-gnd finden sich weiter unten.
+Wie die Erstellung des JSON-LD allgemein, unterscheidet sich auch die Implementierung dieser Labels zwischen der oben beschriebenen Umsetzungen. In lobid-organisations ist die Ergänzung der Labels (wie alle Aspekte der JSON-Erzeugung) Teil der Datentransformation. In lobid-resources wird eine `labels.json` Datei während der Konvertierung von N-Triples in JSON-LD verwendet. lobid-gnd schließlich verwendet ein Bootstrapping-Ansatz, bei dem die vorige Version des Dienstes als Quelle für die Labels verwendet wird, ergänzt um weitere Quellen wie die GND-Ontologie. Details zur Datentransformation in lobid-gnd finden sich weiter unten.
 
 #### Zwischenfazit: JSON-LD ist nicht gleich JSON-LD
 
-Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD sehr unterschiedlich erzeugt und verwendet werden kann. Wie es erzeugt wird hat dabei große Auswirkungen darauf, wie es verarbeitet werden kann und wie nützlich es Entwickler\*innen mit unterschiedlichem fachlichen Hintergrund erscheint. Eine reine RDF-Serialisierung wie in unserem alten System kann etwa perfekt passen, wenn sowieso mit einem RDF-Modell gearbeitet wird, während sie Web-Entwicklern und Entwicklerinnen, die mit JSON vertraut sind, als absurd und schwer verwendbar erscheinen wird. Diese Unterschiede in dem, wie JSON-LD tatsächlich aussieht, können eine Herausforderung für die Kommunikation über die Nützlichkeit von JSON-LD sein. Zugleich ist dies aber auch eine Stärke von JSON-LD, das mit seiner Doppelnatur – als RDF-Serialisierung und als einfacher Weg, JSON-Daten zu vernetzen – unterschiedliche Nutzungsszenarien abdecken kann.
+Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD sehr unterschiedlich erzeugt und verwendet werden kann. Wie es erzeugt wird hat dabei große Auswirkungen darauf, wie es verarbeitet werden kann und wie nützlich es je nach fachlichen Hintergrund erscheint. Eine reine RDF-Serialisierung wie in unserem alten System kann etwa perfekt passen, wenn sowieso mit einem RDF-Modell gearbeitet wird, während sie Web-Entwicklern und Entwicklerinnen, die mit JSON vertraut sind, als absurd und schwer verwendbar erscheinen wird. Diese Unterschiede in dem, wie JSON-LD tatsächlich aussieht, können eine Herausforderung für die Kommunikation über die Nützlichkeit von JSON-LD sein. Zugleich ist dies aber auch eine Stärke von JSON-LD, das mit seiner Doppelnatur – als RDF-Serialisierung und als einfacher Weg, JSON-Daten zu vernetzen – unterschiedliche Nutzungsszenarien abdecken kann.
 
 ## Vokabulare
 
@@ -301,7 +299,7 @@ In unserem Prozess durchläuft eine Karte das Board von links nach rechts. Prior
 
 ## Reviews
 
-Ein Kernelement unseres Entwicklungsprozesses, durch das bibliothekarische Anforderungen und Entwicklung miteinander verzahnt werden, sind die Begutachtungen bzw. Reviews. Hier unterscheiden wir zwischen funktionalem Review und Code Review.
+Ein Kernelement unseres Entwicklungsprozesses, durch das bibliothekarische Anforderungen und Entwicklung miteinander verzahnt werden, sind die Begutachtungen bzw. Reviews. Hier unterscheiden wir zwischen funktionalem Review, einer fachlich-inhaltlichen Begutachtung aus bibliothekarischer Sicht, und Code Review, einer implementationstechnischen Begutachtung aus Entwicklungssicht.
 
 Zur Einleitung des funktionalen Reviews stellt einer unserer Entwickler neue oder reparierte Funktionalität auf dem Staging-System bereit, beschreibt im korrespondierenden Issue, wie getestet werden kann (z.B. durch Angabe von Links auf die betreffenden Seiten im Staging-System) und weist das Issue einem Team-Mitglied zur Begutachtung zu. Dieses testet, gibt Feedback (bei Bedarf aktualisiert der Entwickler den Code und die Version auf Staging mehrfach), und schließt die Begutachtung mit einem "+1" Kommentar ab.
 
