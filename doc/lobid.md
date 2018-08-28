@@ -313,15 +313,13 @@ Bei der Dokumentation einer API gibt es unterschiedliche Aspekte: das Datenset a
 
 ## Dokumentation des Datensets
 
-Um für die menschliche und maschinelle Nutzung der Daten einen Überblick zu geben, folgen wir im Wesentlichen der W3C-Empfehlung für Daten im Web (Lóscio 2017). Das Ergebnis ist [eine JSON-LD-Datei](http://lobid.org/organisations/dataset.jsonld) und eine daraus generierte [HTML-Version](http://lobid.org/organisations/dataset). Im Gegensatz zu den Beispielen der W3C-Empfehlung verwenden wir insofern es möglich ist Vokabular von schema.org anstatt DC Terms und des DCAT-Vokabulars.
+Um für die menschliche und maschinelle Nutzung der Daten einen Überblick zu geben, folgen wir im Wesentlichen der W3C-Empfehlung für Daten im Web (Lóscio 2017). Das Ergebnis ist [eine JSON-LD-Datei](http://lobid.org/organisations/dataset.jsonld) und eine daraus generierte [HTML-Version](http://lobid.org/organisations/dataset). Im Gegensatz zu den Beispielen der W3C-Empfehlung verwenden wir insofern es möglich ist Vokabular von schema.org anstatt DC Terms und des DCAT-Vokabulars. HTML-Version des lobid-organisations Datensets:
 
 ![Beschreibung des lobid-organisations Datensets](images/lobid-organisations-description.png)
 
-HTML-Version des lobid-organisations Datensets
-
 ## Dokumentation der API
 
-Die API-Dokumentation ([lobid-organisations](http://lobid.org/organisations/api), [lobid-resources](http://lobid.org/organisations/api), [lobid-gnd](http://lobid.org/gnd/api)) führt zunächste grundlegende Konzepte der API anhand von Beispielen ein und zeigt darauf aufbauend komplexere Anfragen und spezielle Fälle wie die Suche nach URLs (in denen bestimmt Zeichen maskiert werden müssen). Für eine vollständige Referenz zur den Suchmöglichkeiten verweisen wir auf die Lucene- bzw. Elasticsearch-Dokumentation.
+Die API-Dokumentation ([lobid-organisations](http://lobid.org/organisations/api), [lobid-resources](http://lobid.org/resources/api), [lobid-gnd](http://lobid.org/gnd/api)) führt zunächst grundlegende Konzepte der API anhand von Beispielen ein und zeigt darauf aufbauend komplexere Anfragen und spezielle Fälle wie die Suche nach URLs (in denen bestimmt Zeichen maskiert werden müssen). Für eine vollständige Referenz zur den Suchmöglichkeiten verweisen wir auf die Lucene-Dokumentation (Elasticsearch basiert auf Lucene und verwendet eine kompatible Abfragesyntax).
 
 Im weiteren Verlauf beschreibt die Dokumentation die unterstützten Inhaltstypen mit Beispielanfragen. Wir beschreiben den Einsatz der API zur Umsetzung einer Autosuggest-Funktionalität mit einem in die Dokumentationseite eingebetteten, funktionstüchtigen Beispiel. Schließlich beschreiben wir spezifische Funktionen der einzelnen Dienste wie ortsbezogene Abfragen, CSV-Export, und die Integration der APIs in OpenRefine (siehe dazu auch unten).
 
@@ -329,7 +327,7 @@ Im weiteren Verlauf beschreibt die Dokumentation die unterstützten Inhaltstypen
 
 Um einen leichten Zugang zu einem Schema und seiner Verwendung zu bekommen, wird häufig nach Beispielen gesucht. Leider sind Beispiele aber oft nur zweitrangige Elemente einer Dokumentation, wenn überhaupt welche gegeben werden. Sehr verbreitet ist ein beschreibender Ansatz zur Dokumentation von Vokabularen oder Applikationsprofilen, bei dem Elemente in einer Tabelle (häufig in einem PDF) aufgelistet werden, mit Beschreibungen verschiedener Aspekte in mehreren Spalten.
 
-Eine Ausnahme bildet hier schema.org, das viele Beispiele bietet. Aber selbst hier sind die Beispiele ein Anhängsel der Beschreibung und manchmal fehlen sie (z.B. ist es schwierig zu erfahren, wie die Property [publication](http://schema.org/publication) oder die Klasse [PublicationEvent](http://schema.org/PublicationEvent) verwendet werden). Wir sind der Ansicht, dass [Beispiele Kernelemente der Dokumentation](https://twitter.com/acka47/status/791271448245637120) sein sollten und halten seitenlange Tabellen, die Elemente eines Metadatenschemas auflisten, nicht für sehr hilfreich und praktisch. Daher haben wir uns Gedanken gemacht und damit experimentiert, wie Beispiele ins Zentrum der Dokumentation gerückt werden können.
+Eine Ausnahme ist hier schema.org, das viele Beispiele bietet. Aber selbst hier sind die Beispiele ein Anhängsel der Beschreibung und manchmal fehlen sie (z.B. ist es schwierig zu erfahren, wie die Property [publication](http://schema.org/publication) oder die Klasse [PublicationEvent](http://schema.org/PublicationEvent) verwendet werden). Wir sind der Ansicht, dass [Beispiele Kernelemente der Dokumentation](https://twitter.com/acka47/status/791271448245637120) sein sollten und halten seitenlange Tabellen, die Elemente eines Metadatenschemas auflisten, nicht für sehr hilfreich und praktisch. Daher haben wir uns Gedanken gemacht und damit experimentiert, wie Beispiele ins Zentrum der Dokumentation gerückt werden können.
 
 ### Web-Annotationen für API-Dokumentation
 
@@ -350,27 +348,25 @@ Jedes JSON-Schlüsselwort wird mit den folgenden Informationen annotiert:
 
 Die ersten beiden Punkte (Name und Beschreibung) sowie die URI werden bei allen Annotationen angegeben, die anderen Werte sind (noch) nicht vollständig angegeben. Wir versuchen durch Beispielanfragen in den Annotationen ein Gefühl für Möglichkeiten zur Nutzung der API zu vermitteln, insbesondere in den Abschnitten 'Abdeckung' und 'Anwendungsfälle'.
 
-Unter [http://lobid.org/organisations/api]([http://lobid.org/organisations/api/de]) kann man die annotationbasierte Dokumentation in Aktion sehen (für lobid-resources siehe [http://lobid.org/resources/api](http://lobid.org/resources/api)). Im [Abschnitt zu JSON-LD](http://lobid.org/organisations/api#jsonld) öffnet sich durch einen Klick auf die hervorgehobenen JSON-Keys die hypothes.is-Seitenleiste mit Informationen über das entsprechende Element.
+Unter [http://lobid.org/organisations/api](http://lobid.org/organisations/api/de) kann man die annotationsbasierte Dokumentation in Aktion sehen (für lobid-resources siehe [http://lobid.org/resources/api](http://lobid.org/resources/api)). Im [Abschnitt zu JSON-LD](http://lobid.org/organisations/api#jsonld) öffnet sich durch einen Klick auf die hervorgehobenen JSON-Keys die hypothes.is-Seitenleiste mit Informationen über das entsprechende Element. Beispielannotation für das "type" Feld:
 
 ![Beispielannotation](images/annotation-example.png)
-
-Beispielannotation für das "type" Feld
 
 ### Vorteile
 
 Die Beispiele, die zur Dokumentation annotiert werden, sollten im besten Fall Live-Daten aus dem Produktivsystem sein. So ist gewährleistet, dass bei Änderungen in den Daten das Beispiel, und damit die Dokumentation, automatisch aktuell bleibt. Dies verhindert manuellen Synchronisationsaufwand zwischen Daten und Dokumentation.
 
-Wir hoffen und glauben, dass dieser Ansatz zur Dokumentation nützlicher und angenehmer ist als der traditionelle beschreibende Ansatz. Er bietet Nutzenden eine intuitive und interaktive Schnittstelle um die Daten der lobid-APIs zu erkunden und zu verstehen. Bei Fragen oder Unklarheiten kann innerhalb der hypothes.is-Seitenleiste auf die Annotationen geantwortet werden. So können spezifische Teile der Dokumentation im direkten Kontext derselben diskutiert werden.
+Wir hoffen und glauben, dass dieser Ansatz zur Dokumentation nützlicher ist als der traditionelle beschreibende Ansatz. Er bietet Nutzenden eine intuitive und interaktive Schnittstelle um die Daten der lobid-APIs zu erkunden und zu verstehen. Bei Fragen oder Unklarheiten kann innerhalb der hypothes.is-Seitenleiste auf die Annotationen geantwortet werden. So können spezifische Teile der Dokumentation im direkten Kontext derselben diskutiert werden.
 
 ## Fallstudie: lobid-gnd
 
-Mit lobid-gnd bietet das hbz eine Schnittstelle zur GND für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten. Da es sich bei lobid-gnd zum einen um den Dienst handelt, der am meisten Menschen interessieren dürfte und zum anden um den letzten lobid-Dienst, der in Version 2 gelauncht wurde, nutzen wir es als Beispiel für eine detaillierte Betrachtung der Möglichkeiten von lobid.
+Mit lobid-gnd bietet das hbz eine Schnittstelle zur GND für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten. Da es sich bei lobid-gnd zum einen um den Dienst handelt, der am meisten Menschen interessieren dürfte und zum anderen um den letzten lobid-Dienst, der in Version 2 gelauncht wurde, nutzen wir es als Beispiel für eine detaillierte Betrachtung der Nutzungsmöglichkeiten von lobid.
 
 ### Suche und Navigation in der Benutzeroberfläche
 
 Auf der Startseite von lobid-gnd findet sich neben einer kurzen Beschreibung des Dienstes ein Suchschlitz. Außerdem wird – wie auch in [lobid-organisations](https://lobid.org/organisations) – mit jedem Laden der Seite ein zufälliges Bild zu einer GND-Ressource angezeigt. Momentan gibt es [knapp 200.000 Einträge mit Bild](http://lobid.org/gnd/search?q=_exists_%3Adepiction), davon sind die meisten Personen. Wer also Lust hat, die GND ein wenig näher kennenzulernen, kann ja mal die Startseite ein paar Mal neu laden.
 
- führt auf die einfache Suchoberfläche, die unter anderem Boolesche Operatoren, Phrasensuche und Trunkierung unterstützt:
+Die Startseite von lobid-gnd führt auf die einfache Suchoberfläche, die unter anderem Boolesche Operatoren, Phrasensuche und Trunkierung unterstützt:
 
 ![http://lobid.org/gnd](images/lobid-gnd-suche/1-1-suchen.png)
 
@@ -390,7 +386,7 @@ Als alternativer Einstieg kann die gesamte GND erkundet werden:
 
 ![http://lobid.org/gnd/search](images/lobid-gnd-suche/3-1-liste-paginierung.png)
 
-Auf der rechten Seite ermöglicht eine facettierte Suche nach Entitätstyp, GND-Sachgruppe, Ländercode und Beruf oder Beschäftigung eine Eingrenzung der Ergebnisse:
+Auf der rechten Seite ermöglicht eine facettierte Suche nach *Entitätstyp*, *GND-Sachgruppe*, *Ländercode* und *Beruf oder Beschäftigung* eine Eingrenzung der Ergebnisse:
 
 ![http://lobid.org/gnd/search](images/lobid-gnd-suche/3-2-liste-facetten.png)
 
@@ -422,21 +418,21 @@ Das Piktogramm <img src="http://lobid.org/gnd/assets/images/json-ld.png" alt="JS
 
 ## Datengenerierung und Anreicherung
 
-lobid-gnd ist – neben seiner Funktion als Endnutzerschnittstelle – auch eine Maschinenschnittstelle zur GND. Die Endnutzerschnittstelle basiert auf HTML für die Ansicht im Browser, aber ebenso liefern alle HTTP-GET-Anfragen auf Wunsch JSON(-LD) für die maschinelle Verarbeitung etwa durch Anwendungsentwickler. Bevor wir aber näher auf die Web-API (_Application Programming Interface_, deutsch: Anwendungsschnittstelle) eingehen, möchten wir zunächst beschreiben, wie und in welcher Form die GND-Daten indexiert werden.
+lobid-gnd ist – neben seiner Funktion als Endnutzerschnittstelle – auch eine Maschinenschnittstelle zur GND. Die Endnutzerschnittstelle basiert auf HTML für die Ansicht im Browser, aber ebenso liefern alle HTTP-GET-Anfragen auf Wunsch JSON(-LD) für die maschinelle Verarbeitung etwa zur Anwendungsentwicklung. Bevor wir aber näher auf die Web-API (_Application Programming Interface_, deutsch: Entwicklungsschnittstelle) eingehen, möchten wir zunächst beschreiben, wie und in welcher Form die GND-Daten indexiert werden.
 
-Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalbliothek (DNB) [bereitgestellt](http://www.dnb.de/DE/Service/DigitaleDienste/LinkedData/linkeddata_node.html) werden. Das hbz hat Zugriff auf eine OAI-PMH-Schnittstelle der DNB, über die täglich Updates der Daten geholt werden. Diese Daten werden dann für lobid-gnd mit einigen Anpassungen nach JSON-LD konvertiert. Zum Teil waren die Anpassungen durch Inkonsistenzen in den Ausgangsdaten bedingt, was wir zum Anlass genommen haben, Verbesserungen vorzuschlagen.
+Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalbliothek (DNB) [bereitgestellt](http://www.dnb.de/DE/Service/DigitaleDienste/LinkedData/linkeddata_node.html) werden. Das hbz hat Zugriff auf eine OAI-PMH-Schnittstelle der DNB, über die täglich Updates der Daten geholt werden. Diese Daten werden dann für lobid-gnd mit einigen Anpassungen nach JSON-LD konvertiert. Zum Teil waren diese Anpassungen durch Inkonsistenzen in den Ausgangsdaten bedingt, was wir zum Anlass genommen haben, Verbesserungen vorzuschlagen, die zum Teil bereits durch die DNB umgesetzt wurden.
 
 ### Der JSON-LD-Kontext
 
 Die meiste Arbeit zur Optimierung der Datenstruktur übernimmt der JSON-LD-Kontext unter [https://lobid.org/gnd/context.jsonld](https://lobid.org/gnd/context.jsonld). Er bewirkt unter anderem folgende Dinge:
 
 - Der Kontext bestimmt, welche JSON-Keys auf welche RDF-Properties gemappt werden, so dass im JSON nicht lange URIs als Keys angezeigt werden.
-- Mit Einträgen wie `"AuthorityResource": "http://d-nb.info/standards/elementset/gnd#AuthorityResource"` werden Typen (`type`) im JSON nicht als umständliche URI, sondern als einfacher String angezeigt, so dass die Daten auch leicht verständlich sind für Entwickler, die bisher nicht viel mit Linked Data gearbeitet haben.
-- Mittels `"@container": "@set"` wird festgelegt, dass bis auf wenige Ausnahmen alle Properties ein Array als Wert haben, auch wenn es in einem Eintrag nur ein Element als Wert gibt. Dadurch ist die Datenstruktur homogener und vorhersagbarer. Dies spielt etwa für die Indexierung in Elasticsearch eine Rolle, da hier ein bestimmtes Feld immer den gleichen Datentypen (z.B. Array) haben muss. Auch bei der Nutzung der API erleichtert dies die Verarbeitung, da für ein bestimmtes Feld immer von einem identischen Typ ausgegangen werden kann. Im Zusammenspiel mit der Option [compactArrays](https://json-ld.org/spec/latest/json-ld-api/#dom-jsonldoptions-compactarrays) in JSON-LD ermöglicht dies eine gezielte Konfiguration einzelner Felder.
+- Mit Einträgen wie `"AuthorityResource": "http://d-nb.info/standards/elementset/gnd#AuthorityResource"` werden Typen (`type`) im JSON nicht als umständliche URI, sondern als einfacher String angezeigt, so dass die Daten auch leicht verständlich sind für Entwickler*innen, die bisher nicht viel mit Linked Data gearbeitet haben.
+- Mittels `"@container": "@set"` wird festgelegt, dass bis auf wenige Ausnahmen alle Properties ein Array als Wert haben, auch wenn es in einem Eintrag nur ein Element als Wert gibt. Dadurch ist die Datenstruktur homogener und vorhersagbarer. Dies spielt etwa für die Indexierung in Elasticsearch eine Rolle, da hier ein bestimmtes Feld immer den gleichen Datentypen (z.B. Array) haben muss. Auch bei der Nutzung der API erleichtert dies die Verarbeitung, da für ein bestimmtes Feld immer von einem identischen Typ ausgegangen werden kann. Im Zusammenspiel mit [entsprechend konfigurierter](https://json-ld.org/spec/latest/json-ld-api/#dom-jsonldoptions-compactarrays) Verarbeitung des JSON-LD ermöglicht dies eine gezielte Konfiguration einzelner Felder.
 
-## Framing
+### Framing
 
-Außerdem nutzen wir einen einfachen JSON-LD Frame (Longley et al. 2018), um das JSON in eine hierarchische JSON-Struktur mit einem Wurzelelement zu bringen. Dieser Frame ist denkbar einfach:
+Außerdem nutzen wir einen einfachen JSON-LD Frame (Longley et al. 2018), um das JSON in eine hierarchische JSON-Struktur mit einem Wurzelelement zu bringen. Dieser Frame verwendet den gleichen Kontext wie die eigentlichen Einträge, definiert als Typ die Oberklasse aller Einträge und bestimmt, dass der Inhalt immer eingebettet werden soll:
 
 ```
 {
@@ -458,9 +454,9 @@ Damit das Framing bei jeder GND-Entität funktioniert, muss allen Entitäten der
   gndo:variantNameForThePerson "Blücher, Johanna" .
 ```
 
-Wie man sieht, wird hier nur die spezifische Klasse (`gndo:DifferentiatedPerson`) angegeben und typspezifische Properties (`gndo:preferredNameForThePerson`, `gndo:variantNameForThePerson`) zur Angabe der Ansetzungs- und Verweisungsformen verwendet. Dies mag für eine Abfrage der Daten über einen SPARQL-Endpoint ausreichend sein, weil die GND-Ontologie (Haffner 2012ff) Informationen zu  Überklassen und -Properties enthält und somit mit Unterstützung von Reasoning auch entsprechende Abfragen funktionieren.
+Wie man sieht, wird hier nur die spezifische Klasse (`gndo:DifferentiatedPerson`) angegeben und es werden typspezifische Properties (`gndo:preferredNameForThePerson`, `gndo:variantNameForThePerson`) zur Angabe der Ansetzungs- und Verweisungsformen verwendet. Dies mag für eine Abfrage der Daten über einen SPARQL-Endpoint ausreichend sein, weil die GND-Ontologie (Haffner 2012ff) Informationen zu  Überklassen und -Properties enthält und somit mit Unterstützung von Reasoning auch entsprechende Abfragen funktionieren. Für eine einheitliche Abfrage der Ansetzungsformen aller GND-Entitäten in einem Suchmaschinenindex bzw. über eine Web-API zur Bereitstellung von Filtermöglichkeiten nach Oberklassen (Person, Schlagwort, Körperschaft, Geografikum etc.) reicht das aber nicht aus. Statt etwa einer Suche über alle Daten im Feld `preferredName` müsste eine komplexe Suche nach `preferredNameForThePerson` und aller anderen spezifischen Properties formuliert werden.
 
-Für eine einheitliche Abfrage der Ansetzungsformen aller GND-Entitäten in einem Suchmaschinenindex bzw. über eine Web-API und die Bereitstellung von Filtermöglichkeiten nach Oberklassen (Person, Schlagwort, Körperschaft, Geografikum etc.) reicht das aber nicht aus. Deshalb verzichten wir zum einen auf die Nutzung der spezifischen Namen-Properties und ergänzen zum anderen  die Überklassen im JSON-LD. So sehen etwa entsprechenden Teile im JSON-LD zu Hannah Arendt in lobid-gnd so aus:
+Deshalb verzichten wir zum einen auf die Nutzung der spezifischen Namen-Properties und ergänzen zum anderen die Überklassen im JSON-LD. So sehen etwa entsprechenden Teile im JSON-LD zu Hannah Arendt in lobid-gnd so aus:
 
 ```json
 {
@@ -480,44 +476,35 @@ Für eine einheitliche Abfrage der Ansetzungsformen aller GND-Entitäten in eine
 
 ### Labels für verlinkte Ressourcen
 
-Im JSON-LD wird zu jeder in Beziehung gesetzten GND-Ressource sowie zu den GND-Sachgruppen und Ländercodes die entsprechende Ansetzungsform wie in den anderen lobid-Diensten als `label` mitgeliefert. Beim Eintrag zu Hannah Arendt gibt es unter anderen einen Link auf den Sterbeort, auf verschiedene Berufe/Beschäftigungen, auf drei GND-Sachgruppen und auf verwandte Personen. Wo im RDF der GND nur URIs zu finden sind, sieht es in lobid-gnd wie folgt aus:
+Im JSON-LD wird zu jeder in Beziehung gesetzten GND-Ressource sowie zu den GND-Sachgruppen und Ländercodes die entsprechende Ansetzungsform (wie in den anderen lobid-Diensten) als `label` mitgeliefert. Beim Eintrag zu Hannah Arendt gibt es unter anderen einen Link auf den Sterbeort, auf verschiedene Berufe/Beschäftigungen, auf drei GND-Sachgruppen und auf verwandte Personen. Wo im RDF der GND nur URIs zu finden sind, sieht es in lobid-gnd wie folgt aus:
 
 ```json
 {
   "@context": "http://lobid.org/gnd/context.jsonld",
   "id":"http://d-nb.info/gnd/11850391X",
-  "placeOfDeath":[
-    {
-      "id":"http://d-nb.info/gnd/4042011-5",
-      "label":"New York, NY"
-    }
-  ],
-  "familialRelationship":[
-    {
-      "id":"http://d-nb.info/gnd/119378418",
-      "label":"Blücher, Heinrich"
-    },
-    {
-      "id":"http://d-nb.info/gnd/118502751",
-      "label":"Anders, Günther"
-    }
-  ],
-  "gndSubjectCategory":[
-    {
-      "id":"http://d-nb.info/standards/vocab/gnd/gnd-sc#4.7p",
-      "label":"Personen zu Philosophie"
-    }
-  ],
-  "geographicAreaCode":[
-    {
-      "id":"http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-DE",
-      "label":"Deutschland"
-    }
-  ]
+  "placeOfDeath":[{
+    "id":"http://d-nb.info/gnd/4042011-5",
+    "label":"New York, NY"
+  }],
+  "familialRelationship":[{
+    "id":"http://d-nb.info/gnd/119378418",
+    "label":"Blücher, Heinrich"
+  },{
+    "id":"http://d-nb.info/gnd/118502751",
+    "label":"Anders, Günther"
+  }],
+  "gndSubjectCategory":[{
+    "id":"http://d-nb.info/standards/vocab/gnd/gnd-sc#4.7p",
+    "label":"Personen zu Philosophie"
+  }],
+  "geographicAreaCode":[{
+    "id":"http://d-nb.info/standards/vocab/gnd/geographic-area-code#XA-DE",
+    "label":"Deutschland"
+  }]
 }
 ```
 
-Dies ermöglicht es API-Nutzer/innen auf einfache Weise, menschenlesbare Labels anstatt bloße URIs in Anwendungsoberflächen anzuzeigen. Es macht zudem die Suche nach Einträgen mit diesen Labels (z.B. _Schriftsteller_) überhaupt erst möglich wie auch Performance-kritische Anwendungsfälle, bei denen zusätzliche Lookups zu Ermittlung der Labels nicht praktikabel wären. So verwendet etwa die oben beschriebene Vorschlagsfunktion die Labels zum schnellen Auffinden des gesuchten Eintrags.
+Dies ermöglicht es API-Nutzer*innen auf einfache Weise, menschenlesbare Labels anstatt bloße URIs in Anwendungsoberflächen anzuzeigen. Es macht zudem die Suche nach Einträgen mit diesen Labels (z.B. _Schriftsteller_) überhaupt erst möglich, wie auch Performance-kritische Anwendungsfälle, bei denen zusätzliche Lookups zur Ermittlung der Labels nicht praktikabel wären. So verwendet etwa die oben beschriebene Vorschlagsfunktion im Suchfeld die Labels zum schnellen Auffinden des gesuchten Eintrags.
 
 ### Anreicherung mit Links und Bildern aus EntityFacts
 
@@ -526,39 +513,34 @@ Neben dem GND-RDF stellt die DNB mit [EntityFacts](http://www.dnb.de/DE/Service/
 ```json
 {
   "id":"http://d-nb.info/gnd/11850391X",
-  "depiction":[
-    {
-      "id":"https://commons.wikimedia.org/wiki/Special:FilePath/Hannah_arendt-150x150.jpg",
-      "url":"https://commons.wikimedia.org/wiki/File:Hannah_arendt-150x150.jpg?uselang=de",
-      "thumbnail":"https://commons.wikimedia.org/wiki/Special:FilePath/Hannah_arendt-150x150.jpg?width=270"
-    }
-  ],
-  "sameAs":[
-    {
-      "collection":{
-        "abbr":"BNF",
-        "name":"Bibliothèque nationale de France",
-        "publisher":"Bibliothèque nationale de France",
-        "icon":"http://www.bnf.fr/bnf_dev/icono/favicon.ico",
-        "id":"http://www.wikidata.org/entity/Q19938912"
-      },
-      "id":"http://catalogue.bnf.fr/ark:/12148/cb118890622"
+  "depiction":[{
+    "id":"https://commons.wikimedia.org/wiki/Special:FilePath/Hannah_arendt-150x150.jpg",
+    "url":"https://commons.wikimedia.org/wiki/File:Hannah_arendt-150x150.jpg?uselang=de",
+    "thumbnail":"https://commons.wikimedia.org/wiki/Special:FilePath/Hannah_arendt-150x150.jpg?width=270"
+  }],
+  "sameAs":[{
+    "collection":{
+      "abbr":"BNF",
+      "name":"Bibliothèque nationale de France",
+      "publisher":"Bibliothèque nationale de France",
+      "icon":"http://www.bnf.fr/bnf_dev/icono/favicon.ico",
+      "id":"http://www.wikidata.org/entity/Q19938912"
     },
-    {
-      "collection":{
-        "abbr":"WIKIDATA",
-        "name":"Wikidata",
-        "publisher":"Wikimedia Foundation Inc.",
-        "icon":"https://www.wikidata.org/static/favicon/wikidata.ico",
-        "id":"http://www.wikidata.org/entity/Q2013"
-      },
-      "id":"http://www.wikidata.org/entity/Q60025"
-    }
-  ]
+    "id":"http://catalogue.bnf.fr/ark:/12148/cb118890622"
+  },{
+    "collection":{
+      "abbr":"WIKIDATA",
+      "name":"Wikidata",
+      "publisher":"Wikimedia Foundation Inc.",
+      "icon":"https://www.wikidata.org/static/favicon/wikidata.ico",
+      "id":"http://www.wikidata.org/entity/Q2013"
+    },
+    "id":"http://www.wikidata.org/entity/Q60025"
+  }]
 }
 ```
 
-Mit diesen Anreicherungen kann auf der Basis von Identifikatoren Dritter in lobid-gnd gesucht werden, etwa anhand einer [ORCID](http://lobid.org/gnd/search?q=%220000-0002-7613-4123%22) oder eines [ISNI](http://lobid.org/gnd/search?q=%220000000114476112%22). Mit den Bildern können Einträge wie z.B. Autorenseiten illustriert werden. Wobei zu beachten ist, dass die Attributions- und Lizenzinformationen zu den Bildern nicht mitgeliefert werden, sondern von der Wikimedia Commons API geladen werden müssen. (Zur Umsetzung siehe z.B. [diesen Kommentar](https://github.com/hbz/lobid-organisations/issues/321#issuecomment-285366696) und unsere [aktuelle Implementierung](https://github.com/hbz/lobid-gnd/blob/580365da19ae5b3264376289480d836adc8894c4/app/controllers/HomeController.java#L355).)
+Mit diesen Anreicherungen kann auf der Basis von Identifikatoren Dritter in lobid-gnd gesucht werden, etwa anhand einer [ORCID](http://lobid.org/gnd/search?q=%220000-0002-7613-4123%22) oder eines [ISNI](http://lobid.org/gnd/search?q=%220000000114476112%22). Mit den Bildern können Einträge wie z.B. Autorenseiten illustriert werden. Wobei zu beachten ist, dass die Attributions- und Lizenzinformationen zu den Bildern nicht mitgeliefert werden, sondern von der Wikimedia Commons API geladen werden müssen. Zur Umsetzung siehe z.B. [diesen Kommentar](https://github.com/hbz/lobid-organisations/issues/321#issuecomment-285366696) und als Beispiel unsere [aktuelle Implementierung](https://github.com/hbz/lobid-gnd/blob/580365da19ae5b3264376289480d836adc8894c4/app/controllers/HomeController.java#L355).
 
 ## Web-API
 
