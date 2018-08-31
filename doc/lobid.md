@@ -88,7 +88,7 @@ In der ersten Version der lobid-APIs haben wir im Zuge unserer Datentransformati
 
 ![Lobid 1](images/lobid-1.png "Lobid 1")
 
-Im resultierenden JSON-LD hatten wir so die URIs aus den Triples als JSON-Schlüsselwörter. Diese Daten haben wir als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch indexiert (Beispiel gekürzt):
+Die Objekt-URIs der Triple wurden im JSON-LD zu JSON-Schlüsselwörter und als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch indexiert (Beispiel gekürzt):
 
 ```json
 {
