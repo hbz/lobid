@@ -166,9 +166,14 @@ public class Search {
 	}
 
 	private List<String> fields(Map<Parameter, String> queries) {
-		return queries.keySet().stream()
+		List<String> fields = queries.keySet().stream()
 				.flatMap(p -> index.queries().get(p).fields().stream())
 				.collect(Collectors.toList());
+		if (fields.isEmpty()) {
+			Logger.debug("Empty fields for queries: {}, parameters: {}", queries,
+					parameters);
+		}
+		return fields;
 	}
 
 	/**
@@ -484,14 +489,12 @@ public class Search {
 			final List<String> searchFields) {
 		final List<Document> res = new ArrayList<>();
 		for (SearchHit hit : hits) {
-			try {
-				Hit hitEnum = Hit.of(hit, searchFields);
+			Hit hitEnum = Hit.of(hit, searchFields);
+			if (hitEnum != null) {
 				final Document document =
 						new Document(hit.getId(), new String(hit.source()), index, field);
 				res.add(
 						hitEnum.process(parameters.values().iterator().next(), document));
-			} catch (IllegalArgumentException e) {
-				Logger.error(e.getMessage(), e);
 			}
 		}
 		final Predicate<Document> predicate = doc -> {

@@ -104,7 +104,7 @@ public final class Facets extends Controller {
 							"count", facet.getTotalCount(),
 							"entries", facet.getEntries().stream().map(
 									facetEntry -> ImmutableMap.of(
-										"term", facetEntry.getTerm().toString(), 
+										"term", facetEntry.getTerm().toString().replaceAll("^\\[|\\]$", ""),
 										"count", facetEntry.getCount()))
 									.collect(Collectors.toList())));/*@formatter:on*/
 		};
