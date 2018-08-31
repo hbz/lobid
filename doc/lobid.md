@@ -84,7 +84,9 @@ In Folgenden wird dargestellt, wie die aktuellen lobid-Daten gegenüber dem 1.x-
 
 ### Generisches JSON-LD im lobid 1.x-System
 
-In der ersten Version der lobid-APIs haben wir im Zuge unserer Datentransformation N-Triples erzeugt und diese automatisch mit einem JSON-LD-Prozessor konvertiert. Hier haben wir JSON-LD vollständig als RDF-Serialisierung betrachtet:
+Da lobid anfänglich die Daten in einer Graphdatenbank speicherte erzeugten die vorhandenen Datentransformationsprogramme N-Triples.
+In der ersten Version der lobid-APIs, die auf Objekt-(oder "Baum")speicher basierten, haben wir diese N-Triples automatisch in eine Baumstruktur mit einem JSON-LD-Prozessor konvertiert.
+Hier haben wir JSON-LD vollständig als RDF-Serialisierung betrachtet:
 
 ![Lobid 1](images/lobid-1.png "Lobid 1")
 
@@ -176,7 +178,7 @@ Auf Basis der Daten, die wir hier sehen, können wir ein beliebiges Feld nehmen,
 
 #### Hierarchisch strukturierte Daten
 
-Das generierte JSON-LD des alten Systems war eine flache Struktur mit JSON-Objekten in einem Array unter dem `@graph`-Schlüsselwort, z.B. in `http://lobid.org/organisation?id=DE-605&format=full`:
+Das generierte JSON-LD des alten Systems war eine flache Baumstruktur mit JSON-Objekten in einem Array unter dem `@graph`-Schlüsselwort, z.B. in `http://lobid.org/organisation?id=DE-605&format=full`:
 
 	"@graph": [
 	    {
@@ -200,9 +202,10 @@ Das generierte JSON-LD des alten Systems war eine flache Struktur mit JSON-Objek
 	    }
 	]
 
-Diese Struktur war nicht sehr praktisch und entsprach nicht dem pragmatischen Geist von JSON-LD (vgl. Steeg 2014). Wenn man etwa automatisch die englische Bezeichnung des Unterhaltsträgers einer Einrichtung verwenden will, muss man hier über alle `@graph`-Objekte iterieren und jeweils prüfen, ob die `@id` die Unterhaltsträger-ID ist, dann über alle `prefLabel`-Objekte iterieren und jenes mit dem passenden `@language`-Feld suchen, das dann als `@value` den gesuchten Wert enthält.
+Die flache Graphstruktur der N-Triple wurde also in die JSON-Baumstruktur übernommen. So konnten die Vorteile einer hierarchischen Baumstruktur nicht genutzt werden, was unpraktisch ist und nicht dem pragmatischen Geist von JSON-LD entspricht (vgl. Steeg 2014).
+Wenn man etwa automatisch die englische Bezeichnung des Unterhaltsträgers einer Einrichtung verwenden will, muss man hier über alle `@graph`-Objekte iterieren und jeweils prüfen, ob die `@id` die Unterhaltsträger-ID ist, dann über alle `prefLabel`-Objekte iterieren und jenes mit dem passenden `@language`-Feld suchen, das dann als `@value` den gesuchten Wert enthält. 
 
-In den neuen Systemen bieten wir die Daten in einem geschachtelten, JSON-typischem Format an:
+In den neuen Systemen bieten wir die Daten in einem tiefer geschachtelten, JSON-typischem Format an:
 
 	"fundertype": {
 	    "id": "http://purl.org/lobid/fundertype#n02",
