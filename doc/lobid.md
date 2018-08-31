@@ -339,7 +339,7 @@ Wir hoffen und glauben, dass dieser Ansatz zur Dokumentation nützlicher ist als
 
 # Fallstudie: lobid-gnd
 
-Mit lobid-gnd bietet das hbz eine Schnittstelle zur GND für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten. Da es sich bei lobid-gnd zum einen um den Dienst handelt, der am meisten Menschen interessieren dürfte und zum anderen um den letzten lobid-Dienst, der in Version 2 gelauncht wurde, nutzen wir es als Beispiel für eine detaillierte Betrachtung der Nutzungsmöglichkeiten von lobid.
+Mit lobid-gnd bietet das hbz eine Schnittstelle zur GND für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten. Da es sich bei lobid-gnd zum einen um den Dienst handelt, der die meisten Menschen interessieren dürfte und zum anderen um den letzten lobid-Dienst, der in Version 2 gelauncht wurde, nutzen wir es als Beispiel für eine detaillierte Betrachtung der Nutzungsmöglichkeiten von lobid.
 
 ## Suche und Navigation in der Benutzeroberfläche
 
