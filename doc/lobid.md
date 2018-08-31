@@ -256,7 +256,7 @@ Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabula
 
 ## Benutzerschnittstellen
 
-Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [Lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer\*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Fallbeispiel lobid-gnd findet sich unten im Abschnitt "Suche und Navigation in der Benutzeroberfläche".
+Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer\*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Fallbeispiel lobid-gnd findet sich unten im Abschnitt "Suche und Navigation in der Benutzeroberfläche".
 
 # Entwicklungsprozess
 
