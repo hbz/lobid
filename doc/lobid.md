@@ -259,6 +259,8 @@ Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabula
 
 # Entwicklungsprozess
 
+Das lobid-Kernteam besteht seit 2012 aus den drei Autoren dieses Artikels, d. j. eine bibiothekarische Fachkraft und zwei Entwickler. 2017/18 war Christoph Ewertowski Teil des Teams und hat uns stark im bilbiothekarischen Bereich unterstützt, insbesondere bei der Verbesserung der Datentransformation. Insgesamt werden für die (Weiter-)Entwicklung und den Betrieb von lobid je nach anstehenden Aufgaben und sonstigen laufenden Projekten etwa 1,5 bis 2,5 Vollzeitäquivalente eingesetzt. Im folgenden wird skizziert, wie die Teammitglieder die Arbeit an der Entwicklung von lobid organisieren.
+
 ## Open Source
 
 Wir entwickeln die lobid-Dienste als Open Source Software auf GitHub. Wir veröffentlichen nicht nur Ergebnisse auf GitHub, sondern der gesamte Prozess findet dort statt, d.h. Planung, Issue Tracking & Diskussion, Pull Requests, Implementierung sowie Testen der Software. GitHub hat einen integrierten Issue Tracker, dessen primäres Organisationsmittel beliebige Labels mit Farben sind. Diese lassen sich vielseitig anwenden (s.u.). Dieser Issue Tracker ermöglicht es auf einfache und funktionale Weise, andere Prozesse in GitHub zu referenzieren, so lassen sich etwa auf einfache Weise Links zu Code, Commits und Benutzern erstellen.
@@ -718,6 +720,10 @@ Je nach Zweck kann die eine oder andere Abfrage sinnvoller sein.
 #### Vollständige Query-Syntax
 
 lobid-gnd ist wie gesagt auf Basis von Elasticsearch umgesetzt. Wir verweisen hier nochmals auf die vollständige Dokumentation der [Elasticsearch Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax) sowie der [Apache Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) (Elasticsearch basiert auf [Apache Lucene](https://de.wikipedia.org/wiki/Apache_Lucene)).
+
+# Ausblick
+
+Nach einigen Jahren der Erfahrungen und Entwicklungen im Bereich Linked Open Data und APIs, bietet lobid mit den aktuellen Web-APIs eine übersichtliche, performante und mächtige Infrastruktur für bibliothekarische Daten an. Da lobid ja keine Masterdaten enthält, sondern lediglich Daten unterschiedlicher Quellen verarbeitet, ist dieser Status möglicherweise nicht von allzu langer Dauer. Die lobid-Quelldaten werden in Systemen gepflegt, die bereits in die Jahre gekommen sind, wie OCLC Pica bei der GND und Ex Libris Aleph bei der hbz-Verbunddatenbank. Es zeichnet sich ab, dass auf Ebene dieser Systeme in den nächsten Jahren grundlegende Änderungen anstehen, die eine ebenso grundlegende Anpassung der lobid-Importstrecke mit sich bringen werden. Momentan ist allerdings überhaupt nicht klar, welche Systeme wann migriert werden und realistisch betrachtet werden die Systemmigrationen noch zwei bis fünf Jahre auf sich warten lassen. Dennoch ist klar, dass damit perspektivisch erhebliche Arbeit auf das lobid-Team zukommt. Ob und inwiefern damit auch Ansätze in Betracht kommen, die ein Angebot von Web-APIs enger an das Mastersystem koppeln wird sich erst noch zeigen. Wir würden es jedenfalls begrüßen, wenn in Zukunft bereits bei der Datenproduktion ein Fokus auf das Angebot von Web-APIs zur Nutzung durch Entwickler*innen gelegt würde.
 
 # Kontakt
 
