@@ -42,8 +42,8 @@ lobid richtet sich primär an Bedienstete in bibliothekarischen Einrichtungen, n
 
 ## Ursprung
 
+lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so lautet die Auflösung des Akronyms ursprünglich "linking open bibliographic data". Die anfänglich notwendige und sich über mehrere Jahre hinziehende Propagierung der offenen Lizenzierung der Quelldaten (vgl. Pohl 2010), deren Transformation und die Modellierung der Zieldaten sowie die Auswahl der RDF-Properties und -Klassen hat dementsprechend über lange Zeit den Kern der Arbeit ausgemacht. Begonnen hat lobid 2010 mit der Bereitstellung der transformierten Daten über einen Triple Store, also einer Graphdatenbank. Der Triple Store war aber für performance-kritische Anwendungsfälle (wie einen Entity-Lookup via Textstring) nicht optimiert. Zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und Nutzbarkeit zu erleichtern wurde das lobid-Backend 2013 auf [Elasticsearch](https://www.elastic.co/de/products/elasticsearch) mit JSON-Daten, also ein Objekt-(oder Baum)datenspeicher, umgestellt. Auf Basis unserer Erfahrungen mit dieser Version der lobid-API haben wir 2017 (lobid-resources und lobid-organisations) bzw. 2018 (lobid-gnd) die aktuellen Versionen der Dienste veröffentlicht, die wir im Folgenden beschreiben.
 
-lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so lautet die Auflösung des Akronyms ursprünglich "linking open bibliographic data". Die anfänglich notwendige und sich über mehrere Jahre hinziehende Propagierung der offenen Lizenzierung der Quelldaten (vgl. Pohl 2010), deren Transformation und die Modellierung der Zieldaten sowie die Auswahl der RDF-Properties und -Klassen hat dementsprechend über lange Zeit den Kern der Arbeit ausgemacht. Begonnen hat lobid 2010 mit der Bereitstellung der transformierten Daten über einen Triple Store, also eine Graphdatenbank. Der Triple Store war aber für performance-kritische Anwendungsfälle (wie einen Entity-Lookup via Textstring) nicht optimiert. Zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und Nutzbarkeit zu erleichtern wurde das lobid-Backend 2013 auf [Elasticsearch](https://www.elastic.co/de/products/elasticsearch) mit JSON-Daten, also ein Objekt-(oder Baum)datenspeicher, umgestellt. Auf Basis unserer Erfahrungen mit dieser Version der lobid-API haben wir 2017 (lobid-resources und lobid-organisations) bzw. 2018 (lobid-gnd) die aktuellen Versionen der Dienste veröffentlicht, die wir im Folgenden beschreiben.
 # Technik
 
 ## Warum APIs?
@@ -86,12 +86,11 @@ In Folgenden wird dargestellt, wie die aktuellen lobid-Daten gegenüber dem 1.x-
 
 ### Generisches JSON-LD im lobid 1.x-System
 
-Da lobid von 2010 bis 2013 die Daten in einer Graphdatenbank speicherte, erzeugten die vorhandenen Datentransformationsprogramme N-Triples.
-In der ersten Version der lobid-APIs (2013 bis 2017/18) haben wir im Zuge unserer Datentransformation N-Triples erzeugt und diese automatisch mit einem JSON-LD-Prozessor konvertiert. Hier haben wir JSON-LD vollständig als RDF-Serialisierung betrachtet:
+Da lobid von 2010 bis 2013 die Daten in einer Graphdatenbank speicherte erzeugten die vorhandenen Datentransformationsprogramme N-Triples. In der ersten Version der lobid-APIs haben wir diese Datentransformationsprogramme wiederverwendet und die N-Triples automatisch mit einem JSON-LD-Prozessor konvertiert. Hier haben wir JSON-LD vollständig als RDF-Serialisierung betrachtet:
 
 ![Lobid 1](images/lobid-1.png "Lobid 1")
 
-Die Property URIs der Tripel wurden im JSON-LD zu JSON-Schlüsselwörtern. Diese Daten haben wir als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch indexiert (Beispiel gekürzt):
+Die Property URIs der Triple wurden im JSON-LD zu JSON-Schlüsselwörtern. Diese Daten haben wir als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch indexiert (Beispiel gekürzt):
 
 ```json
 {
@@ -753,3 +752,4 @@ Steeg, Fabian (2015a): Why LOD needs applications, and libraries need APIs. Blog
 Steeg, Fabian (2015b): More self-containedness, less code sharing. Blogpost verfügbar unter [http://fsteeg.com/notes/more-self-containedness-less-code-sharing](http://fsteeg.com/notes/more-self-containedness-less-code-sharing).
 
 Steeg, Fabian (2016): Der Lobid-Entwicklungsprozess. Präsentationsfolien verfügbar unter [http://hbz.github.io/slides/lobid-entwicklungsprozess/](http://hbz.github.io/slides/lobid-entwicklungsprozess/).
+
