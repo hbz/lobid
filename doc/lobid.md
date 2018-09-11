@@ -1,34 +1,63 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-
-- [lobid – Dateninfrastruktur für Bibliotheken](#lobid-%E2%80%93-dateninfrastruktur-f%C3%BCr-bibliotheken)
-- [Überblick](#%C3%BCberblick)
-    - [lobid: Schnittstellen für Entwickler\*innen und Endnutzer\*innen](#lobid-schnittstellen-f%C3%BCr-entwickler%5Cinnen-und-endnutzer%5Cinnen)
-    - [Ursprung](#ursprung)
+- [lobid – Dateninfrastruktur für Bibliotheken](#lobid-dateninfrastruktur-für-bibliotheken)
+- [Überblick](#überblick)
+	- [lobid: Schnittstellen für Entwickler\*innen und Endnutzer\*innen](#lobid-schnittstellen-für-entwicklerinnen-und-endnutzerinnen)
+	- [Ursprung](#ursprung)
 - [Technik](#technik)
-    - [Warum APIs?](#warum-apis)
-    - [Architektur: von horizontalen Schichten zu vertikalen Schnitten](#architektur-von-horizontalen-schichten-zu-vertikalen-schnitten)
-    - [Linked Open Usable Data (LOUD) mittels JSON-LD](#linked-open-usable-data-loud-mittels-json-ld)
-    - [Vokabulare](#vokabulare)
-    - [Benutzerschnittstellen](#benutzerschnittstellen)
+	- [Warum APIs?](#warum-apis)
+	- [Architektur: von horizontalen Schichten zu vertikalen Schnitten](#architektur-von-horizontalen-schichten-zu-vertikalen-schnitten)
+	- [Linked Open Usable Data (LOUD) mittels JSON-LD](#linked-open-usable-data-loud-mittels-json-ld)
+		- [Generisches JSON-LD im lobid 1.x-System](#generisches-json-ld-im-lobid-1x-system)
+		- [Maßgeschneidertes JSON-LD in den neuen Systemen](#mageschneidertes-json-ld-in-den-neuen-systemen)
+			- [Maßgeschneidertes JSON mit Kontext für JSON-LD: lobid-organisations](#mageschneidertes-json-mit-kontext-für-json-ld-lobid-organisations)
+			- [Maßgeschneidertes JSON-LD nach RDF-Serialisierung: lobid-resources](#mageschneidertes-json-ld-nach-rdf-serialisierung-lobid-resources)
+			- [Maßgeschneiderte RDF-Serialisierung für JSON-LD: lobid-gnd](#mageschneiderte-rdf-serialisierung-für-json-ld-lobid-gnd)
+		- [Vorteile des maßgeschneiderten JSON-LD](#vorteile-des-mageschneiderten-json-ld)
+			- [Was man sieht, ist was man abgefragen kann](#was-man-sieht-ist-was-man-abgefragen-kann)
+			- [Hierarchisch strukturierte Daten](#hierarchisch-strukturierte-daten)
+			- [Labels für IDs](#labels-für-ids)
+			- [Zwischenfazit: JSON-LD ist nicht gleich JSON-LD](#zwischenfazit-json-ld-ist-nicht-gleich-json-ld)
+	- [Vokabulare](#vokabulare)
+	- [Benutzerschnittstellen](#benutzerschnittstellen)
 - [Entwicklungsprozess](#entwicklungsprozess)
-    - [Open Source](#open-source)
-    - [Visualisierung](#visualisierung)
-    - [Reviews](#reviews)
+	- [Open Source](#open-source)
+	- [Visualisierung](#visualisierung)
+	- [Reviews](#reviews)
 - [Dokumentation](#dokumentation)
-    - [Dokumentation des Datensets](#dokumentation-des-datensets)
-    - [Dokumentation der API](#dokumentation-der-api)
-    - [Dokumentation mit Beispielen](#dokumentation-mit-beispielen)
+	- [Dokumentation des Datensets](#dokumentation-des-datensets)
+	- [Dokumentation der API](#dokumentation-der-api)
+	- [Dokumentation mit Beispielen](#dokumentation-mit-beispielen)
+		- [Web-Annotationen für API-Dokumentation](#web-annotationen-für-api-dokumentation)
+		- [Vorteile](#vorteile)
 - [Fallstudie: lobid-gnd](#fallstudie-lobid-gnd)
-    - [Suche und Navigation in der Benutzeroberfläche](#suche-und-navigation-in-der-benutzeroberfl%C3%A4che)
-    - [Datengenerierung und Anreicherung](#datengenerierung-und-anreicherung)
-    - [Web-API](#web-api)
-    - [Formulierung komplexer Suchanfragen](#formulierung-komplexer-suchanfragen)
+	- [Suche und Navigation in der Benutzeroberfläche](#suche-und-navigation-in-der-benutzeroberfläche)
+	- [Datengenerierung und Anreicherung](#datengenerierung-und-anreicherung)
+		- [Der JSON-LD-Kontext](#der-json-ld-kontext)
+		- [Framing](#framing)
+		- [Homogenisierung von Typen und Label-Properties](#homogenisierung-von-typen-und-label-properties)
+		- [Labels für verlinkte Ressourcen](#labels-für-verlinkte-ressourcen)
+		- [Anreicherung mit Links und Bildern aus EntityFacts](#anreicherung-mit-links-und-bildern-aus-entityfacts)
+	- [Web-API](#web-api)
+		- [Bulk Downloads](#bulk-downloads)
+		- [OpenRefine Reconciliation API](#openrefine-reconciliation-api)
+	- [Formulierung komplexer Suchanfragen](#formulierung-komplexer-suchanfragen)
+		- [Query-Grundlagen](#query-grundlagen)
+		- [Default-Sucheinstellungen & boolesche Operatoren](#default-sucheinstellungen-boolesche-operatoren)
+		- [Anzeige der JSON-Daten](#anzeige-der-json-daten)
+		- [Feldsuchen](#feldsuchen)
+		- [Beispiele](#beispiele)
+			- [exists-Abfragen](#exists-abfragen)
+			- [Einträge mit Angabe eines Architekten](#einträge-mit-angabe-eines-architekten)
+			- [Gleichzeitige Suche in Ansetzungs- und Verweisungsformen](#gleichzeitige-suche-in-ansetzungs-und-verweisungsformen)
+			- [Suche nach Einträgen mit Wikidata-Link aber ohne Bild](#suche-nach-einträgen-mit-wikidata-link-aber-ohne-bild)
+			- [Personen, die während der NS-Zeit in Köln geboren wurden](#personen-die-während-der-ns-zeit-in-köln-geboren-wurden)
+			- [Vollständige Query-Syntax](#vollständige-query-syntax)
+- [Ausblick](#ausblick)
 - [Kontakt](#kontakt)
 - [Referenzen](#referenzen)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- /TOC -->
 
 # lobid – Dateninfrastruktur für Bibliotheken
 
@@ -50,7 +79,7 @@ lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so
 
 Die lobid-API bietet einheitlichen Zugriff auf bibliothekarische Daten über eine webbasierte Programmierschnittstelle ("application programming interface", API). Sie liefert JSON für Linked Data (JSON-LD):
 
-![Daten](images/data.png "Daten")
+![lobid-API und Datenquellen](images/data.png "Daten")
 
 Die Grundidee ist dabei eine Entkopplung von Anwendungen und spezifischen Datenquellen, Formaten und Systemen. So können sich diese Formate und Systeme ändern, ohne dass Änderungen in den Anwendungen nötig werden, die auf die Daten über die API zugreifen. Dies ermöglicht die Entwicklung von herstellerunabhängigen, nachhaltigen Anwendungen auf Basis bibliothekarischer Daten (siehe auch Steeg, 2015a).
 
@@ -62,7 +91,7 @@ Dies führte insgesamt zu einer Verquickung der verschiedenen Datensets: um etwa
 
 Daher haben wir lobid für die 2.0-Version in vertikale, in sich abgeschlossene Systeme für jedes Datenset (resources, organisations, gnd) aufgespalten (Steeg 2015b):
 
-![Architektur](images/scs.png "Architektur")
+![Architektur abgeschlossener Softwaresysteme](images/scs.png "Architektur")
 
 Durch die Kombination dieser Module in der Horizontalen haben wir nach wie vor eine gemeinsame API und eine gemeinsame Oberfläche für alle Dienste, doch Teile dieser API und Oberfläche sind in Module gekapselt, die je ein Datenset behandeln. Diese Module enthalten den für das jeweilige Datenset spezifischen Code und die spezifischen Abhängigkeiten und können unabhängig analysiert, verändert und installiert werden.
 
@@ -88,7 +117,7 @@ In Folgenden wird dargestellt, wie die aktuellen lobid-Daten gegenüber dem 1.x-
 
 Da lobid von 2010 bis 2013 die Daten in einer Graphdatenbank speicherte erzeugten die vorhandenen Datentransformationsprogramme N-Triples. In der ersten Version der lobid-APIs haben wir diese Datentransformationsprogramme wiederverwendet und die N-Triples automatisch mit einem JSON-LD-Prozessor konvertiert. Hier haben wir JSON-LD vollständig als RDF-Serialisierung betrachtet:
 
-![Lobid 1](images/lobid-1.png "Lobid 1")
+![JSON-LD-Generierung in lobid, Version 1.x](images/lobid-1.png "Lobid 1")
 
 Die Property URIs der Triple wurden im JSON-LD zu JSON-Schlüsselwörtern. Diese Daten haben wir als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch indexiert (Beispiel gekürzt):
 
@@ -143,7 +172,7 @@ Das heißt wir haben im Grunde zwei verschiedene Formate erzeugt und verwendet: 
 
 Bei lobid-organisations, dem ersten Datenset, das wir auf den neuen Ansatz umgezogen haben, haben wir das Vorgehen umgedreht – statt manuell N-Triples anzufertigen, und diese automatisch in JSON-LD zu konvertieren, erzeugen wir das JSON mit genau der Struktur, die wir brauchen. Auf dieser Grundlage generieren wir dann RDF-Serialisierungen wie N-Triples:
 
-![Lobid 2](images/lobid-2.png "Lobid 2")
+![Json-LD-Generierung in lobid, Version 2](images/lobid-2.png "Lobid 2")
 
 Der zentrale Vorteil dieses Ansatzes ist, dass wir unseren konkreten Anwendungsfall nach vorne stellen: Wir bauen explizit unsere API so, wie sie für unsere Anwendungen Sinn macht, anstatt zuerst eine Abstraktion zu erzeugen, aus der wir dann konkrete Darstellungen generieren, die von unseren Anwendungen verwendet werden.
 
@@ -259,7 +288,7 @@ Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabula
 
 # Entwicklungsprozess
 
-Das lobid-Kernteam besteht seit 2012 aus den drei Autoren dieses Artikels, d. j. eine bibiothekarische Fachkraft und zwei Entwickler. 2017/18 war Christoph Ewertowski Teil des Teams und hat uns stark im bilbiothekarischen Bereich unterstützt, insbesondere bei der Verbesserung der Datentransformation. Insgesamt werden für die (Weiter-)Entwicklung und den Betrieb von lobid je nach anstehenden Aufgaben und sonstigen laufenden Projekten etwa 1,5 bis 2,5 Vollzeitäquivalente eingesetzt. Im folgenden wird skizziert, wie die Teammitglieder die Arbeit an der Entwicklung von lobid organisieren.
+Das lobid-Kernteam besteht seit 2012 aus den drei Autoren dieses Artikels, d. h. aus einer bibiothekarischen Fachkraft und zwei Entwicklern. 2017/18 war zudem Christoph Ewertowski Teil des Teams und war eine große Unterstützung im bibliothekarischen Bereich, insbesondere bei der Verbesserung der Datentransformation. Insgesamt werden für die (Weiter-)Entwicklung und den Betrieb von lobid je nach anstehenden Aufgaben und sonstigen laufenden Projekten etwa 1,5 bis 2,5 Vollzeitäquivalente eingesetzt. Im folgenden wird skizziert, wie die Teammitglieder die Arbeit an der Entwicklung von lobid organisieren.
 
 ## Open Source
 
@@ -269,7 +298,7 @@ Wir entwickeln die lobid-Dienste als Open Source Software auf GitHub. Wir veröf
 
 GitHub Issues sind immer mit einem GitHub Code Repository assoziiert. Für die Bereitstellung von lobid.org werden derzeit [neun Repositories](https://github.com/search?q=topic%3Alobid+org%3Ahbz&type=Repositories) auf GitHub verwendet, dazu kommen weitere Repositories etwa für das [lobid Blog](http://blog.lobid.org/). Für einen einheitlichen Blick auf alle vom Team bearbeiteten Issues in allen Repositories verwenden wir zur Visualisierung des Workflows [Waffle](http://waffle.io), ein Kanban Board mit GitHub-Integration, bei dem jedes GitHub Issue einer Karte entspricht, und die Spalten des Boards Labels der GitHub-Issues entsprechen.
 
-![Waffle](images/waffle.png "Waffle")
+![Das lobid Kanban Board auf Basis von waffle.io](images/waffle.png "Waffle")
 
 In unserem Prozess durchläuft eine Karte das Board von links nach rechts. Priorisierte Karten schieben wir nach oben in der Spalte, Karten, die Fehler (Bugs) beschreiben, werden generell priorisiert.
 
@@ -330,7 +359,7 @@ Die ersten beiden Punkte (Name und Beschreibung) sowie die URI werden bei allen 
 
 Unter [http://lobid.org/organisations/api](http://lobid.org/organisations/api/de) kann man die annotationsbasierte Dokumentation in Aktion sehen (für lobid-resources siehe [http://lobid.org/resources/api](http://lobid.org/resources/api)). Im [Abschnitt zu JSON-LD](http://lobid.org/organisations/api#jsonld) öffnet sich durch einen Klick auf die hervorgehobenen JSON-Keys die hypothes.is-Seitenleiste mit Informationen über das entsprechende Element. Beispielannotation für das "rs" Feld:
 
-![Beispielannotation](images/annotation-example.png)
+![Beispielannotation des "rs"-Schüssels in lobid-organisations"](images/annotation-example.png)
 
 ### Vorteile
 
@@ -348,51 +377,51 @@ Auf der Startseite von lobid-gnd findet sich neben einer kurzen Beschreibung des
 
 Die einfache Suchoberfläche auf der Startseite unterstützt unter anderem Boolesche Operatoren, Phrasensuche und Trunkierung:
 
-![http://lobid.org/gnd](images/lobid-gnd-suche/1-1-suchen.png)
+![](images/lobid-gnd-suche/1-1-suchen.png)
 
 Nach der Eingabe im Suchfeld kann einer der Vorschläge direkt ausgewählt werden, um zur Detailansicht zu gelangen:
 
-![http://lobid.org/gnd](images/lobid-gnd-suche/1-2-vorschlag-auswahl.png)
+![](images/lobid-gnd-suche/1-2-vorschlag-auswahl.png)
 
 Über die Enter-Taste oder das Lupen-Icon kann eine Suche angestoßen werden:
 
-![http://lobid.org/gnd](images/lobid-gnd-suche/1-3-vorschlag-suche.png)
+![](images/lobid-gnd-suche/1-3-vorschlag-suche.png)
 
 Als alternativer Einstieg kann die gesamte GND erkundet werden:
 
-![http://lobid.org/gnd/search](images/lobid-gnd-suche/2-erkunden.png)
+![](images/lobid-gnd-suche/2-erkunden.png)
 
 Über beide Wege kommt man zur Trefferliste. Über den Treffern auf der linken Seite kann die Anzahl der Treffer pro Seite gewählt werden, darunter kann zwischen den Seiten gewechselt werden:
 
-![http://lobid.org/gnd/search](images/lobid-gnd-suche/3-1-liste-paginierung.png)
+![](images/lobid-gnd-suche/3-1-liste-paginierung.png)
 
 Auf der rechten Seite ermöglicht eine facettierte Suche nach *Entitätstyp*, *GND-Sachgruppe*, *Ländercode* und *Beruf oder Beschäftigung* eine Eingrenzung der Ergebnisse:
 
-![http://lobid.org/gnd/search](images/lobid-gnd-suche/3-2-liste-facetten.png)
+![](images/lobid-gnd-suche/3-2-liste-facetten.png)
 
 Als Standard werden in jeder Facette die fünf häufigsten Einträge angezeigt, weitere Einträge lassen sich ein- und ausblenden:
 
-![http://lobid.org/gnd/search](images/lobid-gnd-suche/4-facetten-einblenden.png)
+![](images/lobid-gnd-suche/4-facetten-einblenden.png)
 
 Entitätstypen sind in Untertypen differenziert:
 
-![http://lobid.org/gnd/search](images/lobid-gnd-suche/5-facetten-untertypen.png)
+![](images/lobid-gnd-suche/5-facetten-untertypen.png)
 
 Über die Auswahl unterschiedlicher Facetten lässt sich die Treffermenge präzise eingrenzen, z. B. zur Anzeige [aller hydrologischen Geografika in Nordrhein-Westfalen](http://lobid.org/gnd/search?filter=%2B(type%3ANaturalGeographicUnit)+%2B(gndSubjectCategory.id%3A%22http%3A%2F%2Fd-nb.info%2Fstandards%2Fvocab%2Fgnd%2Fgnd-sc%2319.3%22)+%2B(geographicAreaCode.id%3A%22http%3A%2F%2Fd-nb.info%2Fstandards%2Fvocab%2Fgnd%2Fgeographic-area-code%23XA-DE-NW%22)):
 
-![http://lobid.org/gnd/search](images/lobid-gnd-suche/6-1-facetten-filter.png)
+![](images/lobid-gnd-suche/6-1-facetten-filter.png)
 
 Erweiterte Suchmöglichkeiten ergeben sich aus einer Kombination von Sucheinstieg über das Suchfeld und facettierter Suche sowie über Mehrfachauswahl innerhalb einer Facette:
 
-![http://lobid.org/gnd/search](images/lobid-gnd-suche/6-2-facetten-filter.png)
+![](images/lobid-gnd-suche/6-2-facetten-filter.png)
 
 Der Klick auf einen Suchtreffer führt zu einer Detailansicht. Die Detailseiten enthalten Links zu verknüpften GND-Einträgen. Über die Lupen-Icons kann eine Suche nach Einträgen mit der gleichen Beziehung angestoßen werden, z. B. [alle Teile der Nordsee](https://lobid.org/gnd/search?q=broaderTermPartitive.id%3A%22http%3A%2F%2Fd-nb.info%2Fgnd%2F4042579-4%22&size=50&format=html):
 
-![http://lobid.org/gnd/4393546-1](images/lobid-gnd-suche/7-1-details-lupe.png)
+![](images/lobid-gnd-suche/7-1-details-lupe.png)
 
 Die visuelle Darstellung im Tab "Beziehungen" erlaubt ebenso eine Navigation zu den verknüpften Entitäten per Klick auf einen Knoten des Graphs und eine Suche nach weiteren Einträgen mit der gleichen Beziehung per Klick auf eine Kante:
 
-![http://lobid.org/gnd/4393546-1](images/lobid-gnd-suche/7-2-details-kante.png)
+![](images/lobid-gnd-suche/7-2-details-kante.png)
 
 Das Piktogramm <img src="http://lobid.org/gnd/assets/images/json-ld.png" alt="JSON-LD-Piktogramm" style="width:16px !important;height:16px !important;"> verweist auf die dem Eintrag zugrundeliegenden strukturierten Daten im Format JSON-LD. Im folgenden wird die Herkunft, Aktualität und Struktur dieser Daten erläutert, um daran anschließend vorzustellen, wie komplexere Suchanfragen formuliert werden können.
 
@@ -541,11 +570,11 @@ Bei solchen kleineren Ergebnismengen reicht der JSON-Lines-Download aus, werden 
 Mit der OpenRefine Reconciliation API ist es auf einfache Weise möglich, mit dem für Datenaufbereitung und -anreicherung beliebten Werkzeug [OpenRefine](http://openrefine.org/) eine Liste, etwa von Ansetzungsformen, mit der GND abzugleichen, um die Textstrings auf GND-IDs zu matchen und mit Details der GND-Einträge anzureichern. Dafür müssen die abzugleichenden Daten in OpenRefine geladen werden, die entsprechende Spalte ausgewählt und der Reconciliation-Prozess z. B. wie folgt durchgeführt werden:
 
 1.Start des Reconciliation-Prozesses für eine Spalte in OpenRefine
-![Screenshot](images/start-reconciling.png "start reconciling")
+![](images/start-reconciling.png "start reconciling")
 2. Ergänzen des lobid-gnd Reconciliation Endpoints (`https://lobid.org/gnd/reconcile`) in OpenRefine
-![Screenshot](images/add-lobid-gnd-to-openrefine.png "ergänze lobid-gnd reconciliation API")
+![](images/add-lobid-gnd-to-openrefine.png "ergänze lobid-gnd reconciliation API")
 3. (Optionale) Auswahl einer GND-Untermenge (hier "Person") für Reconciliation
-![Screenshot](images/choose-type-for-reconciliation.png "Typ-Auswahl")
+![](images/choose-type-for-reconciliation.png "Typ-Auswahl")
 4. Start der API-Abfrage mit Klick auf "Start Reconciling"
 
 Eine detaillierte Anleitung zur [Verwendung der GND Reconciliation in OpenRefine](http://blog.lobid.org/2018/08/27/openrefine.html) findet sich in unserem Blog.
@@ -560,7 +589,7 @@ Bevor wir die Suchmöglichkeiten an einigen Beispielen illustrieren, werden zun�
 
 Alle Abfragen können wie oben beschrieben über das Suchfeld auf der lobid-gnd-Seite eingegeben werden:
 
-![Screenshot](images/2018-07-06-lobid-gnd-queries/enter-complex-query.png "Query in Eingabefenster")
+![](images/2018-07-06-lobid-gnd-queries/enter-complex-query.png "Query in Eingabefenster")
 
 Die Queries können auch direkt als Teil der URL angegeben und im Browser geöffnet werden:
 
@@ -582,7 +611,7 @@ Standardmäßig geht eine im Suchfenster angestoßene Suche über alle Felder. M
 In den folgenden Beispielen wird immer wieder auf die strukturierten Daten im Format JSON-LD Bezug genommen, die es für jeden Eintrag in lobid-gnd gibt. Anzeigen lassen sich diese wie folgt:
 
 1. Mit Klick auf das JSON-LD-Zeichen in einer Detailansicht:
-[![Screenshot](images/2018-07-06-lobid-gnd-queries/focus-json-ld.png "Hinweis auf Link zum JSON-LD")](http://lobid.org/gnd/11850391X)
+[![](images/2018-07-06-lobid-gnd-queries/focus-json-ld.png "Hinweis auf Link zum JSON-LD")](http://lobid.org/gnd/11850391X)
 2. Durch Anhängen von `.json` an die URL eines Einzeltreffers, z. B. [http://lobid.org/gnd/11850391X.json](http://lobid.org/gnd/11850391X.json)
 3. Der Vollständigkeit halber: **Bei Suchanfragen** muss der Parameter `format=json` angehängt werden, um die gesamte Ergebnisliste als JSON-LD anzuzeigen, z. B. [http://lobid.org/gnd/search?q=hannah+arendt&format=json](http://lobid.org/gnd/search?q=hannah+arendt&format=json). Alternativ können auch mit dem Parameter `format=jsonl` JSON Lines ausgegeben werden, d.h. pro Zeile ein Eintrag als JSON, z. B. [http://lobid.org/gnd/search?q=hannah+arendt&format=jsonl](http://lobid.org/gnd/search?q=hannah+arendt&format=jsonl).
 
@@ -592,7 +621,7 @@ Die Bedeutung eines Feldes lässt sich im [JSON-LD-Kontext](https://json-ld.org/
 
 Über die `<Feld>:<Suchbegriff>`-Syntax kann in spezifischen Feldern gesucht werden, z. B. nach einer bestimmten Ansetzungsform:
 
-![Screenshot](images/2018-07-06-lobid-gnd-queries/field-search.png "Feldsuche in Eingabefenster")
+![](images/2018-07-06-lobid-gnd-queries/field-search.png "Feldsuche in Eingabefenster")
 
 [http://lobid.org/gnd/search?q=preferredName:"Dom+Köln"](http://lobid.org/gnd/search?q=preferredName:"Dom+K%C3%B6ln")
 
@@ -635,7 +664,7 @@ Zunächst wird im JSON nachgeschaut, wie das entsprechende Feld heißt:
 
 Dann kann die entsprechende `_exists`-[Anfrage](http://lobid.org/gnd/search?q=_exists_:architect) formuliert werden:
 
-![Screenshot](images/2018-07-06-lobid-gnd-queries/architect-query.png "architect-Sucheingabe")
+![](images/2018-07-06-lobid-gnd-queries/architect-query.png "architect-Sucheingabe")
 
 Unterfelder werden wie beschrieben über die Punkt-Notation angegeben, z. B. Architekten mit "Fritz" im Namen:
 [`architect.label:Fritz`](http://lobid.org/gnd/search?q=architect.label:Fritz)
@@ -705,7 +734,7 @@ Um eine Frage wie z. B. "Welche in der GND verzeichneten Personen wurden währen
 
 Den ersten Schritt – die Eingrenzung auf in Köln geborene Personen – können wir auf einfache Weise über die Benutzeroberfläche für den Eintrag von [Konrad Adenauer](http://lobid.org/gnd/11850066X) vollziehen: Mit einem Klick auf die Lupe neben "Geburtsort Köln" wird eine Abfrage nach allen in Köln geborenen Menschen in der GND gestartet.
 
-![Screenshot](images/2018-07-06-lobid-gnd-queries/lupe-klick.png "Suche per Lupe")
+![](images/2018-07-06-lobid-gnd-queries/lupe-klick.png "Suche per Lupe")
 
 Jetzt müssen wir die vorhandene Abfrage ([`placeOfBirth.id:"http://d-nb.info/gnd/4031483-2"`](http://lobid.org/gnd/search?q=placeOfBirth.id%3A%22http%3A%2F%2Fd-nb.info%2Fgnd%2F4031483-2%22&format=html)) noch um eine Einschränkung des Geburtsdatums ergänzen. Hier können wir eine [range query](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#_ranges) verwenden, die Zeitrahmen mit verschiedenen Detailgraden (Jahr, Monat, Tag etc.) ermöglicht. Für unseren Fall probieren wir zunächst die tagesgenaue Eingrenzung mit `dateOfBirth:[1933-01-30 TO 1945-05-08]`:
 
@@ -723,7 +752,9 @@ lobid-gnd ist wie gesagt auf Basis von Elasticsearch umgesetzt. Wir verweisen hi
 
 # Ausblick
 
-Nach einigen Jahren der Erfahrungen und Entwicklungen im Bereich Linked Open Data und APIs, bietet lobid mit den aktuellen Web-APIs eine übersichtliche, performante und mächtige Infrastruktur für bibliothekarische Daten an. Da lobid ja keine Masterdaten enthält, sondern lediglich Daten unterschiedlicher Quellen verarbeitet, ist dieser Status möglicherweise nicht von allzu langer Dauer. Die lobid-Quelldaten werden in Systemen gepflegt, die bereits in die Jahre gekommen sind, wie OCLC Pica bei der GND und Ex Libris Aleph bei der hbz-Verbunddatenbank. Es zeichnet sich ab, dass auf Ebene dieser Systeme in den nächsten Jahren grundlegende Änderungen anstehen, die eine ebenso grundlegende Anpassung der lobid-Importstrecke mit sich bringen werden. Momentan ist allerdings überhaupt nicht klar, welche Systeme wann migriert werden und realistisch betrachtet werden die Systemmigrationen noch zwei bis fünf Jahre auf sich warten lassen. Dennoch ist klar, dass damit perspektivisch erhebliche Arbeit auf das lobid-Team zukommt. Ob und inwiefern damit auch Ansätze in Betracht kommen, die ein Angebot von Web-APIs enger an das Mastersystem koppeln wird sich erst noch zeigen. Wir würden es jedenfalls begrüßen, wenn in Zukunft bereits bei der Datenproduktion ein Fokus auf das Angebot von Web-APIs zur Nutzung durch Entwickler*innen gelegt würde.
+Nach einigen Jahren der Erfahrungen und Entwicklungen im Bereich Linked Open Data und APIs, bietet lobid mit den aktuellen Web-APIs eine übersichtliche, performante und mächtige Infrastruktur für bibliothekarische Daten an. Da lobid keine Masterdaten enthält, sondern lediglich Daten unterschiedlicher Quellen verarbeitet, ist dieser Zustand möglicherweise nicht von allzu langer Dauer. Die lobid-Quelldaten werden in Systemen gepflegt, die bereits in die Jahre gekommen sind, wie OCLC Pica bei der GND und Ex Libris Aleph bei der hbz-Verbunddatenbank. Es zeichnet sich ab, dass auf Ebene dieser Systeme in den nächsten Jahren grundlegende Änderungen anstehen, die eine ebenso grundlegende Anpassung der lobid-Importstrecke mit sich bringen werden. Momentan ist allerdings überhaupt nicht klar, welche Systeme wann migriert werden. Vorsichtig eingeschätzt werden die Systemmigrationen noch zwei bis fünf Jahre auf sich warten lassen. Dennoch ist klar, dass damit perspektivisch erhebliche Arbeit auf das lobid-Team zukommt.
+
+Ob und inwiefern mit einer Migration auch Ansätze in Betracht kommen, die ein Angebot von Web-APIs enger an das Mastersystem koppeln wird sich erst noch zeigen. Wir würden es jedenfalls begrüßen, wenn in Zukunft bereits bei der Datenproduktion und -haltung ein Fokus auf das Angebot von Web-APIs zur Nutzung durch Entwickler*innen gelegt würde.
 
 # Kontakt
 
