@@ -721,33 +721,33 @@ Wir freuen uns über Rückmeldungen und Fragen zur Nutzung der lobid-Dienste. Ko
 
 # Referenzen
 
-Ewertowski, Christoph / Pohl, Adrian (2017): Which vocabularies to use for bibliographic descriptions? Blogpost verfügbar unter [http://blog.lobid.org/2017/04/19/vocabulary-choices.html](http://blog.lobid.org/2017/04/19/vocabulary-choices.html)
+Ewertowski, Christoph / Pohl, Adrian (2017): *Which vocabularies to use for bibliographic descriptions?* [online]. Zugriff am 2018-09-12. Verfügbar unter: [http://blog.lobid.org/2017/04/19/vocabulary-choices.html](http://blog.lobid.org/2017/04/19/vocabulary-choices.html)
 
-Gruenbaum, Peter (2010): Web API Documentation Best Practices. Blogpost verfügbar unter [https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12](https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12)
+Gruenbaum, Peter (2010): *Web API Documentation Best Practices* [online]. Zugriff am 2018-09-12. Verfügbar unter: [https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12](https://www.programmableweb.com/news/web-api-documentation-best-practices/2010/08/12)
 
-Haffner, Alexander (2018): GND Ontology. URL: [http://d-nb.info/standards/elementset/gnd](http://d-nb.info/standards/elementset/gnd)
+Haffner, Alexander (2018): *GND Ontology* [online]. Zugriff am 2018-09-12. Verfügbar unter: [http://d-nb.info/standards/elementset/gnd](http://d-nb.info/standards/elementset/gnd)
 
-Longley, Dave et al. (2018): JSON-LD 1.1 Framing – An Application Programming Interface for the JSON-LD Syntax. URL: [https://json-ld.org/spec/latest/json-ld-framing/](https://json-ld.org/spec/latest/json-ld-framing/)
+Longley, Dave et al. (2018): *JSON-LD 1.1 Framing – An Application Programming Interface for the JSON-LD Syntax* [online]. Zugriff am 2018-09-12. Verfügbar unter: [https://json-ld.org/spec/latest/json-ld-framing/](https://json-ld.org/spec/latest/json-ld-framing/)
 
-Lóscio, Bernadette Farias et al. (2017): Data on the Web Best Practices. W3C Recommendation verfügbar unter [https://www.w3.org/TR/dwbp/](https://www.w3.org/TR/dwbp/). Hier insbesondere Abschnitt "8.2 Metadata": [https://www.w3.org/TR/dwbp/#metadata](https://www.w3.org/TR/dwbp/#metadata)
+Lóscio, Bernadette Farias et al. (2017): *Data on the Web Best Practices* [online]. Zugriff am 2018-09-12. Verfügbar unter: [https://www.w3.org/TR/dwbp/](https://www.w3.org/TR/dwbp/), hier insbesondere Abschnitt "8.2 Metadata": [https://www.w3.org/TR/dwbp/#metadata](https://www.w3.org/TR/dwbp/#metadata)
 
-Pohl, Adrian (2010): Open Data im hbz-Verbund. In: ProLibris 2010 (3), S. 109-113. Open Access Preprint verfügbar unter [http://hdl.handle.net/10760/14838](http://hdl.handle.net/10760/14838)
+Pohl, Adrian (2010): *Open Data im hbz-Verbund*. In: ProLibris 2010 (3), S. 109-113. Preprint frei zugänglich unter: [http://hdl.handle.net/10760/14838](http://hdl.handle.net/10760/14838)
 
-Sanderson, Rob (2016): Community Challenges For Practical Linked Open Data. Vortragsfolien zur Linked Pasts 2 Keynote vom 15.12.2016: [https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote](https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote)
+Sanderson, Rob (2016): *Community Challenges For Practical Linked Open Data* [online]. Vortragsfolien zur Linked Pasts 2 Keynote vom 15.12.2016. Zugriff am 2018-09-12. Verfügbar unter: [https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote](https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote)
 
-Sanderson, Rob (2018): Shout it Out: LOUD. Vortragfolien zur EuropeanaTech Keynote am 15.05.2018: [https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud](https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud)
+Sanderson, Rob (2018): *Shout it Out: LOUD* [online]. Vortragfolien zur EuropeanaTech Keynote am 15.05.2018. Zugriff am 2018-09-12. Verfügbar unter [https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud](https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud)
 
-Schnasse, Jan & Christoph, Pascal (2018, August 31): hbz/etikett: Version 0.1.0 (Version v0.1.0). Zenodo. [http://doi.org/10.5281/zenodo.1406968](http://doi.org/10.5281/zenodo.1406968)
+Schnasse, Jan & Christoph, Pascal (2018): *etikett: Version 0.1.0* [Software]. Zugriff am 2018-09-12. Verfügbar unter [http://doi.org/10.5281/zenodo.1406968](http://doi.org/10.5281/zenodo.1406968)
 
-Sporny, Manu et al. (2014): JSON-LD 1.0. A JSON-based Serialization for Linked Data. W3C Recommendation verfügbar unter [https://www.w3.org/TR/2014/REC-json-ld-20140116/](https://www.w3.org/TR/2014/REC-json-ld-20140116/)
+Sporny, Manu et al. (2014): *JSON-LD 1.0. A JSON-based Serialization for Linked Data* [online]. Zugriff am 2018-09-12. Verfügbar unter [https://www.w3.org/TR/2014/REC-json-ld-20140116/](https://www.w3.org/TR/2014/REC-json-ld-20140116/)
 
-Steeg, Fabian (2014): One issue with JSON-LD that seems not so pragmatic. Blogpost verfügbar unter [http://fsteeg.com/notes/one-issue-with-json-ld-that-seems-not-so-pragmatic](http://fsteeg.com/notes/one-issue-with-json-ld-that-seems-not-so-pragmatic)
+Steeg, Fabian (2014): *One issue with JSON-LD that seems not so pragmatic* [online]. Zugriff am 2018-09-12. Verfügbar unter [http://fsteeg.com/notes/one-issue-with-json-ld-that-seems-not-so-pragmatic](http://fsteeg.com/notes/one-issue-with-json-ld-that-seems-not-so-pragmatic)
 
-Steeg, Fabian (2015a): Why LOD needs applications, and libraries need APIs. Blogpost verfügbar unter [http://fsteeg.com/notes/why-lod-needs-applications-and-libraries-need-apis](http://fsteeg.com/notes/why-lod-needs-applications-and-libraries-need-apis)
+Steeg, Fabian (2015a): *Why LOD needs applications, and libraries need APIs* [online]. Zugriff am 2018-09-12. Verfügbar unter [http://fsteeg.com/notes/why-lod-needs-applications-and-libraries-need-apis](http://fsteeg.com/notes/why-lod-needs-applications-and-libraries-need-apis)
 
-Steeg, Fabian (2015b): More self-containedness, less code sharing. Blogpost verfügbar unter [http://fsteeg.com/notes/more-self-containedness-less-code-sharing](http://fsteeg.com/notes/more-self-containedness-less-code-sharing).
+Steeg, Fabian (2015b): *More self-containedness, less code sharing* [online]. Zugriff am 2018-09-12. Verfügbar unter [http://fsteeg.com/notes/more-self-containedness-less-code-sharing](http://fsteeg.com/notes/more-self-containedness-less-code-sharing).
 
-Steeg, Fabian (2016): Der Lobid-Entwicklungsprozess. Präsentationsfolien verfügbar unter [http://hbz.github.io/slides/lobid-entwicklungsprozess/](http://hbz.github.io/slides/lobid-entwicklungsprozess/).
+Steeg, Fabian (2016): *Der Lobid-Entwicklungsprozess* [online]. Zugriff am 2018-09-12. Verfügbar unter [http://hbz.github.io/slides/lobid-entwicklungsprozess/](http://hbz.github.io/slides/lobid-entwicklungsprozess/).
 
 **Autoren**
 
