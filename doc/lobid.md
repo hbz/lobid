@@ -1,67 +1,26 @@
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+Fabian Steeg, Adrian Pohl & Pascal Christoph
 
-- [lobid – Dateninfrastruktur für Bibliotheken](#lobid-dateninfrastruktur-für-bibliotheken)
-- [Überblick](#überblick)
-	- [lobid: Schnittstellen für Entwickler\*innen und Endnutzer\*innen](#lobid-schnittstellen-für-entwicklerinnen-und-endnutzerinnen)
-	- [Ursprung](#ursprung)
-- [Technik](#technik)
-	- [Warum APIs?](#warum-apis)
-	- [Architektur: von horizontalen Schichten zu vertikalen Schnitten](#architektur-von-horizontalen-schichten-zu-vertikalen-schnitten)
-	- [Linked Open Usable Data (LOUD) mittels JSON-LD](#linked-open-usable-data-loud-mittels-json-ld)
-		- [Generisches JSON-LD im lobid 1.x-System](#generisches-json-ld-im-lobid-1x-system)
-		- [Maßgeschneidertes JSON-LD in den neuen Systemen](#mageschneidertes-json-ld-in-den-neuen-systemen)
-			- [Maßgeschneidertes JSON mit Kontext für JSON-LD: lobid-organisations](#mageschneidertes-json-mit-kontext-für-json-ld-lobid-organisations)
-			- [Maßgeschneidertes JSON-LD nach RDF-Serialisierung: lobid-resources](#mageschneidertes-json-ld-nach-rdf-serialisierung-lobid-resources)
-			- [Maßgeschneiderte RDF-Serialisierung für JSON-LD: lobid-gnd](#mageschneiderte-rdf-serialisierung-für-json-ld-lobid-gnd)
-		- [Vorteile des maßgeschneiderten JSON-LD](#vorteile-des-mageschneiderten-json-ld)
-			- [Was man sieht, ist was man abgefragen kann](#was-man-sieht-ist-was-man-abgefragen-kann)
-			- [Hierarchisch strukturierte Daten](#hierarchisch-strukturierte-daten)
-			- [Labels für IDs](#labels-für-ids)
-			- [Zwischenfazit: JSON-LD ist nicht gleich JSON-LD](#zwischenfazit-json-ld-ist-nicht-gleich-json-ld)
-	- [Vokabulare](#vokabulare)
-	- [Benutzerschnittstellen](#benutzerschnittstellen)
-- [Entwicklungsprozess](#entwicklungsprozess)
-	- [Open Source](#open-source)
-	- [Visualisierung](#visualisierung)
-	- [Reviews](#reviews)
-- [Dokumentation](#dokumentation)
-	- [Dokumentation des Datensets](#dokumentation-des-datensets)
-	- [Dokumentation der API](#dokumentation-der-api)
-	- [Dokumentation mit Beispielen](#dokumentation-mit-beispielen)
-		- [Web-Annotationen für API-Dokumentation](#web-annotationen-für-api-dokumentation)
-		- [Vorteile](#vorteile)
-- [Fallstudie: lobid-gnd](#fallstudie-lobid-gnd)
-	- [Suche und Navigation in der Benutzeroberfläche](#suche-und-navigation-in-der-benutzeroberfläche)
-	- [Datengenerierung und Anreicherung](#datengenerierung-und-anreicherung)
-		- [Der JSON-LD-Kontext](#der-json-ld-kontext)
-		- [Framing](#framing)
-		- [Homogenisierung von Typen und Label-Properties](#homogenisierung-von-typen-und-label-properties)
-		- [Labels für verlinkte Ressourcen](#labels-für-verlinkte-ressourcen)
-		- [Anreicherung mit Links und Bildern aus EntityFacts](#anreicherung-mit-links-und-bildern-aus-entityfacts)
-	- [Web-API](#web-api)
-		- [Bulk Downloads](#bulk-downloads)
-		- [OpenRefine Reconciliation API](#openrefine-reconciliation-api)
-	- [Formulierung komplexer Suchanfragen](#formulierung-komplexer-suchanfragen)
-		- [Query-Grundlagen](#query-grundlagen)
-		- [Default-Sucheinstellungen & boolesche Operatoren](#default-sucheinstellungen-boolesche-operatoren)
-		- [Anzeige der JSON-Daten](#anzeige-der-json-daten)
-		- [Feldsuchen](#feldsuchen)
-		- [Beispiele](#beispiele)
-			- [exists-Abfragen](#exists-abfragen)
-			- [Einträge mit Angabe eines Architekten](#einträge-mit-angabe-eines-architekten)
-			- [Gleichzeitige Suche in Ansetzungs- und Verweisungsformen](#gleichzeitige-suche-in-ansetzungs-und-verweisungsformen)
-			- [Suche nach Einträgen mit Wikidata-Link aber ohne Bild](#suche-nach-einträgen-mit-wikidata-link-aber-ohne-bild)
-			- [Personen, die während der NS-Zeit in Köln geboren wurden](#personen-die-während-der-ns-zeit-in-köln-geboren-wurden)
-			- [Vollständige Query-Syntax](#vollständige-query-syntax)
-- [Ausblick](#ausblick)
-- [Kontakt](#kontakt)
-- [Referenzen](#referenzen)
+**lobid – Dateninfrastruktur für Bibliotheken**
 
-<!-- /TOC -->
+Zusammenfassung
 
-# lobid – Dateninfrastruktur für Bibliotheken
+lobid ist der zentrale Anlaufpunkt für die Linked-Open-Data-Dienste des hbz. Das Akronym „lobid" steht für „Linking Open Bibliographic Data“. lobid umfasst Rechercheoberflächen für Anwender und Web-APIs.
 
-# Überblick
+Die lobid-Dienste bieten Zugriff auf die Titeldaten des hbz-Verbundkatalogs, Beschreibungen von bibliothekarischen Organisationen aus der Deutschen Bibliotheksstatistik (DBS) und dem Sigelverzeichnis sowie auf die Gemeinsame Normdatei (GND). Die Datensets können so in verschiedenen Kontexten durch Anwender und Entwickler einheitlich (JSON-LD über HTTP) genutzt und eingebunden werden. Vielfältige Möglichkeiten der Datenabfrage werden unterstützt.
+
+Der Artikel beschreibt zunächst auf einer allgemeinen Ebene die technischen Hintergründe der Bereitstellung von lobid und die Erfahrungen, die bei der Transformation verschiedener Datensets nach JSON-LD gemacht wurden. Vorgestellt wird auch der Entwicklungsprozess und die Art und Weise der Dokumentation der Dienste. Abschließend wird eine konkrete, detaillierte Beschreibung von Datengenerierung, Oberfläche und Web-API am Beispiel des GND-Dienstes lobid-gnd gegeben.
+
+Schlüsselwörter
+
+Linked Open Data, lobid, JSON-LD, Web APIs, GND, Gemeinsame Normdatei, Verbundkatalog, ISIL-Verzeichnis
+
+**lobid – data infrastructure for libraries**
+
+Abstract
+
+Keywords
+
+Linked Open Data, JSON-LD, Web APIs, GND, union catalogue, ISIL registry
 
 ## lobid: Schnittstellen für Entwickler\*innen und Endnutzer\*innen
 
