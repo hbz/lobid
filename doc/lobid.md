@@ -770,15 +770,15 @@ Haffner, Alexander (2018): GND Ontology. URL: [http://d-nb.info/standards/elemen
 
 Longley, Dave et al. (2018): JSON-LD 1.1 Framing – An Application Programming Interface for the JSON-LD Syntax. URL: [https://json-ld.org/spec/latest/json-ld-framing/](https://json-ld.org/spec/latest/json-ld-framing/)
 
-Lóscio, Bernadette Farias et al. (2017): Data on the Web Best Practices. W3C Recommendation verfügbar unter https://www.w3.org/TR/dwbp/. Hier insbesondere Abschnitt "8.2 Metadata": [https://www.w3.org/TR/dwbp/#metadata](https://www.w3.org/TR/dwbp/#metadata)
+Lóscio, Bernadette Farias et al. (2017): Data on the Web Best Practices. W3C Recommendation verfügbar unter [https://www.w3.org/TR/dwbp/](https://www.w3.org/TR/dwbp/). Hier insbesondere Abschnitt "8.2 Metadata": [https://www.w3.org/TR/dwbp/#metadata](https://www.w3.org/TR/dwbp/#metadata)
 
-Pohl, Adrian (2010): Open Data im hbz-Verbund. In: ProLibris 2010 (3), S. 109-113.
+Pohl, Adrian (2010): Open Data im hbz-Verbund. In: ProLibris 2010 (3), S. 109-113. Open Access Preprint verfügbar unter [http://hdl.handle.net/10760/14838](http://hdl.handle.net/10760/14838)
 
 Sanderson, Rob (2016): Community Challenges For Practical Linked Open Data. Vortragsfolien zur Linked Pasts 2 Keynote vom 15.12.2016: [https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote](https://de.slideshare.net/azaroth42/community-challenges-for-practical-linked-open-data-linked-pasts-keynote)
 
 Sanderson, Rob (2018): Shout it Out: LOUD. Vortragfolien zur EuropeanaTech Keynote am 15.05.2018: [https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud](https://de.slideshare.net/azaroth42/europeanatech-keynote-shout-it-out-loud)
 
-Schnasse, Jan & Christoph, Pascal (2018, August 31): hbz/etikett: Version 0.1.0 (Version v0.1.0). Zenodo. http://doi.org/10.5281/zenodo.1406968.
+Schnasse, Jan & Christoph, Pascal (2018, August 31): hbz/etikett: Version 0.1.0 (Version v0.1.0). Zenodo. [http://doi.org/10.5281/zenodo.1406968](http://doi.org/10.5281/zenodo.1406968)
 
 Sporny, Manu et al. (2014): JSON-LD 1.0. A JSON-based Serialization for Linked Data. W3C Recommendation verfügbar unter [https://www.w3.org/TR/2014/REC-json-ld-20140116/](https://www.w3.org/TR/2014/REC-json-ld-20140116/)
 
@@ -790,3 +790,16 @@ Steeg, Fabian (2015b): More self-containedness, less code sharing. Blogpost verf
 
 Steeg, Fabian (2016): Der Lobid-Entwicklungsprozess. Präsentationsfolien verfügbar unter [http://hbz.github.io/slides/lobid-entwicklungsprozess/](http://hbz.github.io/slides/lobid-entwicklungsprozess/).
 
+**Autoren**
+
+Fabian Steeg, Hochschulbibliothekszentrum des Landes NRW, Jülicher Str.6, D-50674 Köln
+[http://lobid.org/team/fs](http://lobid.org/team/fs)
+steeg@hbz-nrw.de
+
+Adrian Pohl, Hochschulbibliothekszentrum des Landes NRW, Jülicher Str.6, D-50674 Köln
+[http://lobid.org/team/ap](http://lobid.org/team/ap)
+pohl@hbz-nrw.de
+
+Pascal Christoph, Hochschulbibliothekszentrum des Landes NRW, Jülicher Str.6, D-50674 Köln
+[http://lobid.org/team/pc](http://lobid.org/team/pc)
+christoph@hbz-nrw.de
