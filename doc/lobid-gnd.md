@@ -1,14 +1,26 @@
 Fabian Steeg, Adrian Pohl & Pascal Christoph
 
+**lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine**
+
 Zusammenfassung
 
-Mit lobid-gnd bietet das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) eine Schnittstelle zur Gemeinsamen Normdatei (GND) für Mensch und Maschine an. In diesem Beitrag werden detailliert die Nutzungsmöglichkeiten von lobid-gnd beleuchtet. Neben einer Vorstellung der graphischen Nutzeroberfläche und der Möglichkeiten komplexer Abfragen gegen die Web-API wird auch der Prozess der Datengenerierung auf Basis des Linked-Data-Angebots der Deutschen Nationalbibliothek (DNB) beschrieben.
+Mit lobid-gnd bietet das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) eine Schnittstelle zur Gemeinsamen Normdatei (GND) für Mensch und Maschine an. In diesem Beitrag werden detailliert die Nutzungsmöglichkeiten von lobid-gnd beleuchtet. Neben einer Vorstellung der graphischen Nutzeroberfläche, der Möglichkeiten komplexer Abfragen gegen die Web-API und der Integration in OpenRefine wird auch der Prozess der Datengenerierung auf Basis des Linked-Data-Angebots der Deutschen Nationalbibliothek (DNB) beschrieben.
 
 Schlüsselwörter
 
-GND, Gemeinsame Normdatei, WebAPIs, JSON-LD, lobid, Linked Open Data
+GND, Gemeinsame Normdatei, Web-APIs, JSON-LD, lobid, Linked Open Data, OpenRefine, lobid
 
-**lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine**
+**lobid-gnd – A human and machine interface to the Integrated Authority File (GND)**
+
+Abstract
+
+lobid-gnd is a human and machine interface to the Integrated Authority File (GND) provided by the Library Service Centre of North Rhine-Westphalia (hbz). This article describes use cases for lobid-gnd in detail. We introduce the usage of the search interface, ways to create complex queries with our web API, and integration in OpenRefine. We also describe our data transformation process, which is based on the linked data service provided by the German National Library (DNB).
+
+Keywords
+
+GND, Integrated Authority File, Web APIs, JSON-LD, Linked Open Data, OpenRefine, lobid
+
+## lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine
 
 Mit lobid-gnd bietet das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) eine Schnittstelle zur Gemeinsamen Normdatei (GND) für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten. lobid-gnd ist einer von drei lobid-Diensten. Für historische und technische Hintergründe zu lobid im allgemeinen siehe Steeg et al. (2018). Da es sich bei lobid-gnd um den Dienst handelt, der die meisten Menschen interessieren dürfte und zum anderen um den lobid-Dienst, der als letztes in Version 2 gestartet wurde, werden in diesem Beitrag anhand dieses Beispiels detailliert die Nutzungsmöglichkeiten von lobid beleuchtet. Zu diesem Zweck wird eine konkrete, detaillierte Beschreibung der Datengenerierung, Oberfläche und Web-API von lobid-gnd präsentiert.
 

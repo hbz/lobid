@@ -4,23 +4,29 @@ Fabian Steeg, Adrian Pohl & Pascal Christoph
 
 Zusammenfassung
 
-lobid ist der zentrale Anlaufpunkt für die Linked-Open-Data-Dienste des hbz. Das Akronym „lobid" steht für „Linking Open Bibliographic Data“. lobid umfasst Rechercheoberflächen für Anwender und Web-APIs.
+lobid ist der zentrale Anlaufpunkt für die Linked-Open-Data-Dienste des Hochschulbibliothekszentrums des Landes Nordrhein-Westfalen (hbz). Das Akronym „lobid" steht für „Linking Open Bibliographic Data“. lobid umfasst Rechercheoberflächen für Anwender und Web-APIs.
 
-Die lobid-Dienste bieten Zugriff auf die Titeldaten des hbz-Verbundkatalogs, Beschreibungen von bibliothekarischen Organisationen aus der Deutschen Bibliotheksstatistik (DBS) und dem Sigelverzeichnis sowie auf die Gemeinsame Normdatei (GND). Die Datensets können so in verschiedenen Kontexten durch Anwender und Entwickler einheitlich (JSON-LD über HTTP) genutzt und eingebunden werden. Vielfältige Möglichkeiten der Datenabfrage werden unterstützt.
+Die lobid-Dienste bieten Zugriff auf die Titeldaten des hbz-Verbundkatalogs, Beschreibungen von bibliothekarischen Organisationen und anderen Gedächtnisinstitutionen aus der Deutschen Bibliotheksstatistik (DBS) und dem Sigelverzeichnis sowie auf die Gemeinsame Normdatei (GND). Die Datensets können so in verschiedenen Kontexten einheitlich (JSON-LD über HTTP) genutzt und eingebunden werden. Vielfältige Möglichkeiten der Datenabfrage werden unterstützt.
 
-Der Artikel beschreibt zunächst auf einer allgemeinen Ebene die technischen Hintergründe der Bereitstellung von lobid und die Erfahrungen, die bei der Transformation verschiedener Datensets nach JSON-LD gemacht wurden. Vorgestellt wird auch der Entwicklungsprozess und die Art und Weise der Dokumentation der Dienste.
+Der Artikel beschreibt zunächst die technischen Hintergründe der Bereitstellung von lobid und die Erfahrungen, die bei der Transformation verschiedener Datensets nach JSON-LD gemacht wurden. Vorgestellt wird auch der Entwicklungsprozess und die Art und Weise der Dokumentation der Dienste.
 
 Schlüsselwörter
 
-Linked Open Data, lobid, JSON-LD, Web APIs, Verbundkatalog, ISIL-Verzeichnis
+Linked Open Data, JSON-LD, Web APIs, GND, Verbundkatalog, ISIL-Verzeichnis, lobid
 
 **lobid – data infrastructure for libraries**
 
 Abstract
 
+lobids is the central hub for the linked open data services provided by the Library Service Centre of North Rhine-Westphalia (hbz). lobid stands for "linking open bibliographic data". It provides search interfaces for users and web APIs for developers.
+
+The lobid services provide access to the title data of the hbz union catalog, to descriptions of library organisations and other memory institutions from the German Library Statistics (DBS) and the German ISIL registry, and to the Integrated Authority File (GND). Through the lobid services, these datasets are provided in a consistent form (JSON-LD over HTTP), ready to be used and integrated in various contexts. We provide versatile mechanisms to query the data.
+
+This article describes the technical background for implementing lobid and our experiences in transforming various data sets to JSON-LD. We also describe our development process and our approach to documenting the services.
+
 Keywords
 
-Linked Open Data, JSON-LD, Web APIs, GND, union catalogue, ISIL registry
+Linked Open Data, JSON-LD, Web APIs, GND, union catalogue, ISIL registry, lobid
 
 ## lobid: Schnittstellen für Entwickler\*innen und Endnutzer\*innen
 
