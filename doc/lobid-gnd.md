@@ -82,7 +82,7 @@ Das Piktogramm <img src="http://lobid.org/gnd/assets/images/json-ld.png" alt="JS
 
 lobid-gnd ist – neben seiner Funktion als Endnutzerschnittstelle – auch eine Maschinenschnittstelle zur GND. Die Endnutzerschnittstelle basiert auf HTML für die Ansicht im Browser, aber ebenso liefern alle HTTP-GET-Anfragen auf Wunsch JSON(-LD) für die maschinelle Verarbeitung etwa zur Anwendungsentwicklung. Bevor wir aber näher auf die Web-API (_Application Programming Interface_, deutsch: Entwicklungsschnittstelle) eingehen, möchten wir zunächst beschreiben, wie und in welcher Form die GND-Daten indexiert werden.
 
-Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalbliothek (DNB) [bereitgestellt](http://www.dnb.de/DE/Service/DigitaleDienste/LinkedData/linkeddata_node.html) werden. Das hbz hat Zugriff auf eine OAI-PMH-Schnittstelle der DNB, über die täglich Updates der Daten geholt werden. Diese Daten werden dann für lobid-gnd mit einigen Anpassungen nach JSON-LD konvertiert. Zum Teil waren diese Anpassungen durch Inkonsistenzen in den Ausgangsdaten bedingt, was wir zum Anlass genommen haben, Verbesserungen vorzuschlagen, die zum Teil bereits durch die DNB umgesetzt wurden.
+Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalbibliothek (DNB) [bereitgestellt](http://www.dnb.de/DE/Service/DigitaleDienste/LinkedData/linkeddata_node.html) werden. Das hbz hat Zugriff auf eine OAI-PMH-Schnittstelle der DNB, über die täglich Updates der Daten geholt werden. Diese Daten werden dann für lobid-gnd mit einigen Anpassungen nach JSON-LD konvertiert. Zum Teil waren diese Anpassungen durch Inkonsistenzen in den Ausgangsdaten bedingt, was wir zum Anlass genommen haben, Verbesserungen vorzuschlagen, die zum Teil bereits durch die DNB umgesetzt wurden.
 
 ## Der JSON-LD-Kontext
 
@@ -403,11 +403,21 @@ Je nach Zweck kann die eine oder andere Abfrage sinnvoller sein.
 
 lobid-gnd ist wie gesagt auf Basis von Elasticsearch umgesetzt. Wir verweisen hier nochmals auf die vollständige Dokumentation der [Elasticsearch Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax) sowie der [Apache Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) (Elasticsearch basiert auf [Apache Lucene](https://de.wikipedia.org/wiki/Apache_Lucene)).
 
+# Ausblick
 
+Die Aktivitäten rund um die GND haben in den letzten Jahren an Fahrt aufgenommen. Dies zeigen Projekte wie "GND für Kulturdaten (GND4C)" (Niggemann et al., 2018) und die erstmalig im Dezember 2018 stattfindende [GNDCon](https://wiki.dnb.de/display/GNDCON2018/GNDCon+2018), eine Konferenz ausschließlich mit Beiträgen zur Gemeinsamen Normdatei. Nicht nur wird an der Vergrößerung und Vernetzung der GND-Community gearbeitet, sondern auch an der Verbesserung und Weiterentwicklung der technischen Basis, wenn es etwa um die Visualisierung von Strukturen und das Finden systematischer Probleme (Kasprzik & Kett, 2018) geht oder um die Evaluierung ergänzender oder alternativer Plattformen für die Pflege der GND-Daten, siehe dazu das Projekt ["GND goes Wikibase"](https://wiki.dnb.de/display/GND/GND+goes+Wikibase).
+
+Das hbz hat seine Bereitschaft signalisiert, mit seiner Expertise aus der lobid-Entwicklung am Aufbau gemeinsamer zentraler Lösungen für die GND-Community mitzuwirken. Das lobid-Team steht seit längerem mit der DNB als derzeitiger hauptverantwortlicher Institution für die GND-Infrastruktur sowie mit anderen aktiven Entwickler*innen von Infrastrukturangeboten rund um die GND in Kontakt. Eine Expertengruppe zur Weiterentwicklung der GND-Infrastruktur ist im Aufbau.
+
+Vor diesem Hintergrund ist davon auszugehen, dass lobid-gnd – abgesehen von Bugfixes und kleineren Verbesserungen – im Kontext der Entwicklung zentraler GND-Infrastruktur erweitert und verbessert werden wird.
 
 # Referenzen
 
 Haffner, Alexander (2018): *GND Ontology* [online]. Zugriff am 2018-09-12. Verfügbar unter: [http://d-nb.info/standards/elementset/gnd](http://d-nb.info/standards/elementset/gnd)
+
+Kasprzik, Anna & Kett, Jürgen (2018): Vorschläge für eine Weiterentwicklung der Sacherschließung und Schritte zur fortgesetzten strukturellen Aufwertung der GND. Im Erscheinen in: o-bib 5 (3).
+
+Niggemann, Elisabeth / Goebel,  Ralf / Kretzschmar, Robert / Bracht, Christian / Ahlers, Jens (): GND für Kulturdaten (GND4C) – 1. Projektphase [online]. Zugriff am 2018-09-12. Verfügbar unter [https://wiki.dnb.de/download/attachments/134055796/B_eRT_GND4C_public.pdf?api=v2](https://wiki.dnb.de/download/attachments/134055796/B_eRT_GND4C_public.pdf?api=v2).
 
 Steeg, Fabian / Pohl, Adrian / Christoph, Pascal (2018): lobid – Dateninfrastruktur für Bibliotheken. In Informationspraxis 4 (2). Verfügbar unter {doi-link einfügen}.
 
