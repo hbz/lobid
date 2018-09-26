@@ -44,7 +44,7 @@ lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so
 
 Die lobid-API bietet einheitlichen Zugriff auf bibliothekarische Daten über eine webbasierte Programmierschnittstelle ("application programming interface", API). Sie liefert JSON für Linked Data (JSON-LD):
 
-![lobid-API und Datenquellen](images/data.png "Daten")
+![Abbildung 1: lobid-API und Datenquellen](images/data.png "Daten")
 
 Die Grundidee ist dabei eine Entkopplung der Anwendungen von spezifischen Datenquellen, Formaten und Systemen. So können sich diese Formate und Systeme ändern, ohne dass Änderungen in den Anwendungen nötig werden, die auf die Daten über die API zugreifen. Dies ermöglicht die Entwicklung von herstellerunabhängigen, nachhaltigen Anwendungen auf Basis bibliothekarischer Daten (siehe auch Steeg 2015a).
 
@@ -56,7 +56,7 @@ Dies führte insgesamt zu einer Verquickung der verschiedenen Datensets: Um etwa
 
 Daher spalteten wir lobid für die 2.0-Version in vertikale, in sich abgeschlossene Systeme für jedes Datenset (resources, organisations, gnd) auf (Steeg 2015b):
 
-![Architektur abgeschlossener Softwaresysteme](images/scs.png "Architektur")
+![Abbildung 2: Architektur abgeschlossener Softwaresysteme](images/scs.png "Architektur")
 
 Durch die horizontale Kombination dieser Module haben wir nach wie vor eine gemeinsame API und eine gemeinsame Oberfläche für alle Dienste, doch Teile dieser API und Oberfläche sind in Module gekapselt, die je ein Datenset behandeln. Diese Module enthalten den für das jeweilige Datenset spezifischen Code und die spezifischen Abhängigkeiten und können unabhängig analysiert, verändert und installiert werden.
 
@@ -82,7 +82,7 @@ Im Folgenden wird dargestellt, wie die aktuellen lobid-Daten gegenüber dem 1.x-
 
 Da lobid von 2010 bis 2013 die Daten in einer Graphdatenbank speicherte, erzeugten die vorhandenen Datentransformationsprogramme N-Triples. In der ersten Version der lobid-APIs verwendeten wir diese Datentransformationsprogramme wieder und konvertierten die N-Triples automatisch mit einem JSON-LD-Prozessor (Abbildung X). Hier betrachteten wir JSON-LD vollständig als RDF-Serialisierung.
 
-![JSON-LD-Generierung in lobid, Version 1.x](images/lobid-1.png "Lobid 1")
+![Abbildung 3: JSON-LD-Generierung in lobid, Version 1.x](images/lobid-1.png "Lobid 1")
 
 Die Property-URIs der Triple wurden im JSON-LD zu JSON-Schlüsselwörtern. Diese Daten indexierten wir als [expandiertes JSON-LD](https://www.w3.org/TR/json-ld/#expanded-document-form) in Elasticsearch (Beispiel gekürzt):
 
@@ -105,7 +105,6 @@ Die Property-URIs der Triple wurden im JSON-LD zu JSON-Schlüsselwörtern. Diese
     }]
   }]
 }
-
 ```
 
 Elasticsearch erfordert konsistente Daten für ein gegebenes Feld, z. B. muss etwa der Wert des Feldes `alternateName` entweder immer ein String oder immer ein Array sein. Wenn die Werte mal ein String, mal ein Array sind, führt dies bei der Indexierung in Elasticsearch zu einem Fehler. In der kompakten JSON-LD-Serialisierung werden einzelne Werte direkt serialisiert (z. B. als String). Wenn jedoch in einem anderen Dokument für das gleiche Feld mehrere Werte angegeben sind, wird ein Array verwendet. Expandiertes JSON-LD verwendet hingegen immer Arrays. Eine JSON-LD-Form, bei der kompakte Keys (Schlüsselwörter) mit expandierten Werten kombiniert sind gibt es derzeit nicht (siehe [https://github.com/json-ld/json-ld.org/issues/338](https://github.com/json-ld/json-ld.org/issues/338)).
@@ -137,7 +136,7 @@ Damit erzeugten wir im Grunde zwei verschiedene Formate: das interne Indexformat
 
 Bei lobid-organisations (Pohl et al. 2018), dem ersten Datenset, das wir auf den neuen Ansatz umgezogen haben, haben wir das Vorgehen umgedreht. Statt manuell N-Triples anzufertigen und diese automatisch in JSON-LD zu konvertieren, erzeugen wir das JSON mit genau der Struktur, die wir benötigen. Auf dieser Grundlage generieren wir dann RDF-Serialisierungen wie N-Triples:
 
-![Json-LD-Generierung in lobid, Version 2](images/lobid-2.png "Lobid 2")
+![Abbildung 4: JSON-LD-Generierung in lobid, Version 2](images/lobid-2.png "Lobid 2")
 
 Der zentrale Vorteil dieses Ansatzes ist, dass der konkrete Anwendungsfall ins Zentrum rückt: Wir bauen unsere API so, wie sie für unsere Anwendungen Sinn macht, anstatt zuerst eine Abstraktion zu erzeugen, aus der wir dann konkrete Darstellungen für die Anwendungen generieren.
 
@@ -149,7 +148,7 @@ Für die neue Version von lobid-resources (Christoph et al. 2018) wählten wir e
 
 #### Maßgeschneiderte RDF-Serialisierung für JSON-LD: lobid-gnd
 
-Auch in lobid-gnd (Steeg et al. 2018) erzeugen wir für Index und API dasselbe Format. In diesem Fall liegen unsere Ausgangsdaten bereits als RDF vor, und werden mithilfe eines detaillierten JSON-LD-Kontexts und JSON-LD-Framing, sowie einigen Anpassungen am RDF-Modell, in das gewünschte Format umgewandelt. Details dazu finden sich in Steeg et al. (2018).
+Auch in lobid-gnd (Steeg et al., 2018a) erzeugen wir für Index und API dasselbe Format. In diesem Fall liegen unsere Ausgangsdaten bereits als RDF vor, und werden mithilfe eines detaillierten JSON-LD-Kontexts und JSON-LD-Framing, sowie einigen Anpassungen am RDF-Modell, in das gewünschte Format umgewandelt. Details dazu finden sich in Steeg et al. (2018b).
 
 ### Vorteile des maßgeschneiderten JSON-LD
 
@@ -245,7 +244,7 @@ Um nun ein Label für einen solchen URI anzuzeigen, mussten wir in den Client-An
 }]
 ```
 
-Wie die Erstellung des JSON-LD allgemein unterscheidet sich auch die Implementierung dieser Labels in den oben beschriebenen Umsetzungen. In lobid-organisations ist die Ergänzung der Labels (wie alle Aspekte der JSON-Erzeugung) Teil der Datentransformation. In lobid-resources wird eine `labels.json`-Datei während der Konvertierung von N-Triples in JSON-LD verwendet. lobid-gnd schließlich benutzt einen Bootstrapping-Ansatz, bei dem die vorige Version des Dienstes als Quelle für die Labels verwendet wird, ergänzt um weitere Quellen wie die GND-Ontologie. Details zur Datentransformation in lobid-gnd finden sich in Steeg et al. (2018).
+Wie die Erstellung des JSON-LD allgemein unterscheidet sich auch die Implementierung dieser Labels in den oben beschriebenen Umsetzungen. In lobid-organisations ist die Ergänzung der Labels (wie alle Aspekte der JSON-Erzeugung) Teil der Datentransformation. In lobid-resources wird eine `labels.json`-Datei während der Konvertierung von N-Triples in JSON-LD verwendet. lobid-gnd schließlich benutzt einen Bootstrapping-Ansatz, bei dem die vorige Version des Dienstes als Quelle für die Labels verwendet wird, ergänzt um weitere Quellen wie die GND-Ontologie. Details zur Datentransformation in lobid-gnd finden sich in Steeg et al. (2018b).
 
 #### Zwischenfazit: JSON-LD ist nicht gleich JSON-LD
 
@@ -257,7 +256,7 @@ Ein zentraler Aspekt jeder Linked-Data-Anwendung sind die genutzten RDF-Vokabula
 
 ## Benutzerschnittstellen
 
-Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer\*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Fallbeispiel lobid-gnd findet sich in Steeg et al. (2018).
+Über die hier skizzierten APIs und Datenstrukturen hinaus bietet [lobid](http://lobid.org) in der neuen Version (im Gegensatz zur rudimentären Darstellung der alten Dienste) Suchoberflächen für Endnutzer\*innen mit erweiterten Funktionen wie facettierter Suche und Kartenvisualisierungen. Eine ausführliche Darstellung der Funktionalitäten am Fallbeispiel lobid-gnd findet sich in Steeg et al. (2018b).
 
 # Entwicklungsprozess
 
@@ -271,7 +270,7 @@ Wir entwickeln die lobid-Dienste als Open Source Software auf GitHub. Wir veröf
 
 GitHub Issues sind immer mit einem GitHub Code Repository assoziiert. Für die Bereitstellung von lobid.org werden derzeit [neun Repositories](https://github.com/search?q=topic%3Alobid+org%3Ahbz&type=Repositories) auf GitHub verwendet, dazu kommen weitere Repositories etwa für das [lobid Blog](http://blog.lobid.org/). Für einen einheitlichen Blick auf alle vom Team bearbeiteten Issues in sämtlichen Repositories verwenden wir zur Visualisierung des Workflows [Waffle](http://waffle.io). Hierbei handelt es sich um ein Kanban Board mit GitHub-Integration, bei dem jedes GitHub Issue einer Karte entspricht und die Spalten des Boards Labels der GitHub-Issues entsprechen.
 
-![Das lobid Kanban Board auf Basis von waffle.io](images/waffle.png "Waffle")
+![Abbildung 5: Das lobid Kanban Board auf Basis von waffle.io](images/waffle.png "Waffle")
 
 In unserem Prozess durchläuft eine Karte das Board von links nach rechts. Priorisierte Karten schieben wir in der jeweiligen Spalte nach oben. Karten, die Fehler (Bugs) beschreiben, werden generell priorisiert.
 
@@ -297,13 +296,13 @@ Bei der Dokumentation einer API gibt es unterschiedliche Aspekte: das Datenset a
 
 Um für die menschliche und maschinelle Nutzung der Daten einen Überblick zu geben, folgen wir im Wesentlichen der W3C-Empfehlung für Daten im Web (Lóscio 2017). Das Ergebnis ist [eine JSON-LD-Datei](http://lobid.org/organisations/dataset.jsonld) und eine daraus generierte [HTML-Version](http://lobid.org/organisations/dataset). Im Gegensatz zu den Beispielen der W3C-Empfehlung verwenden wir so weit wie möglich Vokabular von schema.org anstelle von DC Terms und des DCAT-Vokabulars. Die folgende Abbildung zeigt die HTML-Version der lobid-organisations Datenset-Beschreibung.
 
-![Beschreibung des lobid-organisations Datensets](images/lobid-organisations-description.png)
+![Abbildung 6: Beschreibung des lobid-organisations Datensets](images/lobid-organisations-description.png)
 
 ## Dokumentation der API
 
 Die API-Dokumentation ([lobid-organisations](http://lobid.org/organisations/api), [lobid-resources](http://lobid.org/resources/api), [lobid-gnd](http://lobid.org/gnd/api)) führt zunächst grundlegende Konzepte der API anhand von Beispielen ein und zeigt darauf aufbauend komplexere Anfragen und spezielle Fälle wie die Suche nach URLs (in denen bestimmt Zeichen maskiert werden müssen). Im Hinblick auf eine vollständige Referenz zu den Suchmöglichkeiten verweisen wir auf die Lucene-Dokumentation (Elasticsearch basiert auf Lucene und verwendet eine kompatible Abfragesyntax).
 
-Im weiteren Verlauf beschreibt die Dokumentation die unterstützten Inhaltstypen mit Beispielanfragen. Wir beschreiben den Einsatz der API zur Umsetzung einer Autosuggest-Funktionalität mit einem in die Dokumentationseite eingebetteten, funktionstüchtigen Beispiel. Schließlich beschreiben wir spezifische Funktionen der einzelnen Dienste wie ortsbezogene Abfragen, CSV-Export, und die Integration der APIs in OpenRefine (siehe dazu auch Steeg et al. 2018 sowie Steeg & Pohl 2018).
+Im weiteren Verlauf beschreibt die Dokumentation die unterstützten Inhaltstypen mit Beispielanfragen. Wir beschreiben den Einsatz der API zur Umsetzung einer Autosuggest-Funktionalität mit einem in die Dokumentationseite eingebetteten, funktionstüchtigen Beispiel. Schließlich beschreiben wir spezifische Funktionen der einzelnen Dienste wie ortsbezogene Abfragen, CSV-Export, und die Integration der APIs in OpenRefine (siehe dazu auch Steeg et al. 2018b sowie Steeg & Pohl 2018).
 
 ## Dokumentation mit Beispielen
 
@@ -332,7 +331,7 @@ Die ersten beiden Punkte (Name und Beschreibung) sowie der URI werden bei allen 
 
 Unter [http://lobid.org/organisations/api](http://lobid.org/organisations/api/de) kann man die annotationsbasierte Dokumentation in Aktion sehen (für lobid-resources siehe [http://lobid.org/resources/api](http://lobid.org/resources/api)). Im [Abschnitt zu JSON-LD](http://lobid.org/organisations/api#jsonld) öffnet sich durch einen Klick auf die hervorgehobenen JSON-Keys die hypothes.is-Seitenleiste mit Informationen über das entsprechende Element. Hier zum Beispiel die Annotation für das "rs" Feld:
 
-![Beispielannotation des "rs"-Schüssels in lobid-organisations"](images/annotation-example.png)
+![Abbildung 7: Beispielannotation des "rs"-Schüssels in lobid-organisations"](images/annotation-example.png)
 
 ### Vorteile
 
@@ -386,9 +385,9 @@ Steeg, Fabian (2016): *Der Lobid-Entwicklungsprozess* [online]. Zugriff am 2018-
 
 Steeg, Fabian & Pohl, Adrian (2018): *GND reconciliation for OpenRefine* [online]. Zugriff am 2018-09-21. Verfügbar unter [http://blog.lobid.org/2018/08/27/openrefine.html](http://blog.lobid.org/2018/08/27/openrefine.html)
 
-Steeg, Fabian, Adrian Pohl & Pascal Christoph (2018): *lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine* [online]. Zugriff am 2018-09-21. Verfügbar unter [https://github.com/hbz/lobid/blob/infoprax/doc/lobid-gnd.md](https://github.com/hbz/lobid/blob/infoprax/doc/lobid-gnd.md)
+Steeg, Fabian, Adrian Pohl, Christoph Ewertowski & Pascal Christoph (2018a): *lobid-gnd* [Software]. Zugriff am 2018-09-21. Verfügbar unter [https://doi.org/10.5281/zenodo.1423188](https://doi.org/10.5281/zenodo.1423188)
 
-Steeg, Fabian, Adrian Pohl, Christoph Ewertowski & Pascal Christoph (2018): *lobid-gnd* [Software]. Zugriff am 2018-09-21. Verfügbar unter [https://doi.org/10.5281/zenodo.1423188](https://doi.org/10.5281/zenodo.1423188)
+Steeg, Fabian, Adrian Pohl & Pascal Christoph (2018b): *lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine* [online]. Zugriff am 2018-09-21. Verfügbar unter [https://github.com/hbz/lobid/blob/infoprax/doc/lobid-gnd.md](https://github.com/hbz/lobid/blob/infoprax/doc/lobid-gnd.md)
 
 **Autoren**
 
