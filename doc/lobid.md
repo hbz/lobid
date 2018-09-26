@@ -36,7 +36,7 @@ lobid richtet sich primär an Mitarbeiter\*innen in bibliothekarischen und wisse
 
 ## Ursprung
 
-lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so lautete die Auflösung des Akronyms ursprünglich "linking open bibliographic data". Zunächst war es über mehrere Jahre hinweg notwendig, die offene Lizenzierung der Quelldaten zu propagieren (vgl. Pohl 2010). Daneben war deren Transformation und die Modellierung der Zieldaten sowie die Auswahl der RDF-Properties und -Klassen über lange Zeit Kern der Arbeit. 2010 begann lobid mit der Bereitstellung der transformierten Daten über einen Triple Store, also einer Graphdatenbank. Der Triple Store war aber für performance-kritische Anwendungsfälle (wie einen Entity-Lookup via Textstring) nicht optimiert. Zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und die Nutzbarkeit zu erleichtern, wurde das lobid-Backend 2013 auf [Elasticsearch](https://www.elastic.co/de/products/elasticsearch) mit JSON-Daten, also einen Dokumentenspeicher, umgestellt. Auf der Basis unserer Erfahrungen mit dieser Version der lobid-API veröffentlichten wir 2017 (lobid-resources und lobid-organisations) bzw. 2018 (lobid-gnd) die aktuellen Versionen der Dienste, die wir im Folgenden beschreiben.
+lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so lautet die Auflösung des Akronyms "linking open bibliographic data". Zunächst war es über mehrere Jahre hinweg notwendig, die offene Lizenzierung der Quelldaten zu propagieren (vgl. Pohl 2010). Daneben war deren Transformation und die Modellierung der Zieldaten sowie die Auswahl der RDF-Properties und -Klassen über lange Zeit Kern der Arbeit. 2010 begann lobid mit der Bereitstellung der transformierten Daten über einen Triple Store, also einer Graphdatenbank. Der Triple Store war aber für performance-kritische Anwendungsfälle (wie einen Entity-Lookup via Textstring) nicht optimiert. Zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und die Nutzbarkeit zu erleichtern, wurde das lobid-Backend 2013 auf [Elasticsearch](https://www.elastic.co/de/products/elasticsearch) mit JSON-Daten, also einen Dokumentenspeicher, umgestellt. Auf der Basis unserer Erfahrungen mit dieser Version der lobid-API veröffentlichten wir 2017 (lobid-resources und lobid-organisations) bzw. 2018 (lobid-gnd) die aktuellen Versionen der Dienste, die wir im Folgenden beschreiben.
 
 # Technik
 
@@ -52,9 +52,9 @@ Die Grundidee ist dabei eine Entkopplung der Anwendungen von spezifischen Datenq
 
 Das lobid 1.x-System basierte auf einer klassischen monolithischen Schichtenarchitektur: Wir hatten ein Git-Repository, das die Implementierung für das Backend enthielt, mit der Logik aller Datentransformationen und der Indexschicht für alle Daten. Ein weiteres Git-Repository implementierte die API und ein gemeinsames Frontend für sämtliche Datensets, die so alle innerhalb eines Prozesses ausgeliefert wurden.
 
-Dies führte insgesamt zu einer Verquickung der verschiedenen Datensets: Um etwa auf eine neuere Version unserer Suchmaschine (Elasticsearch) umzustellen, die wir für eines der Datensets benötigten, mussten alle Datensets umgestellt werden. Gleichzeitig gab es inhaltlich eigentlich unnötige Abhängigkeitskonflikten zwischen Software-Bibliotheken, die jeweils nur von den APIs einzelner Datensets benötigt wurden.
+Dies führte insgesamt zu einer Verquickung der verschiedenen Datensets: Um etwa auf eine neuere Version unserer Suchmaschine (Elasticsearch) umzustellen, die wir für eines der Datensets benötigten, mussten alle Datensets umgestellt werden. Gleichzeitig gab es inhaltlich eigentlich unnötige Abhängigkeitskonflikte zwischen Software-Bibliotheken, die jeweils nur von den APIs einzelner Datensets benötigt wurden.
 
-Daher spalteten wird lobid für die 2.0-Version in vertikale, in sich abgeschlossene Systeme für jedes Datenset (resources, organisations, gnd) auf (Steeg 2015b):
+Daher spalteten wir lobid für die 2.0-Version in vertikale, in sich abgeschlossene Systeme für jedes Datenset (resources, organisations, gnd) auf (Steeg 2015b):
 
 ![Architektur abgeschlossener Softwaresysteme](images/scs.png "Architektur")
 
@@ -110,7 +110,7 @@ Die Property-URIs der Triple wurden im JSON-LD zu JSON-Schlüsselwörtern. Diese
 
 Elasticsearch erfordert konsistente Daten für ein gegebenes Feld, z. B. muss etwa der Wert des Feldes `alternateName` entweder immer ein String oder immer ein Array sein. Wenn die Werte mal ein String, mal ein Array sind, führt dies bei der Indexierung in Elasticsearch zu einem Fehler. In der kompakten JSON-LD-Serialisierung werden einzelne Werte direkt serialisiert (z. B. als String). Wenn jedoch in einem anderen Dokument für das gleiche Feld mehrere Werte angegeben sind, wird ein Array verwendet. Expandiertes JSON-LD verwendet hingegen immer Arrays. Eine JSON-LD-Form, bei der kompakte Keys (Schlüsselwörter) mit expandierten Werten kombiniert sind gibt es derzeit nicht (siehe [https://github.com/json-ld/json-ld.org/issues/338](https://github.com/json-ld/json-ld.org/issues/338)).
 
-Beim Ausliefern der Daten über die API knvertierten wir die Daten dann in [kompaktes JSON-LD](https://www.w3.org/TR/json-ld/#compacted-document-form), um anstelle der URIs kurze, benutzerfreundliche JSON-Keys zu erhalten (Beispiel gekürzt):
+Beim Ausliefern der Daten über die API konvertierten wir die Daten dann in [kompaktes JSON-LD](https://www.w3.org/TR/json-ld/#compacted-document-form), um anstelle der URIs kurze, benutzerfreundliche JSON-Keys zu erhalten (Beispiel gekürzt):
 
 ```json
 {
@@ -139,7 +139,7 @@ Bei lobid-organisations (Pohl et al. 2018), dem ersten Datenset, das wir auf den
 
 ![Json-LD-Generierung in lobid, Version 2](images/lobid-2.png "Lobid 2")
 
-Der zentrale Vorteil dieses Ansatzes ist, dass der konkrete Anwendungsfall ins Zentrum rückt: Wir bauen unsere API so, wie sie für unsere Anwendungen Sinn macht, anstatt zuerst eine Abstraktion zu erzeugen, aus der wir dann konkrete Darstellungen für die Anwendung generieren.
+Der zentrale Vorteil dieses Ansatzes ist, dass der konkrete Anwendungsfall ins Zentrum rückt: Wir bauen unsere API so, wie sie für unsere Anwendungen Sinn macht, anstatt zuerst eine Abstraktion zu erzeugen, aus der wir dann konkrete Darstellungen für die Anwendungen generieren.
 
 Im Vergleich zum Ansatz im ersten lobid-System befinden wir uns hier am anderen Ende des Spektrums der Perspektiven auf JSON-LD, wie wir es oben beschrieben haben: Wir behandeln JSON-LD als JSON, ohne dass bei der Produktion der Daten oder bei ihrer Verwendung Kenntnisse von RDF erforderlich sind.
 
@@ -155,76 +155,76 @@ Auch in lobid-gnd (Steeg et al. 2018) erzeugen wir für Index und API dasselbe F
 
 Alle drei Ansätze erzeugen also maßgeschneidertes JSON-LD, sei es auf spezifische Weise aus RDF generiertes oder manuell erzeugtes JSON. Dieses maßgeschneiderte JSON-LD hat mehrere Vorteile.
 
-#### Was du siehst, ist, was du abfragst
+#### Was du siehst, ist, was du abfragen kannst
 
 Ein zentraler Aspekt der neuen Systeme ist, dass wir nun das gleiche Format liefern, das auch im Index gespeichert ist. Dies ermöglicht beliebige Abfragen der Daten über generische Mechanismen, ohne dass wir spezifische Anfragen implementieren müssen. Beim Betrachten eines bestimmten Datensatzes, z. B. [http://lobid.org/organisations/DE-605.json](http://lobid.org/organisations/DE-605.json), sehen wir folgendes:
 
 ```json
-	"classification" : {
-	  "id" : "http://purl.org/lobid/libtype#n96",
-	  "type" : "Concept",
-	  "label" : {
-	    "de" : "Verbundsystem/ -kataloge",
-	    "en" : "Union Catalogue"
-	  }
-	}
-  ```
+"classification" : {
+  "id" : "http://purl.org/lobid/libtype#n96",
+  "type" : "Concept",
+  "label" : {
+    "de" : "Verbundsystem/ -kataloge",
+    "en" : "Union Catalogue"
+  }
+}
+```
 
-Auf Basis der Daten, die wir hier sehen, können wir ein beliebiges Feld nehmen, z. B. `classification.label.en` (die Punkte bilden die Schachtelung der Felder ab) und eine Abfrage wie die folgende formulieren: `http://lobid.org/organisations/search?q=classification.label.en:Union`. Im alten System, bei dem im Index expandiertes JSON-LD gespeichert war, die API aber kompaktes JSON-LD lieferte (s. Beispiele oben), brauchten wir spezifische Parameter, um Feldsuchen, etwa für Titel, Autoren oder Schlagwörter, in praxistauglicher Art umzusetzen (ohne URIs als Feldnamen, die wiederum komplexes Maskieren von Sonderzeichen erfordern), z. B.: `http://lobid.org/resource?name=Ehrenfeld`. Diese können nun stattdessen über einen generischen `q`-Parameter und die tatsächlichen Feldnamen aus den Daten formuliert werden: `http://lobid.org/resources/search?q=title:Ehrenfeld`. Auf diese Weise haben wir eine Suchsyntax, die sich an den Feldnamen orientiert, vermeiden aberzugleich eine Beschränkung auf die von uns antizipierten Arten von Abfragen und öffnen so die kompletten Daten für den API-Zugriff.
+Auf Basis der Daten, die wir hier sehen, können wir ein beliebiges Feld nehmen, z. B. `classification.label.en` (die Punkte bilden die Schachtelung der Felder ab) und eine Abfrage wie die folgende formulieren: `http://lobid.org/organisations/search?q=classification.label.en:Union`. Im alten System, bei dem im Index expandiertes JSON-LD gespeichert war, die API aber kompaktes JSON-LD lieferte (s. Beispiele oben), brauchten wir spezifische Parameter, um Feldsuchen, etwa für Titel, Autoren oder Schlagwörter, in praxistauglicher Art umzusetzen (ohne URIs als Feldnamen, die wiederum komplexes Maskieren von Sonderzeichen erfordern), z. B.: `http://lobid.org/resource?name=Ehrenfeld`. Diese können nun stattdessen über einen generischen `q`-Parameter und die tatsächlichen Feldnamen aus den Daten formuliert werden: `http://lobid.org/resources/search?q=title:Ehrenfeld`. Auf diese Weise haben wir eine Suchsyntax, die sich an den Feldnamen orientiert, vermeiden zugleich eine Beschränkung auf die von uns antizipierten Arten von Abfragen und öffnen so die kompletten Daten für den API-Zugriff.
 
 #### Hierarchisch strukturierte Daten
 
 Das generierte JSON-LD des alten Systems war eine flache Struktur mit JSON-Objekten in einem Array unter dem `@graph`-Schlüsselwort, z. B. in `http://lobid.org/organisation?id=DE-605&format=full`:
 
 ```json
-	"@graph": [
-	    {
-	        "@id": "http://purl.org/lobid/fundertype#n02",
-	        "prefLabel": [{
-	                "@language": "de",
-	                "@value": "Land"
-	            },{
-	                "@language": "en",
-	                "@value": "Federal State"
-	        }]
-	    },{
-	        "@id": "http://purl.org/lobid/stocksize#n11",
-	        "prefLabel": [{
-	                "@language": "en",
-	                "@value": "Institution without a collection"
-	            },{
-	                "@language": "de",
-	                "@value": "Einrichtung ohne Bestand"
-	        }]
-	    }
-	]
-  ```
+"@graph": [
+    {
+        "@id": "http://purl.org/lobid/fundertype#n02",
+        "prefLabel": [{
+                "@language": "de",
+                "@value": "Land"
+            },{
+                "@language": "en",
+                "@value": "Federal State"
+        }]
+    },{
+        "@id": "http://purl.org/lobid/stocksize#n11",
+        "prefLabel": [{
+                "@language": "en",
+                "@value": "Institution without a collection"
+            },{
+                "@language": "de",
+                "@value": "Einrichtung ohne Bestand"
+        }]
+    }
+]
+```
 
 Diese Struktur war nicht sehr praktisch und entsprach nicht dem pragmatischen Geist von JSON-LD (vgl. Steeg 2014). Wenn man beispielsweise automatisch die englische Bezeichnung des Unterhaltsträgers einer Einrichtung verwenden will, muss man hier über alle `@graph`-Objekte iterieren und jeweils prüfen, ob die `@id` die Unterhaltsträger-ID ist, dann über alle `prefLabel`-Objekte iterieren und jenes mit dem passenden `@language`-Feld suchen, das dann als `@value` den gesuchten Wert enthält.
 
 In den neuen Systemen bieten wir die Daten in einem geschachtelten, JSON-typischen Format an:
 
 ```json
-	"fundertype": {
-	    "id": "http://purl.org/lobid/fundertype#n02",
-	    "type": "Concept",
-	    "label": {
-	        "de": "Land",
-	        "en": "Federal State"
-	    }
-	},
-	"collects": {
-	    "type": "Collection",
-	    "extent": {
-	        "id": "http://purl.org/lobid/stocksize#n11",
-	        "type": "Concept",
-	        "label": {
-	            "de": "Einrichtung ohne Bestand",
-	            "en": "Institution without holdings"
-	        }
-	    }
-	}
-  ```
+"fundertype": {
+    "id": "http://purl.org/lobid/fundertype#n02",
+    "type": "Concept",
+    "label": {
+        "de": "Land",
+        "en": "Federal State"
+    }
+},
+"collects": {
+    "type": "Collection",
+    "extent": {
+        "id": "http://purl.org/lobid/stocksize#n11",
+        "type": "Concept",
+        "label": {
+            "de": "Einrichtung ohne Bestand",
+            "en": "Institution without holdings"
+        }
+    }
+}
+```
 
 Dies ermöglicht einen einfacheren, direkten Zugriff auf die Daten. Das gesuchte Datum aus dem obigen Beispiel ist hier statt über mehrere Schleifen und Zeichenkettenvergleiche per Direktzugriff auf das geschachtelte Feld `fundertype.label.en` verfügbar.
 
@@ -234,18 +234,18 @@ Ein typisches Nutzungsszenario bei der Verwendung der lobid-APIs ist die Anzeige
 
 In den alten Daten hatten wir etwa zur Identifikation des Mediums einer Publikation nur einen URI:
 
-	`"medium" : "http://rdvocab.info/termList/RDAproductionMethod/1010"`
+`"medium" : "http://rdvocab.info/termList/RDAproductionMethod/1010"`
 
 Um nun ein Label für einen solchen URI anzuzeigen, mussten wir in den Client-Anwendungen, die die lobid-APIs nutzten, Zuordnungen etwa in Form von Mapping-Tabellen verwalten. In den neuen APIs liefern wir die Labels mit den IDs zusammen aus (aus Konsistenzgründen wird auch hier auf oberster Ebene ein einzelner Wert als Array geliefert, s.o.):
 
 ```json
-	"medium": [{
-	  "id": "http://rdaregistry.info/termList/RDAproductionMethod/1010",
-	  "label": "Print"
-	}]
-  ```
+"medium": [{
+  "id": "http://rdaregistry.info/termList/RDAproductionMethod/1010",
+  "label": "Print"
+}]
+```
 
-Wie die Erstellung des JSON-LD allgemein unterscheidet sich auch die Implementierung dieser Labels in den oben beschriebenen Umsetzungen. In lobid-organisations ist die Ergänzung der Labels (wie alle Aspekte der JSON-Erzeugung) Teil der Datentransformation. In lobid-resources wird eine `labels.json`-Datei während der Konvertierung von N-Triples in JSON-LD verwendet. lobid-gnd schließlich benutzt ein Bootstrapping-Ansatz, bei dem die vorige Version des Dienstes als Quelle für die Labels verwendet wird, ergänzt um weitere Quellen wie die GND-Ontologie. Details zur Datentransformation in lobid-gnd finden sich in Steeg et al., 2018.
+Wie die Erstellung des JSON-LD allgemein unterscheidet sich auch die Implementierung dieser Labels in den oben beschriebenen Umsetzungen. In lobid-organisations ist die Ergänzung der Labels (wie alle Aspekte der JSON-Erzeugung) Teil der Datentransformation. In lobid-resources wird eine `labels.json`-Datei während der Konvertierung von N-Triples in JSON-LD verwendet. lobid-gnd schließlich benutzt einen Bootstrapping-Ansatz, bei dem die vorige Version des Dienstes als Quelle für die Labels verwendet wird, ergänzt um weitere Quellen wie die GND-Ontologie. Details zur Datentransformation in lobid-gnd finden sich in Steeg et al. (2018).
 
 #### Zwischenfazit: JSON-LD ist nicht gleich JSON-LD
 
@@ -336,13 +336,13 @@ Unter [http://lobid.org/organisations/api](http://lobid.org/organisations/api/de
 
 ### Vorteile
 
-Die Beispiele, die zur Dokumentation annotiert werden, sollten im besten Fall Live-Daten aus dem Produktivsystem sein. Dies gewährleistet, dass die Beispiele und damit die Dokumentation im Fall von Änderungen automatisch aktuell bleibwn. Ein manueller Synchronisationsaufwand zwischen Daten und Dokumentation wird dadurch hinfällig.
+Die Beispiele, die zur Dokumentation annotiert werden, sollten im besten Fall Live-Daten aus dem Produktivsystem sein. Dies gewährleistet, dass die Beispiele und damit die Dokumentation im Fall von Änderungen automatisch aktuell bleiben. Ein manueller Synchronisationsaufwand zwischen Daten und Dokumentation wird dadurch hinfällig.
 
-Wir sind der Meinung, dass dieser Dokumentationsansatz hilfreicher ist als der traditionelle beschreibende Ansatz. Er bietet Nutzenden eine intuitive und interaktive Schnittstelle um die Daten der lobid-APIs zu erkunden und zu verstehen. Bei Fragen oder Unklarheiten kann innerhalb der hypothes.is-Seitenleiste auf die Annotationen geantwortet werden. So können spezifische Teile der Dokumentation im ihrem unmittelbaren Zusammenhang diskutiert werden.
+Wir sind der Meinung, dass dieser Dokumentationsansatz hilfreicher ist als der traditionelle beschreibende Ansatz. Er bietet Nutzenden eine intuitive und interaktive Schnittstelle um die Daten der lobid-APIs zu erkunden und zu verstehen. Bei Fragen oder Unklarheiten kann innerhalb der hypothes.is-Seitenleiste auf die Annotationen geantwortet werden. So können spezifische Teile der Dokumentation in ihrem unmittelbaren Zusammenhang diskutiert werden.
 
 # Ausblick
 
-Auf Basis der seit einigen Jahren gewonnenen Erfahrungen und Entwicklungen im Bereich Linked Open Data und APIs bietet lobid mit den aktuellen Web-APIs eine übersichtliche, performante und vielseitige Infrastruktur für bibliothekarische Daten an. Die lobid-Quelldaten werden allerdings in Systemen gepflegt, die in den kommenden Jahren vermutlich früher oder später abgelöst werden. Diese Entwicklung wird grundlegende Anpassungen der lobid-Importstrecke erfordern.
+Auf Basis der seit einigen Jahren gewonnenen Erfahrungen und Entwicklungen im Bereich Linked Open Data und APIs bietet lobid mit den aktuellen Web-APIs eine übersichtliche, performante und vielseitige Infrastruktur für bibliothekarische Daten an. Die lobid-Quelldaten werden in Systemen gepflegt, die vermutlich in den kommenden Jahren abgelöst werden. Diese Entwicklung wird grundlegende Anpassungen der lobid-Importstrecke erfordern.
 
 Ob bei der Entwicklung und dem Einsatz neuer Syteme Ansätze verfolgt werden, die ein Angebot von Web-APIs enger an das Mastersystem koppeln wird sich zeigen. Wir würden es jedenfalls sehr begrüßen, wenn das Angebot von Web-APIs zur Nutzung durch Entwickler*innen in Zukunft bereits bei der Datenproduktion und -haltung im Fokus stünde.
 
