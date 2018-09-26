@@ -417,7 +417,7 @@ Kasprzik, Anna & Kett, Jürgen (2018): Vorschläge für eine Weiterentwicklung d
 
 Niggemann, Elisabeth / Goebel,  Ralf / Kretzschmar, Robert / Bracht, Christian / Ahlers, Jens (): GND für Kulturdaten (GND4C) – 1. Projektphase [online]. Zugriff am 2018-09-12. Verfügbar unter [https://wiki.dnb.de/download/attachments/134055796/B_eRT_GND4C_public.pdf?api=v2](https://wiki.dnb.de/download/attachments/134055796/B_eRT_GND4C_public.pdf?api=v2).
 
-Pohl, Adrian / Steeg, Fabian / / Christoph, Pascal (2018): lobid – Dateninfrastruktur für Bibliotheken. In Informationspraxis 4 (2). Verfügbar unter {doi-link einfügen}.
+Pohl, Adrian / Steeg, Fabian / Christoph, Pascal (2018): lobid – Dateninfrastruktur für Bibliotheken. In Informationspraxis 4 (2). Verfügbar unter {doi-link einfügen}.
 
 Steeg, Fabian & Pohl, Adrian (2018): *GND reconciliation for OpenRefine* [online]. Zugriff am 2018-09-21. Verfügbar unter [http://blog.lobid.org/2018/08/27/openrefine.html](http://blog.lobid.org/2018/08/27/openrefine.html)
 
