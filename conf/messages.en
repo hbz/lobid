@@ -20,4 +20,5 @@ index.gnd = <a href="{0}">lobid-gnd</a> provides access to the Integrated Author
 # team
 
 team.members = Members
+team.members.former = Former
 team.products = Products

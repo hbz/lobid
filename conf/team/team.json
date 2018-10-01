@@ -171,6 +171,7 @@
     {
       "type": "Role",
       "startDate": "2017",
+      "endDate": "2018",
       "roleName": {
         "de": "Bibliothekar",
         "en": "Librarian"
