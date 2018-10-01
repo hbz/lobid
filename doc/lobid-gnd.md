@@ -8,7 +8,7 @@ Mit lobid-gnd bietet das Hochschulbibliothekszentrum des Landes Nordrhein-Westfa
 
 Schlüsselwörter
 
-GND, Gemeinsame Normdatei, Web-APIs, JSON-LD, lobid, Linked Open Data, OpenRefine, lobid
+GND, Gemeinsame Normdatei, Web-APIs, JSON-LD, Linked Open Data, OpenRefine, lobid
 
 **lobid-gnd – A human and machine interface to the Integrated Authority File (GND)**
 
