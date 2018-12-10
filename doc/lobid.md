@@ -4,11 +4,11 @@ Adrian Pohl, Fabian Steeg & Pascal Christoph
 
 Zusammenfassung
 
-lobid ist der zentrale Anlaufpunkt für die Linked-Open-Data-Dienste des Hochschulbibliothekszentrums des Landes Nordrhein-Westfalen (hbz). Das Akronym „lobid" steht für „Linking Open Bibliographic Data“. lobid umfasst Rechercheoberflächen für Anwender und Web-APIs.
+lobid ist der zentrale Anlaufpunkt für die Linked-Open-Data-Dienste des Hochschulbibliothekszentrums des Landes Nordrhein-Westfalen (hbz). Das Akronym „lobid" steht für „Linking Open Bibliographic Data“. lobid umfasst Rechercheoberflächen und Web-APIs.
 
-Die lobid-Dienste bieten Zugriff auf die Titeldaten des hbz-Verbundkatalogs, Beschreibungen von bibliothekarischen Organisationen und anderen Gedächtnisinstitutionen aus dem Sigelverzeichnis und der Deutschen Bibliotheksstatistik (DBS) sowie auf die Gemeinsame Normdatei (GND). Die Datensets können so in verschiedenen Kontexten einheitlich (JSON-LD über HTTP) genutzt und eingebunden werden. Vielfältige Möglichkeiten der Datenabfrage werden unterstützt.
+Die lobid-Dienste bieten Zugriff auf die Titeldaten des hbz-Verbundkatalogs, Beschreibungen von bibliothekarischen Organisationen und anderen Gedächtnisinstitutionen aus dem Sigelverzeichnis und der Deutschen Bibliotheksstatistik (DBS) sowie auf die Gemeinsame Normdatei (GND). Die Datensets können in verschiedenen Kontexten einheitlich (JSON-LD über HTTP) genutzt und eingebunden werden. Vielfältige Möglichkeiten der Datenabfrage werden unterstützt.
 
-Der Artikel beschreibt zunächst die technischen Hintergründe der Bereitstellung von lobid und die Erfahrungen, die bei der Transformation verschiedener Datensets nach JSON-LD gemacht wurden. Vorgestellt wird auch der Entwicklungsprozess und die Art und Weise der Dokumentation der Dienste.
+Der Artikel beschreibt zunächst die technischen Hintergründe von lobid und die Erfahrungen, die bei der Transformation verschiedener Datensets nach JSON-LD gemacht wurden. Vorgestellt wird auch der Entwicklungsprozess und die Art und Weise der Dokumentation der Dienste.
 
 Schlüsselwörter
 
@@ -36,7 +36,9 @@ lobid richtet sich primär an Mitarbeiter\*innen in bibliothekarischen und wisse
 
 ## Ursprung
 
-lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so lautet die Auflösung des Akronyms "linking open bibliographic data". Zunächst war es über mehrere Jahre hinweg notwendig, die offene Lizenzierung der Quelldaten zu propagieren (vgl. Pohl 2010). Daneben war deren Transformation und die Modellierung der Zieldaten sowie die Auswahl der RDF-Properties und -Klassen über lange Zeit Kern der Arbeit. 2010 begann lobid mit der Bereitstellung der transformierten Daten über einen Triple Store, also einer Graphdatenbank. Der Triple Store war aber für performance-kritische Anwendungsfälle (wie einen Entity-Lookup via Textstring) nicht optimiert. Zudem gab es hohe Einstiegshürden bei der Nutzung der Daten. Um die Performanz zu optimieren und die Nutzbarkeit zu erleichtern, wurde das lobid-Backend 2013 auf [Elasticsearch](https://www.elastic.co/de/products/elasticsearch) mit JSON-Daten, also einen Dokumentenspeicher, umgestellt. Auf der Basis unserer Erfahrungen mit dieser Version der lobid-API veröffentlichten wir 2017 (lobid-resources und lobid-organisations) bzw. 2018 (lobid-gnd) die aktuellen Versionen der Dienste, die wir im Folgenden beschreiben.
+lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so lautet die Auflösung des Akronyms "linking open bibliographic data". Zunächst war es über mehrere Jahre hinweg notwendig, die offene Lizenzierung der Quelldaten zu propagieren (vgl. Pohl 2010). Daneben war deren Transformation und die Modellierung der Zieldaten sowie die Auswahl der RDF-Properties und -Klassen über lange Zeit Kern der Arbeit. 2010 begann lobid mit der Bereitstellung der transformierten Daten über einen Triple Store, also einer Graphdatenbank. Der Triple Store war aber für performance-kritische Anwendungsfälle (wie einen Entity-Lookup via Textstring) nicht optimiert. Zudem gab es hohe Einstiegshürden bei der Nutzung der Daten durch Entwickler*innen, die nicht mit RDF und SPARQL vertraut sind. Um die Performanz zu optimieren und die Nutzbarkeit zu erleichtern, wurde das lobid-Backend 2013 auf [Elasticsearch](https://www.elastic.co/de/products/elasticsearch) mit JSON-Daten, also einen Dokumentenspeicher, umgestellt. Auf der Basis unserer Erfahrungen mit dieser Version der lobid-API veröffentlichten wir 2017 (lobid-resources und lobid-organisations) bzw. 2018 (lobid-gnd) die aktuellen Versionen der Dienste, die wir im Folgenden beschreiben<sup>1</sup>.
+
+<sup>1</sup> Dieser Text basiert auf Blogbeiträgen vom lobid-Blog unter [http://blog.lobid.org](http://blog.lobid.org). Die Blogbeiträge wurden für diesen Beitrag erweitert und verbessert sowie teilweise aus dem Englischen übersetzt.
 
 # Technik
 
@@ -44,9 +46,11 @@ lobid wurde von Anfang an um die bereitzustellenden *Daten* herum konzipiert, so
 
 Die lobid-API bietet einheitlichen Zugriff auf bibliothekarische Daten über eine webbasierte Programmierschnittstelle ("application programming interface", API). Sie liefert JSON für Linked Data (JSON-LD):
 
-![Abbildung 1: lobid-API und Datenquellen](images/data.png "Daten")
+![Abbildung 1: lobid-API: Datenquellen und Anwendungen](images/data.png "Daten")
 
-Die Grundidee ist dabei eine Entkopplung der Anwendungen von spezifischen Datenquellen, Formaten und Systemen. So können sich diese Formate und Systeme ändern, ohne dass Änderungen in den Anwendungen nötig werden, die auf die Daten über die API zugreifen. Dies ermöglicht die Entwicklung von herstellerunabhängigen, nachhaltigen Anwendungen auf Basis bibliothekarischer Daten (siehe auch Steeg 2015a).
+Die Grundidee ist dabei eine Entkopplung der Anwendungen von mehreren spezifischen Datenquellen, Formaten und Systemen durch die Bereitstellung eines einheitlichen, einfach nutzbaren Formats. So können sich die Datenquellen und Systeme ändern, ohne dass Änderungen in den Anwendungen nötig werden, die auf die Daten über die API zugreifen. Dies ermöglicht die Entwicklung von system- und anbieterunabhängigen, nachhaltigen Anwendungen auf Basis bibliothekarischer Daten (siehe auch Steeg 2015a).
+
+Die stabile Bereitstellung und Weiterentwicklung einer API bringt Herausforderungen mit sich. Ziel muss dabei grundsätzlich die API-Stabilität sein. Wenn Anwendungen ständig wegen API-Änderungen angepasst werden müssen, verliert die API ihren oben beschriebenen Sinn. Zugleich muss die API aber einen Mehrwert bieten und tatsächlich einheitlich und einfach nutzbar sein. Bei grundsätzlichem Verbesserungsbedarf muss sich eine API daher auch grundsätzlich weiterentwickeln können.
 
 ## Architektur: Von horizontalen Schichten zu vertikalen Schnitten
 
@@ -58,7 +62,7 @@ Daher spalteten wir lobid für die 2.0-Version in vertikale, in sich abgeschloss
 
 ![Abbildung 2: Architektur abgeschlossener Softwaresysteme](images/scs.png "Architektur")
 
-Durch die horizontale Kombination dieser Module haben wir nach wie vor eine gemeinsame API und eine gemeinsame Oberfläche für alle Dienste, doch Teile dieser API und Oberfläche sind in Module gekapselt, die je ein Datenset behandeln. Diese Module enthalten den für das jeweilige Datenset spezifischen Code und die spezifischen Abhängigkeiten und können unabhängig analysiert, verändert und installiert werden.
+Durch die horizontale Kombination dieser Module haben wir nach wie vor APIs und Oberflächen für alle Dienste, doch Teile dieser APIs und Oberflächen sind in Module gekapselt, die je ein Datenset behandeln. Diese Module enthalten den für das jeweilige Datenset spezifischen Code und die spezifischen Abhängigkeiten und können unabhängig analysiert, verändert und installiert werden.
 
 ## Linked Open Usable Data (LOUD) mittels JSON-LD
 
@@ -248,7 +252,7 @@ Wie die Erstellung des JSON-LD allgemein unterscheidet sich auch die Implementie
 
 #### Zwischenfazit: JSON-LD ist nicht gleich JSON-LD
 
-Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD sehr unterschiedlich erzeugt und verwendet werden kann. Wie es erzeugt wird hat dabei große Auswirkungen darauf, wie es verarbeitet werden kann und wie nützlich es je nach fachlichem Hintergrund erscheint. Eine reine RDF-Serialisierung wie in unserem alten System kann etwa perfekt passen, wenn sowieso mit einem RDF-Modell gearbeitet wird, während sie Web-Entwickler\*innen, die mit JSON vertraut sind, absurd und schwer verwendbar erscheinen wird. Diese sehr unterschiedlichen Strukturierungsmöglichkeiten von JSON-LD stellen eine Herausforderung für die Kommunikation über die Nützlichkeit von JSON-LD dar. Hierin liegt aber zugleich die Stärke von JSON-LD, das mit seiner Doppelnatur – als RDF-Serialisierung und als einfacher Weg, JSON-Daten zu vernetzen – unterschiedliche Nutzungsszenarien abdeckt.
+Eine zentrale Schlussfolgerung unserer Erfahrung mit JSON-LD ist, dass JSON-LD sehr unterschiedlich erzeugt und verwendet werden kann. Wie es erzeugt wird, hat dabei große Auswirkungen darauf, wie es verarbeitet werden kann und wie nützlich es je nach fachlichem Hintergrund erscheint. Eine reine RDF-Serialisierung wie in unserem alten System kann etwa perfekt passen, wenn sowieso mit einem RDF-Modell gearbeitet wird, während sie Web-Entwickler\*innen, die mit JSON vertraut sind, absurd und schwer verwendbar erscheinen wird. Diese sehr unterschiedlichen Strukturierungsmöglichkeiten von JSON-LD stellen eine Herausforderung für die Kommunikation über die Nützlichkeit von JSON-LD dar. Hierin liegt aber zugleich die Stärke von JSON-LD, das mit seiner Doppelnatur – als RDF-Serialisierung und als einfacher Weg, JSON-Daten zu vernetzen – unterschiedliche Nutzungsszenarien abdeckt.
 
 ## Vokabulare
 
