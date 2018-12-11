@@ -39,7 +39,7 @@ digraph data {
 	
 	
 	
-	api[label="Lobid-API\n(JSON-LD)" width=3]
+	api[label="lobid-API\n(JSON-LD)" width=3]
 	
 	//libs->union[lhead=cluster_title]
 	//libs->sigel[lhead=cluster_auth]
