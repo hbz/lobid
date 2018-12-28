@@ -1,0 +1,10 @@
+# Don't crawl old Lobid 1.x services:
+
+User-agent: *
+Disallow: /resource/
+Disallow: /subject/
+Disallow: /person/
+Disallow: /organisation/
+Disallow: /item/
+Disallow: /search/
+Disallow: /api/
