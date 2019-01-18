@@ -4,6 +4,7 @@
     "id": "@id",
     "type": "@type",
     "blog": "http://xmlns.com/foaf/0.1/weblog",
+    "account": "http://xmlns.com/foaf/0.1/account",
     "cert": "http://www.w3.org/ns/auth/cert#",
     "xsd": "http://www.w3.org/2001/XMLSchema#"
   },
@@ -16,6 +17,7 @@
   "telephone" : "+49-221-40075-139",
   "blog" : "http://www.dr0i.de/",
   "sameAs" : [ "http://orcid.org/0000-0001-9758-2577", "http://www.dr0i.de/lib/files/foaf.rdf#me" ],
+  "account" : [ "https://github.com/dr0i", "https://twitter.com/dr0ide"],
   "image" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
   "colleague" : [ "http://lobid.org/team/fs#!", "http://lobid.org/team/ap#!", "http://lobid.org/team/ce#!" ],
   "alumniOf": "http://www.wikidata.org/entity/Q54096",
