@@ -2,7 +2,7 @@ h1. Lobid
 
 Linking Open Bibliographic Data.
 
-This is only the landing page of https://lobid.org/.
+This is only repo of the landing page of https://lobid.org/.
 
 For the repos with the software implementations, see:
 
