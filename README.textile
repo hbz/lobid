@@ -2,15 +2,13 @@ h1. Lobid
 
 Linking Open Bibliographic Data.
 
-This is only repo of the landing page of https://lobid.org/.
+This is only the repo of the landing page of https://lobid.org/.
 
 For the repos with the software implementations, see:
 
 https://github.com/hbz/lobid-resources implements https://lobid.org/resources.
 https://github.com/hbz/lobid-organisations implements https://lobid.org/organisations.
 https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.
-https://github.com/hbz/nwbib https://lobid.org/nwbib.
-https://github.com/hbz/digitalisiertedrucke http://www.digitalisiertedrucke.de/.
 
 For information about the Lobid architecture and development process, see "http://hbz.github.io/#lobid":http://hbz.github.io/#lobid.
 
