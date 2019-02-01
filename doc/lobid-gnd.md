@@ -22,11 +22,11 @@ GND, Integrated Authority File, Web APIs, JSON-LD, Linked Open Data, OpenRefine,
 
 # lobid-gnd – Eine Schnittstelle zur Gemeinsamen Normdatei für Mensch und Maschine
 
-Mit lobid-gnd bietet das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) eine Schnittstelle zur Gemeinsamen Normdatei (GND) für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten. lobid-gnd ist einer von drei lobid-Diensten, für historische und technische Hintergründe zu lobid im allgemeinen siehe Pohl et al. (2018). Da es sich bei lobid-gnd zum einen um den Dienst handelt, der die meisten Menschen interessieren dürfte und zum anderen um den lobid-Dienst, der von den drei Diensten als letzter in Version 2 gestartet wurde, zeigt dieser Beitrag anhand dieses Beispiels ausführlich die Nutzungsmöglichkeiten von lobid auf. Zu diesem Zweck wird eine konkrete, detaillierte Beschreibung der Datengenerierung, Oberfläche und Web-API von lobid-gnd präsentiert.
+Mit lobid-gnd bietet das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) eine Schnittstelle zur Gemeinsamen Normdatei (GND) für Mensch und Maschine an. Über [https://lobid.org/gnd](https://lobid.org/gnd) gibt es Zugriff auf alle GND-Entitäten (Person, Körperschaft, Konferenz, Geografikum, Sachbegriff, Werk). Neben lobid-gnd betreibt das hbz noch zwei weitere lobid-Dienste an: lobid-resources bietet Zugriff auf den hbz-Verbundkatalog und lobid-organisations stellt Informationen bereit zu Gedächtnisinstitutionen im deutschsprachigen Raum. Historische und technische Hintergründe zu lobid im allgemeinen sind Pohl et. al (2018) zu entnehmen. Dieser Beitrag zeigt am Beispiel von lobid-gnd ausführlich die grundsätzlichen Nutzungsmöglichkeiten von lobid auf. Präsentiert wird eine konkrete, detaillierte Beschreibung der Datengenerierung, Oberfläche und Web-API von lobid-gnd.
 
 # Suche und Navigation in der Benutzeroberfläche
 
-Auf der [Startseite](https://lobid.org/gnd) von lobid-gnd findet sich neben einer kurzen Beschreibung des Dienstes ein Suchschlitz. Außerdem wird – wie auch in [lobid-organisations](https://lobid.org/organisations) – mit jedem Laden der Seite ein zufälliges Bild zu einer GND-Ressource angezeigt. Momentan gibt es [knapp 200.000 Einträge mit Bild](http://lobid.org/gnd/search?q=_exists_%3Adepiction), davon bilden die meisten Personen ab. Wer also die GND ein wenig näher kennenlernen möchte, kann ja mal die Startseite ein paar Mal neu laden.
+Auf der [Startseite](https://lobid.org/gnd) von lobid-gnd findet sich neben einer kurzen Beschreibung des Dienstes ein Suchschlitz. Außerdem wird – wie auch in [lobid-organisations](https://lobid.org/organisations) – mit jedem Laden der Seite ein zufälliges Bild zu einer GND-Ressource angezeigt. Momentan gibt es [knapp 200.000 Einträge mit Bild](http://lobid.org/gnd/search?q=_exists_%3Adepiction), davon bilden die meisten Personen ab. Wer also die GND ein wenig näher kennenlernen möchte, kann einfach die Startseite einige Male neu laden.
 
 Die einfache Suche auf der Startseite unterstützt unter anderem boolesche Operatoren, Phrasensuche und Trunkierung:
 
@@ -40,7 +40,7 @@ Nach der Eingabe im Suchfeld kann einer der Vorschläge direkt ausgewählt werde
 
 ![](images/lobid-gnd-suche/1-3-vorschlag-suche.png)
 
-Als alternativer Einstieg kann die gesamte GND erkundet werden:
+Als alternativer Einstieg kann die gesamte GND erkundet werden, was der Suche ohne Einschränkungen entspricht, die über die verschiedenen Filtermöglichkeiten eingegrenzt werden kann:
 
 ![](images/lobid-gnd-suche/2-erkunden.png)
 
@@ -82,7 +82,7 @@ Das Piktogramm <img src="http://lobid.org/gnd/assets/images/json-ld.png" alt="JS
 
 lobid-gnd ist – neben seiner Funktion als Endnutzerschnittstelle – auch eine Maschinenschnittstelle zur GND. Die Endnutzerschnittstelle basiert auf HTML für die Ansicht im Browser, aber ebenso liefern alle HTTP-GET-Anfragen auf Wunsch JSON(-LD) für die maschinelle Verarbeitung, etwa zur Anwendungsentwicklung. Bevor wir aber näher auf die Web-API (_Application Programming Interface_, deutsch: Entwicklungsschnittstelle) eingehen, möchten wir zunächst beschreiben, wie und in welcher Form die GND-Daten indexiert werden.
 
-Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalbibliothek (DNB) [bereitgestellt](http://www.dnb.de/DE/Service/DigitaleDienste/LinkedData/linkeddata_node.html) werden. Das hbz hat Zugriff auf eine OAI-PMH-Schnittstelle der DNB, über die täglich Updates der Daten geholt werden. Diese Daten werden dann für lobid-gnd mit einigen Anpassungen nach JSON-LD konvertiert. Diese Anpassungen sind zum Teil durch Inkonsistenzen in den Ausgangsdaten bedingt. Diesbezügliche Verbesserungsvorschläge von uns wurden durch die DNB bereits in Teilen umgesetzt.
+Die Datenquelle sind die RDF-Daten der GND, die von der Deutschen Nationalbibliothek (DNB) [bereitgestellt](http://www.dnb.de/DE/Service/DigitaleDienste/LinkedData/linkeddata_node.html) werden. Das hbz hat Zugriff auf eine OAI-PMH-Schnittstelle der DNB, über die täglich Updates der Daten geholt werden. Diese Daten werden dann für lobid-gnd mit einigen Anpassungen nach JSON-LD konvertiert, die unten erläutert werden.
 
 ## Der JSON-LD-Kontext
 
@@ -216,11 +216,11 @@ Für jede lobid-gnd-Abfrage kann – wie auch in lobid-resources – die gesamte
 
 Bei solchen kleineren Ergebnismengen reicht der JSON-Lines-Download aus, werden größere Untermengen der GND abgefragt, empfiehlt es sich, das Ergebnis komprimiert als gzip herunterzuladen. Dafür muss der HTTP-Anfrage der entsprechende Accept-Header mitgegeben werden, z.B. mit curl:
 
-`$ curl --header "Accept-Encoding: gzip" 'http://lobid.org/gnd/search?filter=type:Collection&format=jsonl'`
+`$ curl --header "Accept-Encoding: gzip" 'http://lobid.org/gnd/search?filter=type:Collection&format=jsonl' > test.gz`
 
 ## OpenRefine Reconciliation API
 
-Mit der [OpenRefine](http://openrefine.org/) Reconciliation API in lobid-gnd ist es auf einfache Weise möglich, eine Liste, etwa von Ansetzungsformen, mit der GND abzugleichen, um die Textstrings auf GND-IDs zu matchen und mit Details der GND-Einträge anzureichern. Dafür müssen die abzugleichenden Daten in OpenRefine geladen werden, die entsprechende Spalte ausgewählt und der Reconciliation-Prozess z.B. wie folgt durchgeführt werden:
+Mit der [OpenRefine](http://openrefine.org/) Reconciliation API in lobid-gnd ist es auf einfache Weise möglich, eine Liste, etwa von Ansetzungsformen, mit der GND abzugleichen. Dabei werden zugehörige GND-IDs für die Textstrings in der Liste ermittelt. Anschließend kann die Liste mit Informationen aus weiteren Feldern der GND-Einträge angereichert werden. Dafür müssen die abzugleichenden Daten in OpenRefine geladen werden, die entsprechende Spalte ausgewählt und der Reconciliation-Prozess z.B. wie folgt durchgeführt werden:
 
 1.Start des Reconciliation-Prozesses für eine Spalte in OpenRefine
 ![](images/start-reconciling.png "start reconciling")
