@@ -226,9 +226,13 @@ Mit der [OpenRefine](http://openrefine.org/) Reconciliation API in lobid-gnd ist
 ![](images/start-reconciling.png "start reconciling")
 2. Ergänzen des lobid-gnd Reconciliation Endpoints (`https://lobid.org/gnd/reconcile`) in OpenRefine
 ![](images/add-lobid-gnd-to-openrefine.png "ergänze lobid-gnd reconciliation API")
-3. (Optionale) Auswahl einer GND-Untermenge (hier "Person") für Reconciliation
+3. (Optionale) Auswahl einer GND-Untermenge (hier "Person") für Reconciliation und Start der API-Abfrage mit Klick auf "Start Reconciling"
 ![](images/choose-type-for-reconciliation.png "Typ-Auswahl")
-4. Start der API-Abfrage mit Klick auf "Start Reconciling"
+4. Auswahl der vorgeschlagenen Matches mit Vorschau
+![](images/match-with-preview.png "Auswahl der Matches")
+5. Anreicherung mit Daten aus GND-Einträgen
+![](images/data-extension.png "Anreicherung mit Daten aus GND-Einträgen")
+
 
 Eine detaillierte Anleitung zur Verwendung der GND Reconciliation in OpenRefine findet sich in Steeg & Pohl (2018).
 
