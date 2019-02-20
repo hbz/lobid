@@ -222,15 +222,19 @@ Bei solchen kleineren Ergebnismengen reicht der JSON-Lines-Download aus, werden 
 
 Mit der [OpenRefine](http://openrefine.org/) Reconciliation API in lobid-gnd ist es auf einfache Weise möglich, eine Liste, etwa von Ansetzungsformen, mit der GND abzugleichen. Dabei werden zugehörige GND-IDs für die Textstrings in der Liste ermittelt. Anschließend kann die Liste mit Informationen aus weiteren Feldern der GND-Einträge angereichert werden. Dafür müssen die abzugleichenden Daten in OpenRefine geladen werden, die entsprechende Spalte ausgewählt und der Reconciliation-Prozess z.B. wie folgt durchgeführt werden:
 
-1.Start des Reconciliation-Prozesses für eine Spalte in OpenRefine
+#### 1. Start des Reconciliation-Prozesses für eine Spalte in OpenRefine
 ![](images/start-reconciling.png "start reconciling")
-2. Ergänzen des lobid-gnd Reconciliation Endpoints (`https://lobid.org/gnd/reconcile`) in OpenRefine
+
+#### 2. Ergänzen des lobid-gnd Reconciliation Endpoints (`https://lobid.org/gnd/reconcile`) in OpenRefine
 ![](images/add-lobid-gnd-to-openrefine.png "ergänze lobid-gnd reconciliation API")
-3. (Optionale) Auswahl einer GND-Untermenge (hier "Person") für Reconciliation und Start der API-Abfrage mit Klick auf "Start Reconciling"
+
+#### 3. (Optionale) Auswahl einer GND-Untermenge (hier "Person") für Reconciliation und Start der API-Abfrage mit Klick auf "Start Reconciling"
 ![](images/choose-type-for-reconciliation.png "Typ-Auswahl")
-4. Auswahl der vorgeschlagenen Matches mit Vorschau
+
+#### 4. Auswahl der vorgeschlagenen Matches mit Vorschau
 ![](images/match-with-preview.png "Auswahl der Matches")
-5. Anreicherung mit Daten aus GND-Einträgen
+
+#### 5. Anreicherung mit Daten aus GND-Einträgen
 ![](images/data-extension.png "Anreicherung mit Daten aus GND-Einträgen")
 
 Eine detaillierte Anleitung zur Verwendung der GND Reconciliation in OpenRefine findet sich in Steeg & Pohl (2018).
@@ -404,7 +408,7 @@ Je nach Zweck kann die eine oder andere Abfrage sinnvoller sein.
 
 lobid-gnd basiert auf Elasticsearch. Wir verweisen hier auf die vollständige Dokumentation der [Elasticsearch Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/query-dsl-query-string-query.html#query-string-syntax) sowie der [Apache Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html) (Elasticsearch basiert auf [Apache Lucene](https://de.wikipedia.org/wiki/Apache_Lucene)).
 
-# Anwendungsbeispiele und Nutzungszahlen
+# Anwendungsbeispiele
 
 lobid-gnd ist im Juli 2018 produktiv gegangen und die Resonanz auf den Dienst war seitdem groß. Uns hat insbesondere überrascht, wieviele Rückmeldungen von Wissenschaftler*innen aus den Digital Humanities kamen. Dort wird nach unserer Erfahrung insbesondere die OpenRefine Reconciliation-API genutzt, während im bibliothekarischen Bereich das Interesse an der Web-API größer ist, vor allem an der Autosuggest-Funktion zum Lookup von GND-IDs. Zur Konkretisierung der Nutzungsmöglichkeiten und tatsächlichen Nutzung von lobid-gnd seien hier einige Beispielanwendungen genannt.
 
