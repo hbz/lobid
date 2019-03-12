@@ -76,7 +76,7 @@ Die visuelle Darstellung im Tab "Beziehungen" erlaubt ebenso eine Navigation zu 
 
 ![](images/lobid-gnd-suche/7-2-details-kante.png)
 
-Das Piktogramm <img src="http://lobid.org/gnd/assets/images/json-ld.png" alt="JSON-LD-Piktogramm" style="width:16px !important;height:16px !important;"> verweist auf die strukturierten Daten im Format JSON-LD, die dem Eintrag zugrunde liegen. Im Folgenden wird zunächst die Herkunft, Aktualität und Struktur dieser Daten erläutert und im Anschluss vorgestellt, wie komplexere Suchanfragen formuliert werden können.
+Das Piktogramm <img src="https://json-ld.org/images/json-ld-data-24.png" alt="JSON-LD-Piktogramm" style="width:16px !important;height:16px !important;"> verweist auf die strukturierten Daten im Format JSON-LD, die dem Eintrag zugrunde liegen. Im Folgenden wird zunächst die Herkunft, Aktualität und Struktur dieser Daten erläutert und im Anschluss vorgestellt, wie komplexere Suchanfragen formuliert werden können.
 
 # Datengenerierung und Anreicherung
 
