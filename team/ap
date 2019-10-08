@@ -97,7 +97,7 @@
 		</table>
 	</div>
 	<div class="col-md-3">
-		<img id="index-image" src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/SWIB_18_-_day_1-0665.jpg/1024px-SWIB_18_-_day_1-0665.jpg'/>
+		<img id="index-image" src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/SWIB_18_-_day_1-0665.jpg/1024px-SWIB_18_-_day_1-0665.jpg' width="100%" />
 	</div>
 </div>
 <script type="application/ld+json">
