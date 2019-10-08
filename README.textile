@@ -10,9 +10,7 @@ https://github.com/hbz/lobid-resources implements https://lobid.org/resources.
 https://github.com/hbz/lobid-organisations implements https://lobid.org/organisations.
 https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.
 
-For information about the Lobid architecture and development process, see "http://hbz.github.io/#lobid":http://hbz.github.io/#lobid.
-
-See what we are working on right now: "!https://badge.waffle.io/hbz/lobid.png?label=ready&title=Working!":http://waffle.io/hbz/lobid
+For information about the Lobid architecture and development process, see "https://hbz.github.io/#lobid":https://hbz.github.io/#lobid.
 
 h1. License
 

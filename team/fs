@@ -63,36 +63,36 @@
                         lobid <small>&mdash; Dateninfrastruktur f&uuml;r Bibliotheken</small>
                     </h1>
                 </div>
-                
+
 <div class="row">
 	<div class="col-md-9">
 		<p class="lead">Fabian Steeg<small><a title="Beschreibung als JSON-LD anzeigen" href='/team/fs.json'><img class='json-ld-icon' src='/assets/images/json-ld.png'></a></small></p>
 		<table class="table table-striped table-condensed">
 			<tr><th width="20%"/><th width="80%"/></tr>
-			
-	
+
+
 		<tr><td>Alternate Name</td><td>fsteeg</td></tr>
-	
 
-			
-	
+
+
+
 		<tr><td>Blog</td><td><a target='_blank' href='http://fsteeg.com'>http://fsteeg.com</a></td></tr>
-	
 
-			
-	
+
+
+
 		<tr><td>Works for</td><td><a target='_blank' href='http://lobid.org/organisations/DE-605#!'>http://lobid.org/organisations/DE-605#!</a></td></tr>
-	
 
-			
-	
+
+
+
 		<tr><td>Mail</td><td><a target='_blank' href='mailto:steeg@hbz-nrw.de'>mailto:steeg@hbz-nrw.de</a></td></tr>
-	
 
-			
-	
+
+
+
 		<tr><td>Telephone</td><td>+49-221-40075-231</td></tr>
-	
+
 
 		</table>
 	</div>
@@ -112,10 +112,10 @@
                     lobid | LOD-Dienste des <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz - Hochschulbibliothekszentrum des Landes NRW</a>
                 </span>
                 <span class="pull-right">
-                    <a href="http://www.hbz-nrw.de/impressum">Impressum</a> | 
-                    <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Datenschutz</a> | 
-                    <a href="http://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp; 
-                    <a href="http://github.com/hbz/lobid"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>&nbsp; 
+                    <a href="https://www.hbz-nrw.de/impressum">Impressum</a> |
+                    <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Datenschutz</a> |
+                    <a href="https://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp;
+                    <a href="https://github.com/hbz/lobid"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>&nbsp;
                     <a href="http://blog.lobid.org"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</a>
                 </span>
               </div>
