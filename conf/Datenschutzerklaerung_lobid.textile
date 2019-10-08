@@ -47,7 +47,7 @@ h2. 2. Name und Anschrift des Datenschutzbeauftragten
 
 Der Datenschutzbeauftragte des Verantwortlichen ist:
 
-Michael Nelißen 
+Michael Nelißen
 Hochschulbibliothekszentrum NRW
 Jülicher Straße 6
 50674 Köln
@@ -55,19 +55,19 @@ Nordrhein-Westfalen
 
 Tel.: +49 221 400 75 - 137
 E-Mail: datenschutz@hbz-nrw.de
-Website: http://www.hbz-nrw.de
+Website: https://www.hbz-nrw.de
 
 h2. 3. Allgemeines zur Datenverarbeitung
 
 h3. 3.1 Umfang der Verarbeitung personenbezogener Daten
 
-*1* Wir erheben und verwenden personenbezogene Daten unserer Nutzer grundsätzlich 
-nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer 
-Inhalte und Leistungen erforderlich ist. Die Erhebung und Verwendung 
-personenbezogener Daten unserer Nutzer erfolgt regelmäßig nur nach Einwilligung 
-des Nutzers. Eine Ausnahme gilt in solchen Fällen, in denen eine vorherige 
-Einholung einer Einwilligung aus tatsächlichen Gründen nicht möglich ist und die 
-Verarbeitung der Daten durch gesetzliche Vorschriften gestattet ist. 
+*1* Wir erheben und verwenden personenbezogene Daten unserer Nutzer grundsätzlich
+nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer
+Inhalte und Leistungen erforderlich ist. Die Erhebung und Verwendung
+personenbezogener Daten unserer Nutzer erfolgt regelmäßig nur nach Einwilligung
+des Nutzers. Eine Ausnahme gilt in solchen Fällen, in denen eine vorherige
+Einholung einer Einwilligung aus tatsächlichen Gründen nicht möglich ist und die
+Verarbeitung der Daten durch gesetzliche Vorschriften gestattet ist.
 
 h3. 3.2 Rechtsgrundlage für die Verarbeitung personenbezogener Daten
 
@@ -91,7 +91,7 @@ erforderlich machen, dient Art. 6 Abs. 1 lit. d DSGVO als Rechtsgrundlage.
 
 *6* Ist die Verarbeitung zur Wahrung eines berechtigten Interesses unseres
 Unternehmens oder eines Dritten erforderlich und überwiegen die Interessen,
-Grundrechte und Grundfreiheiten des Betroffenen das erstgenannte Interesse 
+Grundrechte und Grundfreiheiten des Betroffenen das erstgenannte Interesse
 nicht, so dient Art. 6 Abs. 1 lit. f DSGVO als Rechtsgrundlage für die
 Verarbeitung.
 
@@ -103,7 +103,7 @@ darüber hinaus erfolgen, wenn dies durch den europäischen oder nationalen
 Gesetzgeber in unionsrechtlichen Verordnungen, Gesetzen oder sonstigen
 Vorschriften, denen der Verantwortliche unterliegt, vorgesehen wurde. Eine
 Sperrung oder Löschung der Daten erfolgt auch dann, wenn eine durch die genannten
-Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine 
+Normen vorgeschriebene Speicherfrist abläuft, es sei denn, dass eine
 Erforderlichkeit zur weiteren Speicherung der Daten für einen Vertragsabschluss
 oder eine Vertragserfüllung besteht.
 
@@ -128,7 +128,7 @@ Daten oder, falls konkrete Angaben hierzu nicht möglich sind, Kriterien für di
 Festlegung der Speicherdauer;
 (5)	das Bestehen eines Rechts auf Berichtigung oder Löschung der Sie betreffenden
 personenbezogenen Daten, eines Rechts auf Einschränkung der Verarbeitung durch
-den Verantwortlichen oder eines Widerspruchsrechts gegen diese Verarbeitung; 
+den Verantwortlichen oder eines Widerspruchsrechts gegen diese Verarbeitung;
 (6)	das Bestehen eines Beschwerderechts bei einer Aufsichtsbehörde;
 (7)	alle verfügbaren Informationen über die Herkunft der Daten, wenn die
 personenbezogenen Daten nicht bei der betroffenen Person erhoben werden;
@@ -143,7 +143,7 @@ Organisation übermittelt werden. In diesem Zusammenhang können Sie verlangen,
 über die geeigneten Garantien gem. Art. 46 DSGVO im Zusammenhang mit der
 Übermittlung unterrichtet zu werden.
 
-h3. 4.2 Recht auf Berichtigung 
+h3. 4.2 Recht auf Berichtigung
 
 *11* Sie haben ein Recht auf Berichtigung und/oder Vervollständigung gegenüber
 dem Verantwortlichen, sofern die verarbeiteten personenbezogenen Daten, die Sie
@@ -188,14 +188,14 @@ folgenden Gründe zutrifft:
 sie erhoben oder auf sonstige Weise verarbeitet wurden, nicht mehr notwendig.
 (2)	Sie widerrufen Ihre Einwilligung, auf die sich die Verarbeitung gem. Art. 6
 Abs. 1 lit. a oder Art. 9 Abs. 2 lit. a DSGVO stützte, und es fehlt an einer
-anderweitigen Rechtsgrundlage für die Verarbeitung. 
+anderweitigen Rechtsgrundlage für die Verarbeitung.
 (3)	Sie legen gem. Art. 21 Abs. 1 DSGVO Widerspruch gegen die Verarbeitung ein
 und es liegen keine vorrangigen berechtigten Gründe für die Verarbeitung vor,
-oder Sie legen gem. Art. 21 Abs. 2 DSGVO Widerspruch gegen die Verarbeitung ein. 
-(4)	Die Sie betreffenden personenbezogenen Daten wurden unrechtmäßig verarbeitet. 
+oder Sie legen gem. Art. 21 Abs. 2 DSGVO Widerspruch gegen die Verarbeitung ein.
+(4)	Die Sie betreffenden personenbezogenen Daten wurden unrechtmäßig verarbeitet.
 (5)	Die Löschung der Sie betreffenden personenbezogenen Daten ist zur Erfüllung
 einer rechtlichen Verpflichtung nach dem Unionsrecht oder dem Recht der
-Mitgliedstaaten erforderlich, dem der Verantwortliche unterliegt. 
+Mitgliedstaaten erforderlich, dem der Verantwortliche unterliegt.
 (6)	Die Sie betreffenden personenbezogenen Daten wurden in Bezug auf angebotene
 Dienste der Informationsgesellschaft gemäß Art. 8 Abs. 1 DSGVO erhoben.
 
@@ -341,13 +341,13 @@ Folgende Daten werden hierbei erhoben:
 * Den Gerätetyp des Nutzers (Desktop, Notebook, Smartphone etc.)
 * Die IP-Adresse des Nutzers
 * Datum und Uhrzeit des Zugriffs
-* Websites, von denen das System des Nutzers auf unsere Internetseite gelangt 
+* Websites, von denen das System des Nutzers auf unsere Internetseite gelangt
 
 *33* Die Daten werden ebenfalls in den Logfiles unseres Systems gespeichert.
 Eine Speicherung dieser Daten zusammen mit anderen personenbezogenen Daten des
 Nutzers findet nicht statt.
 
-h3. 5.2 Rechtsgrundlage für die Datenverarbeitung 
+h3. 5.2 Rechtsgrundlage für die Datenverarbeitung
 
 *34* Rechtsgrundlage für die vorübergehende Speicherung der Daten und der
 Logfiles ist Art. 6 Abs. 1 lit. f DSGVO.
@@ -389,7 +389,7 @@ personenbezogenen Daten des Nutzers gespeichert.
 *40* Es erfolgt in diesem Zusammenhang keine Weitergabe der Daten an Dritte. Die
 Daten werden ausschließlich für die Verarbeitung der Konversation verwendet.
 
-h3. 6.2 Rechtsgrundlage für die Datenverarbeitung 
+h3. 6.2 Rechtsgrundlage für die Datenverarbeitung
 
 *41* Rechtsgrundlage für die Verarbeitung der Daten, die im Zuge einer Übersendung
 einer E-Mail übermittelt werden, ist Art. 6 Abs. 1 lit. f DSGVO.
@@ -420,8 +420,8 @@ h2. 7. Webanalyse durch matomo
 
 h3. 7.1 Umfang der Verarbeitung personenbezogener Daten
 
-*46* Wir nutzen das Open-Source-Software-Tool matomo zur Analyse des Surfverhaltens 
-unserer Nutzer auf den lobid-Seiten. Dafür werten wir unsere Logdateien aus, die 
+*46* Wir nutzen das Open-Source-Software-Tool matomo zur Analyse des Surfverhaltens
+unserer Nutzer auf den lobid-Seiten. Dafür werten wir unsere Logdateien aus, die
 bei Aktivität des Nutzers mit folgenden Daten befüllt werden:
 * Die aufgerufene Webseite
 * Die Website, von der der Nutzer auf die aufgerufene Webseite gelangt ist (Referrer).
@@ -505,8 +505,8 @@ h3. 8.5 Widerspruchs- und Beseitigungsmöglichkeit
 *55* Finden Nutzer Daten, die über sie Aussagen treffen und nicht notwendig sind,
 um den Zweck der Anwendung zu erfüllen bzw. Fehler in diesen Daten, können sie
 sich über die E-Mail-Adresse "semweb@hbz-nrw.de(E-Mail Linked Open Data)":mailto:semweb@hbz-nrw.de an die Linked Open Data-
-Gruppe wenden. Weitere Wege zur Kontaktaufnahme finden sich unter 
-"http://lobid.org/team(lobid-Teamseite)":http://lobid.org/team. Die Daten werden an die Katalogisierungsabteilung
+Gruppe wenden. Weitere Wege zur Kontaktaufnahme finden sich unter
+"https://lobid.org/team(lobid-Teamseite)":https://lobid.org/team. Die Daten werden an die Katalogisierungsabteilung
 weitergeleitet, welche die Daten vorrangig bearbeitet. Handelt es sich um Daten,
 die nur von der DNB bearbeitet werden können, werden diese an jene weitergeleitet.
 Einen Tag nach der Korrektur in der GND bzw. im Verbundkatalog sind die Daten in
@@ -527,7 +527,7 @@ nur unter der https-Version von lobid-organisations (https://lobid.org/organisat
 h3. 9.2 Rechtsgrundlage für die Verarbeitung personenbezogenen Daten
 
 *57* Rechtsgrundlage für die Verarbeitung von Standortdaten ist Art. 6 Abs.
-1 lit. a DSGVO. 
+1 lit. a DSGVO.
 
 h3. 9.3 Zweck der Datenverarbeitung
 
@@ -536,7 +536,7 @@ nach Nähe zum Nutzer zu sortieren.
 
 h3. 9.4 Dauer der Speicherung
 
-*59* Das Datum wird für eine Browser-Session gespeichert. Wird der Browser 
+*59* Das Datum wird für eine Browser-Session gespeichert. Wird der Browser
 geschlossen, löscht der Browser diese Information.
 
 h3. 9.5 Widerspruchs- und Beseitigungsmöglichkeit
@@ -553,7 +553,7 @@ h2. 10. Daten der Deutschen Bibliotheksstatistik und der Deutschen ISIL-Agentur 
 
 h3. 10.1 Beschreibung und Umfang der Datenverarbeitung
 
-*61* Im Dienst lobid-organisations werden die Daten der Deutschen Bibliotheksstatistik 
+*61* Im Dienst lobid-organisations werden die Daten der Deutschen Bibliotheksstatistik
 und der Deutschen ISIL-Agentur und Sigelstelle verarbeitet. Hierbei handelt es sich um
 Daten über Bibliotheken, Archive und Museen. An eventuell personenbezogenen Daten sind
 dort Telefonnummer und E-Mail-Adresse der Ansprechpartner der jeweiligen Einrichtungen
@@ -578,10 +578,10 @@ h3. 10.5 Widerspruchs- und Beseitigungsmöglichkeit
 
 *65* Finden Nutzer Daten, die über sie Aussagen treffen und nicht notwendig sind,
 um den Zweck der Anwendung zu erfüllen bzw. Fehler in diesen Daten, können sie
-Änderungen bei der Deutschen ISIL-Agentur und Sigelstelle über ein "Formular(Formular ISIL- und Sigelstelle)":http://sigel.staatsbibliothek-berlin.de/aenderungen-mitteilen/
+Änderungen bei der Deutschen ISIL-Agentur und Sigelstelle über ein "Formular(Formular ISIL- und Sigelstelle)":https://sigel.staatsbibliothek-berlin.de/aenderungen-mitteilen/
 mitteilen.
-Alternativ dazu sind Kontaktmöglichkeiten bei der "Kontaktseite der Stelle(Kontakt ISIL- und Sigelstelle)":http://sigel.staatsbibliothek-berlin.de/kontakt/ möglich. 
-Für Änderungen an den Daten der Deutschen Bibliotheksstatistik kann Kontakt über 
+Alternativ dazu sind Kontaktmöglichkeiten bei der "Kontaktseite der Stelle(Kontakt ISIL- und Sigelstelle)":https://sigel.staatsbibliothek-berlin.de/kontakt/ möglich.
+Für Änderungen an den Daten der Deutschen Bibliotheksstatistik kann Kontakt über
 die E-Mail-Adresse "dbs@hbz-nrw.de(E-Mail Deutsche Bibliotheksstatistik)":mailto:dbs@hbz-nrw.de aufgenommen werden.
 Einen Tag nach Änderung und Bereitstellung der Daten durch die Stelle, welche die
 Daten bisher zu Verfügung gestellt hat, sind diese auch in lobid-organisations bearbeitet.
@@ -595,14 +595,14 @@ h2. 12. Datensicherheit
 
 *67* Die verarbeiteten Daten sind innerhalb des hbz-Rechenzentrums gespeichert, zu
 welchem nur ein beschränkter Mitarbeiterkreis Zutritt hat. Während der Verarbeitung
-wird die Form der Daten geändert, der Inhalt bleibt jedoch identisch. Da es 
+wird die Form der Daten geändert, der Inhalt bleibt jedoch identisch. Da es
 öffentlich zugängliche Daten sind, werden diese weiterverbreitet.
 
 h2. 13. Aktualität und Änderung dieser Datenschutzerklärung
 
 |Version|Datum|Beschreibung|
 |0.1|14.05.2018|Der erste Entwurf.|
-|0.2|18.05.2018|Abschnitt "Daten der Deutschen Bibliotheksstatistik und der 
+|0.2|18.05.2018|Abschnitt "Daten der Deutschen Bibliotheksstatistik und der
 Deutschen ISIL-Agentur und Sigelstelle" hinzugefügt.|
 |1.0|22.05.2018|Angaben zu Standortdaten ergänzt. Erste Fassung, die produktiv geschaltet wird.|
 |1.1|24.05.2018|Konkretisierung Standortdaten.|
