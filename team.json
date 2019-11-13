@@ -86,7 +86,7 @@
     "en": "The lobid team"
   },
   "description": {
-    "de": "lobid wird implementiert und betrieben vom <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">Arbeitsbereich Linked Open Data des hbz</a>",
+    "de": "lobid wird implementiert und betrieben von der Gruppe \"Offene Infrastruktur\" des hbz",
     "en": "lobid is implemented and maintained by <a href=\"https://www.hbz-nrw.de/produkte/linked-open-data\">hbz's Linked Open Data group</a>"
     },
   "parentOrganization" : "http://lobid.org/organisations/DE-605#!",
