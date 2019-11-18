@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>lobid - team</title>
+        <link rel="stylesheet" media="screen" href="/assets/stylesheets/lobid.css">
+        <link rel="stylesheet" media="all" href="/assets/stylesheets/bootstrap.min.css">
+        <link rel="stylesheet" media="all" href="/assets/stylesheets/jquery-ui.min.css">
+        <link rel="stylesheet" media="all" href='/assets/stylesheets/font-awesome.min.css'>
+        <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+        <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+        <script src="/assets/javascripts/jquery-1.10.2.js"></script>
+        <script src="/assets/javascripts/jquery-ui.min.js"></script>
+        <script src="/assets/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="../team.json"></script>
+<script type="text/javascript">
+function loadTeam() {
+//return $('#get-data').ready(function preload() {
+return  $.getJSON('../team.json').then(function (data) {
+	return {
+	type:data.type
+}
+//    document.write(data);
+  });
+}
+loadTeam();
+    console.log( "json loaded" );
+var data = loadTeam();
+document.write(data.type);
+
+</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10">
+    </head>
+    <body>
+        <div class="container">
+            <p/>
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container-fluid" id="header">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#lobid-nav">
+                        <span class="sr-only">Navigation ein/ausblenden</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                     <span><img id="butterfly" src='/assets/images/lobid.png'/></span></a>
+                  </div>
+                  <div class="navbar-collapse collapse" id="lobid-nav">
+                    <ul class="nav navbar-nav">
+                      <li><a href="/resources">resources</a></li>
+                      <li><a href="/organisations">organisations</a></li>
+                      <li><a href="/gnd">gnd</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Info"><span class="glyphicon glyphicon-info-sign"></span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="/team">Team</a></li>
+                          <li><a href="mailto:semweb@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+            <div>
+                <div class="page-header">
+                    <h1>
+                        <img class="media-object nrw-logo pull-right" src="/assets/images/hbz.png" alt="hbz">
+                        lobid <small>&mdash; Dateninfrastruktur für Bibliotheken</small>
+                    </h1>
+                </div>
+
+	<h1>
+	Das lobid-Team
+ <small><a title="Beschreibung als JSON-LD anzeigen" href='/team.json'><img class='json-ld-icon' src='/assets/images/json-ld.png'></a></small></h1>
+
+	<p class="lead">
+
+<script type="text/javascript">
+//document.write(data.type);
+</script>
+	lobid wird implementiert und betrieben von der Gruppe "Offene Infrastruktur" des hbz
+</p>
+
+	<p>
+		<a target="_blank" rel="nofollow" href='mailto:semweb@hbz-nrw.de'><img src='/assets/images/mail.png' height="20" title='E-Mail'/></a>
+		&nbsp;
+
+		<a target="_blank" rel="nofollow" href='https://listen.hbz-nrw.de/mailman/listinfo/lobid'><img src='/assets/images/mailman.jpg' height="20" title='Mailingliste'/></a>
+		&nbsp;
+
+		<a target="_blank" rel="nofollow" href='https://twitter.com/lobidorg'><img src='/assets/images/Twitter_logo_blue.png' height="20" title='Twitter'/></a>
+		&nbsp;
+
+		<a target="_blank" rel="nofollow" href='http://blog.lobid.org'><img src='/assets/images/feed.png' height="20" title='Blog'/></a>
+		&nbsp;
+
+		<a target="_blank" rel="nofollow" href='https://github.com/hbz/lobid/issues'><img src='/assets/images/GitHub-Mark-32px.png' height="20" title='Issue-Tracker auf GitHub'/></a>
+		&nbsp;
+
+		<a target="_blank" rel="nofollow" href='irc://irc.freenode.net/lobid'><img src='/assets/images/freenode.png' height="20" title='IRC'/></a>
+		&nbsp;
+	</p>
+
+	<h2>Mitglieder</h2>
+
+
+
+		<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/SWIB_18_-_day_1-0665.jpg/1024px-SWIB_18_-_day_1-0665.jpg' width="50" style="float:left; padding:5px" />
+
+	<div>
+		<p>
+			<a target="_blank" rel="nofollow" href='https://lobid.org/team/ap#!'>Adrian Pohl</a> <br/>
+			Projektmanager, Bibliothekar <br/>
+		</p>
+	</div>
+
+
+
+
+		<img src='http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif' width="50" style="float:left; padding:5px" />
+
+	<div>
+		<p>
+			<a target="_blank" rel="nofollow" href='https://lobid.org/team/pc#!'>Pascal Christoph</a> <br/>
+			Softwareentwickler, Systemadministrator <br/>
+		</p>
+	</div>
+
+
+
+
+		<img src='http://fsteeg.com/files/fsteeg.png' width="50" style="float:left; padding:5px" />
+
+	<div>
+		<p>
+			<a target="_blank" rel="nofollow" href='https://lobid.org/team/fs#!'>Fabian Steeg</a> <br/>
+			Softwareentwickler <br/>
+		</p>
+	</div>
+
+
+		<h3>Ehemalige <small><a id="showFormer" href="#" onclick="$('#former').show();$('#showFormer').hide();return false;"><span class="glyphicon glyphicon-plus-sign"></span></a></small></h3>
+		<div id="former" style="display:none">
+
+
+	<div>
+		<p>
+			Christoph Ewertowski <br/>
+			Bibliothekar <br/>
+		</p>
+	</div>
+
+
+
+	<div>
+		<p>
+			Simon Ritter <br/>
+			Softwareentwickler <br/>
+		</p>
+	</div>
+
+
+
+	<div>
+		<p>
+			Felix Ostrowski <br/>
+			Softwareentwickler <br/>
+		</p>
+	</div>
+
+
+		</div>
+
+
+	<h2>Produkte</h2>
+
+		<p><a target="_blank" rel="nofollow" href='https://lobid.org'>lobid</a><br/>
+		Dateninfrastruktur für Bibliotheken</p>
+
+		<p><a target="_blank" rel="nofollow" href='https://nwbib.de'>NWBib</a><br/>
+		Nordrhein-Westfälische Bibliographie</p>
+
+		<p><a target="_blank" rel="nofollow" href='http://digitalisiertedrucke.de/'>Digitalisierte Drucke</a><br/>
+		Verzeichnis digitalisierter Drucke</p>
+
+		<p><a target="_blank" rel="nofollow" href='https://github.com/culturegraph/metafacture-ide'>Metafacture IDE</a><br/>
+		Integrierte Datenverarbeitungsumgebung</p>
+
+
+            </div>
+            <div class="panel panel-default footer">
+              <div class="panel-body">
+                <span class="pull-left">
+                    <img src='/assets/images/wappen.png' alt="NRW-Wappen"/> &nbsp;
+                    lobid | LOD-Dienste des <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz — Hochschulbibliothekszentrum des Landes NRW</a>
+                </span>
+                <span class="pull-right">
+                    <a href="https://www.hbz-nrw.de/impressum">Impressum</a> |
+                    <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Datenschutz</a> |
+                    <a href="https://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp;
+                    <a href="https://github.com/hbz/lobid"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>&nbsp;
+                    <a href="http://blog.lobid.org"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</a>
+                </span>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>lobid - team</title>
+
+        <link rel="stylesheet" media="screen" href="/assets/stylesheets/lobid.css">
+        <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+        <script src="/assets/javascripts/jquery-3.4.1.js"></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10">
+    </head>
+  <body>
+<script>   
+document.write(5 + 6);
+console.log(5 + 6);
+/*var animals = [
+    { animal: 'Horse', name: 'Henry', age: 43 },
+    { animal: 'Dog', name: 'Fred', age: 13 },
+    { animal: 'Cat', name: 'Frodo', age: 18 }
+];
+console.table(animals);*/
+
+function loadTeam() {
+$('#get-data').ready(function () {
+  $.getJSON('example.json', function (data) {
+    console.log(data);
+//    document.write(data);
+  });
+});
+}
+//loadTeam();
+
+
+$('#get-data').ready(function () {
+  $.getJSON('../team.json', function (data) {
+    console.log(data);
+document.write(data.type);
+  });
+});
+
+/*var url = "../team.json";         
+//document.write(url)
+$.getJSON(url, function (data) {
+              console.log(data)
+         $.each(data, function (key, model) {
+              console.log(model.value)
+              //  document.write(model.value)
+            if (model.key == "type") {
+              console.log(model.value)
+            }
+        })
+    });*/
+</script>   
+
+    </body>
+</html>
