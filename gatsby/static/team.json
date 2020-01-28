@@ -140,7 +140,7 @@
       },
       "member": {
         "name": "Adrian Pohl",
-        "image": "https://app.syncwerk.de/f/3946abafc7/?raw=1",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/SWIB_18_-_day_1-0665.jpg/1024px-SWIB_18_-_day_1-0665.jpg",
         "id": "http://lobid.org/team/ap#!"
       }
     },
@@ -172,16 +172,18 @@
     },
     {
       "type": "Role",
-      "startDate": "2017",
-      "endDate": "2018",
+      "startDate": "2010",
+      "endDate": "2010",
       "roleName": {
-        "de": "Bibliothekar",
-        "en": "Librarian"
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
       },
       "member": {
-        "name": "Christoph Ewertowski",
-        "image": "http://lobid.org/download/ce.jpg",
-        "id": "http://lobid.org/team/ce#!"
+        "name": "Felix Ostrowski",
+        "sameAs": [
+          "https://twitter.com/literarymachine",
+          "https://github.com/literarymachine"
+        ]
       }
     },
     {
@@ -201,18 +203,16 @@
     },
     {
       "type": "Role",
-      "startDate": "2010",
-      "endDate": "2010",
+      "startDate": "2017",
+      "endDate": "2018",
       "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
+        "de": "Bibliothekar",
+        "en": "Librarian"
       },
       "member": {
-        "name": "Felix Ostrowski",
-        "sameAs": [
-          "https://twitter.com/literarymachine",
-          "https://github.com/literarymachine"
-        ]
+        "name": "Christoph Ewertowski",
+        "image": "http://lobid.org/download/ce.jpg",
+        "id": "http://lobid.org/team/ce#!"
       }
     }
   ],
