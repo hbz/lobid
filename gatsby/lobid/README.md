@@ -6,21 +6,28 @@
 <h1 align="center">
   Lobid's gatsby starter
 </h1>
-This generates lobid's "team" site using gatsby. The [team.json](https://github.com/hbz/lobid/blob/master/team.json) is used as the _model_, the two files [team.js and team_en.js](https:/github.com/hbz/lobid/blob/master/gatsby/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
+Linking Open Bibliographic Data.
+
+This is only the repo of the landing page of https://lobid.org/.
+
+For the repos with the software implementations, see:
+
+https://github.com/hbz/lobid-resources implements https://lobid.org/resources.
+https://github.com/hbz/lobid-organisations implements https://lobid.org/organisations.
+https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.
+
+For information about the Lobid architecture and development process, see "https://hbz.github.io/#lobid":https://hbz.github.io/#lobid.
+
+h1. Static and generated sites
+Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `gatsby build` or `gatsby develop`.
+Some other pages, like lobid's "team" pagei, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/blob/master/team.json) is used as the _model_, the two files [team.js and team_en.js](https:/github.com/hbz/lobid/blob/master/gatsby/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
 [team.html.js](https:/github.com/hbz/lobid/blob/master/gatsby/src/components/team.html.js) to generate views.
 
 ## Prerequisites
 
-As this gatsby installation runs in paralell with the [old static html files](https://github.com/hbz/lobid/) and some assets shall be shared, do create some symbolic links:
-
+Make sure `node --version` is at least `v10.18.1` and `npm --version` is at least `6.13.4`. Then install gatsby:
 ```shell
-cd src/components/
-ln -s ../../../assets/stylesheets css
-ln -s ../../../assets/images images
-ln -s ../../../assets/javascripts javascripts
-cd ../data
-ls -s ../../static/team.json team.json
-
+npm install
 ```
 
 1. **Start developing.**
@@ -42,14 +49,9 @@ ls -s ../../static/team.json team.json
 1. Deploy
 
    ```shell
-   gatsby build ; gatsby serve
+   gatsby build
    ```
-
-It may be necessary to use the prefix-paths to go will with root directory of the old htmls:
-
-```shell
-gatsby build --prefix-paths ; gatsby serve
-```
+This generates the `public` folder which is the `document root` of apache.
 
 ## 🧐 What's inside
 
@@ -76,3 +78,9 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 6. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
 7. **`README.md`**: A text file containing useful reference information about your project.
+
+
+h1. License
+
+Eclipse Public License: http://www.eclipse.org/legal/epl-v10.html
+ 

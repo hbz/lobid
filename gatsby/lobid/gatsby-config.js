@@ -16,5 +16,5 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`
   ],
-  pathPrefix: `/gatsby/`
+  pathPrefix: `./`,
 };

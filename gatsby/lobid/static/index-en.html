@@ -4,14 +4,14 @@
 
 <head>
   <title>lobid.org</title>
-  <link rel="stylesheet" media="screen" href="https://lobid.org/assets/stylesheets/lobid.css">
-  <link rel="stylesheet" media="all" href="https://lobid.org/assets/stylesheets/bootstrap.min.css">
-  <link rel="stylesheet" media="all" href="https://lobid.org/assets/stylesheets/jquery-ui.min.css">
-  <link rel="stylesheet" media="all" href='https://lobid.org/assets/stylesheets/font-awesome.min.css'>
-  <link rel="shortcut icon" type="image/png" href="https://lobid.org/assets/images/favicon.png">
-  <script src="https://lobid.org/assets/javascripts/jquery-1.10.2.min.js"></script>
-  <script src="https://lobid.org/assets/javascripts/jquery-ui.min.js"></script>
-  <script src="https://lobid.org/assets/javascripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" media="screen" href="/assets/stylesheets/lobid.css">
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/jquery-ui.min.css">
+  <link rel="stylesheet" media="all" href='ttps://lobid.org/assets/stylesheets/font-awesome.min.css'>
+  <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+  <script src="/assets/javascripts/jquery-1.10.2.min.js"></script>
+  <script src="/assets/javascripts/jquery-ui.min.js"></script>
+  <script src="/assets/javascripts/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10">
 </head>
@@ -23,13 +23,13 @@
       <div class="container-fluid" id="header">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#lobid-nav">
-            <span class="sr-only">Navigation ein/ausblenden</span>
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://lobid.org/">
-            <span><img id="butterfly" src='https://lobid.org/assets/images/lobid.png' /></span></a>
+          <a class="navbar-brand" href="/">
+            <span><img id="butterfly" src='/assets/images/lobid.png' /></span></a>
         </div>
         <div class="navbar-collapse collapse" id="lobid-nav">
           <ul class="nav navbar-nav">
@@ -39,20 +39,20 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Publikationen">Publikationen</span><b
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Publications">Publications</span><b
                   class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="http://blog.lobid.org/">Blog</a></li>
                 <li><a href="http://slides.lobid.org/">Slides</a></li>
               </ul>
             </li>
-            <li><a href="https://lobid.org/index-en.html" title='Switch language to English'><span
-                  class='glyphicon glyphicon-globe'></span>&nbsp;English</a></li>
+            <li><a href="https://lobid.org/index-de.html" title='Sprache auf Deutsch umschalten'><span
+                  class='glyphicon glyphicon-globe'></span>&nbsp;Deutsch</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Info"><span
                   class="glyphicon glyphicon-info-sign"></span><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="https://lobid.org/team">Team</a></li>
+                <li><a href="team_en">Team</a></li>
                 <li><a href="mailto:semweb@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
               </ul>
             </li>
@@ -63,23 +63,24 @@
     <div>
       <div class="page-header">
         <h1>
-          <img class="media-object nrw-logo pull-right" src="https://lobid.org/assets/images/hbz.png" alt="hbz">
-          lobid <small>&mdash; Dateninfrastruktur für Bibliotheken</small>
+          <img class="media-object nrw-logo pull-right" src="/assets/images/hbz.png" alt="hbz">
+          lobid <small>&mdash; data infrastructure for libraries</small>
         </h1>
       </div>
 
       <div class="row">
         <div class="col-md-9">
-          <p class="lead">lobid stellt Rechercheoberflächen und offene Programmierschnittstellen (APIs) zur Verfügung,
-            die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW
-            betrieben.</p>
-          <p><a href="https://lobid.org/resources">lobid-resources</a> bietet Zugriff auf den hbz-Verbundkatalog.</p>
-          <p><a href="https://lobid.org/organisations">lobid-organisations</a> bietet Informationen zu
-            Gedächtnisinstitutionen im deutschsprachigen Raum.</p>
-          <p><a href="https://lobid.org/gnd">lobid-gnd</a> bietet Zugriff auf die Gemeinsame Normdatei (GND).</p>
+          <p class="lead">lobid provides Linked Open Data (LOD) services for libraries, consisting of user interfaces
+            (UIs) and application programming interfaces (APIs). lobid is run by the North Rhine-Westphalian Library
+            Service Centre (hbz).</p>
+          <p><a href="https://lobid.org/resources">lobid-resources</a> provides access to the hbz union catalogue.</p>
+          <p><a href="https://lobid.org/organisations">lobid-organisations</a> provides information about memory
+            institutions in Germany, Austria, and Switzerland.</p>
+          <p><a href="https://lobid.org/gnd">lobid-gnd</a> provides access to the Integrated Authority File (Gemeinsame
+            Normdatei, GND).</p>
         </div>
         <div class="col-md-3">
-          <img id="index-image" src='https://lobid.org/assets/images/butterfly.png' />
+          <img id="index-image" src='/assets/images/butterfly.png' />
         </div>
       </div>
 
@@ -87,13 +88,13 @@
     <div class="panel panel-default footer">
       <div class="panel-body">
         <span class="pull-left">
-          <img src='https://lobid.org/assets/images/wappen.png' alt="NRW-Wappen" /> &nbsp;
-          lobid | LOD-Dienste des <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz —
+          <img src='/assets/images/wappen.png' alt="NRW-Wappen" /> &nbsp;
+          lobid | LOD services by <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz —
             Hochschulbibliothekszentrum des Landes NRW</a>
         </span>
         <span class="pull-right">
-          <a href="https://www.hbz-nrw.de/impressum">Impressum</a> |
-          <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Datenschutz</a> |
+          <a href="https://www.hbz-nrw.de/impressum">Imprint</a> |
+          <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Privacy</a> |
           <a href="https://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp;
           <a href="https://github.com/hbz/lobid"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>&nbsp;
           <a href="http://blog.lobid.org"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</a>
