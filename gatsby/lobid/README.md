@@ -43,12 +43,10 @@ npm install
    Your site is now running at `http://localhost:8000`!
 
    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-   
-Note that only the dynamically generated pages (this defined in _src/pages_) are served properly.
-
+   Also, only the dynamically generated pages (this defined in _src/pages_) are served properly.
    Open the `lobid` directory in your code editor of choice and edit `src/pages/team.js`. Save your changes and the browser will update in real time!
 
-1. Deploy
+1. **Deploy**
 
    ```shell
    gatsby build
@@ -80,6 +78,13 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 5. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
 6. **`README.md`**: A text file containing useful reference information about your project.
+
+<h2> Example: changing data on the `team` page
+  
+  Open the file `static/team.json` and update the data there (this is our *Model*).
+  If you only had to change the data, do `gatsby build` in the `gatsby/lobid/` directory and the `/team/` and `team_en` pages are updated. You are done!
+  
+  If you want to add or remove data, you have to graphql your *Model* (your `static/team.json`) via the *Controller** (`src/pages/team.js` and `src/pages/team_en.js`) and pass the data to `src/components/team.html.js`, aka *View*). The latter is the template for generating both language pages. Here you work on html and JSX Javascript. At the end, don't forget to `gatsby build`!
 
 
 <h2>  License </h2>
