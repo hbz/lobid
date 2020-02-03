@@ -6,22 +6,22 @@
 <h1 align="center">
   Lobid's gatsby starter
 </h1>
-Linking Open Bibliographic Data.
+Linking Open Bibliographic Data. </br></br>
 
 This is only the repo of the landing page of https://lobid.org/.
 
 For the repos with the software implementations, see:
 
-https://github.com/hbz/lobid-resources implements https://lobid.org/resources.
-https://github.com/hbz/lobid-organisations implements https://lobid.org/organisations.
-https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.
+https://github.com/hbz/lobid-resources implements https://lobid.org/resources.</br>
+https://github.com/hbz/lobid-organisations implements https://lobid.org/organisations.</br>
+https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.</br>
 
-For information about the Lobid architecture and development process, see "https://hbz.github.io/#lobid":https://hbz.github.io/#lobid.
+For information about the Lobid architecture and development process, see [hbz.github.io/#lobid](https://hbz.github.io/#lobid).
 
-h1. Static and generated sites
+<h2> Static and generated sites </h2>
 Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `gatsby build` or `gatsby develop`.
-Some other pages, like lobid's "team" pagei, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/blob/master/team.json) is used as the _model_, the two files [team.js and team_en.js](https:/github.com/hbz/lobid/blob/master/gatsby/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
-[team.html.js](https:/github.com/hbz/lobid/blob/master/gatsby/src/components/team.html.js) to generate views.
+Some other pages, like lobid's "team" page, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team.js and team_en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
+[team.html.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/components/team.html.js) to generate views.
 
 ## Prerequisites
 
@@ -43,8 +43,10 @@ npm install
    Your site is now running at `http://localhost:8000`!
 
    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+   
+Note that only the dynamically generated pages (this defined in _src/pages_) are served properly.
 
-   Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/team.js`. Save your changes and the browser will update in real time!
+   Open the `lobid` directory in your code editor of choice and edit `src/pages/team.js`. Save your changes and the browser will update in real time!
 
 1. Deploy
 
@@ -52,6 +54,8 @@ npm install
    gatsby build
    ```
 This generates the `public` folder which is the `document root` of apache.
+
+Other pages, like `/download`, `/labs` etc. are configured to another document root, see the `vhost.conf` on emphytos for that.
 
 ## 🧐 What's inside
 
@@ -71,16 +75,14 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 3. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, configure the _prefix-paths_ etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
 
-4. **`LICENSE`**: lobid is licensed under the MIT license.
+4. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
-5. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+5. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-6. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-7. **`README.md`**: A text file containing useful reference information about your project.
+6. **`README.md`**: A text file containing useful reference information about your project.
 
 
-h1. License
+<h2>  License </h2>
 
 Eclipse Public License: http://www.eclipse.org/legal/epl-v10.html
  
