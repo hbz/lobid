@@ -233,7 +233,7 @@ export class Team extends React.Component {
             <p>
               <a
                 target="_blank"
-                href="https://lobid.org/team/ap#!"
+                href="/team/ap#!"
                 rel="nofollow noopener noreferrer"
               >
                 Adrian Pohl
@@ -253,7 +253,7 @@ export class Team extends React.Component {
             <p>
               <a
                 target="_blank"
-                href="https://lobid.org/team/pc#!"
+                href="/team/pc#!"
                 rel="nofollow noopener noreferrer"
               >
                 Pascal Christoph
@@ -273,7 +273,7 @@ export class Team extends React.Component {
             <p>
               <a
                 target="_blank"
-                href="https://lobid.org/team/fs#!"
+                href="/team/fs#!"
                 rel="nofollow noopener noreferrer"
               >
                 Fabian Steeg
