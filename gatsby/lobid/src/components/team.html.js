@@ -1,5 +1,10 @@
 import React from "react";
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
@@ -56,7 +61,7 @@ export class Team extends React.Component {
   render() {
     return (
       <div className="container">
-       <p />
+        <p />
         <div className="navbar navbar-default" role="navigation">
           <div className="container-fluid" id="header">
             <div className="navbar-header">
@@ -90,29 +95,35 @@ export class Team extends React.Component {
                 </li>
               </ul>
               <div className="nav navbar-nav navbar-right">
-    <UncontrolledDropdown>
-      <DropdownToggle caret
-className="glyphicon glyphicon-info-sign"
+                <UncontrolledDropdown>
+                  <DropdownToggle
+                    caret
+                    className="glyphicon glyphicon-info-sign"
                     style={{
                       color: "black",
                       backgroundColor: "transparent",
                       border: "none",
                       padding: "16px"
                     }}
->
- <span aria-hidden>▾</span>
-      </DropdownToggle>
-      <DropdownMenu right>
-        <DropdownItem tag="a" href="/team" active>Team</DropdownItem>
-        <DropdownItem divider />
-        <DropdownItem as="a"
+                  >
+                    <span aria-hidden>▾</span>
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem tag="a" href="/team" active>
+                      Team
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem
+                      as="a"
                       href={
                         this.props.contactPointId +
                         "?subject=Feedback%20zu%20lobid.org"
-                      }>Feedback</DropdownItem>
-      </DropdownMenu>
-    </UncontrolledDropdown>
-
+                      }
+                    >
+                      Feedback
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
               </div>
             </div>
           </div>
