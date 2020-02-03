@@ -2,7 +2,7 @@ h1. Lobid
 
 Linking Open Bibliographic Data.
 
-This is only the repo of the landing page of https://lobid.org/ and some sub-sites created with `gatsby`.
+This is only the repo of the landing page of https://lobid.org/ and some sub-sites created with _gatsby_.
 
 For the repos with the software implementations, see:
 
@@ -12,7 +12,7 @@ https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.
 
 For information about the Lobid architecture and development process, see "https://hbz.github.io/#lobid":https://hbz.github.io/#lobid.
 
-For root sites like `download`, `stats`, `labs` etc see the apache `vhost.conf`.
+For root sites like _download_, _stats_, _labs_ etc. see the apache _vhost.conf_ on emphytos.
 
 h1. License
 
