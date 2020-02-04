@@ -42,7 +42,7 @@ npm install
 
    Your site is now running at `http://localhost:8000`!
 
-   _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+   _Note: As the port 8000 is closed on emphytos use the proxy http://gatsbydev.lobid.org/. You'll also see a second link: _`http://localhost:8000/___graphql`_, adjust this to the proxy. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
    Also, only the dynamically generated pages (this defined in _src/pages_) are served properly.
    Open the `lobid` directory in your code editor of choice and edit `src/pages/team.js`. Save your changes and the browser will update in real time!
 
@@ -79,7 +79,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 6. **`README.md`**: A text file containing useful reference information about your project.
 
-<h2> Example: changing data on the `team` page
+<h2> Example: changing data on the `team` page </h2>
   
   Open the file `static/team.json` and update the data there (this is our *Model*).
   If you only had to change the data, do `gatsby build` in the `gatsby/lobid/` directory and the `/team/` and `team_en` pages are updated. You are done!
