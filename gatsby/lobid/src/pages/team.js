@@ -2,11 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Team } from "../components/team.html";
 
-import "../components/css/lobid.css";
-import "../components/css/bootstrap.min.css";
-import "../components/css/main.css";
-import "../components/css/font-awesome.min.css";
-
 export default ({ data }) => (
   <Team
     contactPointId={data.dataJson.contactPoint[0].id}

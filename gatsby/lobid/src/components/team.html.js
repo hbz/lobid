@@ -8,7 +8,6 @@ import {
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
-import "./css/main.css"; //TODO weg?
 import "./css/font-awesome.min.css";
 
 import hbzLogoPng from "./images/hbz.png";

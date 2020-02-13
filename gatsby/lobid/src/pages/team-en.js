@@ -2,11 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Team } from "../components/team.html";
 
-import "../components/css/lobid.css";
-import "../components/css/bootstrap.min.css";
-import "../components/css/main.css";
-import "../components/css/font-awesome.min.css";
-
 export default ({ data }) => (
   <Team
     contactPointId={data.dataJson.contactPoint[0].id}
@@ -29,7 +24,7 @@ export default ({ data }) => (
     member1RoleName={data.dataJson.member[1].roleName.en}
     member2MemberImage={data.dataJson.member[2].member.image}
     member2RoleName={data.dataJson.member[2].roleName.en}
-    memberFormerName="Fomer member"
+    memberFormerName="Former member"
     member3RoleName={data.dataJson.member[3].roleName.en}
     member4RoleName={data.dataJson.member[4].roleName.en}
     member5RoleName={data.dataJson.member[5].roleName.en}
