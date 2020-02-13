@@ -3651,10 +3651,8 @@ tbody.collapse.in {
     display: none;
     float: left;
     min-width: 160px;
-    padding: 5px 0;
-    margin: 2px 0 0;
+    margin: 4px 0 0;
     list-style: none;
-    line-height: 20px;
     font-size: 14px;
     text-align: left;
     background-color: #fff;
@@ -6932,7 +6930,6 @@ button.close {
 .show {
   display: block !important;
   color: #333;
-left: 4px;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
