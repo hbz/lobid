@@ -221,7 +221,7 @@ export class Team extends React.Component {
           </div>
 
           <h1>
-            Das lobid-Team
+            Team
             <small>
               <a title="Beschreibung als JSON-LD anzeigen" href="/team.json">
                 <img
@@ -375,7 +375,7 @@ export class Team extends React.Component {
                 Fabian Steeg
               </a>
               <br />
-              {this.props.member1RoleName} <br />
+              {this.props.member2RoleName} <br />
             </p>
           </div>
           <h3>
@@ -456,17 +456,25 @@ export class Team extends React.Component {
             <span className="pull-right">
               <a href="https://www.hbz-nrw.de/impressum">
                 {this.props.companyDetails}
-              </a>{" "}
+              </a>
+              {" | "}
               <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">
                 {this.props.privacy}
-              </a>{" "}
-              <a href="https://twitter.com/lobidorg">
+              </a>
+              {" | "}
+              <a
+                href="https://twitter.com/lobidorg"
+                style={{ marginRight: "12px" }}
+              >
                 <i className="fa fa-twitter" aria-hidden="true"></i> Twitter
               </a>
-              <a href="https://github.com/hbz/lobid">
+              <a
+                href="https://github.com/hbz/lobid"
+                style={{ marginRight: "12px" }}
+              >
                 <i className="fa fa-github" aria-hidden="true"></i> GitHub
               </a>
-              <a href="http://blog.lobid.org">
+              <a href="http://blog.lobid.org" style={{ marginRight: "12px" }}>
                 <i className="fa fa-pencil" aria-hidden="true"></i> Blog
               </a>
             </span>
