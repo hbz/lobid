@@ -81,7 +81,7 @@ export class Team extends React.Component {
                 </span>
               </a>
             </div>
-            <div className="navbar-collapse collapse" id="lobid-nav">
+            <div className="navbar-collapse " id="lobid-nav">
               <ul className="nav navbar-nav">
                 <li>
                   <a href="/resources">resources</a>
@@ -93,19 +93,18 @@ export class Team extends React.Component {
                   <a href="/gnd">gnd</a>
                 </li>
               </ul>
-              <div className="nav navbar-nav navbar-right">
-                <ul className="nav navbar-nav ">
+              <div>
+                <ul className="nav navbar-nav navbar-right ">
                   <li>
                     <UncontrolledDropdown>
                       <DropdownToggle
                         style={{
                           padding: "12px",
                           background: "transparent",
-                          width: "100%",
-                          marginTop: "4px"
+                          marginBottom: "1px",
+                          marginTop: "2px"
                         }}
                       >
-                        {" "}
                         {this.props.publications}
                         <b className="caret"></b>
                       </DropdownToggle>
@@ -137,15 +136,18 @@ export class Team extends React.Component {
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </li>
+
                   <li>
                     <a
                       href={this.props.languageLink}
                       title={this.props.languageTooltip}
                     >
-                      <span className="glyphicon glyphicon-globe"></span>&nbsp;
+                      <span className="glyphicon glyphicon-globe"></span>
+                      &nbsp;
                       {this.props.language}
                     </a>
                   </li>
+
                   <li>
                     <UncontrolledDropdown>
                       <DropdownToggle
@@ -153,8 +155,8 @@ export class Team extends React.Component {
                         style={{
                           padding: "12px",
                           background: "transparent",
-                          width: "100%",
-                          marginTop: "4px"
+                          marginTop: "-4px",
+                          lineHeight: "30px"
                         }}
                       >
                         <b className="caret"></b>
