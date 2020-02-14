@@ -93,20 +93,25 @@ export class Team extends React.Component {
                   <a href="/gnd">gnd</a>
                 </li>
               </ul>
-              <div>
+              <div style={{ marginRight: "-6px" }}>
                 <ul className="nav navbar-nav navbar-right ">
                   <li>
                     <UncontrolledDropdown>
                       <DropdownToggle
                         style={{
-                          padding: "12px",
+                          padding: "9px",
                           background: "transparent",
-                          marginBottom: "1px",
-                          marginTop: "2px"
+                          marginTop: "0px",
+                          lineHeight: "30px"
                         }}
                       >
                         {this.props.publications}
-                        <b className="caret"></b>
+                        <b
+                          className="caret"
+                          style={{
+                            marginLeft: "2px"
+                          }}
+                        ></b>
                       </DropdownToggle>
                       <DropdownMenu right>
                         <DropdownItem
@@ -153,13 +158,19 @@ export class Team extends React.Component {
                       <DropdownToggle
                         className="glyphicon glyphicon-info-sign"
                         style={{
-                          padding: "12px",
+                          padding: "11px",
                           background: "transparent",
-                          marginTop: "-4px",
-                          lineHeight: "30px"
+                          marginTop: "-3px",
+                          lineHeight: "27px"
                         }}
                       >
-                        <b className="caret"></b>
+                        <b
+                          className="caret"
+                          style={{
+                            marginTop: "-4px",
+                            marginLeft: "2px"
+                          }}
+                        ></b>
                       </DropdownToggle>
                       <DropdownMenu right>
                         <DropdownItem
