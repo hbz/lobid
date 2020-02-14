@@ -94,90 +94,103 @@ export class Team extends React.Component {
                 </li>
               </ul>
               <div className="nav navbar-nav navbar-right">
-              <ul className="nav navbar-nav ">
-                <li>
-               <UncontrolledDropdown>
-                  <DropdownToggle
-                    style={{
-                      padding: "12px",
-                      background: "transparent",
-                      width: "100%",
-                      marginTop: "4px"
-                    }}
-                  > {this.props.publications}
-                    <b className="caret"></b>
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem tag="a" href="http://blog.lobid.org/"
-                       style={{
-                        paddingLeft: "6px",
-                        color: "black",
-                        textDecoration: "none",
-                        lineHeight: "30px"
-                       }}
+                <ul className="nav navbar-nav ">
+                  <li>
+                    <UncontrolledDropdown>
+                      <DropdownToggle
+                        style={{
+                          padding: "12px",
+                          background: "transparent",
+                          width: "100%",
+                          marginTop: "4px"
+                        }}
+                      >
+                        {" "}
+                        {this.props.publications}
+                        <b className="caret"></b>
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem
+                          tag="a"
+                          href="http://blog.lobid.org/"
+                          style={{
+                            paddingLeft: "6px",
+                            color: "black",
+                            textDecoration: "none",
+                            lineHeight: "30px"
+                          }}
+                        >
+                          Blog
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem
+                          as="a"
+                          href="http://slides.lobid.org/"
+                          style={{
+                            paddingLeft: "6px",
+                            color: "black",
+                            textDecoration: "none"
+                          }}
+                        >
+                          Slides
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </li>
+                  <li>
+                    <a
+                      href={this.props.languageLink}
+                      title={this.props.languageTooltip}
                     >
-                      Blog
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem
-                      as="a"
-                      href="http://slides.lobid.org/"
-                      style={{
-                        paddingLeft: "6px",
-                        color: "black",
-                        textDecoration: "none"
-                       }}
-                    >
-                      Slides
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-                </li>
-                <li><a href={this.props.languageLink} title={this.props.languageTooltip}><span
-                  className='glyphicon glyphicon-globe'></span>&nbsp;{this.props.language}</a></li>
-                <li>
-                <UncontrolledDropdown>
-                  <DropdownToggle
-                    className="glyphicon glyphicon-info-sign"
-                    style={{
-                      padding: "12px",
-                      background: "transparent",
-                      width: "100%",
-                      marginTop: "4px"
-                    }}
-                  >
-                    <b className="caret"></b>
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem tag="a" href={this.props.teamLink}
-                       style={{
-                        paddingLeft: "6px",
-                        color: "black",
-                        textDecoration: "none",
-                        lineHeight: "30px"
-                       }}
-                    >
-                      Team
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem
-                      as="a"
-                      href={
-                        this.props.contactPointId +
-                        "?subject=Feedback%20zu%20lobid.org"
-                      }
-                      style={{
-                        paddingLeft: "6px",
-                        color: "black",
-                        textDecoration: "none"
-                       }}
-                    >
-                      Feedback
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-                </li>
-              </ul>
+                      <span className="glyphicon glyphicon-globe"></span>&nbsp;
+                      {this.props.language}
+                    </a>
+                  </li>
+                  <li>
+                    <UncontrolledDropdown>
+                      <DropdownToggle
+                        className="glyphicon glyphicon-info-sign"
+                        style={{
+                          padding: "12px",
+                          background: "transparent",
+                          width: "100%",
+                          marginTop: "4px"
+                        }}
+                      >
+                        <b className="caret"></b>
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem
+                          tag="a"
+                          href={this.props.teamLink}
+                          style={{
+                            paddingLeft: "6px",
+                            color: "black",
+                            textDecoration: "none",
+                            lineHeight: "30px"
+                          }}
+                        >
+                          Team
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem
+                          as="a"
+                          href={
+                            this.props.contactPointId +
+                            "?subject=Feedback%20zu%20lobid.org"
+                          }
+                          style={{
+                            paddingLeft: "6px",
+                            color: "black",
+                            textDecoration: "none"
+                          }}
+                        >
+                          Feedback
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -254,7 +267,13 @@ export class Team extends React.Component {
               href="http://blog.lobid.org"
               rel="nofollow noopener noreferrer"
             >
-              <img src={feedPng} height="20" style={{ marginRight: "12px" }} title="Blog" alt="blog" />
+              <img
+                src={feedPng}
+                height="20"
+                style={{ marginRight: "12px" }}
+                title="Blog"
+                alt="blog"
+              />
             </a>
             <a
               target="_blank"
@@ -274,7 +293,13 @@ export class Team extends React.Component {
               href="irc://irc.freenode.net/lobid"
               rel="nofollow noopener noreferrer"
             >
-              <img src={freenodePng} height="20" style={{ marginRight: "12px" }} title="IRC" alt="irc" />
+              <img
+                src={freenodePng}
+                height="20"
+                style={{ marginRight: "12px" }}
+                title="IRC"
+                alt="irc"
+              />
             </a>
             &nbsp;
           </p>
