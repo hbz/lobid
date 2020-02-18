@@ -3,6 +3,7 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
   <title>lobid.org</title>
   <link rel="stylesheet" media="screen" href="/assets/stylesheets/lobid.css">
   <link rel="stylesheet" media="all" href="/assets/stylesheets/bootstrap.min.css">
