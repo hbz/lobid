@@ -19,6 +19,7 @@ https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.</br>
 For information about the Lobid architecture and development process, see [hbz.github.io/#lobid](https://hbz.github.io/#lobid).
 
 <h2> Static and generated sites </h2>
+
 Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `gatsby build` or `gatsby develop`.
 Some other pages, like lobid's "team" page, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team-de.js and team-en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
 [team.html.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/components/team.html.js) to generate views.
@@ -30,7 +31,7 @@ Make sure `node --version` is at least `v10.18.1` and `npm --version` is at leas
 npm install
 ```
 
-1. **Start developing.**
+1. **Start developing**
    
    We separate developing and production, so first go to the staging section:
    ```shell
@@ -42,20 +43,23 @@ npm install
    gatsby develop
    ```
 
- **Open the source code and start editing!**
+ *Open the source code and start editing!*
 
    Your site is now running at `http://localhost:8000`!
 
-   _Note: As the port 8000 is closed on emphytos use the proxy http://gatsbydev.lobid.org/. You'll also see a second link: _`http://localhost:8000/___graphql`_, adjust this to the proxy. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+   *Note*: As the port 8000 is closed on emphytos use the proxy http://gatsbydev.lobid.org/. You'll also see a second link: _`http://localhost:8000/___graphql`_, adjust this to the proxy. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
    Also, only the dynamically generated pages (this defined in _src/pages_) are served properly.
+
    Open the `lobid` directory in your code editor of choice and edit e.g. `src/pages/team-de.js`. Save your changes and the browser will update in real time!
 
 
-1. **Deploy**
+2. **Deploy**
+
    It's always good to clean up first:
    ```shell
    gatsby clean
    ```
+   Let's build:
    ```shell
    gatsby build
    ```
