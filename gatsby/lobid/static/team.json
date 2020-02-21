@@ -25,7 +25,7 @@
     {
       "type": "ContactPoint",
       "id": "mailto:semweb@hbz-nrw.de",
-      "image": "/assets/images/mail.png",
+      "image": "/images/mail.png",
       "contactType": {
         "en": "Email",
         "de": "E-Mail"
@@ -33,7 +33,7 @@
     },
     {
       "type": "ContactPoint",
-      "image": "/assets/images/mailman.jpg",
+      "image": "/images/mailman.jpg",
       "id": "http://listen.hbz-nrw.de/mailman/listinfo/lobid",
       "contactType": {
         "en": "Mailing List",
@@ -42,7 +42,7 @@
     },
     {
       "type": "ContactPoint",
-      "image": "/assets/images/Twitter_logo_blue.png",
+      "image": "/images/Twitter_logo_blue.png",
       "id": "http://twitter.com/lobidorg",
       "contactType": {
         "en": "Twitter",
@@ -51,7 +51,7 @@
     },
     {
       "type": "ContactPoint",
-      "image": "/assets/images/feed.png",
+      "image": "/images/feed.png",
       "id": "http://blog.lobid.org",
       "contactType": {
         "en": "Blog",
@@ -60,7 +60,7 @@
     },
     {
       "type": "ContactPoint",
-      "image": "/assets/images/GitHub-Mark-32px.png",
+      "image": "/images/GitHub-Mark-32px.png",
       "id": "https://github.com/hbz/lobid/issues",
       "contactType": {
         "en": "Issue Tracker on GitHub",
@@ -69,7 +69,7 @@
     },
     {
       "type": "ContactPoint",
-      "image": "/assets/images/freenode.png",
+      "image": "/images/freenode.png",
       "id": "irc://irc.freenode.net/lobid",
       "contactType": {
         "en": "IRC",
