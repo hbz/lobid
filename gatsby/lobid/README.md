@@ -21,7 +21,7 @@ For information about the Lobid architecture and development process, see [hbz.g
 <h2> Static and generated sites </h2>
 
 Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `gatsby build` or `gatsby develop`.
-Some other pages, like lobid's "team" page, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team-de.js and team-en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
+Some other pages, like lobid's `team` page, are generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team-de.js and team-en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
 [team.html.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/components/team.html.js) to generate views.
 
 ## Prerequisites
