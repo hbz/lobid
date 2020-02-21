@@ -20,7 +20,7 @@ For information about the Lobid architecture and development process, see [hbz.g
 
 <h2> Static and generated sites </h2>
 Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `gatsby build` or `gatsby develop`.
-Some other pages, like lobid's "team" page, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team.js and team_en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
+Some other pages, like lobid's "team" page, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team-de.js and team-en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
 [team.html.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/components/team.html.js) to generate views.
 
 ## Prerequisites
@@ -44,7 +44,7 @@ npm install
 
    _Note: As the port 8000 is closed on emphytos use the proxy http://gatsbydev.lobid.org/. You'll also see a second link: _`http://localhost:8000/___graphql`_, adjust this to the proxy. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
    Also, only the dynamically generated pages (this defined in _src/pages_) are served properly.
-   Open the `lobid` directory in your code editor of choice and edit `src/pages/team.js`. Save your changes and the browser will update in real time!
+   Open the `lobid` directory in your code editor of choice and edit e.g. `src/pages/team-de.js`. Save your changes and the browser will update in real time!
 
 1. **Deploy**
 
@@ -63,6 +63,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     ├── node_modules
     ├── src
     ├── gatsby-config.js
+    ├── gatsby-node.js
     ├── package-lock.json
     ├── package.json
     └── README.md
@@ -73,18 +74,20 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 3. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, configure the _prefix-paths_ etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
 
-4. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+4. **`gatsby-node.js`** Used to configure routes. The route `/team` is configured to point to `./src/pages/team-de.js`. I.e. the former acts as the canonical path and serves the German team page.
 
-5. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+5. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
-6. **`README.md`**: A text file containing useful reference information about your project.
+6. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+
+7. **`README.md`**: A text file containing useful reference information about your project.
 
 <h2> Example: changing data on the `team` page </h2>
   
   Open the file `static/team.json` and update the data there (this is our *Model*).
-  If you only had to change the data, do `gatsby build` in the `gatsby/lobid/` directory and the `/team/` and `team_en` pages are updated. You are done!
+  If you only had to change the data, do `gatsby build` in the `gatsby/lobid/` directory and the `/team-de/` and `team-en` pages are updated. You are done!
   
-  If you want to add or remove data, you have to graphql your *Model* (your `static/team.json`) via the *Controller** (`src/pages/team.js` and `src/pages/team_en.js`) and pass the data to `src/components/team.html.js`, aka *View*). The latter is the template for generating both language pages. Here you work on html and JSX Javascript. At the end, don't forget to `gatsby build`!
+  If you want to add or remove data, you have to change and graphql your *Model* (your `static/team.json`) via the *Controller** (`src/pages/team-de.js` and `src/pages/team-en.js` - which pass the data to `src/components/team.html.js`, aka *View*). The latter is the template for generating both language pages. Here you work on html and JSX Javascript. At the end, don't forget to `gatsby build`!
 
 
 <h2>  License </h2>
