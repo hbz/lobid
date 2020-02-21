@@ -1,0 +1,40 @@
+{
+  "name": "gatsby-lobid-starter",
+  "private": true,
+  "description": "lobid starter for Gatsby",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "gatsby": "^2.19.17",
+    "gatsby-image": "^2.2.39",
+    "gatsby-plugin-sharp": "^2.4.4",
+    "gatsby-source-filesystem": "^2.1.47",
+    "gatsby-transformer-json": "^2.2.25",
+    "gatsby-transformer-sharp": "^2.3.13",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "reactstrap": "^8.4.1",
+    "typescript": "^3.6.0-beta",
+    "utf-8-validate": "^5.0.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hbz/lobid/gatsby/lobid"
+  },
+  "bugs": {
+    "url": "https://github.com/hbz/lobid/issues"
+  }
+}
