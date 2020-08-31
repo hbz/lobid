@@ -19,8 +19,9 @@ https://github.com/hbz/lobid-gnd implements https://lobid.org/gnd.</br>
 For information about the Lobid architecture and development process, see [hbz.github.io/#lobid](https://hbz.github.io/#lobid).
 
 <h2> Static and generated sites </h2>
+
 Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `gatsby build` or `gatsby develop`.
-Some other pages, like lobid's "team" page, is generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team-de.js and team-en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
+Some other pages, like lobid's `team` page, are generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team-de.js and team-en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
 [team.html.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/components/team.html.js) to generate views.
 
 ## Prerequisites
@@ -30,30 +31,52 @@ Make sure `node --version` is at least `v10.18.1` and `npm --version` is at leas
 npm install
 ```
 
-1. **Start developing.**
-
+1. **Start developing**
+   
+   We separate developing and production, so first go to the staging section:
+   ```shell
+   cd stage.lobid.org/gatsby/lobid
+   ```
    Start it up.
 
    ```shell
    gatsby develop
    ```
 
-1. **Open the source code and start editing!**
+ *Open the source code and start editing!*
 
    Your site is now running at `http://localhost:8000`!
 
-   _Note: As the port 8000 is closed on emphytos use the proxy http://gatsbydev.lobid.org/. You'll also see a second link: _`http://localhost:8000/___graphql`_, adjust this to the proxy. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+   *Note*: As the port 8000 is closed on emphytos use the proxy http://gatsbydev.lobid.org/. You'll also see a second link: _`http://localhost:8000/___graphql`_, adjust this to the proxy. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
    Also, only the dynamically generated pages (this defined in _src/pages_) are served properly.
+
    Open the `lobid` directory in your code editor of choice and edit e.g. `src/pages/team-de.js`. Save your changes and the browser will update in real time!
 
-1. **Deploy**
 
+2. **Deploy**
+
+   It's always good to clean up first:
+   ```shell
+   gatsby clean
+   ```
+   Let's build:
    ```shell
    gatsby build
    ```
-This generates the `public` folder which is the `document root` of apache.
 
-Other pages, like `/download`, `/labs` etc. are configured to another document root, see the `vhost.conf` on emphytos for that.
+   This generates the `public` folder which is the `document root` of apache.
+
+   Test the build by visiting http://gatsbydev.lobid.org/. Other than by `gatsby develop` now also the static files can be viewed.
+
+   If all is well, commit and push everything. Change to master branch and merge with `no-ff` as always.
+
+   Go to the production location (lobid.org/gatsby/lobid), pull and repeat the `deploy` process.
+
+   *Note*: 
+   If you deploy, the public folder is deleted and so there is a downtime of the pages. It takes around half a minute.
+
+   Other pages, like `/download`, `/labs` etc. are configured to another document root, see the `vhost.conf` on emphytos for that.
+
 
 ## 🧐 What's inside
 
@@ -62,25 +85,31 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     .
     ├── node_modules
     ├── src
+    ├── static
+    ├── public
     ├── gatsby-config.js
     ├── gatsby-node.js
     ├── package-lock.json
     ├── package.json
     └── README.md
 
-1. **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages). If it doesn't exist, you haven't installed _gatsby_ yet.
+1. **`/node_modules`**: contains all of the modules of code that your project depends on (npm packages). If it doesn't exist, you haven't installed _gatsby_ yet.
 
-2. **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+2. **`/src`**: contains all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
-3. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, configure the _prefix-paths_ etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+3. **`static**: contains files that will not be processed by gatsby directly but rather copied directly to `public`, e.g. images, css, some json and html files.
 
-4. **`gatsby-node.js`** Used to configure routes. The route `/team` is configured to point to `./src/pages/team-de.js`. I.e. the former acts as the canonical path and serves the German team page.
+4. **`public**: the root directory: these files are served from apache. They are generated by gatsby and are the "static sites generated".
 
-5. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+5. **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, configure the _prefix-paths_ etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
 
-6. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+6. **`gatsby-node.js`** Used to configure routes. The route `/team` is configured to point to `./src/pages/team-de.js`. I.e. the former acts as the canonical path and serves the German team page.
 
-7. **`README.md`**: A text file containing useful reference information about your project.
+7. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+
+8. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+
+9. **`README.md`**: A text file containing useful reference information about your project.
 
 <h2> Example: changing data on the `team` page </h2>
   
