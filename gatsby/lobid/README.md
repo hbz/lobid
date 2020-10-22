@@ -28,7 +28,7 @@ Some other pages, like lobid's `team` page, are generated using gatsby. The [tea
 
 Make sure `node --version` is at least `v10.18.1` and `npm --version` is at least `6.13.4`. Then install gatsby:
 ```shell
-npm install
+# npm install -g gatsby-cli
 ```
 
 1. **Start developing**

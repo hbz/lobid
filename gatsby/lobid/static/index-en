@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-            <span><img id="butterfly" src='/images/lobid.png' /></span></a>
+            <span><img id="butterfly" src='/images/lobid.png' alt="lobid"/></span></a>
         </div>
         <div class="navbar-collapse collapse" id="lobid-nav">
           <ul class="nav navbar-nav">
@@ -81,7 +81,7 @@
             Normdatei, GND).</p>
         </div>
         <div class="col-md-3">
-          <img id="index-image" src='/images/butterfly.png' />
+          <img id="index-image" src='/images/butterfly.png' alt="Butterfly"/>
         </div>
       </div>
 
