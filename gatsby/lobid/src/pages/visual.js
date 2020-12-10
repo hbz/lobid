@@ -6,6 +6,15 @@ export default ({ data }) => (
   <Visual
     members = {data.dataJson.member}
     products = {data.dataJson.makesOffer}
+    language="English"
+    languageTooltip="Switch language to English"
+    languageLink="/visual"
+    teamLink="/team-de"
+    publications="Publikationen"
+    contactPointId={data.dataJson.contactPoint[0].id}
+    companyDetails="Impressum"
+    privacy="Datenschutz"
+    subtitle={data.dataJson.makesOffer[0].alternateName.de}
   />
 );
 
@@ -28,6 +37,12 @@ export const query = graphql`
         roleName {
           de
         }
+      }
+      contactPoint {
+        contactType {
+          de
+        }
+        id
       }
     }
   }
