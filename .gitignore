@@ -64,6 +64,9 @@ typings/
 # gatsby files
 .cache/
 public
+bin
+target
+tmp
 
 # Mac files
 .DS_Store

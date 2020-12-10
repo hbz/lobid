@@ -7,4 +7,9 @@ exports.createPages = ({ actions }) => {
     path: "/team",
     component: path.resolve(`./src/pages/team-de.js`)
   });
+
+  createPage({
+    path: "/visual",
+    component: path.resolve(`./src/pages/visual.js`)
+  });
 };
