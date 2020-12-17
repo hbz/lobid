@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import Header from "./header.html";
+import Footer from "./footer.html";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
 import "./css/font-awesome.min.css";
 
 import hbzLogoPng from "./images/hbz.png";
-import lobidLogoPng from "./images/lobid.png";
 import twitterLogoBluePng from "./images/Twitter_logo_blue.png";
 import mailPng from "./images/mail.png";
 import jsonLdPng from "./images/json-ld.png";
@@ -19,7 +14,6 @@ import feedPng from "./images/feed.png";
 import gitHubMark32pxPng from "./images/GitHub-Mark-32px.png";
 import mailmanJpg from "./images/mailman.jpg";
 import freenodePng from "./images/freenode.png";
-import wappenPng from "./images/wappen.png";
 
 export class Team extends React.Component {
   constructor(props) {
@@ -58,156 +52,18 @@ export class Team extends React.Component {
     );
   };
   render() {
+    console.log('Header', Header);
     return (
       <div className="container">
         <p />
-        <div className="navbar navbar-default" role="navigation">
-          <div className="container-fluid" id="header">
-            <div className="navbar-header">
-              <button
-                type="button"
-                className="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#lobid-nav"
-              >
-                <span className="sr-only">Navigation ein/ausblenden</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-              <a className="navbar-brand" href="/">
-                <span>
-                  <img id="butterfly" src={lobidLogoPng} alt="lobid-logo" />
-                </span>
-              </a>
-            </div>
-            <div className="navbar-collapse " id="lobid-nav">
-              <ul className="nav navbar-nav">
-                <li>
-                  <a href="/resources">resources</a>
-                </li>
-                <li>
-                  <a href="/organisations">organisations</a>
-                </li>
-                <li>
-                  <a href="/gnd">gnd</a>
-                </li>
-              </ul>
-              <div style={{ marginRight: "-6px" }}>
-                <ul className="nav navbar-nav navbar-right ">
-                  <li>
-                    <UncontrolledDropdown>
-                      <DropdownToggle
-                        style={{
-                          padding: "9px",
-                          background: "transparent",
-                          marginTop: "0px",
-                          lineHeight: "30px"
-                        }}
-                      >
-                        {this.props.publications}
-                        <b
-                          className="caret"
-                          style={{
-                            marginLeft: "2px"
-                          }}
-                        ></b>
-                      </DropdownToggle>
-                      <DropdownMenu right>
-                        <DropdownItem
-                          tag="a"
-                          href="http://blog.lobid.org/"
-                          style={{
-                            paddingLeft: "6px",
-                            color: "black",
-                            textDecoration: "none",
-                            lineHeight: "30px"
-                          }}
-                        >
-                          Blog
-                        </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem
-                          as="a"
-                          href="http://slides.lobid.org/"
-                          style={{
-                            paddingLeft: "6px",
-                            color: "black",
-                            textDecoration: "none"
-                          }}
-                        >
-                          Slides
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </li>
-
-                  <li>
-                    <a
-                      href={this.props.languageLink}
-                      title={this.props.languageTooltip}
-                    >
-                      <span className="glyphicon glyphicon-globe"></span>
-                      &nbsp;
-                      {this.props.language}
-                    </a>
-                  </li>
-
-                  <li>
-                    <UncontrolledDropdown>
-                      <DropdownToggle
-                        className="glyphicon glyphicon-info-sign"
-                        style={{
-                          padding: "11px",
-                          background: "transparent",
-                          marginTop: "-3px",
-                          lineHeight: "27px"
-                        }}
-                      >
-                        <b
-                          className="caret"
-                          style={{
-                            marginTop: "-4px",
-                            marginLeft: "2px"
-                          }}
-                        ></b>
-                      </DropdownToggle>
-                      <DropdownMenu right>
-                        <DropdownItem
-                          tag="a"
-                          href={this.props.teamLink}
-                          style={{
-                            paddingLeft: "6px",
-                            color: "black",
-                            textDecoration: "none",
-                            lineHeight: "30px"
-                          }}
-                        >
-                          Team
-                        </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem
-                          as="a"
-                          href={
-                            this.props.contactPointId +
-                            "?subject=Feedback%20zu%20lobid.org"
-                          }
-                          style={{
-                            paddingLeft: "6px",
-                            color: "black",
-                            textDecoration: "none"
-                          }}
-                        >
-                          Feedback
-                        </DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledDropdown>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Header 
+          language={this.props.language} 
+          languageLink={this.props.languageLink}
+          languageTooltip={this.props.languageTooltip}
+          publications={this.props.publications}
+          teamLink={this.props.teamLink}
+          contactPointId={this.props.contactPointId}
+        />
         <div>
           <div className="page-header">
             <h1>
@@ -444,42 +300,7 @@ export class Team extends React.Component {
             {this.props.makesOfferAlternateName3}
           </p>
         </div>
-        <div className="panel panel-default footer">
-          <div className="panel-body">
-            <span className="pull-left">
-              <img src={wappenPng} alt="NRW-Wappen" /> &nbsp; lobid |
-              LOD-Dienste des{" "}
-              <a href="https://www.hbz-nrw.de/produkte/linked-open-data">
-                hbz — Hochschulbibliothekszentrum des Landes NRW
-              </a>
-            </span>
-            <span className="pull-right">
-              <a href="https://www.hbz-nrw.de/impressum">
-                {this.props.companyDetails}
-              </a>
-              {" | "}
-              <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">
-                {this.props.privacy}
-              </a>
-              {" | "}
-              <a
-                href="https://twitter.com/lobidorg"
-                style={{ marginRight: "12px" }}
-              >
-                <i className="fa fa-twitter" aria-hidden="true"></i> Twitter
-              </a>
-              <a
-                href="https://github.com/hbz/lobid"
-                style={{ marginRight: "12px" }}
-              >
-                <i className="fa fa-github" aria-hidden="true"></i> GitHub
-              </a>
-              <a href="http://blog.lobid.org" style={{ marginRight: "12px" }}>
-                <i className="fa fa-pencil" aria-hidden="true"></i> Blog
-              </a>
-            </span>
-          </div>
-        </div>
+        <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy}/>
       </div>
     );
   }

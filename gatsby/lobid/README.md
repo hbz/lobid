@@ -33,10 +33,18 @@ Make sure `node --version` is at least `v10.18.1` and `npm --version` is at leas
 
 1. **Start developing**
    
-   We separate developing and production, so first go to the staging section:
+   After cloning the repo:
+   
    ```shell
-   cd stage.lobid.org/gatsby/lobid
+   git clone https://github.com/hbz/lobid.git
    ```
+   
+   Go to `gatsby/lobid` in the repo:
+   
+   ```shell
+   cd lobid/gatsby/lobid
+   ```
+   
    Start it up.
 
    ```shell
@@ -47,14 +55,20 @@ Make sure `node --version` is at least `v10.18.1` and `npm --version` is at leas
 
    Your site is now running at `http://localhost:8000`!
 
-   *Note*: As the port 8000 is closed on emphytos use the proxy http://gatsbydev.lobid.org/. You'll also see a second link: _`http://localhost:8000/___graphql`_, adjust this to the proxy. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
-   Also, only the dynamically generated pages (this defined in _src/pages_) are served properly.
+   *Note*: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
+   Also, only the dynamically generated pages (this defined in _src/pages_) are served properly with `gatsby develop`.
 
    Open the `lobid` directory in your code editor of choice and edit e.g. `src/pages/team-de.js`. Save your changes and the browser will update in real time!
 
+2. **Stage**
 
-2. **Deploy**
+   The following assumes being in the web home on emphytos: `ssh <user>@emphytos`; `sudo su lobid -`; `cd /srv/www/htdocs/`.
 
+   We separate stage and production, so first go to the staging section:
+   ```shell
+   cd stage.lobid.org/gatsby/lobid
+   ```
+   
    It's always good to clean up first:
    ```shell
    gatsby clean
@@ -66,17 +80,18 @@ Make sure `node --version` is at least `v10.18.1` and `npm --version` is at leas
 
    This generates the `public` folder which is the `document root` of apache.
 
-   Test the build by visiting http://gatsbydev.lobid.org/. Other than by `gatsby develop` now also the static files can be viewed.
+   Test the build by visiting http://stage.lobid.org/. Other than by `gatsby develop` now also the static files can be viewed.
 
-   If all is well, commit and push everything. Change to master branch and merge with `no-ff` as always.
+3. **Deploy**
 
-   Go to the production location (lobid.org/gatsby/lobid), pull and repeat the `deploy` process.
+   If all is well, go to the production location (lobid.org/gatsby/lobid), pull with `no-ff` as always and repeat the `build` process above.
 
    *Note*: 
    If you deploy, the public folder is deleted and so there is a downtime of the pages. It takes around half a minute.
 
    Other pages, like `/download`, `/labs` etc. are configured to another document root, see the `vhost.conf` on emphytos for that.
-
+   
+   Test the deployment by visiting http://lobid.org/.
 
 ## 🧐 What's inside
 
