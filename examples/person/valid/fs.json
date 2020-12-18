@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "id": "@id",
+    "type": "@type",
+    "blog": "http://xmlns.com/foaf/0.1/weblog"
+  },
+  "id" : "http://lobid.org/team/fs#!",
+  "type" : "Person",
+  "email" : "mailto:steeg@hbz-nrw.de",
+  "alternateName" : "fsteeg",
+  "name" : "Fabian Steeg",
+  "worksFor" : "http://lobid.org/organisations/DE-605#!",
+  "telephone" : "+49-221-40075-231",
+  "blog" : "http://fsteeg.com",
+  "sameAs" : [ "http://orcid.org/0000-0001-8829-1989", "https://viaf.org/viaf/109146937785313831669/" ],
+  "image" : "http://fsteeg.com/files/fsteeg.png",
+  "colleague" : [ "http://lobid.org/team/pc#!", "http://lobid.org/team/ap#!" ],
+  "alumniOf": [ "http://www.wikidata.org/entity/Q54096", "http://www.wikidata.org/entity/Q1324301" ]
+}

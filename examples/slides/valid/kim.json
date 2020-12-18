@@ -1,0 +1,18 @@
+{
+    "@context": "http://schema.org",
+    "type": "PresentationDigitalDocument",
+    "name" : "Standardisierung von OER-Metadaten",
+    "creator" : [{
+        "id": "http://lobid.org/team/ap#!",
+        "type": "Person",
+        "name": "Adrian Pohl"
+    }
+],
+    "description": "Präsentation am 18.06.2019 beim Treffen deutscher Akteur*innen zur Vernetzung, Harmonisierung und Zusammenarbeit für eine OER-förderliche (Metadaten-) Infrastruktur",
+    "about" : [ "Standardisierung", "Metadaten"],
+    "url" : "https://slides.lobid.org/standardisierung-ffm/",
+    "datePublished" : "2019-06-18",
+    "inLanguage" : "de",
+    "audience": [ "librarians", "developers" ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
