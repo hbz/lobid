@@ -46,5 +46,10 @@
         "cert:key" : {
             "$ref": "cert:key.json"
           }
-    }
+    },
+    "required": [
+        "id",
+        "name",
+        "type"
+    ]
 }
