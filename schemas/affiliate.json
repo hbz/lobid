@@ -1,0 +1,8 @@
+{
+    "$id": "affiliate.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Affiliation",
+    "description": "Affiliated school or organisation e.g. as stutent or lecturer.",
+    "type": "string",
+    "format": "uri"
+}

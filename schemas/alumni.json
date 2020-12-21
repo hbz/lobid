@@ -1,0 +1,8 @@
+{
+    "$id": "alumni.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Alumni-Organisations",
+    "description": "Organisation that the person is alumni of.",
+    "type": "string",
+    "format": "uri"
+}

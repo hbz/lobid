@@ -8,13 +8,14 @@
             "$ref": "id.json"
           },
         "type" : {
-            "$ref": "type.json"
+            "type": "string",
+            "const": "Person"
           },
         "email" : {
             "$ref": "email.json"
           },
         "alternateName" : {
-            "$ref": "alternateName.json"
+            "$ref": "name.json"
           },
         "name" : {
             "$ref": "name.json"
@@ -39,6 +40,9 @@
           },
         "colleague" : {
             "$ref": "colleague.json"
+          },
+        "affiliate" : {
+            "$ref": "affiliate.json"
           },
         "alumniOf": {
             "$ref": "alumniOf.json"
