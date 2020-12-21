@@ -46,9 +46,6 @@
           },
         "alumniOf": {
             "$ref": "alumniOf.json"
-          },
-        "cert:key" : {
-            "$ref": "cert:key.json"
           }
     },
     "required": [
