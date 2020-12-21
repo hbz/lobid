@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "person",
+    "description": "Schema to describe persons at lobid.",
+    "type": "object",
+    "properties": {
+        "id" : {
+            "$ref": "id.json"
+          },
+        "type" : {
+            "$ref": "type.json"
+          },
+        "email" : {
+            "$ref": "email.json"
+          },
+        "alternateName" : {
+            "$ref": "alternateName.json"
+          },
+        "name" : {
+            "$ref": "name.json"
+          },
+        "worksFor" : {
+            "$ref": "worksFor.json"
+          },
+        "telephone" : {
+            "$ref": "telephone.json"
+          },
+        "blog" : {
+            "$ref": "blog.json"
+          },
+        "sameAs" : {
+            "$ref": "sameAs.json"
+          },
+        "account" : {
+            "$ref": "account.json"
+          },
+        "image" : {
+            "$ref": "image.json"
+          },
+        "colleague" : {
+            "$ref": "colleague.json"
+          },
+        "alumniOf": {
+            "$ref": "alumniOf.json"
+          },
+        "cert:key" : {
+            "$ref": "cert:key.json"
+          }
+    }
+}
