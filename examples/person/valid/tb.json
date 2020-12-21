@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "id": "@id",
+    "type": "@type",
+    "blog": "http://xmlns.com/foaf/0.1/weblog",
+    "account": "http://xmlns.com/foaf/0.1/account",
+    "cert": "http://www.w3.org/ns/auth/cert#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "id" : "http://lobid.org/team/pc#!",
+  "type" : "Person",
+  "email" : "mailto:christoph@hbz-nrw.de",
+  "alternateName" : "dr0i",
+  "name" : "Pascal Christoph",
+  "worksFor" : "http://lobid.org/organisations/DE-605#!",
+  "telephone" : "+49-221-40075-139",
+  "blog" : "http://www.dr0i.de/",
+  "sameAs" : [ "http://orcid.org/0000-0001-9758-2577", "http://www.dr0i.de/lib/files/foaf.rdf#me" ],
+  "account" : [ "https://github.com/dr0i", "https://twitter.com/dr0ide", "https://openbiblio.social/@dr0i"],
+  "image" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
+  "colleague" : [ "http://lobid.org/team/fs#!", "http://lobid.org/team/ap#!" ],
+  "alumniOf": "http://www.wikidata.org/entity/Q54096",
+  "cert:key": {
+    "type": "cert:RSAPublicKey",
+    "cert:exponent": 65537,
+    "cert:modulus": "MIIDGDCCAgCgAwIBAgIGAWARrgIzMA0GCSqGSIb3DQEBBQUAMB0xDjAMBgNVBAMM BVdlYklEMQswCQYDVQQKDAJ7fTAeFw0xNzEyMDExMDM1MDRaFw0xOTEyMDExMDQ1 MDRaMB8xHTAbBgNVBC4TFGNocmlzdG9waEBoYnotbnJ3LmRlMIIBIjANBgkqhkiG 9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzcgHeYUhPR8n2jS8A0UN4IRmxbN26guxPeYx SaPcMQV0/5j1vf2d/bXR47JqON9rlcM+QTndTXGr03PNshioA8nLG6SfYJCMSTDt 3cH1CtX2Ck9yCncjKuUJ7h09UBPHAFHL/VtvqPY4Br8+5gQct8r6TrGbsqrPcrgO dFdyrNAXhsDb2ZzA+l7ZyZfbNzUB69Bnq7lSYml4j2HHUexSsJmlj3NdoW/2nT6p FDpm3fvWTFYIb0Qavp+A9uO855ZHkkpNIW8Y2VYrp2KP809Q/N6YTG1HKBX12fwl onQGwBJbrhiQQKAe2hRMkBb1vI+t7KL5xnszpP2pTMBlotS/YwIDAQABo1wwWjAn BgNVHREBAf8EHTAbhhlodHRwczovL2xvYmlkLm9yZy90ZWFtL3BjMA4GA1UdDwEB /wQEAwIC7DAMBgNVHRMBAf8EAjAAMBEGCWCGSAGG+EIBAQQEAwIFoDANBgkqhkiG 9w0BAQUFAAOCAQEAFc9bSYnbM/G9k7P1uEccysU3UpMvKewrY2Wcvf+7jr62RcS/ MmGkTOFai+ia/k3qHNXhASfiL+Cf5CRVuveUPhzNEMbBRJwLvSMoNBWdkGS44lft 02+GBa7s2ZU6TSCcAiCX44+jRloh1edK2FlHM3szPFxFMKb8Qm4P0GDk4+lUiVoO GzMk4Ym9ExSAy0oMb4oxpIohpHDqtcYPJFGeVgQiojuJJG6dNHEVZXyKtwlebwSy 9+IXz4M7BciVSQDT+RY6uzoQzIc0vEGcuUNp66f2Cr9tGT7d8C8BQlgRuRxs/DGp XmZKw96pIwo8D1zaES6XODnzI24P/AM9ilNolA==",
+    "rdfs:label": "made on 01 december 2017 with rww@weywot3"
+  }
+}
