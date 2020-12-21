@@ -20,7 +20,7 @@
   "account" : [ "https://github.com/dr0i", "https://twitter.com/dr0ide", "https://openbiblio.social/@dr0i"],
   "image" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
   "colleague" : [ "http://lobid.org/team/fs#!", "http://lobid.org/team/ap#!" ],
-  "alumniOf": "http://www.wikidata.org/entity/Q54096",
+  "alumniOf": ["http://www.wikidata.org/entity/Q54096"],
   "cert:key": {
     "type": "cert:RSAPublicKey",
     "cert:exponent": 65537,
