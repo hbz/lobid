@@ -19,7 +19,7 @@
   "sameAs" : [ "http://orcid.org/0000-0001-9758-2577", "http://www.dr0i.de/lib/files/foaf.rdf#me" ],
   "account" : [ "https://github.com/dr0i", "https://twitter.com/dr0ide", "https://openbiblio.social/@dr0i"],
   "image" : "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
-  "colleague" : [ "http://lobid.org/team/fs#!", "http://lobid.org/team/ap#!" ],
+  "colleague" : [ "http://lobid.org/team/fs#!", "http://lobid.org/team/ap#!", "http://lobid.org/team/tb#!"],
   "alumniOf": ["http://www.wikidata.org/entity/Q54096"],
   "cert:key": {
     "type": "cert:RSAPublicKey",
