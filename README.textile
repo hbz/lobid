@@ -1,8 +1,10 @@
 h1. Lobid
 
+"!https://github.com/hbz/lobid/workflows/Build/badge.svg?branch=master!":https://github.com/hbz/lobid/actions?query=workflow%3ABuild
+
 Linking Open Bibliographic Data.
 
-This is only the repo of the landing page of https://lobid.org/ and some sub-sites created with _gatsby_.
+This is only the repo of the landing page of https://lobid.org/ and some sub-sites created with _gatsby_ (see "Lobid's gatsby starter":https://github.com/hbz/lobid/tree/master/gatsby/lobid ).
 
 For the repos with the software implementations, see:
 
