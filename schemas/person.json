@@ -20,14 +20,8 @@
         "name" : {
             "$ref": "name.json"
           },
-        "worksFor" : {
-            "$ref": "worksFor.json"
-          },
         "telephone" : {
             "$ref": "telephone.json"
-          },
-        "blog" : {
-            "$ref": "blog.json"
           },
         "sameAs" : {
             "$ref": "sameAs.json"
@@ -38,11 +32,8 @@
         "image" : {
             "$ref": "image.json"
           },
-        "colleague" : {
-            "$ref": "colleague.json"
-          },
-        "affiliate" : {
-            "$ref": "affiliate.json"
+        "affiliation" : {
+            "$ref": "affiliation.json"
           },
         "alumniOf": {
             "$ref": "alumniOf.json"

@@ -1,8 +1,8 @@
 {
-    "$id": "sameAs.json",
+    "$id": "affiliation.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Other refrence pages",
-    "description": "Other refrence pages of the person",
+    "title": "Affiliation",
+    "description": "School or organisation, the person is affiliated with.",
     "type": "array",
     "items": {
         "type": "string",

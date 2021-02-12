@@ -153,6 +153,30 @@
     },
     {
       "type": "Role",
+      "startDate": "2012",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
+      },
+      "member": {
+        "id": "http://lobid.org/team/kt#!",
+        "name": "Katinka Tauber"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2020",
+      "roleName": {
+        "de": "Bibliothekar",
+        "en": "Librarian"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!",
+        "name": "Tobias Bülte"
+      }
+    },
+    {
+      "type": "Role",
       "startDate": "2010",
       "endDate": "2010",
       "roleName": {
