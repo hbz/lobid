@@ -2,7 +2,7 @@
   "@context": "http://schema.org/",
   "id": "http://lobid.org/team/tb#!",
   "type": "Person",
-  "email": "mailto:tobias.buelte@hbz-nrw.de",
+  "email": "tobias.buelte@hbz-nrw.de",
   "alternateName": "TobiasNx",
   "name": "Tobias Bülte",
   "telephone": "+49-221-40075-201",

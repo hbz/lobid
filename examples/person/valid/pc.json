@@ -2,7 +2,7 @@
   "@context": "http://schema.org/",
   "id": "http://lobid.org/team/pc#!",
   "type": "Person",
-  "email": "mailto:christoph@hbz-nrw.de",
+  "email": "christoph@hbz-nrw.de",
   "alternateName": "dr0i",
   "name": "Pascal Christoph",
   "telephone": "+49-221-40075-139",

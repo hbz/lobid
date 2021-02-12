@@ -2,7 +2,7 @@
   "@context": "http://schema.org/",
   "id": "http://lobid.org/team/fs#!",
   "type": "Person",
-  "email": "mailto:steeg@hbz-nrw.de",
+  "email": "steeg@hbz-nrw.de",
   "alternateName": "fsteeg",
   "name": "Fabian Steeg",
   "telephone": "+49-221-40075-231",
