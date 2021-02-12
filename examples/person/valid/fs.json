@@ -1,12 +1,20 @@
 {
-  "@context":  "http://schema.org/",
-  "id" : "http://lobid.org/team/fs#!",
-  "type" : "Person",
-  "email" : "mailto:steeg@hbz-nrw.de",
-  "alternateName" : "fsteeg",
-  "name" : "Fabian Steeg",
-  "telephone" : "+49-221-40075-231",
-  "sameAs" : [ "http://orcid.org/0000-0001-8829-1989", "https://viaf.org/viaf/109146937785313831669/", "https://github.com/fsteeg", "https://gitlab.com/fsteeg" ],
-  "image" : "http://fsteeg.com/files/fsteeg.png",
-  "alumniOf": [ "http://www.wikidata.org/entity/Q54096", "http://www.wikidata.org/entity/Q1324301" ]
+  "@context": "http://schema.org/",
+  "id": "http://lobid.org/team/fs#!",
+  "type": "Person",
+  "email": "mailto:steeg@hbz-nrw.de",
+  "alternateName": "fsteeg",
+  "name": "Fabian Steeg",
+  "telephone": "+49-221-40075-231",
+  "sameAs": [
+    "http://orcid.org/0000-0001-8829-1989",
+    "https://viaf.org/viaf/109146937785313831669/",
+    "https://github.com/fsteeg",
+    "https://gitlab.com/fsteeg"
+  ],
+  "image": "http://fsteeg.com/files/fsteeg.png",
+  "alumniOf": [
+    "http://www.wikidata.org/entity/Q54096",
+    "http://www.wikidata.org/entity/Q1324301"
+  ]
 }

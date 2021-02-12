@@ -1,11 +1,17 @@
 {
-  "@context":  "http://schema.org/",
-  "id" : "http://lobid.org/team/tb#!",
-  "type" : "Person",
-  "email" : "mailto:tobias.buelte@hbz-nrw.de",
-  "alternateName" : "TobiasNx",
-  "name" : "Tobias Bülte",
-  "telephone" : "+49-221-40075-201",
-  "sameAs" : [ "https://github.com/TobiasNx", "https://gitlab.com/TobiasNx", "https://twitter.com/tob_bue" ],
-  "alumniOf": [ "http://www.wikidata.org/entity/Q273263" ]
+  "@context": "http://schema.org/",
+  "id": "http://lobid.org/team/tb#!",
+  "type": "Person",
+  "email": "mailto:tobias.buelte@hbz-nrw.de",
+  "alternateName": "TobiasNx",
+  "name": "Tobias Bülte",
+  "telephone": "+49-221-40075-201",
+  "sameAs": [
+    "https://github.com/TobiasNx",
+    "https://gitlab.com/TobiasNx",
+    "https://twitter.com/tob_bue"
+  ],
+  "alumniOf": [
+    "http://www.wikidata.org/entity/Q273263"
+  ]
 }
