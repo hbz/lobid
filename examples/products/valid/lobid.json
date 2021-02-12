@@ -1,8 +1,11 @@
 {
-    "id": "https://lobid.org",
-    "name": "lobid",
-    "alternateName": {
-      "de": "Dateninfrastruktur für Bibliotheken",
-      "en": "Data infrastructure for libraries"
-    }
+  "id": "https://lobid.org",
+  "name": {
+    "en": "lobid",
+    "de": "lobid"
+  },
+  "alternateName": {
+    "de": "Dateninfrastruktur für Bibliotheken",
+    "en": "Data infrastructure for libraries"
   }
+}
