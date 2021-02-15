@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "resource:/person.json",
     "title": "person",
     "description": "Schema to describe persons at lobid.",
     "type": "object",
