@@ -1,5 +1,7 @@
 {
+  "@context": "https://schema.org/",
   "id": "https://lobid.org",
+  "type": "Product",
   "name": {
     "en": "lobid",
     "de": "lobid"

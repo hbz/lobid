@@ -1,5 +1,5 @@
 {
-  "@context": "http://schema.org/",
+  "@context": "https://schema.org/",
   "id": "http://lobid.org/team/tb#!",
   "type": "Person",
   "email": "tobias.buelte@hbz-nrw.de",

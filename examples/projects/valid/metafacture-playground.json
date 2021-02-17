@@ -1,4 +1,5 @@
 {
+  "@context": "https://schema.org/",
   "id": "https://github.com/metafacture/metafacture-playground",
   "type": "Project",
   "name": {

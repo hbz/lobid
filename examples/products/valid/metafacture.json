@@ -1,4 +1,5 @@
 {
+  "@context": "https://schema.org/",
   "id": "https://metafacture.org",
   "type": "Product",
   "name": {

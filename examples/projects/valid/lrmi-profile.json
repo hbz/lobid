@@ -1,4 +1,5 @@
 {
+  "@context": "https://schema.org/",
   "id": "https://github.com/dini-ag-kim/lrmi-profile",
   "type": "Project",
   "name": {

@@ -1,4 +1,5 @@
 {
+  "@context": "https://schema.org/",
   "id": "https://nwbib.de",
   "type": "Product",
   "name": {

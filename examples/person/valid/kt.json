@@ -1,5 +1,5 @@
 {
-  "@context": "http://schema.org/",
+  "@context": "https://schema.org/",
   "id": "http://lobid.org/team/kt#!",
   "type": "Person",
   "email": "katinka.tauber@hbz-nrw.de",

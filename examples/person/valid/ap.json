@@ -1,5 +1,5 @@
 {
-  "@context": "http://schema.org/",
+  "@context": "https://schema.org/",
   "id": "http://lobid.org/team/ap#!",
   "type": "Person",
   "email": "pohl@hbz-nrw.de",
