@@ -1,14 +1,14 @@
 {
-    "@context": "http://schema.org/",
-    "id": "http://lobid.org/team/kt#!",
-    "type": "Person",
-    "email": "katinka.tauber@hbz-nrw.de",
-    "name": "Katinka Tauber",
-    "telephone": "+49-221-40075-199",
-    "sameAs": [
-        "https://github.com/katauber"
-    ],
-    "alumniOf": [
-        "http://www.wikidata.org/entity/Q54096"
-    ]
+  "@context": "http://schema.org/",
+  "id": "http://lobid.org/team/kt#!",
+  "type": "Person",
+  "email": "katinka.tauber@hbz-nrw.de",
+  "name": "Katinka Tauber",
+  "telephone": "+49-221-40075-199",
+  "sameAs": [
+    "https://github.com/katauber"
+  ],
+  "alumniOf": [
+    "http://www.wikidata.org/entity/Q54096"
+  ]
 }
