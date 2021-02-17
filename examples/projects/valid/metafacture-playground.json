@@ -1,0 +1,12 @@
+{
+  "id": "https://github.com/metafacture/metafacture-playground",
+  "type": "Project",
+  "name": {
+    "de": "Metafacture Playground",
+    "en": "Metafacture Playground"
+  },
+  "description": {
+    "en": "This projects aims to provide a web application to play around with Metafactures languages Fix and Flux."
+  },
+  "url": "https://github.com/metafacture/metafacture-playground"
+}

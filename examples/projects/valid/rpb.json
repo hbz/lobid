@@ -1,0 +1,13 @@
+{
+  "id": "https://github.com/hbz/rpb",
+  "type": "Project",
+  "name": {
+    "de": "Rheinland-Pfälzische Bibliographie",
+    "en": "Bibliography of Rhineland-Platinate"
+  },
+  "description": {
+    "en": "Migrating the RPB from Allegro to a new cataloging and web presentation environment",
+    "de": "Migration der Rheinland-Pfälzischen Bibliographie (RPB) von Allegro in eine neue Erfassungs- und Präsentationsumgebung. Nutzen von Erfahrungen und Technologien aus NWbib und SkoHub."
+  },
+  "url": "https://github.com/hbz/rpb"
+}
