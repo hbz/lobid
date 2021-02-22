@@ -16,7 +16,7 @@
             "$ref": "email.json"
           },
         "alternateName" : {
-            "$ref": "name.json"
+            "$ref": "alternateName.json"
           },
         "name" : {
             "$ref": "name.json"
