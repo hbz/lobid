@@ -4,7 +4,10 @@
   "type": "Person",
   "email": "steeg@hbz-nrw.de",
   "alternateName": ["fsteeg"],
-  "name": "Fabian Steeg",
+  "name": {
+    "en": "Fabian Steeg",
+    "de": "Fabian Steeg"
+  },
   "telephone": "+49-221-40075-231",
   "sameAs": [
     "http://orcid.org/0000-0001-8829-1989",

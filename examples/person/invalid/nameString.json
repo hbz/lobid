@@ -2,12 +2,9 @@
   "@context": "http://schema.org/",
   "id": "http://lobid.org/team/ap#!",
   "type": "Person",
-  "email": "mailto:pohl@hbz-nrw.de",
+  "email": "pohl@hbz-nrw.de",
   "alternateName": ["acka47"],
-  "name": {
-    "en": "Adrian Pohl",
-    "de": "Adrian Pohl"
-  },
+  "name": "Adrian Pohl",
   "telephone": "+49-221-40075-235",
   "sameAs": [
     "http://orcid.org/0000-0001-9083-7442",

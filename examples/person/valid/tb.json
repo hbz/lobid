@@ -4,7 +4,10 @@
   "type": "Person",
   "email": "tobias.buelte@hbz-nrw.de",
   "alternateName": ["TobiasNx"],
-  "name": "Tobias Bülte",
+  "name": {
+    "en": "Tobias Bülte",
+    "de": "Tobias Bülte"
+  },
   "telephone": "+49-221-40075-201",
   "sameAs": [
     "https://github.com/TobiasNx",

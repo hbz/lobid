@@ -4,7 +4,10 @@
   "type": "Person",
   "email": "pohl@hbz-nrw.de",
   "alternateName": ["acka47"],
-  "name": "Adrian Pohl",
+  "name": {
+    "en": "Adrian Pohl",
+    "de": "Adrian Pohl"
+  },
   "telephone": "+49-221-40075-235",
   "sameAs": [
     "http://orcid.org/0000-0001-9083-7442",

@@ -4,7 +4,10 @@
   "type": "Person",
   "email": "christoph@hbz-nrw.de",
   "alternateName": ["dr0i"],
-  "name": "Pascal Christoph",
+  "name": {
+    "en": "Pascal Christoph",
+    "de": "Pascal Christoph"
+  },
   "telephone": "+49-221-40075-139",
   "sameAs": [
     "http://orcid.org/0000-0001-9758-2577",
