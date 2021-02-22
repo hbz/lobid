@@ -1,25 +1,6 @@
 {
-  "@context": {
-    "@vocab": "http://schema.org/",
-    "id": "@id",
-    "type": "@type",
-    "description": {
-      "@container": "@language"
-    },
-    "name": {
-      "@container": "@language"
-    },
-    "alternateName": {
-      "@container": "@language"
-    },
-    "contactType": {
-      "@container": "@language"
-    },
-    "roleName": {
-      "@container": "@language"
-    }
-  },
-  "id": "http://oi.lobid.org/team#!",
+  "@context": "https://schema.org/",
+  "id": "http://stage.lobid.org/team#!",
   "type": "Organization",
   "contactPoint": [
     {
@@ -87,7 +68,7 @@
   ],
   "foundingDate": "2019",
   "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
-  "makesOffer": [
+  "maintainerOf": [
     {
       "id": "https://lobid.org",
       "name": "lobid"
@@ -99,6 +80,10 @@
     {
       "id": "https://metafacture.org",
       "name": "Metafacture IDE"
+    },
+    {
+      "id": "https://skohub.io",
+      "name": "SkoHub"
     }
   ],
   "member": [
