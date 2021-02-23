@@ -1,48 +1,48 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "resource:/person.json",
-    "title": "person",
-    "description": "Schema to describe persons at lobid.",
-    "type": "object",
-    "properties": {
-        "id" : {
-            "$ref": "id.json"
-          },
-        "type" : {
-            "type": "string",
-            "const": "Person"
-          },
-        "email" : {
-            "$ref": "email.json"
-          },
-        "alternateName" : {
-            "$ref": "alternateName.json"
-          },
-        "name" : {
-            "$ref": "name.json"
-          },
-        "telephone" : {
-            "$ref": "telephone.json"
-          },
-        "sameAs" : {
-            "$ref": "sameAs.json"
-          },
-        "account" : {
-            "$ref": "account.json"
-          },
-        "image" : {
-            "$ref": "image.json"
-          },
-        "affiliation" : {
-            "$ref": "affiliation.json"
-          },
-        "alumniOf": {
-            "$ref": "alumniOf.json"
-          }
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "$id":"resource:/person.json",
+  "title":"person",
+  "description":"Schema to describe persons at lobid.",
+  "type":"object",
+  "properties":{
+    "@context":{
+      "$ref":"resource:/context.json"
     },
-    "required": [
-        "id",
-        "name",
-        "type"
-    ]
+    "id":{
+      "$ref":"resource:/id.json"
+    },
+    "type":{
+      "type":"string",
+      "const":"Person"
+    },
+    "email":{
+      "$ref":"resource:/email.json"
+    },
+    "alternateName":{
+      "$ref":"resource:/alternateName.json"
+    },
+    "name":{
+      "$ref":"resource:/name.json"
+    },
+    "telephone":{
+      "$ref":"resource:/telephone.json"
+    },
+    "sameAs":{
+      "$ref":"resource:/sameAs.json"
+    },
+    "image":{
+      "$ref":"resource:/image.json"
+    },
+    "affiliation":{
+      "$ref":"resource:/affiliation.json"
+    },
+    "alumniOf":{
+      "$ref":"resource:/alumniOf.json"
+    }
+  },
+  "required":[
+    "id",
+    "name",
+    "type"
+  ]
 }

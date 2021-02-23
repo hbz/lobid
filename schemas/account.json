@@ -1,8 +1,0 @@
-{
-  "$id": "resource:/account.json",
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Account pages",
-  "description": "Accounts of the person",
-  "type": "string",
-  "format": "url"
-}
