@@ -1,0 +1,10 @@
+{
+  "$id": "resource:/description.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Description",
+  "description": "The description of the object e.g. product, project. MUST have german and english Version",
+  "allOf": [
+    { "$ref": "localizedString.json" },
+    { "required": ["en", "de"]}
+  ]
+}

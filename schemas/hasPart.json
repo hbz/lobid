@@ -1,0 +1,24 @@
+{
+  "$id": "resource:/schemas/hasPart.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Has part",
+  "description": "Objects e.g. products that are part of the described object",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "id.json"
+      },
+      "type": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "name.json"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}
