@@ -1,0 +1,11 @@
+{
+  "$id": "resource:/alumniOf.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Alumni-Organisations",
+  "description": "Organisation that the person is alumni of.",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "format": "uri"
+  }
+}

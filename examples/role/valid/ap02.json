@@ -1,0 +1,12 @@
+{
+    "type": "Role",
+    "startDate": "2019-10-01",
+    "roleName": {
+        "de": "Gruppenleitung, Bibliothekar",
+        "en": "Group lead, Librarian"
+    },
+    "member": {
+        "id": "http://lobid.org/team/ap#!",
+        "name": "Adrian Pohl"
+      }
+}

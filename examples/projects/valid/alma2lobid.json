@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://github.com/hbz/lobid-resources/milestone/1",
+  "type": "Project",
+  "name": {
+    "de": "lobid/Alma-Migration",
+    "en": "lobid/Alma Migration"
+  },
+  "description": {
+    "en": "Switch lobid-resources ETL and indexing from Aleph to Alma Marc21 XML",
+    "de": "Umstieg von Aleph- auf Alma-MARC21-Daten bei Transformation und Indexierung für lobid-resources"
+  },
+  "url": "https://github.com/hbz/lobid-resources/milestone/1"
+}

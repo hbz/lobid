@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://github.com/dini-ag-kim/lrmi-profile",
+  "type": "Project",
+  "name": {
+    "de": "LRMI-Metadatenprofil",
+    "en": "LRMI Metadata Profile"
+  },
+  "description": {
+    "en": "A schema.org/LRMI-based profile for describing OER developed and published as JSON Schema",
+    "de": "Ein schema.org-/LRMI-basiertes Metadatenprofil für die Beschreibung von OER mit Fokus auf den deutschsprachigen Raum, zunächst entwickelt als JSON Schema"
+  },
+  "url": "https://github.com/dini-ag-kim/lrmi-profile"
+}

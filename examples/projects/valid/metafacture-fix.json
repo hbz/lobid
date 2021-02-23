@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://github.com/metafacture/metafacture-fix",
+  "type": "Project",
+  "name": {
+    "de": "Metafacture-Fix",
+    "en": "Metafacture-Fix"
+  },
+  "description": {
+    "en": "Implementation of the Fix language for Metafacture as an alternative to configuring data transformations with Metamorph"
+  },
+  "url": "https://github.com/metafacture/metafacture-fix"
+}

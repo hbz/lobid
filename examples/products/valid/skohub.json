@@ -1,0 +1,12 @@
+{
+  "id": "https://metafacture.org",
+  "type": "Product",
+  "name": {
+    "en": "SkoHub",
+    "de": "SkoHub"
+  },
+  "url": "https://skohub.io",
+  "description": {
+    "en": "SkoHub supports a novel approach for finding content on the web. The general idea is to extend the scope of Knowledge Organization Systems (KOS) to also act as communication hubs for publishers and information seekers. In effect, SkoHub allows to follow specific subjects in order to be notified when new content about that subject is published. "
+  }
+}

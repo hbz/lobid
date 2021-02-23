@@ -1,0 +1,24 @@
+{
+  "@context": "http://schema.org/",
+  "id": "http://lobid.org/team/ap#!",
+  "type": "Person",
+  "email": "pohl@hbz-nrw.de",
+  "alternateName": ["acka47"],
+  "name": "Adrian Pohl",
+  "telephone": "+49-221-40075-235",
+  "sameAs": [
+    "http://orcid.org/0000-0001-9083-7442",
+    "http://viaf.org/viaf/164750950",
+    "https://twitter.com/acka47",
+    "https://oerworldmap.org/resource/urn:uuid:1fc889ad-28eb-496d-ad6a-3020b1380850",
+    "https://github.com/acka47",
+    "https://openbiblio.social/@acka47",
+    "https://gitlab.com/acka47",
+    "http://www.wikidata.org/entity/Q56883916"
+  ],
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/SWIB_18_-_day_1-0665.jpg/1024px-SWIB_18_-_day_1-0665.jpg",
+  "alumniOf": [
+    "http://www.wikidata.org/entity/Q273263",
+    "http://www.wikidata.org/entity/Q54166"
+  ]
+}
