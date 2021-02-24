@@ -14,5 +14,10 @@
   "description": {
     "de": " Die Nordrhein-Westfälische Bibliographie (NWBib) verzeichnet die Literatur über das Land Nordrhein-Westfalen, seine Regionen, Orte und Persönlichkeiten, Literatur aus allen Lebens- und Wissensbereichen in Geschichte und Gegenwart. ",
     "en": "The North-Rhine Westphalian Bibliography (NWBib) is a regional bibliography that records literature about North-Rhine Westphalia (NRW), its regions, places and people"
-  }
+  },
+  "isBasedOn": [
+    {
+      "id": "https://lobid.org"
+    }
+  ]
 }
