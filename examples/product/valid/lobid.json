@@ -37,5 +37,10 @@
     {
       "id": "https://metafacture.org"
     }
+  ],  
+  "isRelatedTo": [
+    {
+      "id": "https://github.com/hbz/lobid-resources/milestone/1"
+    }
   ]
 }
