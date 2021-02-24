@@ -1,7 +1,9 @@
 {
   "@context": "https://schema.org/",
   "id": "https://metafacture.org",
-  "type": "Product",
+  "type": [
+    "Product"
+  ],
   "name": {
     "en": "Metafacture",
     "de": "Metafacture"

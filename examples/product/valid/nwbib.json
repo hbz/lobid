@@ -1,7 +1,9 @@
 {
   "@context": "https://schema.org/",
   "id": "https://nwbib.de",
-  "type": "Product",
+  "type": [
+    "Product"
+  ],
   "name": {
     "de": "Nordrhein-Westfälische Bibliographie",
     "en": "Bibliography of North Rhine-Westfalia"

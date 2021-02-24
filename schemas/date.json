@@ -1,0 +1,10 @@
+{
+  "$id": "resource:/date.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Date",
+  "type": "string",
+  "format": "date",
+  "_display": {
+    "placeholder": "YYYY-MM"
+  }
+}

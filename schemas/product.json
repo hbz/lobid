@@ -2,30 +2,51 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "resource:/product.json",
   "title": "product",
-  "description": "Schema to describe product at lobid.",
+  "description": "Schema to describe a product at lobid.",
   "type": "object",
   "properties": {
     "id": {
-      "$ref": "id.json"
+      "$ref": "resource:/id.json"
     },
     "type": {
-      "type": "string",
-      "const": "Product"
+      "type": "array",
+      "items": {
+        "type": "string",
+        "const": "Product"
+      }
     },
     "alternateName": {
-      "$ref": "alternateName.json"
+      "$ref": "resource:/alternateName.json"
     },
     "description": {
-      "$ref": "description.json"
+      "$ref": "resource:/description.json"
     },
     "name": {
-      "$ref": "name.json"
+      "$ref": "resource:/name.json"
     },
     "image": {
-      "$ref": "image.json"
+      "$ref": "resource:/image.json"
     },
     "hasPart": {
-      "$ref": "image.json"
+      "$ref": "resource:/hasPart.json"
+    },
+    "isBasedOn": {
+      "$ref": "resource:/isBasedOn.json"
+    },
+    "releaseDate": {
+      "$ref": "resource:/date.json"
+    },
+    "maintainer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "resource:/id.json"
+        },
+        "type": {
+          "type": "string",
+          "const": "Organisation"
+        }
+      }
     }
   },
   "required": [

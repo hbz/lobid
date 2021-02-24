@@ -1,6 +1,8 @@
 {
   "id": "https://metafacture.org",
-  "type": "Product",
+  "type": [
+    "Product"
+  ],
   "name": {
     "en": "SkoHub",
     "de": "SkoHub"
