@@ -4,6 +4,8 @@ set -e
 
 ajv test -s schemas/person.json -r "schemas/*.json" -d "examples/person/valid/*.json" --valid
 ajv test -s schemas/person.json -r "schemas/*.json" -d "examples/person/invalid/*.json" --invalid
+ajv test -s schemas/product.json -r "schemas/*.json" -d "examples/product/valid/*.json" --valid
+ajv test -s schemas/product.json -r "schemas/*.json" -d "examples/product/invalid/*.json" --invalid
 
 if [ $? -eq 0 ]
 then

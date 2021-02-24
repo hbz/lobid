@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resource:/product.json",
+  "title": "product",
+  "description": "Schema to describe a product at lobid.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "resource:/id.json"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "const": "Product"
+      }
+    },
+    "alternateName": {
+      "$ref": "resource:/alternateName.json"
+    },
+    "slogan": {
+      "$ref": "resource:/slogan.json"
+    },
+    "description": {
+      "$ref": "resource:/description.json"
+    },
+    "name": {
+      "$ref": "resource:/name.json"
+    },
+    "image": {
+      "$ref": "resource:/image.json"
+    },
+    "hasPart": {
+      "$ref": "resource:/hasPart.json"
+    },
+    "isBasedOn": {
+      "$ref": "resource:/isBasedOn.json"
+    },
+    "releaseDate": {
+      "$ref": "resource:/date.json"
+    },
+    "maintainer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "resource:/id.json"
+        },
+        "type": {
+          "type": "string",
+          "const": "Organization"
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "description"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$id": "resource:/isRelatedTo.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "isRelatedTo",
+  "description": "Entities e.g. projects that are related in the described entity",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "resource:/id.json"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "Software",
+          "Data"
+        ]
+      },
+      "name": {
+        "$ref": "resource:/name.json"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

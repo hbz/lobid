@@ -2,7 +2,7 @@
   "$id": "resource:/name.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Name",
-  "description": "The name of the person. SHOULD be FirstName SecondName. MUST have german and english Version",
+  "description": "The name of the person or object. For person SHOULD be FirstName SecondName. MUST have german and english version",
   "allOf": [
     { "$ref": "localizedString.json" },
     { "required": ["en", "de"]}
