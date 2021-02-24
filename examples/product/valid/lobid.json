@@ -8,10 +8,10 @@
     "en": "lobid",
     "de": "lobid"
   },
-  "alternateName": [
-    "Dateninfrastruktur für Bibliotheken",
-    "Data infrastructure for libraries"
-  ],
+  "slogan": {
+    "de": "Dateninfrastruktur für Bibliotheken",
+    "en": "Data infrastructure for libraries"
+  },
   "description": {
     "de": "lobid stellt Rechercheoberflächen und offene Programmierschnittstellen (APIs) zur Verfügung, die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW betrieben.",
     "en": "lobid provides Linked Open Data (LOD) services for libraries, consisting of user interfaces (UIs) and application programming interfaces (APIs). lobid is run by the North Rhine-Westphalian Library Service Centre (hbz)."

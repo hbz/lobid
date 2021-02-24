@@ -18,6 +18,9 @@
     "alternateName": {
       "$ref": "resource:/alternateName.json"
     },
+    "slogan": {
+      "$ref": "resource:/slogan.json"
+    },
     "description": {
       "$ref": "resource:/description.json"
     },
