@@ -47,7 +47,7 @@
         },
         "type": {
           "type": "string",
-          "const": "Organisation"
+          "const": "Organization"
         }
       }
     }

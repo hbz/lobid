@@ -19,8 +19,11 @@
   "releaseDate": "2010-08-01",
   "maintainer": {
     "id": "http://stage.lobid.org/team#!",
-    "name": "Offene Infrastruktur",
-    "type": "Organisation"
+    "name": {
+      "de": "Offene Infrastruktur",
+      "en": "Open Infrastructure"
+    },
+    "type": "Organization"
   },
   "hasPart": [
     {

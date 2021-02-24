@@ -19,5 +19,13 @@
     {
       "id": "https://lobid.org"
     }
-  ]
+  ],
+  "maintainer": {
+    "id": "http://stage.lobid.org/team#!",
+    "name": {
+      "de": "Offene Infrastruktur",
+      "en": "Open Infrastructure"
+    },
+    "type": "Organization"
+  }
 }
