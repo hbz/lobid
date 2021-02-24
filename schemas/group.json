@@ -1,39 +1,42 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "resource:/group.json",
-    "title": "Group",
-    "description": "Schema to describe hbz groups",
-    "type": "object",
-    "properties": {
-        "@context": {
-          "$ref": "resource:/context.json"
-        },
-        "id" : {
-            "$ref": "resource:/id.json"
-          },
-        "type" : {
-            "type": "string",
-            "const": "Organization"
-          },
-        "name" : {
-            "$ref": "resource:/name.json"
-          },
-        "description": {
-            "$ref": "resource:/description.json"
-        },
-        "sameAs" : {
-            "$ref": "resource:/sameAs.json"
-          },
-        "image" : {
-            "$ref": "resource:/image.json"
-          },
-        "member" : {
-            "$ref": "resource:/member.json"
-          }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resource:/group.json",
+  "title": "Group",
+  "description": "Schema to describe hbz groups",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "$ref": "resource:/context.json"
     },
-    "required": [
-        "id",
-        "name",
-        "type"
-    ]
+    "id": {
+      "$ref": "resource:/id.json"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "const": "Organization"
+      }
+    },
+    "name": {
+      "$ref": "resource:/name.json"
+    },
+    "description": {
+      "$ref": "resource:/description.json"
+    },
+    "sameAs": {
+      "$ref": "resource:/sameAs.json"
+    },
+    "image": {
+      "$ref": "resource:/image.json"
+    },
+    "membership": {
+      "$ref": "resource:/membership.json"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type"
+  ]
 }

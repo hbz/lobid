@@ -1,202 +1,206 @@
 {
-  "@context":"https://schema.org/",
-  "id":"http://stage.lobid.org/team#!",
-  "type":"Organization",
-  "contactPoint":[
+  "@context": "https://schema.org",
+  "id": "http://stage.lobid.org/team#!",
+  "type": [
+    "Organization"
+  ],
+  "contactPoint": [
     {
-      "type":"ContactPoint",
-      "id":"mailto:semweb@hbz-nrw.de",
-      "image":"/images/mail.png",
-      "contactType":{
-        "en":"Email",
-        "de":"E-Mail"
+      "type": "ContactPoint",
+      "id": "mailto:semweb@hbz-nrw.de",
+      "image": "/images/mail.png",
+      "contactType": {
+        "en": "Email",
+        "de": "E-Mail"
       }
     },
     {
-      "type":"ContactPoint",
-      "image":"/images/mailman.jpg",
-      "id":"http://listen.hbz-nrw.de/mailman/listinfo/lobid",
-      "contactType":{
-        "en":"Mailing List",
-        "de":"Mailingliste"
+      "type": "ContactPoint",
+      "image": "/images/mailman.jpg",
+      "id": "http://listen.hbz-nrw.de/mailman/listinfo/lobid",
+      "contactType": {
+        "en": "Mailing List",
+        "de": "Mailingliste"
       }
     },
     {
-      "type":"ContactPoint",
-      "image":"/images/Twitter_logo_blue.png",
-      "id":"http://twitter.com/lobidorg",
-      "contactType":{
-        "en":"Twitter",
-        "de":"Twitter"
+      "type": "ContactPoint",
+      "image": "/images/Twitter_logo_blue.png",
+      "id": "http://twitter.com/lobidorg",
+      "contactType": {
+        "en": "Twitter",
+        "de": "Twitter"
       }
     },
     {
-      "type":"ContactPoint",
-      "image":"/images/GitHub-Mark-32px.png",
-      "id":"https://github.com/hbz/lobid/issues",
-      "contactType":{
-        "en":"Issue Tracker on GitHub",
-        "de":"Issue-Tracker auf GitHub"
+      "type": "ContactPoint",
+      "image": "/images/GitHub-Mark-32px.png",
+      "id": "https://github.com/hbz/lobid/issues",
+      "contactType": {
+        "en": "Issue Tracker on GitHub",
+        "de": "Issue-Tracker auf GitHub"
       }
     },
     {
-      "type":"ContactPoint",
-      "image":"/images/freenode.png",
-      "id":"irc://irc.freenode.net/lobid",
-      "contactType":{
-        "en":"IRC",
-        "de":"IRC"
+      "type": "ContactPoint",
+      "image": "/images/freenode.png",
+      "id": "irc://irc.freenode.net/lobid",
+      "contactType": {
+        "en": "IRC",
+        "de": "IRC"
       }
     }
   ],
-  "alternateName":{
-    "de":"Offene-Infrastruktur-Gruppe am hbz",
-    "en":"Open Infrastructure team at hbz"
+  "alternateName": {
+    "de": "Offene-Infrastruktur-Gruppe am hbz",
+    "en": "Open Infrastructure team at hbz"
   },
-  "name":{
-    "de":"Offene Infrastruktur",
-    "en":"Open Infrastructure"
+  "name": {
+    "de": "Offene Infrastruktur",
+    "en": "Open Infrastructure"
   },
-  "description":{
-    "de":"Die Gruppe \"Offene Infrastruktur\" des hbz unterstützt die Etablierung und Pflege einer zukunftssicheren bibliothekarischen Dateninfrastruktur im regionalen, überregionalen und internationalen Raum. ",
-    "en":"The Open infrastructure team of hbz supports establishment and maintenance of a future-proof data infrastructure for libraries in a regional, national and international context."
+  "description": {
+    "de": "Die Gruppe \"Offene Infrastruktur\" des hbz unterstützt die Etablierung und Pflege einer zukunftssicheren bibliothekarischen Dateninfrastruktur im regionalen, überregionalen und internationalen Raum. ",
+    "en": "The Open infrastructure team of hbz supports establishment and maintenance of a future-proof data infrastructure for libraries in a regional, national and international context."
   },
-  "parentOrganization":"http://lobid.org/organisations/DE-605#!",
-  "blog":"http://blog.lobid.org",
-  "sameAs":[
+  "parentOrganization": "http://lobid.org/organisations/DE-605#!",
+  "blog": "http://blog.lobid.org",
+  "sameAs": [
     "https://twitter.com/lobidorg"
   ],
-  "foundingDate":"2019",
-  "url":"https://www.hbz-nrw.de/produkte/linked-open-data",
-  "makesOffer":[
+  "foundingDate": "2019",
+  "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
+  "makesOffer": [
     {
-      "id":"https://lobid.org",
-      "name":"lobid"
+      "id": "https://lobid.org",
+      "name": "lobid"
     },
     {
-      "id":"https://nwbib.de",
-      "name":"NWBib"
+      "id": "https://nwbib.de",
+      "name": "NWBib"
     },
     {
-      "id":"https://metafacture.org",
-      "name":"Metafacture IDE"
+      "id": "https://metafacture.org",
+      "name": "Metafacture IDE"
     },
     {
-      "id":"https://skohub.io",
-      "name":"SkoHub"
+      "id": "https://skohub.io",
+      "name": "SkoHub"
     }
   ],
-  "member":[
+  "membership": [
     {
-      "type":"Role",
-      "startDate":"2010",
-      "endDate":"2019-10",
-      "roleName":{
-        "de":"Projektmanager, Bibliothekar",
-        "en":"Project Manager, Librarian"
+      "type": "Role",
+      "startDate": "2010",
+      "endDate": "2019-10",
+      "roleName": {
+        "de": "Projektmanager, Bibliothekar",
+        "en": "Project Manager, Librarian"
       },
-      "member":{
-        "id":"http://lobid.org/team/ap#!"
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
       }
     },
     {
-      "type":"Role",
-      "startDate":"2019-10",
-      "roleName":{
-        "de":"Gruppenleitung, Bibliothekar",
-        "en":"Group lead, Librarian"
+      "type": "Role",
+      "startDate": "2019-10",
+      "roleName": {
+        "de": "Gruppenleitung, Bibliothekar",
+        "en": "Group lead, Librarian"
       },
-      "member":{
-        "id":"http://lobid.org/team/ap#!"
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
       }
     },
     {
-      "type":"Role",
-      "startDate":"2010",
-      "roleName":{
-        "de":"Softwareentwickler, Systemadministrator",
-        "en":"Software Developer, System Administrator"
+      "type": "Role",
+      "startDate": "2010",
+      "roleName": {
+        "de": "Softwareentwickler, Systemadministrator",
+        "en": "Software Developer, System Administrator"
       },
-      "member":{
-        "id":"http://lobid.org/team/pc#!"
+      "member": {
+        "id": "http://lobid.org/team/pc#!"
       }
     },
     {
-      "type":"Role",
-      "startDate":"2012",
-      "roleName":{
-        "de":"Softwareentwickler",
-        "en":"Software Developer"
+      "type": "Role",
+      "startDate": "2012",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
       },
-      "member":{
-        "id":"http://lobid.org/team/fs#!"
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
       }
     },
     {
-      "type":"Role",
-      "startDate":"2012",
-      "roleName":{
-        "de":"Softwareentwickler",
-        "en":"Software Developer"
+      "type": "Role",
+      "startDate": "2012",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
       },
-      "member":{
-        "id":"http://lobid.org/team/kt#!"
+      "member": {
+        "id": "http://lobid.org/team/kt#!"
       }
     },
     {
-      "type":"Role",
-      "startDate":"2020",
-      "roleName":{
-        "de":"Bibliothekar",
-        "en":"Librarian"
+      "type": "Role",
+      "startDate": "2020",
+      "roleName": {
+        "de": "Bibliothekar",
+        "en": "Librarian"
       },
-      "member":{
-        "id":"http://lobid.org/team/tb#!"
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
       }
     },
     {
-      "type":"Role",
-      "startDate":"2010",
-      "endDate":"2010",
-      "roleName":{
-        "de":"Softwareentwickler",
-        "en":"Software Developer"
+      "type": "Role",
+      "startDate": "2010",
+      "endDate": "2010",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
       },
-      "member":{
-        "name":{
+      "member": {
+        "id": "https://github.com/literarymachine/",
+        "name": {
           "de": "Felix Ostrowski",
           "en": "Felix Ostrowski"
         }
       }
     },
     {
-      "type":"Role",
-      "startDate":"2014",
-      "endDate":"2016",
-      "roleName":{
-        "de":"Softwareentwickler",
-        "en":"Software Developer"
+      "type": "Role",
+      "startDate": "2014",
+      "endDate": "2016",
+      "roleName": {
+        "de": "Softwareentwickler",
+        "en": "Software Developer"
       },
-      "member":{
-        "name":{
-          "de":"Simon Ritter",
-          "en":"Simon Ritter"
+      "member": {
+        "id": "https://github.com/SBRitter",
+        "name": {
+          "de": "Simon Ritter",
+          "en": "Simon Ritter"
         }
       }
     },
     {
-      "type":"Role",
-      "startDate":"2017",
-      "endDate":"2018",
-      "roleName":{
-        "de":"Bibliothekar",
-        "en":"Librarian"
+      "type": "Role",
+      "startDate": "2017",
+      "endDate": "2018",
+      "roleName": {
+        "de": "Bibliothekar",
+        "en": "Librarian"
       },
-      "member":{
-        "id":"http://lobid.org/team/ce#!",
-        "name":{
-          "de":"Christoph Ewertowski",
-          "en":"Christoph Ewertowski"
+      "member": {
+        "id": "http://lobid.org/team/ce#!",
+        "name": {
+          "de": "Christoph Ewertowski",
+          "en": "Christoph Ewertowski"
         }
       }
     }
