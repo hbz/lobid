@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resource:/publication.json",
+  "title": "prodPublicationuct",
+  "description": "Schema to describe a publication (blog post, slidedeck, journal article etc.).",
+  "type": "object",
+  "properties": {
+    "@context": {
+      "$ref": "resource:/context.json"
+    },
+    "id": {
+      "$ref": "resource:/id.json"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "BlogPosting",
+        "PresentationDigitalDocument",
+        "Article"
+      ]
+    },
+    "name": {
+      "$ref": "localizedString.json"
+    },
+    "description": {
+      "$ref": "localizedString.json"
+    },
+    "keywords": {
+      "title": "Keywords",
+      "description": "Keywords/tags for a publication",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "about": {
+      "$ref": "resource:/about.json"
+    },
+    "creator": {
+      "$ref": "resource:/creator.json"
+    },
+    "datePublished": {
+      "title": "Publication date",
+      "description": "The publication date of a creative work",
+      "$ref": "resource:/datePublished.json"
+    },
+    "inLanguage": {
+      "$ref": "resource:/inLanguage.json"
+    },
+    "license": {
+      "$ref": "resource:/license.json"
+    }
+  },
+  "required": [
+    "name",
+    "id"
+  ]
+}

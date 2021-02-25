@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "type": "BlogPosting",
+  "name": {
+    "de": "lobid-Lehrveranstaltung an der HTW chur"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://nwbib.de"
+    }
+  ],
+  "id": "https://blog.lobid.org/2019/04/04/lobid-at-htw.html",
+  "datePublished": "2019-04-04",
+  "inLanguage": [
+    "de"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

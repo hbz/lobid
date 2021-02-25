@@ -8,6 +8,8 @@ ajv test -s schemas/product.json -r "schemas/*.json" -d "examples/product/valid/
 ajv test -s schemas/product.json -r "schemas/*.json" -d "examples/product/invalid/*.json" --invalid
 ajv test -s schemas/group.json -r "schemas/*.json" -d "examples/group/valid/*.json" --valid
 ajv test -s schemas/group.json -r "schemas/*.json" -d "examples/group/invalid/*.json" --invalid
+ajv test -s schemas/publication.json -r "schemas/*.json" -d "examples/publication/valid/*.json" --valid
+ajv test -s schemas/publication.json -r "schemas/*.json" -d "examples/publication/invalid/*.json" --invalid
 ajv test -s schemas/project.json -r "schemas/*.json" -d "examples/project/valid/*.json" --valid
 ajv test -s schemas/project.json -r "schemas/*.json" -d "examples/project/invalid/*.json" --invalid
 

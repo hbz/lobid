@@ -1,0 +1,7 @@
+{
+    "$id": "resource:/datePublished.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Publication date",
+    "description": "The publication date of a creative work",
+    "$ref": "resource:/iso-8601-date.json"
+  }
