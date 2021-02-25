@@ -1,0 +1,10 @@
+{
+  "$id": "resource:/inLanguage.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Language",
+  "description": "The language(s) a creative work is published in",
+  "type": "array",
+  "items": {
+    "$ref": "resource:/Language.json"
+  }
+}

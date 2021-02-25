@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "type": "PresentationDigitalDocument",
+  "name": {
+    "de": "Der Lobid-Entwicklungsprozess"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/fs#!",
+      "type": "Person",
+      "name": "Fabian Steeg"
+    }
+  ],
+  "keywords": [
+    "lobid",
+    "software development"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org"
+    }
+  ],
+  "id": "https://slides.lobid.org/lobid-entwicklungsprozess/",
+  "datePublished": "2016-05-12",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "librarians",
+    "developers"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

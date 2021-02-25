@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "resource:/creator.json",
+  "title": "Creator",
+  "description": "Schema to describe the creator(s) of a publication",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "title": "Type",
+        "type": "string",
+        "enum": [
+          "Person",
+          "Organization"
+        ]
+      },
+      "id": {
+        "title": "URL",
+        "type": "string",
+        "format": "uri"
+      },
+      "name": {
+        "title": "Name",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

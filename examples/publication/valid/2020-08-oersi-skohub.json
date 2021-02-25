@@ -1,0 +1,38 @@
+{
+  "@context": "https://schema.org",
+  "type": "PresentationDigitalDocument",
+  "name": {
+    "de": "OERSI & SkoHub"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "description": {
+    "de": "Präsentation am 2020-08-26"
+  },
+  "keywords": [
+    "oer",
+    "open educational resources",
+    "resource discovery",
+    "oersi",
+    "skohub"
+  ],
+  "about": [
+    {
+        "id": "https://oersi.de"
+    },
+    {
+      "id": "https://skohub.io"
+    }
+],
+  "id": "http://slides.lobid.org/2020-08-oersi-skohub/",
+  "datePublished": "2020-08-24",
+  "inLanguage": [
+    "de"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
