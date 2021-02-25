@@ -1,0 +1,20 @@
+{
+  "$id": "resource:/enhances.json",
+  "title": "product",
+  "description": "Schema to describe a product at lobid.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "resource:/id.json"
+      },
+      "name": {
+        "$ref": "resource:/name.json"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

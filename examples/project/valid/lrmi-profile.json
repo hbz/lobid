@@ -1,7 +1,9 @@
 {
   "@context": "https://schema.org/",
   "id": "https://github.com/dini-ag-kim/lrmi-profile",
-  "type": "Project",
+  "type": [
+    "Project"
+  ],
   "name": {
     "de": "LRMI-Metadatenprofil",
     "en": "LRMI Metadata Profile"
