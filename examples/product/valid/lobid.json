@@ -1,5 +1,5 @@
 {
-  "@context": "https://schema.org/",
+  "@context": "https://schema.org",
   "id": "https://lobid.org",
   "type": [
     "Product"

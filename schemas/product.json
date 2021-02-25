@@ -5,6 +5,9 @@
   "description": "Schema to describe a product at lobid.",
   "type": "object",
   "properties": {
+    "@context": {
+      "$ref": "resource:/context.json"
+    },
     "id": {
       "$ref": "resource:/id.json"
     },
