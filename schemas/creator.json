@@ -16,13 +16,7 @@
         ]
       },
       "id": {
-        "title": "URL",
-        "type": "string",
-        "format": "uri"
-      },
-      "name": {
-        "title": "Name",
-        "type": "string"
+        "$ref": "resource:/id.json"
       }
     },
     "required": [
