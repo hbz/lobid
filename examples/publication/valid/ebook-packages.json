@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "type": "BlogPosting",
+  "name": {
+    "de": "Verbesserte Metadaten zur Zugehörigkeit von Titeln zu E-Book-Paketen"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org"
+    }
+  ],
+  "id": "https://blog.lobid.org/2020/04/15/ebook-packages.html",
+  "datePublished": "2020-04-15",
+  "inLanguage": [
+    "de"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

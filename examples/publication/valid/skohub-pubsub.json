@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "type": "BlogPosting",
+  "name": {
+    "en": "Presenting SkoHub PubSub"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "https://twitter.com/literarymachine/",
+      "type": "Person",
+      "name": "Felix Ostrowski"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://skohub.io"
+    }
+  ],
+  "id": "https://blog.lobid.org/2020/06/25/skohub-pubsub.html",
+  "datePublished": "2020-06-25",
+  "inLanguage": [
+    "en"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
