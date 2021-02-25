@@ -6,6 +6,8 @@ ajv test -s schemas/person.json -r "schemas/*.json" -d "examples/person/valid/*.
 ajv test -s schemas/person.json -r "schemas/*.json" -d "examples/person/invalid/*.json" --invalid
 ajv test -s schemas/product.json -r "schemas/*.json" -d "examples/product/valid/*.json" --valid
 ajv test -s schemas/product.json -r "schemas/*.json" -d "examples/product/invalid/*.json" --invalid
+ajv test -s schemas/group.json -r "schemas/*.json" -d "examples/group/valid/*.json" --valid
+ajv test -s schemas/group.json -r "schemas/*.json" -d "examples/group/invalid/*.json" --invalid
 
 if [ $? -eq 0 ]
 then

@@ -1,0 +1,7 @@
+{
+    "$id": "resource:/startDate.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Start date",
+    "description": "The start date of a project, product, role etc.",
+    "$ref": "resource:/iso-8601-date.json"
+  }

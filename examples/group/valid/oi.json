@@ -1,7 +1,9 @@
 {
-  "@context": "https://schema.org/",
+  "@context": "https://schema.org",
   "id": "http://stage.lobid.org/team#!",
-  "type": "Organization",
+  "type": [
+    "Organization"
+  ],
   "contactPoint": [
     {
       "type": "ContactPoint",
@@ -68,7 +70,7 @@
   ],
   "foundingDate": "2019",
   "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
-  "maintainerOf": [
+  "makesOffer": [
     {
       "id": "https://lobid.org",
       "name": "lobid"
@@ -86,7 +88,7 @@
       "name": "SkoHub"
     }
   ],
-  "member": [
+  "membership": [
     {
       "type": "Role",
       "startDate": "2010",
@@ -96,8 +98,7 @@
         "en": "Project Manager, Librarian"
       },
       "member": {
-        "id": "http://lobid.org/team/ap#!",
-        "name": "Adrian Pohl"
+        "id": "http://lobid.org/team/ap#!"
       }
     },
     {
@@ -108,8 +109,7 @@
         "en": "Group lead, Librarian"
       },
       "member": {
-        "id": "http://lobid.org/team/ap#!",
-        "name": "Adrian Pohl"
+        "id": "http://lobid.org/team/ap#!"
       }
     },
     {
@@ -120,8 +120,7 @@
         "en": "Software Developer, System Administrator"
       },
       "member": {
-        "id": "http://lobid.org/team/pc#!",
-        "name": "Pascal Christoph"
+        "id": "http://lobid.org/team/pc#!"
       }
     },
     {
@@ -132,8 +131,7 @@
         "en": "Software Developer"
       },
       "member": {
-        "id": "http://lobid.org/team/fs#!",
-        "name": "Fabian Steeg"
+        "id": "http://lobid.org/team/fs#!"
       }
     },
     {
@@ -144,8 +142,7 @@
         "en": "Software Developer"
       },
       "member": {
-        "id": "http://lobid.org/team/kt#!",
-        "name": "Katinka Tauber"
+        "id": "http://lobid.org/team/kt#!"
       }
     },
     {
@@ -156,8 +153,7 @@
         "en": "Librarian"
       },
       "member": {
-        "id": "http://lobid.org/team/tb#!",
-        "name": "Tobias Bülte"
+        "id": "http://lobid.org/team/tb#!"
       }
     },
     {
@@ -169,11 +165,11 @@
         "en": "Software Developer"
       },
       "member": {
-        "name": "Felix Ostrowski",
-        "sameAs": [
-          "https://twitter.com/literarymachine",
-          "https://github.com/literarymachine"
-        ]
+        "id": "https://github.com/literarymachine/",
+        "name": {
+          "de": "Felix Ostrowski",
+          "en": "Felix Ostrowski"
+        }
       }
     },
     {
@@ -185,10 +181,11 @@
         "en": "Software Developer"
       },
       "member": {
-        "name": "Simon Ritter",
-        "sameAs": [
-          "https://github.com/SBRitter"
-        ]
+        "id": "https://github.com/SBRitter",
+        "name": {
+          "de": "Simon Ritter",
+          "en": "Simon Ritter"
+        }
       }
     },
     {
@@ -201,8 +198,10 @@
       },
       "member": {
         "id": "http://lobid.org/team/ce#!",
-        "name": "Christoph Ewertowski",
-        "image": "http://lobid.org/download/ce.jpg"
+        "name": {
+          "de": "Christoph Ewertowski",
+          "en": "Christoph Ewertowski"
+        }
       }
     }
   ]

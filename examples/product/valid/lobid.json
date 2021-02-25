@@ -1,5 +1,5 @@
 {
-  "@context": "https://schema.org/",
+  "@context": "https://schema.org",
   "id": "https://lobid.org",
   "type": [
     "Product"
@@ -16,7 +16,7 @@
     "de": "lobid stellt Rechercheoberflächen und offene Programmierschnittstellen (APIs) zur Verfügung, die auf Linked Open Data (LOD) basieren. lobid wird vom Hochschulbibliothekszentrum des Landes NRW betrieben.",
     "en": "lobid provides Linked Open Data (LOD) services for libraries, consisting of user interfaces (UIs) and application programming interfaces (APIs). lobid is run by the North Rhine-Westphalian Library Service Centre (hbz)."
   },
-  "releaseDate": "2010-08-01",
+  "startDate": "2010-08",
   "maintainer": {
     "id": "http://stage.lobid.org/team#!",
     "name": {

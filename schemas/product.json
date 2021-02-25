@@ -5,6 +5,9 @@
   "description": "Schema to describe a product at lobid.",
   "type": "object",
   "properties": {
+    "@context": {
+      "$ref": "resource:/context.json"
+    },
     "id": {
       "$ref": "resource:/id.json"
     },
@@ -36,8 +39,8 @@
     "isBasedOn": {
       "$ref": "resource:/isBasedOn.json"
     },
-    "releaseDate": {
-      "$ref": "resource:/date.json"
+    "startDate": {
+      "$ref": "resource:/startDate.json"
     },
     "maintainer": {
       "type": "object",
