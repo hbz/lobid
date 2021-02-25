@@ -1,7 +1,9 @@
 {
   "@context": "https://schema.org/",
   "id": "https://github.com/hbz/lobid-resources/milestone/1",
-  "type": "Project",
+  "type": [
+    "Project"
+  ],
   "name": {
     "de": "lobid/Alma-Migration",
     "en": "lobid/Alma Migration"

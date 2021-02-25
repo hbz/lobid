@@ -1,7 +1,9 @@
 {
   "@context": "https://schema.org/",
   "id": "https://github.com/hbz/rpb",
-  "type": "Project",
+  "type": [
+    "Project"
+  ],
   "name": {
     "de": "Rheinland-Pfälzische Bibliographie",
     "en": "Bibliography of Rhineland-Platinate"

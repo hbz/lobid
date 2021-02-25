@@ -1,5 +1,5 @@
 {
-  "$id": "resource:/product.json",
+  "$id": "resource:/develops.json",
   "title": "product",
   "description": "Schema to describe a product at lobid.",
   "type": "array",

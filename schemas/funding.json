@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "resource:/membership.json",
+  "$id": "resource:/funding.json",
   "title": "Funding",
   "description": "Schema to describe a funder relation",
   "type": "array",
