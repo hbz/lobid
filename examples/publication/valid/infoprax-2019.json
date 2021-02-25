@@ -1,0 +1,52 @@
+{
+  "@context": "https://schema.org",
+  "type": "Article",
+  "name": {
+    "de": "lobid-organisations: Ein umfassender Index deutscher Informationseinrichtungen"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "http://lobid.org/team/fs#!",
+      "type": "Person",
+      "name": "Fabian Steeg"
+    },
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    }
+  ],
+  "description": {
+    "de": "Mit lobid-gnd bietet das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) eine Schnittstelle zur Gemeinsamen Normdatei (GND) für Mensch und Maschine an. In diesem Beitrag werden detailliert die Nutzungsmöglichkeiten von lobid-gnd beleuchtet. Vorgestellt werden die graphische Nutzeroberfläche, Möglichkeiten komplexer Abfragen gegen die Web-API und die Integration in OpenRefine. Darüber hinaus beschreiben wir den Prozess der Datengenerierung auf Basis des Linked-Data-Angebots der Deutschen Nationalbibliothek (DNB).",
+    "en": "lobid-gnd is a human and machine interface to the Integrated Authority File (GND) provided by the North Rhine-Westphalian Library Service Centre (hbz). This article describes use cases for lobid-gnd in detail. We introduce the usage of the search interface, ways to create complex queries with our web API, and integration in OpenRefine. We also describe our data transformation process, which is based on the linked data service provided by the German National Library (DNB)."
+  },
+  "keywords": [
+    "GND",
+    "Integrated Authority File",
+    "Web APIs",
+    "JSON-LD",
+    "Linked Open Data",
+    "OpenRefine",
+    "lobid"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org"
+    }
+  ],
+  "id": "https://doi.org/10.11588/ip.2019.1.52673",
+  "datePublished": "2019",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "web developers",
+    "librarians"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

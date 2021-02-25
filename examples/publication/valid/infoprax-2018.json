@@ -1,0 +1,52 @@
+{
+  "@context": "https://schema.org",
+  "type": "Article",
+  "name": {
+    "de": "lobid – Dateninfrastruktur für Bibliotheken"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "http://lobid.org/team/fs#!",
+      "type": "Person",
+      "name": "Fabian Steeg"
+    },
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    }
+  ],
+  "description": {
+    "de": "lobid ist der zentrale Anlaufpunkt für die Linked-Open-Data-Dienste des Hochschulbibliothekszentrums des Landes Nordrhein-Westfalen (hbz). Das Akronym \"lobid\" steht für \"Linking Open Bibliographic Data\". lobid umfasst Rechercheoberflächen für Anwender und Web-APIs. Die lobid-Dienste bieten Zugriff auf die Titeldaten des hbz-Verbundkatalogs, Beschreibungen von bibliothekarischen Organisationen und anderen Gedächtnisinstitutionen aus dem Sigelverzeichnis und der Deutschen Bibliotheksstatistik (DBS) sowie auf die Gemeinsame Normdatei (GND). Die Datensets können so in verschiedenen Kontexten einheitlich (JSON-LD über HTTP) genutzt und eingebunden werden. Vielfältige Möglichkeiten der Datenabfrage werden unterstützt. Der Artikel beschreibt zunächst die technischen Hintergründe der Bereitstellung von lobid und die Erfahrungen, die bei der Transformation verschiedener Datensets nach JSON-LD gemacht wurden. Vorgestellt wird auch der Entwicklungsprozess und die Art und Weise der Dokumentation der Dienste.",
+    "en": "lobid is the central hub for the linked open data services provided by the North Rhine-Westphalian Library Service Centre (hbz). lobid stands for \"linking open bibliographic data\". It offers search interfaces for users and web APIs for developers. The lobid services provide access to the title data of the hbz union catalog, to descriptions of library organisations and other memory institutions from the German ISIL registry and the German Library Statistics (DBS), and to the Integrated Authority File (GND). Through the lobid services, these datasets are offered in a consistent form (JSON-LD over HTTP), ready to be used and integrated in various contexts. We provide versatile mechanisms to query the data. This article outlines the technical background for implementing lobid and our experiences in transforming various data sets to JSON-LD. We also describe our development process and our approach to documenting the services."
+  },
+  "keywords": [
+    "GND",
+    "Web APIs",
+    "JSON-LD",
+    "Linked Open Data",
+    "Verbundkatalog",
+    "ISIL-Verzeichnis",
+    "lobid"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org"
+    }
+  ],
+  "id": "https://doi.org/10.11588/ip.2018.1.52445",
+  "datePublished": "2018",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "web developers",
+    "librarians"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
