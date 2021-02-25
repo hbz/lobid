@@ -27,35 +27,17 @@
     "image": {
       "$ref": "resource:/image.json"
     },
-    "starteDate": {
+    "startDate": {
       "$ref": "resource:/startDate.json"
     },
-    "endeDate": {
-      "$ref": "resource:/startDate.json"
+    "endDate": {
+      "$ref": "resource:/endDate.json"
     },
-    "funding": {
-      "$ref": "resource:/funding.json"
+    "enhances": {
+      "$ref": "resource:/enhances.json"
     },
-    "develops": {
-      "$ref": "resource:/develops.json"
-    },
-    "projectTeam": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "resource:/id.json"
-          },
-          "type": {
-            "type": "string",
-            "const": "Organization"
-          }
-        },
-        "required": [
-          "id"
-        ]
-      }
+    "membership": {
+      "$ref": "resource:/membership.json"
     }
   },
   "required": [

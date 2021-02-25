@@ -12,5 +12,10 @@
     "en": "This projects aims to provide a web application to play around with Metafactures languages Fix and Flux.",
     "de": "Dieses Projekt entwickelt eine Web-Applikation, mit der man interaktiv die Metafacture-Sprachen Fix und Flux austesten kann."
   },
-  "url": "https://github.com/metafacture/metafacture-playground"
+  "url": "https://github.com/metafacture/metafacture-playground",
+  "enhances": [
+    {
+      "id": "https://metafacture.org"
+    }
+  ]
 }
