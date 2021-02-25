@@ -7,7 +7,8 @@
     "en": "Metafacture-Fix"
   },
   "description": {
-    "en": "Implementation of the Fix language for Metafacture as an alternative to configuring data transformations with Metamorph"
+    "en": "Implementation of the Fix language for Metafacture as an alternative to configuring data transformations with Metamorph",
+    "de": "Das Projekt entwickelt und implementiert FIX als Metafacture Sprache. Diese soll als Alternative zu Metamorph für Datentransformation eingesetzt werden."
   },
   "url": "https://github.com/metafacture/metafacture-fix"
 }

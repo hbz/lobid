@@ -1,0 +1,56 @@
+{
+  "$id": "resource:/product.json",
+  "title": "product",
+  "description": "Schema to describe a product at lobid.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "const": "Role"
+      },
+      "roleName": {
+        "allOf": [
+          {
+            "$ref": "localizedString.json"
+          },
+          {
+            "enum": [
+              "NewProduct",
+              "Enhancement for"
+            ]
+          }
+        ]
+      },
+      "product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "resource:/id.json"
+          },
+          "name": {
+            "$ref": "resource:/name.json"
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "id"
+            ]
+          },
+          {
+            "required": [
+              "name"
+            ]
+          }
+        ]
+      }
+    },
+    "required": [
+      "type",
+      "roleName",
+      "product"
+    ]
+  }
+}
