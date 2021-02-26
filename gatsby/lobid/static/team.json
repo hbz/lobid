@@ -1,26 +1,9 @@
 {
-  "@context": {
-    "@vocab": "http://schema.org/",
-    "id": "@id",
-    "type": "@type",
-    "description": {
-      "@container": "@language"
-    },
-    "name": {
-      "@container": "@language"
-    },
-    "alternateName": {
-      "@container": "@language"
-    },
-    "contactType": {
-      "@container": "@language"
-    },
-    "roleName": {
-      "@container": "@language"
-    }
-  },
-  "id": "http://lobid.org/team#!",
-  "type": "Organization",
+  "@context": "https://schema.org",
+  "id": "http://stage.lobid.org/team#!",
+  "type": [
+    "Organization"
+  ],
   "contactPoint": [
     {
       "type": "ContactPoint",
@@ -51,15 +34,6 @@
     },
     {
       "type": "ContactPoint",
-      "image": "/images/feed.png",
-      "id": "http://blog.lobid.org",
-      "contactType": {
-        "en": "Blog",
-        "de": "Blog"
-      }
-    },
-    {
-      "type": "ContactPoint",
       "image": "/images/GitHub-Mark-32px.png",
       "id": "https://github.com/hbz/lobid/issues",
       "contactType": {
@@ -78,69 +52,63 @@
     }
   ],
   "alternateName": {
-    "de": "Linked-Open-Data-Gruppe des hbz",
-    "en": "hbz's Linked Open Data group"
+    "de": "Offene-Infrastruktur-Gruppe am hbz",
+    "en": "Open Infrastructure team at hbz"
   },
   "name": {
-    "de": "Das lobid-Team",
-    "en": "The lobid team"
+    "de": "Offene Infrastruktur",
+    "en": "Open Infrastructure"
   },
   "description": {
-    "de": "lobid wird implementiert und betrieben von der Gruppe \"Offene Infrastruktur\" des hbz",
-    "en": "lobid is implemented and maintained by hbz's \"Open Infrastructure\" group"
+    "de": "Die Gruppe \"Offene Infrastruktur\" des hbz unterstützt die Etablierung und Pflege einer zukunftssicheren bibliothekarischen Dateninfrastruktur im regionalen, überregionalen und internationalen Raum. ",
+    "en": "The Open infrastructure team of hbz supports establishment and maintenance of a future-proof data infrastructure for libraries in a regional, national and international context."
   },
   "parentOrganization": "http://lobid.org/organisations/DE-605#!",
   "blog": "http://blog.lobid.org",
   "sameAs": [
     "https://twitter.com/lobidorg"
   ],
-  "foundingDate": "2010",
+  "foundingDate": "2019",
   "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
   "makesOffer": [
     {
       "id": "https://lobid.org",
-      "name": "lobid",
-      "alternateName": {
-        "de": "Dateninfrastruktur für Bibliotheken",
-        "en": "Data infrastructure for libraries"
-      }
+      "name": "lobid"
     },
     {
       "id": "https://nwbib.de",
-      "name": "NWBib",
-      "alternateName": {
-        "de": "Nordrhein-Westfälische Bibliographie",
-        "en": "Bibliography of North Rhine-Westfalia"
-      }
+      "name": "NWBib"
     },
     {
-      "id": "http://digitalisiertedrucke.de/",
-      "name": "Digitalisierte Drucke",
-      "alternateName": {
-        "de": "Verzeichnis digitalisierter Drucke",
-        "en": "Registry of digitised prints"
-      }
+      "id": "https://metafacture.org",
+      "name": "Metafacture"
     },
     {
-      "id": "http://github.com/culturegraph/metafacture-ide",
-      "name": "Metafacture IDE",
-      "alternateName": {
-        "de": "Integrierte Datenverarbeitungsumgebung",
-        "en": "Integrated data processing environment"
-      }
+      "id": "https://skohub.io",
+      "name": "SkoHub"
     }
   ],
-  "member": [
+  "membership": [
     {
       "type": "Role",
       "startDate": "2010",
+      "endDate": "2019-10",
       "roleName": {
         "de": "Projektmanager, Bibliothekar",
         "en": "Project Manager, Librarian"
       },
       "member": {
-        "name": "Adrian Pohl",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/SWIB_18_-_day_1-0665.jpg/1024px-SWIB_18_-_day_1-0665.jpg",
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2019-10",
+      "roleName": {
+        "de": "Gruppenleitung, Bibliothekar",
+        "en": "Group lead, Librarian"
+      },
+      "member": {
         "id": "http://lobid.org/team/ap#!"
       }
     },
@@ -152,8 +120,6 @@
         "en": "Software Developer, System Administrator"
       },
       "member": {
-        "name": "Pascal Christoph",
-        "image": "http://www.dr0i.de/lib/grafik/wiki_icon_trans_dr0i.de.gif",
         "id": "http://lobid.org/team/pc#!"
       }
     },
@@ -165,9 +131,29 @@
         "en": "Software Developer"
       },
       "member": {
-        "name": "Fabian Steeg",
-        "image": "http://fsteeg.com/files/fsteeg.png",
         "id": "http://lobid.org/team/fs#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2020",
+      "roleName": {
+        "de": "Softwareentwicklerin",
+        "en": "Software Developer"
+      },
+      "member": {
+        "id": "http://lobid.org/team/kt#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2020",
+      "roleName": {
+        "de": "Bibliothekar",
+        "en": "Librarian"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
       }
     },
     {
@@ -179,11 +165,11 @@
         "en": "Software Developer"
       },
       "member": {
-        "name": "Felix Ostrowski",
-        "sameAs": [
-          "https://twitter.com/literarymachine",
-          "https://github.com/literarymachine"
-        ]
+        "id": "https://github.com/literarymachine/",
+        "name": {
+          "de": "Felix Ostrowski",
+          "en": "Felix Ostrowski"
+        }
       }
     },
     {
@@ -195,10 +181,11 @@
         "en": "Software Developer"
       },
       "member": {
-        "name": "Simon Ritter",
-        "sameAs": [
-          "https://github.com/SBRitter"
-        ]
+        "id": "https://github.com/SBRitter",
+        "name": {
+          "de": "Simon Ritter",
+          "en": "Simon Ritter"
+        }
       }
     },
     {
@@ -210,24 +197,12 @@
         "en": "Librarian"
       },
       "member": {
-        "name": "Christoph Ewertowski",
-        "image": "http://lobid.org/download/ce.jpg",
-        "id": "http://lobid.org/team/ce#!"
+        "id": "http://lobid.org/team/ce#!",
+        "name": {
+          "de": "Christoph Ewertowski",
+          "en": "Christoph Ewertowski"
+        }
       }
     }
-  ],
-  "location": {
-    "type": "Place",
-    "address": {
-      "postalCode": "50674",
-      "streetAddress": "Jülicher Str. 6",
-      "addressLocality": "Köln",
-      "addressCountry": "DE",
-      "type": "PostalAddress"
-    },
-    "geo": {
-      "lat": "50.93410",
-      "lon": "6.93549"
-    }
-  }
+  ]
 }

@@ -4,13 +4,9 @@ import { Team } from "../components/team.html";
 
 export default ({ data }) => (
   <Team
-    contactPointId={data.dataJson.contactPoint[0].id}
-    contactPointContactType={data.dataJson.contactPoint[0].contactType.en}
-    description={data.dataJson.description.en}
-    makesOfferAlternateName0={data.dataJson.makesOffer[0].alternateName.en}
-    makesOfferAlternateName1={data.dataJson.makesOffer[1].alternateName.en}
-    makesOfferAlternateName2={data.dataJson.makesOffer[2].alternateName.en}
-    makesOfferAlternateName3={data.dataJson.makesOffer[3].alternateName.en}
+    team={data.dataJson}
+    contactName="Contact"
+    subtitle="data infrastructure for libraries"
     publications="Publications"
     language="Deutsch"
     languageTooltip="Wechsel zur Deutschen Version"
@@ -18,55 +14,49 @@ export default ({ data }) => (
     teamLink="/team-en"
     makesOfferName="Products"
     memberName="Members"
-    member0MemberImage={data.dataJson.member[0].member.image}
-    member0RoleName={data.dataJson.member[0].roleName.en}
-    member1MemberImage={data.dataJson.member[1].member.image}
-    member1RoleName={data.dataJson.member[1].roleName.en}
-    member2MemberImage={data.dataJson.member[2].member.image}
-    member2RoleName={data.dataJson.member[2].roleName.en}
     memberFormerName="Former members"
-    member3RoleName={data.dataJson.member[3].roleName.en}
-    member4RoleName={data.dataJson.member[4].roleName.en}
-    member5RoleName={data.dataJson.member[5].roleName.en}
     companyDetails="Company details"
     privacy="privacy"
+    contactPointId="mailto:semweb@hbz-nrw.de"
   />
 );
 
+// TODO: extract to fragment, pass 'de' or 'en' as $lang variable
 export const query = graphql`
   query {
     dataJson {
       alternateName {
-        en
+        label: en
       }
       contactPoint {
         contactType {
-          en
+          label: en
         }
         id
+        image
       }
       description {
-        en
+        label: en
       }
       makesOffer {
-        alternateName {
-          en
-        }
         id
         name
       }
-      member {
+      membership {
         member {
           id
-          image
-          name
+          name {
+            label: en
+          }
         }
         roleName {
-          en
+          label: en
         }
+        startDate
+        endDate
       }
       name {
-        en
+        label: en
       }
     }
   }
