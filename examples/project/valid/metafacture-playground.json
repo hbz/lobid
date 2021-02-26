@@ -10,12 +10,17 @@
   },
   "description": {
     "en": "This projects aims to provide a web application to play around with Metafactures languages Fix and Flux.",
-    "de": "Dieses Projekt entwickelt eine Web-Applikation, mit der man interaktiv die Metafacture-Sprachen Fix und Flux austesten kann."
+    "de": "Der Metafacture Playground ist eine browserbasierte Umgebung, um an der Konfiguration von ETL-Prozessen mittels Metafacture zu arbeiten. Der Playground nutzt die [Metafacture-Fix-Erweiterung (MFF)](https://github.com/metafacture/metafacture-fix). Kurzfristig soll der Playground zum Teilen von ETL-Konfigurationen via URL und für aktive Arbeit in metafacture-Workshops Verwendung finden.\n\nMittelfristiges Ziel ist der Aufbau einer Plattform zum Teilen von ETL-Konfigurationen, um das Auffinden bestehender Lösungen und deren Nachnutzung zu erleichtern und damit Parallelarbeiten zu vermeiden."
   },
   "url": "https://github.com/metafacture/metafacture-playground",
   "enhances": [
     {
       "id": "https://metafacture.org"
+    }
+  ],
+  "isBasedOn": [
+    {
+      "id": "https://github.com/metafacture/metafacture-fix"
     }
   ]
 }
