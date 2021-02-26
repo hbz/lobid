@@ -1,0 +1,21 @@
+{
+  "$id": "resource:/result.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "result",
+  "description": "The result of a project, usually a product",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "resource:/id.json"
+      },
+      "name": {
+        "$ref": "resource:/name.json"
+      }
+    },
+    "required": [
+      "id"
+    ]
+  }
+}

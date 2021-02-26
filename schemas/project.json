@@ -38,6 +38,9 @@
     },
     "membership": {
       "$ref": "resource:/membership.json"
+    },
+    "result": {
+      "$ref": "resource:/result.json"
     }
   },
   "required": [

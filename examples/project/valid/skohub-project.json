@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://github.com/skohub-io",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "SkoHub",
+    "en": "SkoHub"
+  },
+  "description": {
+    "de": "Kontrollierte Vokabulare, Normdaten und andere Wissensorganisationssysteme sind seit langem ein zentraler Bestandteil der Wissensorganisation. Sie werden häufig von mehreren, unterschiedlichen Institutionen bei der Erschließung von Ressourcen verwendet und verbinden somit indirekt Ressourcen zum gleichen Thema. Damit alle Einträge zu einem Thema tatsächlich gefunden werden können, müssen meist die einzelnen Kataloge bzw. Datenbanken abgefragt oder übergreifende Suchindizes aufgebaut werden. Dieser Ansatz bringt viele Schwierigkeiten mit sich.\n\nDer strategische Ansatz von SkoHub verlagert die Sach- und Inhaltserschließung konsequent ins Web, um darauf neue, leistungsfähige Discovery-Werkzeuge aufzubauen. Innovatives Merkmal der SkoHub-Infrastruktur ist die Nutzung von Wissensorganisationssystemen als themenorientierte Schnittstelle zwischen Publizierenden und Wissenssuchenden. Damit wird es möglich, bestimmten Themen (im Sinne von Einträgen einer Klassifikation, eines Thesaurus etc.) zu folgen und Push-Benachrichtigungen zu bekommen, sobald irgendjemand eine Ressource mit dem entsprechenden Thema inhaltlich erschlossen hat.\n\nDas SkoHub-Projekt ist entstanden als begleitendes Projekt im Rahmen des Vorprojekt Content Marktplatz NRW und wird gefördert vom Ministerium für Kultur und Wissenschaft. Im Kontext des NRW Landesportals kann SkoHub zur Erschließung von dezentral im Web publizierten Inhalten mit hochqualitativen Metadaten benutzt werden. Für die technische Umsetzung wurde die graphthinking GmbH beauftragt.\n\nMit SkoHub wird ein innovativer Ansatz für das webbasierte, kollaborative Auffinden von relevanten Informationen erprobt. Die dabei entwickelte technische Infrastruktur ist in Teilen auch für andere Aufgaben (Standardisierung, Publikation und Pflege kontrollierter Vokabulare) relevant und findet bereits in der Unterstützung von Standardisierungsprozessen im Kontext der DINI AG KIM Verwendung.",
+    "en": "SkoHub seeks to support a novel approach for finding content on the web. The general idea is to extend the scope of Knowledge Organization Systems (KOS) to also act as communication hubs for publishers and information seekers. In effect, SkoHub allows to follow specific subjects in order to be notified when new content about that subject is published.\n\nThe approach is realized by putting Knowledge Organization Systems online according to the SKOS standard. Additionally, they are exposed using the (social) networking protocols [ActivityPub](https://activitypub.rocks/) & [Linked Data Notifications](https://www.w3.org/TR/ldn/). This effectively turns the published vocabularies into hubs that provide structured metadata about and links to web content in real time.\n\nThe project to create a production-ready version of SkoHub has been out by the North-Rhine Westphalian Library Service Centre (hbz) in cooperation with [graphthinking GmbH](http://graphthinking.com/) with four deliverables. The core is the back end infrastructure for publishing vocabularies on the web (Skohub Vocabs) and for receiving and pushing notifications (SkoHub PubSub). Additionally, we provide an editor to describe web resources according to a common metadata schema and to send notifications (SkoHub Editor). The editor can also be used as a browser plugin for Firefox and Chrome (SkoHub Extension)."
+  },
+  "startDate": "2019-03-06",
+  "endDate": "2020-04-01",
+  "result": [
+    {
+      "id": "https://skohub.io"
+    }
+  ]
+}
