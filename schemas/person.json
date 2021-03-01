@@ -4,6 +4,9 @@
   "title":"person",
   "description":"Schema to describe persons at lobid.",
   "type":"object",
+  "default": {
+    "@context": "https://schema.org"
+  },
   "properties":{
     "@context":{
       "$ref":"https://hbz.github.io/lobid/schemas/context.json"

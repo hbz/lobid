@@ -7,6 +7,6 @@
   "format": "uri",
   "const": "https://schema.org",
   "_display": {
-    "placeholder": "The URL of the resource"
+    "className": "hidden"
   }
 }
