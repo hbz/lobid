@@ -1,5 +1,5 @@
 {
-  "$id": "resource:/enhances.json",
+  "$id": "https://hbz.github.io/lobid/schemas/enhances.json",
   "title": "product",
   "description": "Schema to describe a product at lobid.",
   "type": "array",
@@ -7,10 +7,10 @@
     "type": "object",
     "properties": {
       "id": {
-        "$ref": "resource:/id.json"
+        "$ref": "https://hbz.github.io/lobid/schemas/id.json"
       },
       "name": {
-        "$ref": "resource:/name.json"
+        "$ref": "https://hbz.github.io/lobid/schemas/name.json"
       }
     },
     "required": [

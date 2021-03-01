@@ -1,15 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "resource:/publication.json",
+  "$id": "https://hbz.github.io/lobid/schemas/publication.json",
   "title": "prodPublicationuct",
   "description": "Schema to describe a publication (blog post, slidedeck, journal article etc.).",
   "type": "object",
   "properties": {
     "@context": {
-      "$ref": "resource:/context.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/context.json"
     },
     "id": {
-      "$ref": "resource:/id.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/id.json"
     },
     "type": {
       "type": "string",
@@ -34,21 +34,21 @@
       }
     },
     "about": {
-      "$ref": "resource:/about.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/about.json"
     },
     "creator": {
-      "$ref": "resource:/creator.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/creator.json"
     },
     "datePublished": {
       "title": "Publication date",
       "description": "The publication date of a creative work",
-      "$ref": "resource:/datePublished.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/datePublished.json"
     },
     "inLanguage": {
-      "$ref": "resource:/inLanguage.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/inLanguage.json"
     },
     "license": {
-      "$ref": "resource:/license.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/license.json"
     }
   },
   "required": [

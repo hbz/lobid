@@ -1,5 +1,5 @@
 {
-  "$id": "resource:/affiliation.json",
+  "$id": "https://hbz.github.io/lobid/schemas/affiliation.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Affiliation",
   "description": "School or organisation, the person is affiliated with.",

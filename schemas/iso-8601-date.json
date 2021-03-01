@@ -1,5 +1,5 @@
 {
-  "$id": "resource:/iso-8601-date.json",
+  "$id": "https://hbz.github.io/lobid/schemas/iso-8601-date.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "ISO 8601 Date",
   "description": "A date in ISO 8601 format.",
