@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://github.com/dini-ag-kim/oer-stoeberspecs",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "StöberSpecs",
+    "en": "StöberSpecs"
+  },
+  "description": {
+    "de": "Im Rahmen des Projektes StöberSpecs entstehen Werkzeuge und Prozesse für die gemeinsame Entwicklung von Spezifikationen (engl. Kurzfassung „Specs“) von Metadatenstandards, die das „Aufstöbern“ von Open Educational Resources (OER) erleichtern sollen. Das Projekt wird gefördert durch das Ministerium für Kultur und Wissenschaft und durchgeführt in Zusammenarbeit mit Open Culture Consulting.\n\nSeinen Ausgangspunkt hatte das Projekt in der OER-Repo-AG der Bundesländer, die ihren Auftrag aus der AG \"Digitalisierung im Hochschulbereich\" des Hochschulausschusses der KMK hat. Dort wurde 2019 ein erster OER-Metadatenstandard entwickelt, allerdings in einem eher geschlossenen Verfahren. Als öffentliches Forum zur gemeinsamen fortdauernden, transparenten und nachhaltigen Entwicklung und Pflege von Metadatenstandards wurde die seit 2013 bestehende OER-Metadatengruppe der DINI AG KIM gewählt, die 2017 mit der Jointly-AG-Metadaten fusionierte.\n\nFür die Standardisierung von kontrollierten Vokabularen setzt das Projekt auf das SKOS-Datenmodell (Simple Knowledge Organization Systems) und liefert als ein Ergebnis eine [deutschsprachige SKOS-Einführung](https://dini-ag-kim.github.io/skos-einfuehrung/). Zur Publikation und Pflege von SKOS-Vokabularen greift das Projekt auf die entsprechenden SkoHub-Entwicklungen zurück ([SkoHub Vocabs](https://github.com/skohub-io/skohub-vocabs)).",
+    "en": "Project to develop tools and processes for the standardization of metadata profiles and controlled vocabularies within KI;."
+  },
+  "startDate": "2019-11-01",
+  "endDate": "2020-01-31",
+  "isBasedOn": [
+    {
+      "id": "https://skohub.io"
+    }
+  ]
+}

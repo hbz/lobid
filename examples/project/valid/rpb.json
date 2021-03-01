@@ -10,7 +10,22 @@
   },
   "description": {
     "en": "Migrating the RPB from Allegro to a new cataloging and web presentation environment",
-    "de": "Migration der Rheinland-Pfälzischen Bibliographie (RPB) von Allegro in eine neue Erfassungs- und Präsentationsumgebung. Nutzen von Erfahrungen und Technologien aus NWbib und SkoHub."
+    "de": "Das Landesbibliothekszentrum Rheinland-Pfalz hat das hbz beauftragt, die Rheinland-Pfälzische Bibliographie (RPB) von Allegro in eine neues System zu migrieren, das Erfassung und Präsentation der Bibliographie im Web abdeckt. Auf Basis der Erfahrungen mit der Nordrhein-Westfälischen Bibliographie (NWBib) und mit einer Erweiterung der SkoHub-Software um ein weiteres Modul zur Erfassung, Speicherung und Pflege von Linked Data wird das Projekt umgesetzt. Mit Metafacture werden zunächst die Allegro-Daten nach Linked Date überführt und indexiert und parallel an einer Erfassungs -und Speicherschicht gearbeitet."
   },
-  "url": "https://github.com/hbz/rpb"
+  "startDate": "2021-04-01",
+  "endDate": "2022-03-31",
+  "isBasedOn": [
+    {
+      "id": "https://metafacture.org"
+    },
+    {
+      "id": "https://skohub.io"
+    },
+    {
+      "id": "https://nwbib.de"
+    },
+    {
+      "id": "https://lobid.org"
+    }
+  ]
 }

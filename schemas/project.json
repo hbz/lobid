@@ -27,6 +27,9 @@
     "image": {
       "$ref": "resource:/image.json"
     },
+    "isBasedOn": {
+      "$ref": "resource:/isBasedOn.json"
+    },
     "startDate": {
       "$ref": "resource:/startDate.json"
     },
@@ -35,6 +38,9 @@
     },
     "enhances": {
       "$ref": "resource:/enhances.json"
+    },
+    "result": {
+      "$ref": "resource:/result.json"
     },
     "membership": {
       "$ref": "resource:/membership.json"

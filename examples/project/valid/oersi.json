@@ -16,7 +16,12 @@
     "en": "Common project by TIB Hannover and hbz to create an open search index for educational resources"
   },
   "url": "https://oersi.de",
-  "isBasedOn": {
-    "id": "https://metafacture.org"
-  }
+  "isBasedOn": [
+    {
+      "id": "https://metafacture.org"
+    },
+    {
+      "id": "https://github.com/dini-ag-kim/lrmi-profile"
+    }
+  ]
 }
