@@ -20,10 +20,10 @@
       ]
     },
     "name": {
-      "$ref": "localizedString.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json"
     },
     "description": {
-      "$ref": "localizedString.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json"
     },
     "keywords": {
       "title": "Keywords",
