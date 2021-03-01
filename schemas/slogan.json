@@ -6,5 +6,8 @@
   "allOf": [
     { "$ref": "localizedString.json" },
     { "required": ["en", "de"]}
-  ]
+  ],
+  "_display": {
+    "placeholder": "Slogan oder Untertitel des Produkts/Projekts"
+  }
 }

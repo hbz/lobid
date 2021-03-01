@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://hbz.github.io/lobid/schemas/project.json",
-  "title": "Project",
+  "title": "Projekt",
   "description": "Schema to describe a project at lobid.",
   "type": "object",
   "default": {
@@ -12,6 +12,7 @@
       "$ref": "https://hbz.github.io/lobid/schemas/id.json"
     },
     "type": {
+      "title": "Typ",
       "type": "array",
       "items": {
         "type": "string",

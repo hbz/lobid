@@ -1,7 +1,7 @@
 {
   "$id": "https://hbz.github.io/lobid/schemas/enhances.json",
-  "title": "product",
-  "description": "Schema to describe a product at lobid.",
+  "title": "Entwickelt weiter",
+  "description": "Ein Produkt, das durch die Aktivität erweitert, verbessert oder aktualisiert wird.",
   "type": "array",
   "items": {
     "type": "object",

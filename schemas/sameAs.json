@@ -1,11 +1,14 @@
 {
   "$id": "https://hbz.github.io/lobid/schemas/sameAs.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Other refrence pages",
+  "title": "Profile anderso",
   "description": "Other refrence pages of the person",
   "type": "array",
   "items": {
     "type": "string",
     "format": "uri"
+  },
+  "_display": {
+    "placeholder": "Link zu Eintrag zur Entität bei Facebook, Twitter, Wikidata etc."
   }
 }
