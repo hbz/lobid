@@ -1,5 +1,5 @@
 {
-  "$id": "resource:/email.json",
+  "$id": "https://hbz.github.io/lobid/schemas/email.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "E-Mail",
   "description": "Email of the user",

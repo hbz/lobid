@@ -1,5 +1,5 @@
 {
-  "$id": "resource:/hasPart.json",
+  "$id": "https://hbz.github.io/lobid/schemas/hasPart.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Has part",
   "description": "Entities e.g. products that are part of the described entity",
@@ -8,13 +8,13 @@
     "type": "object",
     "properties": {
       "id": {
-        "$ref": "resource:/id.json"
+        "$ref": "https://hbz.github.io/lobid/schemas/id.json"
       },
       "type": {
         "type": "string"
       },
       "name": {
-        "$ref": "resource:/name.json"
+        "$ref": "https://hbz.github.io/lobid/schemas/name.json"
       }
     },
     "required": [

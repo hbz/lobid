@@ -1,12 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "resource:/project.json",
+  "$id": "https://hbz.github.io/lobid/schemas/project.json",
   "title": "Project",
   "description": "Schema to describe a project at lobid.",
   "type": "object",
   "properties": {
     "id": {
-      "$ref": "resource:/id.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/id.json"
     },
     "type": {
       "type": "array",
@@ -16,34 +16,34 @@
       }
     },
     "alternateName": {
-      "$ref": "resource:/alternateName.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/alternateName.json"
     },
     "description": {
-      "$ref": "resource:/description.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/description.json"
     },
     "name": {
-      "$ref": "resource:/name.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/name.json"
     },
     "image": {
-      "$ref": "resource:/image.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/image.json"
     },
     "isBasedOn": {
-      "$ref": "resource:/isBasedOn.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/isBasedOn.json"
     },
     "startDate": {
-      "$ref": "resource:/startDate.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/startDate.json"
     },
     "endDate": {
-      "$ref": "resource:/endDate.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/endDate.json"
     },
     "enhances": {
-      "$ref": "resource:/enhances.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/enhances.json"
     },
     "result": {
-      "$ref": "resource:/result.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/result.json"
     },
     "membership": {
-      "$ref": "resource:/membership.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/membership.json"
     }
   },
   "required": [

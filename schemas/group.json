@@ -1,15 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "resource:/group.json",
+  "$id": "https://hbz.github.io/lobid/schemas/group.json",
   "title": "Group",
   "description": "Schema to describe hbz groups",
   "type": "object",
   "properties": {
     "@context": {
-      "$ref": "resource:/context.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/context.json"
     },
     "id": {
-      "$ref": "resource:/id.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/id.json"
     },
     "type": {
       "type": "array",
@@ -19,19 +19,19 @@
       }
     },
     "name": {
-      "$ref": "resource:/name.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/name.json"
     },
     "description": {
-      "$ref": "resource:/description.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/description.json"
     },
     "sameAs": {
-      "$ref": "resource:/sameAs.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/sameAs.json"
     },
     "image": {
-      "$ref": "resource:/image.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/image.json"
     },
     "membership": {
-      "$ref": "resource:/membership.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/membership.json"
     }
   },
   "required": [

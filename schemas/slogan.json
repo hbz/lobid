@@ -1,5 +1,5 @@
 {
-  "$id": "resource:/slogan.json",
+  "$id": "https://hbz.github.io/lobid/schemas/slogan.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Slogan",
   "description": "The slogan or subtitle of the entity. MUST have german and english version",

@@ -1,5 +1,5 @@
 {
-	"$id": "resource:/telephone.json",
+	"$id": "https://hbz.github.io/lobid/schemas/telephone.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"title": "Telephone",
 	"description": "The telephone number of the person",
