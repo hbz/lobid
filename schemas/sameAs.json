@@ -6,9 +6,9 @@
   "type": "array",
   "items": {
     "type": "string",
-    "format": "uri"
-  },
-  "_display": {
-    "placeholder": "Link zu Eintrag zur Entität bei Facebook, Twitter, Wikidata etc."
+    "format": "uri",
+    "_display": {
+      "placeholder": "Link zu Eintrag zur Entität bei Facebook, Twitter, Wikidata etc."
+    }
   }
 }

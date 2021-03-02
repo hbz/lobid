@@ -8,8 +8,7 @@
     "type": "object",
     "properties": {
       "id": {
-        "type": "string",
-        "format": "uri"
+        "$ref": "https://hbz.github.io/lobid/schemas/id.json"
       }
     },
     "required": [

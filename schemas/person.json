@@ -48,9 +48,6 @@
     "image": {
       "$ref": "https://hbz.github.io/lobid/schemas/image.json"
     },
-    "affiliation": {
-      "$ref": "https://hbz.github.io/lobid/schemas/affiliation.json"
-    },
     "alumniOf": {
       "$ref": "https://hbz.github.io/lobid/schemas/alumniOf.json"
     }
