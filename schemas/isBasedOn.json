@@ -2,7 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/isBasedOn.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Basiert auf",
-  "description": "Entities e.g. products that are used in the described entity",
+  "description": "Andere Entitäten, z.B. Produkte, die für die beschriebene Entität Verwendung finden",
   "type": "array",
   "items": {
     "type": "object",

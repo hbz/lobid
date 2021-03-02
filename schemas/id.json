@@ -2,7 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/id.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "URI",
-  "description": "The URL/URI of the resource",
+  "description": "Die URL/URI der Entität",
   "type": "string",
   "format": "uri",
   "_display": {

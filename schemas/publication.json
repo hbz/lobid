@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://hbz.github.io/lobid/schemas/publication.json",
   "title": "Publikation",
-  "description": "Schema to describe a publication (blog post, slidedeck, journal article etc.).",
+  "description": "Schema zur Beschreibung einer Publikation (Blogpost, Slides, Zeitschriftenartikel etc.).",
   "type": "object",
   "default": {
     "@context": "https://schema.org"

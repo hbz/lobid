@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://hbz.github.io/lobid/schemas/creator.json",
   "title": "Urheber*in",
-  "description": "Schema to describe the creator(s) of a publication",
+  "description": "Die Urheber*innen einer Publikation",
   "type": "array",
   "items": {
     "type": "object",

@@ -2,7 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/alumniOf.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Alumni-Organisationen",
-  "description": "Organisation that the person is alumni of.",
+  "description": "Eine Organisation, von der die Person Alumni ist.",
   "type": "array",
   "items": {
     "type": "string",

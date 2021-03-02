@@ -2,7 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/license.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Lizenz",
-  "description": "A link to a CreativeCommons license",
+  "description": "Ein Link zu einer Creative-Commons-Lizens",
   "type": "string",
   "format": "uri",
   "pattern": "^https:\/\/creativecommons.org\/(licenses|licences|publicdomain)\/.*",

@@ -2,7 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/hasPart.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Hat Bestandteil",
-  "description": "Entities e.g. products that are part of the described entity",
+  "description": "Entitäten, die Bestandteil der beschriebenen Entität sind",
   "type": "array",
   "items": {
     "type": "object",

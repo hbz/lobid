@@ -2,6 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/image.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Abbildung",
+  "description": "Ein Link zu einem Bild zu der Entität",
   "type": "string",
   "format": "uri",
   "_display": {

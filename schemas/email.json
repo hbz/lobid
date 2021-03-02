@@ -2,7 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/email.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "E-Mail",
-  "description": "Email of the user",
+  "description": "Die E-Mail_Adresse einer Person",
   "type": "string",
   "format": "email",
   "_display": {

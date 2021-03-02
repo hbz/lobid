@@ -2,7 +2,7 @@
   "$id": "https://hbz.github.io/lobid/schemas/about.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Thema",
-  "description": "The subject, e.g. project or product, of a publication",
+  "description": "Das Thema – z.B. Produkt oder Projekt – einer Publikation",
   "type": "array",
   "items": {
     "type": "object",
@@ -17,6 +17,6 @@
     ]
   },
   "_display": {
-    "placeholder": "Das Thema – z.B. Produkt odr Projekt – der Publikation"
+    "placeholder": "Das Thema – z.B. Produkt oder Projekt – einer Publikation"
   }
 }

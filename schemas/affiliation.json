@@ -1,14 +1,14 @@
 {
   "$id": "https://hbz.github.io/lobid/schemas/affiliation.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Affiliierung",
-  "description": "Group the person is affiliated with.",
+  "title": "Organisationszugehörigkeit",
+  "description": "Gruppe oder Institution, zu der eine Person gehört",
   "type": "array",
   "items": {
     "type": "string",
     "format": "uri"
   },
   "_display": {
-    "placeholder": "Gruppenzugehörigkeit der Person"
+    "placeholder": "Gruppe oder Institution, zu der eine Person gehört"
   }
 }

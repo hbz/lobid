@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://hbz.github.io/lobid/schemas/product.json",
   "title": "Produkt",
-  "description": "Schema to describe a product at lobid.",
+  "description": "Schema zur Beschreibung eines Produkts",
   "type": "object",
   "default": {
     "@context": "https://schema.org"
