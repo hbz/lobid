@@ -20,16 +20,13 @@
         "$ref": "https://hbz.github.io/lobid/schemas/endDate.json"
       },
       "roleName": {
-        "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json"
+        "$ref": "https://hbz.github.io/lobid/schemas/roleName.json"
       },
       "member": {
         "type": "object",
         "properties": {
           "id": {
             "$ref": "https://hbz.github.io/lobid/schemas/id.json"
-          },
-          "name": {
-            "$ref": "https://hbz.github.io/lobid/schemas/name.json"
           }
         },
         "required": [

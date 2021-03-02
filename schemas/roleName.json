@@ -1,0 +1,10 @@
+{
+  "$id": "https://hbz.github.io/lobid/schemas/roleName.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rollenbezeichnung",
+  "description": "Die Bezeichnung einer Rolle zur Spezifikation einer Mitgliedschaft",
+  "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json",
+  "_display": {
+    "placeholder": "Rolle, die die Person als Mitglied hat"
+  }
+}
