@@ -1,8 +1,8 @@
 {
   "$id": "https://hbz.github.io/lobid/schemas/alternateName.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Alternate name",
-  "description": "Other names used for a person or a thing",
+  "title": "Andere Bezeichnung (z.B. Akronym)",
+  "description": "Andere Bezeichnungen für eine Entität",
   "type": "array",
   "items": {
     "type": "string"

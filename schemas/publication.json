@@ -1,9 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://hbz.github.io/lobid/schemas/publication.json",
-  "title": "prodPublicationuct",
-  "description": "Schema to describe a publication (blog post, slidedeck, journal article etc.).",
+  "title": "Publikation",
+  "description": "Schema zur Beschreibung einer Publikation (Blogpost, Slides, Zeitschriftenartikel etc.).",
   "type": "object",
+  "default": {
+    "@context": "https://schema.org"
+  },
   "properties": {
     "@context": {
       "$ref": "https://hbz.github.io/lobid/schemas/context.json"
@@ -12,6 +15,7 @@
       "$ref": "https://hbz.github.io/lobid/schemas/id.json"
     },
     "type": {
+      "title": "Typ",
       "type": "string",
       "enum": [
         "BlogPosting",

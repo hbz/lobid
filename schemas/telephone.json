@@ -1,7 +1,10 @@
 {
 	"$id": "https://hbz.github.io/lobid/schemas/telephone.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "Telephone",
-	"description": "The telephone number of the person",
-	"type": "string"
+	"title": "Telefon",
+	"description": "Die Telefonnmmer der Entität",
+	"type": "string",
+	"_display": {
+		"placeholder": "Telefonnummer mit Ländervorwahl"
+	}
 }

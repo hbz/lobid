@@ -1,10 +1,10 @@
 {
   "$id": "https://hbz.github.io/lobid/schemas/description.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Description",
-  "description": "The description of the object e.g. product, project. MUST have german and english Version",
-  "allOf": [
-    { "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json" },
-    { "required": ["en", "de"]}
-  ]
+  "title": "Beschreibung",
+  "description": "Die Beschreibung einer Entität",
+  "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json",
+  "_display": {
+    "rows": 5
+  }
 }

@@ -2,11 +2,11 @@
   "$id": "https://hbz.github.io/lobid/schemas/context.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "JSON-LD context",
-  "description": "The JSON-LD context of the document",
+  "description": "Der JSON-LD context des Dokuments",
   "type": "string",
   "format": "uri",
   "const": "https://schema.org",
   "_display": {
-    "placeholder": "The URL of the resource"
+    "className": "hidden"
   }
 }

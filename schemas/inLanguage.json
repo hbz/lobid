@@ -1,8 +1,8 @@
 {
   "$id": "https://hbz.github.io/lobid/schemas/inLanguage.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Language",
-  "description": "The language(s) a creative work is published in",
+  "title": "Sprache",
+  "description": "Die Sprache(n), in der/denen eine Publikation verfasst ist",
   "type": "array",
   "items": {
     "$ref": "https://hbz.github.io/lobid/schemas/Language.json"

@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://hbz.github.io/lobid/schemas/membership.json",
-  "title": "Membership",
-  "description": "Schema to describe a membership relation",
+  "title": "Mitgliedschaft",
+  "description": "Beschreibung einer Mitgliedschaft in einem Projekt, einer Organisation oder einem Produkt ",
   "type": "array",
   "items": {
     "type": "object",

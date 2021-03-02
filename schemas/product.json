@@ -1,9 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://hbz.github.io/lobid/schemas/product.json",
-  "title": "product",
-  "description": "Schema to describe a product at lobid.",
+  "title": "Produkt",
+  "description": "Schema zur Beschreibung eines Produkts",
   "type": "object",
+  "default": {
+    "@context": "https://schema.org"
+  },
   "properties": {
     "@context": {
       "$ref": "https://hbz.github.io/lobid/schemas/context.json"
@@ -12,6 +15,7 @@
       "$ref": "https://hbz.github.io/lobid/schemas/id.json"
     },
     "type": {
+      "title": "Typ",
       "type": "array",
       "items": {
         "type": "string",

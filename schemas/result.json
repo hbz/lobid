@@ -1,8 +1,8 @@
 {
   "$id": "https://hbz.github.io/lobid/schemas/result.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "result",
-  "description": "Entities (mostly products) that result from a project",
+  "title": "Ergebnis",
+  "description": "Entitäten (meist Produkte), die Ergebnis eines Projekts sind",
   "type": "array",
   "items": {
     "type": "object",
