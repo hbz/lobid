@@ -16,7 +16,9 @@
       "type": "array",
       "items": {
         "type": "string",
-        "const": "Project"
+        "enum": [
+          "Project"
+        ]
       }
     },
     "alternateName": {

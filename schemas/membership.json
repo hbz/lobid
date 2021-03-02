@@ -9,7 +9,9 @@
     "properties": {
       "type": {
         "type": "string",
-        "const": "Role"
+        "enum": [
+          "Role"
+        ]
       },
       "startDate": {
         "$ref": "https://hbz.github.io/lobid/schemas/startDate.json"
