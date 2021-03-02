@@ -29,7 +29,7 @@ export class Team extends React.Component {
         {this.props.team.membership.filter(member => member.endDate).map((member) =>
           <div>
             <p>
-              <a href={member.member.id}>
+              <a href={member.member.id.replace('http://lobid.org/','/')}>
                 {member.member.name ? member.member.name.label : member.member.id}
               </a>{" "}
               <br />
@@ -95,6 +95,7 @@ export class Team extends React.Component {
                   height="20"
                   style={{ marginRight: "12px" }}
                   title={contactPoint.contactType.label}
+                  alt={contactPoint.contactType.label}
                 />
               </a>
 
@@ -107,7 +108,7 @@ export class Team extends React.Component {
             <div>
               <div>
                 <p>
-                  <a href={member.member.id}>
+                  <a href={member.member.id.replace('http://lobid.org/','/')}>
                     {member.member.name ? member.member.name.label : member.member.id}
                   </a>{" "}
                   <br />
