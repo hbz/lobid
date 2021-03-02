@@ -9,12 +9,6 @@
     "properties": {
       "id": {
         "$ref": "https://hbz.github.io/lobid/schemas/id.json"
-      },
-      "type": {
-        "type": "string"
-      },
-      "name": {
-        "$ref": "https://hbz.github.io/lobid/schemas/name.json"
       }
     },
     "required": [

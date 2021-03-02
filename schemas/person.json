@@ -5,7 +5,10 @@
   "description": "Schema zur Beschreibung einer Person",
   "type": "object",
   "default": {
-    "@context": "https://schema.org"
+    "@context": "https://schema.org",
+    "type": [
+      "Person"
+    ]
   },
   "properties": {
     "@context": {
@@ -16,10 +19,16 @@
     },
     "type": {
       "title": "Typ",
-      "type": "string",
-      "enum": [
-        "Person"
-      ]
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Person"
+        ]
+      },
+      "_display": {
+        "className": "hidden"
+      }
     },
     "email": {
       "$ref": "https://hbz.github.io/lobid/schemas/email.json"

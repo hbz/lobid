@@ -14,9 +14,9 @@
     },
     "required": [
       "id"
-    ]
-  },
-  "_display": {
-    "placeholder": "Das Thema – z.B. Produkt oder Projekt – einer Publikation"
+    ],
+    "_display": {
+      "placeholder": "Das Thema – z.B. Produkt oder Projekt – einer Publikation"
+    }
   }
 }
