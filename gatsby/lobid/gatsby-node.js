@@ -1,6 +1,7 @@
 const path = require("path");
 
-exports.createPages = ({ actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
+  const { createRedirect } = actions
   const { createPage } = actions;
 
   createPage({
@@ -8,8 +9,30 @@ exports.createPages = ({ actions }) => {
     component: path.resolve(`./src/pages/team-de.js`)
   });
 
-  createPage({
-    path: "/visual",
-    component: path.resolve(`./src/pages/visual.js`)
+  const {
+    data: { members },
+  } = await graphql(`
+      {
+        members: dataJson {
+          membership {
+            member {
+              id
+            }
+          }
+      }
+    }
+  `);
+
+  const nodeArray = members.membership
+    .map(membership => membership.member.id)
+    .filter(id => id.indexOf("lobid.org/team") != -1)
+    .map(id => id.slice(id.lastIndexOf("/") + 1, id.lastIndexOf("!#") - 1));
+  const unique = [...new Set(nodeArray)];
+  unique.forEach((member) => {
+    createPage({
+      path: `/team/${member}`,
+      component: path.resolve(`./src/templates/member.js`),
+      context: { id: member },
+    });
   });
 };
