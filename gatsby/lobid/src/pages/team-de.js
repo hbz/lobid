@@ -5,6 +5,7 @@ import { Team } from "../components/team.html";
 export default ({ data }) => (
   <Team
     team={data.dataJson}
+    members={data.allTeamJson.edges}
     contactName="Kontakt"
     subtitle="Dateninfrastruktur für Bibliotheken"
     publications="Publikationen"
@@ -57,6 +58,18 @@ export const query = graphql`
       }
       name {
         label: de
+      }
+    }
+    allTeamJson {
+      edges {
+        node {
+          id
+          image
+          email
+          name {
+            label: de
+          }
+        }
       }
     }
   }

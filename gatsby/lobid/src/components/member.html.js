@@ -1,4 +1,6 @@
 import React from "react";
+import md5 from 'md5';
+
 import Header from "./header.html";
 import Footer from "./footer.html";
 
@@ -42,9 +44,8 @@ export class Member extends React.Component {
           </div>
 
           <div className="row">
-
-            <div className={this.props.member.image ? 'col-md-9' : 'col-md-12'}>
-              <p className="lead">{this.props.member.name.label}<small><a title="Beschreibung als JSON-LD anzeigen" href={'/team/' + this.props.member.id.slice(this.props.member.id.lastIndexOf("/") + 1, this.props.member.id.lastIndexOf("!#") - 1) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD"/></a></small></p>
+            <div className="col-md-9">
+              <p className="lead">{this.props.member.name.label}<small><a title="Beschreibung als JSON-LD anzeigen" href={'/team/' + this.props.member.id.slice(this.props.member.id.lastIndexOf("/") + 1, this.props.member.id.lastIndexOf("!#") - 1) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small></p>
               <table className="table table-striped table-condensed">
                 <thead>
                   <tr><th width="20%" /><th width="80%" /></tr>
@@ -60,11 +61,9 @@ export class Member extends React.Component {
                 <tfoot />
               </table>
             </div>
-            {this.props.member.image && [this.props.member.image].map(image =>
-              <div className="col-md-3">
-                <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image} width="100%" />
-              </div>
-            )}
+            <div className="col-md-3">
+              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`} width="100%" />
+            </div>
           </div>
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
         </div>

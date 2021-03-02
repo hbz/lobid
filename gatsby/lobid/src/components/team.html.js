@@ -1,4 +1,6 @@
 import React from "react";
+import md5 from 'md5';
+
 import Header from "./header.html";
 import Footer from "./footer.html";
 
@@ -26,20 +28,43 @@ export class Team extends React.Component {
   getEhemalige = () => {
     return (
       <div id="former">
-        {this.props.team.membership.filter(member => member.endDate).map((member) =>
-          <div>
-            <p>
-              <a href={member.member.id.replace('http://lobid.org/','/')}>
-                {member.member.name ? member.member.name.label : member.member.id}
-              </a>{" "}
-              <br />
-              {member.roleName.label}<br />
-            </p>
-          </div>
-        )}
+        {this.props.team.membership.filter(member => member.endDate)
+          .map((member) => [member, this.getDetails(member)]).map(([member, details]) =>
+            <div>
+              {this.getImage(
+                (details && details.node.email) || member.member.id,
+                details && details.node.image)}
+              <p className="details">
+                {this.getName(
+                  member.member.id,
+                  (details && details.node.name.label) || (member.member.name && member.member.name.label) || member.member.id)}
+                <br />
+                {member.roleName.label}<br />
+              </p>
+            </div>
+          )}
       </div>
     );
   };
+
+  getName = (id, label) => {
+    return (
+      <a href={id.replace('http://lobid.org/', '/')}>
+        {label}
+      </a>
+    );
+  }
+
+  getImage = (id, src) => {
+    return (
+      <img src={src || `https://gravatar.com/avatar/${md5(id)}?s=100&d=identicon`}
+        alt={id} className="photo"></img>
+    );
+  }
+
+  getDetails = (member) => {
+    return this.props.members.filter(m => m.node.id === member.member.id)[0];
+  }
 
   render() {
     console.log('Header', Header);
@@ -104,19 +129,16 @@ export class Team extends React.Component {
 
           <h2>{this.props.memberName}</h2>
 
-          {this.props.team.membership.filter(member => !member.endDate).map((member) =>
-            <div>
+          {this.props.team.membership.filter((member) => !member.endDate)
+            .map((member) => [member, this.getDetails(member)]).map(([member, details]) =>
               <div>
-                <p>
-                  <a href={member.member.id.replace('http://lobid.org/','/')}>
-                    {member.member.name ? member.member.name.label : member.member.id}
-                  </a>{" "}
-                  <br />
+                {this.getImage(details.node.email, details.node.image)}
+                <p className="details">
+                  {this.getName(details.node.id, details.node.name.label)}{" "}<br />
                   {member.roleName.label}<br />
                 </p>
               </div>
-            </div>
-          )}
+            )}
 
           <h3>
             {this.props.memberFormerName}
