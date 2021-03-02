@@ -19,7 +19,9 @@
       "type": "array",
       "items": {
         "type": "string",
-        "const": "Organization"
+        "enum": [
+          "Organization"
+        ]
       }
     },
     "name": {

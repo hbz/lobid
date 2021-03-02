@@ -19,7 +19,9 @@
       "type": "array",
       "items": {
         "type": "string",
-        "const": "Product"
+        "enum": [
+          "Product"
+        ]
       }
     },
     "alternateName": {
@@ -54,7 +56,9 @@
         },
         "type": {
           "type": "string",
-          "const": "Organization"
+          "enum": [
+            "Organization"
+          ]
         }
       }
     }

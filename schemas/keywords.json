@@ -1,0 +1,13 @@
+{
+  "$id": "https://hbz.github.io/lobid/schemas/keywords.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tags",
+  "description": "Tags einer Entität",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "_display": {
+      "placeholder": "Tags/unkontrollierte Schlagwörter"
+    }
+  }
+}

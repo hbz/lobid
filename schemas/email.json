@@ -6,6 +6,6 @@
   "type": "string",
   "format": "email",
   "_display": {
-    "placeholder": "The Email of the Person"
+    "placeholder": "name@example.org"
   }
 }

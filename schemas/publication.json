@@ -30,12 +30,7 @@
       "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json"
     },
     "keywords": {
-      "title": "Keywords",
-      "description": "Keywords/tags for a publication",
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+        "$ref": "https://hbz.github.io/lobid/schemas/keywords.json"
     },
     "about": {
       "$ref": "https://hbz.github.io/lobid/schemas/about.json"
