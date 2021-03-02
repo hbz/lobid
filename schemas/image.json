@@ -6,6 +6,6 @@
   "type": "string",
   "format": "uri",
   "_display": {
-    "placeholder": "Ein Link zu einem Bild zu der Entität"
+    "placeholder": "URL einer Abbildung"
   }
 }

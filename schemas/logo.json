@@ -1,0 +1,11 @@
+{
+  "$id": "https://hbz.github.io/lobid/schemas/logo.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Logo",
+  "description": "Ein Link zu einem Logo",
+  "type": "string",
+  "format": "uri",
+  "_display": {
+    "placeholder": "URL eines Logos"
+  }
+}
