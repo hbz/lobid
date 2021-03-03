@@ -67,6 +67,7 @@ h5 {
 #index-image {
 	float: right;
 	max-height: 200px;
+	max-width: 100%
 }
 
 .json-ld-icon {
