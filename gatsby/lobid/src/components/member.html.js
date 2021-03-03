@@ -62,7 +62,7 @@ export class Member extends React.Component {
               </table>
             </div>
             <div className="col-md-3">
-              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`} width="100%" />
+              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`}/>
             </div>
           </div>
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
