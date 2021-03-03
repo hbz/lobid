@@ -6,7 +6,20 @@ exports.createPages = async ({ graphql, actions }) => {
 
   createPage({
     path: "/team",
-    component: path.resolve(`./src/pages/team-de.js`)
+    component: path.resolve(`./src/templates/team.js`),
+    context: { lang: "de" },
+  });
+
+  createPage({
+    path: "/team-de",
+    component: path.resolve(`./src/templates/team.js`),
+    context: { lang: "de" },
+  });
+
+  createPage({
+    path: "/team-en",
+    component: path.resolve(`./src/templates/team.js`),
+    context: { lang: "en" },
   });
 
   const {

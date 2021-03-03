@@ -37,9 +37,9 @@ export class Team extends React.Component {
               <p className="details">
                 {this.getName(
                   member.member.id,
-                  (details && details.node.name.label) || (member.member.name && member.member.name.label) || member.member.id)}
+                  (details && details.node.name[this.props.lang]) || (member.member.name && member.member.name[this.props.lang]) || member.member.id)}
                 <br />
-                {member.roleName.label}<br />
+                {member.roleName[this.props.lang]}<br />
               </p>
             </div>
           )}
@@ -104,7 +104,7 @@ export class Team extends React.Component {
             </small>
           </h1>
 
-          <p className="lead">{this.props.team.description.label}</p>
+          <p className="lead">{this.props.team.description[this.props.lang]}</p>
 
           <h2>{this.props.contactName}</h2>
 
@@ -119,8 +119,8 @@ export class Team extends React.Component {
                   src={contactPoint.image}
                   height="20"
                   style={{ marginRight: "12px" }}
-                  title={contactPoint.contactType.label}
-                  alt={contactPoint.contactType.label}
+                  title={contactPoint.contactType[this.props.lang]}
+                  alt={contactPoint.contactType[this.props.lang]}
                 />
               </a>
 
@@ -134,8 +134,8 @@ export class Team extends React.Component {
               <div>
                 {this.getImage(details.node.email, details.node.image)}
                 <p className="details">
-                  {this.getName(details.node.id, details.node.name.label)}{" "}<br />
-                  {member.roleName.label}<br />
+                  {this.getName(details.node.id, details.node.name[this.props.lang])}{" "}<br />
+                  {member.roleName[this.props.lang]}<br />
                 </p>
               </div>
             )}
