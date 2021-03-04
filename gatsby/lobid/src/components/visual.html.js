@@ -26,7 +26,7 @@ export class Visual extends Component {
       { id: 'm', label: "Members","shape":"dot","size":"5"},
       { id: 'o', label: "Offers","shape":"dot","size":"5"}
     ];
-    this.props.members.forEach((item,index) => { ns.push({ id: "m"+index, label: item.member.name, "shape":"box" }); });
+    this.props.members.forEach((item,index) => { ns.push({ id: "m"+index, label: (item.member.name ? item.member.name.label : item.member.id), "shape":"box" }); });
     this.props.products.forEach((item,index) => { ns.push({ id: "o"+index, label: item.name, "shape":"box" }); });
     const nodes = new DataSet(ns);
   

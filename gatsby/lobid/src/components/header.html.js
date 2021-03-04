@@ -93,16 +93,18 @@ export default class Header extends React.Component {
                   </UncontrolledDropdown>
                 </li>
 
-                <li>
-                  <a
-                    href={this.props.languageLink}
-                    title={this.props.languageTooltip}
-                  >
-                    <span className="glyphicon glyphicon-globe"></span>
-                    &nbsp;
-                    {this.props.language}
-                  </a>
-                </li>
+                {this.props.languageLink && this.props.languageTooltip &&
+                  <li>
+                    <a
+                      href={this.props.languageLink}
+                      title={this.props.languageTooltip}
+                    >
+                      <span className="glyphicon glyphicon-globe"></span>
+                      &nbsp;
+                      {this.props.language}
+                    </a>
+                  </li>
+                }
 
                 <li>
                   <UncontrolledDropdown>

@@ -67,10 +67,23 @@ h5 {
 #index-image {
 	float: right;
 	max-height: 200px;
+	max-width: 100%
 }
 
 .json-ld-icon {
 	margin-top: 10px;
 	float:right;
 	height: 1.5em
+}
+
+.details { 
+    display: inline-block; 
+ }
+
+.photo { 
+   display: inline-block; 
+   vertical-align:top;
+   margin: 5px;
+   width: 50px;
+   min-height: 35px;
 }
