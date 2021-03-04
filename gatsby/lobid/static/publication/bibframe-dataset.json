@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "type": "BlogPosting",
+  "name": {
+    "en": "Indexing the Bibframe works dataset as JSON-LD"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://skohub.io"
+    }
+  ],
+  "id": "https://blog.lobid.org/2019/01/31/bibframe-dataset.html",
+  "datePublished": "2019-01-31",
+  "inLanguage": [
+    "en"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

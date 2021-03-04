@@ -1,4 +1,5 @@
 const path = require("path");
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createRedirect } = actions
@@ -49,3 +50,22 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
+
+// Create `fields.jsonFile` fields to link to static publication JSON files
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === "PublicationJson") {
+    
+    const relativeFilePath = createFilePath({
+      node,
+      getNode,
+      trailingSlash: false,
+    })
+
+    createNodeField({
+      node,
+      name: "jsonFile",
+      value: `/publication${relativeFilePath}.json`,
+    })
+  }
+}

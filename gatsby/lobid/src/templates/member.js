@@ -3,8 +3,14 @@ import { graphql } from "gatsby";
 import { Member } from "../components/member.html";
 
 export default function MemberPage({ data, location, pageContext }) {
+  const member = data.allFile.edges[0].node.childTeamJson
   return (<Member
-    member={data.allFile.edges[0].node.childTeamJson}
+    member={member}
+    pubs={data.allPublicationJson.edges
+      .map(edge => edge.node)
+      .filter(p => p.creator.find(c => c.id === member.id))
+      .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
+    }
     contactName="Kontakt"
     subtitle="Dateninfrastruktur für Bibliotheken"
     publications="Publikationen"
@@ -34,6 +40,30 @@ export const query = graphql`
             telephone
             image
             sameAs
+          }
+        }
+      }
+    }
+    allPublicationJson {
+      edges {
+        node {
+          id
+          type
+          creator {
+            id
+          }
+          name {
+            label: de
+          }
+          description {
+            label: de
+          }
+          about {
+            id
+          }
+          datePublished
+          fields {
+            jsonFile
           }
         }
       }

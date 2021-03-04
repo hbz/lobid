@@ -1,0 +1,30 @@
+{
+  "@context": "https://schema.org",
+  "type": "BlogPosting",
+  "name": {
+    "en": "Presenting the SkoHub Vocabs Prototype"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "https://twitter.com/literarymachine/",
+      "type": "Person",
+      "name": "Felix Ostrowski"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://skohub.io"
+    }
+  ],
+  "id": "https://blog.lobid.org/2019/09/27/presenting-skohub-vocabs.html",
+  "datePublished": "2019-09-27",
+  "inLanguage": [
+    "en"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

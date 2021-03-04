@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "type": "BlogPosting",
+  "name": {
+    "en": "GND reconciliation for OpenRefine: using additional properties to improve matches"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/fs#!",
+      "type": "Person",
+      "name": "Fabian Steeg"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org"
+    }
+  ],
+  "id": "https://blog.lobid.org/2019/09/30/openrefine-examples.html",
+  "datePublished": "2019-09-30",
+  "inLanguage": [
+    "en"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

@@ -19,6 +19,12 @@ module.exports = {
         path: `${__dirname}/static/team/`,
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/static/publication/`,
+      }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`
   ],

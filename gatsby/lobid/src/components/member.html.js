@@ -62,9 +62,34 @@ export class Member extends React.Component {
               </table>
             </div>
             <div className="col-md-3">
-              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`}/>
+              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`} />
             </div>
           </div>
+          {this.props.pubs.length > 0 &&
+            <div className="row">
+              <div className="col-md-12">
+                <p className="lead">{this.props.publications}</p>
+                <table className="table table-striped table-condensed">
+                  <thead>
+                    <tr><th width="10%" /><th width="70%" /><th width="10%" /><th width="10%" /></tr>
+                  </thead>
+                  <tbody>
+                    {this.props.pubs.map(publication =>
+                      <tr>
+                        <td><small>{publication.datePublished}</small></td>
+                        <td><a href={publication.id}>{publication.name.label || publication.id}</a></td>
+                        <td>{publication.about && publication.about.map(a => <p><a href={a.id}>{a.id}</a></p>)}</td>
+                        <td align="right"><small><a href={"https://schema.org/" + publication.type}>{publication.type}</a></small></td>
+                        <td><a title="Beschreibung als JSON-LD anzeigen" href={publication.fields.jsonFile}><img height="20px" src={jsonLdPng} alt="JSON-LD" /></a></td>
+                      </tr>
+                    )}
+
+                  </tbody>
+                  <tfoot />
+                </table>
+              </div>
+            </div>
+          }
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
         </div>
       </div>
