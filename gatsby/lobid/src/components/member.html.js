@@ -77,7 +77,7 @@ export class Member extends React.Component {
                     {this.props.pubs.map(publication =>
                       <tr>
                         <td><small>{publication.datePublished}</small></td>
-                        <td><a href={publication.id}>{publication.name.label || publication.id}</a></td>
+                        <td><a href={publication.id}>{publication.name.de || publication.name.en || publication.id}</a></td>
                         <td>{publication.about && publication.about.map(a => <p><a href={a.id}>{a.id}</a></p>)}</td>
                         <td align="right"><small><a href={"https://schema.org/" + publication.type}>{publication.type}</a></small></td>
                         <td><a title="Beschreibung als JSON-LD anzeigen" href={publication.fields.jsonFile}><img height="20px" src={jsonLdPng} alt="JSON-LD" /></a></td>

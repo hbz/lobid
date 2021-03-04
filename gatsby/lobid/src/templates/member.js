@@ -53,10 +53,8 @@ export const query = graphql`
             id
           }
           name {
-            label: de
-          }
-          description {
-            label: de
+            de
+            en
           }
           about {
             id
