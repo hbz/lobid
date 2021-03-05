@@ -81,7 +81,7 @@
     },
     {
       "id": "https://metafacture.org",
-      "name": "Metafacture IDE"
+      "name": "Metafacture"
     },
     {
       "id": "https://skohub.io",
@@ -136,9 +136,9 @@
     },
     {
       "type": "Role",
-      "startDate": "2012",
+      "startDate": "2020",
       "roleName": {
-        "de": "Softwareentwickler",
+        "de": "Softwareentwicklerin",
         "en": "Software Developer"
       },
       "member": {

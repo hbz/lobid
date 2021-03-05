@@ -4,17 +4,17 @@ import { Visual } from "../components/visual.html";
 
 export default ({ data }) => (
   <Visual
-    members = {data.dataJson.member}
+    members = {data.dataJson.membership}
     products = {data.dataJson.makesOffer}
+    subtitle="Dateninfrastruktur für Bibliotheken"
     language="English"
     languageTooltip="Switch language to English"
     languageLink="/visual"
     teamLink="/team-de"
     publications="Publikationen"
-    contactPointId={data.dataJson.contactPoint[0].id}
+    contactPointId="mailto:semweb@hbz-nrw.de"
     companyDetails="Impressum"
     privacy="Datenschutz"
-    subtitle={data.dataJson.makesOffer[0].alternateName.de}
   />
 );
 
@@ -22,27 +22,26 @@ export const query = graphql`
   query {
     dataJson {
       makesOffer {
-        alternateName {
-          de
-        }
         id
         name
       }
-      member {
+      membership {
         member {
           id
-          image
-          name
+          name {
+            label: de
+          }
         }
         roleName {
-          de
+          label: de
         }
       }
       contactPoint {
         contactType {
-          de
+          label: de
         }
         id
+        image
       }
     }
   }
