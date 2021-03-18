@@ -7,7 +7,7 @@
   "contactPoint": [
     {
       "type": "ContactPoint",
-      "id": "mailto:semweb@hbz-nrw.de",
+      "id": "mailto:lobid-admin@hbz-nrw.de",
       "image": "/images/mail.png",
       "contactType": {
         "en": "Email",

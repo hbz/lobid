@@ -12,7 +12,7 @@ export default ({ data }) => (
     languageLink="/visual"
     teamLink="/team-de"
     publications="Publikationen"
-    contactPointId="mailto:semweb@hbz-nrw.de"
+    contactPointId="mailto:lobid-admin@hbz-nrw.de"
     companyDetails="Impressum"
     privacy="Datenschutz"
   />

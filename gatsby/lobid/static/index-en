@@ -54,7 +54,7 @@
                   class="glyphicon glyphicon-info-sign"></span><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="team-en">Team</a></li>
-                <li><a href="mailto:semweb@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
+                <li><a href="mailto:lobid-admin@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
               </ul>
             </li>
           </ul>

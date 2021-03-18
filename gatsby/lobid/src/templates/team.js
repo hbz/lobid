@@ -20,7 +20,7 @@ export default ({ data, location, pageContext }) => {
     memberFormerName={pageContext.lang==="de"?"Ehemalige":"Former members"}
     companyDetails={pageContext.lang==="de"?"Impressum":"Imprint"}
     privacy={pageContext.lang==="de"?"Datenschutz":"Privacy"}
-    contactPointId="mailto:semweb@hbz-nrw.de"
+    contactPointId="mailto:lobid-admin@hbz-nrw.de"
   />
 )};
 
