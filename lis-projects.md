@@ -13,3 +13,13 @@ Hier pflegt die [Gruppe Offene Infrastruktur des hbz](https://www.hbz-nrw.de/pro
   4. Publikation der Korpus-Daten
 
 Optional können weitere Schritte folgen (siehe [Ticket](https://github.com/hbz/nwbib/issues/560))
+
+## Erstellung einer offenen LIS-Klassifikation
+
+Für viele Aufgaben wie etwa den Austausch von Open Educational Resources im LIS-Bereich wäre eine gemeinsame Klassifikation von Inhalten in bibliotheks- und informationswissenschaftlichen Studiengängen sinnvoll. Die Klassifikation sollte unter einer offenen Lizenz maschinenlesbar als SKOS-Klassifikation veröffentlicht werden.
+
+Mögliches Vorgehen:
+- Evaluation bestehender Klassifikation
+- Analyse und Vergleich der Inhalte/Module von LIS-Studiengängen um deutschsprachigen und internationalen Raum
+- Erarbeitung eines Entwurfs
+- Publikation mit SkoHub Vocabs
