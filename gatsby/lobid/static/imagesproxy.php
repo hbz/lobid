@@ -1,17 +1,26 @@
 <?php
-$url = $_GET['url'];
+        $url = $_GET['url'];
+        $url=str_replace(" ", "%20", $url);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: text/xml","User-Agent: imagesproxy/0.2 (https://lobid.org/)"));
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $filename = basename($url);
 
-if(strpos($url,".ico") || strpos($url,".png")) {
-    header("Content-Type: image/png");
-} else {
-        if(strpos($url,".jpg")) {
-        header("Content-Type: image/jpg");
-        } else  {
-                if(strpos($url,".gif")) {
-                        header("Content-Type: image/gif");
+        if(strpos($filename,".ico") || strpos($filename,".png")) {
+                $ctype="image/png";
+        } else {
+                if(strpos($filename,".jpg")) {
+                        $ctype="image/jpg";
+                } else  {
+                        if(strpos($filename,".gif")) {
+                                $ctype="image/gif";
+                        }
                 }
-         }
-}
-readfile(str_replace(" ", "%20", $url));
+        }
+        header('Content-type: ' . $ctype);
+        echo $output = curl_exec($ch);
+        curl_close($ch); 
 ?>
 
