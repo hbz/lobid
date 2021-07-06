@@ -7,6 +7,7 @@ export default ({ data, location, pageContext }) => {
   <Team
     team={data.dataJson}
     members={data.allTeamJson.edges}
+    products={data.allProductJson.edges}
     lang={pageContext.lang}
     contactName={pageContext.lang==="de"?"Kontakt":"Contact"}
     subtitle={pageContext.lang==="de"?"Dateninfrastruktur für Bibliotheken":"Data infrastructure for libraries"}
@@ -77,6 +78,18 @@ export const query = graphql`
             de
             en
           }
+        }
+      }
+    }
+    allProductJson {
+      edges {
+        node {
+          id
+          slogan {
+            de
+            en
+          }
+          
         }
       }
     }

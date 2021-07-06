@@ -1,5 +1,6 @@
 import React from "react";
 import md5 from 'md5';
+import { simpleId } from './helpers.js'
 
 import Header from "./header.html";
 import Footer from "./footer.html";
@@ -9,18 +10,22 @@ import "./css/lobid.css";
 import "./css/bootstrap.min.css";
 import "./css/font-awesome.min.css";
 
-import hbzLogoPng from "./images/hbz.png";
 import jsonLdPng from "./images/json-ld.png";
 
-export class Member extends React.Component {
+export class Product extends React.Component {
 
   constructor(props) {
     super(props);
     this.props = props;
   }
 
+  asLinks(field) {
+    return this.props.product[field] && <tr><td>{this.props[field]}</td><td>{this.props.product[field].map((link) =>
+      <div key={link.id}><a href={link.id}>{link.id.replace('https://', '').replace('http://', '')}</a><br /></div>
+    )}</td></tr>
+  }
+
   render() {
-    console.log('Header', Header);
     return (
       <div className="container">
         <p />
@@ -35,35 +40,31 @@ export class Member extends React.Component {
         <div>
           <div className="page-header">
             <h1>
-              <img
-                className="media-object nrw-logo pull-right"
-                src={hbzLogoPng}
-                alt="hbz logo"
-              />
-              lobid <small>&mdash; {this.props.subtitle}</small>
+              {this.props.product.name.label}
+              <small>
+                {this.props.product.slogan && [this.props.product.slogan].map(s => <span>&mdash; {s.label}</span>)}
+                <a title="Beschreibung als JSON-LD anzeigen" href={'/product/' + simpleId(this.props.product.id) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
             </h1>
           </div>
 
           <div className="row">
             <div className="col-md-9">
-              <p className="lead">{this.props.member.name.label}<small><a title="Beschreibung als JSON-LD anzeigen" href={'/team/' + this.props.member.id.slice(this.props.member.id.lastIndexOf("/") + 1, this.props.member.id.lastIndexOf("!#") - 1) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small></p>
+              <p className="lead">{this.props.product.description.label}</p>
               <table className="table table-striped table-condensed">
                 <thead>
                   <tr><th width="20%" /><th width="80%" /></tr>
                 </thead>
                 <tbody>
-                  {this.props.member.alternateName && this.props.member.alternateName.map(alt => <tr><td>Alternate Name</td><td>{alt}</td></tr>)}
-                  <tr><td>Mail</td><td><a href='mailto:pohl@hbz-nrw.de'>{this.props.member.email}</a></td></tr>
-                  <tr><td>Telephone</td><td>{this.props.member.telephone}</td></tr>
-                  <tr><td>Same As</td><td>{this.props.member.sameAs.map((link) =>
-                    <div><a href={link}>{link.replace('https://', '').replace('http://', '')}</a><br /></div>
-                  )}</td></tr>
+                  <tr><td>Website</td><td><a href={this.props.product.id}>{this.props.product.id}</a></td></tr>
+                  {this.asLinks("hasPart")}
+                  {this.asLinks("isBasedOn")}
+                  {this.asLinks("isRelatedTo")}
                 </tbody>
                 <tfoot />
               </table>
             </div>
             <div className="col-md-3">
-              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`} />
+              <img alt={this.props.product.name.label} id="index-image" src={this.props.product.image || `https://gravatar.com/avatar/${md5(this.props.product.id)}?s=300&d=identicon`} />
             </div>
           </div>
           <Publications pubs={this.props.pubs} publications={this.props.publications} />

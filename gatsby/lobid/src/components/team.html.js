@@ -1,5 +1,6 @@
 import React from "react";
 import md5 from 'md5';
+import { simpleId } from './helpers.js'
 
 import Header from "./header.html";
 import Footer from "./footer.html";
@@ -29,8 +30,8 @@ export class Team extends React.Component {
     return (
       <div id="former">
         {this.props.team.membership.filter(member => member.endDate)
-          .map((member) => [member, this.getDetails(member)]).map(([member, details]) =>
-            <div>
+          .map((member) => [member, this.getMemberDetails(member)]).map(([member, details]) =>
+            <div key={member.member.id}>
               {this.getImage(
                 (details && details.node.email) || member.member.id,
                 details && details.node.image)}
@@ -62,12 +63,15 @@ export class Team extends React.Component {
     );
   }
 
-  getDetails = (member) => {
+  getMemberDetails = (member) => {
     return this.props.members.filter(m => m.node.id === member.member.id)[0];
   }
 
+  getOfferDetails = (offer) => {
+    return this.props.products.filter(p => p.node.id === offer.id)[0];
+  }
+
   render() {
-    console.log('Header', Header);
     return (
       <div className="container">
         <p />
@@ -111,6 +115,7 @@ export class Team extends React.Component {
           <p>
             {this.props.team.contactPoint.map((contactPoint) =>
               <a
+                key={contactPoint.id}
                 target="_blank"
                 href={contactPoint.id}
                 rel="nofollow noopener noreferrer"
@@ -130,8 +135,8 @@ export class Team extends React.Component {
           <h2>{this.props.memberName}</h2>
 
           {this.props.team.membership.filter((member) => !member.endDate)
-            .map((member) => [member, this.getDetails(member)]).map(([member, details]) =>
-              <div>
+            .map((member) => [member, this.getMemberDetails(member)]).map(([member, details]) =>
+              <div key={member.member.id}>
                 {this.getImage(details.node.email, details.node.image)}
                 <p className="details">
                   {this.getName(details.node.id, details.node.name[this.props.lang])}{" "}<br />
@@ -162,18 +167,18 @@ export class Team extends React.Component {
 
           <h2>{this.props.makesOfferName}</h2>
 
-          {this.props.team.makesOffer.map((offer) =>
-            <p>
-              <a
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                href={offer.id}
-              >
-                {offer.id}
-              </a>
-              <br />
-              {offer.name}
-            </p>
+          {this.props.team.makesOffer
+           .map((offer) => [offer, this.getOfferDetails(offer)]).map(([offer, details]) =>
+            <div key={offer.id}>
+              {this.getImage(offer.id, details.node.image)}
+              <p className="details">
+                <a href={"/product/" + simpleId(offer.id)}>
+                  {offer.name}
+                </a>
+                <br />
+                {(details.node.slogan && details.node.slogan[this.props.lang]) || offer.name}
+              </p>
+            </div>
           )}
         </div>
         <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
