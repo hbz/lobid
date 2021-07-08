@@ -1,6 +1,6 @@
 import React from "react";
 import md5 from 'md5';
-import { simpleId } from './helpers.js'
+import { simpleProductId, simpleProjectId } from './helpers.js'
 
 import Header from "./header.html";
 import Footer from "./footer.html";
@@ -172,11 +172,27 @@ export class Team extends React.Component {
             <div key={offer.id}>
               {this.getImage(offer.id, details.node.image)}
               <p className="details">
-                <a href={"/product/" + simpleId(offer.id)}>
+                <a href={"/product/" + simpleProductId(offer.id)}>
                   {offer.name}
                 </a>
                 <br />
                 {(details.node.slogan && details.node.slogan[this.props.lang]) || offer.name}
+              </p>
+            </div>
+          )}
+
+          <h2>{this.props.projectsName}</h2>
+
+          {this.props.projects
+          .map((details) =>
+            <div key={details.node.id}>
+              {this.getImage(details.node.id, details.node.image)}
+              <p className="details">
+                <a href={"/project/" + simpleProjectId(details.node.id)}>
+                  {details.node.alternateName || simpleProjectId(details.node.id)}
+                </a>
+                <br />
+                {(details.node.name && details.node.name[this.props.lang]) || details.node.alternateName}
               </p>
             </div>
           )}

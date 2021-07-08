@@ -63,6 +63,27 @@ exports.createPages = async ({ graphql, actions }) => {
     .map(id => id.slice(id.lastIndexOf("/") + 1, id.lastIndexOf(".")));
   addPages(shortProductIds, "product", "./src/templates/product.js", createPage);
 
+  // Pages for individual project files in /project
+
+  const {
+    data: { projects },
+  } = await graphql(`
+  {
+    projects: allProjectJson {
+      edges {
+        node {
+          id
+        }
+      }
+    }
+  }
+  `);
+  
+  const shortProjectIds = projects.edges.map(e => e.node.id)
+    .filter(id => id.indexOf("/") != -1)
+    .map(id => id.slice(id.lastIndexOf("/") + 1));
+  addPages(shortProjectIds, "project", "./src/templates/project.js", createPage);
+
 };
 
 // Create `fields.jsonFile` fields to link to static publication JSON files
@@ -86,11 +107,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 function addPages(ids, prefix, template, createPage) {
   const unique = [...new Set(ids)];
-  unique.forEach((member) => {
+  unique.forEach((entityId) => {
     createPage({
-      path: `/${prefix}/${member}`,
+      path: `/${prefix}/${entityId}`,
       component: path.resolve(template),
-      context: { id: member },
+      context: { id: entityId },
     });
   });
 }

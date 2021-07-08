@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://gitlab.com/oersi",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "OER Search Index",
+    "en": "OER Search Index"
+  },
+  "alternateName": [
+    "OERSI"
+  ],
+  "description": {
+    "de": "Ein gemeinsames Projekt der TIB Hannover und des hbz zum Aufbau eines offenen Suchindex für Bildungsressourcen",
+    "en": "Common project by TIB Hannover and hbz to create an open search index for educational resources"
+  },
+  "url": "https://oersi.de",
+  "isBasedOn": [
+    {
+      "id": "https://metafacture.org"
+    },
+    {
+      "id": "https://github.com/dini-ag-kim/lrmi-profile"
+    }
+  ]
+}

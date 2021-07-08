@@ -8,6 +8,7 @@ export default ({ data, location, pageContext }) => {
     team={data.dataJson}
     members={data.allTeamJson.edges}
     products={data.allProductJson.edges}
+    projects={data.allProjectJson.edges}
     lang={pageContext.lang}
     contactName={pageContext.lang==="de"?"Kontakt":"Contact"}
     subtitle={pageContext.lang==="de"?"Dateninfrastruktur für Bibliotheken":"Data infrastructure for libraries"}
@@ -17,6 +18,7 @@ export default ({ data, location, pageContext }) => {
     languageLink={pageContext.lang==="de"?"/team-en":"/team-de"}
     teamLink={pageContext.lang==="de"?"/team-de":"/team-en"}
     makesOfferName={pageContext.lang==="de"?"Produkte":"Products"}
+    projectsName={pageContext.lang==="de"?"Projekte":"Projects"}
     memberName={pageContext.lang==="de"?"Mitglieder":"Members"}
     memberFormerName={pageContext.lang==="de"?"Ehemalige":"Former members"}
     companyDetails={pageContext.lang==="de"?"Impressum":"Imprint"}
@@ -90,6 +92,18 @@ export const query = graphql`
             en
           }
           
+        }
+      }
+    }
+    allProjectJson {
+      edges {
+        node {
+          id
+          name {
+            de
+            en
+          }
+          alternateName
         }
       }
     }

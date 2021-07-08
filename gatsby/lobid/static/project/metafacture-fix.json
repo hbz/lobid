@@ -1,0 +1,21 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://github.com/metafacture/metafacture-fix",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "Metafacture-Fix",
+    "en": "Metafacture-Fix"
+  },
+  "description": {
+    "en": "Implementation of the Fix language for Metafacture as an alternative to configuring data transformations with Metamorph",
+    "de": "Ziel des Projekts ist die Erleichterung der Metafacture-Konfiguration und damit die Erweiterung der Zielgruppe um Bibliothekar*innen und andere Metadatenfachleute, die keinen Programmierhintergrund haben.\n\nDies geschieht durch die Implementierung der Fix-DSL für die Konfiguration von Metadatenmappings als Alternative zum XML-basierten Metamorph. Zunächst wird die Erweiterung zur produktiven Nutzung im OERSI-Kontext und anderen neu zu erstellenden ETL-Prozessen entwickelt und dann auf die komplexeren Prozesse – etwa im lobid-Kontext – ausgeweitet.\n\nIn einem nächsten Schritt – voraussichtlich 2022 – wird an einer Standardisierung der Fix-Sprache gearbeitet mit dem Ziel, Kompatibilität zwischen Metafacture und Catmandu zu erreichen."
+  },
+  "url": "https://github.com/metafacture/metafacture-fix",
+  "enhances": [
+    {
+      "id": "https://metafacture.org"
+    }
+  ]
+}
