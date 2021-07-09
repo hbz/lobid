@@ -30,6 +30,7 @@ export const query = graphql`
       edges {
         node {
           childProductJson {
+            url
             name {
               label: de
             }

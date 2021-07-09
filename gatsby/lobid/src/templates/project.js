@@ -45,6 +45,7 @@ export const query = graphql`
             isBasedOn {
               id
             }
+            url
             alternateName
             endDate
             result {

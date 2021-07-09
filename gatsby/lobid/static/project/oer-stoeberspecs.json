@@ -1,6 +1,7 @@
 {
   "@context": "https://schema.org/",
-  "id": "https://github.com/dini-ag-kim/oer-stoeberspecs",
+  "id": "https://lobid.org/project/oer-stoeberspecs",
+  "url": "https://github.com/dini-ag-kim/oer-stoeberspecs",
   "type": [
     "Project"
   ],
@@ -16,7 +17,7 @@
   "endDate": "2020-01-31",
   "isBasedOn": [
     {
-      "id": "https://skohub.io"
+      "id": "https://lobid.org/product/skohub"
     }
   ]
 }

@@ -72,19 +72,19 @@
   "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
   "makesOffer": [
     {
-      "id": "https://lobid.org",
+      "id": "https://lobid.org/product/lobid",
       "name": "lobid"
     },
     {
-      "id": "https://nwbib.de",
+      "id": "https://lobid.org/product/nwbib",
       "name": "NWBib"
     },
     {
-      "id": "https://metafacture.org",
+      "id": "https://lobid.org/product/metafacture",
       "name": "Metafacture"
     },
     {
-      "id": "https://skohub.io",
+      "id": "https://lobid.org/product/skohub",
       "name": "SkoHub"
     }
   ],

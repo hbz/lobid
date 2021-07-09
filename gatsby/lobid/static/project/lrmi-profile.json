@@ -1,6 +1,7 @@
 {
   "@context": "https://schema.org/",
-  "id": "https://github.com/dini-ag-kim/lrmi-profile",
+  "id": "https://lobid.org/project/lrmi-profile",
+  "url": "https://github.com/dini-ag-kim/lrmi-profile",
   "type": [
     "Project"
   ],
@@ -14,7 +15,7 @@
   },
   "isBasedOn": [
     {
-      "id": "https://github.com/dini-ag-kim/oer-stoeberspecs"
+      "id": "https://lobid.org/project/oer-stoeberspecs"
     }
   ]
 }

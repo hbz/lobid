@@ -1,6 +1,7 @@
 {
   "@context": "https://schema.org/",
-  "id": "https://github.com/hbz/rpb",
+  "id": "https://lobid.org/project/rpb",
+  "url": "https://github.com/hbz/rpb",
   "type": [
     "Project"
   ],
@@ -16,16 +17,16 @@
   "endDate": "2022-03-31",
   "isBasedOn": [
     {
-      "id": "https://metafacture.org"
+      "id": "https://lobid.org/product/metafacture"
     },
     {
-      "id": "https://skohub.io"
+      "id": "https://lobid.org/product/skohub"
     },
     {
-      "id": "https://nwbib.de"
+      "id": "https://lobid.org/product/nwbib"
     },
     {
-      "id": "https://lobid.org"
+      "id": "https://lobid.org/product/lobid"
     }
   ]
 }

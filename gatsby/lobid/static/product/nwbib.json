@@ -1,6 +1,7 @@
 {
   "@context": "https://schema.org",
-  "id": "https://nwbib.de",
+  "id": "https://lobid.org/product/nwbib",
+  "url": "https://nwbib.de",
   "type": [
     "Product"
   ],
@@ -17,11 +18,11 @@
   },
   "isBasedOn": [
     {
-      "id": "https://lobid.org"
+      "id": "https://lobid.org/product/lobid"
     }
   ],
   "maintainer": {
-    "id": "http://stage.lobid.org/team#!",
+    "id": "http://lobid.org/team#!",
     "name": {
       "de": "Offene Infrastruktur",
       "en": "Open Infrastructure"

@@ -1,6 +1,6 @@
 import React from "react";
 import md5 from 'md5';
-import { simpleProjectId } from './helpers.js'
+import { simpleId } from './helpers.js'
 
 import Header from "./header.html";
 import Footer from "./footer.html";
@@ -20,8 +20,10 @@ export class Project extends React.Component {
   }
 
   asLinks(field) {
-    return this.props.project[field] && <tr><td>{this.props[field]}</td><td>{this.props.project[field].map((link) =>
-      <div key={link.id}><a href={link.id}>{link.id.replace('https://', '').replace('http://', '')}</a><br /></div>
+    return this.props.project[field] && <tr><td>{this.props[field]}</td><td>{this.props.project[field].map((link) => {
+      let linkId = link.id.replace(/https?:\/\/lobid.org\//, '/');
+      return <div key={link.id}><a href={linkId}>{linkId}</a><br /></div>
+    }
     )}</td></tr>
   }
 
@@ -43,19 +45,19 @@ export class Project extends React.Component {
               {this.props.project.name.label}
               <small>
                 {this.props.project.alternateName && this.props.project.alternateName.map(s => <span> | {s}</span>)}
-                <a title="Beschreibung als JSON-LD anzeigen" href={'/project/' + simpleProjectId(this.props.project.id) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
+                <a title="Beschreibung als JSON-LD anzeigen" href={'/project/' + simpleId(this.props.project.id) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
             </h1>
           </div>
 
           <div className="row">
             <div className="col-md-9">
-              <p className={this.props.project.description.label.length < 400 && "lead"}>{this.props.project.description.label}</p>
+              <p className={this.props.project.description.label.length < 400 ? "lead" : "p"}>{this.props.project.description.label}</p>
               <table className="table table-striped table-condensed">
                 <thead>
                   <tr><th width="20%" /><th width="80%" /></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Website</td><td><a href={this.props.project.id}>{this.props.project.id}</a></td></tr>
+                  <tr><td>Website</td><td><a href={this.props.project.url || this.props.project.id}>{this.props.project.url || this.props.project.id}</a></td></tr>
                   {this.props.project.endDate && <tr><td>Abgeschlossen</td><td>{this.props.project.endDate}</td></tr>}
                   {this.asLinks("hasPart")}
                   {this.asLinks("isBasedOn")}

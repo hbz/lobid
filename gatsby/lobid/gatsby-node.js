@@ -42,6 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const shortMemberIds = members.membership.map(m => m.member.id)
     .filter(id => id.indexOf("lobid.org/team") != -1)
     .map(id => id.slice(id.lastIndexOf("/") + 1, id.lastIndexOf("!#") - 1));
+  console.log("Creating member pages: ", shortMemberIds);  
   addPages(shortMemberIds, "team", "./src/templates/member.js", createPage);
 
   // Pages for individual products listed in `makesOffer`
@@ -60,7 +61,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const shortProductIds = products.makesOffer.map(p => p.id)
     .filter(id => id.indexOf("/") != -1)
-    .map(id => id.slice(id.lastIndexOf("/") + 1, id.lastIndexOf(".")));
+    .map(id => id.slice(id.lastIndexOf("/") + 1));
+  console.log("Creating product pages: ", shortProductIds);
   addPages(shortProductIds, "product", "./src/templates/product.js", createPage);
 
   // Pages for individual project files in /project
@@ -78,10 +80,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   }
   `);
-  
+
   const shortProjectIds = projects.edges.map(e => e.node.id)
     .filter(id => id.indexOf("/") != -1)
     .map(id => id.slice(id.lastIndexOf("/") + 1));
+  console.log("Creating project pages: ", shortProjectIds);
   addPages(shortProjectIds, "project", "./src/templates/project.js", createPage);
 
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import md5 from 'md5';
-import { simpleProductId, simpleProjectId } from './helpers.js'
+import { simpleId } from './helpers.js'
 
 import Header from "./header.html";
 import Footer from "./footer.html";
@@ -172,7 +172,7 @@ export class Team extends React.Component {
             <div key={offer.id}>
               {this.getImage(offer.id, details.node.image)}
               <p className="details">
-                <a href={"/product/" + simpleProductId(offer.id)}>
+                <a href={"/product/" + simpleId(offer.id)}>
                   {offer.name}
                 </a>
                 <br />
@@ -188,8 +188,8 @@ export class Team extends React.Component {
             <div key={details.node.id}>
               {this.getImage(details.node.id, details.node.image)}
               <p className="details">
-                <a href={"/project/" + simpleProjectId(details.node.id)}>
-                  {details.node.alternateName || simpleProjectId(details.node.id)}
+                <a href={"/project/" + simpleId(details.node.id)}>
+                  {details.node.alternateName || simpleId(details.node.id)}
                 </a>
                 <br />
                 {(details.node.name && details.node.name[this.props.lang]) || details.node.alternateName}

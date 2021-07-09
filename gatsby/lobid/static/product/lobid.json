@@ -1,6 +1,7 @@
 {
   "@context": "https://schema.org",
-  "id": "https://lobid.org",
+  "id": "https://lobid.org/product/lobid",
+  "url": "https://lobid.org",
   "type": [
     "Product"
   ],
@@ -18,7 +19,7 @@
   },
   "startDate": "2010-08",
   "maintainer": {
-    "id": "http://stage.lobid.org/team#!",
+    "id": "http://lobid.org/team#!",
     "name": {
       "de": "Offene Infrastruktur",
       "en": "Open Infrastructure"
@@ -38,12 +39,12 @@
   ],
   "isBasedOn": [
     {
-      "id": "https://metafacture.org"
+      "id": "https://lobid.org/product/metafacture"
     }
   ],  
   "isRelatedTo": [
     {
-      "id": "https://github.com/hbz/lobid-resources/milestone/1"
+      "id": "https://lobid.org/project/alma-migration"
     }
   ]
 }
