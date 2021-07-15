@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "type": "PresentationDigitalDocument",
   "name": {
-    "en": "MetIntroduction to Metafactureafacture"
+    "en": "Introduction to Metafacture"
   },
   "creator": [
     {
@@ -17,7 +17,7 @@
   ],
   "about": [
     {
-      "id": "https://metafacture.org"
+      "id": "https://lobid.org/product/metafacture"
     }
   ],
   "id": "https://slides.lobid.org/metafacture-2020/",

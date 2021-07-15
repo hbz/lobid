@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { Product } from "../components/product.html";
+import { simpleId } from '../components/helpers.js'
 
 export default function ProductPage({ data, location, pageContext }) {
   const product = data.allFile.edges.slice(-1).pop().node.childProductJson
@@ -8,7 +9,7 @@ export default function ProductPage({ data, location, pageContext }) {
     product={product}
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
-      .filter(p => p.about && p.about.find(a => a.id.includes(pageContext.id)))
+      .filter(p => p.about && p.about.find(a => simpleId(a.id) === pageContext.id))
       .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
     }
     contactName="Kontakt"

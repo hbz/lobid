@@ -1,6 +1,6 @@
 import React from "react";
-import md5 from 'md5';
-import { simpleId } from './helpers.js'
+import md5 from "md5";
+import { simpleId } from "./helpers.js";
 
 import Header from "./header.html";
 import Footer from "./footer.html";
