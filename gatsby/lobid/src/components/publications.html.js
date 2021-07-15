@@ -21,7 +21,7 @@ export default class Publications extends React.Component {
                   <td>{publication.about && publication.about.map(a =>
                     <p key={a.id}><small><span className="glyphicon glyphicon-tag" aria-hidden="true"></span></small>&nbsp;<a href={stripLobidOrg(a.id)}>{simpleId(a.id)}</a></p>
                   )}</td>
-                  <td align="right"><small><a href={"https://schema.org/" + publication.type}>{publication.type}</a></small></td>
+                  <td align="right"><small>{publication.type.match(/[A-Z][a-z]+/)[0]}</small></td>
                   <td><a title="Beschreibung als JSON-LD anzeigen" href={publication.fields.jsonFile}><img height="20px" src={jsonLdPng} alt="JSON-LD" /></a></td>
                 </tr>
               )}
