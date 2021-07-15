@@ -1,6 +1,6 @@
 import React from "react";
 import md5 from "md5";
-import { simpleId } from "./helpers.js";
+import { simpleId, asLinks } from "./helpers.js";
 
 import Header from "./header.html";
 import Footer from "./footer.html";
@@ -17,13 +17,6 @@ export class Product extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
-  }
-
-  asLinks(field) {
-    return this.props.product[field] && <tr><td>{this.props[field]}</td><td>{this.props.product[field].map((link) => {
-      let linkId = link.id.replace(/https?:\/\/lobid.org\//, '/');
-      return <div key={link.id}><a href={linkId}>{linkId}</a><br /></div>
-    })}</td></tr>
   }
 
   render() {
@@ -43,7 +36,7 @@ export class Product extends React.Component {
             <h1>
               {this.props.product.name.label}
               <small>
-                {this.props.product.slogan && [this.props.product.slogan].map(s => <span> &mdash; {s.label}</span>)}
+                {this.props.product.slogan && [this.props.product.slogan].map(s => <span key={s.label}> &mdash; {s.label}</span>)}
                 <a title="Beschreibung als JSON-LD anzeigen" href={'/product/' + simpleId(this.props.product.id) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
             </h1>
           </div>
@@ -57,9 +50,9 @@ export class Product extends React.Component {
                 </thead>
                 <tbody>
                   <tr><td>Website</td><td><a href={this.props.product.url || this.props.product.id}>{this.props.product.url || this.props.product.id}</a></td></tr>
-                  {this.asLinks("hasPart")}
-                  {this.asLinks("isBasedOn")}
-                  {this.asLinks("isRelatedTo")}
+                  {asLinks("hasPart", this.props.product, this.props)}
+                  {asLinks("isBasedOn", this.props.product, this.props)}
+                  {asLinks("isRelatedTo", this.props.product, this.props)}
                 </tbody>
                 <tfoot />
               </table>

@@ -1,6 +1,6 @@
 import React from "react";
 import md5 from "md5";
-import { simpleId } from "./helpers.js";
+import { simpleId, asLinks } from "./helpers.js";
 
 import Header from "./header.html";
 import Footer from "./footer.html";
@@ -17,14 +17,6 @@ export class Project extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
-  }
-
-  asLinks(field) {
-    return this.props.project[field] && <tr><td>{this.props[field]}</td><td>{this.props.project[field].map((link) => {
-      let linkId = link.id.replace(/https?:\/\/lobid.org\//, '/');
-      return <div key={link.id}><a href={linkId}>{linkId}</a><br /></div>
-    }
-    )}</td></tr>
   }
 
   render() {
@@ -44,7 +36,7 @@ export class Project extends React.Component {
             <h1>
               {this.props.project.name.label}
               <small>
-                {this.props.project.alternateName && this.props.project.alternateName.map(s => <span> | {s}</span>)}
+                {this.props.project.alternateName && this.props.project.alternateName.map(s => <span key={s}> | {s}</span>)}
                 <a title="Beschreibung als JSON-LD anzeigen" href={'/project/' + simpleId(this.props.project.id) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
             </h1>
           </div>
@@ -59,11 +51,11 @@ export class Project extends React.Component {
                 <tbody>
                   <tr><td>Website</td><td><a href={this.props.project.url || this.props.project.id}>{this.props.project.url || this.props.project.id}</a></td></tr>
                   {this.props.project.endDate && <tr><td>Abgeschlossen</td><td>{this.props.project.endDate}</td></tr>}
-                  {this.asLinks("hasPart")}
-                  {this.asLinks("isBasedOn")}
-                  {this.asLinks("isRelatedTo")}
-                  {this.asLinks("enhances")}
-                  {this.asLinks("result")}
+                  {asLinks("hasPart", this.props.project, this.props)}
+                  {asLinks("isBasedOn", this.props.project, this.props)}
+                  {asLinks("isRelatedTo", this.props.project, this.props)}
+                  {asLinks("enhances", this.props.project, this.props)}
+                  {asLinks("result", this.props.project, this.props)}
                 </tbody>
                 <tfoot />
               </table>
