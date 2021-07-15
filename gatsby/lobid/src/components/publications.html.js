@@ -17,7 +17,7 @@ export default class Publications extends React.Component {
               {this.props.pubs.map(publication =>
                 <tr key={publication.id}>
                   <td><small>{publication.datePublished}</small></td>
-                  <td><a href={publication.id}>{publication.name.de || publication.name.en || publication.id}</a></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href={publication.id}>{publication.name.de || publication.name.en || publication.id}</a></td>
                   <td>{publication.about && publication.about.map(a =>
                     <p key={a.id}><small><span className="glyphicon glyphicon-tag" aria-hidden="true"></span></small>&nbsp;<a href={a.id}>{a.id.slice(a.id.lastIndexOf("/")+1, a.id.lastIndexOf("."))}</a></p>
                   )}</td>
