@@ -21,7 +21,7 @@ export default function MemberPage({ data, location, pageContext }) {
     memberFormerName="Ehemalige"
     companyDetails="Impressum"
     privacy="Datenschutz"
-    contactPointId="mailto:semweb@hbz-nrw.de"
+    contactPointId="mailto:lobid-admin@hbz-nrw.de"
   />);
 }
 

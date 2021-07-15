@@ -504,7 +504,7 @@ h3. 8.5 Widerspruchs- und Beseitigungsmöglichkeit
 
 *55* Finden Nutzer Daten, die über sie Aussagen treffen und nicht notwendig sind,
 um den Zweck der Anwendung zu erfüllen bzw. Fehler in diesen Daten, können sie
-sich über die E-Mail-Adresse "semweb@hbz-nrw.de(E-Mail Linked Open Data)":mailto:semweb@hbz-nrw.de an die Linked Open Data-
+sich über die E-Mail-Adresse "lobid-admin@hbz-nrw.de(E-Mail Linked Open Data)":mailto:lobid-admin@hbz-nrw.de an die Linked Open Data-
 Gruppe wenden. Weitere Wege zur Kontaktaufnahme finden sich unter
 "https://lobid.org/team(lobid-Teamseite)":https://lobid.org/team. Die Daten werden an die Katalogisierungsabteilung
 weitergeleitet, welche die Daten vorrangig bearbeitet. Handelt es sich um Daten,
