@@ -2,6 +2,7 @@
   "@context": "https://schema.org",
   "id": "https://lobid.org/product/metafacture",
   "url": "https://metafacture.org",
+  "image": "https://metafacture.org/ide-extensions/img/metafacture.png",
   "type": [
     "Product"
   ],

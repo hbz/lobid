@@ -47,6 +47,7 @@ export const query = graphql`
               id
             }
             url
+            image
             alternateName
             endDate
             result {

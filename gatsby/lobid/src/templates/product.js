@@ -32,6 +32,7 @@ export const query = graphql`
         node {
           childProductJson {
             url
+            image
             name {
               label: de
             }

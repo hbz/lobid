@@ -26,6 +26,7 @@
     },
     "type": "Organization"
   },
+  "image": "https://lobid.org/images/lobid.png",
   "hasPart": [
     {
       "id": "https://lobid.org/resources"

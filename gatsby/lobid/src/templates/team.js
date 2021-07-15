@@ -87,6 +87,7 @@ export const query = graphql`
       edges {
         node {
           id
+          image
           slogan {
             de
             en
@@ -99,6 +100,7 @@ export const query = graphql`
       edges {
         node {
           id
+          image
           name {
             de
             en
