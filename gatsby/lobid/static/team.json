@@ -40,15 +40,6 @@
         "en": "Issue Tracker on GitHub",
         "de": "Issue-Tracker auf GitHub"
       }
-    },
-    {
-      "type": "ContactPoint",
-      "image": "/images/freenode.png",
-      "id": "irc://irc.freenode.net/lobid",
-      "contactType": {
-        "en": "IRC",
-        "de": "IRC"
-      }
     }
   ],
   "alternateName": {
