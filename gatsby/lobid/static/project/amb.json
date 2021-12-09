@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org/",
-  "id": "https://lobid.org/project/lrmi-profile",
+  "id": "https://lobid.org/project/amb",
   "url": "https://w3id.org/kim/amb",
   "type": [
     "Project"

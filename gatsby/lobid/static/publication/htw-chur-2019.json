@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "PresentationDigitalDocument",
+  "type": [
+    "PresentationDigitalDocument"
+  ],
   "name": {
     "de": "Von LOD zu LOUD – Erfahrungen aus zehn Jahren Linked-Open-Data-Entwicklung am hbz"
   },

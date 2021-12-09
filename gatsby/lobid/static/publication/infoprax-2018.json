@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "Article",
+  "type": [
+    "Article"
+  ],
   "name": {
     "de": "lobid – Dateninfrastruktur für Bibliotheken"
   },

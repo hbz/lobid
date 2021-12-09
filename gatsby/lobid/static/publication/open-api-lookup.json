@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "BlogPosting",
+  "type": [
+    "BlogPosting"
+  ],
   "name": {
     "de": "Offene Bibliotheks-APIs erfassen & nachschlagen"
   },

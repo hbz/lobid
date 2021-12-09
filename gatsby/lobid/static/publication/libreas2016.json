@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "Article",
+  "type": [
+    "Article"
+  ],
   "name": {
     "de": "Zurück ins Web. Die Entwicklung eines neuen Webauftritts für die Nordrhein-Westfälische Bibliographie (NWBib)"
   },

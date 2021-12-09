@@ -1,0 +1,48 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2021-kim-reconcile",
+    "name": {
+        "de": "Abgleich und Anreicherung eigener Datenbestände mit der Gemeinsamen Normdatei in OpenRefine: OpenRefine Reconciliation mit lobid-gnd"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/fs#!",
+            "type": "Person",
+            "name": "Fabian Steeg"
+        },
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        }
+    ],
+    "keywords": [
+        "lobid",
+        "gnd",
+        "openrefine",
+        "reconciliation"
+    ],
+    "url": "https://slides.lobid.org/2021-kim-reconcile/",
+    "datePublished": "2021-10-07",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "isBasedOn": [
+        "https://slides.lobid.org/2021-gndcon-reconcile/",
+        "https://slides.lobid.org/2020-swib-reconciliation/",
+        "https://hbz.github.io/elag2019-bootcamp/"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

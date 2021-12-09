@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "PresentationDigitalDocument",
+  "type": [
+    "PresentationDigitalDocument"
+  ],
   "name": {
     "de": "lobid – offene, webbasierte Infrastruktur für zentrale bibliothekarische Daten"
   },

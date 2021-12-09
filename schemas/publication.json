@@ -16,12 +16,15 @@
     },
     "type": {
       "title": "Typ",
-      "type": "string",
-      "enum": [
-        "BlogPosting",
-        "PresentationDigitalDocument",
-        "Article"
-      ]
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "BlogPosting",
+          "PresentationDigitalDocument",
+          "Article"
+        ]
+      }
     },
     "name": {
       "$ref": "https://hbz.github.io/lobid/schemas/localizedString.json"
@@ -30,7 +33,7 @@
       "$ref": "https://hbz.github.io/lobid/schemas/description.json"
     },
     "keywords": {
-        "$ref": "https://hbz.github.io/lobid/schemas/keywords.json"
+      "$ref": "https://hbz.github.io/lobid/schemas/keywords.json"
     },
     "about": {
       "$ref": "https://hbz.github.io/lobid/schemas/about.json"

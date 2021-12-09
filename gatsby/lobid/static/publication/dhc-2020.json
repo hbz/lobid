@@ -3,8 +3,9 @@
     "type": [
         "PresentationDigitalDocument"
     ],
+    "id": "https://slides.lobid.org/dhc-2020/",
     "name": {
-        "de": "Offene Infrastruktur für bibliothekarische Daten: Linked Open Data, JSON & OpenRefine in der Praxis"
+        "de": "Normdaten als Linked Data publizieren und nutzen: lobid-gnd, OpenRefine Reconciliation und SkoHub"
     },
     "creator": [
         {
@@ -13,41 +14,40 @@
             "name": "Adrian Pohl"
         },
         {
+            "id": "http://lobid.org/team/pc#!",
+            "type": "Person",
+            "name": "Pascal Christoph"
+        },
+        {
             "id": "http://lobid.org/team/fs#!",
             "type": "Person",
             "name": "Fabian Steeg"
         }
     ],
+    "description": {
+        "de": "Vortrag im Rahmen des Kolloquiums Digital Humanities der Universität zu Köln"
+    },
     "keywords": [
         "lobid",
         "JSON-LD",
         "Linked Open Data",
         "libraries"
     ],
-    "id": "https://slides.lobid.org/2020-zbiw/",
     "about": [
         {
             "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/skohub"
         }
     ],
-    "datePublished": "2020-10-08",
+    "datePublished": "2020-06-26",
     "inLanguage": [
         "de"
     ],
     "audience": [
         "librarians",
         "developers"
-    ],
-    "isBasedOn": [
-        {
-            "id": "https://slides.lobid.org/htw-chur-2019/"
-        },
-        {
-            "id": "https://slides.lobid.org/beirat2019/"
-        },
-        {
-            "id": "https://slides.lobid.org/dhc-2020/"
-        }
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }

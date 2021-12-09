@@ -4,7 +4,7 @@
     "BlogPosting"
   ],
   "name": {
-    "de": "GND: Umstellung auf HTTPS-URIs"
+    "de": "GND-Integration in die Repository-Software DSpace auf Basis der lobid-API "
   },
   "creator": [
     {
@@ -13,15 +13,24 @@
       "name": "Adrian Pohl"
     }
   ],
+  "keywords": [
+    "lobid",
+    "GND",
+    "DSpace"
+  ],
   "about": [
     {
       "id": "https://lobid.org/product/lobid"
     }
   ],
-  "id": "https://blog.lobid.org/2019/11/29/lobid-gnd-https-change.html",
-  "datePublished": "2019-11-29",
+  "id": "https://blog.lobid.org/2021/06/22/bibtag21.html",
+  "datePublished": "2021-06-22",
   "inLanguage": [
     "de"
+  ],
+  "audience": [
+    "librarians",
+    "LAM"
   ],
   "license": "https://creativecommons.org/licenses/by/4.0/"
 }

@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "BlogPosting",
+  "type": [
+    "BlogPosting"
+  ],
   "name": {
     "en": "Improved GND reconciliation for OpenRefine"
   },

@@ -1,6 +1,8 @@
 {
     "@context": "https://schema.org",
-    "type": "PresentationDigitalDocument",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
     "name": {
         "de": "Standardisierung von OER-Metadaten"
     },
@@ -20,7 +22,9 @@
     ],
     "id": "https://slides.lobid.org/standardisierung-ffm/",
     "datePublished": "2019-06-18",
-    "inLanguage": [ "de" ],
+    "inLanguage": [
+        "de"
+    ],
     "audience": [
         "librarians",
         "developers"

@@ -13,6 +13,7 @@
     "OERSI"
   ],
   "image": "https://oersi.de/resources/nav-bar.png",
+  "startDate": "2020-01-15",
   "description": {
     "de": "Ein gemeinsames Projekt der TIB Hannover und des hbz zum Aufbau eines offenen Suchindex für Bildungsressourcen",
     "en": "Common project by TIB Hannover and hbz to create an open search index for educational resources"
@@ -22,7 +23,7 @@
       "id": "https://lobid.org/product/metafacture"
     },
     {
-      "id": "https://lobid.org/project/lrmi-profile"
+      "id": "https://lobid.org/project/amb"
     }
   ],
   "membership": [

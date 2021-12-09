@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "Article",
+  "type": [
+    "Article"
+  ],
   "name": {
     "de": "lobid-organisations: Ein umfassender Index deutscher Informationseinrichtungen"
   },

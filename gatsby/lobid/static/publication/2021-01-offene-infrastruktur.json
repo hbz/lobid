@@ -1,0 +1,72 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2021-01-offene-infrastruktur/",
+    "name": {
+        "de": "Offene Infrastruktur – Produkte, Projekte, Ziele"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "de": "Präsentation der Aktivitäten & Ziele der Gruppe Offene Infrastruktur des hbz"
+    },
+    "keywords": [
+        "lobid",
+        "hbz",
+        "Linked Open Data",
+        "libraries",
+        "Metafacture",
+        "SkoHub"
+    ],
+    "about": [
+        {
+            "id": "http://stage.lobid.org/team#!"
+        },
+        {
+            "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/project/alma-migration"
+        },
+        {
+            "id": "https://lobid.org/product/metafacture"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-fix"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-playground"
+        },
+        {
+            "id": "https://lobid.org/product/skohub"
+        },
+        {
+            "id": "https://lobid.org/project/oersi"
+        },
+        {
+            "id": "https://lobid.org/project/orca"
+        },
+        {
+            "id": "https://lobid.org/project/amb"
+        },
+        {
+            "id": "https://lobid.org/project/rpb"
+        }
+    ],
+    "datePublished": "2021-02-10",
+    "inLanguage": [
+        "de"
+    ],
+    "isBasedOn": "http://slides.lobid.org/beirat2019/",
+    "audience": [
+        "management"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

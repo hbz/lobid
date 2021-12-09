@@ -1,0 +1,36 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "http://slides.lobid.org/2021-07-08-lehre-verbindet-nrw/",
+    "name": {
+        "de": "ORCA-Metadaten-Infrastruktur"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "de": "Präsentation am 2021-07-08 im Rahmen von 'Lehre verbindet NRW'"
+    },
+    "keywords": [
+        "oer",
+        "open educational resources",
+        "resource discovery",
+        "orca"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/project/orca"
+        }
+    ],
+    "datePublished": "2021-07-08",
+    "inLanguage": [
+        "de"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

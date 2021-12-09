@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "BlogPosting",
+  "type": [
+    "BlogPosting"
+  ],
   "name": {
     "en": "ActivityPub Conference 2020"
   },
@@ -21,7 +23,7 @@
       "id": "https://lobid.org/product/skohub"
     }
   ],
-  "id": "https://blog.lobid.org/2020/10/09/skohub-apconf.html",
+  "id": "https://blog.skohub.io/2020-10-09-skohub-apconf/",
   "datePublished": "2020-10-09",
   "inLanguage": [
     "en"

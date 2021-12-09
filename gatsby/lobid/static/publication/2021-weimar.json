@@ -3,8 +3,9 @@
     "type": [
         "PresentationDigitalDocument"
     ],
+    "id": "https://slides.lobid.org/2021-weimar/",
     "name": {
-        "de": "Offene Infrastruktur für bibliothekarische Daten: Linked Open Data, JSON & OpenRefine in der Praxis"
+        "de": "Web-Schnittstellen &amp; Linked Open Usable Data: LOUD mit JSON über HTTP"
     },
     "creator": [
         {
@@ -18,19 +19,21 @@
             "name": "Fabian Steeg"
         }
     ],
+    "description": {
+        "de": "Präsentation beim Schnittstellen-Workshop mit der Klassik Stiftung Weimar"
+    },
     "keywords": [
         "lobid",
         "JSON-LD",
         "Linked Open Data",
-        "libraries"
+        "glam"
     ],
-    "id": "https://slides.lobid.org/2020-zbiw/",
     "about": [
         {
             "id": "https://lobid.org/product/lobid"
         }
     ],
-    "datePublished": "2020-10-08",
+    "datePublished": "2021-10-29",
     "inLanguage": [
         "de"
     ],
@@ -39,15 +42,7 @@
         "developers"
     ],
     "isBasedOn": [
-        {
-            "id": "https://slides.lobid.org/htw-chur-2019/"
-        },
-        {
-            "id": "https://slides.lobid.org/beirat2019/"
-        },
-        {
-            "id": "https://slides.lobid.org/dhc-2020/"
-        }
+        "https://slides.lobid.org/2020-zbiw/"
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }

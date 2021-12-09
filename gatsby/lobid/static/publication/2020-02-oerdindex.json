@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "PresentationDigitalDocument",
+  "type": [
+    "PresentationDigitalDocument"
+  ],
   "name": {
     "de": "OER Search Index"
   },
@@ -28,9 +30,6 @@
   "datePublished": "2020-02-26",
   "inLanguage": [
     "de"
-  ],
-  "audience": [
-    "library managers"
   ],
   "license": "https://creativecommons.org/licenses/by/4.0/"
 }

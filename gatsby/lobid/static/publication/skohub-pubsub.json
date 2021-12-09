@@ -1,6 +1,8 @@
 {
   "@context": "https://schema.org",
-  "type": "BlogPosting",
+  "type": [
+    "BlogPosting"
+  ],
   "name": {
     "en": "Presenting SkoHub PubSub"
   },
@@ -21,7 +23,7 @@
       "id": "https://lobid.org/product/skohub"
     }
   ],
-  "id": "https://blog.lobid.org/2020/06/25/skohub-pubsub.html",
+  "id": "https://blog.skohub.io/2020-06-25-skohub-pubsub/",
   "datePublished": "2020-06-25",
   "inLanguage": [
     "en"
