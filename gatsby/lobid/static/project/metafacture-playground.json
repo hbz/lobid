@@ -22,5 +22,27 @@
     {
       "id": "https://lobid.org/project/metafacture-fix"
     }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/kt#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Funktionales Review",
+        "en": "functional review"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
+      }
+    }
   ]
 }

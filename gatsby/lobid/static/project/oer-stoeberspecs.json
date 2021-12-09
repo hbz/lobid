@@ -19,5 +19,17 @@
     {
       "id": "https://lobid.org/product/skohub"
     }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Projektleitung",
+        "en": "project lead"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    }
   ]
 }

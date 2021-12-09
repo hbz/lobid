@@ -21,5 +21,47 @@
       "en": "Open Infrastructure"
     },
     "type": "Organization"
-  }
+  },
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Sytemadministration, Softwareentwicklung",
+        "en": "system administration, software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pc#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Funktionales Review",
+        "en": "functional review"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklerin",
+        "en": "Software Developer"
+      },
+      "member": {
+        "id": "http://lobid.org/team/kt#!"
+      }
+    }
+  ]
 }

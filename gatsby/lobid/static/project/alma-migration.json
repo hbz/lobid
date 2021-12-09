@@ -22,5 +22,37 @@
     {
       "id": "https://lobid.org/product/metafacture"
     }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Product Owner",
+        "en": "product owner"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Sytemadministration, Datentransformation",
+        "en": "system administration, data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pc#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Datentransformation",
+        "en": "data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
+      }
+    }
   ]
 }

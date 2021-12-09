@@ -20,5 +20,37 @@
       "en": "Open Infrastructure"
     },
     "type": "Organization"
-  }
+  },
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Product Owner",
+        "en": "product owner"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Sytemadministration",
+        "en": "system administration"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pc#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklerin",
+        "en": "Software Developer"
+      },
+      "member": {
+        "id": "http://lobid.org/team/kt#!"
+      }
+    }
+  ]
 }

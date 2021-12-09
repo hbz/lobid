@@ -17,5 +17,27 @@
     {
       "id": "https://lobid.org/product/metafacture"
     }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Funktionales Review",
+        "en": "functional review"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
+      }
+    }
   ]
 }
