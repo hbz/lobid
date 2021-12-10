@@ -1,0 +1,44 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "http://slides.lobid.org/swib17-lightning-talk/",
+    "name": {
+        "en": "Creating a spatial classification from Wikidata"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "en": "These slides are used for a lightning talk at SWIB17."
+    },
+    "keywords": [
+        "lobid",
+        "libraries",
+        "linked open data",
+        "wikidata",
+        "subject classification"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/nwbib"
+        },
+        {
+            "id": "https://lobid.org/product/lobid"
+        }
+    ],
+    "datePublished": "2017-12-05",
+    "inLanguage": [
+        "en"
+    ],
+    "audience": [
+        "web developers",
+        "librarians"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

@@ -3,9 +3,9 @@
     "type": [
         "PresentationDigitalDocument"
     ],
-    "id": "https://slides.lobid.org/standardisierung-ffm/",
+    "id": "http://slides.lobid.org/hbz-info-2019/",
     "name": {
-        "de": "Standardisierung von OER-Metadaten"
+        "de": "lobid – offene, webbasierte Infrastruktur für Titel- und Normdaten"
     },
     "creator": [
         {
@@ -15,18 +15,21 @@
         }
     ],
     "description": {
-        "de": "Präsentation am 18.06.2019 beim Treffen deutscher Akteur*innen zur Vernetzung, Harmonisierung und Zusammenarbeit für eine OER-förderliche (Metadaten-) Infrastruktur"
+        "de": "Vortrag bei einer hbz-internen Informationsveranstaltung am 2019-02-21"
     },
     "keywords": [
-        "Standardisierung",
-        "Metadaten"
+        "lobid",
+        "hbz",
+        "JSON-LD",
+        "Linked Open Data",
+        "libraries"
     ],
     "about": [
         {
-            "id": "https://lobid.org/project/oer-stoeberspecs"
+            "id": "https://lobid.org/product/lobid"
         }
     ],
-    "datePublished": "2019-06-18",
+    "datePublished": "2019-02-21",
     "inLanguage": [
         "de"
     ],
