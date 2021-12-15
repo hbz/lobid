@@ -5,7 +5,7 @@
     ],
     "id": "https://slides.lobid.org/2020-swib-reconciliation/",
     "name": {
-        "en": "W3C Entity Reconciliation CG"
+        "en": "The W3C Entity Reconciliation Community Group"
     },
     "creator": [
         {
@@ -21,6 +21,14 @@
         "OpenRefine",
         "Reconciliation",
         "W3C"
+    ],
+    "about": [
+        {
+            "id": "https://github.com/reconciliation-api"
+        },
+        {
+            "id": "https://lobid.org/product/lobid"
+        }
     ],
     "datePublished": "2020-11-27",
     "inLanguage": ["en"],
