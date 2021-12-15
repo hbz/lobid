@@ -53,8 +53,8 @@
     {
       "type": "Role",
       "roleName": {
-        "de": "Softwareentwicklerin",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "http://lobid.org/team/kt#!"

@@ -107,8 +107,8 @@
       "type": "Role",
       "startDate": "2010",
       "roleName": {
-        "de": "Softwareentwickler, Systemadministrator",
-        "en": "Software Developer, System Administrator"
+        "de": "Softwareentwicklung, Systemadministration",
+        "en": "Software development, System Administrator"
       },
       "member": {
         "id": "http://lobid.org/team/pc#!"
@@ -118,8 +118,8 @@
       "type": "Role",
       "startDate": "2012",
       "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "http://lobid.org/team/fs#!"
@@ -129,8 +129,8 @@
       "type": "Role",
       "startDate": "2020",
       "roleName": {
-        "de": "Softwareentwicklerin",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "http://lobid.org/team/kt#!"
@@ -152,8 +152,8 @@
       "startDate": "2010",
       "endDate": "2010",
       "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "https://github.com/literarymachine/",
@@ -168,8 +168,8 @@
       "startDate": "2014",
       "endDate": "2016",
       "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "https://github.com/SBRitter",
