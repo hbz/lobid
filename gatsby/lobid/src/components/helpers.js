@@ -1,7 +1,7 @@
 import React from "react";
 
 export function simpleId(url) {
-    return url.slice(url.lastIndexOf("/") + 1);
+    return url.slice(url.lastIndexOf("/") + 1).replace('#!', '');
 }
 
 export function stripLobidOrg(url) {
