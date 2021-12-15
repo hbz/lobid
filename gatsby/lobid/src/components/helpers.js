@@ -1,4 +1,5 @@
 import React from "react";
+import md5 from 'md5';
 
 export function simpleId(url) {
     return url.slice(url.lastIndexOf("/") + 1).replace('#!', '');
@@ -14,4 +15,15 @@ export function asLinks(field, entity, props) {
             <a href={stripLobidOrg(link.id)}>{simpleId(link.id)}</a><br />
         </div>)}
     </td></tr>
+}
+
+export function getImage(id, src) {
+    return (
+        <img src={src || `https://gravatar.com/avatar/${md5(id)}?s=100&d=identicon`}
+            alt={id} className="photo"></img>
+    );
+}
+
+export function getMemberDetails(all, member) {
+    return all.filter(m => m.node.id === member.member.id)[0];
 }

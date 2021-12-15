@@ -7,6 +7,7 @@ export default function ProductPage({ data, location, pageContext }) {
   const product = data.allFile.edges.slice(-1).pop().node.childProductJson
   return (<Product
     product={product}
+    members={data.allTeamJson.edges} // TODO: filter here for product members?
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
       .filter(p => p.about && p.about.find(a => simpleId(a.id) === pageContext.id))
@@ -22,6 +23,8 @@ export default function ProductPage({ data, location, pageContext }) {
     companyDetails="Impressum"
     privacy="Datenschutz"
     contactPointId="mailto:semweb@hbz-nrw.de"
+    memberName="Mitglieder"
+    lang="de"
   />);
 }
 
@@ -51,7 +54,29 @@ export const query = graphql`
             },
             isRelatedTo {
               id
+            },
+            membership {
+              member {
+                id
+              }
+              roleName {
+                de
+                en
+              }
             }
+          }
+        }
+      }
+    }
+    allTeamJson {
+      edges {
+        node {
+          id
+          image
+          email
+          name {
+            de
+            en
           }
         }
       }

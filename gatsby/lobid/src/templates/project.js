@@ -7,6 +7,7 @@ export default function ProjectPage({ data, location, pageContext }) {
   const project = data.allFile.edges.slice(-1).pop().node.childProjectJson
   return (<Project
     project={project}
+    members={data.allTeamJson.edges} // TODO: filter here for project members?
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
       .filter(p => p.about && p.about.find(a => simpleId(a.id) === pageContext.id))
@@ -24,6 +25,8 @@ export default function ProjectPage({ data, location, pageContext }) {
     companyDetails="Impressum"
     privacy="Datenschutz"
     contactPointId="mailto:semweb@hbz-nrw.de"
+    memberName="Mitglieder"
+    lang="de"
   />);
 }
 
@@ -53,6 +56,28 @@ export const query = graphql`
             result {
               id
             }
+            membership {
+              member {
+                id
+              }
+              roleName {
+                de
+                en
+              }
+            }
+          }
+        }
+      }
+    }
+    allTeamJson {
+      edges {
+        node {
+          id
+          image
+          email
+          name {
+            de
+            en
           }
         }
       }

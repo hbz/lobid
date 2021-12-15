@@ -1,10 +1,11 @@
 import React from "react";
 import md5 from "md5";
-import { simpleId, asLinks } from "./helpers.js";
+import { simpleId, asLinks, getMemberDetails } from "./helpers.js";
 
 import Header from "./header.html";
 import Footer from "./footer.html";
 import Publications from "./publications.html";
+import Membership from "./membership.html";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
@@ -61,6 +62,8 @@ export class Product extends React.Component {
               <img alt={this.props.product.name.label} id="index-image" src={this.props.product.image || `https://gravatar.com/avatar/${md5(this.props.product.id)}?s=300&d=identicon`} />
             </div>
           </div>
+          <p className="lead">{this.props.memberName}</p>
+          <Membership membership={this.props.product.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
         </div>
