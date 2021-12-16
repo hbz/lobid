@@ -6,6 +6,10 @@ export default function MemberPage({ data, location, pageContext }) {
   const member = data.allFile.edges[0].node.childTeamJson
   return (<Member
     member={member}
+    products={data.allProductJson.edges
+      .map(edge => edge.node)
+      .filter(p => p.membership.find(m => m.member.id === member.id))
+    }
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
       .filter(p => p.creator.find(c => c.id === member.id))
@@ -22,6 +26,7 @@ export default function MemberPage({ data, location, pageContext }) {
     companyDetails="Impressum"
     privacy="Datenschutz"
     contactPointId="mailto:lobid-admin@hbz-nrw.de"
+    lang="de"
   />);
 }
 
@@ -62,6 +67,27 @@ export const query = graphql`
           datePublished
           fields {
             jsonFile
+          }
+        }
+      }
+    }
+    allProductJson {
+      edges {
+        node {
+          id
+          image
+          name {
+            de
+            en
+          }
+          slogan {
+            de
+            en
+          }
+          membership {
+            member {
+              id
+            }
           }
         }
       }
