@@ -5,6 +5,7 @@ import Header from "./header.html";
 import Footer from "./footer.html";
 import Publications from "./publications.html";
 import Products from "./products.html";
+import Projects from "./projects.html";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
@@ -69,6 +70,8 @@ export class Member extends React.Component {
           </div>
           <p className="lead">{this.props.makesOfferName}</p>
           <Products products={this.props.products} lang={this.props.lang}/>
+          <p className="lead">{this.props.projectsName}</p>
+          <Projects projects={this.props.projects} lang={this.props.lang}/>
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
         </div>

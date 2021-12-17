@@ -10,6 +10,10 @@ export default function MemberPage({ data, location, pageContext }) {
       .map(edge => edge.node)
       .filter(p => p.membership.find(m => m.member.id === member.id))
     }
+    projects={data.allProjectJson.edges
+      .map(edge => edge.node)
+      .filter(p => p.membership.find(m => m.member.id === member.id))
+    }
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
       .filter(p => p.creator.find(c => c.id === member.id))
@@ -21,6 +25,7 @@ export default function MemberPage({ data, location, pageContext }) {
     language="English"
     teamLink="/team-de"
     makesOfferName="Produkte"
+    projectsName="Projekte"
     memberName="Mitglieder"
     memberFormerName="Ehemalige"
     companyDetails="Impressum"
@@ -84,6 +89,24 @@ export const query = graphql`
             de
             en
           }
+          membership {
+            member {
+              id
+            }
+          }
+        }
+      }
+    }
+    allProjectJson {
+      edges {
+        node {
+          id
+          image
+          name {
+            de
+            en
+          }
+          alternateName
           membership {
             member {
               id
