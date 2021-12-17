@@ -68,9 +68,9 @@ export class Member extends React.Component {
               <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`} />
             </div>
           </div>
-          <p className="lead">{this.props.makesOfferName}</p>
+          {this.props.products.length > 0 && <p className="lead">{this.props.makesOfferName}</p>}
           <Products products={this.props.products} lang={this.props.lang}/>
-          <p className="lead">{this.props.projectsName}</p>
+          {this.props.projects.length > 0 && <p className="lead">{this.props.projectsName}</p>}
           <Projects projects={this.props.projects} lang={this.props.lang}/>
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />

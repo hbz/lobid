@@ -4,7 +4,7 @@ import { getImage, simpleId } from './helpers.js'
 export default class Products extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div>
         {this.props.products.map((product) =>
           <div key={product.id}>
             {getImage(product.id, product.image)}

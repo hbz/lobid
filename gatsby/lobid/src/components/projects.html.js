@@ -4,7 +4,7 @@ import { getImage, simpleId } from './helpers.js'
 export default class Projects extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div>
         {this.props.projects
           .map((details) =>
             <div key={details.id}>
