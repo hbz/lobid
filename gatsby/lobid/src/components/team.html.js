@@ -58,7 +58,7 @@ export class Team extends React.Component {
                 src={hbzLogoPng}
                 alt="hbz logo"
               />
-              lobid <small>&mdash; {this.props.subtitle}</small>
+              {this.props.title} <small></small>
             </h1>
           </div>
 

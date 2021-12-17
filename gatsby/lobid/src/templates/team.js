@@ -11,7 +11,7 @@ export default ({ data, location, pageContext }) => {
     projects={data.allProjectJson.edges}
     lang={pageContext.lang}
     contactName={pageContext.lang==="de"?"Kontakt":"Contact"}
-    subtitle={pageContext.lang==="de"?"Dateninfrastruktur für Bibliotheken":"Data infrastructure for libraries"}
+    title={pageContext.lang==="de"?"Offene Infrastruktur":"Open Infrastructure"}
     publications={pageContext.lang==="de"?"Publikationen":"Publications"}
     language={pageContext.lang==="de"?"English":"Deutsch"}
     languageTooltip={pageContext.lang==="de"?"Switch language to English":"Wechsel zur deutschen Version"}

@@ -23,7 +23,7 @@ export default function ProductPage({ data, location, pageContext }) {
     companyDetails="Impressum"
     privacy="Datenschutz"
     contactPointId="mailto:semweb@hbz-nrw.de"
-    memberName="Mitglieder"
+    memberName="Team"
     lang="de"
   />);
 }
