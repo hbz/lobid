@@ -42,7 +42,7 @@ export class Member extends React.Component {
                 src={hbzLogoPng}
                 alt="hbz logo"
               />
-              lobid <small>&mdash; {this.props.subtitle}</small>
+              {this.props.title}
             </h1>
           </div>
 

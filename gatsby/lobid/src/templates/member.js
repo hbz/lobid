@@ -20,7 +20,7 @@ export default function MemberPage({ data, location, pageContext }) {
       .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
     }
     contactName="Kontakt"
-    subtitle="Dateninfrastruktur für Bibliotheken"
+    title="Offene Infrastruktur"
     publications="Publikationen"
     language="English"
     teamLink="/team-de"
