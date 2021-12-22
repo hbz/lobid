@@ -3,6 +3,9 @@ import md5 from 'md5';
 
 import Header from "./header.html";
 import Footer from "./footer.html";
+import Publications from "./publications.html";
+import Products from "./products.html";
+import Projects from "./projects.html";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
@@ -39,7 +42,7 @@ export class Member extends React.Component {
                 src={hbzLogoPng}
                 alt="hbz logo"
               />
-              lobid <small>&mdash; {this.props.subtitle}</small>
+              {this.props.title}
             </h1>
           </div>
 
@@ -62,9 +65,14 @@ export class Member extends React.Component {
               </table>
             </div>
             <div className="col-md-3">
-              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`}/>
+              <img alt={this.props.member.name.label} id="index-image" src={this.props.member.image || `https://gravatar.com/avatar/${md5(this.props.member.email)}?s=300&d=identicon`} />
             </div>
           </div>
+          {this.props.products.length > 0 && <p className="lead">{this.props.makesOfferName}</p>}
+          <Products products={this.props.products} lang={this.props.lang}/>
+          {this.props.projects.length > 0 && <p className="lead">{this.props.projectsName}</p>}
+          <Projects projects={this.props.projects} lang={this.props.lang}/>
+          <Publications pubs={this.props.pubs} publications={this.props.publications} />
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
         </div>
       </div>

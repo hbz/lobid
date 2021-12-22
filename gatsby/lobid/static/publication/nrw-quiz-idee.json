@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "BlogPosting"
+  ],
+  "name": {
+    "de": "Ideen: NRW-Quiz auf Grundlage der NWBib-Daten für Coding da Vinci"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/nwbib"
+    }
+  ],
+  "id": "https://blog.lobid.org/2019/10/22/nrw-quiz-idee.html",
+  "datePublished": "2019-10-22",
+  "inLanguage": [
+    "de"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

@@ -1,0 +1,40 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "Article"
+    ],
+    "name": {
+        "de": "How We Built a Spatial Subject Classification Based on Wikidata"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "en": "From the fall of 2017 to the beginning of 2020 a project had been carried out to upgrade spatial subject indexing in North Rhine-Westphalian Bibliography (NWBib) from uncontrolled strings to controlled values. For this purpose, a spatial classification with around 4,500 entries was created from Wikidata and published as SKOS (Simple Knowledge Organization System) vocabulary. The article gives an overview over the initial problem and outlines the different implementation steps."
+    },
+    "keywords": [
+        "NWBib",
+        "Wikidata",
+        "spatial data"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/nwbib"
+        }
+    ],
+    "id": "https://journal.code4lib.org/articles/15875",
+    "datePublished": "2021",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "developers",
+        "librarians",
+        "wikidatans"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

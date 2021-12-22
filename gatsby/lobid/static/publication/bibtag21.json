@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "BlogPosting"
+  ],
+  "name": {
+    "de": "GND-Integration in die Repository-Software DSpace auf Basis der lobid-API "
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "keywords": [
+    "lobid",
+    "GND",
+    "DSpace"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "id": "https://blog.lobid.org/2021/06/22/bibtag21.html",
+  "datePublished": "2021-06-22",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "librarians",
+    "LAM"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

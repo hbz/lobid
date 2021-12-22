@@ -1,0 +1,65 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://lobid.org/product/nwbib",
+  "url": "https://nwbib.de",
+  "image": "https://nwbib.de/assets/images/wappen.png",
+  "type": [
+    "Product"
+  ],
+  "name": {
+    "de": "Nordrhein-Westfälische Bibliographie",
+    "en": "Bibliography of North Rhine-Westfalia"
+  },
+  "alternateName": [
+    "NWBib"
+  ],
+  "description": {
+    "de": " Die Nordrhein-Westfälische Bibliographie (NWBib) verzeichnet die Literatur über das Land Nordrhein-Westfalen, seine Regionen, Orte und Persönlichkeiten, Literatur aus allen Lebens- und Wissensbereichen in Geschichte und Gegenwart. ",
+    "en": "The North-Rhine Westphalian Bibliography (NWBib) is a regional bibliography that records literature about North-Rhine Westphalia (NRW), its regions, places and people"
+  },
+  "isBasedOn": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "maintainer": {
+    "id": "http://lobid.org/team#!",
+    "name": {
+      "de": "Offene Infrastruktur",
+      "en": "Open Infrastructure"
+    },
+    "type": "Organization"
+  },
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Product Owner",
+        "en": "product owner"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Sytemadministration, Softwareentwicklung",
+        "en": "system administration, software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pc#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
+      }
+    }
+  ]
+}

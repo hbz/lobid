@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "BlogPosting"
+  ],
+  "name": {
+    "en": "SkoHub talk at SWIB19: KOS-based content syndication with ActivityPub"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/skohub"
+    }
+  ],
+  "id": "https://blog.skohub.io/2020-01-29-skohub-talk-at-swib19/",
+  "datePublished": "2020-03-31",
+  "inLanguage": [
+    "en"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

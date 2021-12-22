@@ -1,0 +1,42 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "PresentationDigitalDocument"
+  ],
+  "name": {
+    "de": "lobid-organisations: Ein umfassender Index deutscher Informationseinrichtungen"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "description": {
+    "de": "Diese Folien wurden zur Präsentation des eines Vortrags am 9.3.2016 innerhalb der BibCast-Reihe verwendet. URL: http://bibcast.openbiblio.eu/lobid-organisations-ein-umfassender-index-deutscher-informationseinrichtungen/"
+  },
+  "keywords": [
+    "lobid",
+    "libraries",
+    "organisation index",
+    "API",
+    "web development"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "id": "https://slides.lobid.org/bibcast16/",
+  "datePublished": "2016-03-09",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "web developers",
+    "librarians"
+  ],
+  "isBasedOn": "http://hbz.github.io/slides/swib-15/",
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

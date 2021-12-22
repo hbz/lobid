@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "BlogPosting"
+  ],
+  "name": {
+    "en": "Presenting the SkoHub Editor"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "https://twitter.com/literarymachine/",
+      "type": "Person",
+      "name": "Felix Ostrowski"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/skohub"
+    }
+  ],
+  "id": "https://blog.skohub.io/2020-03-31-skohub-editor/",
+  "datePublished": "2020-03-31",
+  "inLanguage": [
+    "en"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

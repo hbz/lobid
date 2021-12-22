@@ -1,0 +1,84 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://lobid.org/project/rpb",
+  "url": "https://github.com/hbz/rpb",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "Rheinland-Pfälzische Bibliographie",
+    "en": "Bibliography of Rhineland-Platinate"
+  },
+  "description": {
+    "en": "Migrating the RPB from Allegro to a new cataloging and web presentation environment",
+    "de": "Das Landesbibliothekszentrum Rheinland-Pfalz hat das hbz beauftragt, die Rheinland-Pfälzische Bibliographie (RPB) von Allegro in eine neues System zu migrieren, das Erfassung und Präsentation der Bibliographie im Web abdeckt. Auf Basis der Erfahrungen mit der Nordrhein-Westfälischen Bibliographie (NWBib) und mit einer Erweiterung der SkoHub-Software um ein weiteres Modul zur Erfassung, Speicherung und Pflege von Linked Data wird das Projekt umgesetzt. Mit Metafacture werden zunächst die Allegro-Daten nach Linked Date überführt und indexiert und parallel an einer Erfassungs -und Speicherschicht gearbeitet."
+  },
+  "startDate": "2021-04-01",
+  "endDate": "2022-03-31",
+  "isBasedOn": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/product/skohub"
+    },
+    {
+      "id": "https://lobid.org/product/nwbib"
+    },
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Projektleitung",
+        "en": "project lead"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Sytemadministration",
+        "en": "system administration"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pc#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "Software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/kt#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Datentransformation",
+        "en": "data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
+      }
+    }
+  ]
+}

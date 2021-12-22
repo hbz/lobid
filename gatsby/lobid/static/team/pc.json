@@ -1,9 +1,13 @@
 {
   "@context": "https://schema.org",
   "id": "http://lobid.org/team/pc#!",
-  "type": "Person",
+  "type": [
+    "Person"
+  ],
   "email": "christoph@hbz-nrw.de",
-  "alternateName": ["dr0i"],
+  "alternateName": [
+    "dr0i"
+  ],
   "name": {
     "en": "Pascal Christoph",
     "de": "Pascal Christoph"

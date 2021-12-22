@@ -1,8 +1,9 @@
 import React from "react";
-import md5 from 'md5';
+import { simpleId, getMemberDetails, getImage} from './helpers.js'
 
 import Header from "./header.html";
 import Footer from "./footer.html";
+import Membership from "./membership.html";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
@@ -28,46 +29,16 @@ export class Team extends React.Component {
   getEhemalige = () => {
     return (
       <div id="former">
-        {this.props.team.membership.filter(member => member.endDate)
-          .map((member) => [member, this.getDetails(member)]).map(([member, details]) =>
-            <div>
-              {this.getImage(
-                (details && details.node.email) || member.member.id,
-                details && details.node.image)}
-              <p className="details">
-                {this.getName(
-                  member.member.id,
-                  (details && details.node.name[this.props.lang]) || (member.member.name && member.member.name[this.props.lang]) || member.member.id)}
-                <br />
-                {member.roleName[this.props.lang]}<br />
-              </p>
-            </div>
-          )}
+        <Membership membership={this.props.team.membership.filter(member => member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
       </div>
     );
   };
 
-  getName = (id, label) => {
-    return (
-      <a href={id.replace('http://lobid.org/', '/')}>
-        {label}
-      </a>
-    );
-  }
-
-  getImage = (id, src) => {
-    return (
-      <img src={src || `https://gravatar.com/avatar/${md5(id)}?s=100&d=identicon`}
-        alt={id} className="photo"></img>
-    );
-  }
-
-  getDetails = (member) => {
-    return this.props.members.filter(m => m.node.id === member.member.id)[0];
+  getOfferDetails = (offer) => {
+    return this.props.products.filter(p => p.node.id === offer.id)[0];
   }
 
   render() {
-    console.log('Header', Header);
     return (
       <div className="container">
         <p />
@@ -87,7 +58,7 @@ export class Team extends React.Component {
                 src={hbzLogoPng}
                 alt="hbz logo"
               />
-              lobid <small>&mdash; {this.props.subtitle}</small>
+              {this.props.title} <small></small>
             </h1>
           </div>
 
@@ -111,6 +82,7 @@ export class Team extends React.Component {
           <p>
             {this.props.team.contactPoint.map((contactPoint) =>
               <a
+                key={contactPoint.id}
                 target="_blank"
                 href={contactPoint.id}
                 rel="nofollow noopener noreferrer"
@@ -128,17 +100,7 @@ export class Team extends React.Component {
           </p>
 
           <h2>{this.props.memberName}</h2>
-
-          {this.props.team.membership.filter((member) => !member.endDate)
-            .map((member) => [member, this.getDetails(member)]).map(([member, details]) =>
-              <div>
-                {this.getImage(details.node.email, details.node.image)}
-                <p className="details">
-                  {this.getName(details.node.id, details.node.name[this.props.lang])}{" "}<br />
-                  {member.roleName[this.props.lang]}<br />
-                </p>
-              </div>
-            )}
+          <Membership membership={this.props.team.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
 
           <h3>
             {this.props.memberFormerName}
@@ -162,18 +124,34 @@ export class Team extends React.Component {
 
           <h2>{this.props.makesOfferName}</h2>
 
-          {this.props.team.makesOffer.map((offer) =>
-            <p>
-              <a
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                href={offer.id}
-              >
-                {offer.id}
-              </a>
-              <br />
-              {offer.name}
-            </p>
+          {this.props.team.makesOffer
+           .map((offer) => [offer, this.getOfferDetails(offer)]).map(([offer, details]) =>
+            <div key={offer.id}>
+              {getImage(offer.id, details.node.image)}
+              <p className="details">
+                <a href={"/product/" + simpleId(offer.id)}>
+                  {offer.name}
+                </a>
+                <br />
+                {(details.node.slogan && details.node.slogan[this.props.lang]) || offer.name}
+              </p>
+            </div>
+          )}
+
+          <h2>{this.props.projectsName}</h2>
+
+          {this.props.projects
+          .map((details) =>
+            <div key={details.node.id}>
+              {getImage(details.node.id, details.node.image)}
+              <p className="details">
+                <a href={"/project/" + simpleId(details.node.id)}>
+                  {details.node.alternateName || simpleId(details.node.id)}
+                </a>
+                <br />
+                {(details.node.name && details.node.name[this.props.lang]) || details.node.alternateName}
+              </p>
+            </div>
           )}
         </div>
         <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />

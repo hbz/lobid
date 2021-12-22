@@ -40,15 +40,6 @@
         "en": "Issue Tracker on GitHub",
         "de": "Issue-Tracker auf GitHub"
       }
-    },
-    {
-      "type": "ContactPoint",
-      "image": "/images/freenode.png",
-      "id": "irc://irc.freenode.net/lobid",
-      "contactType": {
-        "en": "IRC",
-        "de": "IRC"
-      }
     }
   ],
   "alternateName": {
@@ -60,7 +51,7 @@
     "en": "Open Infrastructure"
   },
   "description": {
-    "de": "Die Gruppe \"Offene Infrastruktur\" des hbz unterstützt die Etablierung und Pflege einer zukunftssicheren bibliothekarischen Dateninfrastruktur im regionalen, überregionalen und internationalen Raum. ",
+    "de": "Die Gruppe Offene Infrastruktur des hbz unterstützt die Etablierung und Pflege einer zukunftssicheren bibliothekarischen Dateninfrastruktur im regionalen, überregionalen und internationalen Raum. ",
     "en": "The Open infrastructure team of hbz supports establishment and maintenance of a future-proof data infrastructure for libraries in a regional, national and international context."
   },
   "parentOrganization": "http://lobid.org/organisations/DE-605#!",
@@ -72,19 +63,19 @@
   "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
   "makesOffer": [
     {
-      "id": "https://lobid.org",
+      "id": "https://lobid.org/product/lobid",
       "name": "lobid"
     },
     {
-      "id": "https://nwbib.de",
+      "id": "https://lobid.org/product/nwbib",
       "name": "NWBib"
     },
     {
-      "id": "https://metafacture.org",
+      "id": "https://lobid.org/product/metafacture",
       "name": "Metafacture"
     },
     {
-      "id": "https://skohub.io",
+      "id": "https://lobid.org/product/skohub",
       "name": "SkoHub"
     }
   ],
@@ -116,8 +107,8 @@
       "type": "Role",
       "startDate": "2010",
       "roleName": {
-        "de": "Softwareentwickler, Systemadministrator",
-        "en": "Software Developer, System Administrator"
+        "de": "Softwareentwicklung, Systemadministration",
+        "en": "Software development, System Administrator"
       },
       "member": {
         "id": "http://lobid.org/team/pc#!"
@@ -127,8 +118,8 @@
       "type": "Role",
       "startDate": "2012",
       "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "http://lobid.org/team/fs#!"
@@ -138,8 +129,8 @@
       "type": "Role",
       "startDate": "2020",
       "roleName": {
-        "de": "Softwareentwicklerin",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "http://lobid.org/team/kt#!"
@@ -161,8 +152,8 @@
       "startDate": "2010",
       "endDate": "2010",
       "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "https://github.com/literarymachine/",
@@ -177,8 +168,8 @@
       "startDate": "2014",
       "endDate": "2016",
       "roleName": {
-        "de": "Softwareentwickler",
-        "en": "Software Developer"
+        "de": "Softwareentwicklung",
+        "en": "Software development"
       },
       "member": {
         "id": "https://github.com/SBRitter",

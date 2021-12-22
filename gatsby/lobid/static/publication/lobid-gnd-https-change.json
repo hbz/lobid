@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "BlogPosting"
+  ],
+  "name": {
+    "de": "GND: Umstellung auf HTTPS-URIs"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "id": "https://blog.lobid.org/2019/11/29/lobid-gnd-https-change.html",
+  "datePublished": "2019-11-29",
+  "inLanguage": [
+    "de"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

@@ -1,0 +1,40 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "PresentationDigitalDocument"
+  ],
+  "name": {
+    "en": "Using Wikidata to improve spatial subject indexing in a regional bibliography"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "description": {
+    "en": "Presentation for WikidataCon as part of the \"Libraries Panel\", 26 October 2019 in Berlin"
+  },
+  "keywords": [
+    "NWBib",
+    "Wikidata",
+    "lobid"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/nwbib"
+    }
+  ],
+  "id": "http://slides.lobid.org/nwbib-wikidatacon/",
+  "datePublished": "2019-10-26",
+  "inLanguage": [
+    "en"
+  ],
+  "audience": [
+    "developers",
+    "librarians",
+    "wikidatans"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

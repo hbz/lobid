@@ -1,9 +1,13 @@
 {
   "@context": "https://schema.org",
   "id": "http://lobid.org/team/ap#!",
-  "type": "Person",
+  "type": [
+    "Person"
+  ],
   "email": "pohl@hbz-nrw.de",
-  "alternateName": ["acka47"],
+  "alternateName": [
+    "acka47"
+  ],
   "name": {
     "en": "Adrian Pohl",
     "de": "Adrian Pohl"

@@ -1,7 +1,9 @@
 {
     "@context": "https://schema.org",
     "id": "http://lobid.org/team/ce#!",
-    "type": "Person",
+    "type": [
+        "Person"
+    ],
     "email": "christoph.ewertowski@hbz-nrw.de",
     "image": "http://lobid.org/download/ce.jpg",
     "name": {

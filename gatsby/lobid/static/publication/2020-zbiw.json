@@ -1,0 +1,53 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "name": {
+        "de": "Offene Infrastruktur für bibliothekarische Daten: Linked Open Data, JSON & OpenRefine in der Praxis"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/fs#!",
+            "type": "Person",
+            "name": "Fabian Steeg"
+        }
+    ],
+    "keywords": [
+        "lobid",
+        "JSON-LD",
+        "Linked Open Data",
+        "libraries"
+    ],
+    "id": "https://slides.lobid.org/2020-zbiw/",
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        }
+    ],
+    "datePublished": "2020-10-08",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "isBasedOn": [
+        {
+            "id": "https://slides.lobid.org/htw-chur-2019/"
+        },
+        {
+            "id": "https://slides.lobid.org/beirat2019/"
+        },
+        {
+            "id": "https://slides.lobid.org/dhc-2020/"
+        }
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

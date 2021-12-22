@@ -1,0 +1,48 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2021-weimar/",
+    "name": {
+        "de": "Web-Schnittstellen & Linked Open Usable Data: LOUD mit JSON über HTTP"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/fs#!",
+            "type": "Person",
+            "name": "Fabian Steeg"
+        }
+    ],
+    "description": {
+        "de": "Präsentation beim Schnittstellen-Workshop mit der Klassik Stiftung Weimar"
+    },
+    "keywords": [
+        "lobid",
+        "JSON-LD",
+        "Linked Open Data",
+        "glam"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        }
+    ],
+    "datePublished": "2021-10-29",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "isBasedOn": [
+        "https://slides.lobid.org/2020-zbiw/"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

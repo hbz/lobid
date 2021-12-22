@@ -1,0 +1,32 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+    "BlogPosting"
+  ],
+    "name": {
+      "en": "SkoHub Presentation at LIS Workshop 2021"
+    },
+    "creator": [
+      {
+        "id": "http://lobid.org/team/ap#!",
+        "type": "Person",
+        "name": "Adrian Pohl"
+      },
+      {
+        "id": "https://orcid.org/0000-0001-6378-2618",
+        "type": "Person",
+        "name": "Steffen Rörtgen"
+      }
+    ],
+    "about": [
+      {
+        "id": "https://lobid.org/product/skohub"
+      }
+    ],
+    "id": "https://blog.skohub.io/2021-lis-workshop/",
+    "datePublished": "2020-07-12",
+    "inLanguage": [
+      "en"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }

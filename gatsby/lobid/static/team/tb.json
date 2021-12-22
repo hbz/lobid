@@ -1,9 +1,13 @@
 {
   "@context": "https://schema.org",
   "id": "http://lobid.org/team/tb#!",
-  "type": "Person",
+  "type": [
+    "Person"
+  ],
   "email": "tobias.buelte@hbz-nrw.de",
-  "alternateName": ["TobiasNx"],
+  "alternateName": [
+    "TobiasNx"
+  ],
   "name": {
     "en": "Tobias Bülte",
     "de": "Tobias Bülte"

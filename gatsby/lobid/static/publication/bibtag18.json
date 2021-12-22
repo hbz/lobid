@@ -1,0 +1,39 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "PresentationDigitalDocument"
+  ],
+  "name": {
+    "de": "lobid – offene, webbasierte Infrastruktur für zentrale bibliothekarische Daten"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "description": {
+    "de": "Vortrag beim 107. Bibliothekartag in Berlin, gehalten am 14. Juni 2018"
+  },
+  "keywords": [
+    "lobid",
+    "libraries",
+    "gnd"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "id": "https://slides.lobid.org/bibtag18/",
+  "datePublished": "2018-06-14",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "web developers",
+    "librarians"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

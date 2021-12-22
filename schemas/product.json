@@ -54,6 +54,9 @@
     "startDate": {
       "$ref": "https://hbz.github.io/lobid/schemas/startDate.json"
     },
+    "membership": {
+      "$ref": "https://hbz.github.io/lobid/schemas/membership.json"
+    },
     "maintainer": {
       "type": "object",
       "properties": {
