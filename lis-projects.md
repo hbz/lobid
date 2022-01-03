@@ -26,3 +26,14 @@ Für viele Aufgaben wie etwa den Austausch von Open Educational Resources (OER) 
   2. Analyse und Vergleich der Inhalte/Module von LIS-Studiengängen im deutschsprachigen und internationalen Raum
   3. Erarbeitung eines Entwurfs
   4. Publikation mit SkoHub Vocabs
+
+## Transformation einer Datenquelle mit Metafacture
+
+Die Transformation von Daten in andere Strukturen und Formate ist etwa bei der Migration von Daten in ein neues System nötig oder zur Erstellung eines Suchindexes über Daten aus verschiedenen Quellen. Mit [Metafacture](https://metafacture.org) existiert für solche Zwecke ein vieleitig einsetzbares Open-Source-Werkzeug, das von einer offenen Community genutzt und weiterentwickelt wird. Derzeit liegt der Fokus der Weiterentwicklung auf der besseren Nutzbarkeit durch Fachleute im Bereich Metadaten, die wenig bis keine Programmierfähigkeiten haben.
+
+- Themengebiet: Datentransformation / ETL (Extract, Transform, Load)
+- Schritte:
+  1. Identifizierung eines Datensets für die Transformation und des Zielformats
+  2. Erstes Testen mit Beispieldaten im [Metafacture Playground](https://metafacture.org/playground/).
+  3. Transformation der Gesamtdaten.
+  4. Ggf. Aufsetzen eines regelmäßigen Transformationsprozesses.
