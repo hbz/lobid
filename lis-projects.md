@@ -33,7 +33,7 @@ Die Transformation von Daten in andere Strukturen und Formate ist etwa bei der M
 
 - Themengebiet: Datentransformation / ETL (Extract, Transform, Load)
 - Schritte:
-  1. Identifizierung eines Datensets für die Transformation und des Zielformats
+  1. Identifizierung von Datenset und Zielformat der Transformation
   2. Erstes Testen mit Beispieldaten im [Metafacture Playground](https://metafacture.org/playground/).
   3. Transformation der Gesamtdaten.
   4. Ggf. Aufsetzen eines regelmäßigen Transformationsprozesses.
