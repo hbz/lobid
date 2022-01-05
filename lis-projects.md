@@ -27,7 +27,7 @@ Für viele Aufgaben wie etwa den Austausch von Open Educational Resources (OER) 
   3. Erarbeitung eines Entwurfs
   4. Publikation mit SkoHub Vocabs
 
-## Transformation einer Datenquelle mit Metafacture
+## Transformation von Metadaten mit Metafacture
 
 Die Transformation von Daten in andere Strukturen und Formate ist etwa bei der Migration von Daten in ein neues System nötig oder zur Erstellung eines Suchindexes über Daten aus verschiedenen Quellen. Mit [Metafacture](https://metafacture.org) existiert für solche Zwecke ein vieleitig einsetzbares Open-Source-Werkzeug, das von einer offenen Community genutzt und weiterentwickelt wird. Derzeit liegt der Fokus der Weiterentwicklung auf der besseren Nutzbarkeit durch Fachleute im Bereich Metadaten, die wenig bis keine Programmierfähigkeiten haben.
 
