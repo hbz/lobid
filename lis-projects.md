@@ -38,3 +38,14 @@ Die Transformation von Daten in andere Strukturen und Formate ist etwa bei der M
   3. Erstes Testen mit Beispieldaten im [Metafacture Playground](https://metafacture.org/playground/).
   4. Transformation der Gesamtdaten.
   5. Ggf. Aufsetzen eines regelmäßigen Transformationsprozesses.
+
+  ## Publikation eines kontrollierten Vokabulars als Linked Open Data mit SkoHub Vocabs
+
+In vielen Einrichtungen werden fach- oder institutionsspezifische kontrollierte Vokabulare (Klassifikaitonen, Thesauri etc.) genutzt. Häufig liegen diese Vokabulare nicht strukturiert in PDF-Dateien oder ähnlichem vor. Die Software [SkoHub Vocabs](https://github.com/skohub-io/skohub-vocabs) bietet eine niedrigschwellige Möglichkeit zur Publikation kontrollierter Vokabulare im Web, genutzt und weiterentwickelt innerhalb einer offenen Community.
+
+- Themengebiet: Bibliotheks- und Informationswissenschaft
+- Mögliches Vorgehen:
+  1. Auswahl eines zur veröffenlichenden kontrollierten Vokabulars
+  2. Repräsentation des Vokabulars in RDF mit SKOS
+  3. Publikation mit SkoHub Vocabs
+  4. Ggf. Ergänzung von Links zu anderen ähnlichen Vokabularen
