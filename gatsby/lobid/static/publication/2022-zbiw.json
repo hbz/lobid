@@ -1,0 +1,50 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "name": {
+        "de": "Offene Infrastruktur für bibliothekarische Daten: Linked Open Data, JSON & OpenRefine in der Praxis"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/fs#!",
+            "type": "Person",
+            "name": "Fabian Steeg"
+        }
+    ],
+    "keywords": [
+        "lobid",
+        "JSON-LD",
+        "Linked Open Data",
+        "libraries"
+    ],
+    "id": "https://slides.lobid.org/2022-zbiw/",
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        }
+    ],
+    "datePublished": "2022-02-10",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "isBasedOn": [
+        {
+            "id": "https://slides.lobid.org/zbiw-2020/"
+        },
+        {
+            "id": "https://slides.lobid.org/2021-kim-reconcile"
+        }
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

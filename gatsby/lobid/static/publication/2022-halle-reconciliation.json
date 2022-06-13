@@ -1,0 +1,44 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2022-halle-reconcile",
+    "name": {
+        "de": "Integration externer Normdatenquellen für Abgleich und Anreicherung lokaler Daten in OpenRefine"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/fs#!",
+            "type": "Person",
+            "name": "Fabian Steeg"
+        },
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        }
+    ],
+    "keywords": [
+        "openrefine",
+        "reconciliation"
+    ],
+    "url": "https://slides.lobid.org/2022-halle-reconcile/",
+    "datePublished": "2022-03-28",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "isBasedOn": [
+        "https://slides.lobid.org/2021-kim-reconcile/"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

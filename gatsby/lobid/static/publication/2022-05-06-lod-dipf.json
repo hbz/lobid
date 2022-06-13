@@ -1,0 +1,43 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2021-weimar/",
+    "name": {
+        "de": "Linked Open Data – Eine Einführung"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "de": "Präsentation beim DIPF am 6.5.2022"
+    },
+    "keywords": [
+        "Linked Open Data",
+        "Linked Open Usable Data"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/metafacture"
+        },
+        {
+            "id": "https://lobid.org/product/skohub"
+        }
+    ],
+    "datePublished": "2022-06-05",
+    "inLanguage": [
+        "de"
+    ],
+    "isBasedOn": [
+        "https://malis21.acka47.net/slides/2022-01-28.html"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
