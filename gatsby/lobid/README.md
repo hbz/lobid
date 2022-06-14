@@ -27,7 +27,7 @@ Some other pages, like lobid's `team` page, are generated using gatsby. The [tea
 ## Prerequisites
 
 A newer gatsby may need new versions of `node` and `npm`, so
-if you encounter problems when installing gatsby update them by
+if you encounter problems when installing or running gatsby update them by
 using `nvm`, e.g.:
 `nvm install v15.14.0`.
 
