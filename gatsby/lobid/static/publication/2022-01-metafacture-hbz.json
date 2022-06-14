@@ -1,0 +1,50 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2022-01-metafacture-hbz/",
+    "name": {
+        "de": "Metafacture – Datentransformation im hbz"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/fs#!",
+            "type": "Person",
+            "name": "Fabian Steeg"
+        }
+    ],
+    "description": {
+        "de": "Präsentation auf einer hbz-internen Metafacture-Infoveranstaltung"
+    },
+    "keywords": [
+        "Metafacture"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/metafacture"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-fix"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-playground"
+        }
+    ],
+    "datePublished": "2022-01-20",
+    "inLanguage": [
+        "de"
+    ],
+    "isBasedOn": "https://slides.lobid.org/metafacture-2020/",
+    "audience": [
+        "management",
+        "librarians",
+        "developers"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

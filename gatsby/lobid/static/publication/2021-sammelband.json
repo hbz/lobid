@@ -1,0 +1,45 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "Article"
+  ],
+  "name": {
+    "de": "Ein Protokoll für den Datenabgleich im Web am Beispiel von OpenRefine und der Gemeinsamen Normdatei (GND)"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/fs#!",
+      "type": "Person",
+      "name": "Fabian Steeg"
+    },
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "description": {
+    "de": "Beitrag im Sammelband 'Qualität in der Inhaltserschließung'"
+  },
+  "keywords": [
+    "GND",
+    "Integrated Authority File",
+    "Web APIs",
+    "OpenRefine"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "id": "https://doi.org/10.1515/9783110691597-013",
+  "datePublished": "2021",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "web developers",
+    "librarians"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

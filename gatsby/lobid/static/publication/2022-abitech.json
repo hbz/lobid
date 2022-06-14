@@ -1,0 +1,42 @@
+{
+  "@context": "https://schema.org",
+  "type": [
+    "Article"
+  ],
+  "name": {
+    "de": "Wie kann ich Daten aus einem Digitalisierungsprojekt mit Normdaten anreichern?"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/fs#!",
+      "type": "Person",
+      "name": "Fabian Steeg"
+    }
+  ],
+  "description": {
+    "de": "ABI-Technik-Frage"
+  },
+  "keywords": [
+    "GND",
+    "Integrated Authority File",
+    "Web APIs",
+    "JSON-LD",
+    "Linked Open Data",
+    "OpenRefine",
+    "lobid"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "id": "https://doi.org/10.1515/abitech-2022-0012",
+  "datePublished": "2022",
+  "inLanguage": [
+    "de"
+  ],
+  "audience": [
+    "librarians"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
