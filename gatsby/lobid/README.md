@@ -67,7 +67,7 @@ Install gatsby:
 
 2. **Stage**
 
-   The following assumes being in the web home on emphytos: `ssh <user>@emphytos`; `sudo su lobid -`; `cd /srv/www/htdocs/`.
+   The following assumes being in the web home on emphytos: `ssh <user>@emphytos`; `sudo su - lobid`; `cd /srv/www/htdocs/`.
 
    We separate stage and production, so first go to the staging section:
    ```shell
