@@ -6,6 +6,9 @@
   "name": {
     "en": "SkoHub talk at SWIB19: KOS-based content syndication with ActivityPub"
   },
+  "description": {
+    "en": "On November 27th 2019, Adrian Pohl and Felix Ostrowski (graphthinking) presented SkoHub at the “Semantic Web in Libraries” conference in Hamburg (SWIB19)."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

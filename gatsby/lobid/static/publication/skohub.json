@@ -6,6 +6,9 @@
   "name": {
     "en": "SkoHub: Enabling KOS-based content subscription"
   },
+  "description": {
+    "en": "In this post, we describe the SkoHub project being carried out in 2019 by the hbz in cooperation with graphthinking GmbH. The project seeks to implement a prototype for a novel approach in syndicating content on the web by combining current web standards for sending notifications and subscribing to feeds with knowledge organization systems (KOS, sometimes also called “controlled vocabularies”)."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

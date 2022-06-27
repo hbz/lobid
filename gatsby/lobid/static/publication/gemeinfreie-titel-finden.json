@@ -6,6 +6,9 @@
   "name": {
     "de": "Gemeinfreie Werke in lobid finden"
   },
+  "description": {
+    "de": "Eine Anleitung zur Recherche in lobid-resources"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

@@ -7,6 +7,9 @@
     "name": {
         "de": "Abgleich und Anreicherung eigener Datenbestände mit der Gemeinsamen Normdatei in OpenRefine: OpenRefine Reconciliation mit lobid-gnd"
     },
+    "description": {
+        "de": "Workshop im Rahmen des DINI-KIM"
+    },
     "creator": [
         {
             "id": "http://lobid.org/team/fs#!",

@@ -6,6 +6,9 @@
   "name": {
     "en": "Presenting the SkoHub Vocabs Prototype"
   },
+  "description": {
+    "en": "We are happy to announce that the SkoHub prototype outlined in our post “SkoHub: Enabling KOS-based content subscription” is now finished. In a series of three post we will report on the outcome by walking through the different components and presenting their features."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

@@ -6,6 +6,9 @@
   "name": {
     "de": "Der Lobid-Entwicklungsprozess"
   },
+  "description": {
+    "de": "hbz-interne Präsentation"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/fs#!",

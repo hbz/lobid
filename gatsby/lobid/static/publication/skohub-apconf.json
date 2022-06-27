@@ -6,6 +6,9 @@
   "name": {
     "en": "ActivityPub Conference 2020"
   },
+  "description": {
+    "en": "From 2-5 October the ActivityPub conference happened online where people using the ActivityPub protocol came together to discuss topics all around federated networks and the respective web standards."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

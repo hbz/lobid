@@ -6,6 +6,9 @@
   "name": {
     "de": "Code4Lib-Artikel zum Aufbau der NWBib- Raumsystematik auf Basis von Wikidata"
   },
+  "description": {
+    "de": "In einem Projekt von Ende 2017 bis Anfang 2020 haben wir die nicht normierten Gliedernden Schlagwörter der Nordrhein-Westfälische Bibliographie (NWBib) in eine normierte Raumsystematik überführt."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

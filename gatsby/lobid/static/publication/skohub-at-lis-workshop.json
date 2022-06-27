@@ -1,10 +1,13 @@
 {
     "@context": "https://schema.org",
     "type": [
-    "BlogPosting"
-  ],
+      "BlogPosting"
+    ],
     "name": {
       "en": "SkoHub Presentation at LIS Workshop 2021"
+    },
+    "description": {
+      "en": "Last Friday afternoon, the 2021 Workshop on Classification and Subject Indexing in Library and Information Science (LIS Workshop) took place organized by the Working Group within the GfKL – Data Science Society. Adrian and Steffen had the chance to present SkoHub in the workshop’s first presentation."
     },
     "creator": [
       {

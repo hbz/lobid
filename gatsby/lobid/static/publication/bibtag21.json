@@ -4,7 +4,10 @@
     "BlogPosting"
   ],
   "name": {
-    "de": "GND-Integration in die Repository-Software DSpace auf Basis der lobid-API "
+    "de": "GND-Integration in die Repository-Software DSpace auf Basis der lobid-API"
+  },
+  "description": {
+    "de": "Vortrag beim 109. Bibliothekstag"
   },
   "creator": [
     {

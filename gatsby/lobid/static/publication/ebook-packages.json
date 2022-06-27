@@ -6,6 +6,9 @@
   "name": {
     "de": "Verbesserte Metadaten zur Zugehörigkeit von Titeln zu E-Book-Paketen"
   },
+  "description": {
+    "de": "Anpassungen auf Basis einer Anfrage der UB Dortmund"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

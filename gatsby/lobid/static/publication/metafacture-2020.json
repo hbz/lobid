@@ -6,6 +6,9 @@
   "name": {
     "en": "Introduction to Metafacture"
   },
+  "description": {
+    "en": "Vorstellung im Workshop \"Tools für das Metadatenmanagement\", SUB Göttingen"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/fs#!",
