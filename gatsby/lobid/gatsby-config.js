@@ -63,9 +63,11 @@ module.exports = {
                 }
               }
             `,
-            output: "/team/rss.xml",
+            output: "/team/feed.xml",
             title: "Lobid team RSS feed",
             description: "Publications and presentation by the Lobid team",
+            feed_url: 'https://lobid.org/team/feed.xml',
+            site_url: 'https://lobid.org/team/',
           },
         ],
       },

@@ -9,10 +9,17 @@ export default ({ data, location, pageContext }) => {
     members={data.allTeamJson.edges}
     products={data.allProductJson.edges}
     projects={data.allProjectJson.edges}
+    pubs={data.allPublicationJson.edges
+      .map(edge => edge.node)
+      .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
+      .slice(0, 20)
+    }
     lang={pageContext.lang}
     contactName={pageContext.lang==="de"?"Kontakt":"Contact"}
     title={pageContext.lang==="de"?"Offene Infrastruktur":"Open Infrastructure"}
     publications={pageContext.lang==="de"?"Publikationen":"Publications"}
+    publicationsCurrent={pageContext.lang==="de"?"Aktuelle Publikationen":"Recent publications"}
+    publicationsDetails={pageContext.lang==="de"?"Präsentationen und sonstige Veröffentlichungen":"Presentations and other publications"}
     language={pageContext.lang==="de"?"English":"Deutsch"}
     languageTooltip={pageContext.lang==="de"?"Switch language to English":"Wechsel zur deutschen Version"}
     languageLink={pageContext.lang==="de"?"/team-en":"/team-de"}
@@ -106,6 +113,28 @@ export const query = graphql`
             en
           }
           alternateName
+        }
+      }
+    }
+    allPublicationJson {
+      edges {
+        node {
+          id
+          type
+          creator {
+            id
+          }
+          name {
+            de
+            en
+          }
+          about {
+            id
+          }
+          datePublished
+          fields {
+            jsonFile
+          }
         }
       }
     }
