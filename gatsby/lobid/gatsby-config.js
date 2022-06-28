@@ -28,9 +28,11 @@ module.exports = {
                   title: edge.node.name.de || edge.node.name.en,
                   date: edge.node.datePublished,
                   url: edge.node.id,
-                  guid: edge.node.id,
-                })
-              })
+                  categories: (edge.node.keywords || []).concat(edge.node.about.map(about => about.id)),
+                  author: edge.node.creator.map(creator => creator.name).join(", "),
+                  enclosure: {url: 'https://lobid.org/images/lobid.png'},
+                },
+              )})
             },
             query: `
               {
@@ -49,6 +51,13 @@ module.exports = {
                         en
                       }
                       datePublished
+                      creator {
+                        name
+                      }
+                      keywords
+                      about {
+                        id
+                      }
                     }
                   }
                 }
