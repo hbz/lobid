@@ -7,6 +7,9 @@
     "name": {
         "de": "Integration externer Normdatenquellen für Abgleich und Anreicherung lokaler Daten in OpenRefine"
     },
+    "description": {
+        "de": "Präsentation im Rahmen eines Kolloquiums der Martin-Luther-Universität Halle-Wittenberg, WWW"
+    },
     "creator": [
         {
             "id": "http://lobid.org/team/fs#!",

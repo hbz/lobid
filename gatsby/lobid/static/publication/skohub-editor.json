@@ -6,6 +6,9 @@
   "name": {
     "en": "Presenting the SkoHub Editor"
   },
+  "description": {
+    "en": "In this post, we present SkoHub Editor that is accompanied by a browser extension."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

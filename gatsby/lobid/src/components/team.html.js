@@ -4,6 +4,7 @@ import { simpleId, getMemberDetails, getImage} from './helpers.js'
 import Header from "./header.html";
 import Footer from "./footer.html";
 import Membership from "./membership.html";
+import Publications from "./publications.html";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
@@ -76,83 +77,94 @@ export class Team extends React.Component {
           </h1>
 
           <p className="lead">{this.props.team.description[this.props.lang]}</p>
+          <div class="row">
+            <div class="col-md-5">
+              <h2>{this.props.contactName}</h2>
 
-          <h2>{this.props.contactName}</h2>
+              <p>
+                {this.props.team.contactPoint.map((contactPoint) =>
+                  <a
+                    key={contactPoint.id}
+                    target="_blank"
+                    href={contactPoint.id}
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <img
+                      src={contactPoint.image}
+                      height="20"
+                      style={{ marginRight: "12px" }}
+                      title={contactPoint.contactType[this.props.lang]}
+                      alt={contactPoint.contactType[this.props.lang]}
+                    />
+                  </a>
 
-          <p>
-            {this.props.team.contactPoint.map((contactPoint) =>
-              <a
-                key={contactPoint.id}
-                target="_blank"
-                href={contactPoint.id}
-                rel="nofollow noopener noreferrer"
-              >
-                <img
-                  src={contactPoint.image}
-                  height="20"
-                  style={{ marginRight: "12px" }}
-                  title={contactPoint.contactType[this.props.lang]}
-                  alt={contactPoint.contactType[this.props.lang]}
-                />
+                )}
+              </p>
+
+              <h2>{this.props.memberName}</h2>
+              <Membership membership={this.props.team.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
+
+              <h3>
+                {this.props.memberFormerName}
+                <small>
+                  <button
+                    className={
+                      this.state.infoToggled
+                        ? "glyphicon glyphicon-minus-sign"
+                        : "glyphicon glyphicon-plus-sign"
+                    }
+                    style={{
+                      color: "#004678",
+                      backgroundColor: "transparent",
+                      border: "none"
+                    }}
+                    onClick={this.toggleEhemalige}
+                  />
+                </small>
+              </h3>
+              {this.state.infoToggled ? this.getEhemalige() : ""}
+
+              <h2>{this.props.makesOfferName}</h2>
+
+              {this.props.team.makesOffer
+              .map((offer) => [offer, this.getOfferDetails(offer)]).map(([offer, details]) =>
+                <div key={offer.id}>
+                  {getImage(offer.id, details.node.image)}
+                  <p className="details">
+                    <a href={"/product/" + simpleId(offer.id)}>
+                      {offer.name}
+                    </a>
+                    <br />
+                    {(details.node.slogan && details.node.slogan[this.props.lang]) || offer.name}
+                  </p>
+                </div>
+              )}
+
+              <h2>{this.props.projectsName}</h2>
+
+              {this.props.projects
+              .map((details) =>
+                <div key={details.node.id}>
+                  {getImage(details.node.id, details.node.image)}
+                  <p className="details">
+                    <a href={"/project/" + simpleId(details.node.id)}>
+                      {details.node.alternateName || simpleId(details.node.id)}
+                    </a>
+                    <br />
+                    {(details.node.name && details.node.name[this.props.lang]) || details.node.alternateName}
+                  </p>
+                </div>
+              )}
+            </div>
+            <div class="col-md-7">
+              <h2>{this.props.publicationsCurrent}<small>
+              <a title={"RSS-Feed: "+this.props.publicationsDetails} href="/team/feed.xml">
+                <i className="json-ld-icon fa fa-rss" aria-hidden="true"></i>
               </a>
-
-            )}
-          </p>
-
-          <h2>{this.props.memberName}</h2>
-          <Membership membership={this.props.team.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
-
-          <h3>
-            {this.props.memberFormerName}
-            <small>
-              <button
-                className={
-                  this.state.infoToggled
-                    ? "glyphicon glyphicon-minus-sign"
-                    : "glyphicon glyphicon-plus-sign"
-                }
-                style={{
-                  color: "#004678",
-                  backgroundColor: "transparent",
-                  border: "none"
-                }}
-                onClick={this.toggleEhemalige}
-              />
-            </small>
-          </h3>
-          {this.state.infoToggled ? this.getEhemalige() : ""}
-
-          <h2>{this.props.makesOfferName}</h2>
-
-          {this.props.team.makesOffer
-           .map((offer) => [offer, this.getOfferDetails(offer)]).map(([offer, details]) =>
-            <div key={offer.id}>
-              {getImage(offer.id, details.node.image)}
-              <p className="details">
-                <a href={"/product/" + simpleId(offer.id)}>
-                  {offer.name}
-                </a>
-                <br />
-                {(details.node.slogan && details.node.slogan[this.props.lang]) || offer.name}
-              </p>
+            </small></h2>
+              <Publications pubs={this.props.pubs} publications={this.props.publicationsDetails} />
             </div>
-          )}
-
-          <h2>{this.props.projectsName}</h2>
-
-          {this.props.projects
-          .map((details) =>
-            <div key={details.node.id}>
-              {getImage(details.node.id, details.node.image)}
-              <p className="details">
-                <a href={"/project/" + simpleId(details.node.id)}>
-                  {details.node.alternateName || simpleId(details.node.id)}
-                </a>
-                <br />
-                {(details.node.name && details.node.name[this.props.lang]) || details.node.alternateName}
-              </p>
-            </div>
-          )}
+          </div>
         </div>
         <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
       </div>

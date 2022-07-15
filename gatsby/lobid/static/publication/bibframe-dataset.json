@@ -6,6 +6,9 @@
   "name": {
     "en": "Indexing the Bibframe works dataset as JSON-LD"
   },
+  "description": {
+    "en": "Example use case description from a workshop held at SWIB18 in Bonn"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

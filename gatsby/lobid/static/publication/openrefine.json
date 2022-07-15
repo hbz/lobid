@@ -6,6 +6,9 @@
   "name": {
     "en": "Improved GND reconciliation for OpenRefine"
   },
+  "description": {
+    "en": "Triggered by the newly formed W3C Entity Reconciliation Community Group and its reconciliation service test bench we have improved our GND reconciliation for OpenRefine by implementing the OpenRefine suggest API for searching types, properties, and entities."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/fs#!",

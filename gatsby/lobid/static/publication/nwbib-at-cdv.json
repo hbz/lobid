@@ -4,7 +4,10 @@
     "BlogPosting"
   ],
   "name": {
-    "de": "Ideen: NRW-Quiz auf Grundlage der NWBib-Daten für Coding da Vinci"
+    "de": "NWBib-Daten für Coding da Vinci"
+  },
+  "description": {
+    "de": "Zum Hackathon “Coding da Vinci Westfalen-Ruhrgebiet” bieten wir die Nordrhein-Westfälische Bibliographie (NWBib) als Datenset an, das die Teilnehmer*innen für ihe Anwendungen verwenden können."
   },
   "creator": [
     {

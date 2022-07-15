@@ -6,6 +6,9 @@
   "name": {
     "en": "Presenting SkoHub PubSub"
   },
+  "description": {
+    "en": "In the final post of this SkoHub introduction series we will take a deeper look at SkoHub PubSub, the part of SkoHub that brings the novel approach of KOS-based content subscription into the game."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

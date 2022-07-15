@@ -6,6 +6,9 @@
   "name": {
     "en": "GND reconciliation for OpenRefine: using additional properties to improve matches"
   },
+  "description": {
+    "en": "We have recently improved our GND reconciliation service for OpenRefine based on two real-world examples sent to us by users.* In this post we want to share these examples, focusing on using additional properties to improve matching."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/fs#!",

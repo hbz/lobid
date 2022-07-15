@@ -6,6 +6,9 @@
   "name": {
     "de": "Ideen: NRW-Quiz auf Grundlage der NWBib-Daten für Coding da Vinci"
   },
+  "description": {
+    "de": "Projektidee im Rahmen des Coding da Vinci Westfalen-Ruhrgebiet 2019"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/pc#!",

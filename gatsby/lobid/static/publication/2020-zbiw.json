@@ -6,6 +6,9 @@
     "name": {
         "de": "Offene Infrastruktur für bibliothekarische Daten: Linked Open Data, JSON & OpenRefine in der Praxis"
     },
+    "description": {
+        "de": "Präsentationsfolien zur Fortbildung am Zentrum für Bibliotheks- und Informationswissenschaftliche Weiterbildung (ZBIW)"
+    },
     "creator": [
         {
             "id": "http://lobid.org/team/ap#!",

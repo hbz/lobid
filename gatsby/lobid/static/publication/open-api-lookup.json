@@ -6,6 +6,9 @@
   "name": {
     "de": "Offene Bibliotheks-APIs erfassen & nachschlagen"
   },
+  "description": {
+    "de": "Bisher ist es oft nur recht umständlich herauszufinden, ob und welche Schnittstellen zu einem Bibliothekssystem existieren. Dies kann nun auf sehr bequeme Weise über die lobid-API erfolgen."
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

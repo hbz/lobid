@@ -6,6 +6,9 @@
   "name": {
     "de": "GND: Umstellung auf HTTPS-URIs"
   },
+  "description": {
+    "de": "Anpassung für die von der DNB bereitgestellten RDF-Daten"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

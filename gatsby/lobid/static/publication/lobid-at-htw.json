@@ -6,6 +6,9 @@
   "name": {
     "de": "lobid-Lehrveranstaltung an der HTW chur"
   },
+  "description": {
+    "de": "Vorstellung unserer Erfahrungen bei der Bereitstellung von Linked Open Data im Kurs \"Semantische Systeme\" im Bachelor-Studiengang Informationswissenschaft an der HTW Chur"
+  },
   "creator": [
     {
       "id": "http://lobid.org/team/ap#!",

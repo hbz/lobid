@@ -6,6 +6,9 @@
     "name": {
         "de": "Reconciliation mit lobid, OpenRefine und Cocoda bei der GNDCon"
     },
+    "description": {
+        "de": "MiniCon \"Wie verlinken wir unsere Daten mit der GND?\", GNDCon 2.0"
+    },
     "creator": [
         {
             "id": "http://lobid.org/team/ap#!",
