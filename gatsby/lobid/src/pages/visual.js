@@ -4,8 +4,10 @@ import { Visual } from "../components/visual.html";
 
 export default ({ data }) => (
   <Visual
-    members = {data.dataJson.membership}
-    products = {data.dataJson.makesOffer}
+    membership = {data.dataJson.membership.filter((member) => !member.endDate)}
+    members={data.allTeamJson.edges}
+    products={data.allProductJson.edges}
+    projects={data.allProjectJson.edges.filter((project) => !project.node.endDate)}
     subtitle="Dateninfrastruktur für Bibliotheken"
     language="English"
     languageTooltip="Switch language to English"
@@ -26,6 +28,7 @@ export const query = graphql`
         name
       }
       membership {
+        endDate
         member {
           id
           name {
@@ -42,6 +45,49 @@ export const query = graphql`
         }
         id
         image
+      }
+    }
+    allTeamJson {
+      edges {
+        node {
+          id
+          name {
+            de
+          }
+        }
+      }
+    }
+    allProjectJson {
+      edges {
+        node {
+          id
+          endDate
+          membership {
+            member {
+              id
+            }
+          }
+          name {
+            de
+          }
+          alternateName
+        }
+      }
+    }
+    allProductJson {
+      edges {
+        node {
+          id
+          membership {
+            member {
+              id
+            }
+          }
+          name {
+            de
+          }
+          alternateName
+        }
       }
     }
   }

@@ -9,6 +9,7 @@
     "de": "lobid/Alma-Migration",
     "en": "lobid/Alma Migration"
   },
+  "alternateName": ["Alma-Migration"],
   "description": {
     "en": "Switch lobid-resources ETL and indexing from Aleph to Alma Marc21 XML",
     "de": "Der schrittweise Umstieg der hbz-Verbundbibliotheken auf das Bibliotheksmanagementsystem Alma im Rahmen des GO:AL-Projekts (GOAL) bringt auch für die Gruppe Offene Infrastruktur dauerhaft Aufgaben mit sich: lobid indexiert unter anderem die Verbunddaten des hbz, die nun schrittweise nach Alma wandern. Demenstprechend müssen sämtliche Prozesse zum Extrahieren, Transformieren und Laden (ETL) der Verbunddaten angepasst werden, damit sie (auch) auf Basis von Alma-Daten funktionieren."

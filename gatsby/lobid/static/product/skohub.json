@@ -49,16 +49,6 @@
         "en": "Software development"
       },
       "member": {
-        "id": "http://lobid.org/team/kt#!"
-      }
-    },
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Softwareentwicklung",
-        "en": "Software development"
-      },
-      "member": {
         "id": "http://lobid.org/team/sr#!"
       }
     }

@@ -9,6 +9,7 @@
     "de": "Rheinland-Pfälzische Bibliographie",
     "en": "Bibliography of Rhineland-Platinate"
   },
+  "alternateName": ["RPB"],
   "description": {
     "en": "Migrating the RPB from Allegro to a new cataloging and web presentation environment",
     "de": "Das Landesbibliothekszentrum Rheinland-Pfalz hat das hbz beauftragt, die Rheinland-Pfälzische Bibliographie (RPB) von Allegro in eine neues System zu migrieren, das Erfassung und Präsentation der Bibliographie im Web abdeckt. Auf Basis der Erfahrungen mit der Nordrhein-Westfälischen Bibliographie (NWBib) und mit einer Erweiterung der SkoHub-Software um ein weiteres Modul zur Erfassung, Speicherung und Pflege von Linked Data wird das Projekt umgesetzt. Mit Metafacture werden zunächst die Allegro-Daten nach Linked Date überführt und indexiert und parallel an einer Erfassungs -und Speicherschicht gearbeitet."
