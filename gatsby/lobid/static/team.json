@@ -149,6 +149,17 @@
     },
     {
       "type": "Role",
+      "startDate": "2022",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "Software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/sr#!"
+      }
+    },
+    {
+      "type": "Role",
       "startDate": "2010",
       "endDate": "2010",
       "roleName": {

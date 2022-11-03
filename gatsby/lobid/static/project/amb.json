@@ -41,6 +41,16 @@
       "member": {
         "id": "http://lobid.org/team/tb#!"
       }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Beitragende Person",
+        "en": "contributor"
+      },
+      "member": {
+        "id": "http://lobid.org/team/sr#!"
+      }
     }
   ]
 }

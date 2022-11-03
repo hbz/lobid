@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "id": "http://lobid.org/team/sr#!",
+  "type": [
+    "Person"
+  ],
+  "email": "steffen.roertgen@hbz-nrw.de",
+  "alternateName": [
+    "sroertgen"
+  ],
+  "name": {
+    "en": "Steffen Rörtgen",
+    "de": "Steffen Rörtgen"
+  },
+  "telephone": "+49-221-40075-209",
+  "sameAs": [
+    "https://github.com/sroertgen"
+  ],
+  "image": "https://avatars.githubusercontent.com/u/18149685",
+  "alumniOf": [
+    "http://www.wikidata.org/entity/Q152838"
+  ]
+}
