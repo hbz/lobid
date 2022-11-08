@@ -4,6 +4,7 @@ on:
   push
 env:
   NODE_VERSION: '14.15.3'
+  GATSBY_VERSION: '2.19.17'
 
 jobs:
   build:
@@ -16,7 +17,7 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
     - run: |
-        npm install -g gatsby
+        npm install -g gatsby@${{ env.GATSBY_VERSION }}
         cd gatsby/lobid/
         npm ci
         gatsby build
