@@ -1,0 +1,38 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "http://slides.lobid.org/2022-08-amb",
+    "name": {
+        "de": "AMB – Allgemeines Metadatenprofil für Bildungsressourcen"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "de": "Folien für eine Präsentation am 2022-08-04 beim Treffen der OER-Repo-AG"
+    },
+    "about": [
+        {
+            "id": "https://lobid.org/project/amb"
+        }
+    ],
+    "keywords": [
+        "amb",
+        "oer",
+        "metadata"
+    ],
+    "datePublished": "2022-08-04",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "metadata practitioners"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
