@@ -29,13 +29,13 @@
   "image": "https://lobid.org/images/lobid.png",
   "hasPart": [
     {
-      "id": "https://lobid.org/resources"
+      "id": "https://lobid.org/product/lobid-resources"
     },
     {
-      "id": "https://lobid.org/gnd"
+      "id": "https://lobid.org/product/lobid-gnd"
     },
     {
-      "id": "http://lobid.org/organisations"
+      "id": "http://lobid.org/product/lobid-organisations"
     }
   ],
   "isBasedOn": [
@@ -48,46 +48,5 @@
       "id": "https://lobid.org/project/alma-migration"
     }
   ],
-  "membership": [
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Product Owner",
-        "en": "product owner"
-      },
-      "member": {
-        "id": "http://lobid.org/team/ap#!"
-      }
-    },
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Sytemadministration, Datentransformation",
-        "en": "system administration, data transformation"
-      },
-      "member": {
-        "id": "http://lobid.org/team/pc#!"
-      }
-    },
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Softwareentwicklung",
-        "en": "software development"
-      },
-      "member": {
-        "id": "http://lobid.org/team/fs#!"
-      }
-    },
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Datentransformation",
-        "en": "data transformation"
-      },
-      "member": {
-        "id": "http://lobid.org/team/tb#!"
-      }
-    }
-  ]
+  "membership": []
 }

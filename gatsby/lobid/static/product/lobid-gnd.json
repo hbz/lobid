@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://lobid.org/product/lobid-gnd",
+  "url": "https://lobid.org/gnd",
+  "type": [
+    "Product"
+  ],
+  "name": {
+    "de": "lobid-gnd",
+    "en": "lobid-gnd"
+  },
+  "slogan": {
+    "de": "Rechercheoberfläche & LOD-API für die GND",
+    "en": "UI & LOD-API for the Integrated Authority File (GND)"
+  },
+  "description": {
+    "de": "Die Gemeinsame Normdatei (GND) enthält über 8 Millionen Normdatensätze. Sie wird zur Katalogisierung von Literatur in Bibliotheken, sowie von Archiven, Museen, und Forschungsprojekten genutzt.",
+    "en": "The Integrated Authority File (GND) contains more than 8 million records and is used by libraries, archives, museum, and research projects."
+  },
+  "startDate": "2017-06",
+  "maintainer": {
+    "id": "http://lobid.org/team#!",
+    "name": {
+      "de": "Offene Infrastruktur",
+      "en": "Open Infrastructure"
+    },
+    "type": "Organization"
+  },
+  "image": "https://lobid.org/images/lobid.png",
+  "isBasedOn": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    }
+  ],  
+  "isRelatedTo": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Product Owner",
+        "en": "product owner"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
+      }
+    }
+  ]
+}

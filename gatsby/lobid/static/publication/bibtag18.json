@@ -24,6 +24,9 @@
   "about": [
     {
       "id": "https://lobid.org/product/lobid"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-gnd"
     }
   ],
   "id": "https://slides.lobid.org/bibtag18/",

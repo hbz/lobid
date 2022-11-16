@@ -39,6 +39,9 @@
   "about": [
     {
       "id": "https://lobid.org/product/lobid"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-gnd"
     }
   ],
   "id": "https://doi.org/10.11588/ip.2019.1.52673",

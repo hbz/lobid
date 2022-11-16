@@ -126,7 +126,7 @@ export class Team extends React.Component {
 
               <h2>{this.props.makesOfferName}</h2>
 
-              {this.props.team.makesOffer
+              {this.props.team.makesOffer.filter(offer => !offer.id.includes("lobid-"))
               .map((offer) => [offer, this.getOfferDetails(offer)]).map(([offer, details]) =>
                 <div key={offer.id}>
                   {getImage(offer.id, details.node.image)}

@@ -36,6 +36,9 @@
     "about": [
         {
             "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-gnd"
         }
     ],
     "id": "https://blog.lobid.org/2021/06/18/gndcon-reconciliation.html",

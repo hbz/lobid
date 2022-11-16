@@ -1,0 +1,72 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://lobid.org/product/lobid-resources",
+  "url": "https://lobid.org/resources",
+  "type": [
+    "Product"
+  ],
+  "name": {
+    "de": "lobid-resources",
+    "en": "lobid-resources"
+  },
+  "slogan": {
+    "de": "Der hbz-Verbundkatalog als Linked Open Data",
+    "en": "The hbz union catalog as linked open data"
+  },
+  "description": {
+    "de": "Der Verbundkatalog des Hochschulbibliothekszentrums NRW (hbz) enthält die kooperativ erstellten Nachweise von Titel- und Bestandsdaten der Verbundbibliotheken in Nordrhein-Westfalen und Rheinland-Pfalz.",
+    "en": "The hbz union catalog contains the holdings of participating scientific libraries in the German states of North Rhein-Westfalia and Rhineland-Palatinate."
+  },
+  "startDate": "2010-08",
+  "maintainer": {
+    "id": "http://lobid.org/team#!",
+    "name": {
+      "de": "Offene Infrastruktur",
+      "en": "Open Infrastructure"
+    },
+    "type": "Organization"
+  },
+  "image": "https://lobid.org/images/lobid.png",
+  "isBasedOn": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    }
+  ],  
+  "isRelatedTo": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Product Owner",
+        "en": "product owner"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Sytemadministration, Datentransformation",
+        "en": "system administration, data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pc#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Datentransformation",
+        "en": "data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
+      }
+    }
+  ]
+}

@@ -28,6 +28,9 @@
   "about": [
     {
       "id": "https://lobid.org/product/lobid"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-gnd"
     }
   ],
   "id": "https://doi.org/10.1515/abitech-2022-0012",

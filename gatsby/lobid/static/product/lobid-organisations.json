@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://lobid.org/product/lobid-organisations",
+  "url": "https://lobid.org/organisations",
+  "type": [
+    "Product"
+  ],
+  "name": {
+    "de": "lobid-organisations",
+    "en": "lobid-organisations"
+  },
+  "slogan": {
+    "de": "Gedächtnisinstitutionen im deutschsprachigen Raum",
+    "en": "Memory institutions in German-speaking countries"
+  },
+  "description": {
+    "de": "lobid-organisations ist ein umfassendes Verzeichnis von über 20.000 Gedächtnisinstitutionen (Bibliotheken, Archiven und Museen) im deutschsprachigen Raum.",
+    "en": "lobid-organisations is a comprehensive directory of over 20,000 memory institutions (libraries, archives and museums) in Germany, Austria, and Switzerland."
+  },
+  "startDate": "2014-07",
+  "maintainer": {
+    "id": "http://lobid.org/team#!",
+    "name": {
+      "de": "Offene Infrastruktur",
+      "en": "Open Infrastructure"
+    },
+    "type": "Organization"
+  },
+  "image": "https://lobid.org/images/lobid.png",
+  "isBasedOn": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    }
+  ],  
+  "isRelatedTo": [
+    {
+      "id": "https://lobid.org/product/lobid"
+    }
+  ],
+  "membership": []
+}

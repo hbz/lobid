@@ -26,6 +26,9 @@
   "about": [
     {
       "id": "https://lobid.org/product/lobid"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-organisations"
     }
   ],
   "id": "https://slides.lobid.org/bibcast16/",

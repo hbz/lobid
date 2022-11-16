@@ -31,6 +31,12 @@
     "about": [
         {
             "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-resources"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-gnd"
         }
     ],
     "datePublished": "2022-02-10",
