@@ -107,6 +107,7 @@ export const query = graphql`
         node {
           id
           image
+          endDate
           name {
             de
             en
