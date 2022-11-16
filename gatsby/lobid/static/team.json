@@ -89,6 +89,10 @@
     {
       "id": "https://lobid.org/product/skohub",
       "name": "SkoHub"
+    },
+    {
+      "id": "https://lobid.org/product/oersi",
+      "name": "OERSI"
     }
   ],
   "membership": [
