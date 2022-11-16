@@ -161,7 +161,7 @@ export class Team extends React.Component {
                       {offer.name}
                     </a>
                     <br />
-                    {(details.node.slogan && details.node.slogan[this.props.lang]) || offer.name}
+                    {(details.node.slogan && details.node.slogan[this.props.lang]) || (details.node.name && details.node.name[this.props.lang]) || offer.name}
                   </p>
                 </div>
               )}

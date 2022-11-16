@@ -95,6 +95,10 @@ export const query = graphql`
         node {
           id
           image
+          name {
+            de
+            en
+          }
           slogan {
             de
             en
