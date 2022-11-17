@@ -30,6 +30,9 @@
   "about": [
     {
       "id": "https://lobid.org/product/lobid-gnd"
+    },
+    {
+        "id": "https://lobid.org/project/reconciliation"
     }
   ],
   "id": "https://doi.org/10.1515/9783110691597-013",

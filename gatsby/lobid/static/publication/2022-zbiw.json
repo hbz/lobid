@@ -37,6 +37,9 @@
         },
         {
             "id": "https://lobid.org/product/lobid-gnd"
+        },
+        {
+            "id": "https://lobid.org/project/reconciliation"
         }
     ],
     "datePublished": "2022-02-10",

@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://lobid.org/project/reconciliation",
+  "url": "https://github.com/reconciliation-api",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "W3C Entity Reconciliation Community Group",
+    "en": "W3C Entity Reconciliation Community Group"
+  },
+  "alternateName": ["reconciliation"],
+  "slogan": {
+    "de": "Ein Protokoll und Werkzeuge für den Datenabgleich im Web",
+    "en": "A protocol and tooling for data matching on the web"
+  },
+  "description": {
+    "de": "Das hbz bietet u.a. in lobid-gnd einen Service für den Abgleich eigener Daten mit der GND an. Dieser basiert auf dem von OpenRefine genutzten Protokoll und ermöglicht eine komfortable Nutzung des Dienstes aus OpenRefine, sowie die Nutzung in anderen Diensten und Werkzeugen. Als Teil der W3C Entity Reconciliation Community Group betreibt die Gruppe Offene Infrastruktur die Entwicklung von Spezifikationen und Werkzeugen zur Etablierung und Weiterentwicklung dieses Protokolls für den Datenabgleich im Web.",
+    "en": "Matching entities across data sources using different identifiers and formats is a pervasive issue on the web. This group revolves around developing a web API that data providers can expose, which eases the reconciliation of third-party data to their own identifiers. OpenRefine's reconciliation API is used as a starting point. Our goals are to document this existing API, share our experiences and lessons learnt from it, propose an improved protocol in the view of promoting it as a standard, and build tooling around it."
+  },
+  "startDate": "2021-04-01",
+  "isRelatedTo": [
+    {
+      "id": "https://lobid.org/product/lobid-gnd"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-organisations"
+    },
+    {
+      "id": "https://lobid.org/product/skohub"
+    }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Beitragende Person",
+        "en": "contributor"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Beitragende Person",
+        "en": "contributor"
+      },
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
+      }
+    }
+  ]
+}

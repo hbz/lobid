@@ -22,6 +22,9 @@
     },
     {
       "id": "https://lobid.org/product/lobid-gnd"
+    },
+    {
+        "id": "https://lobid.org/project/reconciliation"
     }
   ],
   "id": "https://blog.lobid.org/2019/09/30/openrefine-examples.html",

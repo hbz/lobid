@@ -49,6 +49,9 @@ export const query = graphql`
             isBasedOn {
               id
             }
+            isRelatedTo {
+              id
+            }
             url
             image
             alternateName
