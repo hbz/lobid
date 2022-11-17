@@ -15,8 +15,8 @@
   "image": "https://oersi.org/resources/logo.svg",
   "startDate": "2020-01-15",
   "description": {
-    "de": "Ein offener Suchindex für Bildungsressourcen, gemeinsames Angebot der TIB Hannover und des hbz",
-    "en": "An open search index for educational resources, common offering by TIB Hannover and hbz"
+    "de": "Ein offener Suchindex für Bildungsressourcen, gemeinsames Angebot der TIB Hannover und des hbz.",
+    "en": "An open search index for educational resources, common offering by TIB Hannover and hbz."
   },
   "isBasedOn": [
     {

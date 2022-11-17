@@ -21,8 +21,8 @@
     }
   ],
   "description": {
-    "de": "Ein gemeinsames Projekt der TIB Hannover und des hbz zum Aufbau eines offenen Suchindex für Bildungsressourcen",
-    "en": "Common project by TIB Hannover and hbz to create an open search index for educational resources"
+    "de": "Ein gemeinsames Projekt der TIB Hannover und des hbz zum Aufbau eines offenen Suchindex für Bildungsressourcen.",
+    "en": "Common project by TIB Hannover and hbz to create an open search index for educational resources."
   },
   "isBasedOn": [
     {

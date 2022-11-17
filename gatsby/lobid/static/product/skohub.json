@@ -11,7 +11,7 @@
   },
   "description": {
     "en": "SkoHub supports a novel approach for finding content on the web. The general idea is to extend the scope of Knowledge Organization Systems (KOS) to also act as communication hubs for publishers and information seekers. In effect, SkoHub allows to follow specific subjects in order to be notified when new content about that subject is published.",
-    "de": "SkoHub unterstützt einen neuen Zugang, um Inhalte im Netz zu finden. Die allgemeine Idee von SkoHub ist die Reichweite von Knowledge Organization Systems (KOS) so zu erweitern, dass sie auch  als communication hub (?) zwischen Metadatenbereitsteller:innen und Imformationssuchende eingesetzt werden können. In der Tat, ermöglicht SkoHub das Folgen bestimmter Themen, um benachrichtigt zu werden, wenn neue Inhalte veröffentlicht werden."
+    "de": "SkoHub unterstützt einen neuen Zugang, um Inhalte im Netz zu finden. Die allgemeine Idee von SkoHub ist die Reichweite von Knowledge Organization Systems (KOS) so zu erweitern, dass sie auch als Schnittstelle zwischen Metadatenbereitsteller:innen und Informationssuchenden eingesetzt werden können. Konkret ermöglicht SkoHub das Folgen bestimmter Themen, um benachrichtigt zu werden, wenn neue Inhalte zu dem Thema veröffentlicht werden."
   },
   "maintainer": {
     "id": "http://lobid.org/team#!",
