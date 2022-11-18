@@ -117,8 +117,8 @@ export class Team extends React.Component {
           </h1>
 
           <p className="lead">{this.props.team.description[this.props.lang]}</p>
-          <div class="row">
-            <div class="col-md-5">
+          <div className="row">
+            <div className="col-md-5">
               <h2>{this.props.contactName}</h2>
 
               <p>
@@ -176,7 +176,7 @@ export class Team extends React.Component {
               {this.state.infoToggledProjects ? this.getFormerProjects() : ""}
 
             </div>
-            <div class="col-md-7">
+            <div className="col-md-7">
               <h2>{this.props.publicationsCurrent}<small>
               <a title={"RSS-Feed: "+this.props.publicationsDetails} href="/team/feed.xml">
                 <i className="json-ld-icon fa fa-rss" aria-hidden="true"></i>
