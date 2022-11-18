@@ -45,16 +45,16 @@ export const query = graphql`
             description {
               label: de
             }
-            id,
+            id
             hasPart {
               id
-            },
+            }
             isBasedOn {
               id
-            },
+            }
             isRelatedTo {
               id
-            },
+            }
             membership {
               member {
                 id

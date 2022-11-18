@@ -54,11 +54,11 @@ export class Member extends React.Component {
                   <tr><th width="20%" /><th width="80%" /></tr>
                 </thead>
                 <tbody>
-                  {this.props.member.alternateName && this.props.member.alternateName.map(alt => <tr><td>Alternate Name</td><td>{alt}</td></tr>)}
+                  {this.props.member.alternateName && this.props.member.alternateName.map(alt => <tr key={alt}><td>Alternate Name</td><td>{alt}</td></tr>)}
                   <tr><td>Mail</td><td><a href='mailto:pohl@hbz-nrw.de'>{this.props.member.email}</a></td></tr>
                   <tr><td>Telephone</td><td>{this.props.member.telephone}</td></tr>
                   <tr><td>Same As</td><td>{this.props.member.sameAs.map((link) =>
-                    <div><a href={link}>{link.replace('https://', '').replace('http://', '')}</a><br /></div>
+                    <div key={link}><a href={link}>{link.replace('https://', '').replace('http://', '')}</a><br /></div>
                   )}</td></tr>
                 </tbody>
                 <tfoot />

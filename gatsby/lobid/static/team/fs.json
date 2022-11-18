@@ -14,14 +14,14 @@
   },
   "telephone": "+49-221-40075-231",
   "sameAs": [
-    "http://orcid.org/0000-0001-8829-1989",
-    "https://viaf.org/viaf/109146937785313831669/",
     "https://github.com/fsteeg",
+    "http://orcid.org/0000-0001-8829-1989",
+    "http://www.wikidata.org/entity/Q63381002",
     "https://gitlab.com/fsteeg"
   ],
   "image": "http://fsteeg.com/files/fsteeg.png",
   "alumniOf": [
     "http://www.wikidata.org/entity/Q54096",
-    "http://www.wikidata.org/entity/Q1324301"
+    "http://www.wikidata.org/entity/Q2235681"
   ]
 }

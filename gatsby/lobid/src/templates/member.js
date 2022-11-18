@@ -12,7 +12,7 @@ export default function MemberPage({ data, location, pageContext }) {
     }
     projects={data.allProjectJson.edges
       .map(edge => edge.node)
-      .filter(p => p.membership.find(m => m.member.id === member.id))
+      .filter(p => !p.endDate && p.membership.find(m => m.member.id === member.id))
     }
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
@@ -85,6 +85,7 @@ export const query = graphql`
             de
             en
           }
+          alternateName
           slogan {
             de
             en
@@ -107,6 +108,7 @@ export const query = graphql`
             en
           }
           alternateName
+          endDate
           membership {
             member {
               id

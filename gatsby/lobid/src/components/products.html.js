@@ -10,7 +10,7 @@ export default class Products extends React.Component {
             {getImage(product.id, product.image)}
             <p className="details">
               <a href={"/product/" + simpleId(product.id)}>
-                {product.name && product.name[this.props.lang]}
+                {product.alternateName || product.name && product.name[this.props.lang]}
               </a>
               <br />
               {(product.slogan && product.slogan[this.props.lang]) || (product.name && product.name[this.props.lang])}
