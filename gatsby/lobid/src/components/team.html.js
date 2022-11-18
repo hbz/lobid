@@ -27,14 +27,14 @@ export class Team extends React.Component {
 
   toggleFormerMembers = () => {
     this.setState(prevState => ({
-      infoToggledMembers: !prevState.infoToggledMembers,
-      infoToggledProjects: prevState.infoToggledProjects
+      ...prevState,
+      infoToggledMembers: !prevState.infoToggledMembers
     }));
   };
 
   toggleFormerProjects = () => {
     this.setState(prevState => ({
-      infoToggledMembers: prevState.infoToggledMembers,
+      ...prevState,
       infoToggledProjects: !prevState.infoToggledProjects
     }));
   };
