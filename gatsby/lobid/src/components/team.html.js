@@ -5,6 +5,7 @@ import Header from "./header.html";
 import Footer from "./footer.html";
 import Membership from "./membership.html";
 import Publications from "./publications.html";
+import Projects from "./projects.html";
 
 import "./css/lobid.css";
 import "./css/bootstrap.min.css";
@@ -19,24 +20,63 @@ export class Team extends React.Component {
     super(props);
     this.props = props;
     this.state = {
-      infoToggled: false
+      infoToggledMembers: false,
+      infoToggledProjects: false
     };
   }
 
-  toggleEhemalige = () => {
-    this.setState(prevState => ({ infoToggled: !prevState.infoToggled }));
+  toggleFormerMembers = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      infoToggledMembers: !prevState.infoToggledMembers
+    }));
   };
 
-  getEhemalige = () => {
+  toggleFormerProjects = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      infoToggledProjects: !prevState.infoToggledProjects
+    }));
+  };
+
+  getFormerMembers = () => {
     return (
-      <div id="former">
+      <div id="former-members">
         <Membership membership={this.props.team.membership.filter(member => member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
+      </div>
+    );
+  };
+
+  getFormerProjects = () => {
+    return (
+      <div id="former-projects">
+        <Projects projects={this.props.projects.map(p=>p.node).filter(project => project.endDate)} lang={this.props.lang}/>
       </div>
     );
   };
 
   getOfferDetails = (offer) => {
     return this.props.products.filter(p => p.node.id === offer.id)[0];
+  }
+
+  getToggle = (state, event) => {
+    return (
+      <small>
+        <button
+          className={
+            state
+              ? "glyphicon glyphicon-minus-sign"
+              : "glyphicon glyphicon-plus-sign"
+          }
+          style={{
+            color: "#004678",
+            backgroundColor: "transparent",
+            border: "none"
+          }}
+          onClick={event}
+        />
+      </small>
+    );
   }
 
   render() {
@@ -77,8 +117,8 @@ export class Team extends React.Component {
           </h1>
 
           <p className="lead">{this.props.team.description[this.props.lang]}</p>
-          <div class="row">
-            <div class="col-md-5">
+          <div className="row">
+            <div className="col-md-5">
               <h2>{this.props.contactName}</h2>
 
               <p>
@@ -105,28 +145,14 @@ export class Team extends React.Component {
               <Membership membership={this.props.team.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
 
               <h3>
-                {this.props.memberFormerName}
-                <small>
-                  <button
-                    className={
-                      this.state.infoToggled
-                        ? "glyphicon glyphicon-minus-sign"
-                        : "glyphicon glyphicon-plus-sign"
-                    }
-                    style={{
-                      color: "#004678",
-                      backgroundColor: "transparent",
-                      border: "none"
-                    }}
-                    onClick={this.toggleEhemalige}
-                  />
-                </small>
+                {this.props.memberFormerName} {this.props.memberName}
+                {this.getToggle(this.state.infoToggledMembers, this.toggleFormerMembers)}
               </h3>
-              {this.state.infoToggled ? this.getEhemalige() : ""}
+              {this.state.infoToggledMembers ? this.getFormerMembers() : ""}
 
               <h2>{this.props.makesOfferName}</h2>
 
-              {this.props.team.makesOffer
+              {this.props.team.makesOffer.filter(offer => !offer.id.includes("lobid-"))
               .map((offer) => [offer, this.getOfferDetails(offer)]).map(([offer, details]) =>
                 <div key={offer.id}>
                   {getImage(offer.id, details.node.image)}
@@ -135,28 +161,22 @@ export class Team extends React.Component {
                       {offer.name}
                     </a>
                     <br />
-                    {(details.node.slogan && details.node.slogan[this.props.lang]) || offer.name}
+                    {(details.node.slogan && details.node.slogan[this.props.lang]) || (details.node.name && details.node.name[this.props.lang]) || offer.name}
                   </p>
                 </div>
               )}
 
               <h2>{this.props.projectsName}</h2>
+              <Projects projects={this.props.projects.map(p=>p.node).filter(project => !project.endDate)} lang={this.props.lang}/>
 
-              {this.props.projects
-              .map((details) =>
-                <div key={details.node.id}>
-                  {getImage(details.node.id, details.node.image)}
-                  <p className="details">
-                    <a href={"/project/" + simpleId(details.node.id)}>
-                      {details.node.alternateName || simpleId(details.node.id)}
-                    </a>
-                    <br />
-                    {(details.node.name && details.node.name[this.props.lang]) || details.node.alternateName}
-                  </p>
-                </div>
-              )}
+              <h3>
+                {this.props.memberFormerName} {this.props.projectsName}
+                {this.getToggle(this.state.infoToggledProjects, this.toggleFormerProjects)}
+              </h3>
+              {this.state.infoToggledProjects ? this.getFormerProjects() : ""}
+
             </div>
-            <div class="col-md-7">
+            <div className="col-md-7">
               <h2>{this.props.publicationsCurrent}<small>
               <a title={"RSS-Feed: "+this.props.publicationsDetails} href="/team/feed.xml">
                 <i className="json-ld-icon fa fa-rss" aria-hidden="true"></i>

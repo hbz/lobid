@@ -67,6 +67,18 @@
       "name": "lobid"
     },
     {
+      "id": "https://lobid.org/product/lobid-resources",
+      "name": "lobid-resources"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-organisations",
+      "name": "lobid-organisations"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-gnd",
+      "name": "lobid-gnd"
+    },
+    {
       "id": "https://lobid.org/product/nwbib",
       "name": "NWBib"
     },
@@ -77,6 +89,10 @@
     {
       "id": "https://lobid.org/product/skohub",
       "name": "SkoHub"
+    },
+    {
+      "id": "https://lobid.org/product/oersi",
+      "name": "OERSI"
     }
   ],
   "membership": [

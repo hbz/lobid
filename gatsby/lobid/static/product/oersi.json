@@ -1,7 +1,7 @@
 {
   "@context": "https://schema.org/",
-  "id": "https://lobid.org/project/oersi",
-  "url": "https://oersi.de",
+  "id": "https://lobid.org/product/oersi",
+  "url": "https://oersi.org",
   "type": [
     "Project"
   ],
@@ -12,11 +12,11 @@
   "alternateName": [
     "OERSI"
   ],
-  "image": "https://oersi.de/resources/nav-bar.png",
+  "image": "https://oersi.org/resources/logo.svg",
   "startDate": "2020-01-15",
   "description": {
-    "de": "Ein gemeinsames Projekt der TIB Hannover und des hbz zum Aufbau eines offenen Suchindex für Bildungsressourcen",
-    "en": "Common project by TIB Hannover and hbz to create an open search index for educational resources"
+    "de": "Ein offener Suchindex für Bildungsressourcen, gemeinsames Angebot der TIB Hannover und des hbz.",
+    "en": "An open search index for educational resources, common offering by TIB Hannover and hbz."
   },
   "isBasedOn": [
     {
@@ -35,16 +35,6 @@
       },
       "member": {
         "id": "http://lobid.org/team/ap#!"
-      }
-    },
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Softwareentwicklung",
-        "en": "software development"
-      },
-      "member": {
-        "id": "http://lobid.org/team/fs#!"
       }
     },
     {

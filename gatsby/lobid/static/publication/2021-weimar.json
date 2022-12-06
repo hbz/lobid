@@ -31,6 +31,9 @@
     "about": [
         {
             "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-gnd"
         }
     ],
     "datePublished": "2021-10-29",

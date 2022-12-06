@@ -48,7 +48,10 @@
             "id": "https://lobid.org/product/skohub"
         },
         {
-            "id": "https://lobid.org/project/oersi"
+            "id": "https://lobid.org/product/oersi"
+        },
+        {
+            "id": "https://lobid.org/project/oersi-project"
         },
         {
             "id": "https://lobid.org/project/orca"

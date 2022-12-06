@@ -25,7 +25,10 @@
     ],
     "about": [
         {
-            "id": "https://lobid.org/product/lobid"
+            "id": "https://lobid.org/product/lobid-gnd"
+        },
+        {
+            "id": "https://lobid.org/project/reconciliation"
         }
     ],
     "datePublished": "2021-06-10",

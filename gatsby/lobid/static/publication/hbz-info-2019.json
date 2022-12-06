@@ -27,6 +27,12 @@
     "about": [
         {
             "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-organisations"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-gnd"
         }
     ],
     "datePublished": "2019-02-21",

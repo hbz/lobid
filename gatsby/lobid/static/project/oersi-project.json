@@ -1,0 +1,67 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://lobid.org/project/oersi-project",
+  "url": "https://oersi.de",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "OER Search Index",
+    "en": "OER Search Index"
+  },
+  "alternateName": [
+    "oersi-project"
+  ],
+  "image": "https://oersi.de/resources/nav-bar.png",
+  "startDate": "2020-01-15",
+  "endDate": "2022-01-15",
+  "result": [
+    {
+      "id": "https://lobid.org/product/oersi"
+    }
+  ],
+  "description": {
+    "de": "Ein gemeinsames Projekt der TIB Hannover und des hbz zum Aufbau eines offenen Suchindex für Bildungsressourcen.",
+    "en": "Common project by TIB Hannover and hbz to create an open search index for educational resources."
+  },
+  "isBasedOn": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/project/amb"
+    }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Beitragende Person",
+        "en": "contributor"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ap#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/fs#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Datentransformation",
+        "en": "data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/tb#!"
+      }
+    }
+  ]
+}

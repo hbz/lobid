@@ -65,7 +65,7 @@ export class Project extends React.Component {
               <img alt={this.props.project.name.label} id="index-image" src={this.props.project.image || `https://gravatar.com/avatar/${md5(this.props.project.id)}?s=300&d=identicon`} />
             </div>
           </div>
-          <p className="lead">{this.props.memberName}</p>
+          {this.props.project.membership.length > 0 && <p className="lead">{this.props.memberName}</p>}
           <Membership membership={this.props.project.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />

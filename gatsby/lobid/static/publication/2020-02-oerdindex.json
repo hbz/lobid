@@ -18,7 +18,10 @@
   },
   "about": [
     {
-      "id": "https://lobid.org/project/oersi"
+      "id": "https://lobid.org/product/oersi"
+    },
+    {
+      "id": "https://lobid.org/project/oersi-project"
     }
   ],
   "keywords": [

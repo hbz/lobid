@@ -21,7 +21,7 @@ export default class Publications extends React.Component {
                   <td>
                     {publication.about && <small><span className="glyphicon glyphicon-tag" aria-hidden="true"></span>&nbsp;</small>}
                     {publication.about && publication.about.map((a,i) =>
-                      <small><span key={a.id}><a href={stripLobidOrg(a.id)}>{simpleId(a.id)}</a>{i < publication.about.length - 1 && ", "}</span></small>
+                      <small key={a.id}><span><a href={stripLobidOrg(a.id)}>{simpleId(a.id)}</a>{i < publication.about.length - 1 && ", "}</span></small>
                     )}
                   </td>
                   <td align="right"><small>{publication.type.map(t => t.match(/[A-Z][a-z]+/)[0])}</small></td>
