@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org/",
+  "id": "https://lobid.org/project/skohub-project",
+  "url": "https://github.com/skohub-io",
+  "type": [
+    "Project"
+  ],
+  "name": {
+    "de": "Infrastrukturinitiative Metadaten-Services",
+    "en": "Infrastructure Initiative Metadata Services"
+  },
+  "description": {
+    "de": "Die Infrastrukturinitiative Metadatenservices ist eine Teilprojekt des Ende 2021 beim Ministeirum für Kultur und Wissenschaft beantragten und genemigten Projekts \"Metadaten.nrw\". Das Projek dient vor allem dem strategischen Ziel, die Verwendung der im hbz entwickelten und gepflegten Metadateninfrastruktur über den bisher bestehenden Kreis an Partner'innen und Nutzer*innen auszuweiten und das hbz als Kompetenzzentrum zum Thema Metadaten in NRW zu etablieren. Dementsprechend hat das Projekt folgende übergeordneten Ziele: die Vergrößerung des Bekanntheitsgrads und der Nutzung der hbz-Metadatenmanagement-Angebote unter NRW-Hochschulbibliotheken und -Wissenschaftler*innen durch weitere Verbesserung der existierenden Dienste und ihrer Betriebsumgebung; Ausbau der fortgeschrittenen Arbeiten im Bereich OER und Entwicklung einer OER-Metadaten-Community in NRW; Erweiterung des Anwendungsbereichs auf die Handlungsfelder Langzeitverfügbarkeit, Forschungsdatenmanagement und Open Access"
+  },
+  "startDate": "2022-11-01",
+  "endDate": "2024-12-31",
+  "enhances": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/product/skohub"
+    },
+    {
+      "id": "https://lobid.org/product/lobid-gnd"
+    },
+    {
+      "id": "https://lobid.org/product/nwbib"
+    }
+  ],
+  "isRelatedTo": [
+    {
+      "id": "https://lobid.org/project/reconciliation"
+    }
+  ],
+  "membership": [
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Projektkoordination",
+        "en": "project coordination"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ak#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Softwareentwicklung",
+        "en": "software development"
+      },
+      "member": {
+        "id": "http://lobid.org/team/sr#!"
+      }
+    }
+  ]
+}

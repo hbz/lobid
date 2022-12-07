@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "id": "http://lobid.org/team/ak#!",
+  "type": [
+    "Person"
+  ],
+  "email": "anna.keller@hbz-nrw.de",
+  "name": {
+    "en": "Anna Keller",
+    "de": "Anna Keller"
+  },
+  "telephone": "+49-221-40075-210",
+  "sameAs": [
+    "https://d-nb.info/gnd/1027175295",
+    "http://viaf.org/viaf/272388519",
+    "https://github.com/kaena83"
+  ],
+  "alumniOf": [
+    "http://www.wikidata.org/entity/Q521612",
+    "http://www.wikidata.org/entity/Q1859178"
+  ]
+}
