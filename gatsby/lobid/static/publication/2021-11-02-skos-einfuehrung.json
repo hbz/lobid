@@ -1,0 +1,43 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://pad.gwdg.de/p/introduction-in-skos-with-skohub",
+    "name": {
+        "en": "An Introduction to SKOS with SkoHub Vocabs"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/sr#!",
+            "type": "Person",
+            "name": "Steffen Rörtgen"
+        }
+    ],
+    "description": {
+        "de": "Presentation slides for a workshop at SWIB21 on 2021-11-30"
+    },
+    "keywords": [
+        "SKOS",
+        "SkoHub"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/skohub"
+        }
+    ],
+    "datePublished": "2021-11-30",
+    "inLanguage": [
+        "en"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
