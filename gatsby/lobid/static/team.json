@@ -176,6 +176,17 @@
     },
     {
       "type": "Role",
+      "startDate": "2022",
+      "roleName": {
+        "de": "Projektkoordination",
+        "en": "Project coordination"
+      },
+      "member": {
+        "id": "http://lobid.org/team/ak#!"
+      }
+    },
+    {
+      "type": "Role",
       "startDate": "2010",
       "endDate": "2010",
       "roleName": {
