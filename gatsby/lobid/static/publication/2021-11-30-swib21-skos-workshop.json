@@ -1,0 +1,46 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://pad.gwdg.de/p/introduction-in-skos-with-skohub",
+    "name": {
+        "en": "An Introduction to SKOS with SkoHub Vocabs"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/sr#!",
+            "type": "Person",
+            "name": "Steffen Rörtgen"
+        }
+    ],
+    "description": {
+        "de": "In Bibliotheken und im Forschungsdatenmanagement werden häufig Klassifikationen, Thesauri und andere kontrollierte Vokabulare benötigt. Um die Nachnutzbarkeit von kontrollierten Vokabularen und die Möglichkeiten einer kooperativen Qualitätssicherung zu maximieren, ist die webbasierte Publikation der Vokabulare als strukturierte Daten sinnvoll. Zu genau diesem Zweck hat das World Wide Web Consortium (W3C) mit Simple Knowledge Organization Systems (SKOS) vor mehr als 15 Jahren ein klares und einfaches RDF-basiertes Datenmodell veröffentlicht. SKOS unterstützt die Publikation kontrollierter Vokabulare unter Einhaltung der Data on the Web Best Practices und der FAIR Data Principles. Im Kontext von Bibliotheken und Forschungsdatenmanagement werden viele kontrollierte Vokabulare erstellt, allerdings hat sich SKOS hier noch nicht als Standard etabliert. Dieser Workshop gibt eine Einführung in SKOS anhand praktischer Übungen. Die Teilnehmer*innen werden mit dem vom hbz entwickelten Tool SkoHub Vocabs selbst SKOS-Vokabulare erstellen und mit SkoHub Vocabs veröffentlichen. Der Workshop wird als Kooperationsveranstaltung zwischen dem Hochschulbibliothekszentrum NRW und der Göttingen eResearch Alliance durchgeführt."
+    },
+    "keywords": [
+        "SKOS",
+        "SkoHub"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/skohub"
+        }
+    ],
+    "datePublished": "2021-11-02",
+    "inLanguage": [
+        "en"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "isBasedOn": [
+        "https://pad.gwdg.de/p/einfuehrung-in-skos-mit-skohub"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
