@@ -1,0 +1,55 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2022-12-metafacture-workshop/",
+    "name": {
+        "de": "Metadatenworkflows mit Metafacture erstellen und verwalten"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/pc#!",
+            "type": "Person",
+            "name": "Pascal Christoph"
+        },
+        {
+            "id": "http://lobid.org/team/tb#!",
+            "type": "Person",
+            "name": "Tobias Bülte"
+        }
+    ],
+    "description": {
+        "de": "Folien für eine Präsentation am 2022-12-08 beim Hands-on Lab Studiengang Bibliotheks- und Informationswissenschaft an der HTWK Leipzig"
+    },
+    "about": [
+        {
+            "id": "https://lobid.org/product/metafacture"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-playground"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-fix"
+        }
+    ],
+    "keywords": [
+        "metafacture-playground",
+        "metafacture",
+        "metafacture-fix",
+        "metadata",
+        "workshop"
+    ],
+    "datePublished": "2022-12-08",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "metadata practitioners",
+        "management",
+        "librarians",
+        "developers"
+
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
