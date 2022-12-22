@@ -11,7 +11,7 @@
         if(stripos($filename,".ico") || stripos($filename,".png")) {
                 $ctype="image/png";
         } else {
-                if(stripos($filename,".jpg")) {
+                if(stripos($filename,".jpg") || stripos($filename,".jpeg")) {
                         $ctype="image/jpg";
                 } else  {
                         if(stripos($filename,".gif")) {
