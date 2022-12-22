@@ -8,13 +8,13 @@
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         $filename = basename($url);
 
-        if(strpos($filename,".ico") || strpos($filename,".png")) {
+        if(stripos($filename,".ico") || stripos($filename,".png")) {
                 $ctype="image/png";
         } else {
-                if(strpos($filename,".jpg")) {
+                if(stripos($filename,".jpg")) {
                         $ctype="image/jpg";
                 } else  {
-                        if(strpos($filename,".gif")) {
+                        if(stripos($filename,".gif")) {
                                 $ctype="image/gif";
                         }
                 }
