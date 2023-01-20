@@ -9,5 +9,8 @@
     "en": "Phú Tu",
     "de": "Phú Tu"
   },
+  "sameAs": [
+    "https://openbiblio.social/@phu"
+  ],
   "image": "https://lobid.org/images/pt.jpg"
 }
