@@ -187,6 +187,17 @@
     },
     {
       "type": "Role",
+      "startDate": "2023",
+      "roleName": {
+        "de": "Projektmanager DevOps",
+        "en": "Project Manager DevOps"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pt#!"
+      }
+    },
+    {
+      "type": "Role",
       "startDate": "2010",
       "endDate": "2010",
       "roleName": {

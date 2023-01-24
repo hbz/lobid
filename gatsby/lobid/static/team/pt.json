@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "id": "http://lobid.org/team/pt#!",
+  "type": [
+    "Person"
+  ],
+  "email": "phu.tu@hbz-nrw.de",
+  "name": {
+    "en": "Phú Tu",
+    "de": "Phú Tu"
+  },
+  "sameAs": [
+    "https://openbiblio.social/@phu"
+  ],
+  "image": "https://lobid.org/images/pt.jpg"
+}
