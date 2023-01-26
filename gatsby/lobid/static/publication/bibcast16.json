@@ -40,6 +40,6 @@
     "web developers",
     "librarians"
   ],
-  "isBasedOn": "http://hbz.github.io/slides/swib-15/",
+  "isBasedOn": [{"id": "http://hbz.github.io/slides/swib-15/"}],
   "license": "https://creativecommons.org/licenses/by/4.0/"
 }

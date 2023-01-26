@@ -47,7 +47,7 @@
         "developers"
     ],
     "isBasedOn": [
-        "https://slides.lobid.org/2021-kim-reconcile/"
+        {"id": "https://slides.lobid.org/2021-kim-reconcile/"}
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }

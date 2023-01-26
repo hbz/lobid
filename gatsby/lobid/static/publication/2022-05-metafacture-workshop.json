@@ -41,9 +41,9 @@
         "de"
     ],
     "isBasedOn": [
-        "https://slides.lobid.org/2022-05-02-kim-ws/",
-        "https://slides.lobid.org/2022-01-metafacture-hbz/",
-        "https://slides.lobid.org/metafacture-2020/"
+        {"id": "https://slides.lobid.org/2022-05-02-kim-ws/"},
+        {"id": "https://slides.lobid.org/2022-01-metafacture-hbz/"},
+        {"id": "https://slides.lobid.org/metafacture-2020/"}
     ],
     "audience": [
         "management",

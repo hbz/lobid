@@ -40,7 +40,7 @@
         "developers"
     ],
     "isBasedOn": [
-        "https://slides.lobid.org/2020-zbiw/"
+        {"id": "https://slides.lobid.org/2020-zbiw/"}
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }

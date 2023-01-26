@@ -46,9 +46,9 @@
         "developers"
     ],
     "isBasedOn": [
-        "https://slides.lobid.org/2021-gndcon-reconcile/",
-        "https://slides.lobid.org/2020-swib-reconciliation/",
-        "https://hbz.github.io/elag2019-bootcamp/"
+        {"id": "https://slides.lobid.org/2021-gndcon-reconcile/"},
+        {"id": "https://slides.lobid.org/2020-swib-reconciliation/"},
+        {"id": "https://hbz.github.io/elag2019-bootcamp/"}
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }
