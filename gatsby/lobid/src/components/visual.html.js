@@ -26,7 +26,6 @@ export class Visual extends Component {
     var nodes = [];
     
     this.props.membership.forEach((person) => {
-      console.log(person)
       nodes.push({
         id: person.member.id,
         label: (person.member.name ? person.member.name.label : getMemberDetails(this.props.members, person).node.name.de),
