@@ -7,11 +7,11 @@ export default class Projects extends React.Component {
       <div>
         {this.props.projects
           .map((details) =>
-            <div key={details.id}>
-              {getImage(details.id, details.image)}
+            <div key={details.jsonId}>
+              {getImage(details.jsonId, details.image)}
               <p className="details">
-                <a href={"/project/" + simpleId(details.id)}>
-                  {details.alternateName || simpleId(details.id)}
+                <a href={"/project/" + simpleId(details.jsonId)}>
+                  {details.alternateName || simpleId(details.jsonId)}
                 </a>
                 <br />
                 {(details.name && details.name[this.props.lang]) || details.alternateName}

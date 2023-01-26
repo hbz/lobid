@@ -23,7 +23,7 @@ module.exports = {
           {
             serialize: ({ query: { site, allPublicationJson } }) => {
               return allPublicationJson.edges.map(edge => {
-                return Object.assign({}, edge.node.id, {
+                return Object.assign({}, edge.node.jsonId, {
                   description: edge.node.description.de || edge.node.description.en,
                   title: edge.node.name.de || edge.node.name.en,
                   date: edge.node.datePublished,
@@ -41,7 +41,7 @@ module.exports = {
                 ) {
                   edges {
                     node {
-                      id
+                      jsonId
                       name {
                         de
                         en
@@ -103,7 +103,7 @@ module.exports = {
         path: `${__dirname}/static/project/`,
       }
     },
-    `gatsby-transformer-sharp`,
+    { resolve: 'gatsby-plugin-sharp', options: { failOnError: false } },
     `gatsby-plugin-sharp`
   ],
 };

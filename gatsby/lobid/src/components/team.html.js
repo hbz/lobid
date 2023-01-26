@@ -56,7 +56,7 @@ export class Team extends React.Component {
   };
 
   getOfferDetails = (offer) => {
-    return this.props.products.filter(p => p.node.id === offer.id)[0];
+    return this.props.products.filter(p => p.node.jsonId === offer.id)[0];
   }
 
   getToggle = (state, event) => {

@@ -7,7 +7,7 @@ export default ({ data, location, pageContext }) => {
   <Team
     team={data.dataJson}
     members={data.allTeamJson.edges}
-    products={data.allProductJson.edges.filter(edge => !edge.node.id.includes("lobid-"))}
+    products={data.allProductJson.edges.filter(edge => !edge.node.jsonId.includes("lobid-"))}
     projects={data.allProjectJson.edges}
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
@@ -80,7 +80,7 @@ export const query = graphql`
     allTeamJson {
       edges {
         node {
-          id
+          jsonId
           image
           email
           name {
@@ -93,7 +93,7 @@ export const query = graphql`
     allProductJson {
       edges {
         node {
-          id
+          jsonId
           image
           name {
             de
@@ -109,7 +109,7 @@ export const query = graphql`
     allProjectJson {
       edges {
         node {
-          id
+          jsonId
           image
           endDate
           name {
@@ -123,7 +123,7 @@ export const query = graphql`
     allPublicationJson {
       edges {
         node {
-          id
+          jsonId
           type
           creator {
             id

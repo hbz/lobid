@@ -57,7 +57,7 @@ export const query = graphql`
     allPublicationJson {
       edges {
         node {
-          id
+          jsonId
           type
           creator {
             id
@@ -79,7 +79,7 @@ export const query = graphql`
     allProductJson {
       edges {
         node {
-          id
+          jsonId
           image
           name {
             de
@@ -101,7 +101,7 @@ export const query = graphql`
     allProjectJson {
       edges {
         node {
-          id
+          jsonId
           image
           name {
             de

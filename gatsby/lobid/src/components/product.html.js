@@ -38,7 +38,7 @@ export class Product extends React.Component {
               {this.props.product.name.label}
               <small>
                 {this.props.product.slogan && [this.props.product.slogan].map(s => <span key={s.label}> &mdash; {s.label}</span>)}
-                <a title="Beschreibung als JSON-LD anzeigen" href={'/product/' + simpleId(this.props.product.id) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
+                <a title="Beschreibung als JSON-LD anzeigen" href={'/product/' + simpleId(this.props.product.jsonId) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
             </h1>
           </div>
 
@@ -50,7 +50,7 @@ export class Product extends React.Component {
                   <tr><th width="20%" /><th width="80%" /></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Website</td><td><a href={this.props.product.url || this.props.product.id}>{this.props.product.url || this.props.product.id}</a></td></tr>
+                  <tr><td>Website</td><td><a href={this.props.product.url || this.props.product.jsonId}>{this.props.product.url || this.props.product.jsonId}</a></td></tr>
                   {asLinks("hasPart", this.props.product, this.props)}
                   {asLinks("isBasedOn", this.props.product, this.props)}
                   {asLinks("isRelatedTo", this.props.product, this.props)}
@@ -59,7 +59,7 @@ export class Product extends React.Component {
               </table>
             </div>
             <div className="col-md-3">
-              <img alt={this.props.product.name.label} id="index-image" src={this.props.product.image || `https://gravatar.com/avatar/${md5(this.props.product.id)}?s=300&d=identicon`} />
+              <img alt={this.props.product.name.label} id="index-image" src={this.props.product.image || `https://gravatar.com/avatar/${md5(this.props.product.jsonId)}?s=300&d=identicon`} />
             </div>
           </div>
           {this.props.product.membership.length > 0 && <p className="lead">{this.props.memberName}</p>}
