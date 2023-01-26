@@ -20,20 +20,19 @@ For information about the Lobid architecture and development process, see [hbz.g
 
 <h2> Static and generated sites </h2>
 
-Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `gatsby build` or `gatsby develop`.
+Some sites are just static plain html. These must reside in the `static` folder. They will be deployed to the proper place when doing `npm run build` or `npm run develop`.
 Some other pages, like lobid's `team` page, are generated using gatsby. The [team.json](https://github.com/hbz/lobid/tree/master/gatsby/lobid/static/team.json) is used as the _model_, the two files [team-de.js and team-en.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/pages/) work as the _controller_ (basically using _graphql_ to get the data from the _team.json_ ) which use the
 [team.html.js](https:/github.com/hbz/lobid/tree/master/gatsby/lobid/src/components/team.html.js) to generate views.
 
 ## Prerequisites
 
-A newer gatsby may need new versions of `node` and `npm`, so
-if you encounter problems when installing or running gatsby update them by
-using `nvm`, e.g.:
-`nvm install v15.14.0`.
+[Install the lastest nvm version](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-Install gatsby:
+We use node 18, you can install and enable it with:
+
 ```shell
-# npm install -g gatsby-cli
+nvm install 18
+nvm use 18
 ```
 
 1. **Start developing**
@@ -53,7 +52,7 @@ Install gatsby:
    Start it up.
 
    ```shell
-   gatsby develop
+   npm run develop
    ```
 
  *Open the source code and start editing!*
@@ -76,11 +75,11 @@ Install gatsby:
    
    It's always good to clean up first:
    ```shell
-   gatsby clean
+   npm run clean
    ```
    Let's build:
    ```shell
-   gatsby build
+   npm run build
    ```
 
    This generates the `public` folder which is the `document root` of apache.
@@ -130,6 +129,14 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 8. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
 9. **`README.md`**: A text file containing useful reference information about your project.
+
+### Note on `gatsby-transformer-json`
+
+[This gatsby plugin](https://www.gatsbyjs.com/plugins/gatsby-transformer-json/) is used to parse JSON and make it accessible for GraphQL queries.
+Some time ago the changed the behaviour of the `id` attribute and automatically transform it to `jsonId` (https://www.gatsbyjs.com/plugins/gatsby-transformer-json/).
+This is a bit painful when you are working with Linked Data.
+So make sure to be aware of it, if anything with `.id` does not work they way you expect.
+Maybe you need `jsonId`.
 
 <h2> Example: changing data on the `team` page </h2>
   
