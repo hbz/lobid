@@ -37,7 +37,7 @@
         "de"
     ],
     "isBasedOn": [
-        {"id": "https://malis21.acka47.net/slides/2022-01-28.html"}
+        "https://malis21.acka47.net/slides/2022-01-28.html"
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }

@@ -67,7 +67,7 @@
     "inLanguage": [
         "de"
     ],
-    "isBasedOn": [{"id": "http://slides.lobid.org/beirat2019/"}],
+    "isBasedOn": ["http://slides.lobid.org/beirat2019/"],
     "audience": [
         "management"
     ],

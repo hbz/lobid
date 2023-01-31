@@ -51,12 +51,8 @@
         "developers"
     ],
     "isBasedOn": [
-        {
-            "id": "https://slides.lobid.org/zbiw-2020/"
-        },
-        {
-            "id": "https://slides.lobid.org/2021-kim-reconcile"
-        }
-    ],
+        "https://slides.lobid.org/zbiw-2020/",
+        "https://slides.lobid.org/2021-kim-reconcile"
+        ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }

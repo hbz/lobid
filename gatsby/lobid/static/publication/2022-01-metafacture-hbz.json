@@ -40,7 +40,7 @@
     "inLanguage": [
         "de"
     ],
-    "isBasedOn": [{"id": "https://slides.lobid.org/metafacture-2020/"}],
+    "isBasedOn": ["https://slides.lobid.org/metafacture-2020/"],
     "audience": [
         "management",
         "librarians",

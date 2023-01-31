@@ -40,7 +40,7 @@
     "inLanguage": [
         "de"
     ],
-    "isBasedOn": [{"id": "https://slides.lobid.org/2022-01-metafacture-hbz/"}],
+    "isBasedOn": ["https://slides.lobid.org/2022-01-metafacture-hbz/"],
     "audience": [
         "management",
         "librarians",
