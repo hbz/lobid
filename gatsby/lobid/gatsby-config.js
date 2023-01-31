@@ -35,30 +35,30 @@ module.exports = {
               )})
             },
             query: `{
-  allPublicationJson(sort: {datePublished: DESC}) {
-    edges {
-      node {
-        jsonId
-        name {
-          de
-          en
-        }
-        description {
-          de
-          en
-        }
-        datePublished
-        creator {
-          name
-        }
-        keywords
-        about {
-          id
-        }
-      }
-    }
-  }
-}`,
+              allPublicationJson(sort: {datePublished: DESC}) {
+                edges {
+                  node {
+                    jsonId
+                    name {
+                      de
+                      en
+                    }
+                    description {
+                      de
+                      en
+                    }
+                    datePublished
+                    creator {
+                      name
+                    }
+                    keywords
+                    about {
+                      id
+                    }
+                  }
+                }
+              }
+            }`,
             output: "/team/feed.xml",
             title: "Lobid team RSS feed",
             description: "Publications and presentation by the Lobid team",
@@ -99,7 +99,7 @@ module.exports = {
         path: `${__dirname}/static/project/`,
       }
     },
-    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`
   ],
 };
