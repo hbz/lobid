@@ -8,15 +8,15 @@ export default function MemberPage({ data, location, pageContext }) {
     member={member}
     products={data.allProductJson.edges
       .map(edge => edge.node)
-      .filter(p => p.membership.find(m => m.member.id === member.id))
+      .filter(p => p.membership.find(m => m.member.jsonId === member.jsonId))
     }
     projects={data.allProjectJson.edges
       .map(edge => edge.node)
-      .filter(p => !p.endDate && p.membership.find(m => m.member.id === member.id))
+      .filter(p => !p.endDate && p.membership.find(m => m.member.jsonId === member.jsonId))
     }
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)
-      .filter(p => p.creator.find(c => c.id === member.id))
+      .filter(p => p.creator.find(c => c.jsonId === member.jsonId))
       .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
     }
     contactName="Kontakt"
