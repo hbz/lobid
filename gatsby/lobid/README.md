@@ -133,7 +133,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 ### Note on `gatsby-transformer-json`
 
 [This gatsby plugin](https://www.gatsbyjs.com/plugins/gatsby-transformer-json/) is used to parse JSON and make it accessible for GraphQL queries.
-Some time ago the changed the behaviour of the `id` attribute and automatically transform it to `jsonId` (https://www.gatsbyjs.com/plugins/gatsby-transformer-json/).
+Some time ago they changed the behaviour of the `id` attribute and automatically transform it to `jsonId` (https://www.gatsbyjs.com/plugins/gatsby-transformer-json/).
 This is a bit painful when you are working with Linked Data.
 So make sure to be aware of it, if anything with `.id` does not work they way you expect.
 Maybe you need `jsonId`.
