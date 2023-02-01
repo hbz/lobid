@@ -74,14 +74,13 @@ exports.createPages = async ({ graphql, actions }) => {
     projects: allProjectJson {
       edges {
         node {
-          id
+          jsonId
         }
       }
     }
   }
   `);
-
-  const shortProjectIds = projects.edges.map(e => e.node.id)
+  const shortProjectIds = projects.edges.map(e => e.node.jsonId)
     .filter(id => id.indexOf("/") != -1)
     .map(id => id.slice(id.lastIndexOf("/") + 1));
   console.log("Creating project pages: ", shortProjectIds);

@@ -34,14 +34,14 @@ export class Visual extends Component {
     });
     this.props.products.forEach((product) => { 
       nodes.push({
-        id: product.node.id,
+        id: product.node.jsonId,
         label: (product.node.alternateName ? product.node.alternateName[0] : product.node.name.de),
         shape: "box",
         group: "products" });
     });
     this.props.projects.forEach((project) => {
       nodes.push({
-        id: project.node.id,
+        id: project.node.jsonId,
         label: (project.node.alternateName ? project.node.alternateName[0] : project.node.name.de),
         shape: "box",
         group: "projects" });
@@ -51,12 +51,12 @@ export class Visual extends Component {
 
     this.props.products.forEach((product) => { 
       product.node.membership.forEach((person) => {
-        edges.push({ from: product.node.id, to: person.member.id, selectionWidth: 4 });
+        edges.push({ from: product.node.jsonId, to: person.member.id, selectionWidth: 4 });
       });
     });
     this.props.projects.forEach((project) => { 
       project.node.membership.forEach((person) => {
-        edges.push({ from: person.member.id, to: project.node.id, selectionWidth: 4 });
+        edges.push({ from: person.member.id, to: project.node.jsonId, selectionWidth: 4 });
       });
     });
 

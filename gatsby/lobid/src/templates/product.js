@@ -45,7 +45,7 @@ export const query = graphql`
             description {
               label: de
             }
-            id
+            jsonId
             hasPart {
               id
             }
@@ -71,7 +71,7 @@ export const query = graphql`
     allTeamJson {
       edges {
         node {
-          id
+          jsonId
           image
           email
           name {
@@ -84,7 +84,7 @@ export const query = graphql`
     allPublicationJson {
       edges {
         node {
-          id
+          jsonId
           type
           creator {
             id

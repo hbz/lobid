@@ -15,9 +15,11 @@ export default class Publications extends React.Component {
             </thead>
             <tbody>
               {this.props.pubs.map(publication =>
-                <tr key={publication.id}>
+                // some publications (one at this time of writing: Introduction to SKOS with SkoHub Vocabs) has the same id
+                // to make it unique its combined with the publication date
+                <tr key={publication.jsonId + publication.datePublished}>
                   <td><small>{publication.datePublished}</small></td>
-                  <td><a target="_blank" rel="noopener noreferrer" href={publication.id}>{publication.name.de || publication.name.en || publication.id}</a></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href={publication.jsonId}>{publication.name.de || publication.name.en || publication.jsonId}</a></td>
                   <td>
                     {publication.about && <small><span className="glyphicon glyphicon-tag" aria-hidden="true"></span>&nbsp;</small>}
                     {publication.about && publication.about.map((a,i) =>

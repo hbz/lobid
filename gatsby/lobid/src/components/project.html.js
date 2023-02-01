@@ -19,7 +19,7 @@ export class Project extends React.Component {
     super(props);
     this.props = props;
   }
-
+  
   render() {
     return (
       <div className="container">
@@ -38,7 +38,7 @@ export class Project extends React.Component {
               {this.props.project.name.label}
               <small>
                 {this.props.project.alternateName && this.props.project.alternateName.map(s => <span key={s}> | {s}</span>)}
-                <a title="Beschreibung als JSON-LD anzeigen" href={'/project/' + simpleId(this.props.project.id) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
+                <a title="Beschreibung als JSON-LD anzeigen" href={'/project/' + simpleId(this.props.project.jsonId) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small>
             </h1>
           </div>
 
@@ -50,7 +50,7 @@ export class Project extends React.Component {
                   <tr><th width="20%" /><th width="80%" /></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Website</td><td><a href={this.props.project.url || this.props.project.id}>{this.props.project.url || this.props.project.id}</a></td></tr>
+                  <tr><td>Website</td><td><a href={this.props.project.url || this.props.project.jsonId}>{this.props.project.url || this.props.project.jsonId}</a></td></tr>
                   {this.props.project.endDate && <tr><td>Abgeschlossen</td><td>{this.props.project.endDate}</td></tr>}
                   {asLinks("hasPart", this.props.project, this.props)}
                   {asLinks("isBasedOn", this.props.project, this.props)}
@@ -62,7 +62,7 @@ export class Project extends React.Component {
               </table>
             </div>
             <div className="col-md-3">
-              <img alt={this.props.project.name.label} id="index-image" src={this.props.project.image || `https://gravatar.com/avatar/${md5(this.props.project.id)}?s=300&d=identicon`} />
+              <img alt={this.props.project.name.label} id="index-image" src={this.props.project.image || `https://gravatar.com/avatar/${md5(this.props.project.jsonId)}?s=300&d=identicon`} />
             </div>
           </div>
           {this.props.project.membership.length > 0 && <p className="lead">{this.props.memberName}</p>}

@@ -12,7 +12,7 @@ export function stripLobidOrg(url) {
 export function asLinks(field, entity, props) {
     return entity[field] && <tr><td>{props[field]}</td><td>{entity[field].map((link) =>
         <div key={link.id}>
-            <a href={stripLobidOrg(link.id)}>{simpleId(link.id)}</a><br />
+            <a href={stripLobidOrg(link.id)}>{simpleId(link.id, link)}</a><br />
         </div>)}
     </td></tr>
 }
@@ -25,5 +25,6 @@ export function getImage(id, src) {
 }
 
 export function getMemberDetails(all, member) {
-    return all.filter(m => m.node.id === member.member.id)[0];
+    // favour jsonId over id if present; jsonId is the replacement for id in gatsby-transformer-json
+    return all.filter(m => (m.node.jsonId ? m.node.jsonId : m.node.id) === member.member.id)[0];
 }

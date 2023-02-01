@@ -23,7 +23,7 @@ module.exports = {
           {
             serialize: ({ query: { site, allPublicationJson } }) => {
               return allPublicationJson.edges.map(edge => {
-                return Object.assign({}, edge.node.id, {
+                return Object.assign({}, edge.node.jsonId, {
                   description: edge.node.description.de || edge.node.description.en,
                   title: edge.node.name.de || edge.node.name.en,
                   date: edge.node.datePublished,
@@ -34,35 +34,31 @@ module.exports = {
                 },
               )})
             },
-            query: `
-              {
-                allPublicationJson(
-                  sort: { order: DESC, fields: [datePublished] },
-                ) {
-                  edges {
-                    node {
+            query: `{
+              allPublicationJson(sort: {datePublished: DESC}) {
+                edges {
+                  node {
+                    jsonId
+                    name {
+                      de
+                      en
+                    }
+                    description {
+                      de
+                      en
+                    }
+                    datePublished
+                    creator {
+                      name
+                    }
+                    keywords
+                    about {
                       id
-                      name {
-                        de
-                        en
-                      }
-                      description {
-                        de
-                        en
-                      }
-                      datePublished
-                      creator {
-                        name
-                      }
-                      keywords
-                      about {
-                        id
-                      }
                     }
                   }
                 }
               }
-            `,
+            }`,
             output: "/team/feed.xml",
             title: "Lobid team RSS feed",
             description: "Publications and presentation by the Lobid team",

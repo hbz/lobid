@@ -51,15 +51,9 @@
         "developers"
     ],
     "isBasedOn": [
-        {
-            "id": "https://slides.lobid.org/htw-chur-2019/"
-        },
-        {
-            "id": "https://slides.lobid.org/beirat2019/"
-        },
-        {
-            "id": "https://slides.lobid.org/dhc-2020/"
-        }
+        "https://slides.lobid.org/htw-chur-2019/",
+        "https://slides.lobid.org/beirat2019/",
+        "https://slides.lobid.org/dhc-2020/"
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }

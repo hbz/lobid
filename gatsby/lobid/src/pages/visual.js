@@ -4,7 +4,7 @@ import { Visual } from "../components/visual.html";
 
 export default ({ data }) => (
   <Visual
-    membership = {data.dataJson.membership.filter((member) => !member.endDate)}
+    membership ={data.dataJson.membership.filter((member) => !member.endDate)}
     members={data.allTeamJson.edges}
     products={data.allProductJson.edges.filter((product) => product.node.membership.length > 0)}
     projects={data.allProjectJson.edges.filter((project) => !project.node.endDate && project.node.membership.length > 0)}
@@ -50,7 +50,7 @@ export const query = graphql`
     allTeamJson {
       edges {
         node {
-          id
+          jsonId
           name {
             de
           }
@@ -60,7 +60,7 @@ export const query = graphql`
     allProjectJson {
       edges {
         node {
-          id
+          jsonId
           endDate
           membership {
             member {
@@ -77,7 +77,7 @@ export const query = graphql`
     allProductJson {
       edges {
         node {
-          id
+          jsonId
           membership {
             member {
               id

@@ -5,11 +5,12 @@ export default class Products extends React.Component {
   render() {
     return (
       <div>
+        {console.log(this.props.products)}
         {this.props.products.map((product) =>
-          <div key={product.id}>
-            {getImage(product.id, product.image)}
+          <div key={product.jsonId}>
+            {getImage(product.jsonId, product.image)}
             <p className="details">
-              <a href={"/product/" + simpleId(product.id)}>
+              <a href={"/product/" + simpleId(product.jsonId)}>
                 {product.alternateName || product.name && product.name[this.props.lang]}
               </a>
               <br />
