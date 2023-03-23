@@ -5,6 +5,7 @@
  */
 
 module.exports = {
+  pathPrefix: "/lobid-blog",
   plugins: [
     {
       resolve: `gatsby-plugin-feed`,
