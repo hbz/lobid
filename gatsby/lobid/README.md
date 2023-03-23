@@ -97,8 +97,6 @@ nvm use 18
    
    Test the deployment by visiting http://lobid.org/.
 
-   If you need to serve this blog from other than root, set `pathPrefix: ""` in `gatsby-config.js` and insert the right prefix.
-
 ## 🧐 What's inside
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
