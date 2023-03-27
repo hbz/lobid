@@ -47,6 +47,10 @@ li .dropdown-header {
 	padding-left: 10px !important;
 }
 
+.navbar-default {
+	margin-top: 10px;
+}
+
 .navbar-brand {
 	padding-top: 13px !important;
 }
