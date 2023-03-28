@@ -39,8 +39,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Publications">Publications</span><b
-                  class="caret"></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Publications">Publications<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="http://blog.lobid.org/">Blog</a></li>
                 <li><a href="http://slides.lobid.org/">Slides</a></li>
