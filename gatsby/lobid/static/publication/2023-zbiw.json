@@ -1,0 +1,58 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "name": {
+        "de": "Offene Infrastruktur für bibliothekarische Daten: Linked Open Data, JSON & OpenRefine in der Praxis"
+    },
+    "description": {
+        "de": "Präsentationsfolien zur Fortbildung am Zentrum für Bibliotheks- und Informationswissenschaftliche Weiterbildung (ZBIW)"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/fs#!",
+            "type": "Person",
+            "name": "Fabian Steeg"
+        }
+    ],
+    "keywords": [
+        "lobid",
+        "JSON-LD",
+        "Linked Open Data",
+        "libraries"
+    ],
+    "id": "https://slides.lobid.org/2023-zbiw/",
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-resources"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-gnd"
+        },
+        {
+            "id": "https://lobid.org/project/reconciliation"
+        }
+    ],
+    "datePublished": "2023-03-28",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "isBasedOn": [
+        "https://slides.lobid.org/zbiw-2022/",
+        "https://slides.lobid.org/2022-05-06-lod-dipf/"
+        ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
