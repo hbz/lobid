@@ -18,6 +18,9 @@
                 case (stripos($filename,".gif")):
                         $ctype="image/gif";
                         break;
+                case (stripos($filename,".svg")):
+                        $ctype="image/svg+xml";
+                        break;
                 default:
                         $ctype="";
         }
