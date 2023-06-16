@@ -8,17 +8,20 @@
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         $filename = basename($url);
 
-        if(stripos($filename,".ico") || stripos($filename,".png")) {
-                $ctype="image/png";
-        } else {
-                if(stripos($filename,".jpg") || stripos($filename,".jpeg")) {
+        switch (true) {
+                case (stripos($filename,".ico") || stripos($filename,".png")):
+                        $ctype="image/png";
+                        break;
+                case (stripos($filename,".jpg") || stripos($filename,".jpeg")):
                         $ctype="image/jpg";
-                } else  {
-                        if(stripos($filename,".gif")) {
-                                $ctype="image/gif";
-                        }
-                }
+                        break;
+                case (stripos($filename,".gif")):
+                        $ctype="image/gif";
+                        break;
+                default:
+                        $ctype="";
         }
+
         header('Content-type: ' . $ctype);
         echo $output = curl_exec($ch);
         curl_close($ch); 
