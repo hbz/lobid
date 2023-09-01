@@ -41,6 +41,7 @@ export const query = graphql`
       edges {
         node {
           childTeamJson {
+            jsonId
             name {
               label: de
             }
