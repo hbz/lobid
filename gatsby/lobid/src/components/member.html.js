@@ -48,7 +48,7 @@ export class Member extends React.Component {
 
           <div className="row">
             <div className="col-md-9">
-              <p className="lead">{this.props.member.name.label}<small><a title="Beschreibung als JSON-LD anzeigen" href={'/team/' + this.props.member.id.slice(this.props.member.id.lastIndexOf("/") + 1, this.props.member.id.lastIndexOf("!#") - 1) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small></p>
+              <p className="lead">{this.props.member.name.label}<small><a title="Beschreibung als JSON-LD anzeigen" href={'/team/' + this.props.member.jsonId.slice(this.props.member.jsonId.lastIndexOf("/") + 1, this.props.member.jsonId.lastIndexOf("!#") - 1) + '.json'}><img className='json-ld-icon' src={jsonLdPng} alt="JSON-LD" /></a></small></p>
               <table className="table table-striped table-condensed">
                 <thead>
                   <tr><th width="20%" /><th width="80%" /></tr>
