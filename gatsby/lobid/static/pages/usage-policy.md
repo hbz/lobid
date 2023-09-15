@@ -10,8 +10,6 @@ Schön, dass du dich für lobid interessierst. Wir bemühen uns, die Verwendung 
 
 Damit wir diesen Dienst auch weiterhin so zuverlässig, aktuell und in hoher Qualität anbieten können, bitten wir um einen rücksichts- und respektvollen Umgang mit Daten und Schnittstellen. Im Folgenden formulieren wir einige Leitlinien, an denen sich Nutzer:innen der lobid-API orientieren können. Es handelt sich nicht um verbindliche Vorschriften, sondern vielmehr um Anregungen, die ein faires Miteinander garantieren sollen.
 
-[toc]
-
 ## lobid als Datenquelle nennen
 
 Die lobid-Daten sind CC0-lizenziert, d. h. die Verwendung der Daten ist an keinerlei Auflagen oder Bedingungen geknüpft. Urheber:innen, die ihre geschützten Inhalte unter [CC0](https://creativecommons.org/publicdomain/zero/1.0/) veröffentlichen, signalisieren damit den Nachnutzenden, dass mit der Verwendung der Inhalte keine urheberrechtlichen Konsequenzen verbunden sind bzw. die Verwertungs- und Schutzrechte der Urheber:innen nicht wahrgenommen werden. Es besteht insbesondere keine Verpflichtung, die Urheberschaft der Daten zu kennzeichnen. Dennoch begrüßen wir es, wenn lobid als Datenquelle genannt wird. Das ermöglicht eine größere Sichtbarkeit der lobid-Dienste und erleichtert im Gegenzug die Aufrechterhaltung des Angebots, weil es die Relevanz offener Daten und offen zugänglicher Schnittstellen gegenüber Geldgeber:innen und Entscheider:innen verdeutlicht.
