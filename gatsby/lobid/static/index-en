@@ -53,6 +53,7 @@
               <ul class="dropdown-menu">
                 <li><a href="team-en">Team</a></li>
                 <li><a href="mailto:lobid-admin@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
+                <li><a href="/usage-policy">Usage Policy</a></li>
               </ul>
             </li>
           </ul>
@@ -88,10 +89,10 @@
       <div class="panel-body">
         <span class="pull-left">
           <img src='/images/wappen.png' alt="NRW-Wappen" /> &nbsp;
-          lobid | LOD services by <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz —
-            Hochschulbibliothekszentrum des Landes NRW</a>
+          lobid | a service by <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz</a>
         </span>
         <span class="pull-right">
+          <a href="/warranty">Warranty</a> |
           <a href="https://www.hbz-nrw.de/impressum">Imprint</a> |
           <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Privacy</a> |
           <a href="https://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp;
