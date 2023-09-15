@@ -129,12 +129,6 @@ export default class Header extends React.Component {
                       <DropdownItem
                         tag="a"
                         href={this.props.teamLink}
-                        style={{
-                          paddingLeft: "6px",
-                          color: "black",
-                          textDecoration: "none",
-                          lineHeight: "30px"
-                        }}
                       >
                         Team
                       </DropdownItem>
@@ -145,13 +139,17 @@ export default class Header extends React.Component {
                           this.props.contactPointId +
                           "?subject=Feedback%20zu%20lobid.org"
                         }
-                        style={{
-                          paddingLeft: "6px",
-                          color: "black",
-                          textDecoration: "none"
-                        }}
                       >
                         Feedback
+                      </DropdownItem>
+                      <DropdownItem divider />
+                      <DropdownItem
+                        as="a"
+                        href={
+                          "/usage-policy"
+                        }
+                      >
+                        Richtlinien API-Nutzung
                       </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>

@@ -15,6 +15,10 @@ export default class Footer extends React.Component {
               </a>
             </span>
             <span className="pull-right">
+              <a href="/warranty">
+                {this.props.warranty}
+              </a>
+              {" | "}
               <a href="https://www.hbz-nrw.de/impressum">
                 {this.props.companyDetails}
               </a>
