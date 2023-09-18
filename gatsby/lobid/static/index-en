@@ -5,10 +5,10 @@
 <head>
   <meta charset="utf-8">
   <title>lobid.org</title>
-  <link rel="stylesheet" media="screen" href="/stylesheets/lobid.css">
   <link rel="stylesheet" media="all" href="/stylesheets/bootstrap.min.css">
   <link rel="stylesheet" media="all" href="/stylesheets/jquery-ui.min.css">
   <link rel="stylesheet" media="all" href='/stylesheets/font-awesome.min.css'>
+  <link rel="stylesheet" media="screen" href="/stylesheets/lobid.css">
   <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
   <script src="/javascripts/jquery-1.10.2.min.js"></script>
   <script src="/javascripts/jquery-ui.min.js"></script>

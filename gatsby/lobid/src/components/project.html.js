@@ -7,9 +7,9 @@ import Footer from "./footer.html";
 import Publications from "./publications.html";
 import Membership from "./membership.html";
 
-import "./css/lobid.css";
 import "./css/bootstrap.min.css";
 import "./css/font-awesome.min.css";
+import "./css/lobid.css";
 
 import jsonLdPng from "./images/json-ld.png";
 
