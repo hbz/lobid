@@ -105,8 +105,13 @@ module.exports = {
         path: `${__dirname}/static/pages/`,
       }
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-autolink-headers`],
+      }
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-remark`
+    `gatsby-plugin-sharp`
   ],
 };
