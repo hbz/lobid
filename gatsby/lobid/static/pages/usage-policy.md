@@ -135,9 +135,3 @@ Um allen Anwendenden der lobid-Schnittstellen einen gleichermaßen performanten 
 
 ## Informationen zur Gewährleistung
 Informationen zur Gewährleistung finden Sie [hier](http://lobid.org/warranty).
-
-## Empfehlungen zur Verbesserung des lobid-Angebots
-
-1. Das lobid-Logo sollte in weiteren Varianten bereitgestellt werden, um eine grafische Quellenangabe zu erleichtern. Beispielsweise sollten Logo-Varianten für helle sowie dunkle Hintergründe, farbig sowie schwarz/weiß und in gängigen Formaten (Querformat, Quadrat) angeboten werden.
-2. Um das applikationsseitige Caching der Abfrageresultate zu erleichtern, sollten die lobid-APIs entsprechende `Cache-Control`-Header beinhalten, die die Dauer der Gültigkeit der Daten bis zum Zeitpunkt der nächsten regulären Aktualisierung der Schnittstellen ausweisen.
-3. Obwohl die API-Dokumentationen von lobid bereits sehr instruktiv sind, würde eine standardisierte, auch maschinenlesbare Dokumentation die Nutzung der Schnittstellen und deren applikationsseitige Implementierung noch einmal erleichtern. Eine Dokumentation nach dem [OpenAPI-Standard](https://spec.openapis.org/oas/v3.1.0) würde zudem die Verwendung interaktiver und explorativer Dokumentationstools wie [Swagger UI](https://swagger.io/tools/swagger-ui/) ermöglichen.
