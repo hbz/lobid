@@ -9,12 +9,16 @@ export default class Footer extends React.Component {
           <div className="panel-body">
             <span className="pull-left">
               <img src={wappenPng} alt="NRW-Wappen" /> &nbsp; lobid |
-              LOD-Dienste des{" "}
+              ein Dienst des{" "}
               <a href="https://www.hbz-nrw.de/produkte/linked-open-data">
-                hbz — Hochschulbibliothekszentrum des Landes NRW
+                hbz
               </a>
             </span>
             <span className="pull-right">
+              <a href="/warranty">
+                {this.props.warranty}
+              </a>
+              {" | "}
               <a href="https://www.hbz-nrw.de/impressum">
                 {this.props.companyDetails}
               </a>
