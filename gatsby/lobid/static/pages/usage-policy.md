@@ -1,8 +1,7 @@
 ---
 slug: "/usage-policy"
-title: "Richtlinien API-Nutzung"
+title: "Richtlinien einer rücksichtsvollen lobid-Nutzung"
 ---
-# Richtlinien einer rücksichtsvollen lobid-Nutzung
 
 ## Herzlich willkommen liebe:r lobid-Nutzer:in!
 
@@ -38,15 +37,15 @@ Uns interessieren der Umfang und die Anwendungskontexte, in denen unsere Schnitt
 
 Wir freuen uns auch über Feedback, sollten bei den angebotenen Daten oder Schnittstellen Probleme auftreten. Sollte zum Beispiel die Performanz unserer Server nicht ausreichend sein, so freuen wir uns über eine Mitteilung (möglichst mit genauer Datumsangabe der Abfragen), um ein günstigeres Zeitfenster verabreden und unseren Servern ggf. weitere Ressourcen zur Verfügung stellen zu können.
 
-# Technische Hinweise zur lobid-Nutzung
+## Technische Hinweise zur lobid-Nutzung
 
 Damit wir die lobid APIs allen Interessierten zuverlässig und performant bereitstellen können, bitten wir darum, die Belastung unserer Infrastruktur auf das notwendige Maß zu beschränken. Insbesondere empfehlen wir folgende Maßnahmen, die gleichzeitig zur Performancesteigerung lokaler Anwendungen beitragen.
 
-## Mit der Dokumentation vertraut machen
+### Mit der Dokumentation vertraut machen
 
 lobid bietet eine Vielzahl von APIs zu den drei Datensammlungen an. Wir empfehlen, vor der Implementierung einer Anwendung, die lobid-Schnittstellen verwendet, die relevante Dokumentation ([lobid-resources](https://lobid.org/resources/api), [lobid-organisatons](https://lobid.org/organisations/api), [lobid-gnd](https://lobid.org/gnd/api)) zu konsultieren. Diese enthalten auch Anwendungsbeispiele und erläuternde Hinweise zur möglichst effizienten Nutzung der Schnittstellen. In einigen Anwendungsfällen existieren bereits weiterführende Funktionen oder Schnittstellen (beispielsweise die [Reconciliation-API für lobid-gnd](https://lobid.org/gnd/reconcile)), die den clientseitigen Implementierungsaufwand verringern können.
 
-## User Agent setzen
+### User Agent setzen
 
 Wir bitten darum, bei der Nutzung von lobid eine aussagekräftige, wiederkehrende Zeichenkette als User Agent mitzusenden, damit wir bei der statistischen Auswertung unserer Infrastruktur Nutzungsweisen der API erkennen und unsere Dienstleistungen aus den gewonnenen Erkenntnissen verbessern können. Die statistische Erfassung der Nutzung dient außerdem der Begründung der Relevanz unserer Daten und Dienste gegenüber Geldgeber:innen und Entscheider:innen. In der Zeichenkette des User Agent kann sich die zugreifende Person, Institution oder ein Projekt zu erkennen geben, gegebenenfalls auch eine Kontaktmöglichkeit (E-Mail-Adresse) hinzufügen, eine anonyme beziehungsweise pseudonyme Kennung ist jedoch ebenso möglich. Eine solche Agent-Kennung sollte über die Dauer eines Projektes möglichst unverändert bleiben.
 
@@ -69,7 +68,7 @@ Wir bitten darum, bei der Nutzung von lobid eine aussagekräftige, wiederkehrend
 > result();
 > ```
 
-## Datenabzüge statt API-Anfragen
+### Datenabzüge statt API-Anfragen
 
 In manchen Anwendungsfällen kann die Nutzung von Datenabzügen anstelle von API-Abfragen vorteilhaft sein. Wenn beispielsweise regelmäßig größere Datenmengen abgefragt werden oder wiederholt eine größere Anzahl von Einzelabfragen erfolgt, bietet sich die Verwendung lokal vorgehaltener Datenabzüge an. Dies entlastet unsere Infrastruktur und beschleunigt lokale Anwendungen.
 
@@ -81,13 +80,13 @@ Solche Datenabzüge können als sogenannte Bulk Downloads ebenfalls über die AP
 > curl --header "Accept-Encoding: gzip" "http://lobid.org/gnd/search?filter=type:Collection&format=jsonl" > collections.gz
 > ```
 
-## Caching
+### Caching
 
 Die Ergebnisse sich wiederholender, gleichartiger Anfragen sollten clientseitig in einem Zwischenspeicher abgelegt und anstelle erneuter Anfragen an die API nachgenutzt werden. Dies entlastet nicht nur unsere Infrastruktur, es führt in vielen Fällen auch zu einer Beschleunigung clientseitiger Anwendungen, die Daten aus einem Cache meist schneller beziehen können als wiederholt die Beantwortung von API-Anfragen abwarten zu müssen.
 
 Da die Daten der lobid-Schnittstellen nur alle 24 Stunden aktualisiert werden, kann auch die Cache-Dauer entsprechend großzügig gewählt werden. Wir empfehlen eine Cache-Dauer von mindestens 12 Stunden.
 
-### Caching auf Anwendungsebene
+#### Caching auf Anwendungsebene
 
 Das Caching kann beispielsweise direkt innerhalb der Applikation erfolgen, in dem die Ergebnisse von API-Abfragen in Variablen oder temporären Speichern abgelegt werden. Vor erneuten API-Abfragen kann dann geprüft werden, ob für die spezifische Anfrage bereits ein Ergebnis im Cache vorliegt. Für fortgeschrittene Anwendungsfälle empfehlen sich Caching-Komponenten auf der Basis entsprechender Softwarelösungen wie Redis oder Memcached.
 
@@ -109,7 +108,7 @@ Das Caching kann beispielsweise direkt innerhalb der Applikation erfolgen, in de
 > getCached("https://lobid.org/gnd/4074335-4.json")
 > ```
 
-### Caching mittels Proxyserver
+#### Caching mittels Proxyserver
 
 Auch die Nutzung separater HTTP-Proxyserver, wie beispielsweise Squid, ist denkbar. Zu beachten ist hier jedoch, dass HTTPS-Verbindungen nicht ohne weiteres gecached werden können. Hierfür ist eine aufwändige Konfiguration des Proxyservers unter Auftrennung der SSL-Verbindungen im Proxy erforderlich. Die Ressourcen in lobid sind jedoch auch per HTTP ansprechbar.
 
@@ -130,13 +129,9 @@ Auch die Nutzung separater HTTP-Proxyserver, wie beispielsweise Squid, ist denkb
 > curl -x localhost:3128 http://lobid.org/gnd/4074335-4.json
 > ```
 
-## Rate Limiting & Vermeiden von Hochlastphasen
+### Rate Limiting & Vermeiden von Hochlastphasen
 
 Um allen Anwendenden der lobid-Schnittstellen einen gleichermaßen performanten und stabilen Dienst anbieten zu können, bitten wir generell um die Limitierung der Schnittstellenanfragen auf maximal 300 Abrufe pro Minute für einfache Lookups und bis zu 30 pro Minute für komplexere Suchanfragen (z.B. Wildcard-Suchen). Hochfrequente Abfragen (z. B. Harvesting) und Datenabzüge (Bulk Downloads) sollten in nutzungsschwachen Zeiten erfolgen, etwa nachts oder an Wochenenden und Feiertagen.
 
-
-# Empfehlungen zur Verbesserung des lobid-Angebots
-
-1. Das lobid-Logo sollte in weiteren Varianten bereitgestellt werden, um eine grafische Quellenangabe zu erleichtern. Beispielsweise sollten Logo-Varianten für helle sowie dunkle Hintergründe, farbig sowie schwarz/weiß und in gängigen Formaten (Querformat, Quadrat) angeboten werden.
-2. Um das applikationsseitige Caching der Abfrageresultate zu erleichtern, sollten die lobid-APIs entsprechende `Cache-Control`-Header beinhalten, die die Dauer der Gültigkeit der Daten bis zum Zeitpunkt der nächsten regulären Aktualisierung der Schnittstellen ausweisen.
-3. Obwohl die API-Dokumentationen von lobid bereits sehr instruktiv sind, würde eine standardisierte, auch maschinenlesbare Dokumentation die Nutzung der Schnittstellen und deren applikationsseitige Implementierung noch einmal erleichtern. Eine Dokumentation nach dem [OpenAPI-Standard](https://spec.openapis.org/oas/v3.1.0) würde zudem die Verwendung interaktiver und explorativer Dokumentationstools wie [Swagger UI](https://swagger.io/tools/swagger-ui/) ermöglichen.
+## Informationen zur Gewährleistung
+Informationen zur Gewährleistung finden Sie [hier](http://lobid.org/warranty).
