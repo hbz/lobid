@@ -116,7 +116,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: node.frontmatter.slug,
       component: path.resolve(`./src/templates/markdown.js`),
       context: {
-        slug: node.frontmatter.slug
+        slug: node.frontmatter.slug,
+        lang: "de"
       },
     })
   })
