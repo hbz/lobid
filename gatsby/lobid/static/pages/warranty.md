@@ -1,5 +1,5 @@
 ---
-slug: warranty
+slug: "/warranty"
 title: Informationen zur Gewährleistung
 ---
 
