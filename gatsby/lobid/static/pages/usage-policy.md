@@ -131,7 +131,7 @@ Auch die Nutzung separater HTTP-Proxyserver, wie beispielsweise Squid, ist denkb
 
 ### Rate Limiting & Vermeiden von Hochlastphasen
 
-Um allen Anwendenden der lobid-Schnittstellen einen gleichermaßen performanten und stabilen Dienst anbieten zu können, bitten wir generell um die Limitierung der Schnittstellenanfragen auf maximal 300 Abrufe pro Minute für einfache Lookups und bis zu 30 pro Minute für komplexere Suchanfragen (z.B. Wildcard-Suchen). Hochfrequente Abfragen (z. B. Harvesting) und Datenabzüge (Bulk Downloads) sollten in nutzungsschwachen Zeiten erfolgen, etwa nachts oder an Wochenenden und Feiertagen.
+Um allen Anwendenden der lobid-Schnittstellen einen gleichermaßen performanten und stabilen Dienst anbieten zu können, bitten wir generell um die Limitierung der Schnittstellenanfragen auf maximal 6000 Abrufe pro Minute für einfache Lookups und bis zu 30 pro Minute für komplexere Suchanfragen (z.B. Wildcard-Suchen). Hochfrequente Abfragen (z. B. Harvesting) und Datenabzüge (Bulk Downloads) sollten in nutzungsschwachen Zeiten erfolgen, etwa nachts oder an Wochenenden und Feiertagen.
 
 ## Informationen zur Gewährleistung
 Informationen zur Gewährleistung finden Sie [hier](http://lobid.org/warranty).
