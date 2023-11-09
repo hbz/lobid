@@ -27,12 +27,8 @@ export default class Footer extends React.Component {
                 {this.props.privacy}
               </a>
               {" | "}
-              <a
-                href="https://twitter.com/lobidorg"
-                style={{ marginRight: "12px" }}
-              >
-                <i className="fa fa-twitter" aria-hidden="true"></i> Twitter
-              </a>
+              <a href={`https://openbiblio.social/@${social?.mastodon || ``}`}>
+            Mastodon <FontAwesomeIcon icon={faMastodon}/></a>
               <a
                 href="https://github.com/hbz/lobid"
                 style={{ marginRight: "12px" }}
