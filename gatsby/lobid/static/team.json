@@ -168,6 +168,7 @@
     {
       "type": "Role",
       "startDate": "2022",
+      "endDate": "2023",
       "roleName": {
         "de": "Projektkoordination",
         "en": "Project coordination"

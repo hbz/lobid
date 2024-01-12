@@ -16,6 +16,7 @@
     "de": "Die Infrastrukturinitiative Metadatenservices ist eine Teilprojekt des Ende 2021 beim Ministerium für Kultur und Wissenschaft beantragten und genehmigten Projekts \"Metadaten.nrw\". Das Projekt dient vor allem dem strategischen Ziel, die Verwendung der im hbz entwickelten und gepflegten Metadateninfrastruktur über den bisher bestehenden Kreis an Partner:innen und Nutzer:innen auszuweiten und das hbz als Kompetenzzentrum zum Thema Metadaten in NRW zu etablieren. Dementsprechend hat das Projekt folgende übergeordneten Ziele: die Vergrößerung des Bekanntheitsgrads und der Nutzung der hbz-Metadatenmanagement-Angebote unter NRW-Hochschulbibliotheken und -Wissenschaftler:innen durch weitere Verbesserung der existierenden Dienste und ihrer Betriebsumgebung; Ausbau der fortgeschrittenen Arbeiten im Bereich OER und Entwicklung einer OER-Metadaten-Community in NRW; Erweiterung des Anwendungsbereichs auf die Handlungsfelder Langzeitverfügbarkeit, Forschungsdatenmanagement und Open Access."
   },
   "startDate": "2022-11-01",
+  "endDate": "2023-12-31",
   "enhances": [
     {
       "id": "https://lobid.org/product/metafacture"
@@ -54,6 +55,26 @@
       },
       "member": {
         "id": "http://lobid.org/team/sr#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "DevOps-Strategie",
+        "en": "DevOps strategist"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pt#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Metadaten-Bibliothekarin",
+        "en": "Metadata librarian"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pm#!"
       }
     }
   ]
