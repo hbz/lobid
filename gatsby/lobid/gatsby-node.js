@@ -86,6 +86,42 @@ exports.createPages = async ({ graphql, actions }) => {
   console.log("Creating project pages: ", shortProjectIds);
   addPages(shortProjectIds, "project", "./src/templates/project.js", createPage);
 
+  // Create pages from markdown files
+
+  const result = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            html
+            tableOfContents
+            frontmatter {
+              slug
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.slug,
+      component: path.resolve(`./src/templates/markdown.js`),
+      context: {
+        slug: node.frontmatter.slug,
+        lang: "de"
+      },
+    })
+  })
+
 };
 
 // Create `fields.jsonFile` fields to link to static publication JSON files

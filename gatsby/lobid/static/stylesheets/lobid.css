@@ -55,6 +55,17 @@ li .dropdown-header {
 	padding-top: 13px !important;
 }
 
+#lobid-nav .dropdown-menu {
+	min-width: 170px;
+}
+
+#lobid-nav .dropdown-menu .dropdown-item {
+	padding-left: 6px;
+	color: black;
+	text-decoration: none;
+	line-height: 30px;
+}
+
 @media print {
 	a[href]:after {
 		content: none;
@@ -91,6 +102,10 @@ h5 {
    max-height:50px;
    width: auto;
    height: auto;
+}
+
+.toc {
+	margin-bottom: 50px;
 }
 
 /* improve accessibility */

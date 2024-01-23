@@ -46,6 +46,16 @@
       "member": {
         "id": "http://lobid.org/team/tb#!"
       }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Datentransformation",
+        "en": "data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pm#!"
+      }
     }
   ]
 }

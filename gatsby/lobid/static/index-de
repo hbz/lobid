@@ -53,6 +53,7 @@
               <ul class="dropdown-menu">
                 <li><a href="/team-de/">Team</a></li>
                 <li><a href="mailto:lobid-admin@hbz-nrw.de?subject=Feedback%20zu%20lobid.org">Feedback</a></li>
+                <li><a href="/usage-policy">Richtlinien API-Nutzung</a></li>
               </ul>
             </li>
           </ul>
@@ -87,14 +88,14 @@
       <div class="panel-body">
         <span class="pull-left">
           <img src='/images/wappen.png' alt="NRW-Wappen" /> &nbsp;
-          lobid | LOD-Dienste des <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz —
-            Hochschulbibliothekszentrum des Landes NRW</a>
+          lobid | ein Dienst des <a href="https://www.hbz-nrw.de/produkte/linked-open-data">hbz</a>
         </span>
         <span class="pull-right">
+          <a href="/warranty">Gewährleistung</a> |
           <a href="https://www.hbz-nrw.de/impressum">Impressum</a> |
           <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Datenschutz</a> |
-          <a href="https://twitter.com/lobidorg"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>&nbsp;
-          <a href="https://github.com/hbz/lobid"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>&nbsp;
+          <a href="https://openbiblio.social/@lobid"><i class="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon</a>&nbsp;
+          <a href="https://github.com/hbz/lobid"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>&nbsp;
           <a href="http://blog.lobid.org"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</a>
         </span>
       </div>

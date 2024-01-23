@@ -9,12 +9,16 @@ export default class Footer extends React.Component {
           <div className="panel-body">
             <span className="pull-left">
               <img src={wappenPng} alt="NRW-Wappen" /> &nbsp; lobid |
-              LOD-Dienste des{" "}
+              ein Dienst des{" "}
               <a href="https://www.hbz-nrw.de/produkte/linked-open-data">
-                hbz — Hochschulbibliothekszentrum des Landes NRW
+                hbz
               </a>
             </span>
             <span className="pull-right">
+              <a href="/warranty">
+                {this.props.warranty}
+              </a>
+              {" | "}
               <a href="https://www.hbz-nrw.de/impressum">
                 {this.props.companyDetails}
               </a>
@@ -24,18 +28,18 @@ export default class Footer extends React.Component {
               </a>
               {" | "}
               <a
-                href="https://twitter.com/lobidorg"
+                href="https://openbiblio.social/@lobid"
                 style={{ marginRight: "12px" }}
               >
-                <i className="fa fa-twitter" aria-hidden="true"></i> Twitter
+                <i className="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon
               </a>
               <a
                 href="https://github.com/hbz/lobid"
                 style={{ marginRight: "12px" }}
               >
-                <i className="fa fa-github" aria-hidden="true"></i> GitHub
+                <i className="fa-brands fa-github" aria-hidden="true"></i> GitHub
               </a>
-              <a href="http://blog.lobid.org" style={{ marginRight: "12px" }}>
+              <a href="http://blog.lobid.org" style={{ marginRight: "11px" }}>
                 <i className="fa fa-pencil" aria-hidden="true"></i> Blog
               </a>
             </span>

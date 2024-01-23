@@ -66,6 +66,16 @@
       "member": {
         "id": "http://lobid.org/team/kt#!"
       }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Funktionales Review",
+        "en": "functional review"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pm#!"
+      }
     }
   ]
 }
