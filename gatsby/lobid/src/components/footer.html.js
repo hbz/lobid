@@ -27,6 +27,10 @@ export default class Footer extends React.Component {
                 {this.props.privacy}
               </a>
               {" | "}
+              <a href="https://www.hbz-nrw.de/barrierefreiheit">
+                {this.props.accessibility}
+              </a>
+              {" | "}
               <a
                 href="https://openbiblio.social/@lobid"
                 style={{ marginRight: "12px" }}
