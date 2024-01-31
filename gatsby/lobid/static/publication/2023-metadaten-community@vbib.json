@@ -1,0 +1,42 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "name": {
+        "de": "metadaten.community – ein Forum für Metadatenpraktiker:innen"
+    },
+    "description": {
+        "de": "Folien zu einer Session in der Metadaten-Corner des #vBIB23"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/pt#!",
+            "type": "Person",
+            "name": "Phu Tu"
+        }
+    ],
+    "keywords": [
+        "metadaten",
+        "community"    ],
+    "id": "https://pad.lobid.org/p/nmmvvKKnB",
+    "about": [
+        {
+            "id": "https://lobid.org/product/metadaten.community"
+        }
+    ],
+    "datePublished": "2023-12-06",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

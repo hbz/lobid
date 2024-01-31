@@ -1,0 +1,43 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "name": {
+        "en": "SkoHub - Unleash the full potential of controlled vocabularies"
+    },
+    "description": {
+        "de": "Präsentationsfolien zum Vortrag bei der NDI4Ing Conference 2023, WWW"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/sr#!",
+            "type": "Person",
+            "name": "Steffen Rörtgen"
+        }
+    ],
+    "keywords": [
+        "SKOS",
+        "SkoHub"
+    ],
+    "id": "https://pad.lobid.org/p/skohub@nfdi4ing-conference",
+    "about": [
+        {
+            "id": "https://lobid.org/product/skohub"
+        }
+    ],
+    "datePublished": "2023-09-28",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "developers"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
