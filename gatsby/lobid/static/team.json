@@ -84,6 +84,10 @@
     {
       "id": "https://lobid.org/product/oersi",
       "name": "OERSI"
+    },
+    {
+      "id": "https://lobid.org/product/metadaten.community",
+      "name": "metadaten.community"
     }
   ],
   "membership": [
