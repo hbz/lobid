@@ -10,48 +10,30 @@
     "en": "metadaten.community"
   },
   "image": "https://metadaten.community/uploads/default/original/1X/b549c3d27f8b0c4d4bdca73d6b7c0be3783e439b.png",
-  "startDate": "2023--15",
+  "startDate": "2023-12-06",
   "description": {
-    "de": "Ein offener Suchindex für Bildungsressourcen, gemeinsames Angebot der TIB Hannover und des hbz.",
-    "en": "An open search index for educational resources, common offering by TIB Hannover and hbz."
+    "de": "Ein Forum zum Austausch von Metadatenpraktiker:innen im deutschsprachigen Raum.",
+    "en": "A forum for professional exchange of German-speaking metadata practitioners."
   },
-  "isBasedOn": [
-    {
-      "id": "https://lobid.org/product/metafacture"
-    },
-    {
-      "id": "https://lobid.org/project/amb"
-    }
-  ],
   "membership": [
     {
       "type": "Role",
       "roleName": {
-        "de": "Beitragende Person",
-        "en": "contributor"
+        "de": "Administration und Moderation",
+        "en": "administration and moderation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pt#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Moderation",
+        "en": "moderation"
       },
       "member": {
         "id": "http://lobid.org/team/ap#!"
-      }
-    },
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Datentransformation",
-        "en": "data transformation"
-      },
-      "member": {
-        "id": "http://lobid.org/team/tb#!"
-      }
-    },
-    {
-      "type": "Role",
-      "roleName": {
-        "de": "Datentransformation",
-        "en": "data transformation"
-      },
-      "member": {
-        "id": "http://lobid.org/team/pm#!"
       }
     }
   ]
