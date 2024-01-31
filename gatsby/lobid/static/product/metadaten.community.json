@@ -1,19 +1,16 @@
 {
   "@context": "https://schema.org/",
-  "id": "https://lobid.org/product/oersi",
-  "url": "https://oersi.org",
+  "id": "https://lobid.org/product/metadaten.community",
+  "url": "https://metadaten.community",
   "type": [
     "Product"
   ],
   "name": {
-    "de": "OER Search Index",
-    "en": "OER Search Index"
+    "de": "metadaten.community",
+    "en": "metadaten.community"
   },
-  "alternateName": [
-    "OERSI"
-  ],
-  "image": "https://oersi.org/resources/logo.svg",
-  "startDate": "2020-01-15",
+  "image": "https://metadaten.community/uploads/default/original/1X/b549c3d27f8b0c4d4bdca73d6b7c0be3783e439b.png",
+  "startDate": "2023--15",
   "description": {
     "de": "Ein offener Suchindex für Bildungsressourcen, gemeinsames Angebot der TIB Hannover und des hbz.",
     "en": "An open search index for educational resources, common offering by TIB Hannover and hbz."
