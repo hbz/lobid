@@ -17,6 +17,7 @@
         "de": "ORCA ist ein kostenfreies Online-Portal rund um digital gestütztes Lehren und Lernen an Hochschulen. Die Gruppe Offene Infrastruktur ist  im Rahmen von ORCA.nrw für die zwei Aufgabenbereiche ORCA-Metadateninfrastruktur und ORCA-Suche mit OERSI zuständig."
     },
     "startDate": "2021-02-15",
+    "endDate": "2023-04-30",
     "isBasedOn": [
         {
             "id": "https://lobid.org/product/oersi"
