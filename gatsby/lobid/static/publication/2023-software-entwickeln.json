@@ -1,0 +1,36 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "Article"
+    ],
+    "name": {
+        "de": "Software entwickeln und betreiben"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "de": "Den Katalog mit seinen hölzernen Schüben hat die Digitalisierung längst überholt. Die Kärtchen im Katalogkasten enthielten Metadaten, also strukturierte Informationen über die Medien einer Bibliothek. Diese liegen mittlerweile längst digitalisiert vor. Daher ist es heute möglich, Daten wesentlich größerer Einheiten als einer einzelnen Bibliothek zusammenzuführen; Instituts- oder Ländergrenzen bilden z. B. keine Hindernisse mehr. Hinderlich sind jedoch die unterschiedlichen Arten (Strukturen, Vokabulare, Software, Schnittstellen etc.) der Datenerfassung. Diese Probleme zu überwinden, das Zusammenführen von Daten zu erleichtern und für alle Interessierten nutzbare, offene Metadatenstrukturen aufzubauen, anzubieten und weiterzuentwickeln, hat sich das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) auf die Fahnen geschrieben. Die folgenden Texte geben einen Überblick über den Stand der Entwicklung."
+    },
+    "keywords": [
+        "Software-Entwicklung", "Software-Betrieb", "Software-Maintenance", "Entwicklungsprozesse"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/team#!"
+        }
+    ],
+    "id": "https://doi.org/10.1515/9783110790375-033",
+    "datePublished": "2023",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
