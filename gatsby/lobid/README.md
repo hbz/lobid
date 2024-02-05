@@ -49,6 +49,12 @@ nvm use 18
    cd lobid/gatsby/lobid
    ```
    
+   Install node packages:
+
+   ```shell
+   npm i
+   ```
+
    Start it up.
 
    ```shell

@@ -1,0 +1,67 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "name": {
+        "de": "Offene Metadatendienste – kooperativ, verlässlich und effizient in die Zukunft"
+    },
+    "description": {
+        "de": "Präsentationsfolien zum Vortrag bei der \"hbz-Roadshow\" am 17.8.2023"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        },
+        {
+            "id": "http://lobid.org/team/ak#!",
+            "type": "Person",
+            "name": "Anna Keller"
+        }
+    ],
+    "keywords": [
+        "lobid",
+        "hbz",
+        "Linked Open Data",
+        "libraries",
+        "metadata"
+    ],
+    "id": "https://pad.gwdg.de/p/2022-08-mi@hbz-roadshow",
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-resources"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-gnd"
+        },
+        {
+            "id": "https://lobid.org/project/reconciliation"
+        },
+        {
+            "id": "https://lobid.org/project/infrastrukturinitiative"
+        },
+        {
+            "id": "https://lobid.org/product/oersi"
+        },
+        {
+            "id": "https://lobid.org/product/metafacture"
+        },
+        {
+            "id": "https://lobid.org/product/skohub"
+        }
+    ],
+    "datePublished": "2023-08-17",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "librarians",
+        "library management"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

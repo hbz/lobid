@@ -12,7 +12,7 @@ export default function MemberPage({ data, location, pageContext }) {
     }
     projects={data.allProjectJson.edges
       .map(edge => edge.node)
-      .filter(p => !p.endDate && p.membership.find(m => m.member.id === member.jsonId))
+      .filter(p => p.membership.find(m => m.member.id === member.jsonId))
     }
     pubs={data.allPublicationJson.edges
       .map(edge => edge.node)

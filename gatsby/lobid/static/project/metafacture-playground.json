@@ -14,6 +14,8 @@
     "en": "This projects aims to provide a web application to play around with Metafactures languages Fix and Flux.",
     "de": "Der Metafacture Playground ist eine browserbasierte Umgebung, um an der Konfiguration von ETL-Prozessen mittels Metafacture zu arbeiten. Der Playground unterstützt dabei auch die Metafacture-Fix-Erweiterung. Kurzfristig soll der Playground zum Teilen von ETL-Konfigurationen via URL und für aktive Arbeit in Metafacture-Workshops Verwendung finden.\n\nMittelfristiges Ziel ist der Aufbau einer Plattform zum Teilen von ETL-Konfigurationen, um das Auffinden bestehender Lösungen und deren Nachnutzung zu erleichtern und damit Parallelarbeiten zu vermeiden."
   },
+  "startDate": "2021-01-24",
+  "endDate": "2023-05-08",
   "enhances": [
     {
       "id": "https://lobid.org/product/metafacture"
