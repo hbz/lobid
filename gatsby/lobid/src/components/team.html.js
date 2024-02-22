@@ -7,9 +7,9 @@ import Membership from "./membership.html";
 import Publications from "./publications.html";
 import Projects from "./projects.html";
 
-import "./css/lobid.css";
 import "./css/bootstrap.min.css";
 import "./css/font-awesome.min.css";
+import "./css/lobid.css";
 
 import hbzLogoPng from "./images/hbz.png";
 import jsonLdPng from "./images/json-ld.png";
