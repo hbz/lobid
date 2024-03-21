@@ -26,25 +26,24 @@ export default class Footer extends React.Component {
             <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">
               {this.props.privacy}
             </a>
-              {" | "}
-              <a
-                href="https://openbiblio.social/@lobid"
-                style={{ marginRight: "12px" }}
-              >
-                <i className="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon
-              </a>
             {" | "}
+            <a
+              href="https://openbiblio.social/@lobid"
+              style={{ marginRight: "12px" }}
+            >
+              <i className="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon
+            </a>
             <a
               href="https://metadaten.community/c/software-und-tools/lobid/10"
               style={{ marginRight: "12px" }}
             >
-              <img style={{ height: "1em" }} src="/logos/discourse.svg" className="fa" aria-hidden="true"></img> Discourse
+              <img alt="discourse" style={{ height: "1em" }} src="/logos/discourse.svg" className="fa" aria-hidden="true"></img> Discourse
             </a>
             <a
               href="https://github.com/hbz/lobid"
               style={{ marginRight: "12px" }}
             >
-              <i className="fa fa-github" aria-hidden="true"></i> GitHub
+              <i className="fa-brands fa-github" aria-hidden="true"></i> GitHub
             </a>
             <a href="http://blog.lobid.org" style={{ marginRight: "12px" }}>
               <i className="fa fa-pencil" aria-hidden="true"></i> Blog
