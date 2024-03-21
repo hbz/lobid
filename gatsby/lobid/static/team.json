@@ -93,6 +93,10 @@
     {
       "id": "https://lobid.org/product/oersi",
       "name": "OERSI"
+    },
+    {
+      "id": "https://lobid.org/product/metadaten.community",
+      "name": "metadaten.community"
     }
   ],
   "membership": [
@@ -177,6 +181,7 @@
     {
       "type": "Role",
       "startDate": "2022",
+      "endDate": "2023",
       "roleName": {
         "de": "Projektkoordination",
         "en": "Project coordination"
@@ -194,6 +199,17 @@
       },
       "member": {
         "id": "http://lobid.org/team/pt#!"
+      }
+    },
+    {
+      "type": "Role",
+      "startDate": "2023",
+      "roleName": {
+        "de": "Bibliothekarin",
+        "en": "Librarian"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pm#!"
       }
     },
     {

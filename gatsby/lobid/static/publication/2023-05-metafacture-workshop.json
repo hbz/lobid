@@ -1,0 +1,55 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "PresentationDigitalDocument"
+    ],
+    "id": "https://slides.lobid.org/2023-05-metafacture-workshop/",
+    "name": {
+        "de": "Metadatenworkflows mit Metafacture erstellen und verwalten"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/pc#!",
+            "type": "Person",
+            "name": "Pascal Christoph"
+        },
+        {
+            "id": "http://lobid.org/team/tb#!",
+            "type": "Person",
+            "name": "Tobias Bülte"
+        }
+    ],
+    "description": {
+        "de": "Folien zum Hands-on Lab auf der 111. BiblioCon, Hannover"
+    },
+    "about": [
+        {
+            "id": "https://lobid.org/product/metafacture"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-playground"
+        },
+        {
+            "id": "https://lobid.org/project/metafacture-fix"
+        }
+    ],
+    "keywords": [
+        "metafacture-playground",
+        "metafacture",
+        "metafacture-fix",
+        "metadata",
+        "workshop"
+    ],
+    "datePublished": "2023-05-25",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "metadata practitioners",
+        "management",
+        "librarians",
+        "developers"
+
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}

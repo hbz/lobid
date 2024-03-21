@@ -13,6 +13,8 @@
     "en": "Implementation of the Fix language for Metafacture as an alternative to configuring data transformations with Metamorph",
     "de": "Ziel des Projekts ist die Erleichterung der Metafacture-Konfiguration und damit die Erweiterung der Zielgruppe um Bibliothekar:innen und andere Metadatenfachleute, die keinen Programmierhintergrund haben.\n\nDies geschieht durch die Implementierung der Fix-DSL (domain-specific language) für die Konfiguration von Metadatenmappings als Alternative zum XML-basierten Metamorph. Zunächst wird die Erweiterung zur produktiven Nutzung im OERSI-Kontext und anderen neu zu erstellenden ETL-Prozessen entwickelt und dann auf die komplexeren Prozesse – etwa im lobid-Kontext – ausgeweitet.\n\nIn einem nächsten Schritt soll an einer Standardisierung der Fix-Sprache gearbeitet werden mit dem Ziel, Kompatibilität zwischen Metafacture und Catmandu zu erreichen."
   },
+  "startDate": "2021-08-01",
+  "endDate": "2022-12-01",
   "enhances": [
     {
       "id": "https://lobid.org/product/metafacture"

@@ -19,7 +19,45 @@ export class Member extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
+    this.state = {
+      infoToggledProjects: false
+    };
   }
+
+  getToggle = (state, event) => {
+    return (
+      <small>
+        <button
+          className={
+            state
+              ? "glyphicon glyphicon-minus-sign"
+              : "glyphicon glyphicon-plus-sign"
+          }
+          style={{
+            color: "#004678",
+            backgroundColor: "transparent",
+            border: "none"
+          }}
+          onClick={event}
+        />
+      </small>
+    );
+  }
+
+  toggleFormerProjects = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      infoToggledProjects: !prevState.infoToggledProjects
+    }));
+  };
+
+  getFormerProjects = () => {
+    return (
+      <div id="former-projects">
+        <Projects projects={this.props.projects.filter(project => project.endDate)} lang={this.props.lang}/>
+      </div>
+    );
+  };
 
   render() {
     console.log('Header', Header);
@@ -71,7 +109,12 @@ export class Member extends React.Component {
           {this.props.products.length > 0 && <p className="lead">{this.props.makesOfferName}</p>}
           <Products products={this.props.products} lang={this.props.lang}/>
           {this.props.projects.length > 0 && <p className="lead">{this.props.projectsName}</p>}
-          <Projects projects={this.props.projects} lang={this.props.lang}/>
+          <Projects projects={this.props.projects.filter(project => !project.endDate)} lang={this.props.lang}/>
+          <p className="lead">
+            {this.props.memberFormerName} {this.props.projectsName}
+            {this.getToggle(this.state.infoToggledProjects, this.toggleFormerProjects)}
+          </p>
+          {this.state.infoToggledProjects ? this.getFormerProjects() : ""}
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
           <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
         </div>

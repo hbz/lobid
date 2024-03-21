@@ -45,6 +45,10 @@ Damit wir die lobid APIs allen Interessierten zuverlässig und performant bereit
 
 lobid bietet eine Vielzahl von APIs zu den drei Datensammlungen an. Wir empfehlen, vor der Implementierung einer Anwendung, die lobid-Schnittstellen verwendet, die relevante Dokumentation ([lobid-resources](https://lobid.org/resources/api), [lobid-organisatons](https://lobid.org/organisations/api), [lobid-gnd](https://lobid.org/gnd/api)) zu konsultieren. Diese enthalten auch Anwendungsbeispiele und erläuternde Hinweise zur möglichst effizienten Nutzung der Schnittstellen. In einigen Anwendungsfällen existieren bereits weiterführende Funktionen oder Schnittstellen (beispielsweise die [Reconciliation-API für lobid-gnd](https://lobid.org/gnd/reconcile)), die den clientseitigen Implementierungsaufwand verringern können.
 
+### Rate Limiting & Vermeiden von Hochlastphasen
+
+Um allen Anwendenden der lobid-Schnittstellen einen gleichermaßen performanten und stabilen Dienst anbieten zu können, bitten wir generell um die Limitierung der Schnittstellenanfragen auf maximal 6000 Abrufe pro Minute für einfache Lookups und bis zu 30 pro Minute für komplexere Suchanfragen (z.B. Wildcard-Suchen). Hochfrequente Abfragen (z. B. Harvesting) und Datenabzüge (Bulk Downloads) sollten in nutzungsschwachen Zeiten erfolgen, etwa nachts oder an Wochenenden und Feiertagen.
+
 ### User Agent setzen
 
 Wir bitten darum, bei der Nutzung von lobid eine aussagekräftige, wiederkehrende Zeichenkette als User Agent mitzusenden, damit wir bei der statistischen Auswertung unserer Infrastruktur Nutzungsweisen der API erkennen und unsere Dienstleistungen aus den gewonnenen Erkenntnissen verbessern können. Die statistische Erfassung der Nutzung dient außerdem der Begründung der Relevanz unserer Daten und Dienste gegenüber Geldgeber:innen und Entscheider:innen. In der Zeichenkette des User Agent kann sich die zugreifende Person, Institution oder ein Projekt zu erkennen geben, gegebenenfalls auch eine Kontaktmöglichkeit (E-Mail-Adresse) hinzufügen, eine anonyme beziehungsweise pseudonyme Kennung ist jedoch ebenso möglich. Eine solche Agent-Kennung sollte über die Dauer eines Projektes möglichst unverändert bleiben.
@@ -128,10 +132,6 @@ Auch die Nutzung separater HTTP-Proxyserver, wie beispielsweise Squid, ist denkb
 > ```bash
 > curl -x localhost:3128 http://lobid.org/gnd/4074335-4.json
 > ```
-
-### Rate Limiting & Vermeiden von Hochlastphasen
-
-Um allen Anwendenden der lobid-Schnittstellen einen gleichermaßen performanten und stabilen Dienst anbieten zu können, bitten wir generell um die Limitierung der Schnittstellenanfragen auf maximal 300 Abrufe pro Minute für einfache Lookups und bis zu 30 pro Minute für komplexere Suchanfragen (z.B. Wildcard-Suchen). Hochfrequente Abfragen (z. B. Harvesting) und Datenabzüge (Bulk Downloads) sollten in nutzungsschwachen Zeiten erfolgen, etwa nachts oder an Wochenenden und Feiertagen.
 
 ## Informationen zur Gewährleistung
 Informationen zur Gewährleistung finden Sie [hier](http://lobid.org/warranty).

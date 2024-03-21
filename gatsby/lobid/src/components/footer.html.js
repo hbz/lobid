@@ -26,6 +26,13 @@ export default class Footer extends React.Component {
             <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">
               {this.props.privacy}
             </a>
+              {" | "}
+              <a
+                href="https://openbiblio.social/@lobid"
+                style={{ marginRight: "12px" }}
+              >
+                <i className="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon
+              </a>
             {" | "}
             <a
               href="https://metadaten.community/c/software-und-tools/lobid/10"

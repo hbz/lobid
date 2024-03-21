@@ -3,7 +3,7 @@
   "id": "https://lobid.org/product/oersi",
   "url": "https://oersi.org",
   "type": [
-    "Project"
+    "Product"
   ],
   "name": {
     "de": "OER Search Index",
@@ -45,6 +45,16 @@
       },
       "member": {
         "id": "http://lobid.org/team/tb#!"
+      }
+    },
+    {
+      "type": "Role",
+      "roleName": {
+        "de": "Datentransformation",
+        "en": "data transformation"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pm#!"
       }
     }
   ]
