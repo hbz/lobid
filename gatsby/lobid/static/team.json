@@ -25,6 +25,15 @@
     },
     {
       "type": "ContactPoint",
+      "image": "/logos/discourse.svg",
+      "id": "https://metadaten.community/c/software-und-tools/lobid/10",
+      "contactType": {
+        "en": "Discourse",
+        "de": "Discourse"
+      }
+    },
+    {
+      "type": "ContactPoint",
       "image": "/images/GitHub-Mark-32px.png",
       "id": "https://github.com/hbz/lobid/issues",
       "contactType": {
