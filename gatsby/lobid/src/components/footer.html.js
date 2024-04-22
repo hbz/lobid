@@ -34,12 +34,6 @@ export default class Footer extends React.Component {
               <i className="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon
             </a>
             <a
-              href="https://metadaten.community/c/software-und-tools/lobid/10"
-              style={{ marginRight: "12px" }}
-            >
-              <img alt="discourse" style={{ height: "1em" }} src="/logos/discourse.svg" className="fa" aria-hidden="true"></img> Discourse
-            </a>
-            <a
               href="https://github.com/hbz/lobid"
               style={{ marginRight: "12px" }}
             >
