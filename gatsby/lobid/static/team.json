@@ -16,15 +16,6 @@
     },
     {
       "type": "ContactPoint",
-      "image": "/images/mailman.jpg",
-      "id": "http://listen.hbz-nrw.de/mailman/listinfo/lobid",
-      "contactType": {
-        "en": "Mailing List",
-        "de": "Mailingliste"
-      }
-    },
-    {
-      "type": "ContactPoint",
       "image": "/images/GitHub-Mark-32px.png",
       "id": "https://github.com/hbz/lobid/issues",
       "contactType": {
