@@ -22,6 +22,7 @@ export default function ProductPage({ data, location, pageContext }) {
     isRelatedTo="Bezug"
     companyDetails="Impressum"
     privacy="Datenschutz"
+    accessibility="Barrierefreiheit"
     contactPointId="mailto:semweb@hbz-nrw.de"
     memberName="Team"
     lang="de"

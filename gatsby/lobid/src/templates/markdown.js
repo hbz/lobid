@@ -30,6 +30,7 @@ export default function Template({ data, pageContext }) {
         privacy={pageContext.lang==="de"?"Datenschutz":"Privacy"}
         contactPointId="mailto:lobid-admin@hbz-nrw.de"
         warranty={pageContext.lang==="de"?"Gewährleistung":"Warranty"}
+        accessibility={pageContext.lang==="de"?"Barrierefreiheit":"Accessibility"}
       />
     </div>
   )

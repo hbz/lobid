@@ -29,6 +29,7 @@ export default function MemberPage({ data, location, pageContext }) {
     memberName="Mitglieder"
     memberFormerName="Ehemalige"
     companyDetails="Impressum"
+    accessibility="Barrierefreiheit"
     privacy="Datenschutz"
     contactPointId="mailto:lobid-admin@hbz-nrw.de"
     lang="de"

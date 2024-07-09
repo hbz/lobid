@@ -7,9 +7,9 @@ import Publications from "./publications.html";
 import Products from "./products.html";
 import Projects from "./projects.html";
 
-import "./css/lobid.css";
 import "./css/bootstrap.min.css";
 import "./css/font-awesome.min.css";
+import "./css/lobid.css";
 
 import hbzLogoPng from "./images/hbz.png";
 import jsonLdPng from "./images/json-ld.png";
@@ -116,7 +116,7 @@ export class Member extends React.Component {
           </p>
           {this.state.infoToggledProjects ? this.getFormerProjects() : ""}
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
-          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
+          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} accessibility={this.props.accessibility} />
         </div>
       </div>
     );

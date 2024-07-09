@@ -5,10 +5,10 @@
 <head>
   <meta charset="utf-8">
   <title>lobid.org</title>
-  <link rel="stylesheet" media="screen" href="/stylesheets/lobid.css">
   <link rel="stylesheet" media="all" href="/stylesheets/bootstrap.min.css">
   <link rel="stylesheet" media="all" href="/stylesheets/jquery-ui.min.css">
   <link rel="stylesheet" media="all" href='/stylesheets/font-awesome.min.css'>
+  <link rel="stylesheet" media="screen" href="/stylesheets/lobid.css">
   <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
   <script src="/javascripts/jquery-1.10.2.min.js"></script>
   <script src="/javascripts/jquery-ui.min.js"></script>
@@ -94,6 +94,7 @@
           <a href="/warranty">Gewährleistung</a> |
           <a href="https://www.hbz-nrw.de/impressum">Impressum</a> |
           <a href="https://github.com/hbz/lobid/blob/master/conf/Datenschutzerklaerung_lobid.textile">Datenschutz</a> |
+          <a href="https://www.hbz-nrw.de/barrierefreiheit">Barrierefreiheit</a> |
           <a href="https://openbiblio.social/@lobid"><i class="fa-brands fa-mastodon" aria-hidden="true"></i> Mastodon</a>&nbsp;
           <a href="https://github.com/hbz/lobid"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>&nbsp;
           <a href="http://blog.lobid.org"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</a>

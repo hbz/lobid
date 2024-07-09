@@ -7,9 +7,9 @@ import Footer from "./footer.html";
 import Publications from "./publications.html";
 import Membership from "./membership.html";
 
-import "./css/lobid.css";
 import "./css/bootstrap.min.css";
 import "./css/font-awesome.min.css";
+import "./css/lobid.css";
 
 import jsonLdPng from "./images/json-ld.png";
 
@@ -65,7 +65,7 @@ export class Product extends React.Component {
           {this.props.product.membership.length > 0 && <p className="lead">{this.props.memberName}</p>}
           <Membership membership={this.props.product.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
-          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
+          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} accessibility={this.props.accessibility} />
         </div>
       </div>
     );
