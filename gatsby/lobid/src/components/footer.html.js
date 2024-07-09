@@ -43,12 +43,13 @@ export default class Footer extends React.Component {
               >
                 <i className="fa-brands fa-github" aria-hidden="true"></i> GitHub
               </a>
-              <a href="http://blog.lobid.org" style={{ marginRight: "11px" }}>
+              <a href="http://blog.lobid.org" style={{ marginRight: "12px" }}>
                 <i className="fa fa-pencil" aria-hidden="true"></i> Blog
               </a>
             </span>
           </div>
         </div>
-      )
-    }
+      </div >
+    )
+  }
 }

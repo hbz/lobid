@@ -16,6 +16,8 @@
     "en": "A schema.org/LRMI-based profile for describing learning resources.",
     "de": "In diesem Projekt wird die erste offizielle Version eines Metadatenprofils für die web-konforme Publikation von Metadaten für Lehr- und Lernressourcen im deutschsprachigen Raum entwickelt. Es basiert auf dem schema.org-Vokabular mit seinen LRMI-Erweiterungen (Learning Resource Metadata Initiative) und fokussiert auf die Publikation der Metadaten als JSON-LD.\n\nDas Profil ist Basis für das Index-Schema im OERSI-Projekt und soll als Vorgabe dienen für die Vergabe von Metadaten für OERs, die mit Fördergeldern des Landes NRW erstellt werden.\n\nFür die Validierung von Metadaten im Hinblick auf ihre Konformität zum Profil wird ein JSON Schema gepflegt."
   },
+  "startDate": "2020-03-23",
+  "endDate": "2023-10-19",
   "isBasedOn": [
     {
       "id": "https://lobid.org/project/oer-stoeberspecs"

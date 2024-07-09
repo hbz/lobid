@@ -1,0 +1,60 @@
+{
+    "@context": "https://schema.org",
+    "type": [
+        "Article"
+    ],
+    "name": {
+        "de": "Im Fokus: Offene Metadaten-Infrastrukturen"
+    },
+    "creator": [
+        {
+            "id": "http://lobid.org/team/ap#!",
+            "type": "Person",
+            "name": "Adrian Pohl"
+        }
+    ],
+    "description": {
+        "de": "Den Katalog mit seinen hölzernen Schüben hat die Digitalisierung längst überholt. Die Kärtchen im Katalogkasten enthielten Metadaten, also strukturierte Informationen über die Medien einer Bibliothek. Diese liegen mittlerweile längst digitalisiert vor. Daher ist es heute möglich, Daten wesentlich größerer Einheiten als einer einzelnen Bibliothek zusammenzuführen; Instituts- oder Ländergrenzen bilden z. B. keine Hindernisse mehr. Hinderlich sind jedoch die unterschiedlichen Arten (Strukturen, Vokabulare, Software, Schnittstellen etc.) der Datenerfassung. Diese Probleme zu überwinden, das Zusammenführen von Daten zu erleichtern und für alle Interessierten nutzbare, offene Metadatenstrukturen aufzubauen, anzubieten und weiterzuentwickeln, hat sich das Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) auf die Fahnen geschrieben. Die folgenden Texte geben einen Überblick über den Stand der Entwicklung."
+    },
+    "keywords": [
+        "Metadateninfrastruktur",
+        "hbz"
+    ],
+    "about": [
+        {
+            "id": "https://lobid.org/product/lobid"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-resources"
+        },
+        {
+            "id": "https://lobid.org/product/lobid-gnd"
+        },
+        {
+            "id": "https://lobid.org/project/reconciliation"
+        },
+        {
+            "id": "https://lobid.org/project/infrastrukturinitiative"
+        },
+        {
+            "id": "https://lobid.org/product/oersi"
+        },
+        {
+            "id": "https://lobid.org/product/metafacture"
+        },
+        {
+            "id": "https://lobid.org/product/skohub"
+        }
+    ],
+    "id": "https://www.bibliotheken-nrw.de/wp-content/uploads/2023-3-_ProLibris-web-DS.pdf",
+    "datePublished": "2023",
+    "inLanguage": [
+        "de"
+    ],
+    "audience": [
+        "developers",
+        "librarians",
+        "library management"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}
