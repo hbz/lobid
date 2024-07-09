@@ -68,7 +68,7 @@ export class Project extends React.Component {
           {this.props.project.membership.length > 0 && <p className="lead">{this.props.memberName}</p>}
           <Membership membership={this.props.project.membership.filter((member) => !member.endDate).map((member) => [member, getMemberDetails(this.props.members, member)])} lang={this.props.lang}/>
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
-          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
+          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} accessibility={this.props.accessibility} />
         </div>
       </div>
     );

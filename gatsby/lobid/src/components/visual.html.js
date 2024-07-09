@@ -120,7 +120,7 @@ export class Visual extends Component {
           </p>
           <div id="lobid-network" ref={this.appRef} />
         </div>
-        <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy}/>
+        <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} accessibility={this.props.accessibility} />
       </div>
     );
   }

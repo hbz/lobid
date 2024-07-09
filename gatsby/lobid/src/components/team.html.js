@@ -186,7 +186,7 @@ export class Team extends React.Component {
             </div>
           </div>
         </div>
-        <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
+        <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} accessibility={this.props.accessibility} />
       </div>
     );
   }

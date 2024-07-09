@@ -116,7 +116,7 @@ export class Member extends React.Component {
           </p>
           {this.state.infoToggledProjects ? this.getFormerProjects() : ""}
           <Publications pubs={this.props.pubs} publications={this.props.publications} />
-          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} />
+          <Footer companyDetails={this.props.companyDetails} privacy={this.props.privacy} accessibility={this.props.accessibility} />
         </div>
       </div>
     );

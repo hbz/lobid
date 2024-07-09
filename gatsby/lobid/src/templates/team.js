@@ -29,6 +29,7 @@ export default ({ data, location, pageContext }) => {
     memberName={pageContext.lang==="de"?"Mitglieder":"Members"}
     memberFormerName={pageContext.lang==="de"?"Ehemalige":"Former members"}
     companyDetails={pageContext.lang==="de"?"Impressum":"Imprint"}
+    accessibility={pageContext.lang==="de"?"Barrierefreiheit":"Accessibility"}
     privacy={pageContext.lang==="de"?"Datenschutz":"Privacy"}
     contactPointId="mailto:lobid-admin@hbz-nrw.de"
   />

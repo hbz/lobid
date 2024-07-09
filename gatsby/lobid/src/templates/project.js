@@ -24,6 +24,7 @@ export default function ProjectPage({ data, location, pageContext }) {
     result="Ergebnis"
     companyDetails="Impressum"
     privacy="Datenschutz"
+    accessibility="Barrierefreiheit"
     contactPointId="mailto:semweb@hbz-nrw.de"
     memberName="Team"
     lang="de"
