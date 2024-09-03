@@ -9,7 +9,7 @@
         $filename = basename($url);
 
         switch (true) {
-                case (stripos($filename,".ico") || stripos($filename,".png")):
+                case (stripos($filename,".ico") || stripos($filename,".png") || stripos($filename,".svg?width=")):
                         $ctype="image/png";
                         break;
                 case (stripos($filename,".jpg") || stripos($filename,".jpeg")):
