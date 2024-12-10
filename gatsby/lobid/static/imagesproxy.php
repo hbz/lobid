@@ -7,11 +7,13 @@
         $positionOfColon = strpos($url,"%");
         $url= substr_replace($url,":",$positionOfColon,3);
         // restore the query Parameter
-        $positionOfQueryParameter = strrpos($url,"%3F");
-        $url= substr_replace($url,"?",$positionOfQueryParameter,3);
-        // restore the
-        $positionOfEqual = strrpos($url,"%3D", $positionOfQueryParameter);
-        $url= substr_replace($url,"=",$positionOfEqual,3);
+	$positionOfQueryParameter = strrpos($url,"%3F");
+	if ($positionOfQueryParameter !== false) {
+        	$url= substr_replace($url,"?",$positionOfQueryParameter,3);
+        	// restore the
+        	$positionOfEqual = strrpos($url,"%3D", $positionOfQueryParameter);
+        	$url= substr_replace($url,"=",$positionOfEqual,3);
+	}
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
