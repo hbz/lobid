@@ -151,7 +151,19 @@
     },
     {
       "type": "Role",
+      "startDate": "2025",
+      "roleName": {
+        "de": "Systemadministration",
+        "en": "System Administrator"
+      },
+      "member": {
+        "id": "http://lobid.org/team/pt#!"
+      }
+    },
+    {
+      "type": "Role",
       "startDate": "2022",
+      "endDate": "2024",
       "roleName": {
         "de": "Softwareentwicklung",
         "en": "Software development"
@@ -175,6 +187,7 @@
     {
       "type": "Role",
       "startDate": "2023",
+      "endDate": "2024",
       "roleName": {
         "de": "Projektmanager DevOps",
         "en": "Project Manager DevOps"
@@ -186,6 +199,7 @@
     {
       "type": "Role",
       "startDate": "2023",
+      "endDate": "2025",
       "roleName": {
         "de": "Bibliothekarin",
         "en": "Librarian"
