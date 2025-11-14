@@ -45,13 +45,9 @@
 	    }
 
         // set up cache directory and TTL
-        $cacheDir = __DIR__ . '/cache';
+        $cacheDir = '/srv/www/cache/imagesproxy'; // make sure this directory is writable by the web server and outside web root
         $cacheTTL = 86400; // 24 h
         $cacheMaxSize = 10 * 1024 * 1024 * 1024; // 10 GB
-
-        if (!is_dir($cacheDir)) {
-            mkdir($cacheDir, 0755, true);
-        }
 
         // extract and sanitize original filename from URL
         $originalName = basename(parse_url($url, PHP_URL_PATH));
