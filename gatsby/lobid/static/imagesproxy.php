@@ -44,7 +44,7 @@
             	$url= substr_replace($url,"=",$positionOfEqual,3);
 	    }
 
-        // set up chache directory and TTL
+        // set up cache directory and TTL
         $cacheDir = __DIR__ . '/cache';
         $cacheTTL = 86400; // 24 h
         $cacheMaxSize = 10 * 1024 * 1024 * 1024; // 10 GB
@@ -68,7 +68,6 @@
         }
 
         // check total cache size once every 60 seconds
-
         $checkFile = $cacheDir . '/cache_check.timestamp';
         $doCheck = true;
 
@@ -115,15 +114,15 @@
         if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTTL)) {
             $imageData = file_get_contents($cacheFile);
         } else {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: text/xml","User-Agent: imagesproxy/0.2 (https://lobid.org/)"]);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
             $imageData = curl_exec($ch);
             curl_close($ch);
-
+            
             if ($imageData !== false) {
                 file_put_contents($cacheFile, $imageData);
             } else {
