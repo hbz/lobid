@@ -1,6 +1,35 @@
 <?php
 
-        $url = $_GET['url'];
+        $url = $_GET['url'] ?? '';
+
+        if (!$url) {
+            http_response_code(400);
+            echo "No URL specified.";
+            exit;
+        }
+
+        $allowedDomains = [
+            'commons.wikimedia.org',
+            'upload.wikimedia.org',
+            'www.deutsche-digitale-bibliothek.de',
+            'www.wikidata.org',
+            'en.wikipedia.org',
+            'de.wikipedia.org',
+            'viaf.org',
+            'www.loc.gov',
+            'portal.dnb.de',
+            'lobid.org'
+        ];
+
+        $parsedUrl = parse_url($url);
+        $host = $parsedUrl['host'] ?? '';
+
+        if (!in_array($host, $allowedDomains)) {
+            http_response_code(403);
+            echo "Access to the specified domain is not allowed.";
+            exit;
+        }
+
         // encode the URL
         $url = implode("/", array_map("rawurlencode", explode("/", $url)));
         // restore the colon of the protocol
