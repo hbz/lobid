@@ -60,6 +60,9 @@
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: text/xml","User-Agent: imagesproxy/0.2 (https://lobid.org/)"]);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        // set timeouts, prevent worker being blocked see https://github.com/hbz/lobid-gnd/issues/405
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 6);
         $imageData = curl_exec($ch);
         curl_close($ch);
         
