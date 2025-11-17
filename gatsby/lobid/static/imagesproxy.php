@@ -20,7 +20,7 @@
         'www.deutsche-biographie.de',
         'www.archivportal-d.de',
         'kalliope-verbund.info',
-        'www.portraitindex.de/',
+        'www.portraitindex.de',
         'lobid.org'
     ];
     $parsedUrl = parse_url($url);
