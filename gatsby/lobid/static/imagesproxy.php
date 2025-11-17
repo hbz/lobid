@@ -46,58 +46,11 @@
     // set up cache directory and TTL
     $cacheDir = '/srv/www/cache/imagesproxy'; // make sure this directory is writable by the web server and outside web root
     $cacheTTL = 86400; // 24 h
-    $cacheMaxSize = 10 * 1024 * 1024 * 1024; // 10 GB
     // extract and sanitize original filename from URL
     $originalName = basename(parse_url($url, PHP_URL_PATH));
     $originalName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $originalName);
     // file name for cached image: original name + md5 hash of URL
     $cacheFile = $cacheDir . '/' . $originalName . '_' . md5($url);
-    // delete old cache files older than TTL
-    foreach (glob($cacheDir . '/*') as $file) {
-        if (filemtime($file) < time() - $cacheTTL) {
-            @unlink($file);
-        }
-    }
-    // check total cache size once every 60 seconds
-    $checkFile = $cacheDir . '/cache_check.timestamp';
-    $doCheck = true;
-    // if timestamp exists and is newer than 60 seconds → skip check
-    if (file_exists($checkFile)) {
-        if (time() - filemtime($checkFile) < 60) {
-            $doCheck = false;
-        }
-    }
-    if ($doCheck) {
-        // update timestamp *before* the expensive work
-        @touch($checkFile);
-    
-        // enforce maximum cache size (10 GB)
-        $cacheFiles = glob($cacheDir . '/*');
-        $totalSize = 0;
-    
-        // calculate total size
-        foreach ($cacheFiles as $f) {
-            if (is_file($f)) {
-                $totalSize += filesize($f);
-            }
-        }
-    
-        // if above limit → delete oldest files first
-        if ($totalSize > $cacheMaxSize) {
-            usort($cacheFiles, function($a, $b) {
-                return filemtime($a) - filemtime($b);
-            });
-        
-            foreach ($cacheFiles as $f) {
-                if ($totalSize <= $cacheMaxSize) break;
-                if (!is_file($f)) continue;
-            
-                $size = filesize($f);
-                @unlink($f);
-                $totalSize -= $size;
-            }
-        }
-    }
     // check if cached file exists and is still valid
     if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTTL)) {
         $imageData = file_get_contents($cacheFile);
