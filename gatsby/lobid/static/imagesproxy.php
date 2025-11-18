@@ -45,16 +45,32 @@
     }
     // set up cache directory and TTL
     $cacheDir = '/srv/www/cache/imagesproxy'; // make sure this directory is writable by the web server and outside web root
+    $faviconCacheDir = $cacheDir . '/favicons';
     $cacheTTL = 86400; // 24 h
     // extract and sanitize original filename from URL
     $originalName = basename(parse_url($url, PHP_URL_PATH));
     $originalName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $originalName);
+    // favicon detection
+    $path = parse_url($url, PHP_URL_PATH);
+    $base = strtolower(basename($path));
+    $isFavicon = (
+        preg_match('/\.ico$/', $base) ||
+        preg_match('/^favicon\.(png|svg|ico)$/', $base)
+    );
+    // choose correct cache path
+    $cacheBaseDir = $isFavicon ? $faviconCacheDir : $cacheDir;
     // file name for cached image: original name + md5 hash of URL
-    $cacheFile = $cacheDir . '/' . $originalName . '_' . md5($url);
-    // check if cached file exists and is still valid
-    if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTTL)) {
+    $cacheFile = $cacheBaseDir . '/' . $originalName . '_' . md5($url);
+    // for favicons: no TTL at all
+    if ($isFavicon && file_exists($cacheFile)) {
         $imageData = file_get_contents($cacheFile);
-    } else {
+    }
+    // normal cache flow for non-favicons
+    else if (!$isFavicon && file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTTL)) {
+        $imageData = file_get_contents($cacheFile);
+    }
+    else {
+        // fetch from remote
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
