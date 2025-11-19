@@ -45,10 +45,12 @@
     }
     // set up cache directory and TTL
     $cacheDir = '/srv/www/cache/imagesproxy'; // make sure this directory is writable by the web server and outside web root
-    $faviconCacheDir = $cacheDir . '/favicons';
+    $faviconsCacheDir = $cacheDir . '/favicons';
+    $imagesCacheDir = $cacheDir . '/images';
+    $logsCacheDir = $cacheDir . '/logs';
     $cacheTTL = 86400; // 24 h
     // logging
-    $logFile = $cacheDir . '/logs/imagesproxy_access.log';
+    $logFile = $logsCacheDir . '/imagesproxy_access.log';
     function logResult($msg) {
         global $logFile;
         @file_put_contents($logFile, date('Y-m-d H:i:s') . " - $msg\n", FILE_APPEND);
@@ -64,7 +66,7 @@
         preg_match('/^favicon\.(png|svg|ico)$/', $base)
     );
     // choose correct cache path
-    $cacheBaseDir = $isFavicon ? $faviconCacheDir : $cacheDir;
+    $cacheBaseDir = $isFavicon ? $faviconsCacheDir : $imagesCacheDir;
     // file name for cached image: original name + md5 hash of URL
     $cacheFile = $cacheBaseDir . '/' . $originalName . '_' . md5($url);
     // for favicons: no TTL at all
