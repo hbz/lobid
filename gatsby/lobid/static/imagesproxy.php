@@ -47,6 +47,12 @@
     $cacheDir = '/srv/www/cache/imagesproxy'; // make sure this directory is writable by the web server and outside web root
     $faviconCacheDir = $cacheDir . '/favicons';
     $cacheTTL = 86400; // 24 h
+    // logging
+    $logFile = $cacheDir . '/logs/imagesproxy_access.log';
+    function logResult($msg) {
+        global $logFile;
+        @file_put_contents($logFile, date('Y-m-d H:i:s') . " - $msg\n", FILE_APPEND);
+    }
     // extract and sanitize original filename from URL
     $originalName = basename(parse_url($url, PHP_URL_PATH));
     $originalName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $originalName);
@@ -63,13 +69,16 @@
     $cacheFile = $cacheBaseDir . '/' . $originalName . '_' . md5($url);
     // for favicons: no TTL at all
     if ($isFavicon && file_exists($cacheFile)) {
+        logResult("CACHE-HIT favicon $cacheFile");
         $imageData = file_get_contents($cacheFile);
     }
     // normal cache flow for non-favicons
     else if (!$isFavicon && file_exists($cacheFile) && (time() - filemtime($cacheFile) < $cacheTTL)) {
+        logResult("CACHE-HIT image $cacheFile");
         $imageData = file_get_contents($cacheFile);
     }
     else {
+        logResult("CACHE-MISS fetch $url");
         // fetch from remote
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
