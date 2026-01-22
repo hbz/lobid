@@ -21,6 +21,7 @@
         'www.archivportal-d.de',
         'kalliope-verbund.info',
         'www.portraitindex.de',
+        'www.herder-institut.de',
         'lobid.org'
     ];
     $parsedUrl = parse_url($url);
