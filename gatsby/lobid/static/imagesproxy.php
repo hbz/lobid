@@ -22,6 +22,11 @@
         'kalliope-verbund.info',
         'www.portraitindex.de',
         'www.herder-institut.de',
+        'data.judaicalink.org',
+        'wikisource.org',
+        'bmlo.de',
+        'www.bnf.fr',
+        'www.hls-dhs-dss.ch',
         'lobid.org'
     ];
     $parsedUrl = parse_url($url);
