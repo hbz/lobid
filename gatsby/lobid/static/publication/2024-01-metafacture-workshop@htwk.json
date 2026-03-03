@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "id": "https://slides.lobid.org/2024-01-metafacture-workshop",
+  "name": {
+    "de": "Metadatenworkflows mit Metafacture erstellen und verwalten"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    },
+    {
+      "id": "http://lobid.org/team/pm#!",
+      "type": "Person",
+      "name": "Petra Maier"
+    },
+    {
+      "id": "http://lobid.org/team/kt#!",
+      "type": "Person",
+      "name": "Katinka Tauber"
+    }
+  ],
+  "description": {
+    "de": "Hands-on Lab im Studiengang Bibliotheks- und Informationswissenschaft an der HTWK Leipzig im Modul \"Metadaten und Metadatenmanagement\""
+  },
+  "about": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-playground"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-fix"
+    }
+  ],
+  "keywords": [
+    "metafacture-playground",
+    "metafacture",
+    "metafacture-fix",
+    "metadata",
+    "workshop"
+  ],
+  "datePublished": "2024-01-11",
+  "inLanguage": ["de"],
+  "audience": [
+    "metadata practitioners",
+    "management",
+    "librarians",
+    "developers"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

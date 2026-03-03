@@ -1,0 +1,32 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "name": {
+    "de": "Verbesserte Suche und Auffindbarkeit mit OERSI"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    }
+  ],
+  "description": {
+    "de": " Lightning Talk bei der Online-Fachtagung \"Maßnahmen zur Nachnutzung und Wiederverwendung von OER im Hochschulbereich\""
+  },
+  "keywords": [
+    "oer",
+    "open educational resources",
+    "resource discovery",
+    "oersi"
+  ],
+  "about": [
+    {
+      "id": "https://lobid.org/product/oersi"
+    }
+  ],
+  "id": "https://pad.lobid.org/p/2024-11-05-oersi",
+  "datePublished": "2024-11-05",
+  "inLanguage": ["de"],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
