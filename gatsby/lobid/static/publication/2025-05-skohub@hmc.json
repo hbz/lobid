@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "name": {
+    "en": "Publish & utilize SKOS vocabularies with SkoHub"
+  },
+  "description": {
+    "de": "Präsentationsfolien zum SkoHub-Workshop bei der Helmholtz Metadata Collaboration Conference 2025 in Köln"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "http://lobid.org/team/tb#!",
+      "type": "Person",
+      "name": "Tobias Bülte"
+    }
+  ],
+  "keywords": ["SKOS", "SkoHub"],
+  "id": "https://pad.lobid.org/p/skohub@HMCConference2025",
+  "about": [
+    {
+      "id": "https://lobid.org/product/skohub"
+    }
+  ],
+  "datePublished": "2025-05-12",
+  "inLanguage": ["en"],
+  "audience": ["librarians", "developers"],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

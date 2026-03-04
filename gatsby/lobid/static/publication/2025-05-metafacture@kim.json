@@ -1,0 +1,54 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "id": "https://pad.lobid.org/p/2025-Dini-Kim-Metafacture-Workshop-Folien",
+  "name": {
+    "de": "Metafacture Revisited. Metadaten verarbeiten, transfomieren und bereinigen mit Metafacture Core und Fix"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    },
+    {
+      "id": "http://lobid.org/team/tb#!",
+      "type": "Person",
+      "name": "Tobias Bülte"
+    },
+    {
+      "id": "http://lobid.org/team/pm#!",
+      "type": "Person",
+      "name": "Petra Maier"
+    }
+  ],
+  "description": {
+    "de": "Hands-on Lab beim KIM-Workshop 2025, Mannheim"
+  },
+  "about": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-playground"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-fix"
+    }
+  ],
+  "keywords": [
+    "metafacture-playground",
+    "metafacture",
+    "metafacture-fix",
+    "metadata"
+  ],
+  "datePublished": "2025-05-06",
+  "inLanguage": ["de"],
+  "audience": [
+    "metadata practitioners",
+    "management",
+    "librarians",
+    "developers"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

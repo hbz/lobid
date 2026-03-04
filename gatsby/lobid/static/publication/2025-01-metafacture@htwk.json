@@ -1,0 +1,49 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "id": "https://pad.lobid.org/p/2025-01-22-Bibliothekarische-Metadatenworkflows-mit-Metafacture-erstellen",
+  "name": {
+    "de": "Bibliothekarische Metadatenworkflows mit Metafacture erstellen und verwalten"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    },
+    {
+      "id": "http://lobid.org/team/tb#!",
+      "type": "Person",
+      "name": "Tobias Bülte"
+    },
+    {
+      "id": "http://lobid.org/team/pm#!",
+      "type": "Person",
+      "name": "Petra Maier"
+    }
+  ],
+  "description": {
+    "de": "Studiengang Bibliotheks- und Informationswissenschaft an der HTWK Leipzig im Modul \"Metadaten und Metadatenmanagement\""
+  },
+  "about": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-playground"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-fix"
+    }
+  ],
+  "keywords": [
+    "metafacture-playground",
+    "metafacture",
+    "metafacture-fix",
+    "metadata"
+  ],
+  "datePublished": "2025-01-22",
+  "inLanguage": ["de"],
+  "audience": ["lis students"],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

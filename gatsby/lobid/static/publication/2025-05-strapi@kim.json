@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "name": {
+    "de": "Katalogisierung als Content Management – Integration eines Headless CMS in eine Linked-Data-Umgebung"
+  },
+  "description": {
+    "de": "Vortrag beim KIM-Workshop 2025, Mannheim"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "id": "http://lobid.org/team/fs#!",
+      "type": "Person",
+      "name": "Fabian Steeg"
+    }
+  ],
+  "keywords": ["lobid", "JSON-LD", "Linked Open Data", "libraries"],
+  "id": "https://pad.lobid.org/p/20250507-strapi@kim",
+  "about": [
+    {
+      "id": "https://lobid.org/project/rpb/"
+    }
+  ],
+  "datePublished": "2025-05-07",
+  "inLanguage": ["de"],
+  "audience": ["librarians", "developers", "metadata practitioners"],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
