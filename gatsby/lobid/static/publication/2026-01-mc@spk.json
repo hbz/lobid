@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "id": "https://pad.lobid.org/p/mc@stabi-berlin",
+  "name": {
+    "de": "metadaten.community – Ein Online-Forum für Metadatenpraktiker:innen"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/ap#!",
+      "type": "Person",
+      "name": "Adrian Pohl"
+    },
+    {
+      "type": "Person",
+      "name": "Tracy Arndt",
+      "id": "http://www.wikidata.org/entity/Q111973630"
+    }
+  ],
+  "description": {
+    "de": "Vortrag beim Online-Treffen der AG Metadatenmanagement der SPK Berlin"
+  },
+  "about": [
+    {
+      "id": "https://lobid.org/product/metadaten.community"
+    }
+  ],
+  "keywords": ["metadaten.community", "metadaten", "fachaustausch"],
+  "datePublished": "2026-01-08",
+  "inLanguage": ["de"],
+  "audience": ["metadata practitioners", "librarians"],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

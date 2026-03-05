@@ -1,17 +1,13 @@
 {
-  "@context": "https://schema.org/",
+  "@context": "https://schema.org",
   "id": "https://lobid.org/product/oersi",
   "url": "https://oersi.org",
-  "type": [
-    "Product"
-  ],
+  "type": ["Product"],
   "name": {
     "de": "OER Search Index",
     "en": "OER Search Index"
   },
-  "alternateName": [
-    "OERSI"
-  ],
+  "alternateName": ["OERSI"],
   "image": "https://oersi.org/resources/logo.svg",
   "startDate": "2020-01-15",
   "description": {

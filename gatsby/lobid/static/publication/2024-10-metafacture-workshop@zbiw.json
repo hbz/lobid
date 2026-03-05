@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "id": "https://pad.lobid.org/p/2024-10-08-Bibliothekarische-Metadatenworkflows-mit-Metafacture-erstellen",
+  "name": {
+    "de": "Bibliothekarische Metadatenworkflows mit Metafacture erstellen"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    },
+    {
+      "id": "http://lobid.org/team/pm#!",
+      "type": "Person",
+      "name": "Petra Maier"
+    },
+    {
+      "id": "http://lobid.org/team/tb#!",
+      "type": "Person",
+      "name": "Tobias Bülte"
+    }
+  ],
+  "description": {
+    "de": "Workshop beim ZBIW, Köln"
+  },
+  "about": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-playground"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-fix"
+    }
+  ],
+  "keywords": [
+    "metafacture-playground",
+    "metafacture",
+    "metafacture-fix",
+    "metadata",
+    "workshop"
+  ],
+  "datePublished": "2024-10-08",
+  "inLanguage": ["de"],
+  "audience": [
+    "metadata practitioners",
+    "management",
+    "librarians",
+    "developers"
+  ],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}

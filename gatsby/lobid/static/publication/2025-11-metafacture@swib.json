@@ -1,0 +1,44 @@
+{
+  "@context": "https://schema.org",
+  "type": ["PresentationDigitalDocument"],
+  "id": "https://pad.lobid.org/p/SWIB2025-metafactureWorkshopSlides",
+  "name": {
+    "de": "Creating LOUD with Metafacture"
+  },
+  "creator": [
+    {
+      "id": "http://lobid.org/team/pc#!",
+      "type": "Person",
+      "name": "Pascal Christoph"
+    },
+    {
+      "id": "http://lobid.org/team/tb#!",
+      "type": "Person",
+      "name": "Tobias Bülte"
+    }
+  ],
+  "description": {
+    "de": "Online workshop at SWIB25"
+  },
+  "about": [
+    {
+      "id": "https://lobid.org/product/metafacture"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-playground"
+    },
+    {
+      "id": "https://lobid.org/project/metafacture-fix"
+    }
+  ],
+  "keywords": [
+    "metafacture-playground",
+    "metafacture",
+    "metafacture-fix",
+    "metadata"
+  ],
+  "datePublished": "2025-11-17",
+  "inLanguage": ["de"],
+  "audience": ["metadata practitioners", "librarians", "developers"],
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+}
