@@ -97,11 +97,39 @@
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
         curl_setopt($ch, CURLOPT_TIMEOUT, 6);
         $imageData = curl_exec($ch);
+        
+        $httpCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+        
         curl_close($ch);
         
-        if ($imageData !== false) {
+        // detect actual mime type from content
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        $detectedMime = $imageData !== false
+            ? $finfo->buffer($imageData)
+            : '';
+        
+        $isValidImage =
+            $imageData !== false &&
+            $httpCode >= 200 &&
+            $httpCode < 300 &&
+            strpos($contentType, 'image/') === 0 &&
+            strpos($detectedMime, 'image/') === 0;
+        
+        if ($isValidImage) {
+        
             file_put_contents($cacheFile, $imageData);
+        
         } else {
+        
+            logResult(
+                "INVALID RESPONSE " .
+                "status=$httpCode " .
+                "headerType=$contentType " .
+                "detectedType=$detectedMime " .
+                "url=$url"
+            );
+        
             http_response_code(404);
             echo "Image not found";
             exit;
