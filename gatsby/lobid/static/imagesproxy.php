@@ -16,6 +16,7 @@
         'viaf.org',
         'www.loc.gov',
         'portal.dnb.de',
+        'www.dnb.de',
         'www.gf-franken.de',
         'www.deutsche-biographie.de',
         'www.archivportal-d.de',
