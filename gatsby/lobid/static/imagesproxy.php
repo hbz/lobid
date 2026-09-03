@@ -28,7 +28,9 @@
         'bmlo.de',
         'www.bnf.fr',
         'www.hls-dhs-dss.ch',
-        'lobid.org'
+        'lobid.org',
+        'rpb-cms-test.lobid.org',
+        'rpb-cms.lobid.org'
     ];
     $parsedUrl = parse_url($url);
     $host = $parsedUrl['host'] ?? '';
