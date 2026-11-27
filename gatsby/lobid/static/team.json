@@ -25,16 +25,16 @@
     }
   ],
   "alternateName": {
-    "de": "Offene-Infrastruktur-Gruppe am hbz",
-    "en": "Open Infrastructure team at hbz"
+    "de": "Metadateninfrastruktur-Gruppe am hbz",
+    "en": "Metadata Infrastructure team at hbz"
   },
   "name": {
-    "de": "Offene Infrastruktur",
-    "en": "Open Infrastructure"
+    "de": "Metadateninfrastruktur",
+    "en": "Metadata Infrastructure"
   },
   "description": {
-    "de": "Die Gruppe Offene Infrastruktur des hbz unterstützt die Etablierung und Pflege einer zukunftssicheren bibliothekarischen Dateninfrastruktur im regionalen, überregionalen und internationalen Raum. ",
-    "en": "The Open infrastructure team of hbz supports establishment and maintenance of a future-proof data infrastructure for libraries in a regional, national and international context."
+    "de": "Die Gruppe Metadateninfrastruktur des hbz unterstützt die Etablierung und Pflege einer zukunftssicheren bibliothekarischen Dateninfrastruktur im regionalen, überregionalen und internationalen Raum. ",
+    "en": "The Metadata infrastructure team of hbz supports establishment and maintenance of a future-proof data infrastructure for libraries in a regional, national and international context."
   },
   "parentOrganization": "http://lobid.org/organisations/DE-605#!",
   "blog": "http://blog.lobid.org",
@@ -42,7 +42,7 @@
     "https://openbiblio.social/@lobid"
   ],
   "foundingDate": "2019",
-  "url": "https://www.hbz-nrw.de/produkte/linked-open-data",
+  "url": "https://lobid.org/team",
   "makesOffer": [
     {
       "id": "https://lobid.org/product/lobid",
